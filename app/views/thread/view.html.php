@@ -132,7 +132,7 @@ EOD;
 									<?php echo $texttags($post['id']); ?>
 								</div>
 								<div class="row">
-									<textarea class="form-control editmessage edit-content-text" data-id="<?= $post['id'] ?>">
+									<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>">
 										<?= $post['content']; ?>
 									</textarea>
 								</div>
