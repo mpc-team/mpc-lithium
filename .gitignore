@@ -2,3 +2,8 @@
 app/libraries/*
 app/resources/tmp/*
 .*.sw[op]
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

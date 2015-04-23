@@ -11,260 +11,30 @@ use lithium\core\Environment;
 use lithium\data\Connections;
 
 $this->title('Home');
-$this->html->style('debug', array('inline' => false));
 
-$self = $this;
-
-$notify = function($status, $message, $solution = null) {
-	$html  = "<h4 class=\"alert alert-{$status}\">{$message}</h4>";
-	$html .= "<p>{$solution}</p>";
-	return $html;
-};
-
-$support = function($heading, $data) {
-	$result = "<h3>{$heading}</h3>";
-
-	if (is_string($data)) {
-		return $result . $data;
-	}
-	$result .= '<ul class="lithium-indicator">';
-
-	foreach ($data as $class => $enabled) {
-		$name = substr($class, strrpos($class, '\\') + 1);
-		$url = 'http://li3.me/docs/' . str_replace('\\', '/', $class);
-		$class = $enabled ? 'enabled' : 'disabled';
-		$title = $enabled ? "Adapter `{$name}` is enabled." : "Adapter `{$name}` is disabled.";
-		$result .= "<li><a href=\"{$url}\" title=\"{$title}\" class=\"{$class}\">{$name}</a></li>";
-	}
-	$result .= '</ul>';
-
-	return $result;
-};
-
-$compiled = function($flag) {
-	ob_start();
-	phpinfo(INFO_GENERAL);
-	return strpos(ob_get_clean(), $flag) !== false;
-};
-
-$checks = array(
-	'resourcesWritable' => function() use ($notify) {
-		if (is_writable($path = Libraries::get(true, 'resources'))) {
-			return $notify('success', 'Resources directory is writable');
-		}
-		$app = basename(LITHIUM_APP_PATH);
-		$path = str_replace(LITHIUM_APP_PATH . '/', null, $path);
-		$solution = null;
-
-		if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
-			$solution  = 'To fix this, run the following from the command line: ';
-			$solution .= "<pre><code>";
-			$solution .= !empty($app) ? "$ cd {$app}\n" : null;
-			$solution .= "$ chmod -R 0777 {$path}";
-			$solution .= "</code></pre>";
-		} else {
-			$path = realpath($path);
-			$solution  = 'To fix this, give <code>modify</code> rights to the user ';
-			$solution .= "<code>Everyone</code> on directory <code>{$path}</code>.";
-		}
-		return $notify(
-			'fail',
-			'Your resource path is not writeable',
-			$solution
-		);
-	},
-	'magicQuotes' => function() use ($notify) {
-		if (!get_magic_quotes_gpc()) {
-			return;
-		}
-		return $notify(
-			'error',
-			'Magic quotes are enabled in your PHP configuration',
-			'Please set <code>magic_quotes_gpc = Off</code> in your <code>php.ini</code> settings.'
-		);
-	},
-	'registerGlobals' => function() use ($notify) {
-		if (!ini_get('register_globals')) {
-			return;
-		}
-		return $notify(
-			'error',
-			'Register globals is enabled in your PHP configuration',
-			'Please set <code>register_globals = Off</code> in your <code>php.ini</code> settings.'
-		);
-	},
-	'curlwrappers' => function() use ($notify, $compiled) {
-		if (!$compiled('with-curlwrappers')) {
-			return;
-		}
-		return $notify(
-			'error',
-			'Curlwrappers are enabled, some things might not work as expected.',
-			"This is an expiremental and usually broken feature of PHP.
-			Please recompile your PHP binary without using the <code>--with-curlwrappers</code>
-			flag or use a precompiled binary that was compiled without the flag."
-		);
-	},
-	'shortOpenTag' => function() use ($notify, $compiled) {
-		if (!ini_get('short_open_tag')) {
-			return;
-		}
-		return $notify(
-			'warning',
-			'Short open tags are enabled, you may want to disable them.',
-			"It is recommended to not rely on this option being enabled.
-			To increase the portability of your code disable this option by setting
-			<code>short_open_tag = Off</code> in your <code>php.ini</code>."
-		);
-	},
-	'database' => function() use ($notify) {
-		if ($config = Connections::config()) {
-			return $notify('success', 'Database connection(s) configured');
-		}
-		return $notify(
-			'warning',
-			'No database connection defined',
-			"To create a database connection:
-			<ol>
-				<li>Edit the file <code>config/bootstrap.php</code>.</li>
-				<li>
-					Uncomment the line having
-					<code>require __DIR__ . '/bootstrap/connections.php';</code>.
-				</li>
-				<li>Edit the file <code>config/bootstrap/connections.php</code>.</li>
-			</ol>"
-		);
-	},
-	'change' => function() use ($notify, $self) {
-		$template = $self->html->link('template', 'http://li3.me/docs/lithium/template');
-
-		return $notify(
-			'warning',
-			"You're using the application's default home page",
-			"To change this {$template}, edit the file
-			<code>views/pages/home.html.php</code>.
-			To change the layout,
-			(that is what's wrapping content)
-			edit the file <code>views/layouts/default.html.php</code>."
-		);
-	},
-	'dbSupport' => function() use ($support) {
-		$paths = array('data.source', 'adapter.data.source.database', 'adapter.data.source.http');
-		$list = array();
-
-		foreach ($paths as $path) {
-			$list = array_merge($list, Libraries::locate($path, null, array('recursive' => false)));
-		}
-		$list = array_filter($list, function($class) { return method_exists($class, 'enabled'); });
-		$map = array_combine($list, array_map(function($c) { return $c::enabled(); }, $list));
-
-		return $support('Database support', $map);
-	},
-	'cacheSupport' => function() use ($support) {
-		$list = Libraries::locate('adapter.storage.cache', null, array('recursive' => false));
-		$list = array_filter($list, function($class) { return method_exists($class, 'enabled'); });
-		$map = array_combine($list, array_map(function($c) { return $c::enabled(); }, $list));
-
-		return $support('Cache support', $map);
-	},
-	'routing' => function() use ($support, $self) {
-		$routing = $self->html->link('routing', 'http://li3.me/docs/lithium/net/http/Router');
-
-		return $support(
-			'Custom routing',
-			"Routes allow you to map custom URLs to your application code. To change the
-			{$routing}, edit the file <code>config/routes.php</code>."
-		);
-	},
-	'tests' => function() use ($notify, $support, $self) {
-		if (Environment::is('production')) {
-			$docsLink = $self->html->link(
-				'the documentation',
-				'http://li3.me/docs/lithium/core/Environment::is()'
-			);
-
-			return $notify(
-				'error',
-				"Can't run tests",
-				"<p>Lithium's default environment detection rules have determined that you are
-				running in production mode. Therefore, you will not be able to run tests from the
-				web interface. You can do any of the following to remedy this:</p>
-				<ul>
-					<li>Run this application locally</li>
-					<li>Run tests from the console, using the <code>li3 test</code> command</li>
-					<li>
-						Implementing custom environment detection rules;
-						see {$docsLink} for examples
-					</li>
-				</ul>"
-			);
-		}
-		$tests = $self->html->link('run all tests', array(
-			'controller' => 'lithium\test\Controller',
-			'args' => 'all'
-		));
-		$dashboard = $self->html->link('test dashboard', array(
-			'controller' => 'lithium\test\Controller'
-		));
-		$ticket = $self->html->link(
-			'file a ticket', 'https://github.com/UnionOfRAD/lithium/issues'
-		);
-
-		return $support(
-			'Run the tests',
-			"Check the {$dashboard} or {$tests} now to ensure Lithium is working as expected."
-		);
-	}
-);
+$self = $this
 
 ?>
-<div class="jumbotron">
-	<h1><?=ucwords(basename(LITHIUM_APP_PATH))?></h1>
-	<h2>
-		Powered by <a href="http://li3.me/">Lithium</a>.
-	</h2>
+<div class="content">
+	<div class="row">
+		<div class="col-md-8">
+			<img src="/img/mpclogo.png" class="img-responsive" alt="mpclogo.png"></img>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="page-header text-center">
+					<h1>Website Under Construction</h1>
+					<center>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick">
+							<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+							">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<hr>
-
-<h3>Current Setup</h3>
-<?php foreach ($checks as $check): ?>
-	<?php echo $check(); ?>
-<?php endforeach; ?>
-
-<h3>Quickstart</h3>
-<p>
-	<?php echo $this->html->link(
-		'Quickstart', 'http://li3.me/docs/manual/quickstart'
-	); ?> is a guide for PHP users who are looking to start building a simple application.
-</p>
-
-<h3>Learn more</h3>
-<p>
-	Read the
-	<?php echo $this->html->link('Manual', 'http://li3.me/docs/lithium'); ?>
-	for detailed explanations and tutorials. The
-	<?php echo $this->html->link('API documentation', 'http://li3.me/docs/lithium'); ?>
-	has all the implementation details you've been looking for.
-</p>
-
-<h3>Community</h3>
-<p>
-	Chat with other Lithium users and the team developing Lithium.
-</p>
-<p>
-	For <strong>general support</strong> hop on the
-	<?php echo $this->html->link('#li3 channel', 'irc://irc.freenode.net/#li3'); ?>
-	or read the
-	<?php echo $this->html->link('logs', 'http://li3.me/bot/logs/li3'); ?>.
-</p>
-<p>
-	For <strong>core discussions</strong> join us in the
-	<?php echo $this->html->link('#li3-core channel', 'irc://irc.freenode.net/#li3-core'); ?>
-	or read the
-	<?php echo $this->html->link('logs', 'http://li3.me/bot/logs/li3-core'); ?>.
-</p>
-<p>
-	Browse the Lithium
-	<?php echo $this->html->link('Source', 'https://github.com/UnionOfRAD/lithium'); ?>
-</p>

@@ -1,0 +1,345 @@
+
+#navbar-copyright { color: #888888; }
+#navbar-copyright { padding: 20px; }
+
+#image-banner-login { 
+	max-height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#image-brand-login { height: 400px; }
+
+textarea.form-control { 
+	font-size: 9pt;
+	resize: none; 
+	width: 100%; 
+	height: 15em; 
+}
+
+body { padding-top: 50px; padding-bottom: 49px; }
+html { background: url("/img/background.png"); }
+html { background-attachment: fixed !IMPORTANT; }
+html { background-repeat: no-repeat; }
+html { background-size: cover; }
+html { height: 100%; min-height: 100%; }
+html body { height: inherit; }
+html body { background: transparent; } 
+
+p { margin-bottom: 0px; }
+
+ul.nav li.dropdown:hover > ul.dropdown-menu { 
+	display: block; 
+}
+
+span.input-group-addon { height: 34px; width: 100px; }
+span.input-group-addon { border-radius: 0px; }
+
+tr.alt { background-color: #2a2f2a; }
+tr.alt { border-top: 1px solid #232323; }
+
+.panel-newthread a.btn { color: #1a1a1a; }
+.panel-newthread a.btn:hover { color: #cccccc; }
+a.btn { 
+	padding: 10px; 
+	border-radius: 1px;
+}
+a h1,
+a h2,
+a h3,
+a h4,
+a h5 { margin: 0px; }
+
+span.glyphicon-plus { 
+	font-size: 1.5em; 
+	color: #afafaf;
+}
+
+span.glyphicon-log-in,
+span.glyphicon-log-out,
+span.glyphicon-send,
+span.glyphicon-new-window { padding-left: 5px; padding-right: 5px; }
+span.glyphicon-send { 
+	font-size: 30pt; 
+	margin-right: 7px; 
+	margin-bottom: 3px;
+}
+span.glyphicon-remove,
+span.glyphicon-check,
+span.glyphicon-trash,
+span.glyphicon-edit { margin: 2px 0px; }
+
+a:hover > span.glyphicon-plus,
+a:hover > span.glyphicon-plus { color: #ffffff; }
+.panel > .page-header > h3 { margin-bottom: 0px; }
+
+.forum .content .panel { padding: 0px; }
+.forum .content .panel-group { margin-bottom: 10px; }
+.forum .content .content-message img { max-width: 100%; max-height: 300; }
+
+.content-message a,
+.content-message small,
+.content-message li,
+.content-message tr,
+.content-message td,
+.content-message h1,
+.content-message h2,
+.content-message h3,
+.content-message h4,
+.content-message p { 
+	white-space: normal; 
+	word-wrap: break-word; 
+	margin-bottom: 0px; 
+	margin-top: 0px; 
+}
+.content-message { padding: 20px 5px 5px 5px; }
+
+.page-footer {
+	padding-top: 9px;
+	margin: 150px 0 0px;
+	border-top: 1px solid #aaaaaa;
+}
+
+.form-signup { padding-bottom: 10px; }
+.signup-text { padding: 25px; }
+
+.forum .panel a h3,
+.forum .panel a h4 { margin-top: 0px; margin-bottom: 0px; }
+
+.panel-newthread > .panel > a.btn:hover {
+	background-color: rgba(185,185,255,0.7);
+}
+.panel-newthread .panel { background-color: #666666; }
+.panel-group.panel-newthread { padding-top: 20px; }
+.panel > a.btn { width: 100%; }
+
+.forum .panel a.btn:hover,
+.forum .panel a.btn:active { 
+	background-color: rgba(255,255,255,0.2); 
+	border: 1px solid rgba(190,220,255,0.8);
+}
+
+.panel-messages-header { font-size: 8pt; }
+.panel-messages > form { margin-top: -20px; }
+.panel-messages .col-xs-6 { padding: 0px; }
+.panel-messages { 
+	padding: 10px; 
+	min-height: 150px;
+	font-size: 9pt;
+}
+
+
+/* Recent Feed Style */
+
+.panel-recentfeed-content {
+	padding: 5px;
+	white-space: nowrap;
+	min-height: 78px;
+	max-height: 78px;
+	overflow: hidden;
+}
+
+@media (min-width: 450px) {
+	.panel-recentfeed-content {
+		min-height: 78px;
+		max-height: 78px;
+	}
+}
+
+@media (min-width: 499px) {
+	.panel-recentfeed-content {
+		min-height: 125px;
+		max-height: 125px;
+	}
+}
+
+@media (min-width: 600px) {
+	.panel-recentfeed-content { 
+		min-height: 150px; 
+		max-height: 150px;
+	}
+}
+
+.panel-recentfeed-footer {
+	padding: 0px;
+	padding-top: 8px;
+	font-size: 8pt;
+}
+
+.col-md-4 .panel > a.btn,
+.col-xs-4 .panel > a.btn,
+.col-xs-6 .panel > a.btn {
+	text-align: left;
+	padding: 5px;
+}
+.col-xs-6 > .panel-group,
+.col-xs-4 > .panel-group {
+	padding-right: 5px; 
+	padding-left: 5px; 
+}
+
+
+/* Forum Styles */
+
+.forum .navbar-forum li > a { 
+	font-size: 9pt; 
+	padding: 5px;
+}
+
+.panel-category a.btn { min-height: 80px; }
+
+.col-xs-1,
+.col-xs-2 { 
+	text-align: center;
+}
+.col-xs-3 > a,
+.col-xs-4 > a,
+.col-xs-5 > a,
+.col-xs-6 > a { 
+	width: 100%; 
+	text-align: left;
+	padding-left: 10px;
+}
+.row .col-xs-6 { min-height: 100%; max-height: 100%; }
+.col-xs-6 > .form-group { 
+	padding-right: 15px; 
+	padding-left: 15px; 
+}
+.table-forum-layout { width: 100%; }
+
+.row.usertool { background: #1a1a1a; }
+.row.thread-info { font-size: 8pt; }
+.row.usertool > form { display: inline; }
+
+
+
+
+/* Login Style */
+
+@media (min-width: 667px) {
+	.panel-login { 
+		max-width: 80%; 
+		margin: auto;
+	}
+}
+.panel-login h3,
+.panel-login h2,
+.panel-login h1 { margin-top: 0px; }
+.row-remember-me { padding: 10px 0px; }
+.row-remember-me span { font-weight: normal; }
+.content-signup {	
+	max-width: 500px;
+	min-width: 250px;
+}
+
+/* Create Thread Modal */
+
+.modal-content { color: rgb(122, 183, 51); }
+.modal-body > .panel { background-color: transparent; }
+.modal-body > .panel-default > .form-group { margin-bottom: 20px; }
+
+
+/* Page Content Style */
+
+.container-fluid .content,
+.container .content { 
+	padding-top: 25px;
+	margin-bottom: 300px; 
+}
+
+
+/* General Button Rules */
+
+.edit-tag-header1 > h1,
+.edit-tag-header2 > h2,
+.edit-tag-header3 > h3 { 
+	text-align: left;
+	padding: 5px; 
+	margin: 0px;
+}
+
+.edit-tag-header1,
+.edit-tag-header2,
+.edit-tag-header3 { padding: 0px; }
+
+.btn-signup,
+.btn-login,
+.btn-reply { 	
+  color: #ffffff;
+	min-width: 100px;
+}
+
+.dropdown-menu > li > button { width: 100%; }
+
+/* #input-reply-text { height: 15em; } */
+.btn-reply { 
+	background-color: transparent; 
+	/* border: 1px solid #66aaee; */
+	margin-left: auto;
+	margin-right: auto;
+}
+.btn-reply:hover {
+	color: #66aaee;
+	background-color: rgba(255,255,255,0.05);
+}
+.btn-reply-row { 
+	width: 100%;
+}
+.panel-reply .form-group { 
+	margin: 10px;
+	padding: 10px;
+	background-color: #1f1f1f; 
+}
+.panel-reply .input-group {
+	text-align: center;
+	padding: 0px;
+	width: 100%;
+}
+.panel > .page-header {
+	padding: 0px 15px;
+	border: 0px;
+}
+
+
+/* Signup & Login Buttons */
+
+.btn-signup { margin-top: 20px; }
+.btn-signup,
+.btn-login { background-color: #337ab7; }
+.btn-signup:hover,
+.btn-login:hover { 
+	color: #99dd99;
+	border-color: #225522; 
+}
+.btn-signup,
+.btn-login { 
+  color: #ffffff;
+	min-width: 100px;
+}
+
+
+/* Thread Control Buttons */
+
+.btn-delete,
+.btn-edit {	
+	font-size: 9pt;
+	color: #337ab7;
+	background-color: transparent; 
+}
+.btn-delete:hover,
+.btn-delete:active,
+.btn-edit:hover,
+.btn-edit:active { 
+	color: #ffffff;
+	background-color: rgba(255,255,255,0.1); 
+}
+
+
+/*Streamer's Global CSS Data Only */
+
+/* ID Only */
+#thelungy-streampopup-bg-image {
+    background-image: url(../../pics/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
