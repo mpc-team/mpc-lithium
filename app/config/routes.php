@@ -70,8 +70,8 @@ if (!Environment::is('production')) {
  * is an integer, uncomment the routes below to enable URLs like `/posts/edit/1138`,
  * `/posts/view/1138.json`, etc.
  */
-// Router::connect('/{:controller}/{:action}/{:id:\d+}.{:type}', array('id' => null));
-// Router::connect('/{:controller}/{:action}/{:id:\d+}');
+Router::connect('/{:controller}/{:action}/{:id:\d+}.{:type}', array('id' => null));
+Router::connect('/{:controller}/{:action}/{:id:\d+}');
 
 /**
  * If you're using a document-oriented database, such as CouchDB or MongoDB, or another type of

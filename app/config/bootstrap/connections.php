@@ -60,13 +60,22 @@ use lithium\data\Connections;
  * Uncomment this configuration to use MySQL as your default database.
  */
 // Connections::add('default', array(
-// 	'type' => 'database',
-// 	'adapter' => 'MySql',
-// 	'host' => 'localhost',
-// 	'login' => 'root',
-// 	'password' => '',
-// 	'database' => 'my_app',
-// 	'encoding' => 'UTF-8'
+	// 'type' => 'database',
+	// 'adapter' => 'MySql',
+	// 'host' => 'clanmpc.db.9825370.hostedresource.com',
+	// 'login' => 'clanmpc',
+	// 'password' => 'semaGN!W3W',
+	// 'database' => 'clanmpc',
+	// 'encoding' => 'UTF-8'
 // ));
+Connections::add('default', array(
+	'type' => 'database',
+	'adapter' => 'MySql',
+	'host' => 'localhost',
+	'login' => 'root',
+	'password' => '',
+	'database' => 'dev',
+	'encoding' => 'UTF-8'
+));
 
 ?>
