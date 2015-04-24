@@ -57,7 +57,7 @@ use lithium\data\Connections;
 // ));
 
 /**
- * Uncomment this configuration to use MySQL as your default database.
+ * Production Database
  */
 // Connections::add('default', array(
 	// 'type' => 'database',
@@ -68,6 +68,9 @@ use lithium\data\Connections;
 	// 'database' => 'clanmpc',
 	// 'encoding' => 'UTF-8'
 // ));
+/**
+ * Local Development Database
+ */
 Connections::add('default', array(
 	'type' => 'database',
 	'adapter' => 'MySql',
