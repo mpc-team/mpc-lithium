@@ -3,7 +3,7 @@ create table forums (
 	`name` varchar(64) not null,
 	`descr` varchar(255) default null,
 	`permission` int(11) not null default 0,
-	`tsetamp` timestamp not null default current_timestamp,
+	`tstamp` timestamp not null default current_timestamp,
 	primary key (`id`),
 	unique key `name` (`name`)
 );
