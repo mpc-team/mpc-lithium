@@ -1,6 +1,6 @@
 <?php
 
-$this->title($title);
+$this->title($page['title']);
 
 $self = $this;
 
@@ -105,8 +105,8 @@ EOD;
 			<div class="panel panel-default">
 				<a id="forum-thread-message-<?= $post['id'] ?>"></a>
 				<div class="panel-messages">
-					<div class="panel-messages-header">
-						<div class="row">
+					<div class="row">
+						<div class="panel-messages-header">
 							<div class="col-xs-6">
 								<span class="glyphicon glyphicon-user"></span>
 								<?= $post['author'] ?>
@@ -118,24 +118,24 @@ EOD;
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="content-message edit-content" data-id="<?= $post['id'] ?>">
-								<?php echo $post['content']; ?>
+					</div>
+					<div class="row">
+						<div class="content-message edit-content" data-id="<?= $post['id'] ?>">
+							<?php echo $post['content']; ?>
+						</div>
+						<div class="content-message edit-content-toggle" data-id="<?= $post['id'] ?>">
+							<?php if (isset($post['first'])): ?>
+								<div class="row">
+									<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+								</div>
+							<?php endif; ?>
+							<div class="row">
+								<?php echo $texttags($post['id']); ?>
 							</div>
-							<div class="content-message edit-content-toggle" data-id="<?= $post['id'] ?>">
-								<?php if (isset($post['first'])): ?>
-									<div class="row">
-										<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
-									</div>
-								<?php endif; ?>
-								<div class="row">
-									<?php echo $texttags($post['id']); ?>
-								</div>
-								<div class="row">
-									<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>">
-										<?= $post['content']; ?>
-									</textarea>
-								</div>
+							<div class="row">
+								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>">
+									<?= $post['content']; ?>
+								</textarea>
 							</div>
 						</div>
 					</div>

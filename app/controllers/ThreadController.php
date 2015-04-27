@@ -9,7 +9,7 @@ use app\models\Threads;
 use app\models\Messages;
 
 class ThreadController extends \lithium\action\Controller {
-	
+
 	public static function clean($text) {
 		return str_replace(
 			'\r', '',
@@ -26,72 +26,58 @@ class ThreadController extends \lithium\action\Controller {
 	public function view() {
 	
 		if (isset($this->request->id)) {
+			$this->_render['layout'] = 'forum';
 			$id = $this->request->id;
 			$authorized = Auth::check('default');		
-			$info = Threads::find('first', array(
-				'conditions' => array('id' => $id)
-			));
-			if (!$info) { return $this->redirect('/forum'); }
-
-			$info = $info->to('array');
-			if ($info['permission'] > 0 && $info['permission'] > $authorized['permission']) {
+	
+			$replyform = array('user' => $authorized,	'id' => $id, 'enabled' => (bool) $authorized);
+			
+			if (!($thread = Threads::find('first', array('conditions' => array('id' => $id))))) { 
+				return $this->redirect('/forum'); 
+			}
+			
+			if ($thread->permission > 0 && $thread->permission > $authorized['permission']) {
 				return $this->redirect("/forum"); 
 			}
-			$user = Users::find('first', array(
-				'conditions' => array('id' => $info['uid'])
-			));
-			$info['author'] = $user->alias;
 			
-			$forum = Forums::find('first', array(
-				'conditions' => array('id' => $info['fid'])
-			));
-			$this->_render['layout'] = 'forum';
-			$this->set(array(
-				'title' => $info['name'],
-				'pageheader' => $info['name'], 
-				'pagesub' => $forum->name,
-				'pageauthor' => $info['author'],
-				'pagedate' => $info['tstamp']
-			));
-			
-			if ($authorized) {			
-				$replyform = array(
-					'authenticated' => true,
-					'user' => $authorized,
-					'id' => $id
-				);
-			} else {
-				$replyform = array(
-					'authenticated' => false,
-					'user' => null,
-					'id' => null
-				);
-			}
+			$user = Users::find('first', array('conditions' => array('id' => $thread->uid)));
+			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
+			$messages = Messages::find('all', array('conditions' => array('tid' => $id)))->to('array');
 			
 			$breadcrumbs = array(
-				'path' => array("Forum", $forum->name, $info['name']),
+				'path' => array("Forum", $forum->name, $thread->name),
 				'link' => array("/forum", "/board/view/{$forum->id}", "/thread/view/{$id}")
 			);
 			
-			$messages = Messages::find('all', array(
-				'conditions' => array('tid' => $id)
-			))->to('array');
 			if ($messages) {
-				$fmsg = reset($messages);
-				$fmsgkey = key($messages);
-				$messages[$fmsgkey]['first'] = true;
+				reset($messages);
+				$messages[key($messages)]['first'] = true;
 				foreach ($messages as $key => $msg) {
-					$user = Users::find('first', array(
-						'conditions' => array('id' => $msg['uid'])
-					));
+					$user = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
 					$messages[$key]['author'] = $user->alias;
 				}
 			}
-			return compact('authorized', 'breadcrumbs', 'messages', 'replyform');
+			
+			$thread = $thread->to('array');
+			$thread['author'] = $user->alias;
+			$page = array(
+				'title' => $thread['name'],
+				'header' => $thread['name'],
+				'subheader' => $forum->name,
+				'author' => $thread['author'],
+				'date' => $thread['tstamp']
+			);
+			
+			return compact('authorized', 'page', 'messages', 'breadcrumbs', 'replyform');
 		}
+		
 		return $this->redirect('/forum');
 	}
 	
+	/**
+	 * Delete the specified thread. Do authorization checks before deleting, then redirect
+	 * to the parent forum board.
+	 */
 	public function delete() {
 	
 		if (isset($this->request->id)) {
@@ -100,6 +86,7 @@ class ThreadController extends \lithium\action\Controller {
 			$thread = Threads::find('first', array(
 				'conditions' => array('id' => $id)
 			));
+			
 			if (!$thread) {
 				return $this->redirect("/forum");
 			} elseif (!$authorized) {
@@ -107,12 +94,12 @@ class ThreadController extends \lithium\action\Controller {
 			} elseif ($authorized['id'] != $thread->uid) {
 				return $this->redirect("/thread/view/{$id}");
 			}
-			$forum = Forums::find('first', array(
-				'conditions' => array('id' => $thread->fid)
-			)); 
 			$thread->delete();
+			
+			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid))); 
 			return $this->redirect("/board/view/{$forum->id}");
 		}	
+		
 		return $this->redirect('/forum');
 	}
 	
@@ -125,26 +112,28 @@ class ThreadController extends \lithium\action\Controller {
 		if (isset($this->request->id) && $this->request->data) {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
-			$info = Forums::find('first', array(
+			$thread = Threads::find('first', array(
 				'conditions' => array('id' => $id)
 			));
 			
 			if (!$authorized) {
 				return $this->redirect("/board/view/{$id}");
-			} elseif (!$info) { 
+			} elseif (!$thread) { 
 				return $this->redirect('/forum'); 
 			}
 			
-			$info = $info->to('array');
-			if ($info['permission'] > 0 && $info['permission'] > $authorized['permission']) {
+			if ($thread->permission > 0 && $thread->permission > $authorized['permission']) {
 				return $this->redirect("/forum"); 
 			}
+			
+			$thread = $thread->to('array');
 			
 			$thread = Threads::create(array(
 				'fid' => $id,
 				'name' => self::clean($this->request->data['title']),
 				'uid' => $authorized['id']
 			));
+			
 			if (!$thread->save()) {
 				return $this->redirect("/board/view/{$id}");
 			}
@@ -154,6 +143,7 @@ class ThreadController extends \lithium\action\Controller {
 				'content' => PostController::clean($this->request->data['content']),
 				'uid' => $authorized['id']
 			));
+			
 			if (!$message->save()) {
 				$thread->delete();
 				return $this->redirect("/board/view/{$id}");
@@ -161,6 +151,7 @@ class ThreadController extends \lithium\action\Controller {
 			
 			return $this->redirect("/thread/view/{$thread->id}");
 		}
+		
 		return $this->redirect('/forum');
 	}
 }

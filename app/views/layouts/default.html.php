@@ -30,10 +30,13 @@ use lithium\security\Auth;
 </head>
 <body>
 	<div class="container-fluid">
-		<?php $authorized = Auth::check('default'); ?>
 		<?=$this->view()->render(
 			array('element' => 'navbar'), 
-			array('authorized' => $authorized)
+			array(
+				'authorized' => $authorized,
+				'controller' => $this->_request->controller,
+				'action' => $this->_request->action
+			)
 		)?>
 	</div>
 	

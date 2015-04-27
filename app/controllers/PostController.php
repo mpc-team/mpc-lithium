@@ -20,14 +20,15 @@ class PostController extends \lithium\action\Controller {
 		$exploded = explode('\n', $text);
 		$count = count($exploded);
 		$text = '';
+		
 		foreach ($exploded as $piece) {
 			$len = strlen($piece);
 			if ($len > 0) {
 				$text = $text . $piece . '\n';
 			}
 		}
-		$text = str_replace('\n', '<br>', $text);
-		return $text;
+		
+		return str_replace('\n', '<br>', $text);
 	}
 		
 	/**
@@ -39,21 +40,25 @@ class PostController extends \lithium\action\Controller {
 		
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
-			$authorized = Auth::check('default');
-			$thread = Threads::find('first', array('conditions' => array('id' => $id)));
-			if ($thread && isset($this->request->data['content'])) {
-				if ($authorized && $authorized['permission'] >= $thread->permission) {
-					$message = Messages::create(array(
-						'tid' => $id,
-						'content' => self::clean($this->request->data['content']),
-						'uid' => $authorized['id']
-					));
-					if ($message->save()) {
-						return $this->redirect("/thread/view/{$this->request->id}");
+			
+			if ($thread = Threads::find('first', array('conditions' => array('id' => $id)))) {
+				if ($this->request->data['content']) {
+					$authorized = Auth::check('default');
+					
+					if ($authorized && $authorized['permission'] >= $thread->permission) {
+						$message = Messages::create(array(
+							'tid' => $id,
+							'content' => self::clean($this->request->data['content']),
+							'uid' => $authorized['id']
+						));
+						if ($message->save()) {
+							return $this->redirect("/thread/view/{$this->request->id}");
+						}
 					}
 				}
 			}
 		}
+		
 		return $this->redirect('/forum');
 	}
 
@@ -61,14 +66,12 @@ class PostController extends \lithium\action\Controller {
 	
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
-			$authorized = Auth::check('default');
-			$message = Messages::find('first', array('conditions' => array('id' => $id)));
 			
-			if ($message) { 
-				$params = array('conditions' => array('id' => $message->tid));
-				$thread = Threads::find('first', $params);
+			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) { 
+				$authorized = Auth::check('default');
+				$thread = Threads::find('first', array('conditions' => array('id' => $message->tid)));
 				
-				if ($authorized && $message->uid == $authorized['id']) {
+				if ($authorized && $authorized['id'] == $message->uid) {
 					$message->content = self::clean($this->request->data['message']);
 					$message->save();
 					if ($this->request->data['rename']) {
@@ -88,11 +91,11 @@ class PostController extends \lithium\action\Controller {
 		
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
-			$authorized = Auth::check('default');
-			$message = Messages::find('first', array('conditions' => array('id' => $id)));
 			
-			if ($message) {
-				if ($authorized && $message->uid == $authorized['id']) {
+			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) {
+				$authorized = Auth::check('default');
+			
+				if ($authorized && $authorized['id'] == $message->uid) {
 					if ($message->delete()) {
 						return $this->redirect("/thread/view/{$message->tid}");
 					} else {

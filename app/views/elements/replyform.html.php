@@ -4,9 +4,9 @@
  *
  */
 
-$texttags = function($id) {
-	$helper = function ($id, $title, $class, $icon) {
-		$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class}' data-id='{$id}'>";
+$texttags = function($id, $disabled) {
+	$helper = function ($id, $title, $class, $icon, $disabled) {
+		$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class}' data-id='{$id}' {$disabled}>";
 		$result .= "<i class='fa fa-{$icon}'></i>";
 		$result .= "</button>";
 		return $result;
@@ -28,7 +28,7 @@ $texttags = function($id) {
 	$html = "<span class='dropdown'>";
 	$html .=
 <<<EOD
-		<button type='button' class='btn btn-edit dropdown-toggle' data-toggle='dropdown'>
+		<button type='button' class='btn btn-edit dropdown-toggle' data-toggle='dropdown' {$disabled}>
 			<i class='fa fa-header'></i>
 		</button>
 		<ul class='dropdown-menu' role='menu'>
@@ -51,10 +51,14 @@ $texttags = function($id) {
 EOD;
 	$html .= "</span>";
 	foreach ($helpers as $h) {
-		$html .= $helper($id, $h['title'], $h['class'], $h['icon']);
+		$html .= $helper($id, $h['title'], $h['class'], $h['icon'], $disabled);
 	}
 	return $html;
 };
+
+$disabled = !$replyform['enabled'] ? 'disabled' : '';
+$disabled_placeholder = 'Please Login or Signup before posting on the Forum';
+$placeholder = $replyform['enabled'] ? 'Enter a message...' : $disabled_placeholder;
  
 ?>
 <a id='reply-to-thread'></a>
@@ -65,23 +69,27 @@ EOD;
 	<div class="panel-reply">
 		<form role='form' class='form-horizontal' action='/post/create/<?= $replyform['id'] ?>' method='post'>
 			<div class="form-group">
-				<div class="row">
-					<h4>
-						&nbsp <span class="glyphicon glyphicon-user"></span> 
-						<?= $replyform['user']['alias'] ?>
-					</h4>
-				</div>
+				<?php if ($replyform['enabled']): ?>
+					<div class="row">
+						<h4>
+							&nbsp <span class="glyphicon glyphicon-user"></span> 
+							<?= $replyform['user']['alias'] ?>
+						</h4>
+					</div>
+				<?php endif; ?>
 				<div class='row'>
-					<?php echo $texttags($replyform['id']); ?>
+						<?php echo $texttags($replyform['id'], $replyform['enabled'] ? '' : 'disabled'); ?>
 				</div>
 				<div class="row">
 					<div class="input-group">
-						<textarea name="content" id='input-reply-text' class="form-control edit-content-text" data-id='<?= $replyform['id'] ?>' required></textarea>
+						<textarea name="content" id='input-reply-text' class="form-control edit-content-text" 
+							data-id='<?= $replyform['id'] ?>' placeholder='<?= $placeholder ?>'
+							required <?= $disabled ?>></textarea>
 					</div>
 				</div>
 				<div class="row btn-reply-row">
 					<div class="input-group">
-						<button title="Submit Reply" type="submit" class="btn btn-reply">
+						<button title="Submit Reply" type="submit" class="btn btn-reply" <?= $disabled ?>>
 							<span class="glyphicon glyphicon-send"></span>
 						</button>
 					</div>

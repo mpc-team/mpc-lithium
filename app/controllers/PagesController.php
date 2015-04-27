@@ -8,6 +8,8 @@
 
 namespace app\controllers;
 
+use lithium\security\Auth;
+
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
  * folder.
@@ -26,6 +28,7 @@ namespace app\controllers;
 class PagesController extends \lithium\action\Controller {
 
 	public function view() {
+		$authorized = Auth::check('default');
 		$options = array();
 		$path = func_get_args();
 
@@ -35,6 +38,7 @@ class PagesController extends \lithium\action\Controller {
 		}
 
 		$options['template'] = join('/', $path);
+		$this->set(array('authorized' => $authorized));
 		return $this->render($options);
 	}
 }

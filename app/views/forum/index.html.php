@@ -1,6 +1,6 @@
 <?php
 
-$this->title($title);
+$this->title($page['title']);
 
 $self = $this;
 

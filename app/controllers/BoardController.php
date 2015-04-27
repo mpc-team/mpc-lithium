@@ -13,46 +13,37 @@ class BoardController extends \lithium\action\Controller {
 	public function view() {
 	
 		if (isset($this->request->id)) {
+			$this->_render['layout'] = 'forum';
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
-	
-			$info = Forums::find('first', array(
-				'conditions' => array('id' => $id)
-			));
-			if (!$info) { 
+			
+			if (!($forum = Forums::find('first', array('conditions' => array('id' => $id))))) { 
 				return $this->redirect('/forum'); 
 			}
-			$info = $info->to('array');
-			if ($info['permission'] > 0 && $info['permission'] > $authorized['permission']) {
+			
+			if ($forum->permission > 0 && $forum->permission > $authorized['permission']) {
 				return $this->redirect("/forum"); 
 			}
 			
-			$threads = Threads::find('all', array(
-				'conditions' => array('fid' => $id)
-			))->to('array');
-			
-			$this->_render['layout'] = 'forum';
-			$this->set(array(
-				'title' => $info['name'],
-				'pageheader' => $info['name'], 
-				'pagesub' => 'Forum'
-			));
-			
 			$breadcrumbs = array(
-				'path' => array("Forum", $info['name']),
+				'path' => array("Forum", $forum->name),
 				'link' => array("/forum", "/board/view/{$id}")
 			);
+			
+			$page = array('title' => $forum->name, 'header' => $forum->name, 'subheader' => 'Forum');
+			$threads = Threads::find('all', array('conditions' => array('fid' => $id)))->to('array');
 			
 			foreach ($threads as $key => $thread) {
 				$user = Users::find('first', array(
 					'conditions' => array('id' => $thread['uid'])
 				))->to('array');
-				$threads[$key]['author'] = $user['alias'];
 				
 				$messages = Messages::find('all', array(
 					'conditions' => array('tid' => $thread['id']),
 					'order' => array('tstamp' => 'DESC')
 				))->to('array');
+				
+				$threads[$key]['author'] = $user['alias'];
 				$threads[$key]['count'] = count($messages);
 				$threads[$key]['recent'] = reset($messages);
 				
@@ -64,8 +55,9 @@ class BoardController extends \lithium\action\Controller {
 				}
 			}
 			
-			return compact('id', 'authorized', 'threads', 'breadcrumbs');
+			return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
 		}
+		
 		return $this->redirect('/forum');
 	}
 }

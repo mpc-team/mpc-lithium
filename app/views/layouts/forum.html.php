@@ -2,6 +2,8 @@
 
 use lithium\security\Auth;
 	
+$authorized = Auth::check('default');
+	
 ?>
 <!doctype html>
 <html>
@@ -17,10 +19,13 @@ use lithium\security\Auth;
 </head>
 <body>
 	<div class="container-fluid">
-		<?php $authorized = Auth::check('default'); ?>
 		<?=$this->view()->render(
 			array('element' => 'navbar'), 
-			array('authorized' => $authorized)
+			array(
+				'authorized' => $authorized,
+				'controller' => $this->_request->controller,
+				'action' => $this->_request->action
+			)
 		)?>
 	</div>
 	
@@ -33,39 +38,43 @@ use lithium\security\Auth;
 					array('breadcrumbs' => $breadcrumbs)
 				)?>
 				
-				<?php if (isset($recentfeed)) { ?>
+				<?php if (isset($recentfeed)): ?>
 					<?= $this->view()->render(
 						array('element' => 'recentfeed'),
 						array('recentfeed' => $recentfeed)
 					)?>
-				<?php } ?>
+				<?php endif; ?>
 				
 				<div class="row">
 					<div class="page-header">
 						<h1>
-							<div><?= $pageheader ?></div>
+							<div><?= $page['header'] ?></div>
 							<small>
-								<div><?= $pagesub ?></div>
+								<div><?= $page['subheader'] ?></div>
 							</small>
 						</h1>
 						<div class="row thread-info">
 							<div class="col-xs-6">
-								<?php if (isset($pageauthor)): ?>
+								<?php if (isset($page['author'])): ?>
 									Created by <span class="glyphicon glyphicon-user"></span>
-									<?= $pageauthor ?>
+									<?= $page['author'] ?>
 								<?php endif; ?>
 							</div>
 							<div class="col-xs-6">
 								<div class="pull-right">
-									<?php if (isset($pagedate)): ?>
+									<?php if (isset($page['date'])): ?>
 										Created on <span class="glyphicon glyphicon-time"></span>
-										<?= date("D, d M Y g:i:s A", strtotime($pagedate)); ?>
+										<?= date("D, d M Y g:i:s A", strtotime($page['date'])); ?>
 									<?php endif; ?>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<?php if (!$authorized): ?>
+					<?= $this->view()->render(array('element' => 'loginforum'))?>
+				<?php endif; ?>
 				
 				<?php echo $this->content(); ?>
 		
@@ -78,7 +87,7 @@ use lithium\security\Auth;
 					array('breadcrumbs' => $breadcrumbs)
 				)?>
 				
-				<?php if (isset($replyform) && $replyform['authenticated']): ?>
+				<?php if (isset($replyform)): ?>
 					<?= $this->view()->render(
 						array('element' => 'replyform'),
 						array('replyform' => $replyform)

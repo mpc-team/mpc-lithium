@@ -11,40 +11,24 @@ use app\models\Messages;
 class ForumController extends \lithium\action\Controller {
 
 	public function index() {		
-		$forums = Forums::all()->to('array');
-		
 		$this->_render['layout'] = 'forum';		
-		$breadcrumbs = array(
-			'path' => array("Forum"),
-			'link' => array("/forum")
-		);
-		
-		$recentfeed = Messages::find('all', array(
-			'limit' => 3
-		))->to('array');
+		$authorized = Auth::check('default');
+		$forums = Forums::all()->to('array');
+
+		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
+		$page = array('title' => 'Home', 'header' => 'Forum', 'subheader' => 'Categories');
+		$recentfeed = Messages::find('all', array('limit' => 3))->to('array');
 		
 		foreach ($recentfeed as $key => $recent) {
-			$author = Users::find('first', array(
-				'conditions' => array('id' => $recent['uid'])
-			))->to('array');
-			$recentfeed[$key]['author'] = $author['alias'];
+			$author = Users::find('first', array('conditions' => array('id' => $recent['uid'])));
+			$recentfeed[$key]['author'] = $author->alias;
 			
-			$thread = Threads::find('first', array(
-				'conditions' => array('id' => $recent['tid'])
-			))->to('array');
-			$recentfeed[$key]['thread'] = $thread['name'];
+			$thread = Threads::find('first', array('conditions' => array('id' => $recent['tid'])));
+			$recentfeed[$key]['thread'] = $thread->name;
 			
-			$forum = Forums::find('first', array(
-				'conditions' => array('id' => $thread['fid'])
-			))->to('array');
-			$recentfeed[$key]['forum'] = $forum['name'];
-		}
-		
-		$this->set(array(
-			'title' => 'Home',
-			'pageheader' => 'Forum', 
-			'pagesub' => 'Categories'
-		));
+			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
+			$recentfeed[$key]['forum'] = $forum->name;
+		}		
 		
 		foreach ($forums as $key => $forum) {
 			$threads = Threads::find('all', array(
@@ -53,6 +37,6 @@ class ForumController extends \lithium\action\Controller {
 			$forums[$key]['count'] = count($threads);
 		}
 		
-		return compact('recentfeed', 'forums', 'breadcrumbs', 'recentfeed');
+		return compact('authorized', 'page', 'forums', 'breadcrumbs', 'recentfeed');
 	}
 }
