@@ -45,7 +45,7 @@
 	var TAGS_LISTITEM			= ["[li]", "[/li]"];
 	var TAGS_PARAGRAPH		= ["[p]", "[/p]"];
 	var TAGS_CENTER				= ["[center]", "[/center]"];
-	var TAGS_LINK					= ["[a href=\"", "\"]", "[/a]"];
+	var TAGS_LINK					= ["[a]", "\"]", "[/a]"];
 	var TAGS_IMAGE				= ["[img]", "[/img]"];
 	
 	function Html2Text(html) {

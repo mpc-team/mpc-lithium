@@ -17,7 +17,10 @@ class ForumController extends \lithium\action\Controller {
 
 		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
 		$page = array('title' => 'Home', 'header' => 'Forum', 'subheader' => 'Categories');
-		$recentfeed = Messages::find('all', array('limit' => 3))->to('array');
+		$recentfeed = Messages::find('all', array(
+			'limit' => 3,
+			'order' => array('tstamp' => 'DESC')
+		))->to('array');
 		
 		foreach ($recentfeed as $key => $recent) {
 			$author = Users::find('first', array('conditions' => array('id' => $recent['uid'])));
