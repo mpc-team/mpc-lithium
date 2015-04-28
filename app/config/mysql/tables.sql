@@ -8,7 +8,7 @@ create table forums (
 	unique key `name` (`name`)
 );
 
-create table permissions (
+create table permissions (       
 	`id` int(11) not null auto_increment,
 	`name` varchar(32) not null,
 	primary key (`id`)

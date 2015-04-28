@@ -22,7 +22,7 @@ use lithium\security\Auth;
 	<?php echo $this->html->charset();?>
 	<title>MPC &gt; <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array('bootstrap', 'simple-sidebar', 'website')); ?>
-	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection',	'util', 'forum-message-userpanel', 'page-scroll-on-load')); ?>
+	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'util')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>

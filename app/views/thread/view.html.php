@@ -145,3 +145,10 @@ EOD;
 		</div>
 	<?php endforeach; ?>
 <?php endif; ?>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('.edit-content').each(function(index) {
+			$(this).html(markup($(this).text()));
+		});
+	});
+</script>

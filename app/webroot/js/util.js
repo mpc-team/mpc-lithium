@@ -1,27 +1,29 @@
+/**
+ * util.js
+ *
+ *	Utility functions for all pages on the site. Requires JQuery.
+ *
+ *	@
+ *
+ */
 
-/* __Constants__ */
+/**
+ * Input Element Identifiers
+ *
+ *	Elements that match these IDs are found with JQuery selectors.
+ *
+ */
+const INPUT_EMAIL = "email";
+const INPUT_ALIAS = "alias";
+const INPUT_PASSWORD = "password";
+const INPUT_CONFIRM = "confirm";
 
-var SEARCH_RESULTS = "#search-results";
+//*************************************************************************
+//*
+//*		Signup // Validation
+//*
+//*************************************************************************
 
-var INPUT_EMAIL = "#email";
-var INPUT_ALIAS = "#alias";
-var INPUT_PASSWORD = "#password";
-var INPUT_CONFIRM = "#confirm";
-
-var FILTER_BY_ALIAS = 0;
-var FILTER_BY_EMAIL = 1;
-
-var PERMISSION_ADMIN = 'admin';
-
-/* #### End of Constants ############################### */
-
-/* __Functions__ */
-
-function isListEmpty (list) { 
-	return (list == null) || (list.length == 0); 
-}
-
-/* validation functions */
 function validatePassword (password, confirmed) {
 	return (password != null && password != "" && (password == confirmed)); 
 }
@@ -36,15 +38,20 @@ function validateAlias (alias) {
 	return((alias != null) && regex.test(alias)); 
 }
 
-/*
+/**
+ * function updateValidateStatus ( valid, inputval, inputid )
  *
- * function updateValidateStatus:
- *		@param _valid_: status to be updated to.
- *		@param _inputval_: value of field being updated.
- *		@param _inputid_: DOM identifier of form-group.
- * ---------------------------------------------------
- *		Strictly for updating the UI features to properly
- *		reflect invalid formats.
+ *	Updates valid state on a given component to notify the user whether an
+ *	entry input is correct or not.
+ *
+ *	@param	valid
+ *		Update validation state to true/false
+ *
+ *	@param inputval
+ *		Value of element being validated, used for checking 'null' or empty values
+ *
+ *	@param inputid
+ *		DOM identifier of the element to add/remove classes
  *
  */
 function updateValidateStatus(valid, inputval, inputid) {
@@ -64,23 +71,21 @@ function updateValidateStatus(valid, inputval, inputid) {
 		}
 	}
 }
-/*
+
+/** 
+ * function validateSignup ()
+ *	
+ *	Filters with 'validateEmail', 'validateAlias', and 'validatePassword'; returns
+ *	true if form values pass these filters.
  *
- * function validateSignup:
- *		Uses:
- *			validateEmail()
- *			validateAlias()
- *			validatePassword()
- * ------------------------------------------------
- *		Responsible for validating Signup fields before
- *		information is submitted to the server. 
+ *	Entry point for JS, issued on the click event of an HTML element.
  *
  */
 function validateSignup () {
-	var email = $(INPUT_EMAIL).val();
-	var alias = $(INPUT_ALIAS).val();
-	var password = $(INPUT_PASSWORD).val();
-	var confirmed = $(INPUT_CONFIRM).val();
+	var email = $('#' + INPUT_EMAIL).val();
+	var alias = $('#' + INPUT_ALIAS).val();
+	var password = $('#' + INPUT_PASSWORD).val();
+	var confirmed = $('#' + INPUT_CONFIRM).val();
 	var passmatch = validatePassword(password, confirmed);
 	var emailvalid = validateEmail(email);
 	var aliasvalid = validateAlias(alias);
@@ -93,11 +98,31 @@ function validateSignup () {
 	
 	return (emailvalid && passmatch && aliasvalid);
 }
-/*
- *
- *			Members Filter Functions
- *
- */
+
+//*************************************************************************
+//*
+//*		Members // Search
+//*
+//*************************************************************************
+
+const FILTER_BY_ALIAS = 0;
+const FILTER_BY_EMAIL = 1;
+const PERMISSION_ADMIN = 'admin';
+const SEARCH_RESULTS = "#search-results";
+
+function doFilterEmail (userList, permissions) {
+	if (permissions.indexOf(PERMISSION_ADMIN) > -1) {
+		var criteria = ($('#' + INPUT_EMAIL) == null) ? "" : $('#' + INPUT_EMAIL).val();
+		userList = doFilter(criteria, userList, FILTER_BY_EMAIL);
+	}
+	return userList;
+}
+
+function doFilterAlias (userList, permissions) {
+	var criteria = ($('#' + INPUT_ALIAS) == null) ? "" : $('#' + INPUT_ALIAS).val();
+	return doFilter(criteria, userList, FILTER_BY_ALIAS);
+}
+
 function doFilter (criteria, userList, filterBy) {
 	var regx = new RegExp(criteria.toLowerCase());
 	var users = [];
@@ -111,23 +136,6 @@ function doFilter (criteria, userList, filterBy) {
 	return users;
 }
 
-function doFilterEmail (userList, permissions) {
-	if (permissions.indexOf(PERMISSION_ADMIN) > -1) {
-		var criteria = ($(INPUT_EMAIL) == null) ? "" : $(INPUT_EMAIL).val();
-		userList = doFilter(criteria, userList, FILTER_BY_EMAIL);
-	}
-	return userList;
-}
-
-function doFilterAlias (userList, permissions) {
-	var criteria = ($(INPUT_ALIAS) == null) ? "" : $(INPUT_ALIAS).val();
-	return doFilter(criteria, userList, FILTER_BY_ALIAS);
-}
-/*
- *
- *			HTML Printing Functions
- *
- */
 function htmlTableEmail (user, permissions) {
 	if (permissions.indexOf(PERMISSION_ADMIN) > -1) {
 		return "<td>" + user[FILTER_BY_EMAIL] + "</td>";
@@ -135,18 +143,19 @@ function htmlTableEmail (user, permissions) {
 	return "";
 }
 function htmlTableAlias (user, permissions) {
-	var icon = (user[FILTER_BY_EMAIL] == 'b0rg3r@gmail.com') ?
-			"<td class='col-xs-6'><i class='fa fa-user-secret'></i> " :
-			"<td class='col-xs-6'><i class='fa fa-user'></i> ";
-			// "<td><span class='glyphicon glyphicon-user'></span> ";
+	var icon = "<td class='col-xs-6'><i class='fa fa-user'></i> ";
 	return icon + user[FILTER_BY_ALIAS] + "</td>";
 }
 function htmlTableClass (rownum) {
 	return (rownum % 2 == 0) ? "alt" : "";
 }
 
+function isListEmptyOrNull (list) { 
+	return (list == null) || (list.length == 0); 
+}
+
 function updateList (userList, permissions) {
-	if (isListEmpty(userList)) { return; }
+	if (isListEmptyOrNull(userList)) { return; }
 	userList = doFilterEmail(userList, permissions);
 	userList = doFilterAlias(userList, permissions);
 	var result = '';
@@ -158,13 +167,8 @@ function updateList (userList, permissions) {
 	}
 	$(SEARCH_RESULTS).html(result);
 }
-/* 
- *
- *
- *
- */
-function br2nl(str) { return str.replace(/<br\s*\/?>/mg,"\n"); }
-/* #### End of Functions ############################### */
+
+
 
 
 

@@ -68,7 +68,6 @@ $self = $this;
 </div>
 <script type="text/javascript">
 	<?php echo "var userList = " . json_encode($users) . ';'; ?>
-	
 	$( document ).ready(function() {
 		updateList(userList, ['admin']);
 	
