@@ -11,10 +11,32 @@
 /**
  * Sample:
  *
- *	[h1]This is a header[/h1]             --->         <h1>This is a header</h1>
- * [img]http://google.com[/img]        --->         <img src='http://google.com'></img>
+ *	[h1]This is a header[/h1]            --->         <h1>This is a header</h1>
+ *  [img]http://google.com[/img]         --->         <img src='http://google.com'></img>
  *
  */
+ 
+/**
+ * markup()
+ *
+ *	@param text	- Text to be parsed/converted.
+ *
+ *	Replaces markup tags such as [b] with their HTML style equivalent,
+ *	such as <b> using the same example.
+ *
+ */
+function markup (text) {
+	var regex;
+	for (var i = 0; i < tagmap.length; i++) {
+		regex = new RegExp(tagmap[i].open_tag, "g");
+		if (text.match(regex)) {
+			text = text.replace(regex, tagmap[i].open_mapped);
+			regex = new RegExp(tagmap[i].close_tag, "g");
+			text = text.replace(regex, tagmap[i].close_mapped);
+		}
+	}
+	return text.replace(/\n/g, '<br>');
+}
  
 function TagMapEntry (open_tag, open_mapped, close_tag, close_mapped) {
 	this.open_tag = open_tag;
@@ -38,20 +60,6 @@ var tagmap = [
 	new TagMapEntry('\\[p\\]', '<p>', '\\[\\/p\\]', '</p>'),
 	new TagMapEntry('\\[center\\]', '<center>', '\\[\\/center\\]', '</center>'),
 	new TagMapEntry('\\[a\\]', '<a>', '\\[\\/a\\]', '</a>'),
+	new TagMapEntry('\\[quote\\]', '<blockquote>', '\\[\\/quote\\]', '</blockquote>'),
 	new TagMapEntry('\\[img\\]', '<img src="', '\\[\\/img\\]', '"></img>')
 ];
- 
-function markup (text) {
-	var regex;
-	
-	for (var i = 0; i < tagmap.length; i++) {
-		regex = new RegExp(tagmap[i].open_tag, "g");
-		if (text.match(regex)) {
-			console.log(text.match(regex));
-			text = text.replace(regex, tagmap[i].open_mapped);
-			regex = new RegExp(tagmap[i].close_tag, "g");
-			text = text.replace(regex, tagmap[i].close_mapped);
-		}
-	}
-	return text;
-}

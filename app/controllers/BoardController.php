@@ -8,7 +8,7 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
-class BoardController extends \lithium\action\Controller {
+class BoardController extends ContentController {
 
 	public function view() {
 	
@@ -21,7 +21,7 @@ class BoardController extends \lithium\action\Controller {
 				return $this->redirect('/forum'); 
 			}
 			
-			if ($forum->permission > 0 && $forum->permission > $authorized['permission']) {
+			if (!self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
 				return $this->redirect("/forum"); 
 			}
 			

@@ -8,6 +8,17 @@
  */
 
 /**
+ * RegExp // escape
+ *
+ *	Used on text input from the user to ensure that regex do not
+ *	take special characters like * and ? literally.
+ *
+ */
+RegExp.escape = function(text) {
+	return (text+'').replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
+};
+ 
+/**
  * Input Element Identifiers
  *
  *	Elements that match these IDs are found with JQuery selectors.
@@ -105,17 +116,26 @@ function validateSignup () {
 //*
 //*************************************************************************
 
+/**
+ * Filter Constants
+ *
+ *	Describes which filter function to use. This indicates which INPUT element to 
+ *	be used and indicates to "doFilter" 
+ */
 const FILTER_BY_ALIAS = 0;
 const FILTER_BY_EMAIL = 1;
-const PERMISSION_ADMIN = 'admin';
+
+/**
+ * DOM Element Identifiers
+ *
+ *	HTML element identifier to populate results of Members search.
+ *
+ */
 const SEARCH_RESULTS = "#search-results";
 
 function doFilterEmail (userList, permissions) {
-	if (permissions.indexOf(PERMISSION_ADMIN) > -1) {
-		var criteria = ($('#' + INPUT_EMAIL) == null) ? "" : $('#' + INPUT_EMAIL).val();
-		userList = doFilter(criteria, userList, FILTER_BY_EMAIL);
-	}
-	return userList;
+	var criteria = ($('#' + INPUT_EMAIL) == null) ? "" : $('#' + INPUT_EMAIL).val();
+	return doFilter(criteria, userList, FILTER_BY_EMAIL);
 }
 
 function doFilterAlias (userList, permissions) {
@@ -124,7 +144,7 @@ function doFilterAlias (userList, permissions) {
 }
 
 function doFilter (criteria, userList, filterBy) {
-	var regx = new RegExp(criteria.toLowerCase());
+	var regx = new RegExp(RegExp.escape(criteria.toLowerCase()));
 	var users = [];
 	var len = userList.length;
 	for (var i=0; i < len; i++) {
@@ -136,20 +156,29 @@ function doFilter (criteria, userList, filterBy) {
 	return users;
 }
 
+/**
+ * HTML Helpers
+ *
+ *	Provides layout for results of the search within a table element.
+ *	
+ */
 function htmlTableEmail (user, permissions) {
-	if (permissions.indexOf(PERMISSION_ADMIN) > -1) {
-		return "<td>" + user[FILTER_BY_EMAIL] + "</td>";
-	}
-	return "";
+	return "<td>" + user[FILTER_BY_EMAIL] + "</td>";
 }
 function htmlTableAlias (user, permissions) {
-	var icon = "<td class='col-xs-6'><i class='fa fa-user'></i> ";
-	return icon + user[FILTER_BY_ALIAS] + "</td>";
+	return "<td class='col-xs-6'><i class='fa fa-user'></i> " + user[FILTER_BY_ALIAS] + "</td>";
 }
 function htmlTableClass (rownum) {
 	return (rownum % 2 == 0) ? "alt" : "";
 }
 
+/**
+ * Member List
+ *
+ *	Update the list. Permissions indicate which layout to use and which
+ *	information actually should be displayed.
+ *
+ */
 function isListEmptyOrNull (list) { 
 	return (list == null) || (list.length == 0); 
 }

@@ -38,7 +38,7 @@ $editpanel = function($authorized, $mid) {
 					Confirm
 				</button>
 				<input type='hidden' name='rename' class='edit-content-rename-hidden' data-id='{$mid}' value=''/>
-				<input type='hidden' name='message' class='edit-content-hidden' data-id='{$mid}'/>
+				<input type='hidden' name='content' class='edit-content-hidden' data-id='{$mid}'/>
 				<input type='hidden' name='id' value='{$mid}'/>
 			</form>
 		</div>
@@ -98,6 +98,7 @@ EOD;
 	endforeach;
 	return $html;
 };
+
 ?>
 <?php if ($messages): ?>
 	<?php foreach ($messages as $post): ?>

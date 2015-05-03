@@ -8,8 +8,13 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
-class ThreadController extends \lithium\action\Controller {
+class ThreadController extends ContentController {
 
+	/**
+	 * clean
+	 *	Cleans a Thread name. Removes carriage-returns and linefeeds and any trailing whitespace.
+	 *	HTML tags are not allowed in titles either, but the markup tags are (they are not rendered though).
+	 */
 	public static function clean($text) {
 		return str_replace(
 			'\r', '',
@@ -23,26 +28,36 @@ class ThreadController extends \lithium\action\Controller {
 		);
 	}
 	
+	/**
+	 * view
+	 *	Displays the contents of the thread. Permissions need to be checked.
+	 */
 	public function view() {
 	
 		if (isset($this->request->id)) {
 			$this->_render['layout'] = 'forum';
 			$id = $this->request->id;
 			$authorized = Auth::check('default');		
-	
-			$replyform = array('user' => $authorized,	'id' => $id, 'enabled' => (bool) $authorized);
+			$replyform = array(
+				'user' => $authorized,	//currently authorized user
+				'id' => $id, //identifier for which Thread to reply to
+				'enabled' => (bool) $authorized //whether the Reply Form is enabled
+			);
 			
 			if (!($thread = Threads::find('first', array('conditions' => array('id' => $id))))) { 
-				return $this->redirect('/forum'); 
+				return $this->redirect('/forum#nothread'); 
 			}
 			
-			if ($thread->permission > 0 && $thread->permission > $authorized['permission']) {
-				return $this->redirect("/forum"); 
+			if (!self::verify_access($authorized, '\app\models\Threads', $id)) {
+				return $this->redirect('/forum#nothreadaccess');
 			}
 			
-			$user = Users::find('first', array('conditions' => array('id' => $thread->uid)));
+			$author = Users::find('first', array('conditions' => array('id' => $thread->uid)));
 			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
-			$messages = Messages::find('all', array('conditions' => array('tid' => $id)))->to('array');
+			$messages = Messages::find('all', array(
+				'conditions' => array('tid' => $id),
+				'order' => array('tstamp' => 'ASC')
+			))->to('array');
 			
 			$breadcrumbs = array(
 				'path' => array("Forum", $forum->name, $thread->name),
@@ -53,13 +68,13 @@ class ThreadController extends \lithium\action\Controller {
 				reset($messages);
 				$messages[key($messages)]['first'] = true;
 				foreach ($messages as $key => $msg) {
-					$user = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
-					$messages[$key]['author'] = $user->alias;
+					$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
+					$messages[$key]['author'] = $author->alias;
 				}
 			}
 			
 			$thread = $thread->to('array');
-			$thread['author'] = $user->alias;
+			$thread['author'] = $author->alias;
 			$page = array(
 				'title' => $thread['name'],
 				'header' => $thread['name'],
@@ -75,17 +90,16 @@ class ThreadController extends \lithium\action\Controller {
 	}
 	
 	/**
-	 * Delete the specified thread. Do authorization checks before deleting, then redirect
-	 * to the parent forum board.
+	 * delete
+	 *	Delete the specified thread. Do authorization checks before deleting, then redirect
+	 *	to the parent forum board.
 	 */
 	public function delete() {
 	
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
-			$thread = Threads::find('first', array(
-				'conditions' => array('id' => $id)
-			));
+			$thread = Threads::find('first', array('conditions' => array('id' => $id)));
 			
 			if (!$thread) {
 				return $this->redirect("/forum");
@@ -104,30 +118,30 @@ class ThreadController extends \lithium\action\Controller {
 	}
 	
 	/**
-	 * For the 'create' action the ID taken corresponds to the Forum that is creating 
-	 * he Thread. The page is rerouted to the Thread view using the newly created ID.
+	 * create
+	 *	For the 'create' action the ID taken corresponds to the Forum that is creating 
+	 *	he Thread. The page is rerouted to the Thread view using the newly created ID.
+	 *
+	 *	Creating a Thread prompts a new Post to be created as well, and as such the
+	 *	content must be cleaned before storing in the Database.
 	 */
 	public function create() {
 	
 		if (isset($this->request->id) && $this->request->data) {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
-			$thread = Threads::find('first', array(
-				'conditions' => array('id' => $id)
-			));
+			$forum = Forums::find('first', array('conditions' => array('id' => $id)));
 			
-			if (!$authorized) {
+			//filters and checks
+			if (!$forum) {
+				return $this->redirect("/forum#noforum");
+			} elseif (!$authorized) {
 				return $this->redirect("/board/view/{$id}");
-			} elseif (!$thread) { 
-				return $this->redirect('/forum'); 
+			} elseif ($forum->permission > 0 && $forum->permission > $authorized['permission']) {
+				return $this->redirect("/forum#permissions"); 
 			}
-			
-			if ($thread->permission > 0 && $thread->permission > $authorized['permission']) {
-				return $this->redirect("/forum"); 
-			}
-			
-			$thread = $thread->to('array');
-			
+	
+			//create thread
 			$thread = Threads::create(array(
 				'fid' => $id,
 				'name' => self::clean($this->request->data['title']),
@@ -138,6 +152,7 @@ class ThreadController extends \lithium\action\Controller {
 				return $this->redirect("/board/view/{$id}");
 			}
 			
+			//create message
 			$message = Messages::create(array(
 				'tid' => $thread->id,
 				'content' => PostController::clean($this->request->data['content']),

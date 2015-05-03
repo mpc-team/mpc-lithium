@@ -8,52 +8,55 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
-class PostController extends \lithium\action\Controller {
-
+class PostController extends ContentController {
 	/**
-	 * clean():
-	 *	Cleans message content of unwanted extraneous data, such as excessive
-	 * 	line-feeds and carriage returns.
+	 * clean 
+	 *	Clean post content. Trims whitespace around text and removes:
+	 *		- HTML tags, excess linefeed characters, etc.
+	 *
+	 *	Clean should just prepare a message to be inserted into the Database
+	 *	and should not be used to control what is actually displayed. The file
+	 *	"markup.js" is responsible for client-side processing of the style.
 	 */
 	public static function clean($text) {
-		$text = str_replace('\r', '', strip_tags(trim($text)));
-		$exploded = explode('\n', $text);
-		$count = count($exploded);
-		$text = '';
-		
-		foreach ($exploded as $piece) {
-			$len = strlen($piece);
-			if ($len > 0) {
-				$text = $text . $piece . '\n';
+		$text = trim($text);
+		$cleaned = '';
+		$linefeeds = 0;
+		$length = strlen($text);
+		for ($i = 0; $i < $length; $i++) {
+			if (ord($text[$i]) == 10) {
+				if ($linefeeds < 2) {
+					$cleaned .= $text[$i];
+					$linefeeds++;
+				}
+			} elseif (ord($text[$i]) != 13) {
+				$cleaned .= $text[$i];
+				$linefeeds = 0;
 			}
 		}
-		
-		return str_replace('\n', '<br>', $text);
+		return strip_tags($cleaned);
 	}
 		
 	/**
-	 * create():
-	 * 	The ID number passed to the '/post' controller corresponds to the
-	 * 	thread that the post is being created for as '/thread/create' handles it.
+	 * create
+	 *	The ID number passed to the '/post' controller corresponds to the
+	 *	thread that the post is being created for as '/thread/create' handles it.
 	 */
 	public function create() {
 		
 		if (isset($this->request->id)) {
-			$id = $this->request->id;
-			
-			if ($thread = Threads::find('first', array('conditions' => array('id' => $id)))) {
-				if ($this->request->data['content']) {
-					$authorized = Auth::check('default');
+			if ($this->request->data['content']) {
+				$id = $this->request->id;
+				$authorized = Auth::check('default');
 					
-					if ($authorized && $authorized['permission'] >= $thread->permission) {
-						$message = Messages::create(array(
-							'tid' => $id,
-							'content' => self::clean($this->request->data['content']),
-							'uid' => $authorized['id']
-						));
-						if ($message->save()) {
-							return $this->redirect("/thread/view/{$this->request->id}");
-						}
+				if (self::verify_access($authorized, '\app\models\Threads', $id)) {
+					$message = Messages::create(array(
+						'tid' => $id,
+						'content' => self::clean($this->request->data['content']),
+						'uid' => $authorized['id']
+					));
+					if ($message->save()) {
+						return $this->redirect("/thread/view/{$id}");
 					}
 				}
 			}
@@ -62,6 +65,11 @@ class PostController extends \lithium\action\Controller {
 		return $this->redirect('/forum');
 	}
 
+	/**
+	 * edit
+	 *	Edit content of a Post/Message. Does not update the timestamp associated
+	 *	with the entry in the Database.
+	 */
 	public function edit() {
 	
 		if (isset($this->request->id)) {
@@ -70,9 +78,10 @@ class PostController extends \lithium\action\Controller {
 			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) { 
 				$authorized = Auth::check('default');
 				$thread = Threads::find('first', array('conditions' => array('id' => $message->tid)));
+				$is_author = ($authorized['id'] == $message->uid);
 				
-				if ($authorized && $authorized['id'] == $message->uid) {
-					$message->content = self::clean($this->request->data['message']);
+				if (self::verify_access($authorized, '\app\models\Messages', $id) && $is_author) {
+					$message->content = self::clean($this->request->data['content']);
 					$message->save();
 					if ($this->request->data['rename']) {
 						$thread->name = ThreadController::clean($this->request->data['rename']);
@@ -94,8 +103,9 @@ class PostController extends \lithium\action\Controller {
 			
 			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) {
 				$authorized = Auth::check('default');
-			
-				if ($authorized && $authorized['id'] == $message->uid) {
+				$is_author = ($authorized['id'] == $message->uid);
+				
+				if (self::verify_access($authorized, '\app\models\Messages', $id) && $is_author) {
 					if ($message->delete()) {
 						return $this->redirect("/thread/view/{$message->tid}");
 					} else {

@@ -68,6 +68,7 @@ use lithium\data\Connections;
 	// 'database' => 'clanmpc',
 	// 'encoding' => 'UTF-8'
 // ));
+
 /**
  * Local Development Database
  */

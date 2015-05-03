@@ -47,6 +47,7 @@
 	var TAGS_CENTER				= ["[center]", "[/center]"];
 	var TAGS_LINK					= ["[a]", "\"]", "[/a]"];
 	var TAGS_IMAGE				= ["[img]", "[/img]"];
+	var TAGS_QUOTE       = ["[quote]", "[/quote]"];
 	
 	function Html2Text(html) {
 		var text = html.trim( );
@@ -72,7 +73,7 @@
 			var text= $elems.filter("." + TYPE_DIV_CONTENT).text();
 			cleaned= text.trim().replace(/\\t/g, "");
 			
-			$("#input-reply-text").fieldSelection("<blockquote>" + cleaned + "</blockquote>");
+			$("#input-reply-text").fieldSelection(TAGS_QUOTE[0] + cleaned + TAGS_QUOTE[1]);
 			$("#reply-to-thread").gotoSection();
 		});
 		
