@@ -39,51 +39,46 @@ class ThreadController extends ContentController {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');		
 			$replyform = array(
-				'user' => $authorized,	//currently authorized user
-				'id' => $id, //identifier for which Thread to reply to
-				'enabled' => (bool) $authorized //whether the Reply Form is enabled
+				'user' => $authorized,
+				'id' => $id, 
+				'enabled' => (bool) $authorized
 			);
 			
-			if (!($thread = Threads::find('first', array('conditions' => array('id' => $id))))) { 
-				return $this->redirect('/forum#nothread'); 
-			}
-			
-			if (!self::verify_access($authorized, '\app\models\Threads', $id)) {
-				return $this->redirect('/forum#nothreadaccess');
-			}
-			
-			$author = Users::find('first', array('conditions' => array('id' => $thread->uid)));
-			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
-			$messages = Messages::find('all', array(
-				'conditions' => array('tid' => $id),
-				'order' => array('tstamp' => 'ASC')
-			))->to('array');
-			
-			$breadcrumbs = array(
-				'path' => array("Forum", $forum->name, $thread->name),
-				'link' => array("/forum", "/board/view/{$forum->id}", "/thread/view/{$id}")
-			);
-			
-			if ($messages) {
-				reset($messages);
-				$messages[key($messages)]['first'] = true;
-				foreach ($messages as $key => $msg) {
-					$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
-					$messages[$key]['author'] = $author->alias;
+			if ($thread = self::verify_access($authorized, '\app\models\Threads', $id)) {
+				$author = Users::find('first', array('conditions' => array('id' => $thread->uid)));
+				$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
+				$messages = Messages::find('all', array(
+					'conditions' => array('tid' => $id),
+					'order' => array('tstamp' => 'ASC')
+				))->to('array');
+				$breadcrumbs = array(
+					'path' => array("Forum", $forum->name, $thread->name),
+					'link' => array("/forum", "/board/view/{$forum->id}", "/thread/view/{$id}")
+				);
+				
+				if ($messages) {
+					reset($messages);
+					$messages[key($messages)]['first'] = true;
+					foreach ($messages as $key => $msg) {
+						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
+						$messages[$key]['author'] = $author->alias;
+						$is_author = ($authorized['id'] == $author->id);
+						$messages[$key]['editpanel'] = ($is_author);
+					}
 				}
+				
+				$thread = $thread->to('array');
+				$thread['author'] = $author->alias;
+				$page = array(
+					'title' => $thread['name'],
+					'header' => $thread['name'],
+					'subheader' => $forum->name,
+					'author' => $thread['author'],
+					'date' => $thread['tstamp']
+				);
+				
+				return compact('authorized', 'page', 'messages', 'breadcrumbs', 'replyform');
 			}
-			
-			$thread = $thread->to('array');
-			$thread['author'] = $author->alias;
-			$page = array(
-				'title' => $thread['name'],
-				'header' => $thread['name'],
-				'subheader' => $forum->name,
-				'author' => $thread['author'],
-				'date' => $thread['tstamp']
-			);
-			
-			return compact('authorized', 'page', 'messages', 'breadcrumbs', 'replyform');
 		}
 		
 		return $this->redirect('/forum');
@@ -101,19 +96,16 @@ class ThreadController extends ContentController {
 			$authorized = Auth::check('default');
 			$thread = Threads::find('first', array('conditions' => array('id' => $id)));
 			
-			if (!$thread) {
-				return $this->redirect("/forum");
-			} elseif (!$authorized) {
-				return $this->redirect("/thread/view/{$id}");
-			} elseif ($authorized['id'] != $thread->uid) {
-				return $this->redirect("/thread/view/{$id}");
+			if ($thread && $authorized) {
+				$is_author = ($authorized['id'] == $thread->uid);
+				$is_admin  = ($authorized['permission'] >= 2);
+				if ($is_author || $is_admin) {
+					$thread->delete();
+					$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
+					return $this->redirect("/board/view/{$forum->id}");
+				}
 			}
-			$thread->delete();
-			
-			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid))); 
-			return $this->redirect("/board/view/{$forum->id}");
 		}	
-		
 		return $this->redirect('/forum');
 	}
 	
@@ -124,6 +116,8 @@ class ThreadController extends ContentController {
 	 *
 	 *	Creating a Thread prompts a new Post to be created as well, and as such the
 	 *	content must be cleaned before storing in the Database.
+	 *
+	 *	Threads inherit the Permission of the Forum they are created in.
 	 */
 	public function create() {
 	
@@ -132,39 +126,33 @@ class ThreadController extends ContentController {
 			$authorized = Auth::check('default');
 			$forum = Forums::find('first', array('conditions' => array('id' => $id)));
 			
-			//filters and checks
-			if (!$forum) {
-				return $this->redirect("/forum#noforum");
-			} elseif (!$authorized) {
+			if (self::verify_access($authorized, "\app\models\Forums", $id)) {				
+				$thread = Threads::create(array(
+					'fid' => $id,
+					'name' => self::clean($this->request->data['title']),
+					'uid' => $authorized['id'],
+					'tstamp' => null,
+					'permission' => $forum->permission
+				));
+				
+				if ($thread->save()) {
+					$message = Messages::create(array(
+						'tid' => $thread->id,
+						'content' => PostController::clean($this->request->data['content']),
+						'uid' => $authorized['id']
+					));
+					if ($message->save()) {
+						// successful, view thread that was created
+						return $this->redirect("/thread/view/{$thread->id}");
+					} else {
+						// unsuccessful, delete thread and go back to the Forum
+						$thread->delete();
+					}
+				}
+				
+				// we have access but could not create a Thread
 				return $this->redirect("/board/view/{$id}");
-			} elseif ($forum->permission > 0 && $forum->permission > $authorized['permission']) {
-				return $this->redirect("/forum#permissions"); 
-			}
-	
-			//create thread
-			$thread = Threads::create(array(
-				'fid' => $id,
-				'name' => self::clean($this->request->data['title']),
-				'uid' => $authorized['id']
-			));
-			
-			if (!$thread->save()) {
-				return $this->redirect("/board/view/{$id}");
-			}
-			
-			//create message
-			$message = Messages::create(array(
-				'tid' => $thread->id,
-				'content' => PostController::clean($this->request->data['content']),
-				'uid' => $authorized['id']
-			));
-			
-			if (!$message->save()) {
-				$thread->delete();
-				return $this->redirect("/board/view/{$id}");
-			}
-			
-			return $this->redirect("/thread/view/{$thread->id}");
+			} 
 		}
 		
 		return $this->redirect('/forum');

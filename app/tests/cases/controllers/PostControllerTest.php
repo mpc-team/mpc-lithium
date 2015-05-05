@@ -25,6 +25,9 @@ class PostControllerTest extends \lithium\test\Unit {
 		$case[4] = "What\n\n\n\nthe\n\n\n\nfuck";
 		$case_pass[4] = "What\n\nthe\n\nfuck";
 		
+		$case[5] = "Carriage returns\r should be removed.\r\n\r\n\r\n\r\nCR followed by LF should result in a limited LF-only result.";
+		$case_pass[5] = "Carriage returns should be removed.\n\nCR followed by LF should result in a limited LF-only result.";
+		
 		for ($i = 0; $i < count($case); $i++) {
 			$this->assertEqual($case_pass[$i], PostController::clean($case[$i]));
 		}

@@ -4,30 +4,42 @@ $this->title($page['title']);
 
 $self = $this;
 
-$editpanel = function($authorized, $mid) {
-	$html = 
-<<<EOD
-	<div class='row usertool'>
-		<div class='col-xs-2'>
-			<button type='button' class='btn btn-edit pull-left edit-content-btn-edit' data-id='{$mid}'>
-				<i class='fa fa-pencil-square-o'></i>
-				Edit
+$userpanel = function($mid, $options) {
+	$html = "<div class='row usertool'>";
+	$html .= "<div class='col-xs-2'>";
+	if (in_array('edit', $options)) {
+		$html .= <<<EOD
+		<button type='button' class='btn btn-edit pull-left edit-content-btn-edit' data-id='{$mid}'>
+			<i class='fa fa-pencil-square-o'></i>
+			Edit
+		</button>
+EOD;
+	}
+	$html .= "</div>";
+	$html .= "<div class='col-xs-2'>";
+	if (in_array('delete', $options)) {
+		$html .= <<<EOD
+		<form role='form' action='/post/delete/{$mid}' method='post'>
+			<button type='submit' class='btn btn-edit edit-content-btn-delete' data-id='{$mid}'>
+				<i class='fa fa-trash-o'></i>
+				Delete
 			</button>
-		</div>
-		<div class='col-xs-2'>
-			<form role='form' action='/post/delete/{$mid}' method='post'>
-				<button type='submit' class='btn btn-edit edit-content-btn-delete' data-id='{$mid}'>
-					<i class='fa fa-trash-o'></i>
-					Delete
-				</button>
-				<input type='hidden' name='id' value='{$mid}'/>
-			</form>
-		</div>
-		<div class='col-xs-8'>
+			<input type='hidden' name='id' value='{$mid}'/>
+		</form>
+EOD;
+	}
+	$html .= "</div>";
+	$html .= "<div class='col-xs-8'>";
+	if (in_array('quote', $options)) {
+		$html .= <<<EOD
 			<button type='button' class='btn btn-edit pull-right content-quote-btn' data-id='{$mid}'>
 				<i class='fa fa-quote-right'></i>
 				Quote
 			</button>
+EOD;
+	}
+	if (in_array('edit', $options)) {
+		$html .= <<<EOD
 			<button type='button' class='btn btn-edit pull-right edit-content-btn-cancel' data-id='{$mid}'>
 				<i class='fa fa-times'></i>
 				Cancel
@@ -41,10 +53,10 @@ $editpanel = function($authorized, $mid) {
 				<input type='hidden' name='content' class='edit-content-hidden' data-id='{$mid}'/>
 				<input type='hidden' name='id' value='{$mid}'/>
 			</form>
-		</div>
-	</div>
 EOD;
-	return ($authorized) ? $html : "";
+	}
+	$html .= "</div></div>";
+	return $html;
 };
 
 $texttags = function($id) {
@@ -141,7 +153,11 @@ EOD;
 						</div>
 					</div>
 				</div>
-				<?php echo $editpanel($authorized, $post['id']); ?>
+				<?php if ($post['editpanel']): ?>
+					<?php echo $userpanel($post['id'], array('edit', 'delete', 'quote')); ?>
+				<?php else: ?>
+					<?php echo $userpanel($post['id'], array('quote')); ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php endforeach; ?>

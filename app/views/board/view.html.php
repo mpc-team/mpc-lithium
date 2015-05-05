@@ -4,7 +4,7 @@ $this->title($page['title']);
 
 $self = $this;
 
-$editpanel = function($authorized, $tid) {
+$editpanel = function($tid) {
 	$button = array(
 		'delete' => "<i class='fa fa-trash-o'></i> Delete"
 	);
@@ -15,7 +15,7 @@ $editpanel = function($authorized, $tid) {
 	$html .= "</button>";
 	$html .= "</form>";
 	$html .= "</div>";
-	return ($authorized) ? $html : "";
+	return $html;
 };
 
 $texttags = function($id) {
@@ -191,7 +191,9 @@ EOD;
 						</a>
 					</div>
 				</div>
-				<?php echo $editpanel($authorized, $thread['id']) ?>
+				<?php if ($thread['editpanel']): ?>
+					<?php echo $editpanel($thread['id']) ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	<?php endforeach; ?>

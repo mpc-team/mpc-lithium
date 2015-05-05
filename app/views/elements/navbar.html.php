@@ -10,10 +10,6 @@ function navglyph ($icon) {
 	return "<span class='glyphicon glyphicon-{$icon}'></span> "; 
 }
 
-function navbar_dropdown() {
-	
-}
-
 function navbar_link($class, $url, $icon, $text) {
 	$class = ($class != null) ? " class='{$class}'" : "";
 	$icon = ($icon != null) ? navglyph($icon) : "";

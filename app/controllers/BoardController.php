@@ -17,45 +17,43 @@ class BoardController extends ContentController {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
 			
-			if (!($forum = Forums::find('first', array('conditions' => array('id' => $id))))) { 
-				return $this->redirect('/forum'); 
-			}
-			
-			if (!self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
-				return $this->redirect("/forum"); 
-			}
-			
-			$breadcrumbs = array(
-				'path' => array("Forum", $forum->name),
-				'link' => array("/forum", "/board/view/{$id}")
-			);
-			
-			$page = array('title' => $forum->name, 'header' => $forum->name, 'subheader' => 'Forum');
-			$threads = Threads::find('all', array('conditions' => array('fid' => $id)))->to('array');
-			
-			foreach ($threads as $key => $thread) {
-				$user = Users::find('first', array(
-					'conditions' => array('id' => $thread['uid'])
-				))->to('array');
+			if ($forum = self::verify_access($authorized, '\app\models\Forums', $id)) {
+				$breadcrumbs = array(
+					'path' => array("Forum", $forum->name),
+					'link' => array("/forum", "/board/view/{$id}")
+				);
+				$page = array(
+					'title' => $forum->name, 
+					'header' => $forum->name, 
+					'subheader' => 'Forum'
+				);
+				$threads = Threads::find('all', array('conditions' => array('fid' => $id)))->to('array');
 				
-				$messages = Messages::find('all', array(
-					'conditions' => array('tid' => $thread['id']),
-					'order' => array('tstamp' => 'DESC')
-				))->to('array');
-				
-				$threads[$key]['author'] = $user['alias'];
-				$threads[$key]['count'] = count($messages);
-				$threads[$key]['recent'] = reset($messages);
-				
-				if ($threads[$key]['recent']) {
-					$user = Users::find('first', array(
-						'conditions' => array('id' => $threads[$key]['recent']['uid'])
+				foreach ($threads as $key => $thread) {
+					$author = Users::find('first', array(
+						'conditions' => array('id' => $thread['uid'])
 					))->to('array');
-					$threads[$key]['recent']['author'] = $user['alias'];
+					$messages = Messages::find('all', array(
+						'conditions' => array('tid' => $thread['id']),
+						'order' => array('tstamp' => 'DESC')
+					))->to('array');
+					$threads[$key]['author'] = $author['alias'];
+					$threads[$key]['count'] = count($messages);
+					$threads[$key]['recent'] = reset($messages);
+					$is_author = ($author['id'] == $authorized['id']);
+					$is_admin = ($authorized['permission'] >= 2);
+					$threads[$key]['editpanel'] = ($is_author || $is_admin);
+					
+					if ($threads[$key]['recent']) {
+						$author = Users::find('first', array(
+							'conditions' => array('id' => $threads[$key]['recent']['uid'])
+						))->to('array');
+						$threads[$key]['recent']['author'] = $author['alias'];
+					}
 				}
+				
+				return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
 			}
-			
-			return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
 		}
 		
 		return $this->redirect('/forum');

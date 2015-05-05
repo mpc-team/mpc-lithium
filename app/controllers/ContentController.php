@@ -25,12 +25,14 @@ class ContentController extends \lithium\action\Controller {
 		if ($content) {
 			if ($content->permission > 0) {
 				// non-public content
-				return ($user) && ($content->permission <= $user['permission']);
+				if ($user && $content->permission <= $user['permission']) {
+					return $content;
+				}
 			} else {
 				// public content
-				return true;
+				return $content;
 			}
 		}
-		return false;
+		return null;
 	}
 }

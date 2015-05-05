@@ -24,11 +24,13 @@ class PostController extends ContentController {
 		$linefeeds = 0;
 		$length = strlen($text);
 		for ($i = 0; $i < $length; $i++) {
+			// limit number of linefeeds allowed in a row
 			if (ord($text[$i]) == 10) {
 				if ($linefeeds < 2) {
 					$cleaned .= $text[$i];
 					$linefeeds++;
 				}
+			// remove carriage returns completely (do not copy)
 			} elseif (ord($text[$i]) != 13) {
 				$cleaned .= $text[$i];
 				$linefeeds = 0;

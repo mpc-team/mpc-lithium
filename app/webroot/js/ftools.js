@@ -45,11 +45,11 @@
 	var TAGS_LISTITEM			= ["[li]", "[/li]"];
 	var TAGS_PARAGRAPH		= ["[p]", "[/p]"];
 	var TAGS_CENTER				= ["[center]", "[/center]"];
-	var TAGS_LINK					= ["[a]", "\"]", "[/a]"];
+	var TAGS_LINK					= ["[link]", "[/link]"];
 	var TAGS_IMAGE				= ["[img]", "[/img]"];
 	var TAGS_QUOTE       = ["[quote]", "[/quote]"];
 	
-	function Html2Text(html) {
+	function html2text(html) {
 		var text = html.trim( );
 		text = text.replace(/\\t/g, "");
 		text = text.replace(/<br>/g, "\n");
@@ -82,7 +82,7 @@
 			var msgid = $elem.data("id");
 			var $elems = $("[data-id=" + msgid + "]");
 			var html = $elems.filter("." + TYPE_TEXT).val();
-			var html2text = Html2Text(html);
+			var text = html2text(html);
 			
 			$elem.attr('disabled','disabled');
 			$elems.filter("." + TYPE_DIV_CONTENT).hide();
@@ -90,7 +90,7 @@
 			$elems.filter("." + TYPE_DIV_TOGGLE).show();
 			$elems.filter("." + TYPE_CANCEL).show();
 			$elems.filter("." + TYPE_UPDATE).show();
-			$elems.filter("." + TYPE_TEXT).html(html2text);
+			$elems.filter("." + TYPE_TEXT).html(text);
 			$("#forum-thread-message-" + msgid).gotoSection();
 		});
 		
@@ -233,7 +233,7 @@
 			var msgid = $elem.data("id");
 			var $elems = $("[data-id=" + msgid + "]");
 			var text = $elems.filter("." + TYPE_TEXT);
-			text.fieldSelection(TAGS_LINK[0] + text.fieldSelection().text + TAGS_LINK[1] + TAGS_LINK[2]);
+			text.fieldSelection(TAGS_LINK[0] + text.fieldSelection().text + TAGS_LINK[1]);
 		});
 		
 		$("." + TYPE_EDIT_IMAGE).click( function () {
