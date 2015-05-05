@@ -39,12 +39,14 @@ $self = $this;
 							<input type="text" class="form-control" name="alias" id="alias" placeholder="Search by player alias..."/>				
 						</div>
 					</div>
+					<?php if (in_array("admin", $permission)): ?>
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon">Email</span>
 							<input type="text" class="form-control" name="email" id="email" placeholder="Search by player email..."/>				
 						</div>
 					</div>
+					<?php endif; ?>
 				</div>
 			</div>
 		
@@ -53,12 +55,18 @@ $self = $this;
 					<table class="table">
 						<thead>
 							<tr class='row'>
-								<th class='col-xs-6'>Alias</th>
-								<th class='col-xs-6'>Email</th>
+								<th class='col-xs-6'>
+									Alias
+								</th>
+								<th class='col-xs-6'>
+									<?= (in_array('admin', $permission)) ? "Email" : ""; ?>
+								</th>
 							</tr>
 						</thead>
 						<tbody id="search-results">
+						
 							<!--JavaScript Here-->
+							
 						</tbody>
 					</table>
 				</div>
@@ -67,11 +75,18 @@ $self = $this;
 	</div>
 </div>
 <script type="text/javascript">
-	<?php echo "var userList = " . json_encode($users) . ';'; ?>
-	$( document ).ready(function() {
-		updateList(userList, ['admin']);
+	var users = <?php echo json_encode($users); ?>;
+	var perm  = <?php echo json_encode($permission); ?>;
+	var elements  = {
+		'result' : "#search-results",
+		'email' : "#email",
+		'alias' : "#alias"
+	};
 	
-		$('#email').keyup(function() { updateList(userList, ['admin']) });
-		$('#alias').keyup(function() { updateList(userList, ['admin']) });
+	$( document ).ready(function() {
+		updateList(elements, users, perm);
+		
+		$(elements.email).keyup(function() { updateList(elements, users, perm) });
+		$(elements.alias).keyup(function() { updateList(elements, users, perm) });
 	});
 </script>

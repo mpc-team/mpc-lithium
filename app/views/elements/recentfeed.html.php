@@ -12,7 +12,7 @@
 		<div class="col-md-4">
 			<div class="panel-group">
 				<div class="panel panel-default">
-					<a class="btn" href="/thread/view/<?= $recent['tid'] ?>">
+					<a class="btn" href="/thread/view/<?= $recent['tid'] ?>#forum-thread-message-<?= $recent['id'] ?>">
 						<div class="panel-recentfeed-content">
 							<div class="row">
 								<h5>

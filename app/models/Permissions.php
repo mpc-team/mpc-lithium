@@ -4,8 +4,12 @@ namespace app\models;
 
 class Permissions extends \lithium\data\Model  { 
 
-	const PUB = 1;
-	const MEMBER = 2;
-	const MOD = 3;
-	const ADMIN = 4;
+	const _PUBLIC = 0;
+	const _MEMBER = 1;
+	const _MOD = 2;
+	const _ADMIN = 3;
+
+	public static function is_admin($user) {
+		return $user['permission'] >= self::_MOD;
+	}
 }

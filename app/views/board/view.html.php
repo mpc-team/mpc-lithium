@@ -168,7 +168,7 @@ EOD;
 						<h4><b><?= $thread['count'] ?></b><br><small>replies</small></h4>
 					</div>
 					<div class="col-xs-5">
-						<a class="btn" href="/thread/view/<?= $thread['recent']['tid'] ?>">
+						<a class="btn" href="/thread/view/<?= $thread['recent']['tid'] ?>#forum-thread-message-<?= $thread['recent']['id'] ?>">
 							<h5>
 								<div class="row pull-right">
 									Recent Post

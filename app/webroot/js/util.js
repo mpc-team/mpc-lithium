@@ -9,10 +9,8 @@
 
 /**
  * RegExp // escape
- *
  *	Used on text input from the user to ensure that regex do not
  *	take special characters like * and ? literally.
- *
  */
 RegExp.escape = function(text) {
 	return (text+'').replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&");
@@ -20,9 +18,7 @@ RegExp.escape = function(text) {
  
 /**
  * Input Element Identifiers
- *
  *	Elements that match these IDs are found with JQuery selectors.
- *
  */
 const INPUT_EMAIL = "email";
 const INPUT_ALIAS = "alias";
@@ -85,12 +81,10 @@ function updateValidateStatus(valid, inputval, inputid) {
 
 /** 
  * function validateSignup ()
- *	
  *	Filters with 'validateEmail', 'validateAlias', and 'validatePassword'; returns
  *	true if form values pass these filters.
  *
  *	Entry point for JS, issued on the click event of an HTML element.
- *
  */
 function validateSignup () {
 	var email = $('#' + INPUT_EMAIL).val();
@@ -118,29 +112,18 @@ function validateSignup () {
 
 /**
  * Filter Constants
- *
  *	Describes which filter function to use. This indicates which INPUT element to 
  *	be used and indicates to "doFilter" 
  */
 const FILTER_BY_ALIAS = 0;
 const FILTER_BY_EMAIL = 1;
 
-/**
- * DOM Element Identifiers
- *
- *	HTML element identifier to populate results of Members search.
- *
- */
-const SEARCH_RESULTS = "#search-results";
-
-function doFilterEmail (userList, permissions) {
-	var criteria = ($('#' + INPUT_EMAIL) == null) ? "" : $('#' + INPUT_EMAIL).val();
-	return doFilter(criteria, userList, FILTER_BY_EMAIL);
+function doFilterEmail (userList, email) {
+	return doFilter(email, userList, FILTER_BY_EMAIL);
 }
 
-function doFilterAlias (userList, permissions) {
-	var criteria = ($('#' + INPUT_ALIAS) == null) ? "" : $('#' + INPUT_ALIAS).val();
-	return doFilter(criteria, userList, FILTER_BY_ALIAS);
+function doFilterAlias (userList, alias) {
+	return doFilter(alias, userList, FILTER_BY_ALIAS);
 }
 
 function doFilter (criteria, userList, filterBy) {
@@ -148,7 +131,11 @@ function doFilter (criteria, userList, filterBy) {
 	var users = [];
 	var len = userList.length;
 	for (var i=0; i < len; i++) {
-		var matched = userList[i][filterBy].toLowerCase().match(regx);
+		if (filterBy == FILTER_BY_ALIAS) {
+			var matched = userList[i].alias.toLowerCase().match(regx);
+		} else if (filterBy == FILTER_BY_EMAIL) {
+			var matched = userList[i].email.toLowerCase().match(regx);
+		}
 		if (matched != null) {
 			users.push(userList[i]);
 		}
@@ -158,15 +145,13 @@ function doFilter (criteria, userList, filterBy) {
 
 /**
  * HTML Helpers
- *
  *	Provides layout for results of the search within a table element.
- *	
  */
-function htmlTableEmail (user, permissions) {
-	return "<td>" + user[FILTER_BY_EMAIL] + "</td>";
+function htmlTableEmail (user) {
+	return "<td>" + user.email + "</td>";
 }
-function htmlTableAlias (user, permissions) {
-	return "<td class='col-xs-6'><i class='fa fa-user'></i> " + user[FILTER_BY_ALIAS] + "</td>";
+function htmlTableAlias (user) {
+	return "<td class='col-xs-6'><i class='fa fa-user'></i> " + user.alias + "</td>";
 }
 function htmlTableClass (rownum) {
 	return (rownum % 2 == 0) ? "alt" : "";
@@ -174,31 +159,29 @@ function htmlTableClass (rownum) {
 
 /**
  * Member List
- *
- *	Update the list. Permissions indicate which layout to use and which
- *	information actually should be displayed.
- *
+ *	Updates the Members list based on search criteria. The corresponding
+ *	input is grabbed from elements with IDs as defined above.
  */
 function isListEmptyOrNull (list) { 
 	return (list == null) || (list.length == 0); 
 }
 
-function updateList (userList, permissions) {
+function updateList (elements, userList, options) {
 	if (isListEmptyOrNull(userList)) { return; }
-	userList = doFilterEmail(userList, permissions);
-	userList = doFilterAlias(userList, permissions);
+	userList = doFilterAlias(userList, $(elements.alias).val());
+	if (options.indexOf("admin") >= 0) {
+		userList = doFilterEmail(userList, $(elements.email).val());
+	}
 	var result = '';
 	for (var i = 0; i < userList.length; i++)  {
 		result += "<tr class='row " + htmlTableClass(i) + "'>";
-		result += htmlTableAlias(userList[i], permissions);
-		result += htmlTableEmail(userList[i], permissions);
+		result += htmlTableAlias(userList[i]);
+		if (options.indexOf("admin") >= 0) {
+			result += htmlTableEmail(userList[i]);
+		}
 		result += '</tr>';
 	}
-	$(SEARCH_RESULTS).html(result);
+	$(elements.result).html(result);
 }
-
-
-
-
 
 

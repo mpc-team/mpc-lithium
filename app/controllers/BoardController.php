@@ -8,6 +8,10 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
+/**
+ *
+ *
+ */
 class BoardController extends ContentController {
 
 	public function view() {

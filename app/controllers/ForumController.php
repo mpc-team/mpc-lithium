@@ -8,6 +8,10 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
+/**
+ *
+ *
+ */
 class ForumController extends \lithium\action\Controller {
 
 	public function index() {		
