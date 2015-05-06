@@ -7,6 +7,7 @@ use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
+use app\models\Permissions;
 
 class ThreadController extends ContentController {
 
@@ -62,8 +63,11 @@ class ThreadController extends ContentController {
 					foreach ($messages as $key => $msg) {
 						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
 						$messages[$key]['author'] = $author->alias;
-						$is_author = ($authorized['id'] == $author->id);
-						$messages[$key]['editpanel'] = ($is_author);
+						$messages[$key]['editpanel'] = array();
+						if ($authorized) { array_push($messages[$key]['editpanel'], 'quote'); }
+						if ($authorized['id'] == $author->id || Permissions::is_admin($authorized)) { 
+							array_push($messages[$key]['editpanel'], 'edit', 'delete'); 
+						}
 					}
 				}
 				
@@ -98,7 +102,7 @@ class ThreadController extends ContentController {
 			
 			if ($thread && $authorized) {
 				$is_author = ($authorized['id'] == $thread->uid);
-				$is_admin  = ($authorized['permission'] >= 2);
+				$is_admin  = Permissions::is_admin($authorized);
 				if ($is_author || $is_admin) {
 					$thread->delete();
 					$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
@@ -142,15 +146,14 @@ class ThreadController extends ContentController {
 						'uid' => $authorized['id']
 					));
 					if ($message->save()) {
-						// successful, view thread that was created
+						/* successful, goto thread view */
 						return $this->redirect("/thread/view/{$thread->id}");
 					} else {
-						// unsuccessful, delete thread and go back to the Forum
+						/* unsuccessful, clean and goto board view */
 						$thread->delete();
 					}
 				}
-				
-				// we have access but could not create a Thread
+				/* thread or message couldn't be created return to board view */
 				return $this->redirect("/board/view/{$id}");
 			} 
 		}

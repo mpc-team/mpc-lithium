@@ -20,7 +20,7 @@ class ForumController extends \lithium\action\Controller {
 		$forums = Forums::all()->to('array');
 
 		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
-		$page = array('title' => 'Home', 'header' => 'Forum', 'subheader' => 'Categories');
+		$page = array('title' => 'Forum', 'header' => 'Forum', 'subheader' => 'Categories');
 		$recentfeed = Messages::find('all', array(
 			'limit' => 3,
 			'order' => array('tstamp' => 'DESC')

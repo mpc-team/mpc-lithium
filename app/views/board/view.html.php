@@ -137,6 +137,7 @@ EOD;
 };
 
 ?>
+<?php echo $newthread($authorized, $texttags, "/thread/create/{$id}"); ?>
 <?php if ($threads): ?>
 	<?php foreach ($threads as $thread): ?>
 		<div class="panel-group">
@@ -165,7 +166,7 @@ EOD;
 						</a>
 					</div>
 					<div class="col-xs-1">
-						<h4><b><?= $thread['count'] ?></b><br><small>replies</small></h4>
+						<h4><b><?= $thread['count'] - 1; ?></b><br><small><?= ($thread['count'] == 2) ? "reply" : "replies" ?></small></h4>
 					</div>
 					<div class="col-xs-5">
 						<a class="btn" href="/thread/view/<?= $thread['recent']['tid'] ?>#forum-thread-message-<?= $thread['recent']['id'] ?>">
@@ -198,4 +199,3 @@ EOD;
 		</div>
 	<?php endforeach; ?>
 <?php endif; ?>
-<?php echo $newthread($authorized, $texttags, "/thread/create/{$id}"); ?>

@@ -20,7 +20,7 @@ use lithium\security\Auth;
 <html>
 <head>
 	<?php echo $this->html->charset();?>
-	<title>MPC &gt; <?php echo $this->title(); ?></title>
+	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array('bootstrap', 'simple-sidebar', 'website', 'font-awesome')); ?>
 	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'util')); ?>
 	<?php echo $this->scripts(); ?>

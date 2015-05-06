@@ -133,9 +133,7 @@ EOD;
 						</div>
 					</div>
 					<div class="row">
-						<div class="content-message edit-content" data-id="<?= $post['id'] ?>">
-							<?php echo $post['content']; ?>
-						</div>
+						<div class="content-message edit-content" data-id="<?= $post['id'] ?>">	<?php echo $post['content']; ?></div>
 						<div class="content-message edit-content-toggle" data-id="<?= $post['id'] ?>">
 							<?php if (isset($post['first'])): ?>
 								<div class="row">
@@ -146,18 +144,12 @@ EOD;
 								<?php echo $texttags($post['id']); ?>
 							</div>
 							<div class="row">
-								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>">
-									<?= $post['content']; ?>
-								</textarea>
+								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
-				<?php if ($post['editpanel']): ?>
-					<?php echo $userpanel($post['id'], array('edit', 'delete', 'quote')); ?>
-				<?php else: ?>
-					<?php echo $userpanel($post['id'], array('quote')); ?>
-				<?php endif; ?>
+				<?php echo $userpanel($post['id'], $post['editpanel']); ?>
 			</div>
 		</div>
 	<?php endforeach; ?>

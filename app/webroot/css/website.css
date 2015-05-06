@@ -130,30 +130,33 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 
 /* Recent Feed Style */
 
-.panel-recentfeed-content {
+.panel-recentfeed .recentfeed-content {
+	font-size: 8pt;
+}
+
+.panel-recentfeed {
 	padding: 5px;
-	white-space: nowrap;
 	min-height: 78px;
 	max-height: 78px;
 	overflow: hidden;
 }
 
 @media (min-width: 450px) {
-	.panel-recentfeed-content {
+	.panel-recentfeed {
 		min-height: 78px;
 		max-height: 78px;
 	}
 }
 
 @media (min-width: 499px) {
-	.panel-recentfeed-content {
+	.panel-recentfeed {
 		min-height: 125px;
 		max-height: 125px;
 	}
 }
 
 @media (min-width: 600px) {
-	.panel-recentfeed-content { 
+	.panel-recentfeed { 
 		min-height: 150px; 
 		max-height: 150px;
 	}

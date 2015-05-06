@@ -7,6 +7,7 @@ use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
+use app\models\Permissions;
 
 /**
  *
@@ -45,7 +46,7 @@ class BoardController extends ContentController {
 					$threads[$key]['count'] = count($messages);
 					$threads[$key]['recent'] = reset($messages);
 					$is_author = ($author['id'] == $authorized['id']);
-					$is_admin = ($authorized['permission'] >= 2);
+					$is_admin = Permissions::is_admin($authorized);
 					$threads[$key]['editpanel'] = ($is_author || $is_admin);
 					
 					if ($threads[$key]['recent']) {
@@ -56,10 +57,22 @@ class BoardController extends ContentController {
 					}
 				}
 				
+				usort($threads, array("self", "thread_sort"));
 				return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
 			}
 		}
 		
 		return $this->redirect('/forum');
 	}
+	
+	public static function thread_sort($a, $b) {
+		return $a['recent']['tstamp'] < $b['recent']['tstamp'];
+	}
 }
+
+
+
+
+
+
+

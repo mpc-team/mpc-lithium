@@ -3,13 +3,13 @@
 use lithium\security\Auth;
 	
 $authorized = Auth::check('default');
-	
+
 ?>
 <!doctype html>
 <html>
 <head>
 	<?php echo $this->html->charset();?>
-	<title>MPC Forum &gt; <?php echo $this->title(); ?></title>
+	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array('bootstrap', 'simple-sidebar', 'website', 'font-awesome')); ?>
 	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'util', 'ftools', 'scroller', 'markup')); ?>
 	<?php echo $this->scripts(); ?>

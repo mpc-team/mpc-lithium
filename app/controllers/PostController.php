@@ -7,6 +7,7 @@ use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
+use app\models\Permissions;
 
 class PostController extends ContentController {
 	/**
@@ -82,14 +83,16 @@ class PostController extends ContentController {
 				$thread = Threads::find('first', array('conditions' => array('id' => $message->tid)));
 				$is_author = ($authorized['id'] == $message->uid);
 				
-				if (self::verify_access($authorized, '\app\models\Messages', $id) && $is_author) {
-					$message->content = self::clean($this->request->data['content']);
-					$message->save();
-					if ($this->request->data['rename']) {
-						$thread->name = ThreadController::clean($this->request->data['rename']);
-						$thread->save();
+				if (self::verify_access($authorized, '\app\models\Messages', $id)) {
+					if ($is_author || Permissions::is_admin($authorized)) {
+						$message->content = self::clean($this->request->data['content']);
+						$message->save();
+						if ($this->request->data['rename']) {
+							$thread->name = ThreadController::clean($this->request->data['rename']);
+							$thread->save();
+						}
+						return $this->redirect("/thread/view/{$thread->id}");
 					}
-					return $this->redirect("/thread/view/{$thread->id}");
 				} else {
 					return $this->redirect("/thread/view/{$thread->id}");
 				}
@@ -102,16 +105,19 @@ class PostController extends ContentController {
 		
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
-			
-			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) {
-				$authorized = Auth::check('default');
+			$authorized = Auth::check('default');
+			if ($message = self::verify_access($authorized, '\app\models\Messages', $id)) {			
 				$is_author = ($authorized['id'] == $message->uid);
-				
-				if (self::verify_access($authorized, '\app\models\Messages', $id) && $is_author) {
+				if ($is_author || Permissions::is_admin($authorized)) {
 					if ($message->delete()) {
-						return $this->redirect("/thread/view/{$message->tid}");
-					} else {
-						return $this->redirect('/');
+						/* if there are no longer any Posts in the corresponding Thread then we 
+							should go ahead and delete the Thread as well */
+						if (!Messages::find('count', array('conditions' => array('tid' => $message->tid)))) {
+							/* route to ThreadController::delete to delete Thread */
+							return $this->redirect("/thread/delete/{$message->tid}");
+						} else {
+							return $this->redirect("/thread/view/{$message->tid}");
+						}
 					}
 				}
 			}

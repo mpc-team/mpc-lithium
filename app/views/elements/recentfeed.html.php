@@ -13,7 +13,7 @@
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<a class="btn" href="/thread/view/<?= $recent['tid'] ?>#forum-thread-message-<?= $recent['id'] ?>">
-						<div class="panel-recentfeed-content">
+						<div class="panel-recentfeed">
 							<div class="row">
 								<h5>
 									<?= $recent['thread'] ?><br>
@@ -22,10 +22,8 @@
 									</small>
 								</h5>
 							</div>
-							<div class="row">
-								<i style="font-size: 8pt">
+							<div class="row recentfeed-content">
 									<?php echo $recent['content'] ?>
-								</i>
 							</div>
 						</div>
 						<div class="panel-recentfeed-footer">
@@ -48,3 +46,10 @@
 		</div>
 	<?php endforeach; ?>
 </div>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('.recentfeed-content').each(function(index) {
+			$(this).html(markup($(this).text()));
+		});
+	});
+</script>

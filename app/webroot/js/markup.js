@@ -30,7 +30,6 @@
  */
 function markup (text) {
 	var regex;
-	markup_new(text)
 	for (var i = 0; i < tagmap.length; i++) {
 		regex = new RegExp(tagmap[i].open_tag, "g");
 		if (text.match(regex)) {
@@ -40,20 +39,6 @@ function markup (text) {
 		}
 	}
 	return text.replace(/\n/g, '<br>');
-}
-
-function markup_new (text) {
-	for (var i = 0; i < tagmap.length; i++) {
-		var regex_opn = new RegExp(tagmap[i].open_tag, 'g');
-		var regex_cls = new RegExp(tagmap[i].close_tag, 'g');
-		while (match = regex_opn.exec(text)) {
-			var tag = "";
-			for (var j = 0; j < tagmap[i].open_tag.length; j++) {
-				tag += text[match.index + j];
-			}		
-			console.log(tag);
-		}
-	}
 }
  
 function TagMapEntry (open_tag, open_mapped, close_tag, close_mapped) {
