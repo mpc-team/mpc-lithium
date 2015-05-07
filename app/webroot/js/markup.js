@@ -31,38 +31,62 @@
 function markup (text) {
 	var regex;
 	for (var i = 0; i < tagmap.length; i++) {
-		regex = new RegExp(tagmap[i].open_tag, "g");
-		if (text.match(regex)) {
-			text = text.replace(regex, tagmap[i].open_mapped);
-			regex = new RegExp(tagmap[i].close_tag, "g");
-			text = text.replace(regex, tagmap[i].close_mapped);
-		}
+		regex = new RegExp(tagmap[i].tag, "g");
+		text = text.replace(regex, tagmap[i].mapped);
 	}
 	return text.replace(/\n/g, '<br>');
 }
  
-function TagMapEntry (open_tag, open_mapped, close_tag, close_mapped) {
-	this.open_tag = open_tag;
-	this.open_mapped = open_mapped;
-	this.close_tag = close_tag;
-	this.close_mapped = close_mapped;
+function TagmapEntry (tag, mapped) {
+	this.tag = tag;
+	this.mapped = mapped;
 }
+
+function TagmapTagOpen (tag) { return "\\[" + tag + "\\]"; }
+function TagmapTagClose (tag) { return "\\[\\/" + tag + "\\]"; }
+
+function TagmapMappedOpen (tag) { 
+	switch (tag) {
+		case "quote":
+			return "<blockquote>";
+		default:
+			return "<" + tag + ">"; 
+	}
+}
+function TagmapMappedClose (tag) {
+	switch (tag) {
+		case "quote":
+			return "</blockquote>";
+		default:
+			return "</" + tag + ">";
+	}
+}
+
+function TagmapTagLinkOpen (tag) { return "\\[" + tag + "=\""; }
+function TagmapTagLinkContent () { return "\"\\]"; }
+function TagmapTagLinkClose (tag) { return "\\[\\/" + tag + "\\]"; }
+
+var tags = {
+	general: [
+		"b", "i", "u", "strike", 
+		"h1", "h2", "h3", 
+		"sup", "sub", 
+		"ul", "li", 
+		"p", "center", 
+		"quote", "img"
+	],
+	special: {
+		link: "link"
+	}
+};
+
+
+var tagmap = [];
+for (var i = 0; i < tags.general.length; i++) {
+	tagmap.push(new TagmapEntry(TagmapTagOpen(tags.general[i]), TagmapMappedOpen(tags.general[i])));
+	tagmap.push(new TagmapEntry(TagmapTagClose(tags.general[i]), TagmapMappedClose(tags.general[i])));
+}
+tagmap.push(new TagmapEntry(TagmapTagLinkOpen(tags.special.link), "<a href=\""));
+tagmap.push(new TagmapEntry(TagmapTagLinkContent(), "\">"));
+tagmap.push(new TagmapEntry(TagmapTagLinkClose(tags.special.link), "</a>"));
  
-var tagmap = [
-	new TagMapEntry('\\[b\\]', '<b>', '\\[\\/b\\]', '</b>'),
-	new TagMapEntry('\\[i\\]', '<i>', '\\[\\/i\\]', '</i>'),
-	new TagMapEntry('\\[u\\]', '<u>', '\\[\\/u\\]', '</u>'),
-	new TagMapEntry('\\[strike\\]', '<strike>', '\\[\\/strike\\]', '</strike>'),
-	new TagMapEntry('\\[h1\\]', '<h1>', '\\[\\/h1\\]', '</h1>'),
-	new TagMapEntry('\\[h2\\]', '<h2>', '\\[\\/h2\\]', '</h2>'),
-	new TagMapEntry('\\[h3\\]', '<h3>', '\\[\\/h3\\]', '</h3>'),
-	new TagMapEntry('\\[sup\\]', '<sup>', '\\[\\/sup\\]', '</sup>'),
-	new TagMapEntry('\\[sub\\]', '<sub>', '\\[\\/sub\\]', '</sub>'),
-	new TagMapEntry('\\[ul\\]', '<ul>', '\\[\\/ul\\]', '</ul>'),
-	new TagMapEntry('\\[li\\]', '<li>', '\\[\\/li\\]', '</li>'),
-	new TagMapEntry('\\[p\\]', '<p>', '\\[\\/p\\]', '</p>'),
-	new TagMapEntry('\\[center\\]', '<center>', '\\[\\/center\\]', '</center>'),
-	new TagMapEntry('\\[link\\]', '<a href="', '\\[\\/link\\]', '"></a>'),
-	new TagMapEntry('\\[quote\\]', '<blockquote>', '\\[\\/quote\\]', '</blockquote>'),
-	new TagMapEntry('\\[img\\]', '<img src="', '\\[\\/img\\]', '"></img>')
-];
