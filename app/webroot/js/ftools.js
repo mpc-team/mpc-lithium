@@ -45,7 +45,7 @@
 	var TAGS_LISTITEM			= ["[li]", "[/li]"];
 	var TAGS_PARAGRAPH		= ["[p]", "[/p]"];
 	var TAGS_CENTER				= ["[center]", "[/center]"];
-	var TAGS_LINK					= ['[link="', '\"][/link]'];
+	var TAGS_LINK					= ['[link=', '][/link]'];
 	var TAGS_IMAGE				= ["[img]", "[/img]"];
 	var TAGS_QUOTE       = ["[quote]", "[/quote]"];
 	

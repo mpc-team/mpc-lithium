@@ -62,8 +62,8 @@ function TagmapMappedClose (tag) {
 	}
 }
 
-function TagmapTagLinkOpen (tag) { return "\\[" + tag + "=\""; }
-function TagmapTagLinkContent () { return "\"\\]"; }
+function TagmapTagLinkOpen (tag) { return "\\[" + tag + "="; }
+function TagmapTagLinkContent () { return "\\]"; }
 function TagmapTagLinkClose (tag) { return "\\[\\/" + tag + "\\]"; }
 
 var tags = {
@@ -87,6 +87,7 @@ for (var i = 0; i < tags.general.length; i++) {
 	tagmap.push(new TagmapEntry(TagmapTagClose(tags.general[i]), TagmapMappedClose(tags.general[i])));
 }
 tagmap.push(new TagmapEntry(TagmapTagLinkOpen(tags.special.link), "<a href=\""));
-tagmap.push(new TagmapEntry(TagmapTagLinkContent(), "\">"));
 tagmap.push(new TagmapEntry(TagmapTagLinkClose(tags.special.link), "</a>"));
+tagmap.push(new TagmapEntry(TagmapTagLinkContent(), "\">"));
  
+console.log(tagmap);
