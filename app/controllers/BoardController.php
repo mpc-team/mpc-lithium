@@ -56,7 +56,7 @@ class BoardController extends ContentController {
 							'conditions' => array('id' => $threads[$key]['recent']['uid'])
 						))->to('array');
 						$threads[$key]['recent']['author'] = $author['alias'];
-						$threads[$key]['recent']['tstamp'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp']);
+						$threads[$key]['recent']['tstamp'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp'], array('time'));
 					}
 				}
 				

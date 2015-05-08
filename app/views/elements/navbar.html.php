@@ -5,7 +5,6 @@
  * @ authorized - user that is currently authorized, associative array containing information
  * pulled from the Users model (id, email, alias)
  */
-
 function navglyph ($icon) { 
 	return "<span class='glyphicon glyphicon-{$icon}'></span> "; 
 }
@@ -13,13 +12,14 @@ function navglyph ($icon) {
 function navbar_link($class, $url, $icon, $text) {
 	$class = ($class != null) ? " class='{$class}'" : "";
 	$icon = ($icon != null) ? navglyph($icon) : "";
-	
-	return "<li{$class}><a href='{$url}'>{$icon} {$text}</a></li>";
+	$html = "<li{$class}><a href='{$url}'>";
+	$html .= ($icon) . " " . ($text);
+	$html .= "</a></li>";
+	return $html;
 }
 
 function navbar_brand($class, $text) {
 	$class = ($class != null) ? " class='{$class}'" : "";
-	
 	return "<li{$class}><a href='/' class='navbar-brand'>{$text}</a></li>";
 }
 
@@ -36,19 +36,19 @@ $navbar_user = function ($authenticated, $controller, $action) {
 		$result .= "<li class='dropdown " . is_current_active('profile', $controller) . "'>";
 		$result .= "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>";
 		$result .= navglyph('user');
-		$result .= "{$authenticated['email']} {$navcaret} </a>";
+		$result .= "{$authenticated['alias']} {$navcaret}";
+		$result .= "</a>";
 		$result .= "<ul class='dropdown-menu' role='menu'>";
 		$result .= navbar_link(null, '/profile', null, 'Profile');
 		$result .= $navdivider;
 		$result .= navbar_link(null, '/logout', 'log-out', 'Logout');
 		$result .= "</ul> </li>";
 	} else {
-		$result .= navbar_link(is_current_active('signup', $controller), '/signup', 'new-window', 'Signup');
-		$result .= navbar_link(is_current_active('login', $controller), '/login', 'log-in', 'Login');
+		$result .= navbar_link(is_current_active('signup', $controller), '/signup', null, 'Signup');
+		$result .= navbar_link(is_current_active('login', $controller), '/login', null, 'Login');
 	}
 	return $result;
 };
-
 ?>
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-header">
@@ -64,17 +64,8 @@ $navbar_user = function ($authenticated, $controller, $action) {
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<?php echo navbar_link(is_current_active('contact', $controller), '/contact', null, 'Contact'); ?>
-			<li class="dropdown <?= is_current_active('members', $controller) ?>">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-					<i class="fa fa-users"></i> 
-					Members 
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu" role="menu">
-					<?php echo navbar_link(null, '/members', 'search', 'Search'); ?>
-				</ul>
-			</li>
-			<?php echo navbar_link(is_current_active('forum', $controller), '/forum', 'th-list', 'Forum'); ?>
+			<?php echo navbar_link(is_current_active('members', $controller), '/members', null, 'Members'); ?>
+			<?php echo navbar_link(is_current_active('forum', $controller), '/forum', null, 'Forum'); ?>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
 					Gaming Room

@@ -7,7 +7,6 @@
 ?>
 <div class="content">
 	<div class="panel-login">
-		<img src="/img/mpclogo.png" class="img-responsive" id="image-banner-login"/>
 		<div class="panel panel-default">
 			<h1>Login</h1>
 			<?= $this->form->create(NULL); ?>

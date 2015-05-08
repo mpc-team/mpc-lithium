@@ -63,7 +63,7 @@ class ThreadController extends ContentController {
 					foreach ($messages as $key => $msg) {
 						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
 						$messages[$key]['author'] = $author->alias;
-						$messages[$key]['tstamp'] = Timestamp::toDisplayFormat($messages[$key]['tstamp']);
+						$messages[$key]['tstamp'] = Timestamp::toDisplayFormat($messages[$key]['tstamp'], array('time'));
 						$messages[$key]['editpanel'] = array();
 						if ($authorized) { array_push($messages[$key]['editpanel'], 'quote'); }
 						if ($authorized['id'] == $author->id || Permissions::is_admin($authorized)) { 
@@ -74,7 +74,7 @@ class ThreadController extends ContentController {
 				
 				$thread = $thread->to('array');
 				$thread['author'] = $author->alias;
-				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp']);
+				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp'], array('time'));
 				$page = array(
 					'title' => $thread['name'],
 					'header' => $thread['name'],

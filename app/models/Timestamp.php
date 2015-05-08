@@ -16,9 +16,9 @@ class Timestamp extends \lithium\data\Model  {
  *	and Messages; the view does not know the format that should be displayed, it
  *	will simply print what it gets from the controller.
  */
-	const DAY_IN_SECONDS = 60 * 60 * 24;
+	const DAY_IN_SECONDS = 86400;
  
-	public static function toDisplayFormat($timestamp) {
+	public static function toDisplayFormat($timestamp, $options = array()) {
 	/**
 	 * toDisplayFormat
 	 *	
@@ -29,10 +29,9 @@ class Timestamp extends \lithium\data\Model  {
 		$time = strtotime($timestamp);
 		$current = time();
 		
-		if (($current - $time) > self::DAY_IN_SECONDS) {
-			$datestring = "D, d M Y";
-		} else {
-			$datestring = "D, d M Y g:i:s A";
+		$datestring  = "D, j F Y";
+		if (in_array('time', $options)) {
+			$datestring .= " - g:i A";
 		}
 		return date($datestring, $time);
 	}

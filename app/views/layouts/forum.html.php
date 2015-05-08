@@ -32,6 +32,10 @@ $authorized = Auth::check('default');
 		<div class="forum">
 			<div class="content">
 		
+				<div class="page-header">
+					<img id="banner-image" src="/img/mpclogo.png" class="img-responsive" alt="mpclogo.png"></img>
+				</div>
+				
 				<?= $this->view()->render(
 					array('element' => 'breadcrumbs'),
 					array('breadcrumbs' => $breadcrumbs)

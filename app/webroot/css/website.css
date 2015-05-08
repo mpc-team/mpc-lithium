@@ -1,32 +1,37 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Signika);
 
-#image-banner-login { 
-	max-height: 300px;
+#banner-image { 
+	display: block;
+	max-height: 200px;
 	margin-left: auto;
 	margin-right: auto;
 }
 #image-brand-login { height: 400px; }
 
 textarea.form-control { 
-	font-size: 9pt;
+	/* font-size: 9pt; */
 	resize: none; 
 	width: 100%; 
 	height: 15em; 
 }
 
 /* Html Style */
-html { background: url("/img/background.png"); }
-html { background-attachment: fixed !IMPORTANT; }
-html { background-repeat: no-repeat; }
-html { background-size: cover; }
-html { height: 100%; min-height: 100%; }
+html { 
+	background: url("/img/background.png");
+	background-attachment: fixed !IMPORTANT;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%; min-height: 100%; 
+}
 
 /* Body Style */
-body { padding-top: 50px; padding-bottom: 49px; }
-body { height: inherit; }
-body { background: transparent; } 
-body {	font-family: "Signika"; }
+body { 
+	padding-top: 50px;
+	height: inherit; 
+	background: transparent; 
+	font-family: "Signika"; 
+}
 
 /* Header Styles */
 h1, h2, h3 {	
@@ -38,6 +43,13 @@ h5 {
 	font-family: "Oswald";
 	font-weight: 550;
 	padding-bottom: 5px;
+}
+
+/* Navbar Styles */
+.navbar { 
+	font-family: "Oswald"; 
+	font-size: 14pt;
+	font-weight: 400;
 }
 
 .panel-forum h5 { font-size: 14pt; }
@@ -107,6 +119,8 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .profile-content .recentfeed-content img,
 .forum .content .recentfeed-content img { max-width: 100%; max-height: 100px; }
 
+a.btn:hover img { -webkit-filter: brightness(2); }
+
 .content-message a,
 .content-message small,
 .content-message li,
@@ -147,7 +161,7 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .profile-content .panel a.btn:active,
 .forum .panel a.btn:hover,
 .forum .panel a.btn:active { 
-	background-color: rgba(255,255,255,0.2); 
+	background-color: rgba(255,255,255,0.2);
 	border: 1px solid rgba(190,220,255,0.8);
 }
 
@@ -157,7 +171,6 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .panel-messages { 
 	padding: 10px; 
 	min-height: 150px;
-	font-size: 9pt;
 }
 
 
@@ -174,29 +187,15 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 
 .panel-recentfeed {
 	padding: 5px;
-	min-height: 78px;
-	max-height: 78px;
+	min-height: 130px;
+	max-height: 130px;
 	overflow: hidden;
 }
 
-@media (min-width: 450px) {
-	.panel-recentfeed {
-		min-height: 78px;
-		max-height: 78px;
-	}
-}
-
 @media (min-width: 499px) {
-	.panel-recentfeed {
-		min-height: 125px;
-		max-height: 125px;
-	}
-}
-
-@media (min-width: 600px) {
 	.panel-recentfeed { 
-		min-height: 150px; 
-		max-height: 150px;
+		min-height: 170px; 
+		max-height: 170px;
 	}
 }
 
@@ -251,9 +250,6 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .row.thread-info { font-size: 8pt; }
 .row.usertool > form { display: inline; }
 
-
-
-
 /* Login Style */
 
 @media (min-width: 667px) {
@@ -278,15 +274,10 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .modal-body > .panel { background-color: transparent; }
 .modal-body > .panel-default > .form-group { margin-bottom: 20px; }
 
-
 /* Page Content Style */
 
 .container-fluid .content,
-.container .content { 
-	padding-top: 25px;
-	margin-bottom: 300px; 
-}
-
+.container .content { margin-bottom: 300px; }
 
 /* General Button Rules */
 
@@ -311,10 +302,8 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 
 .dropdown-menu > li > button { width: 100%; }
 
-/* #input-reply-text { height: 15em; } */
 .btn-reply { 
 	background-color: transparent; 
-	/* border: 1px solid #66aaee; */
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -356,7 +345,6 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
   color: #ffffff;
 	min-width: 100px;
 }
-
 
 /* Thread Control Buttons */
 
