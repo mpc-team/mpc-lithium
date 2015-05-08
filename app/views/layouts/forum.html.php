@@ -37,40 +37,6 @@ $authorized = Auth::check('default');
 					array('breadcrumbs' => $breadcrumbs)
 				)?>
 				
-				<?php if (isset($recentfeed)): ?>
-					<?= $this->view()->render(
-						array('element' => 'recentfeed'),
-						array('recentfeed' => $recentfeed)
-					)?>
-				<?php endif; ?>
-				
-				<div class="row">
-					<div class="page-header">
-						<h1>
-							<div><?= $page['header'] ?></div>
-							<small>
-								<div><?= $page['subheader'] ?></div>
-							</small>
-						</h1>
-						<div class="row thread-info">
-							<div class="col-xs-6">
-								<?php if (isset($page['author'])): ?>
-									Created by <span class="glyphicon glyphicon-user"></span>
-									<?= $page['author'] ?>
-								<?php endif; ?>
-							</div>
-							<div class="col-xs-6">
-								<div class="pull-right">
-									<?php if (isset($page['date'])): ?>
-										Created on <span class="glyphicon glyphicon-time"></span>
-										<?= date("D, d M Y g:i:s A", strtotime($page['date'])); ?>
-									<?php endif; ?>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
 				<?php if (!$authorized): ?>
 					<?= $this->view()->render(array('element' => 'loginforum'))?>
 				<?php endif; ?>

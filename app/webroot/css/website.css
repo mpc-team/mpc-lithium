@@ -1,6 +1,5 @@
-
-#navbar-copyright { color: #888888; }
-#navbar-copyright { padding: 20px; }
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Signika);
 
 #image-banner-login { 
 	max-height: 300px;
@@ -16,16 +15,42 @@ textarea.form-control {
 	height: 15em; 
 }
 
-body { padding-top: 50px; padding-bottom: 49px; }
+/* Html Style */
 html { background: url("/img/background.png"); }
 html { background-attachment: fixed !IMPORTANT; }
 html { background-repeat: no-repeat; }
 html { background-size: cover; }
 html { height: 100%; min-height: 100%; }
-html body { height: inherit; }
-html body { background: transparent; } 
 
+/* Body Style */
+body { padding-top: 50px; padding-bottom: 49px; }
+body { height: inherit; }
+body { background: transparent; } 
+body {	font-family: "Signika"; }
+
+/* Header Styles */
+h1, h2, h3 {	
+	font-family: "Oswald"; 
+	font-weight: 900;
+}
+h5 {
+	font-size: 12pt;
+	font-family: "Oswald";
+	font-weight: 550;
+	padding-bottom: 5px;
+}
+
+.panel-forum h5 { font-size: 14pt; }
+
+/* Paragraph Style */
 p { margin-bottom: 0px; }
+
+/* Breadcrumb Style */
+.breadcrumb-text { 
+	display: inline;
+	font-size: 12pt;
+	font-family: "Oswald"; 
+}
 
 ul.nav li.dropdown:hover > ul.dropdown-menu { 
 	display: block; 
@@ -72,9 +97,15 @@ a:hover > span.glyphicon-plus,
 a:hover > span.glyphicon-plus { color: #ffffff; }
 .panel > .page-header > h3 { margin-bottom: 0px; }
 
+.profile-header { padding-top: 30px; }
+.profile-content { padding-top: 30px; }
+
+.profile-content .panel,
 .forum .content .panel { padding: 0px; }
 .forum .content .panel-group { margin-bottom: 10px; }
-.forum .content .content-message img { max-width: 100%; max-height: 300; }
+.forum .content .content-message img { max-width: 100%; max-height: 450px; }
+.profile-content .recentfeed-content img,
+.forum .content .recentfeed-content img { max-width: 100%; max-height: 100px; }
 
 .content-message a,
 .content-message small,
@@ -112,6 +143,8 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 .panel-group.panel-newthread { padding-top: 20px; }
 .panel > a.btn { width: 100%; }
 
+.profile-content .panel a.btn:hover,
+.profile-content .panel a.btn:active,
 .forum .panel a.btn:hover,
 .forum .panel a.btn:active { 
 	background-color: rgba(255,255,255,0.2); 
@@ -135,6 +168,7 @@ a:hover > span.glyphicon-plus { color: #ffffff; }
 	background-color: rgba(0, 0, 0, 0.15);
 	padding-left: 5px;
 	padding-right: 5px;
+	padding-bottom: 115px;
 	border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 

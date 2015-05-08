@@ -22,8 +22,15 @@ $self = $this;
 			<div class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading page-header">
-						<h1>Clan MPC<br><small>Members</small></h1>
-						Currently <?= $count ?> <?= ($count > 1) ? "members have" : "member has" ?> registered.
+						<h1>
+							<div class="title">Clan MPC</div>
+							<small>
+								<div class="subtitle">Members</div>
+							</small>
+						</h1>
+						<h4>
+							Currently <b><?= $count ?></b> <?= ($count > 1) ? "members have" : "member has" ?> registered.
+						</h4>
 					</div>
 				</div>
 			</div>

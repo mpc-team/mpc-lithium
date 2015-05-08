@@ -137,6 +137,16 @@ EOD;
 };
 
 ?>
+<div class="row">
+	<div class="page-header">
+		<h1>
+			<div><?= $page['header'] ?></div>
+			<small>
+				<div><?= $page['subheader'] ?></div>
+			</small>
+		</h1>
+	</div>
+</div>
 <?php echo $newthread($authorized, $texttags, "/thread/create/{$id}"); ?>
 <?php if ($threads): ?>
 	<?php foreach ($threads as $thread): ?>
@@ -147,16 +157,18 @@ EOD;
 					<div class="col-xs-6">
 						<a class="btn" href="/thread/view/<?= $thread['id'] ?>">
 							<h5>
-								<div class="row">
+								<div class="row pull-left">
 									<?= $thread['name'] ?>
 								</div>
-								<div class="row">
+								<br>
+								<div class="row pull-left">
 									<small>
 										<span class="glyphicon glyphicon-user"></span> 
 										<?= $thread['author'] ?>
 									</small>
 								</div>
-								<div class="row">
+								<br>
+								<div class="row pull-left">
 									<small>
 										<span class="glyphicon glyphicon-time"></span>  
 										<?= date("D, d M Y g:i:s A", strtotime($thread['tstamp'])); ?>

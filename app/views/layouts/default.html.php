@@ -14,7 +14,7 @@
  * "Logout" can be achieved by checking the authentication information.
  */
 use lithium\security\Auth;
-	
+
 ?>
 <!doctype html>
 <html>
@@ -22,7 +22,7 @@ use lithium\security\Auth;
 	<?php echo $this->html->charset();?>
 	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array('bootstrap', 'simple-sidebar', 'website', 'font-awesome')); ?>
-	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'util')); ?>
+	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'util', 'markup')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>

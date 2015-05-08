@@ -12,8 +12,10 @@ $navigation = function($path, $links) {
 		$active = ($i == $pathcount - 1) ? " class='active'" : "";
 		$html .= "<li{$active}>";
 		$html .= "<a href='{$links[$i]}'>";
-		$html .= ($i == 0) ? navglyph('th-list') : "";
+		$html .= "<div class='breadcrumb-text'>";
+		$html .= ($i == 0) ? "<span class='glyphicon glyphicon-th-list'></span> " : "";
 		$html .= $path[$i];
+		$html .= "</div>";
 		$html .= "</li>";
 		$html .= "</a>";
 	}

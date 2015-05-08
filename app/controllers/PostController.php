@@ -59,7 +59,7 @@ class PostController extends ContentController {
 						'uid' => $authorized['id']
 					));
 					if ($message->save()) {
-						return $this->redirect("/thread/view/{$id}");
+						return $this->redirect("/thread/view/{$id}#forum-thread-message-{$message->id}");
 					}
 				}
 			}

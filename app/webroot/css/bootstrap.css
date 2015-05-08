@@ -4375,7 +4375,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444444;
 }
 .breadcrumb {
-	font-size: 9pt;
+	font-family: "Oswald";
+	font-size: 12pt;
   padding: 8px 15px;
   margin-bottom: 20px;
   list-style: none;

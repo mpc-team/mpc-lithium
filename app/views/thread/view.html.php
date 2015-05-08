@@ -112,6 +112,28 @@ EOD;
 };
 
 ?>
+<div class="row">
+	<div class="page-header">
+		<h1>
+			<div><?= $page['header'] ?></div>
+			<small>
+				<div><?= $page['subheader'] ?></div>
+			</small>
+		</h1>
+		<div class="row thread-info">
+			<div class="col-xs-6">				
+				Created by <span class="glyphicon glyphicon-user"></span>
+				<?= $page['author'] ?>
+			</div>
+			<div class="col-xs-6">
+				<div class="pull-right">
+					Created on <span class="glyphicon glyphicon-time"></span>
+					<?= date("D, d M Y g:i:s A", strtotime($page['date'])); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php if ($messages): ?>
 	<?php foreach ($messages as $post): ?>
 		<div class="panel-group">
