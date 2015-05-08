@@ -8,15 +8,16 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 use app\models\Permissions;
+use app\models\Timestamp;
 
 class ThreadController extends ContentController {
 
+	public static function clean($text) {
 	/**
 	 * clean
 	 *	Cleans a Thread name. Removes carriage-returns and linefeeds and any trailing whitespace.
 	 *	HTML tags are not allowed in titles either, but the markup tags are (they are not rendered though).
 	 */
-	public static function clean($text) {
 		return str_replace(
 			'\r', '',
 			str_replace(
@@ -29,12 +30,11 @@ class ThreadController extends ContentController {
 		);
 	}
 	
+	public function view() {
 	/**
 	 * view
 	 *	Displays the contents of the thread. Permissions need to be checked.
 	 */
-	public function view() {
-	
 		if (isset($this->request->id)) {
 			$this->_render['layout'] = 'forum';
 			$id = $this->request->id;
@@ -63,6 +63,7 @@ class ThreadController extends ContentController {
 					foreach ($messages as $key => $msg) {
 						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
 						$messages[$key]['author'] = $author->alias;
+						$messages[$key]['tstamp'] = Timestamp::toDisplayFormat($messages[$key]['tstamp']);
 						$messages[$key]['editpanel'] = array();
 						if ($authorized) { array_push($messages[$key]['editpanel'], 'quote'); }
 						if ($authorized['id'] == $author->id || Permissions::is_admin($authorized)) { 
@@ -73,6 +74,7 @@ class ThreadController extends ContentController {
 				
 				$thread = $thread->to('array');
 				$thread['author'] = $author->alias;
+				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp']);
 				$page = array(
 					'title' => $thread['name'],
 					'header' => $thread['name'],
@@ -88,13 +90,12 @@ class ThreadController extends ContentController {
 		return $this->redirect('/forum');
 	}
 	
+	public function delete() {
 	/**
 	 * delete
 	 *	Delete the specified thread. Do authorization checks before deleting, then redirect
 	 *	to the parent forum board.
 	 */
-	public function delete() {
-	
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');
@@ -113,6 +114,7 @@ class ThreadController extends ContentController {
 		return $this->redirect('/forum');
 	}
 	
+	public function create() {
 	/**
 	 * create
 	 *	For the 'create' action the ID taken corresponds to the Forum that is creating 
@@ -123,8 +125,6 @@ class ThreadController extends ContentController {
 	 *
 	 *	Threads inherit the Permission of the Forum they are created in.
 	 */
-	public function create() {
-	
 		if (isset($this->request->id) && $this->request->data) {
 			$id = $this->request->id;
 			$authorized = Auth::check('default');

@@ -18,9 +18,14 @@ $self = $this;
 	</h1>
 </div>
 <div class="profile-content">
-	<?= $this->view()->render(
-		array('element' => 'recentfeed'),
-		array('recentfeed' => $recentfeed)
-	)?>
+	<div class="row">
+		<h3>Recent Posts</h3>
+	</div>
+	<div class="row">
+		<?= $this->view()->render(
+			array('element' => 'recentfeed'),
+			array('recentfeed' => $recentfeed)
+		)?>
+	</div>
 </div>
 

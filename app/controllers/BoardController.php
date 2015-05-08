@@ -8,6 +8,7 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 use app\models\Permissions;
+use app\models\Timestamp;
 
 /**
  *
@@ -45,6 +46,7 @@ class BoardController extends ContentController {
 					$threads[$key]['author'] = $author['alias'];
 					$threads[$key]['count'] = count($messages);
 					$threads[$key]['recent'] = reset($messages);
+					$threads[$key]['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp']);
 					$is_author = ($author['id'] == $authorized['id']);
 					$is_admin = Permissions::is_admin($authorized);
 					$threads[$key]['editpanel'] = ($is_author || $is_admin);
@@ -54,18 +56,25 @@ class BoardController extends ContentController {
 							'conditions' => array('id' => $threads[$key]['recent']['uid'])
 						))->to('array');
 						$threads[$key]['recent']['author'] = $author['alias'];
+						$threads[$key]['recent']['tstamp'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp']);
 					}
 				}
 				
 				usort($threads, array("self", "thread_sort"));
 				return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
+				
 			}
 		}
 		
 		return $this->redirect('/forum');
+		
 	}
 	
 	public static function thread_sort($a, $b) {
+	/**
+	 * 	Threads are sorted with the "usort" function, this is the comparison
+	 *	function that determines sorting order.
+	 */
 		return $a['recent']['tstamp'] < $b['recent']['tstamp'];
 	}
 }

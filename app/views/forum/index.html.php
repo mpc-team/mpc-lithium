@@ -5,10 +5,15 @@ $this->title($page['title']);
 $self = $this;
 
 ?>
-<?= $this->view()->render(
-	array('element' => 'recentfeed'),
-	array('recentfeed' => $recentfeed)
-)?>
+<div class="row">
+	<h3>Recent Activity</h3>
+</div>
+<div class="row">
+	<?= $this->view()->render(
+		array('element' => 'recentfeed'),
+		array('recentfeed' => $recentfeed)
+	)?>
+</div>
 <div class="row">
 	<div class="page-header">
 		<h1>

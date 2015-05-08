@@ -4,6 +4,9 @@ $this->title($page['title']);
 
 $self = $this;
 
+/**
+ *	
+ */
 $userpanel = function($mid, $options) {
 	$html = "<div class='row usertool'>";
 	$html .= "<div class='col-xs-2'>";
@@ -58,59 +61,6 @@ EOD;
 	$html .= "</div></div>";
 	return $html;
 };
-
-$texttags = function($id) {
-	$helper = function ($id, $title, $class, $icon) {
-		$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class}' data-id='{$id}'>";
-		$result .= "<i class='fa fa-{$icon}'></i>";
-		$result .= "</button>";
-		return $result;
-	};
-	$helpers = array(
-		array('title' => 'Bold',             'class' => 'bold',        'icon' => 'bold'),
-		array('title' => 'Italic',           'class' => 'italic',      'icon' => 'italic'),
-		array('title' => 'Underline',        'class' => 'underline',   'icon' => 'underline'),
-		array('title' => 'Strikethrough',    'class' => 'strike',      'icon' => 'strikethrough'),
-		array('title' => 'Subscript',        'class' => 'subscript',   'icon' => 'subscript'),
-		array('title' => 'Superscript',      'class' => 'superscript', 'icon' => 'superscript'),
-		array('title' => 'List',             'class' => 'ulist',       'icon' => 'list-ul'),
-		array('title' => 'List Item',        'class' => 'ulist-item',  'icon' => 'asterisk'),
-		array('title' => 'Paragraph',        'class' => 'paragraph',   'icon' => 'paragraph'),
-		array('title' => 'Center Alignment', 'class' => 'center',      'icon' => 'align-center'),
-		array('title' => 'Internet Link',    'class' => 'link',        'icon' => 'link'),
-		array('title' => 'Image Reference',  'class' => 'image',       'icon' => 'picture-o')
-	);
-	$html = "<span class='dropdown'>";
-	$html .=
-<<<EOD
-		<button type='button' class='btn btn-edit dropdown-toggle' data-toggle='dropdown'>
-			<i class='fa fa-header'></i>
-		</button>
-		<ul class='dropdown-menu' role='menu'>
-			<li>
-				<button type='button' class='btn btn-edit edit-tag-header1' data-id='{$id}'>
-					<h1>Heading 1</h1>
-				</button>
-			</li>
-			<li>
-				<button type='button' class='btn btn-edit edit-tag-header2' data-id='{$id}'>
-					<h2>Heading 2</h2>
-				</button>
-			</li>
-			<li>
-				<button type='button' class='btn btn-edit edit-tag-header3' data-id='{$id}'>
-					<h3>Heading 3</h3>
-				</button>
-			</li>
-		</ul>
-EOD;
-	$html .= "</span>";
-	foreach ($helpers as $h):
-		$html .= $helper($id, $h['title'], $h['class'], $h['icon']);
-	endforeach;
-	return $html;
-};
-
 ?>
 <div class="row">
 	<div class="page-header">
@@ -128,7 +78,7 @@ EOD;
 			<div class="col-xs-6">
 				<div class="pull-right">
 					Created on <span class="glyphicon glyphicon-time"></span>
-					<?= date("D, d M Y g:i:s A", strtotime($page['date'])); ?>
+					<?= $page['date'] ?>
 				</div>
 			</div>
 		</div>
@@ -149,7 +99,7 @@ EOD;
 							<div class="col-xs-6">
 								<div class="row pull-right">
 									<span class="glyphicon glyphicon-time"></span>
-									<?= date("D, d M Y g:i:s A", strtotime($post['tstamp'])); ?>
+									<?= $post['tstamp'] ?>
 								</div>
 							</div>
 						</div>
@@ -163,7 +113,10 @@ EOD;
 								</div>
 							<?php endif; ?>
 							<div class="row">
-								<?php echo $texttags($post['id']); ?>
+								<?= $this->view()->render(
+									array('element' => 'texttags'),
+									array('id' => $post['id'])
+								)?>
 							</div>
 							<div class="row">
 								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>

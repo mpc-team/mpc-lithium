@@ -7,6 +7,7 @@ use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
+use app\models\Timestamp;
 
 class ProfileController extends \lithium\action\Controller {
 
@@ -29,6 +30,7 @@ class ProfileController extends \lithium\action\Controller {
 					$recentfeed[$key]['author'] = $authorized['alias'];
 					$recentfeed[$key]['thread'] = $thread->name;
 					$recentfeed[$key]['forum']  = $forum->name;
+					$recentfeed[$key]['tstamp']  = Timestamp::toDisplayFormat($recent['tstamp']);
 				}
 			}
 			return compact('authorized', 'recentfeed');

@@ -7,6 +7,8 @@ use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
+use app\models\Permissions;
+use app\models\Timestamp;
 
 class ForumController extends \lithium\action\Controller {
 /**
@@ -33,7 +35,7 @@ class ForumController extends \lithium\action\Controller {
 			'order' => array('tstamp' => 'DESC')
 		))->to('array');
 	/**
-	 * 	Reference external models for additional information about the recent
+	 *	Reference external models for additional information about the recent
 	 *	Thread or Post.
 	 */
 		foreach ($recentfeed as $key => $recent) {
@@ -43,6 +45,7 @@ class ForumController extends \lithium\action\Controller {
 			$recentfeed[$key]['author'] = $author->alias;
 			$recentfeed[$key]['thread'] = $thread->name;
 			$recentfeed[$key]['forum'] = $forum->name;
+			$recentfeed[$key]['tstamp'] = Timestamp::toDisplayFormat($recent['tstamp']);
 		}		
 	/**
 	 *	Additional Forum information such as the amount of Threads.
