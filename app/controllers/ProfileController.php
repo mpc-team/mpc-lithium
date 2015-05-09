@@ -11,7 +11,7 @@ use app\models\Timestamp;
 
 class ProfileController extends \lithium\action\Controller {
 
-	const RECENT_LIMIT = 5;
+	const RECENT_LIMIT = 6;
 
 	public function index() {
 	/**

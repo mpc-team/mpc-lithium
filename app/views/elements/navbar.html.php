@@ -63,7 +63,7 @@ function is_current_active($current, $controller) {
 		</ul>
 		<ul class="nav navbar-nav navbar-right">			
 			<?php if ($authorized): ?>
-				<li class='dropdown <?= is_current_active('profile', $controller) ?>'>
+				<li class='dropdown <?= is_current_active(array('profile'), $controller) ?>'>
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
 						<span class='glyphicon glyphicon-user'></span>
 						<?= $authorized['alias'] ?> <span class='caret'></span>
