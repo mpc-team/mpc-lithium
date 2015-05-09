@@ -57,12 +57,21 @@ class ThreadController extends ContentController {
 					'link' => array("/forum", "/board/view/{$forum->id}", "/thread/view/{$id}")
 				);
 				
+				$thread = $thread->to('array');
+				$thread['author'] = $author->to('array');
+				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp'], array('time'));
+				$page = array(
+					'title' => $thread['name'],
+					'header' => $thread['name'],
+					'subheader' => $forum->name,
+				);
+				
 				if ($messages) {
 					reset($messages);
 					$messages[key($messages)]['first'] = true;
 					foreach ($messages as $key => $msg) {
 						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
-						$messages[$key]['author'] = $author->alias;
+						$messages[$key]['author'] = $author->to('array');
 						$messages[$key]['tstamp'] = Timestamp::toDisplayFormat($messages[$key]['tstamp'], array('time'));
 						$messages[$key]['editpanel'] = array();
 						if ($authorized) { array_push($messages[$key]['editpanel'], 'quote'); }
@@ -72,18 +81,7 @@ class ThreadController extends ContentController {
 					}
 				}
 				
-				$thread = $thread->to('array');
-				$thread['author'] = $author->alias;
-				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp'], array('time'));
-				$page = array(
-					'title' => $thread['name'],
-					'header' => $thread['name'],
-					'subheader' => $forum->name,
-					'author' => $thread['author'],
-					'date' => $thread['tstamp']
-				);
-				
-				return compact('authorized', 'page', 'messages', 'breadcrumbs', 'replyform');
+				return compact('authorized', 'page', 'thread', 'messages', 'breadcrumbs', 'replyform');
 			}
 		}
 		

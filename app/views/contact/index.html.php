@@ -9,12 +9,7 @@ $self = $this;
 	<div class='panel-group'>
 		<div class='panel panel-default'>
 			<div class='panel-heading page-header'>
-				<h1>
-					<div class="title">Clan MPC</div>
-					<small>
-						<div class="subtitle">Contact</div>
-					</small>
-				</h1>
+				<h1>Contact</h1>
 			</div>
 		</div>
 	</div>

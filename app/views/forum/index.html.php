@@ -14,15 +14,13 @@ $self = $this;
 		array('recentfeed' => $recentfeed)
 	)?>
 </div>
-<div class="row">
-	<div class="page-header">
-		<h1>
-			<div>Forum</div>
-			<small>
-				<div>Categories</div>
-			</small>
-		</h1>
-	</div>
+<div class="row forum-header">
+	<h1>
+		<div>Forum</div>
+		<small>
+			<div>Categories</div>
+		</small>
+	</h1>
 </div>
 <table class="table-forum-layout">
 	<?php foreach ($forums as $forum): ?>

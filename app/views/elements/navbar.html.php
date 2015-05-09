@@ -5,13 +5,9 @@
  * @ authorized - user that is currently authorized, associative array containing information
  * pulled from the Users model (id, email, alias)
  */
-function navglyph ($icon) { 
-	return "<span class='glyphicon glyphicon-{$icon}'></span> "; 
-}
-
 function navbar_link($class, $url, $icon, $text) {
 	$class = ($class != null) ? " class='{$class}'" : "";
-	$icon = ($icon != null) ? navglyph($icon) : "";
+	$icon = ($icon != null) ? "<span class='glyphicon glyphicon-{$icon}'></span> " : "";
 	$html = "<li{$class}><a href='{$url}'>";
 	$html .= ($icon) . " " . ($text);
 	$html .= "</a></li>";
@@ -24,31 +20,16 @@ function navbar_brand($class, $text) {
 }
 
 function is_current_active($current, $controller) {
-	return (strtolower($current) == strtolower($controller)) ? 'active' : '';
-}
-
-$navbar_user = function ($authenticated, $controller, $action) {
-	$navcaret = "<span class='caret'></span>";
-	$navdivider = "<li class='divider'></li>";
-	$result = '';
-	
-	if ($authenticated) {
-		$result .= "<li class='dropdown " . is_current_active('profile', $controller) . "'>";
-		$result .= "<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>";
-		$result .= navglyph('user');
-		$result .= "{$authenticated['alias']} {$navcaret}";
-		$result .= "</a>";
-		$result .= "<ul class='dropdown-menu' role='menu'>";
-		$result .= navbar_link(null, '/profile', null, 'Profile');
-		$result .= $navdivider;
-		$result .= navbar_link(null, '/logout', 'log-out', 'Logout');
-		$result .= "</ul> </li>";
-	} else {
-		$result .= navbar_link(is_current_active('signup', $controller), '/signup', null, 'Signup');
-		$result .= navbar_link(is_current_active('login', $controller), '/login', null, 'Login');
+	$result = false;
+	if (is_array($current)) {
+		foreach ($current as $allowed) {
+			if (strtolower($allowed) == strtolower($controller)) {
+				$result = true;
+			}
+		}
 	}
-	return $result;
-};
+	return ($result) ? 'active' : '';
+}
 ?>
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-header">
@@ -58,14 +39,14 @@ $navbar_user = function ($authenticated, $controller, $action) {
 			<span class="icon-bar"></span>
 		</button>
 		<ul class="nav navbar-nav">
-			<?php echo navbar_brand(is_current_active('pages', $controller), 'MPC'); ?>
+			<?php echo navbar_brand(is_current_active(array('pages'), $controller), 'MPC'); ?>
 		</ul>
 	</div>
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
-			<?php echo navbar_link(is_current_active('contact', $controller), '/contact', null, 'Contact'); ?>
-			<?php echo navbar_link(is_current_active('members', $controller), '/members', null, 'Members'); ?>
-			<?php echo navbar_link(is_current_active('forum', $controller), '/forum', null, 'Forum'); ?>
+			<?php echo navbar_link(is_current_active(array('contact'), $controller), '/contact', null, 'Contact'); ?>
+			<?php echo navbar_link(is_current_active(array('members'), $controller), '/members', null, 'Members'); ?>
+			<?php echo navbar_link(is_current_active(array('forum', 'board', 'thread'), $controller), '/forum', null, 'Forum'); ?>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
 					Gaming Room
@@ -81,7 +62,22 @@ $navbar_user = function ($authenticated, $controller, $action) {
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">			
-			<?php echo $navbar_user($authorized, $controller, $action); ?>
+			<?php if ($authorized): ?>
+				<li class='dropdown <?= is_current_active('profile', $controller) ?>'>
+					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+						<span class='glyphicon glyphicon-user'></span>
+						<?= $authorized['alias'] ?> <span class='caret'></span>
+					</a>
+					<ul class='dropdown-menu' role='menu'>
+						<?php echo navbar_link(null, '/profile', null, 'Profile') ?>
+						<li class='divider'></li>
+						<?php echo navbar_link(null, '/logout', 'log-out', 'Logout') ?>
+					</ul>
+				</li>
+			<?php else: ?>
+				<?php echo navbar_link(is_current_active(array('signup'), $controller), '/signup', null, 'Signup') ?>
+				<?php echo navbar_link(is_current_active(array('login'), $controller), '/login', null, 'Login') ?>
+			<?php endif; ?>
 		</ul>
 	</div>
 </nav>

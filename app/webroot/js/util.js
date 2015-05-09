@@ -106,7 +106,7 @@ function validateSignup () {
 
 //*************************************************************************
 //*
-//*		Members // Search
+//*		Members 
 //*
 //*************************************************************************
 
@@ -150,8 +150,10 @@ function doFilter (criteria, userList, filterBy) {
 function htmlTableEmail (user) {
 	return "<td>" + user.email + "</td>";
 }
-function htmlTableAlias (user) {
-	return "<td class='col-xs-6'><i class='fa fa-user'></i> " + user.alias + "</td>";
+function htmlTableAlias (user, link) {
+	var result = "<td class='col-xs-6'>";
+	result += "<a href='" + link + "'><i class='fa fa-user'></i> " + user.alias + "</a></td>";
+	return  result;
 }
 function htmlTableClass (rownum) {
 	return (rownum % 2 == 0) ? "alt" : "";
@@ -175,7 +177,7 @@ function updateList (elements, userList, options) {
 	var result = '';
 	for (var i = 0; i < userList.length; i++)  {
 		result += "<tr class='row " + htmlTableClass(i) + "'>";
-		result += htmlTableAlias(userList[i]);
+		result += htmlTableAlias(userList[i], "/profile/view/" + userList[i].id);
 		if (options.indexOf("admin") >= 0) {
 			result += htmlTableEmail(userList[i]);
 		}

@@ -62,25 +62,24 @@ EOD;
 	return $html;
 };
 ?>
-<div class="row">
-	<div class="page-header">
-		<h1>
-			<div><?= $page['header'] ?></div>
-			<small>
-				<div><?= $page['subheader'] ?></div>
-			</small>
-		</h1>
-		<div class="row thread-info">
-			<div class="col-xs-6">				
-				Created by <span class="glyphicon glyphicon-user"></span>
-				<?= $page['author'] ?>
-			</div>
-			<div class="col-xs-6">
-				<div class="pull-right">
-					Created on <span class="glyphicon glyphicon-time"></span>
-					<?= $page['date'] ?>
-				</div>
-			</div>
+<div class="row forum-header">
+	<h1>
+		<div><?= $page['header'] ?></div>
+		<small>
+			<div><?= $page['subheader'] ?></div>
+		</small>
+	</h1>
+	<div class="col-xs-6">				
+		Created by 
+		<a href="/profile/view/<?= $thread['author']['id'] ?>">
+			<span class="glyphicon glyphicon-user"></span>
+			<?= $thread['author']['alias'] ?>
+		</a>
+	</div>
+	<div class="col-xs-6">
+		<div class="pull-right">
+			Created on <span class="glyphicon glyphicon-time"></span>
+			<?= $thread['tstamp'] ?>
 		</div>
 	</div>
 </div>
@@ -93,8 +92,10 @@ EOD;
 					<div class="row">
 						<div class="panel-messages-header">
 							<div class="col-xs-6">
-								<span class="glyphicon glyphicon-user"></span>
-								<?= $post['author'] ?>
+								<a href="/profile/view/<?= $post['author']['id'] ?>">
+									<span class="glyphicon glyphicon-user"></span>
+									<?= $post['author']['alias'] ?>
+								</a>
 							</div>
 							<div class="col-xs-6">
 								<div class="row pull-right">

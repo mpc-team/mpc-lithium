@@ -5,16 +5,6 @@
  * @copyright     Copyright 2013, Union of RAD (http://union-of-rad.org)
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
- 
-/**
- * Authentication is required so that we can adjust our layout depending on
- * whether a member is logged-in or not.
- *	
- * As a basic example, displaying "Login/Signup" on the navigation bar instead of
- * "Logout" can be achieved by checking the authentication information.
- */
-use lithium\security\Auth;
-
 ?>
 <!doctype html>
 <html>

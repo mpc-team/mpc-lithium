@@ -24,37 +24,8 @@
 	<div class="container">
 		<div class="forum">
 			<div class="content">
-		
-				<div class="page-header">
-					<img id="banner-image" src="/img/mpclogo.png" class="img-responsive" alt="mpclogo.png"></img>
-				</div>
-				
-				<?= $this->view()->render(
-					array('element' => 'breadcrumbs'),
-					array('breadcrumbs' => $breadcrumbs)
-				)?>
-				
-				<?php if (!$authorized): ?>
-					<?= $this->view()->render(array('element' => 'loginforum'))?>
-				<?php endif; ?>
 				
 				<?php echo $this->content(); ?>
-		
-				<div class="page-footer">
-					<!-- No Content -->
-				</div>
-			
-				<?= $this->view()->render(
-					array('element' => 'breadcrumbs'),
-					array('breadcrumbs' => $breadcrumbs)
-				)?>
-				
-				<?php if (isset($replyform)): ?>
-					<?= $this->view()->render(
-						array('element' => 'replyform'),
-						array('replyform' => $replyform)
-					)?>
-				<?php endif; ?>
 			
 			</div>
 		</div>

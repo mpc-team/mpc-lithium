@@ -25,15 +25,13 @@ $editpanel = function($tid) {
 	return $html;
 };
 ?>
-<div class="row">
-	<div class="page-header">
-		<h1>
-			<div><?= $page['header'] ?></div>
-			<small>
-				<div><?= $page['subheader'] ?></div>
-			</small>
-		</h1>
-	</div>
+<div class="row forum-header">
+	<h1>
+		<div><?= $page['header'] ?></div>
+		<small>
+			<div><?= $page['subheader'] ?></div>
+		</small>
+	</h1>
 </div>
 <div class="panel-group panel-newthread">
 	<div class="panel-newthread">
