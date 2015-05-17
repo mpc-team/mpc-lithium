@@ -4,6 +4,8 @@ $this->title($page['title']);
 
 $self = $this;
 
+$category = null;
+
 ?>
 <div class="row">
 	<h3>Recent Activity</h3>
@@ -14,43 +16,34 @@ $self = $this;
 		array('recentfeed' => $recentfeed)
 	)?>
 </div>
-<div class="row forum-header">
+<div class="row page-header">
 	<h1>
-		<div>Forum</div>
-		<small>
-			<div>Categories</div>
-		</small>
+		<div>Forum </div>
+		<small><div>Categories</div></small>
 	</h1>
 </div>
-<table class="table-forum-layout">
-	<?php foreach ($forums as $forum): ?>
+<?php foreach ($categories as $category): ?>
+	<h3><?= $category['name'] ?></h3>
+		
+	<?php foreach ($category['forums'] as $forum): ?>		
+	<div class="row">
 		<div class="panel-group">
 			<div class="panel panel-default">
-				<div class="panel-category">
-					<!-- Forum Content -->
-					<div class="row">
-						<div class="col-xs-6">
-							<a class="btn" href="/board/view/<?= $forum['id'] ?>">
-								<div class="panel-forum">
-									<h5>
-										<?= $forum['name'] ?><br>
-										<small><?= $forum['descr'] ?></small>
-									</h5>
-								</div>
-							</a>
-						</div>
-						<div class="col-xs-1">
-							<h4>
-								<b><?= $forum['count'] ?></b><br>
-								<small><?= ($forum['count'] == 1) ? "thread" : "threads"; ?></small>
-							</h4>
-						</div>
-						<div class="col-xs-5">
-							<!-- Empty -->
-						</div>
+				<a class="btn" href="/board/view/<?= $forum['id'] ?>">
+					<div class="panel-forum">
+						<h5>
+							<?= $forum['name'] ?><br>
+							<small><?= $forum['descr'] ?></small><br>
+						</h5>
+						<h4>
+							<b><?= $forum['count'] ?></b>
+							<small><?= ($forum['count'] == 1) ? "thread" : "threads"; ?></small>
+						</h4>
 					</div>
-				</div>
+				</a>
 			</div>
 		</div>
+	</div>
 	<?php endforeach; ?>
-</table>
+
+<?php endforeach; ?>

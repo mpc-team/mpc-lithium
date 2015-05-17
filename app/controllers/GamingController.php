@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use lithium\security\Auth;
+use app\models\Users;
 
-class ContactController extends \lithium\action\Controller {
+class GamingController extends \lithium\action\Controller {
 	
-	public function index() { 
+	public function index() {		
 		$authorized = Auth::check('default');
 		
 		return compact('authorized');

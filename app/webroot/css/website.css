@@ -1,22 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Signika);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
 
-#banner-image { 
-	display: block;
-	max-height: 200px;
-	margin-left: auto;
-	margin-right: auto;
-}
-#image-brand-login { height: 400px; }
-
-textarea.form-control { 
-	/* font-size: 9pt; */
-	resize: none; 
-	width: 100%; 
-	height: 15em; 
-}
-
-/* Html Style */
 html { 
 	background: url("/img/background.png");
 	background-attachment: fixed !IMPORTANT;
@@ -24,16 +9,12 @@ html {
 	background-size: cover;
 	height: 100%; min-height: 100%; 
 }
-
-/* Body Style */
 body { 
 	padding-top: 50px;
 	height: inherit; 
 	background: transparent; 
-	font-family: "Signika"; 
+	font-family: "Titillium Web";
 }
-
-/* Header Styles */
 h1, h2, h3 {	
 	font-family: "Oswald"; 
 	font-weight: 900;
@@ -41,31 +22,76 @@ h1, h2, h3 {
 h5 {
 	font-size: 12pt;
 	font-family: "Oswald";
-	font-weight: 550;
+	font-weight: 500;
 	padding-bottom: 5px;
 }
 
-/* Navbar Styles */
 .navbar { 
 	font-family: "Oswald"; 
 	font-size: 14pt;
-	font-weight: 400;
+	font-weight: 500;
 }
 
+/* Make dropdown menus automatically dropdown when hovered. */
+ul.nav li.dropdown:hover > ul.dropdown-menu { display: block; }
+
+/* Prevent textarea boxes from being resized and set dimensions. */
+textarea.form-control { resize: vertical; height: 10em; }
+
+/* Formatting style for image displayed in MPC banner. */
+#banner-image { display: block; max-height: 200px; margin-left: auto; margin-right: auto; }
+
+/* Padding at the bottom of every page to allow the user to scroll as necessary
+	without being blocked by the end of the page. */
+.container { padding-bottom: 500px; }
+
+/* Panel Button Color and Highlighting */
+.panel a.btn { width: 100%; }
+
+/* Sidebar Shares Properties */
+.sidebar li > a:hover,
+.sidebar li > a:active,
+.panel a.btn:hover,
+.panel a.btn:active { 
+	color: #444444;
+	background-color: #b9b9b9;
+	border: 1px solid #cceeff;
+}
+
+/* Set Bold Style with "font-weight" property */
+b { font-weight: 900; } 
+
+/* Limit size elements for graphics and modules (videos). */
+img { width: auto; }
+iframe,
+img { max-width: 90%; }
+.recentfeed-content iframe,
+.recentfeed-content img { max-width: 80%; }
+
+/* Increase size of Forum Reply button */
+span.glyphicon-send { font-size: 22pt; } 
+
+/* Add divider and extra bottom space for the footer */
+.page-footer {	padding-top: 9px; margin-top: 50px; border-top: 1px solid #aaaaaa; }
+
+.sidebar-content { padding-left: 1em; }
+.sidebar li > a {
+	font-family: "Oswald";
+	font-size: 14pt;
+	font-weight: 500;
+	text-align: left;
+}
+
+.panel-forum { 
+	min-height: 80px; 
+	/* max-height: 120px;  */
+}
 .panel-forum h5 { font-size: 14pt; }
 
-/* Paragraph Style */
-p { margin-bottom: 0px; }
-
-/* Breadcrumb Style */
 .breadcrumb-text { 
 	display: inline;
 	font-size: 12pt;
 	font-family: "Oswald"; 
-}
-
-ul.nav li.dropdown:hover > ul.dropdown-menu { 
-	display: block; 
 }
 
 span.input-group-addon { height: 34px; width: 100px; }
@@ -74,139 +100,183 @@ span.input-group-addon { border-radius: 0px; }
 tr.alt { background-color: #2a2f2a; }
 tr.alt { border-top: 1px solid #232323; }
 
-.panel-newthread a.btn { color: #1a1a1a; }
-.panel-newthread a.btn:hover { color: #cccccc; }
-a.btn { 
-	padding: 10px; 
-	border-radius: 1px;
+a.btn:hover iframe,
+a.btn:hover img { 
+	filter: brightness(3); 
+	-webkit-filter: brightness(3); 
 }
+a.btn { 
+	padding: 7px; 
+	border-radius: 1px; 
+}
+
 a h1,
 a h2,
 a h3,
 a h4,
 a h5 { margin: 0px; }
 
-span.glyphicon-plus { 
-	font-size: 1.5em; 
-	color: #afafaf;
-}
+/* Bootstrap Enhancers */
+.panel { padding: 0px; width: 100%; }
+.panel-group { margin-bottom: 2px; }
+.pull-left { text-align: left; }
 
-span.glyphicon-log-in,
-span.glyphicon-log-out,
-span.glyphicon-send,
-span.glyphicon-new-window { padding-left: 5px; padding-right: 5px; }
-span.glyphicon-send { 
-	font-size: 30pt; 
-	margin-right: 7px; 
-	margin-bottom: 3px;
-}
-span.glyphicon-remove,
-span.glyphicon-check,
-span.glyphicon-trash,
-span.glyphicon-edit { margin: 2px 0px; }
-
-a:hover > span.glyphicon-plus,
-a:hover > span.glyphicon-plus { color: #ffffff; }
-.panel > .page-header > h3 { margin-bottom: 0px; }
-
-.profile-header { padding-top: 30px; }
+/****************************************************************** 
+ *
+ *	PROFILE STYLING
+ *
+ ******************************************************************/
+.profile-header,
 .profile-content { padding-top: 30px; }
 
-.profile-content .panel,
-.forum .content .panel { padding: 0px; }
-.forum .content .panel-group { margin-bottom: 10px; }
-.forum .content .content-message img { max-width: 100%; max-height: 450px; }
-.profile-content .recentfeed-content img,
-.forum .content .recentfeed-content img { max-width: 100%; max-height: 100px; }
+/****************************************************************** 
+ *
+ *	FORUM STYLING
+ *
+ ******************************************************************/
+.usertool { background: #1a1a1a; }
+.usertool > form { display: inline; }
 
-a.btn:hover img { -webkit-filter: brightness(2); }
+.usertool .btn-edit { text-align: left; font-weight: 600; }
+.usertool .btn-edit .glyphicon-file { font-size: 22pt; }
+ 
+.panel-control .panel-heading {	
+	font-size: inherit; 
+	padding: 5px 5px 5px 10px;
+}
 
-.content-message a,
-.content-message small,
-.content-message li,
-.content-message tr,
-.content-message td,
-.content-message h1,
-.content-message h2,
-.content-message h3,
-.content-message h4,
-.content-message p { 
+.forum-thread {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.forum-thread > div {
+	display: table-row;
+}
+.forum-thread > div > div { display: table-cell; }
+.forum-thread > div > a { 
+	display: table-cell; 
+	max-height: 70px;
+	vertical-align: top;
+}
+
+.forum-thread a.info,
+.forum-thread a.recent {
+	white-space: nowrap;
+	overflow: hidden;
+}
+.forum-thread a.recent .time { white-space: normal; }
+.forum-thread a.info .name { white-space: normal; }
+
+.forum-thread a.info { width: 55%; }
+
+.form-thread .count { width: 13%; }
+.forum-thread .count h4 { font-size: 18pt; }
+.forum-thread .count h4 small { font-size: 9pt; }
+
+.forum-thread a.recent { width: 32%; }
+
+.forum-thread a.info div { text-align: left; }
+.forum-thread a.recent div { text-align: right; }
+
+.forum-post { 
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 150px;
+}
+.forum-post > div { 
+	width: 25%;
+	display: table-row;
+}
+.forum-post > div > div { display: table-cell; }
+
+.forum-post .info { 
+	background-color: #222222;
+	padding: 10px; 
+	vertical-align: top;
+}
+ 
+.forum-post .content {
 	white-space: normal; 
 	word-wrap: break-word; 
 	margin-bottom: 0px; 
 	margin-top: 0px; 
-}
-.content-message { padding: 20px 5px 5px 5px; }
-
-.page-footer {
-	padding-top: 9px;
-	margin: 150px 0 0px;
-	border-top: 1px solid #aaaaaa;
+	width: 75%;
+	padding: 15px;
 }
 
-.form-signup { padding-bottom: 10px; }
-.signup-text { padding: 25px; }
-
-.forum .panel a h3,
-.forum .panel a h4 { margin-top: 0px; margin-bottom: 0px; }
-
-.panel-newthread > .panel > a.btn:hover {
-	background-color: rgba(185,185,255,0.7);
-}
-.panel-newthread .panel { background-color: #666666; }
-.panel-group.panel-newthread { padding-top: 20px; }
-.panel > a.btn { width: 100%; }
-
-.profile-content .panel a.btn:hover,
-.profile-content .panel a.btn:active,
-.forum .panel a.btn:hover,
-.forum .panel a.btn:active { 
-	background-color: rgba(255,255,255,0.2);
-	border: 1px solid rgba(190,220,255,0.8);
+.forum-post .info .time { font-size: 75%; }
+.forum-post .info .author { 
+	font-size: 12pt; 
+	font-family: "Oswald";
+	white-space: nowrap;
+	overflow: hidden;
 }
 
-.forum-header { 
-	font-size: 110%; 
-	padding-bottom: 10px;
+/****************************************************************** 
+ *
+ *	RECENT FEED
+ *
+ ******************************************************************/
+a .panel-recentfeed h1 { font-size: 26px; }
+a .panel-recentfeed h2 { font-size: 22px; }
+a .panel-recentfeed h3 { font-size: 18px; } 
+
+.panel-recentfeed {
+	min-height: 100px;
+	max-height: 100px;
+	height: 100px;
+	overflow: hidden;
+	word-wrap: break-word;
 }
-.panel-messages-header { font-size: 90%; }	
-.panel-messages > form { margin-top: -20px; }
-.panel-messages .col-xs-6 { padding: 0px; }
-.panel-messages { 
-	padding: 10px; 
-	min-height: 150px;
+
+.panel-recentfeed .preview {
+	padding: 0 0 0px 5px;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
-
-/* Recent Feed Style */
-
+@media (min-width: 630px) {
+	.panel-recentfeed { 
+		min-height: 180px; 
+		height: 180px;
+		max-height: 180px;
+	}
+}
 .panel-recentfeed .recentfeed-content {
-	font-size: 8pt;
+	font-size: 90%;
+	font-weight: 500;
 	background-color: rgba(0, 0, 0, 0.15);
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-bottom: 115px;
 	border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
-
-.panel-recentfeed {
-	padding: 5px;
-	min-height: 130px;
-	max-height: 130px;
+.panel-recentfeed .name {
+	padding: 2px 0 8px 0;
+	white-space: nowrap;
 	overflow: hidden;
 }
-
-@media (min-width: 499px) {
-	.panel-recentfeed { 
-		min-height: 170px; 
-		max-height: 170px;
-	}
+.panel-recentfeed-footer .author { 
+	font-family: "Oswald"; 
+	white-space: nowrap;
+	overflow: hidden;
 }
+.panel-recentfeed-footer .author,
+.panel-recentfeed-footer .time { width: 50%; }
+.panel-recentfeed-footer .author { float: left; text-align: left; }
+.panel-recentfeed-footer .time { float: right; text-align: right; }
+
+.panel-recentfeed-footer .time .glyphicon-time { font-size: 110%; }
+/* .panel-recentfeed .name,
+.panel-recentfeed .forum { font-size: 100%; } */
 
 .panel-recentfeed-footer {
 	padding: 0px;
 	padding-top: 8px;
-	font-size: 8pt;
+	font-size: 90%;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .col-md-4 .panel > a.btn,
@@ -215,74 +285,40 @@ a.btn:hover img { -webkit-filter: brightness(2); }
 	text-align: left;
 	padding: 5px;
 }
-.col-xs-6 > .panel-group,
-.col-xs-4 > .panel-group {
-	padding-right: 5px; 
-	padding-left: 5px; 
-}
-
-/* Forum Styles */
-
-.forum .navbar-forum li > a { 
-	font-size: 9pt; 
-	padding: 5px;
-}
-
-.panel-category a.btn { min-height: 80px; }
-
 .col-xs-1,
-.col-xs-2 { 
+.col-xs-2 { text-align: center; }
+
+
+/****************************************************************** 
+ *
+ *	LOGIN & SIGNUP STYLING
+ *
+ ******************************************************************/
+.login > .panel { padding: 0 15px 5px 15px; }
+ 
+.signup { max-width: 500px; }
+.login { max-width: 700px; }
+.login,
+.signup { 
+	margin: auto;
 	text-align: center;
 }
-.col-xs-3 > a,
-.col-xs-4 > a,
-.col-xs-5 > a,
-.col-xs-6 > a { 
-	width: 100%; 
-	text-align: left;
-	/* padding-left: 10px; */
-}
-.row .col-xs-6 { min-height: 100%; max-height: 100%; }
-.col-xs-6 > .form-group { 
-	padding-right: 15px; 
-	padding-left: 15px; 
-}
-.table-forum-layout { width: 100%; }
 
-.row.usertool { background: #1a1a1a; }
-.row.usertool > form { display: inline; }
-
-/* Login Style */
-
-@media (min-width: 667px) {
-	.panel-login { 
-		max-width: 80%; 
-		margin: auto;
-	}
-}
-.panel-login h3,
-.panel-login h2,
-.panel-login h1 { margin-top: 0px; }
-.row-remember-me { padding: 10px 0px; }
-.row-remember-me span { font-weight: normal; }
-.content-signup {	
-	max-width: 500px;
-	min-width: 250px;
-}
-
-/* Create Thread Modal */
-
+/****************************************************************** 
+ * 
+ *
+ *
+ ******************************************************************/
 .modal-content { color: rgb(122, 183, 51); }
 .modal-body > .panel { background-color: transparent; }
 .modal-body > .panel-default > .form-group { margin-bottom: 20px; }
 
-/* Page Content Style */
 
-.container-fluid .content,
-.container .content { margin-bottom: 300px; }
-
-/* General Button Rules */
-
+/****************************************************************** 
+ *
+ *	FORUM TEXT-TAG STYLING
+ *
+ ******************************************************************/
 .edit-tag-header1 > h1,
 .edit-tag-header2 > h2,
 .edit-tag-header3 > h3 { 
@@ -290,66 +326,15 @@ a.btn:hover img { -webkit-filter: brightness(2); }
 	padding: 5px; 
 	margin: 0px;
 }
-
 .edit-tag-header1,
 .edit-tag-header2,
 .edit-tag-header3 { padding: 0px; }
 
-.btn-signup,
-.btn-login,
-.btn-reply { 	
-  color: #ffffff;
-	min-width: 100px;
-}
-
-.dropdown-menu > li > button { width: 100%; }
-
-.btn-reply { 
-	background-color: transparent; 
-	margin-left: auto;
-	margin-right: auto;
-}
-.btn-reply:hover {
-	color: #66aaee;
-	background-color: rgba(255,255,255,0.05);
-}
-.btn-reply-row { 
-	width: 100%;
-}
-.panel-reply .form-group { 
-	margin: 10px;
-	padding: 10px;
-	background-color: #1f1f1f; 
-}
-.panel-reply .input-group {
-	text-align: center;
-	padding: 0px;
-	width: 100%;
-}
-.panel > .page-header {
-	padding: 0px 15px;
-	border: 0px;
-}
-
-
-/* Signup & Login Buttons */
-
-.btn-signup { margin-top: 20px; }
-.btn-signup,
-.btn-login { background-color: #337ab7; }
-.btn-signup:hover,
-.btn-login:hover { 
-	color: #99dd99;
-	border-color: #225522; 
-}
-.btn-signup,
-.btn-login { 
-  color: #ffffff;
-	min-width: 100px;
-}
-
-/* Thread Control Buttons */
-
+/****************************************************************** 
+ *
+ *	USER TOOLS STYLING
+ *
+ ******************************************************************/
 .btn-delete,
 .btn-edit {	
 	font-size: 9pt;
@@ -364,6 +349,67 @@ a.btn:hover img { -webkit-filter: brightness(2); }
 	background-color: rgba(255,255,255,0.1); 
 }
 
+
+/****************************************************************** 
+ *
+ *	BUTTON STYLING
+ *
+ ******************************************************************/
+.btn-signup,
+.btn-login { background-color: #337ab7; }
+.btn-signup,
+.btn-login { color: #ffffff; }
+.btn-signup,
+.btn-login,
+.btn-reply { min-width: 100px; }
+.btn-reply { 
+	background-color: transparent; 
+	margin-left: auto;
+	margin-right: auto;
+	color: #66aaee;
+}
+.btn-reply:hover {
+	color: #ffffff;
+	background-color: rgba(255,255,255,0.05);
+} 
+
+/****************************************************************** 
+ *
+ *	REPLY PANEL STYLING
+ *
+ ******************************************************************/
+.panel-reply { 
+	text-align: center; 
+	margin-right: auto;
+	margin-left: auto;
+}
+.panel-reply .header { margin: 10px; }
+.panel-reply .header { background-color: transparent; }
+.panel-reply .form-group { margin: 10px; }
+.panel-reply .form-group { background-color: #1f1f1f; }
+.panel-reply .input-group {
+	text-align: center;
+	padding: 0px;
+	width: 100%;
+}
+
+/****************************************************************** 
+ *
+ *	MEMBERS STYLING
+ *
+ ******************************************************************/
+/* If the Members page gets really small the table acts funny, this is
+	to ensure that does not happen and to make the table values look
+	decent at a small resolution */
+.members table { 
+	table-layout: fixed;
+}
+.members .email ,
+.members .name { 
+	white-space: nowrap;
+	overflow: hidden;
+}
+ 
 
 /*Streamer's Global CSS Data Only */
 

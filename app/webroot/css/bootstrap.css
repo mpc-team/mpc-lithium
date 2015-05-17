@@ -1243,7 +1243,7 @@ dt {
 dd {
   margin-left: 0;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .dl-horizontal dt {
     float: left;
     width: 160px;
@@ -1271,8 +1271,9 @@ blockquote {
 	background: rgba(0, 0, 0, 0.15);
   border-left: 10px solid rgba(0, 0, 0, 0.3);
 	font-style: italic;
-  margin: 0.4em 20px;
-	padding: 10px 10px;
+	font-size: 95%;
+  margin: 0.4em 5px;
+	padding: 5px 5px;
   quotes: "\201C""\201D";
 }
 blockquote:before {
@@ -1739,7 +1740,7 @@ pre code {
     margin-left: 0%;
   }
 }
-@media (min-width: 499px) {
+@media (min-width: 630px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
@@ -3312,7 +3313,7 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 1px;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-right .dropdown-menu {
     left: auto;
     right: 0;
@@ -3841,12 +3842,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar {
     border-radius: 4px;
   }
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-header {
     float: left;
   }
@@ -3861,7 +3862,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse.in {
   overflow-y: auto;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-collapse {
     width: auto;
     border-top: 0;
@@ -3889,7 +3890,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-fixed-bottom .navbar-collapse {
   max-height: 340px;
 }
-@media (max-device-width: 653px) and (orientation: landscape) {
+@media (max-device-width: 500px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 100px;
@@ -3904,7 +3905,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .container .navbar-header,
 .container-fluid .navbar-header { height: 52px; }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .container > .navbar-header,
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
@@ -3917,7 +3918,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   border-bottom: 0 0 1px;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-static-top {
     border-radius: 0;
   }
@@ -3929,7 +3930,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   left: 0;
   z-index: 1030;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     border-radius: 0;
@@ -3958,7 +3959,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand > img {
   display: block;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
@@ -3988,7 +3989,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-toggle {
     display: none;
   }
@@ -4024,7 +4025,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     background-image: none;
   }
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-nav {
     float: left;
     margin: 0;
@@ -4106,7 +4107,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom: 0;
   }
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-form {
     width: auto;
     border: 0;
@@ -4146,14 +4147,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-text {
     float: left;
     margin-left: 15px;
     margin-right: 15px;
   }
 }
-@media (min-width: 653px) {
+@media (min-width: 500px) {
   .navbar-left {
     float: left !important;
   }

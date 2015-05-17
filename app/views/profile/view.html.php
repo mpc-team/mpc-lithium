@@ -1,17 +1,20 @@
 <?php
 
-$this->title('Member Profile');
+$this->title($user['alias'] . "'s Profile");
 
 $self = $this;
 
 ?>
-<div class="profile-header">
-	<h1>
-		<div class="title">
-			<?= $user['alias']; ?>
-		</div>
-	</h1>
+<div class="page-header">
+	<div class="profile-header">
+		<h1>
+			<div class="title">
+				<?= $user['alias']; ?>
+			</div>
+		</h1>
+	</div>
 </div>
+
 <div class="profile-content">
 	<div class="row">
 		<h3>Recent Posts</h3>
@@ -24,3 +27,6 @@ $self = $this;
 	</div>
 </div>
 
+<div class="page-footer">
+	<!-- Empty-->
+</div>

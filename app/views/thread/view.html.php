@@ -4,9 +4,6 @@ $this->title($page['title']);
 
 $self = $this;
 
-/**
- *	
- */
 $userpanel = function($mid, $options) {
 	$html = "<div class='row usertool'>";
 	$html .= "<div class='col-xs-2'>";
@@ -79,7 +76,7 @@ EOD;
 	<div class="col-xs-6">
 		<div class="pull-right">
 			Created on <span class="glyphicon glyphicon-time"></span>
-			<?= $thread['tstamp'] ?>
+			<?= $thread['date'] ?>
 		</div>
 	</div>
 </div>
@@ -88,48 +85,53 @@ EOD;
 		<div class="panel-group">
 			<div class="panel panel-default">
 				<a id="forum-thread-message-<?= $post['id'] ?>"></a>
-				<div class="panel-messages">
-					<div class="row">
-						<div class="panel-messages-header">
-							<div class="col-xs-6">
-								<a href="/profile/view/<?= $post['author']['id'] ?>">
-									<span class="glyphicon glyphicon-user"></span>
-									<?= $post['author']['alias'] ?>
-								</a>
-							</div>
-							<div class="col-xs-6">
-								<div class="row pull-right">
+				
+				<div class="row">
+					<div class="forum-post">
+						
+						<div>
+							<div class="info">
+								<div class="author">
+									<a href="/profile/view/<?= $post['author']['id'] ?>">
+										<span class="glyphicon glyphicon-user"></span>
+										<?= $post['author']['alias'] ?>
+									</a>
+								</div>
+								<div class="time">
 									<span class="glyphicon glyphicon-time"></span>
-									<?= $post['tstamp'] ?>
+									<?= $post['date'] ?>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="content-message edit-content" data-id="<?= $post['id'] ?>">	<?php echo $post['content']; ?></div>
-						<div class="content-message edit-content-toggle" data-id="<?= $post['id'] ?>">
-							<?php if (isset($post['first'])): ?>
-								<div class="row">
-									<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+						
+							<div class="content">
+								<div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
+								<div class=" edit-content-toggle" data-id="<?= $post['id'] ?>">
+									<?php if (isset($post['first'])): ?>
+										<div class="row">
+											<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+										</div>
+									<?php endif; ?>
+									
+									<?= $this->view()->render(
+										array('element' => 'texttags'),
+										array('id' => $post['id'], 'disabled' => '')
+									)?>
+										
+									<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>		
 								</div>
-							<?php endif; ?>
-							<div class="row">
-								<?= $this->view()->render(
-									array('element' => 'texttags'),
-									array('id' => $post['id'])
-								)?>
 							</div>
-							<div class="row">
-								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>
-							</div>
+							
 						</div>
 					</div>
 				</div>
+				
 				<?php echo $userpanel($post['id'], $post['editpanel']); ?>
+				
 			</div>
 		</div>
 	<?php endforeach; ?>
 <?php endif; ?>
+
 <script type="text/javascript">
 	$( document ).ready(function() {
 		$('.edit-content').each(function(index) {

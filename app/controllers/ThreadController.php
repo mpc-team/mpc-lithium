@@ -15,24 +15,22 @@ class ThreadController extends ContentController {
 	public static function clean($text) {
 	/**
 	 * clean
+	 *
 	 *	Cleans a Thread name. Removes carriage-returns and linefeeds and any trailing whitespace.
 	 *	HTML tags are not allowed in titles either, but the markup tags are (they are not rendered though).
 	 */
-		return str_replace(
-			'\r', '',
-			str_replace(
-				'\n', '',
-				str_replace(
-					'\r\n', '', 
-					strip_tags(trim($text))
-				)
-			)
-		);
+		$text = strip_tags(trim($text));
+		$text = str_replace('"', '""', $text);
+		$text = str_replace('\r\n', '', $text);
+		$text = str_replace('\n', '', $text);
+		$text = str_replace('\r', '', $text);
+		return $text;
 	}
 	
 	public function view() {
 	/**
 	 * view
+	 *
 	 *	Displays the contents of the thread. Permissions need to be checked.
 	 */
 		if (isset($this->request->id)) {
@@ -58,8 +56,9 @@ class ThreadController extends ContentController {
 				);
 				
 				$thread = $thread->to('array');
+				$thread['name'] = stripslashes($thread['name']);
 				$thread['author'] = $author->to('array');
-				$thread['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp'], array('time'));
+				$thread['date'] = Timestamp::toDisplayFormat($thread['tstamp'], array());
 				$page = array(
 					'title' => $thread['name'],
 					'header' => $thread['name'],
@@ -71,8 +70,9 @@ class ThreadController extends ContentController {
 					$messages[key($messages)]['first'] = true;
 					foreach ($messages as $key => $msg) {
 						$author = Users::find('first', array('conditions' => array('id' => $msg['uid'])));
+						$messages[$key]['content'] = stripslashes($messages[$key]['content']);
 						$messages[$key]['author'] = $author->to('array');
-						$messages[$key]['tstamp'] = Timestamp::toDisplayFormat($messages[$key]['tstamp'], array('time'));
+						$messages[$key]['date'] = Timestamp::toDisplayFormat($messages[$key]['tstamp'], array());
 						$messages[$key]['editpanel'] = array();
 						if ($authorized) { array_push($messages[$key]['editpanel'], 'quote'); }
 						if ($authorized['id'] == $author->id || Permissions::is_admin($authorized)) { 
@@ -91,6 +91,7 @@ class ThreadController extends ContentController {
 	public function delete() {
 	/**
 	 * delete
+	 *
 	 *	Delete the specified thread. Do authorization checks before deleting, then redirect
 	 *	to the parent forum board.
 	 */
@@ -103,6 +104,10 @@ class ThreadController extends ContentController {
 				$is_author = ($authorized['id'] == $thread->uid);
 				$is_admin  = Permissions::is_admin($authorized);
 				if ($is_author || $is_admin) {
+					$messages = Messages::find('all', array('conditions' => array('tid' => $id)));
+					foreach ($messages as $message) {
+						$message->delete();
+					}
 					$thread->delete();
 					$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
 					return $this->redirect("/board/view/{$forum->id}");
@@ -115,6 +120,7 @@ class ThreadController extends ContentController {
 	public function create() {
 	/**
 	 * create
+	 *
 	 *	For the 'create' action the ID taken corresponds to the Forum that is creating 
 	 *	he Thread. The page is rerouted to the Thread view using the newly created ID.
 	 *

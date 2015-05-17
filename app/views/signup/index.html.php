@@ -10,49 +10,47 @@ $icons = array(
 
 ?>
 <div class="row">
-	<center>
+	<div class="signup">
 		<h2>
 			Member Signup
 		</h2>
-		<div class="content-signup">
-			<?=$this->form->create(NULL, array(
-				'onsubmit' => "return validateSignup()"
-			)); ?>
-				<?=$this->form->field('email', array(
-					'label'       => array('Email' => array('class' => 'control-label', 'for' => 'email')),
-					'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-email'),
-					'id'          => 'email', 'type' => 'email',
-					'placeholder' => 'address@example.com',
-					'class'       => 'form-control'
-				))?>
-				<?=$this->form->field('password', array(
-					'label'       => array('Password' => array('class' => 'control-label', 'for' => 'password')),
-					'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-pass'),
-					'id'          => 'password', 'type' => 'password',
-					'placeholder' => 'Password',
-					'class'       => 'form-control'
-				))?>
-				<?=$this->form->field('confirm', array(
-					'label'       => array('Confirm Password' => array('class' => 'control-label', 'for' => 'confirm')),
-					'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-confirm'),
-					'id'          => 'confirm', 'type' => 'password',
-					'placeholder' => 'Re-enter Password',
-					'class'       => 'form-control'
-				))?>
-				<?=$this->form->field('alias', array(
-					'label'       => array('Alias' => array('class' => 'control-label', 'for' => 'alias')),
-					'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-alias'),
-					'id'          => 'alias',
-					'placeholder' => 'Enter name or game-tag',
-					'class'       => 'form-control'
-				))?>
-				<?=$this->form->submit("Create Account", array(
-					'class'       => 'btn btn-signup pull-right',
-					'type'        => 'submit'
-				));?>
-			<?=$this->form->end(); ?>
-		</div>
-	</center>
+		<?=$this->form->create(NULL, array(
+			'onsubmit' => "return validateSignup()"
+		)); ?>
+			<?=$this->form->field('email', array(
+				'label'       => array('Email' => array('class' => 'control-label', 'for' => 'email')),
+				'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-email'),
+				'id'          => 'email', 'type' => 'email',
+				'placeholder' => 'address@example.com',
+				'class'       => 'form-control'
+			))?>
+			<?=$this->form->field('password', array(
+				'label'       => array('Password' => array('class' => 'control-label', 'for' => 'password')),
+				'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-pass'),
+				'id'          => 'password', 'type' => 'password',
+				'placeholder' => 'Password',
+				'class'       => 'form-control'
+			))?>
+			<?=$this->form->field('confirm', array(
+				'label'       => array('Confirm Password' => array('class' => 'control-label', 'for' => 'confirm')),
+				'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-confirm'),
+				'id'          => 'confirm', 'type' => 'password',
+				'placeholder' => 'Re-enter Password',
+				'class'       => 'form-control'
+			))?>
+			<?=$this->form->field('alias', array(
+				'label'       => array('Alias' => array('class' => 'control-label', 'for' => 'alias')),
+				'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-alias'),
+				'id'          => 'alias',
+				'placeholder' => 'Enter name or game-tag',
+				'class'       => 'form-control'
+			))?>
+			<?=$this->form->submit("Create Account", array(
+				'class'       => 'btn btn-signup pull-right',
+				'type'        => 'submit'
+			));?>
+		<?=$this->form->end(); ?>
+	</div>
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {

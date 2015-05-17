@@ -12,7 +12,7 @@
 	<?php echo $this->html->charset();?>
 	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array('bootstrap', 'font-awesome', 'website')); ?>
-	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'members', 'validate', 'forum', 'markup')); ?>
+	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
@@ -36,13 +36,38 @@
 		</div>
 		
 		<div class="content">
-			<?php echo $this->content(); ?>
-		</div>
-		
-		<div class="page-footer">
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<h1>
+								<?= $page['title'] ?>
+							</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel-group">
+				<div class="panel panel-default">
+					<div class="row">
+						<?= $this->view()->render(
+							array('element' => 'sidebar'),
+							array(
+								'sidebar' => $sidebar,
+								'content' => $this->content()
+							)
+						)?>
+					</div>
+				</div>
+			</div>
+
+			<div class="page-footer">
 			<!-- Empty-->
+			</div>
 		</div>
-		
 	</div>
+
+
 </body>
 </html>

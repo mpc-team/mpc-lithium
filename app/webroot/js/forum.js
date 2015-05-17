@@ -31,6 +31,7 @@
 	var TYPE_EDIT_CENTER	= 'edit-tag-center';
 	var TYPE_EDIT_LINK		= 'edit-tag-link';
 	var TYPE_EDIT_IMAGE		= 'edit-tag-image';
+	var TYPE_EDIT_VIDEO		= 'edit-tag-video';
 	
 	var TAGS_BOLD					= ["[b]", "[/b]"];
 	var TAGS_ITALIC			  = ["[i]", "[/i]"];
@@ -47,6 +48,7 @@
 	var TAGS_CENTER				= ["[center]", "[/center]"];
 	var TAGS_LINK					= ['[link=', '][/link]'];
 	var TAGS_IMAGE				= ["[img]", "[/img]"];
+	var TAGS_VIDEO				= ["[video]", "[/video]"];
 	var TAGS_QUOTE       = ["[quote]", "[/quote]"];
 	
 	function html2text(html) {
@@ -242,5 +244,13 @@
 			var $elems = $("[data-id=" + msgid + "]");
 			var text = $elems.filter("." + TYPE_TEXT);
 			text.fieldSelection(TAGS_IMAGE[0] + text.fieldSelection().text + TAGS_IMAGE[1]);
+		});
+		
+		$("." + TYPE_EDIT_VIDEO).click( function () {
+			var $elem = $(this);
+			var msgid = $elem.data("id");
+			var $elems = $("[data-id=" + msgid + "]");
+			var text = $elems.filter("." + TYPE_TEXT);
+			text.fieldSelection(TAGS_VIDEO[0] + text.fieldSelection().text + TAGS_VIDEO[1]);
 		});
 	});

@@ -14,28 +14,31 @@
 					<div class="panel-recentfeed">
 						<div class="row">
 							<h5>
-								<?= $recent['thread'] ?><br>
+								<div class="name">
+									<?= $recent['thread'] ?>
+								</div>
 								<small>
-									<?= $recent['forum'] ?>
+									<div class="forum">
+										<?= $recent['forum'] ?>
+									</div>
 								</small>
 							</h5>
 						</div>
+						<div class="preview">
+							Preview:
+						</div>
 						<div class="row recentfeed-content">
-								<?php echo $recent['content'] ?>
+							<?php echo $recent['content'] ?>
 						</div>
 					</div>
 					<div class="panel-recentfeed-footer">
-						<div class="row">
-							<div class="col-xs-6">
-								<span class="glyphicon glyphicon-user"></span>
-								<?= $recent['author'] ?>
-							</div>
-							<div class="col-xs-6">
-								<div class="pull-right">
-									<span class="glyphicon glyphicon-time"></span>
-									<?= $recent['tstamp'] ?>
-								</div>
-							</div>
+						<div class="author">
+							<span class="glyphicon glyphicon-user"></span>
+							<?= $recent['author'] ?>
+						</div>
+						<div class="time">
+							<span class="glyphicon glyphicon-time"></span>
+							<?= $recent['date'] ?>
 						</div>
 					</div>
 				</a>

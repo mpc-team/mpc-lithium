@@ -10,12 +10,12 @@ use app\models\Messages;
 use app\models\Permissions;
 use app\models\Timestamp;
 
+class BoardController extends ContentController {
 /**
+ * BoardController
  *
  *
  */
-class BoardController extends ContentController {
-
 	public function view() {
 	
 		if (isset($this->request->id)) {
@@ -25,13 +25,13 @@ class BoardController extends ContentController {
 			
 			if ($forum = self::verify_access($authorized, '\app\models\Forums', $id)) {
 				$breadcrumbs = array(
-					'path' => array("Forum", $forum->name),
+					'path' => array("Forum", stripslashes($forum->name)),
 					'link' => array("/forum", "/board/view/{$id}")
 				);
 				$page = array(
-					'title' => $forum->name, 
-					'header' => $forum->name, 
-					'subheader' => 'Forum'
+					'title' => stripslashes($forum->name), 
+					'header' => stripslashes($forum->name), 
+					'subheader' => 'Board'
 				);
 				$threads = Threads::find('all', array('conditions' => array('fid' => $id)))->to('array');
 				
@@ -43,10 +43,11 @@ class BoardController extends ContentController {
 						'conditions' => array('tid' => $thread['id']),
 						'order' => array('tstamp' => 'DESC')
 					))->to('array');
-					$threads[$key]['author'] = $author['alias'];
+					$threads[$key]['name'] = stripslashes($threads[$key]['name']);
+					$threads[$key]['author'] = stripslashes($author['alias']);
 					$threads[$key]['count'] = count($messages);
 					$threads[$key]['recent'] = reset($messages);
-					$threads[$key]['tstamp'] = Timestamp::toDisplayFormat($thread['tstamp']);
+					$threads[$key]['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
 					$is_author = ($author['id'] == $authorized['id']);
 					$is_admin = Permissions::is_admin($authorized);
 					$threads[$key]['editpanel'] = ($is_author || $is_admin);
@@ -55,13 +56,14 @@ class BoardController extends ContentController {
 						$author = Users::find('first', array(
 							'conditions' => array('id' => $threads[$key]['recent']['uid'])
 						))->to('array');
-						$threads[$key]['recent']['author'] = $author['alias'];
-						$threads[$key]['recent']['tstamp'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp'], array('time'));
+						$threads[$key]['recent']['author'] = stripslashes($author['alias']);
+						$threads[$key]['recent']['date'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp'], array());
 					}
 				}
 				
+				$permissions = ($authorized) ? array('create') : array();
 				usort($threads, array("self", "thread_sort"));
-				return compact('id', 'authorized', 'page', 'threads', 'breadcrumbs');
+				return compact('id', 'authorized', 'permissions', 'page', 'threads', 'breadcrumbs');
 				
 			}
 		}
@@ -72,7 +74,9 @@ class BoardController extends ContentController {
 	
 	public static function thread_sort($a, $b) {
 	/**
-	 * 	Threads are sorted with the "usort" function, this is the comparison
+	 * thread_sort:
+	 *
+	 * Threads are sorted with the "usort" function, this is the comparison
 	 *	function that determines sorting order.
 	 */
 		return $a['recent']['tstamp'] < $b['recent']['tstamp'];

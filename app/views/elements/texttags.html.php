@@ -8,8 +8,8 @@
  *		@ id - The ID of the Post that these tags function with. Needed to associate texttags
  *			with other elements within the HTML document.
  */
-$helper = function ($id, $title, $class, $icon) {
-	$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class}' data-id='{$id}'>";
+$helper = function ($id, $title, $class, $icon, $disabled) {
+	$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class} {$disabled}' data-id='{$id}'>";
 	$result .= "<i class='fa fa-{$icon}'></i>";
 	$result .= "</button>";
 	return $result;
@@ -26,11 +26,12 @@ $helpers = array(
 	array('title' => 'Paragraph',        'class' => 'paragraph',   'icon' => 'paragraph'),
 	array('title' => 'Center Alignment', 'class' => 'center',      'icon' => 'align-center'),
 	array('title' => 'Internet Link',    'class' => 'link',        'icon' => 'link'),
-	array('title' => 'Image Reference',  'class' => 'image',       'icon' => 'picture-o')
+	array('title' => 'Image Reference',  'class' => 'image',       'icon' => 'picture-o'),
+	array('title' => 'Video Reference', 'class' => 'video', 'icon' => 'youtube-play')
 );
 ?>
 <span class='dropdown'>
-	<button type='button' class='btn btn-edit dropdown-toggle' data-toggle='dropdown'>
+	<button type='button' class='btn btn-edit dropdown-toggle <?= $disabled ?>' data-toggle='dropdown'>
 		<i class='fa fa-header'></i>
 	</button>
 	<ul class='dropdown-menu' role='menu'>
@@ -52,6 +53,6 @@ $helpers = array(
 	</ul>
 </span>
 <?php foreach ($helpers as $h): ?>
-	<?php echo $helper($id, $h['title'], $h['class'], $h['icon']); ?>
+	<?php echo $helper($id, $h['title'], $h['class'], $h['icon'], $disabled); ?>
 <?php endforeach; ?>
 

@@ -2,8 +2,12 @@
 /**
  * Site Navbar
  * 
- * @ authorized - user that is currently authorized, associative array containing information
- * pulled from the Users model (id, email, alias)
+ * It is assumed that we have access to the value "$controller" which identifies
+ * which controller is currently handling our request. This information is used
+ * to highlight the navigation bar.
+ *
+ * This shit should really be done on the client-side.
+ *
  */
 function navbar_link($class, $url, $icon, $text) {
 	$class = ($class != null) ? " class='{$class}'" : "";
@@ -19,7 +23,7 @@ function navbar_brand($class, $text) {
 	return "<li{$class}><a href='/' class='navbar-brand'>{$text}</a></li>";
 }
 
-function is_current_active($current, $controller) {
+function navbar_active($current, $controller) {
 	$result = false;
 	if (is_array($current)) {
 		foreach ($current as $allowed) {
@@ -39,31 +43,27 @@ function is_current_active($current, $controller) {
 			<span class="icon-bar"></span>
 		</button>
 		<ul class="nav navbar-nav">
-			<?php echo navbar_brand(is_current_active(array('pages'), $controller), 'MPC'); ?>
+			<?php echo navbar_brand(navbar_active(array('pages'), $controller), 'MPC'); ?>
 		</ul>
 	</div>
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
-			<?php echo navbar_link(is_current_active(array('contact'), $controller), '/contact', null, 'Contact'); ?>
-			<?php echo navbar_link(is_current_active(array('members'), $controller), '/members', null, 'Members'); ?>
-			<?php echo navbar_link(is_current_active(array('forum', 'board', 'thread'), $controller), '/forum', null, 'Forum'); ?>
-			<li class="dropdown">
+			<?php echo navbar_link(navbar_active(array('members'), $controller), '/members', null, 'Members'); ?>
+			<?php echo navbar_link(navbar_active(array('forum', 'board', 'thread'), $controller), '/forum', null, 'Forum'); ?>
+			<li class="dropdown <?= navbar_active(array('gaming', 'sc2', 'hots'), $controller); ?>">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-					Gaming Room
+					Games
 					<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu" role="menu">
-					<?php echo navbar_link(null, '#', null, 'Gaming Room'); ?>
-					<?php echo navbar_link(null, '#', null, 'Ventrilo'); ?>
-					<?php echo navbar_link(null, '#', null, 'MPC Stream'); ?>
-					<?php echo navbar_link(null, '#', null, 'Game Lists'); ?>
-					<?php echo navbar_link(null, '#', null, 'Game Services'); ?>
+					<?php echo navbar_link(null, '/sc2', null, 'StarCraft II'); ?>
+					<?php echo navbar_link(null, '/hots', null, 'Heroes of the Storm'); ?>
 				</ul>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">			
 			<?php if ($authorized): ?>
-				<li class='dropdown <?= is_current_active(array('profile'), $controller) ?>'>
+				<li class='dropdown <?= navbar_active(array('profile'), $controller) ?>'>
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
 						<span class='glyphicon glyphicon-user'></span>
 						<?= $authorized['alias'] ?> <span class='caret'></span>
@@ -75,8 +75,8 @@ function is_current_active($current, $controller) {
 					</ul>
 				</li>
 			<?php else: ?>
-				<?php echo navbar_link(is_current_active(array('signup'), $controller), '/signup', null, 'Signup') ?>
-				<?php echo navbar_link(is_current_active(array('login'), $controller), '/login', null, 'Login') ?>
+				<?php echo navbar_link(navbar_active(array('signup'), $controller), '/signup', null, 'Signup') ?>
+				<?php echo navbar_link(navbar_active(array('login'), $controller), '/login', null, 'Login') ?>
 			<?php endif; ?>
 		</ul>
 	</div>

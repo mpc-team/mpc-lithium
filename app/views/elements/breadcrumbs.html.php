@@ -11,10 +11,10 @@ $navigation = function($path, $links) {
 	for ($i = 0; $i < $pathcount; $i++) {
 		$active = ($i == $pathcount - 1) ? " class='active'" : "";
 		$html .= "<li{$active}>";
-		$html .= "<a href='{$links[$i]}'>";
+		$html .= "<a href='" . $links[$i] . "'>";
 		$html .= "<div class='breadcrumb-text'>";
 		$html .= ($i == 0) ? "<span class='glyphicon glyphicon-th-list'></span> " : "";
-		$html .= $path[$i];
+		$html .= stripslashes($path[$i]);
 		$html .= "</div>";
 		$html .= "</li>";
 		$html .= "</a>";

@@ -39,10 +39,11 @@ class ProfileController extends \lithium\action\Controller {
 				foreach ($recentfeed as $key => $recent) {
 					$thread = Threads::find('first', array('conditions' => array('id' => $recent['tid'])));
 					$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
-					$recentfeed[$key]['author'] = $authorized['alias'];
-					$recentfeed[$key]['thread'] = $thread->name;
-					$recentfeed[$key]['forum']  = $forum->name;
-					$recentfeed[$key]['tstamp']  = Timestamp::toDisplayFormat($recent['tstamp']);
+					$recentfeed[$key]['content'] = stripslashes($recentfeed[$key]['content']);
+					$recentfeed[$key]['author'] = stripslashes($authorized['alias']);
+					$recentfeed[$key]['thread'] = stripslashes($thread->name);
+					$recentfeed[$key]['forum']  = stripslashes($forum->name);
+					$recentfeed[$key]['date']  = Timestamp::toDisplayFormat($recent['tstamp']);
 				}
 			} else {	$recentfeed = array(); }
 			
@@ -77,10 +78,11 @@ class ProfileController extends \lithium\action\Controller {
 					foreach ($recentfeed as $key => $recent) {
 						$thread = Threads::find('first', array('conditions' => array('id' => $recent['tid'])));
 						$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
-						$recentfeed[$key]['author'] = $user['alias'];
-						$recentfeed[$key]['thread'] = $thread->name;
-						$recentfeed[$key]['forum']  = $forum->name;
-						$recentfeed[$key]['tstamp']  = Timestamp::toDisplayFormat($recent['tstamp']);
+						$recentfeed[$key]['content'] = stripslashes($recentfeed[$key]['content']);
+						$recentfeed[$key]['author'] = stripslashes($user['alias']);
+						$recentfeed[$key]['thread'] = stripslashes($thread->name);
+						$recentfeed[$key]['forum']  = stripslashes($forum->name);
+						$recentfeed[$key]['date']  = Timestamp::toDisplayFormat($recent['tstamp']);
 					}
 				} else { $recentfeed = array(); }
 				

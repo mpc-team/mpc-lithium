@@ -10,16 +10,18 @@ use app\models\Messages;
 use app\models\Permissions;
 
 class PostController extends ContentController {
+
+	public static function clean($text) {
 	/**
 	 * clean 
+	 *
 	 *	Clean post content. Trims whitespace around text and removes:
-	 *		- HTML tags, excess linefeed characters, etc.
+	 *		- HTML tags, excess linefeed characters, quote marks, etc.
 	 *
 	 *	Clean should just prepare a message to be inserted into the Database
 	 *	and should not be used to control what is actually displayed. The file
 	 *	"markup.js" is responsible for client-side processing of the style.
 	 */
-	public static function clean($text) {
 		$text = trim($text);
 		$cleaned = '';
 		$linefeeds = 0;
@@ -40,13 +42,13 @@ class PostController extends ContentController {
 		return strip_tags($cleaned);
 	}
 		
+	public function create() {
 	/**
 	 * create
+	 *
 	 *	The ID number passed to the '/post' controller corresponds to the
 	 *	thread that the post is being created for as '/thread/create' handles it.
 	 */
-	public function create() {
-		
 		if (isset($this->request->id)) {
 			if ($this->request->data['content']) {
 				$id = $this->request->id;
@@ -68,13 +70,13 @@ class PostController extends ContentController {
 		return $this->redirect('/forum');
 	}
 
+	public function edit() {
 	/**
 	 * edit
+	 *
 	 *	Edit content of a Post/Message. Does not update the timestamp associated
 	 *	with the entry in the Database.
-	 */
-	public function edit() {
-	
+	 */	
 		if (isset($this->request->id)) {
 			$id = $this->request->id;
 			
