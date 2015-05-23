@@ -1,24 +1,26 @@
 <?php
 /**
  * ContentController.php
- *	Any general content-level activity can be intercepted by this class.
+ *
+ * Any general content-level activity can be intercepted by this class.
  */
 namespace app\controllers;
 
 /**
- * All types of content Models need to be included in a global scope or they will
- * not be recognized at run-time. This should mirror the classes which extend the
- * ContentController class.
+ * All types of content Models need to be included in a global scope or they will not be
+ * recognized at run-time. This should mirror the classes which extend the ContentController class.
  */
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
 class ContentController extends \lithium\action\Controller {
+
 	/**
 	 * verify_access
-	 *	Verify access to a particular resource. The resource model should extend the 
-	 *	ContentController and be added to the above imports via "use".
+	 *
+	 * Verify access to a particular resource. The resource model should extend the ContentController
+	 * and be added to the above imports via "use".
 	 */
 	public function verify_access($user, $type, $id) {
 		$content = $type::find('first', array('conditions' => array('id' => $id)));
@@ -26,11 +28,11 @@ class ContentController extends \lithium\action\Controller {
 			if ($content->permission > 0) {
 				// non-public content
 				if ($user && $content->permission <= $user['permission']) {
-					return $content;
+					return $content->to('array');
 				}
 			} else {
 				// public content
-				return $content;
+				return $content->to('array');
 			}
 		}
 		return null;

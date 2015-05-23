@@ -9,10 +9,27 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<?php echo $this->html->charset();?>
 	<title>MPC | <?php echo $this->title(); ?></title>
-	<?php echo $this->html->style(array('bootstrap', 'font-awesome', 'website')); ?>
-	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'members', 'validate', 'forum', 'markup')); ?>
+	<?php echo $this->html->style(array(
+		'bootstrap',
+		'font-awesome',
+		'website'
+	));?>
+	<?php echo $this->html->script(array(
+		'jquery-1.11.2',
+		'bootstrap',
+		'moment',
+		'navbar',
+		'field-selection',
+		'members',
+		'validate',
+		'forum',
+		'markup',
+		'profile'
+	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
@@ -20,7 +37,7 @@
 <body>
 	<div class="container-fluid">
 		<?=$this->view()->render(
-			array('element' => 'navbar'), 
+			array('element' => 'navbar'),
 			array(
 				'authorized' => $authorized,
 				'controller' => $this->_request->controller,
@@ -28,21 +45,19 @@
 			)
 		)?>
 	</div>
-	
 	<div class="container">
-		
 		<div class="page-header">
-			<img id="banner-image" src="/img/mpclogo.png" class="img-responsive" alt="mpclogo.png"></img>
+			<img id="banner-image"
+				src="/img/mpclogo.png"
+				class="img-responsive"
+				alt="mpclogo.png"></img>
 		</div>
-		
 		<div class="content">
 			<?php echo $this->content(); ?>
 		</div>
-		
 		<div class="page-footer">
 			<!-- Empty-->
 		</div>
-		
 	</div>
 </body>
 </html>

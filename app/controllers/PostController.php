@@ -6,22 +6,12 @@ use lithium\security\Auth;
 use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
-use app\models\Messages;
+use app\models\Posts;
 use app\models\Permissions;
 
 class PostController extends ContentController {
 
 	public static function clean($text) {
-	/**
-	 * clean 
-	 *
-	 *	Clean post content. Trims whitespace around text and removes:
-	 *		- HTML tags, excess linefeed characters, quote marks, etc.
-	 *
-	 *	Clean should just prepare a message to be inserted into the Database
-	 *	and should not be used to control what is actually displayed. The file
-	 *	"markup.js" is responsible for client-side processing of the style.
-	 */
 		$text = trim($text);
 		$cleaned = '';
 		$linefeeds = 0;
@@ -43,60 +33,41 @@ class PostController extends ContentController {
 	}
 		
 	public function create() {
-	/**
-	 * create
-	 *
-	 *	The ID number passed to the '/post' controller corresponds to the
-	 *	thread that the post is being created for as '/thread/create' handles it.
-	 */
 		if (isset($this->request->id)) {
 			if ($this->request->data['content']) {
-				$id = $this->request->id;
 				$authorized = Auth::check('default');
-					
-				if (self::verify_access($authorized, '\app\models\Threads', $id)) {
-					$message = Messages::create(array(
-						'tid' => $id,
+				if (self::verify_access($authorized, '\app\models\Threads', $this->request->id)) {
+					$message = Posts::create(array(
+						'tid' => $this->request->id,
 						'content' => self::clean($this->request->data['content']),
 						'uid' => $authorized['id']
 					));
 					if ($message->save()) {
-						return $this->redirect("/thread/view/{$id}#forum-thread-message-{$message->id}");
+						return $this->redirect("/thread/view/{$this->request->id}#forum-thread-message-{$message->id}");
 					}
 				}
 			}
 		}
-		
 		return $this->redirect('/forum');
 	}
 
 	public function edit() {
-	/**
-	 * edit
-	 *
-	 *	Edit content of a Post/Message. Does not update the timestamp associated
-	 *	with the entry in the Database.
-	 */	
 		if (isset($this->request->id)) {
-			$id = $this->request->id;
-			
-			if ($message = Messages::find('first', array('conditions' => array('id' => $id)))) { 
+			if ($post = Posts::find('first', array('conditions' => array('id' => $this->request->id)))) { 
 				$authorized = Auth::check('default');
-				$thread = Threads::find('first', array('conditions' => array('id' => $message->tid)));
-				$is_author = ($authorized['id'] == $message->uid);
-				
-				if (self::verify_access($authorized, '\app\models\Messages', $id)) {
-					if ($is_author || Permissions::is_admin($authorized)) {
-						$message->content = self::clean($this->request->data['content']);
-						$message->save();
+				$thread = Threads::find('first', array('conditions' => array('id' => $post->tid)));
+				if (self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {
+					if ($authorized['id'] == $post->uid || Permissions::is_admin($authorized)) {
+						$post->content = self::clean($this->request->data['content']);
+						$post->save();
 						if ($this->request->data['rename']) {
 							$thread->name = ThreadController::clean($this->request->data['rename']);
 							$thread->save();
 						}
-						return $this->redirect("/thread/view/{$thread->id}");
+						return $this->redirect("/thread/view/{$thread->id}#forum-thread-message-{$post->id}");
 					}
 				} else {
-					return $this->redirect("/thread/view/{$thread->id}");
+					return $this->redirect("/thread/view/{$thread->id}#forum-thread-message-{$post->id}");
 				}
 			}
 		}
@@ -104,21 +75,15 @@ class PostController extends ContentController {
 	}
 	
 	public function delete() {
-		
 		if (isset($this->request->id)) {
-			$id = $this->request->id;
 			$authorized = Auth::check('default');
-			if ($message = self::verify_access($authorized, '\app\models\Messages', $id)) {			
-				$is_author = ($authorized['id'] == $message->uid);
-				if ($is_author || Permissions::is_admin($authorized)) {
-					if ($message->delete()) {
-						/* if there are no longer any Posts in the corresponding Thread then we 
-							should go ahead and delete the Thread as well */
-						if (!Messages::find('count', array('conditions' => array('tid' => $message->tid)))) {
-							/* route to ThreadController::delete to delete Thread */
-							return $this->redirect("/thread/delete/{$message->tid}");
+			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {			
+				if (($authorized['id'] == $post['uid']) || Permissions::is_admin($authorized)) {
+					if (Posts::deleteById($post['id'])) {
+						if (!Posts::countByThreadId($post['tid'])) {
+							return $this->redirect("/thread/delete/{$post['tid']}");
 						} else {
-							return $this->redirect("/thread/view/{$message->tid}");
+							return $this->redirect("/thread/view/{$post['tid']}");
 						}
 					}
 				}

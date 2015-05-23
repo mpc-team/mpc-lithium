@@ -1,10 +1,8 @@
 <?php
 
-$this->title($page['title']);
+$this->title('Forum');
 
 $self = $this;
-
-$category = null;
 
 ?>
 <div class="row">
@@ -13,37 +11,63 @@ $category = null;
 <div class="row">
 	<?= $this->view()->render(
 		array('element' => 'recentfeed'),
-		array('recentfeed' => $recentfeed)
+		array('recentfeed' => $data['recentfeed'])
 	)?>
 </div>
 <div class="row page-header">
 	<h1>
-		<div>Forum </div>
-		<small><div>Categories</div></small>
+		<div class="title">
+			Forum 
+		</div>
+		<small>
+			<div class="subtitle">
+				Categories
+			</div>
+		</small>
 	</h1>
 </div>
-<?php foreach ($categories as $category): ?>
-	<h3><?= $category['name'] ?></h3>
-		
-	<?php foreach ($category['forums'] as $forum): ?>		
-	<div class="row">
-		<div class="panel-group">
-			<div class="panel panel-default">
-				<a class="btn" href="/board/view/<?= $forum['id'] ?>">
-					<div class="panel-forum">
-						<h5>
-							<?= $forum['name'] ?><br>
-							<small><?= $forum['descr'] ?></small><br>
-						</h5>
-						<h4>
-							<b><?= $forum['count'] ?></b>
-							<small><?= ($forum['count'] == 1) ? "thread" : "threads"; ?></small>
-						</h4>
-					</div>
-				</a>
+<div class="categories">
+	<?php foreach ($data['categories'] as $category): ?>
+		<div class="row">
+			<div class="name">
+				<h3>
+					<?= $category['name'] ?> <small>Forums</small>
+				</h3>
 			</div>
+			<?php foreach ($category['forums'] as $forum): ?>		
+				<div class="col-md-4">
+					<div class="panel-group">
+						<div class="panel panel-default">
+							<a class="btn btn-forum" href="/board/view/<?= $forum['id'] ?>">
+							
+								<div class="panel-forum">
+									<div class="row">
+										<div class="forum">
+											<h5>
+												<?= $forum['name'] ?><br>
+											</h5>
+											<h4>
+												<small>
+													<?= $forum['descr'] ?>
+												</small>
+											</h4>
+										</div>
+									</div>
+									<div class="row">
+										<div class="count">
+											<h4>
+												<b><?= $forum['count'] ?></b>
+												<small><?= ($forum['count'] == 1) ? "thread" : "threads"; ?></small>
+											</h4>
+										</div>
+									</div>
+								</div>
+								
+							</a>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
 		</div>
-	</div>
 	<?php endforeach; ?>
-
-<?php endforeach; ?>
+</div>

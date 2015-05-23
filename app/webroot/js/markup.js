@@ -87,13 +87,13 @@ var TagMap = [
 	)
 ]
 
-function compareTextToTag (text, place, tag) {
 /**
- * compareTextToTag (text, place, tag):
+ * compareTextToTag 
  *
  * Compares a given text substring with a given tag. Returns the tag that
  * was matched if the comparison is "successful".
  */
+function compareTextToTag (text, place, tag) {
 	var result = null;
 	if (place + tag.length <= text.length) {
 		var substr = text.substring(place, place + tag.length);
@@ -104,14 +104,14 @@ function compareTextToTag (text, place, tag) {
 	return result;
 }
  
-function buildMarkupList (text) {
 /**
- * buildMarkupList (text):
+ * buildMarkupList 
  *
  * Builds a list of elements that can be processed. Markup tags and content are
  * separated in the list by the order in which they appear. This will allow us to
  * verify that the markup is correct as well as build the resulting string.
  */
+function buildMarkupList (text) {
 	var markupList = [];
 	var markupContent = "";
 	
@@ -141,13 +141,13 @@ function buildMarkupList (text) {
 	return markupList;
 }
 
-function getTagMapElement (data) {
 /**
- * getTagMapElement (data):
+ * getTagMapElement 
  *
  * Finds the associated TagMap value for a specified string. Notice that it should
  * return the same object for [b] and [/b] because they are part of the same tag.
  */
+function getTagMapElement (data) {
 	for (var m = 0; m < TagMap.length; m++) {
 		var resultObject = new Object();
 		
@@ -164,14 +164,14 @@ function getTagMapElement (data) {
 	return null;
 }
 
-function verifyMarkupList (list) {
 /**
- * verifyMarkupList (list):
+ * verifyMarkupList 
  *
  * Verifies that the markup contained in the Markup List is valid. This
  * means that any open markup tag is closed. The order in which tags
  * are closed is not important.
  */
+function verifyMarkupList (list) {
 	var expected = [];
  
 	for (var i = 0; i < list.length; i++) {
@@ -190,14 +190,14 @@ function verifyMarkupList (list) {
 	return (expected.length == 0);
 }
 
-function getMarkupTagContent (list, index) {
 /**
- * getMarkupTagContent (list, index):
+ * getMarkupTagContent 
  *
  * Returns the content (including tags) between a specified open-tag and
  * its corresponding closing tag. Closing tags are determined to be the
  * first closing tag encountered after the open tag.
  */
+function getMarkupTagContent (list, index) {
 	var tmap = getTagMapElement(list[index]);
 	var content = null;
 	
@@ -212,13 +212,13 @@ function getMarkupTagContent (list, index) {
 	return content;
 }
 
-function setMarkupTagContent (list, index, content) {
 /**
- * setMarkupTagContent (list, index, content):
+ * setMarkupTagContent 
  *
  * Similar to "getMarkupTagContent" but can be used to modify the contents
  * of a tag. This is necessary for the [video] tag as we see below.
  */
+function setMarkupTagContent (list, index, content) {
 	var tmap = getTagMapElement(list[index]);
 	var contentMarkupList = buildMarkupList(content);
 	
@@ -233,13 +233,13 @@ function setMarkupTagContent (list, index, content) {
 	return false;
 }
 
-function swapMarkupList (list) {
 /**
- * swapMarkupList (list):
+ * swapMarkupList 
  *
  * Uses the TagMap entry to swap tags in the Markup List from the
  * original markup tag to the new mapped tag.
  */
+function swapMarkupList (list) {
 	for (var i = 0; i < list.length; i++) {
 		var tmap = getTagMapElement(list[i]);
 		
@@ -259,7 +259,7 @@ function swapMarkupList (list) {
 	}
 	return list;
 }
- 
+
 function markup (text) {
 	var markupList = buildMarkupList(text);
 	var marked = null;

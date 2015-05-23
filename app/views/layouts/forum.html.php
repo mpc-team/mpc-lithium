@@ -1,10 +1,22 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<?php echo $this->html->charset();?>
 	<title>MPC | <?php echo $this->title(); ?></title>
-	<?php echo $this->html->style(array('bootstrap', 'font-awesome', 'website')); ?>
-	<?php echo $this->html->script(array('jquery-1.11.2', 'bootstrap', 'field-selection', 'members', 'validate', 'forum', 'scroller', 'markup')); ?>
+	<?php echo $this->html->style(array(
+		'bootstrap', 
+		'font-awesome', 
+		'website'
+	)); ?>
+	<?php echo $this->html->script(array(
+		'jquery-1.11.2',    'bootstrap', 
+		'navbar',           'field-selection', 
+		'members',          'validate', 
+		'forum',            'scroller', 
+		'markup'
+	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
@@ -40,19 +52,17 @@
 				
 				<?php echo $this->content(); ?>
 				
-				<div class="page-footer">
-					<!-- Empty-->
-				</div>
+				<div class="page-footer"></div>
 			
 				<?= $this->view()->render(
 					array('element' => 'breadcrumbs'),
 					array('breadcrumbs' => $breadcrumbs)
 				)?>
 				
-				<?php if (isset($replyform)): ?>
+				<?php if (isset($reply)): ?>
 					<?= $this->view()->render(
-						array('element' => 'replyform'),
-						array('replyform' => $replyform)
+						array('element' => 'reply'),
+						array('reply' => $reply)
 					)?>
 				<?php endif; ?>
 			

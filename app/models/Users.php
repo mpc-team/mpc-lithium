@@ -2,17 +2,18 @@
 
 namespace app\models;
 
-use lithium\security\Password;
+class Users extends \lithium\data\Model  { 
 
-class Users extends \lithium\data\Model  { }
-
-Users::applyFilter('save', function($self, $params, $chain) {
-    if ($params['data']) {
-        $params['entity']->set($params['data']);
-        $params['data'] = array();
-    }
-    if (!$params['entity']->exists()) {
-        $params['entity']->password = Password::hash($params['entity']->password);
-    }
-    return $chain->next($self, $params, $chain);
-});
+	/**
+	 * getById
+	 *
+	 * Returns a User (or null if one cannot be found) that matches the specified ID.
+	 */
+	public static function getById ($id) {
+		if ($user = self::find('first', array('conditions' => array('id' => $id)))) {
+			return $user->to('array');
+		} else {
+			return null;
+		}
+	}
+}

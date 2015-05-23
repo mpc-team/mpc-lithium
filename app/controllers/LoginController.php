@@ -10,17 +10,15 @@ class LoginController extends \lithium\action\Controller {
 
 	public function index() {
 		$authorized = Auth::check('default');
-	
 		if (!$authorized) {
 			if ($this->request->data) {
 				Auth::clear('default');
 				if (Auth::check('default', $this->request)) {
-					return $this->redirect(
-						'/profile'
-					);
+					return $this->redirect('/user/profile');
 				}
 			}
+			return compact ('authorized');
 		}
-		return compact ('authorized');
+		return $this->redirect('/user/profile');
 	}
 }

@@ -6,12 +6,10 @@
 	
 ?>
 <div class="login">
-	<div class="panel panel-default">
-		<div class="panel-heading">
+	<?= $this->form->create(NULL); ?>
+		<div class="panel panel-default">
 			<h1>Login</h1>
-		</div>
-		<?= $this->form->create(NULL); ?>
-			<div class="form-group form-login">
+			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
 						Email:
@@ -23,7 +21,7 @@
 					)); ?>
 				</div>
 			</div>
-			<div class="form-group form-login">
+			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">
 						Password:
@@ -34,14 +32,14 @@
 					)); ?>
 				</div>
 			</div>
-			<center>
-				<div class="form-group form-login">
+			<div class="form-group">
+				<center>
 					<?= $this->form->submit('Login', array(
 						'class' => 'btn btn-login',
 						'value' => 'Login'
 					)); ?>
-				</div>
-			</center>
-		<?= $this->form->end(); ?>
-	</div>
+				</center>
+			</div>
+		</div>
+	<?= $this->form->end(); ?>
 </div>

@@ -5,8 +5,15 @@
  * 	until they login.
  */
 ?>
-<div class="alert alert-info" role="alert">
-	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-	<span class="sr-only">Error:</span>
-	You must <a class="alert-link" href="/login">Login/Signup</a> before posting on the Forum
+<div class="login-notice">
+	<div class="panel panel-default">
+		<center>
+			<div class="icon">
+				<span class="glyphicon glyphicon-exclamation-sign"></span>
+			</div>
+			<div class="content">
+				You must <a href='/login'>Login</a>/<a href='/signup'>Signup</a> before posting on the Forum
+			</div>
+		</center>
+	</div>
 </div>

@@ -29,9 +29,12 @@ class Timestamp extends \lithium\data\Model  {
 		$time = strtotime($timestamp);
 		$current = time();
 		
-		$datestring  = "D, j F Y";
+		$datestring  = "j F Y";
 		if (in_array('time', $options)) {
 			$datestring .= " - g:i A";
+		}
+		if (in_array('day', $options)) {
+			$datestring = "D, " . $datestring;
 		}
 		return date($datestring, $time);
 	}

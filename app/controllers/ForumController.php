@@ -7,71 +7,69 @@ use app\models\Users;
 use app\models\Categories;
 use app\models\Forums;
 use app\models\Threads;
-use app\models\Messages;
+use app\models\Posts;
 use app\models\Permissions;
 use app\models\Timestamp;
 
 class ForumController extends \lithium\action\Controller {
 
+	/**
+	 * Limit amount of posts displayed in the recent-feed. 
+	 */
 	const RECENT_LIMIT = 3;
 	
-	public function index() {		
 	/**
-	 * Forum Index
+	 * index
 	 *
-	 *	Shows all the available Forums that can be accessed. In addition, a 
-	 *	panel that shows recent activity is displayed as a shortcut feature.
+	 * @returns:
+	 *	• $authorized - required by navbar element and possibly other components.
+	 *	• $breadcrumbs - required by breadcrumbs element referenced in the layout.
+	 *	• $data - any page-specific information is returned through this associative array.
 	 */
+	public function index() {		
 		$this->_render['layout'] = 'forum';		
 		$authorized = Auth::check('default');
-		$breadcrumbs = array(
-			'path' => array("Forum"), 
-			'link' => array("/forum")
+		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
+		$data = array(
+			'recentfeed' => Posts::find('all', array(
+				'limit' => self::RECENT_LIMIT,
+				'order' => array('tstamp' => 'DESC')))->to('array'),
+			'categories' => Categories::find('all')->to('array'),
 		);
-		$page = array('title' => 'Forum');
-		$forums = Forums::all()->to('array');
-		$recentfeed = Messages::find('all', array(
-			'limit' => self::RECENT_LIMIT,
-			'order' => array('tstamp' => 'DESC')
-		))->to('array');
-		
-		foreach ($recentfeed as $key => $recent) {
-			$author = Users::find('first', array('conditions' => array('id' => $recent['uid'])));
-			$thread = Threads::find('first', array('conditions' => array('id' => $recent['tid'])));
-			$forum = Forums::find('first', array('conditions' => array('id' => $thread->fid)));
-			$recentfeed[$key]['content'] = stripslashes($recentfeed[$key]['content']);
-			$recentfeed[$key]['author'] = stripslashes($author->alias);
-			$recentfeed[$key]['thread'] = stripslashes($thread->name);
-			$recentfeed[$key]['forum'] = stripslashes($forum->name);
-			$recentfeed[$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
+		foreach ($data['recentfeed'] as $key => $recent) {
+			$author = Users::getById($recent['uid']);
+			$thread = Threads::getById($recent['tid']);
+			$forum  = Forums::getById($thread['fid']);
+			$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
+			$data['recentfeed'][$key]['author'] = stripslashes($author['alias']);
+			$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
+			$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
+			$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
 		}		
-		
-		$categories = Categories::find('all')->to('array');
-		
+		$forums = Forums::all()->to('array');
 		foreach ($forums as $key => $forum) {
-			$category = Categories::find('first', array('conditions' => array('id' => $forum['cid'])));
-			$threads = Threads::find('all', array(
-				'conditions' => array('fid' => $forum['id'])
-			))->to('array');
+			$category = Categories::getById($forum['cid']);
+			$threads = Threads::getByForumId($forum['id']);
 			$forums[$key]['count'] = count($threads);
-			$forums[$key]['category'] = $category->name;
-			$categories[$category->id]['forums'][$key] = $forums[$key];
+			$forums[$key]['category'] = $category['name'];
+			$data['categories'][$category['id']]['forums'][$key] = $forums[$key];
 		}
-		usort($forums, array("self", "forum_sort"));
-	
-		return compact('authorized', 'page', 'forums', 'categories', 'breadcrumbs', 'recentfeed');
+		foreach ($data['categories'] as $ckey => $category) {
+			usort($data['categories'][$ckey]['forums'], array('self', 'forum_sort'));
+		}
+		return compact('authorized', 'breadcrumbs', 'data');
 	}
 	
-	public static function forum_sort($a, $b) {
 	/**
 	 * forum_sort
 	 *
 	 * Function determines how Forums are sorted when the list is passed to the View.
 	 *
-	 * First priority is the category. All forums are sorted by category first. Then, within
-	 * each category, forums are sorted by permission. In cases where permissions and
-	 * categories are identical, forums are ordered alphabetically.
+	 * First priority is the category. All forums are sorted by category first. Then, within each
+	 * category, forums are sorted by permission. In cases where permissions and categories are
+	 * identical, forums are ordered alphabetically.
 	 */
+	public static function forum_sort($a, $b) {
 		if ($a['category'] == $b['category']) {
 			if ($a['permission'] == $b['permission']) {
 				return $a['name'] > $b['name'];

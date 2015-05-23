@@ -4,19 +4,13 @@ $this->title('Signup');
 
 $self = $this;
 
-$icons = array(
-	'signup' => "<span class=\"glyphicon glyphicon-new-window\"></span>"
-);
-
 ?>
 <div class="row">
 	<div class="signup">
 		<h2>
 			Member Signup
 		</h2>
-		<?=$this->form->create(NULL, array(
-			'onsubmit' => "return validateSignup()"
-		)); ?>
+		<form action="/signup/complete" onsubmit="return validateSignup()" method="post">
 			<?=$this->form->field('email', array(
 				'label'       => array('Email' => array('class' => 'control-label', 'for' => 'email')),
 				'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-email'),
@@ -49,7 +43,7 @@ $icons = array(
 				'class'       => 'btn btn-signup pull-right',
 				'type'        => 'submit'
 			));?>
-		<?=$this->form->end(); ?>
+		</form>
 	</div>
 </div>
 <script type="text/javascript">

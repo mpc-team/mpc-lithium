@@ -6,79 +6,61 @@ use lithium\security\Auth;
 use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
-use app\models\Messages;
+use app\models\Posts;
 use app\models\Permissions;
 use app\models\Timestamp;
 
 class BoardController extends ContentController {
-/**
- * BoardController
- *
- *
- */
-	public function view() {
-	
+
+	public function view() {	
 		if (isset($this->request->id)) {
 			$this->_render['layout'] = 'forum';
-			$id = $this->request->id;
 			$authorized = Auth::check('default');
-			
-			if ($forum = self::verify_access($authorized, '\app\models\Forums', $id)) {
+			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
 				$breadcrumbs = array(
-					'path' => array("Forum", stripslashes($forum->name)),
-					'link' => array("/forum", "/board/view/{$id}")
+					'path' => array("Forum", stripslashes($forum['name'])),
+					'link' => array("/forum", "/board/view/{$this->request->id}")
 				);
-				$page = array(
-					'title' => stripslashes($forum->name), 
-					'header' => stripslashes($forum->name), 
-					'subheader' => 'Board'
+				$data = array(
+					'forum' => $forum,
+					'threads' => Threads::getByForumId($this->request->id),
+					'permissions' => ($authorized) ? array('create') : array()
 				);
-				$threads = Threads::find('all', array('conditions' => array('fid' => $id)))->to('array');
-				
-				foreach ($threads as $key => $thread) {
-					$author = Users::find('first', array(
-						'conditions' => array('id' => $thread['uid'])
-					))->to('array');
-					$messages = Messages::find('all', array(
+				foreach ($data['threads'] as $key => $thread) {
+					$posts = Posts::find('all', array(
 						'conditions' => array('tid' => $thread['id']),
 						'order' => array('tstamp' => 'DESC')
 					))->to('array');
-					$threads[$key]['name'] = stripslashes($threads[$key]['name']);
-					$threads[$key]['author'] = stripslashes($author['alias']);
-					$threads[$key]['count'] = count($messages);
-					$threads[$key]['recent'] = reset($messages);
-					$threads[$key]['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
-					$is_author = ($author['id'] == $authorized['id']);
-					$is_admin = Permissions::is_admin($authorized);
-					$threads[$key]['editpanel'] = ($is_author || $is_admin);
-					
-					if ($threads[$key]['recent']) {
-						$author = Users::find('first', array(
-							'conditions' => array('id' => $threads[$key]['recent']['uid'])
-						))->to('array');
-						$threads[$key]['recent']['author'] = stripslashes($author['alias']);
-						$threads[$key]['recent']['date'] = Timestamp::toDisplayFormat($threads[$key]['recent']['tstamp'], array());
+					$author = Users::getById($thread['uid']);
+					$data['threads'][$key]['name'] = stripslashes($thread['name']);
+					$data['threads'][$key]['author'] = stripslashes($author['alias']);
+					$data['threads'][$key]['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
+					$data['threads'][$key]['count'] = count($posts);
+					$data['threads'][$key]['recent'] = reset($posts);
+					$data['threads'][$key]['features'] = ($author['id'] == $authorized['id'] || 
+						Permissions::is_admin($authorized)) ? array('delete') : array();
+						
+					if ($data['threads'][$key]['recent']) {
+						$author = Users::getById($data['threads'][$key]['recent']['uid']);
+						$data['threads'][$key]['recent']['author'] = stripslashes($author['alias']);
+						$data['threads'][$key]['recent']['date'] = 
+							Timestamp::toDisplayFormat($data['threads'][$key]['recent']['tstamp'], array());
 					}
 				}
-				
-				$permissions = ($authorized) ? array('create') : array();
-				usort($threads, array("self", "thread_sort"));
-				return compact('id', 'authorized', 'permissions', 'page', 'threads', 'breadcrumbs');
-				
+				usort($data['threads'], array("self", "thread_sort"));
+				return compact('authorized', 'breadcrumbs', 'data');	
 			}
 		}
-		
 		return $this->redirect('/forum');
-		
 	}
 	
-	public static function thread_sort($a, $b) {
 	/**
 	 * thread_sort:
 	 *
-	 * Threads are sorted with the "usort" function, this is the comparison
-	 *	function that determines sorting order.
+	 * Sort threads in the order of their 'recent' timestamp. The 'recent' property is only available
+	 * after it has been added by processing done in BoardController::view().
 	 */
+	public static function thread_sort($a, $b) {
 		return $a['recent']['tstamp'] < $b['recent']['tstamp'];
 	}
 }

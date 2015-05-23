@@ -78,7 +78,7 @@ Connections::add('default', array(
 	'host' => 'localhost',
 	'login' => 'root',
 	'password' => '',
-	'database' => 'dev',
+	'database' => 'mpc',
 	'encoding' => 'UTF-8'
 ));
 
