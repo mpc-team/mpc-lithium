@@ -1,12 +1,10 @@
 <?php
 /**
- * Text Tags (Forum)
+ * texttags
  *
- *	Displays list of helper functions that encapsulate selected text with formatting tags.
- *
- *	Expected values:
- *		@ id - The ID of the Post that these tags function with. Needed to associate texttags
- *			with other elements within the HTML document.
+ * Helpers at the top of Forum post inputs that insert markup into the post.
+ * This element displays these to the User, but the events and processing are
+ * handled in "forum.js" on the Client-side.
  */
 $helper = function ($id, $title, $class, $icon, $disabled) {
 	$result = "<button title='{$title}' type='button' class='btn btn-edit edit-tag-{$class} {$disabled}' data-id='{$id}'>";
@@ -14,6 +12,7 @@ $helper = function ($id, $title, $class, $icon, $disabled) {
 	$result .= "</button>";
 	return $result;
 };
+
 $helpers = array(
 	array('title' => 'Bold',             'class' => 'bold',        'icon' => 'bold'),
 	array('title' => 'Italic',           'class' => 'italic',      'icon' => 'italic'),
@@ -27,32 +26,34 @@ $helpers = array(
 	array('title' => 'Center Alignment', 'class' => 'center',      'icon' => 'align-center'),
 	array('title' => 'Internet Link',    'class' => 'link',        'icon' => 'link'),
 	array('title' => 'Image Reference',  'class' => 'image',       'icon' => 'picture-o'),
-	array('title' => 'Video Reference', 'class' => 'video', 'icon' => 'youtube-play')
+	array('title' => 'Video Reference',  'class' => 'video',       'icon' => 'youtube-play')
 );
 ?>
-<span class='dropdown'>
-	<button type='button' class='btn btn-edit dropdown-toggle <?= $disabled ?>' data-toggle='dropdown'>
-		<i class='fa fa-header'></i>
-	</button>
-	<ul class='dropdown-menu' role='menu'>
-		<li>
-			<button type='button' class='btn btn-edit edit-tag-header1' data-id='<?= $id ?>'>
-				<h1>Heading 1</h1>
-			</button>
-		</li>
-		<li>
-			<button type='button' class='btn btn-edit edit-tag-header2' data-id='<?= $id ?>'>
-				<h2>Heading 2</h2>
-			</button>
-		</li>
-		<li>
-			<button type='button' class='btn btn-edit edit-tag-header3' data-id='<?= $id ?>'>
-				<h3>Heading 3</h3>
-			</button>
-		</li>
-	</ul>
-</span>
-<?php foreach ($helpers as $h): ?>
-	<?php echo $helper($id, $h['title'], $h['class'], $h['icon'], $disabled); ?>
-<?php endforeach; ?>
+<div class="texttags">
+	<span class='dropdown'>
+		<button type='button' class='btn btn-edit dropdown-toggle <?= $disabled ?>' data-toggle='dropdown'>
+			<i class='fa fa-header'></i>
+		</button>
+		<ul class='dropdown-menu' role='menu'>
+			<li>
+				<button type='button' class='btn btn-edit edit-tag-header1' data-id='<?= $id ?>'>
+					<h1>Heading 1</h1>
+				</button>
+			</li>
+			<li>
+				<button type='button' class='btn btn-edit edit-tag-header2' data-id='<?= $id ?>'>
+					<h2>Heading 2</h2>
+				</button>
+			</li>
+			<li>
+				<button type='button' class='btn btn-edit edit-tag-header3' data-id='<?= $id ?>'>
+					<h3>Heading 3</h3>
+				</button>
+			</li>
+		</ul>
+	</span>
+	<?php foreach ($helpers as $tag): ?>
+		<?php echo $helper($id, $tag['title'], $tag['class'], $tag['icon'], $disabled); ?>
+	<?php endforeach; ?>
+</div>
 

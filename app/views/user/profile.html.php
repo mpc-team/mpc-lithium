@@ -1,8 +1,11 @@
 <?php
 
+use app\controllers\UserController;
+
 $this->title('My Profile');
 
 $self = $this;
+
 
 ?>
 <div class="profile-header">
@@ -30,6 +33,14 @@ $self = $this;
 			<div class="games">
 				<div class="row">
 					<h3>Games <small>You Play</small></h3>
+				</div>
+				<div class="row">
+					<div class="well well-sm">
+						<center>
+							<span class="glyphicon glyphicon-info-sign"></span>
+							Click Games To Select
+						</center>
+					</div>
 				</div>
 				<div class="row">
 					<?php foreach ($data['games'] as $game): ?>
@@ -72,7 +83,10 @@ $self = $this;
 		<div class="row">
 			<?= $this->view()->render(
 				array('element' => 'recentfeed'),
-				array('recentfeed' => $data['recentfeed'])
+				array(
+					'recentfeed' => $data['recentfeed'],
+					'recentlimit' => UserController::RECENT_LIMIT
+				)
 			)?>
 		</div>
 	</div>

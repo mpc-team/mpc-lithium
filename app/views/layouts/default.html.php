@@ -19,16 +19,12 @@
 		'website'
 	));?>
 	<?php echo $this->html->script(array(
-		'jquery-1.11.2',
-		'bootstrap',
-		'moment',
-		'navbar',
-		'field-selection',
-		'members',
-		'validate',
-		'forum',
-		'markup',
-		'profile'
+		'jquery-1.11.2',		'bootstrap',
+		'moment',       		'navbar',
+		'field-selection',	'members',
+		'validate',					'forum',
+		'markup',						'profile',
+		'scroller'
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
@@ -54,9 +50,6 @@
 		</div>
 		<div class="content">
 			<?php echo $this->content(); ?>
-		</div>
-		<div class="page-footer">
-			<!-- Empty-->
 		</div>
 	</div>
 </body>

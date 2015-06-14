@@ -27,6 +27,7 @@ h3 > small {
 	font-weight: 400;
 }
 h5 {
+	display: inline;
 	font-size: 12pt;
 	font-family: "Oswald";
 }
@@ -51,18 +52,30 @@ textarea.form-control { resize: vertical; height: 10em; }
 	without being blocked by the end of the page. */
 .container { padding-bottom: 500px; }
 
-/* Panel Button Color and Highlighting */
 .panel a.btn { width: 100%; }
 
-/* Sidebar Shares Properties */
 .sidebar li > a:hover,
 .sidebar li > a:active,
+
+.panel .btn { border: none; }
+
+.panel a.btn.info:hover,
+.panel a.btn.info:active {
+	background: linear-gradient(110deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
+}
+.panel a.btn.recent:hover,
+.panel a.btn.recent:active {
+	background: linear-gradient(280deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
+}	
+
+.recentfeed .panel > a.btn:hover,
 .panel a.btn:hover,
 .panel a.btn:active {
-	color: #444444;
-	background: linear-gradient(170deg, #aaacaa, #7f7f7f);
-	box-shadow: 0 0 40px rgba(255,255,255,0.9);
-	border: 1px solid #cceeff;
+	color: rgba(220,255,220,0.9);
+	background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+	/* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
+	/* border: 1px solid rgba(220,255,220,0.0); */
+	/* box-shadow: 0 0 40px rgba(255,255,255,0.9); */
 }
 
 /* Set Bold Style with "font-weight" property */
@@ -103,8 +116,8 @@ tr.alt { border-top: 1px solid #232323; }
 
 a.btn:hover iframe,
 a.btn:hover img {
-	filter: brightness(3);
-	-webkit-filter: brightness(3);
+	filter: brightness(2);
+	-webkit-filter: brightness(2);
 }
 a.btn {
 	padding: 7px;
@@ -118,12 +131,21 @@ a h4,
 a h5 { margin: 0px; }
 
 /* Bootstrap Enhancers */
-.panel { padding: 0px; width: 100%; }
+.panel { 
+	padding: 0px; 
+	width: 100%; 
+}
 .panel-group { margin-bottom: 2px; }
-.pull-left { text-align: left; }
-.page-header h1 { margin-bottom: 5px; }
-.well .form-group:last-child { margin-bottom: 0; }
-
+.panel-group.panel-header { margin-bottom: 25px; }
+.pull-left { 
+	text-align: left; 
+}
+.page-header h1 { 
+	margin-bottom: 5px; 
+}
+.form-group:last-child { 
+	margin-bottom: 0px; 
+}
 
 .input-group button {
 	padding: 15px;
@@ -207,8 +229,8 @@ a h5 { margin: 0px; }
 	background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
 }
 
-.profile-content .games { padding: 0 15px 10px 0; }
-.profile-content .games .game { padding: 0 5px 5px 0; }
+.profile-content .games { padding: 0 5px 10px 5px; }
+.profile-content .games .game { padding: 0 2px 5px 2px; }
 .profile-content .games .panel button {
 	padding: 1px;
 	text-align: left;
@@ -217,7 +239,8 @@ a h5 { margin: 0px; }
 .profile-content .games .panel.active {
 	border: 1px solid rgba(180, 255, 180, 0.9);
 	box-shadow: 0 0 10px rgba(210, 255, 210, 0.9);
-	background-color: #2a3a2a;
+	background: linear-gradient(140deg, #438a43, #233d23);
+	
 }
 .profile-content .games .panel.active .name {	color: #aaffaa; }
 
@@ -258,9 +281,12 @@ a h5 { margin: 0px; }
  *
  ******************************************************************/
 
+.quote-content { padding: 5px 20px 5px 20px; }
+ 
+.texttags button { font-size: 65%; }
+ 
 .usertool { background: #1a1a1a; }
 .usertool > form { display: inline; }
-
 .usertool .btn-edit { 
 	text-align: left; 
 	font-weight: 600; 
@@ -370,21 +396,19 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 	padding: 10px;
 	vertical-align: top;
 }
-
 .forum-post .content {
 	white-space: normal;
 	word-wrap: break-word;
 	margin-bottom: 0px;
 	margin-top: 0px;
 	width: 75%;
-	padding: 5px 10px 10px 20px;
+	padding: 10px 10px 20px 20px;
 	background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
-}
-.recentfeed .forum-post .content {
-	background: inherit;
 }
 .forum-post .content h2,
 .forum-post .content h3 { display: inline; }
+.forum-post .content .edit-content-toggle,
+.forum-post .content .edit-content { padding-top: 5px; }
 
 .forum-post .time {
 	white-space: nowrap;
@@ -394,6 +418,7 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 	font-size: 85%;
 	text-align: right;
 	padding-bottom: 5px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 .forum-post .info .time { font-size: 85%; }
 .forum-post .info .since { padding-top: 5px; }
@@ -414,12 +439,13 @@ a .panel-recentfeed h1 { font-size: 26px; }
 a .panel-recentfeed h2 { font-size: 22px; }
 a .panel-recentfeed h3 { font-size: 18px; }
 
+.recentfeed .forum-post .content {
+	background: inherit;
+}
+
 .recentfeed .panel > a.btn {
 	padding: 7px 5px 5px 5px;
 	background: linear-gradient(170deg, #2a2c2a,#1f1f1f);
-}
-.recentfeed .panel > a.btn:hover {
-	background: linear-gradient(170deg, #aaacaa, #7f7f7f);
 }
 
 .panel-recentfeed {
@@ -545,7 +571,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-edit:active {
 	color: #ffffff;
 	background-color: rgba(255,255,255,0.1);
-	box-shadow: 0 0 20px rgba(255,255,255,0.9);
+	/* box-shadow: 0 0 10px rgba(255,255,255,0.9); */
 }
 
 

@@ -25,6 +25,11 @@ EOD;
 	}
 }
 
+/**
+ * Apply a filter here to ensure the password is hashed before being inserted
+ * into the Database. The password should then be copied to the Users table when
+ * the account has been confirmed.
+ */
 Confirms::applyFilter('save', function($self, $params, $chain) {
     if ($params['data']) {
         $params['entity']->set($params['data']);

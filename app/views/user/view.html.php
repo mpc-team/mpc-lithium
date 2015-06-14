@@ -1,5 +1,7 @@
 <?php
 
+use app\controllers\UserController;
+
 $this->title($data['member']['alias'] . "'s Profile");
 
 $self = $this;
@@ -68,7 +70,10 @@ $self = $this;
 		<div class="row">
 			<?= $this->view()->render(
 				array('element' => 'recentfeed'),
-				array('recentfeed' => $data['recentfeed'])
+				array(
+					'recentfeed' => $data['recentfeed'],
+					'recentlimit' => UserController::RECENT_LIMIT
+				)
 			)?>
 		</div>
 	</div>

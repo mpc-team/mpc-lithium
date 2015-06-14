@@ -1274,9 +1274,11 @@ blockquote {
   margin: 0.4em 5px;
 	padding: 5px 5px;
   quotes: "\201C""\201D";
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 }
 blockquote:before {
   content: open-quote;
+	font-family: "Georgia";
   font-size: 5em;
   line-height: 0.1em;
 	padding-right: 10px;
@@ -2086,7 +2088,7 @@ th {
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-	border-bottom: 1px solid #131313; 
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2); 
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2765,7 +2767,7 @@ select[multiple].form-group-lg .form-control {
       touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  border: 1px solid transparent;
+  /* border: 1px solid transparent; */
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;

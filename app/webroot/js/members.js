@@ -33,7 +33,8 @@ members.iconMap = {
 	'heroes of the storm': '/img/hotsicon.png',
 	'starcraft ii': '/img/sc2icon.png',
 	'clash of clans': '/img/clashofclansicon.png',
-	'diablo iii': '/img/d3icon.png'
+	'diablo iii': '/img/d3icon.png',
+	'league of legends': '/img/lolicon.png'
 };
 
 members.html = {

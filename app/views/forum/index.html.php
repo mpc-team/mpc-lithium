@@ -1,5 +1,7 @@
 <?php
 
+use app\controllers\ForumController;
+
 $this->title('Forum');
 
 $self = $this;
@@ -11,7 +13,10 @@ $self = $this;
 <div class="row">
 	<?= $this->view()->render(
 		array('element' => 'recentfeed'),
-		array('recentfeed' => $data['recentfeed'])
+		array(
+			'recentfeed' => $data['recentfeed'],
+			'recentlimit' => ForumController::RECENT_LIMIT
+		)
 	)?>
 </div>
 <div class="row page-header">

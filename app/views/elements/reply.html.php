@@ -10,7 +10,7 @@ $disabledPlaceholder = 'Please Login or Signup before posting on the Forum';
 $placeholder = $reply['enabled'] ? 'Enter a message...' : $disabledPlaceholder;
  
 ?>
-<a id='reply-to-thread'></a>
+<a id='thread-reply'></a>
 <div class="panel panel-default">
 	<div class="panel-reply">
 		<form role='form' class='form-horizontal' action='/post/create/<?= $reply['id'] ?>' method='post'>
@@ -34,7 +34,7 @@ $placeholder = $reply['enabled'] ? 'Enter a message...' : $disabledPlaceholder;
 				</div>
 				<div class="row">
 					<div class="input-group">
-						<textarea name="content" id='input-reply-text' class="form-control edit-content-text" 
+						<textarea name="content" id='thread-reply-text' class="form-control edit-content-text" 
 							data-id='<?= $reply['id'] ?>' placeholder='<?= $placeholder ?>'
 							required <?= $disabled ?>></textarea>
 					</div>

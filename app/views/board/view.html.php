@@ -12,6 +12,7 @@ $self = $this;
  *	to delete a thread.
  */
 $features = function($tid, $options) {
+	$html = "";
 	if (count($options) > 0) {
 		$html = "<div class='row usertool'>";
 		if (in_array('delete', $options)) {
@@ -160,7 +161,7 @@ $features = function($tid, $options) {
 								</h4>
 							</center>
 						</div>
-						<a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>#forum-thread-message-<?= $thread['recent']['id'] ?>">
+						<a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>?post=<?= $thread['recent']['id'] ?>">
 							<h5>
 								<div class="name">
 									Recent Post

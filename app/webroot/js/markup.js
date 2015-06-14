@@ -1,99 +1,239 @@
 /**
  * markup.js
  *
+ * Markup is the processing and preparing of text. This markup library will take a string of text
+ * and prepare it for viewing with HTML styling. Simple tags, such as [b] and [i], convert almost
+ * directly into HTML <b> and <i>.
  *
+ * Image reference tags [image][/image] map to <img src=''></img>. In this case, we simply map the
+ * opening tag [image] to <img src=' and the closing tag [/image] to '></img>. The tags and their
+ * mappings are identified first below. 
  */
-function Tag (open, close) {
+var markup = {};
+
+markup.Tag = function (open, close) {
 	this.open = open;
 	this.close = close;
-}
+};
 
-function TagMarkup (from, to) {
+markup.TagMarkup = function (from, to) {
 	this.from = from;
 	this.to = to;
-}
- 
-var TagMap = [
-	new TagMarkup(
-		new Tag("[b]", "[/b]"), 
-		new Tag("<b>", "</b>") 
+};
+
+/**
+ * markup.TagMap
+ *
+ * This array represents the model of the markup system. Tags are identified here with the values
+ * they map to. Small adjustments can easily be made through this array without looking at any
+ * logic below this point.
+ */
+markup.TagMap = [
+	new markup.TagMarkup(
+		new markup.Tag("[b]", "[/b]"), 
+		new markup.Tag("<b>", "</b>") 
 	),
-	new TagMarkup( 
-		new Tag("[i]", "[/i]"), 
-		new Tag("<i>", "</i>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[i]", "[/i]"), 
+		new markup.Tag("<i>", "</i>") 
 	),
-	new TagMarkup( 
-		new Tag("[u]", "[/u]"), 
-		new Tag("<u>", "</u>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[u]", "[/u]"), 
+		new markup.Tag("<u>", "</u>") 
 	),
-	new TagMarkup( 
-		new Tag("[strike]", "[/strike]"), 
-		new Tag("<strike>", "</strike>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[strike]", "[/strike]"), 
+		new markup.Tag("<strike>", "</strike>") 
 	),
-	new TagMarkup( 
-		new Tag("[h1]", "[/h1]"), 
-		new Tag("<h1>", "</h1>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[h1]", "[/h1]"), 
+		new markup.Tag("<h1>", "</h1>") 
 	),
-	new TagMarkup( 
-		new Tag("[h2]", "[/h2]"), 
-		new Tag("<h2>", "</h2>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[h2]", "[/h2]"), 
+		new markup.Tag("<h2>", "</h2>") 
 	),
-	new TagMarkup( 
-		new Tag("[h3]", "[/h3]"), 
-		new Tag("<h3>", "</h3>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[h3]", "[/h3]"), 
+		new markup.Tag("<h3>", "</h3>") 
 	),
-	new TagMarkup( 
-		new Tag("[sup]", "[/sup]"), 
-		new Tag("<sup>", "</sup>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[sup]", "[/sup]"), 
+		new markup.Tag("<sup>", "</sup>") 
 	),
-	new TagMarkup( 
-		new Tag("[sub]", "[/sub]"), 
-		new Tag("<sub>", "</sub>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[sub]", "[/sub]"), 
+		new markup.Tag("<sub>", "</sub>") 
 	),
-	new TagMarkup( 
-		new Tag("[ul]", "[/ul]"), 
-		new Tag("<ul>", "</ul>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[ul]", "[/ul]"), 
+		new markup.Tag("<ul>", "</ul>") 
 	),
-	new TagMarkup( 
-		new Tag("[li]", "[/li]"), 
-		new Tag("<li>", "</li>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[li]", "[/li]"), 
+		new markup.Tag("<li>", "</li>") 
 	),
-	new TagMarkup( 
-		new Tag("[p]", "[/p]"), 
-		new Tag("<p>", "</p>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[p]", "[/p]"), 
+		new markup.Tag("<p>", "</p>") 
 	),
-	new TagMarkup( 
-		new Tag("[center]", "[/center]"), 
-		new Tag("<center>", "</center>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[center]", "[/center]"), 
+		new markup.Tag("<center>", "</center>") 
 	),
-	new TagMarkup( 
-		new Tag("[quote]", "[/quote]"), 
-		new Tag("<blockquote>", "</blockquote>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[quote]", "[/quote]"), 
+		new markup.Tag("<blockquote>", "</blockquote>") 
 	),
-	new TagMarkup( 
-		new Tag("[img]", "[/img]"), 
-		new Tag("<img src='", "'></img>") 
+	new markup.TagMarkup(
+		new markup.Tag("[quote=", "[/quote]"),
+		new markup.Tag("<blockquote>", "</blockquote>")
 	),
-	new TagMarkup( 
-		new Tag("[link=", "[/link]"), 
-		new Tag("<a href='", "</a>") 
+	new markup.TagMarkup( 
+		new markup.Tag("[img]", "[/img]"), 
+		new markup.Tag("<img src='", "'></img>") 
 	),
-	new TagMarkup( 
-		new Tag("[video]", "[/video]"), 
-		new Tag(
+	new markup.TagMarkup( 
+		new markup.Tag("[link=", "[/link]"), 
+		new markup.Tag("<a href='", "</a>") 
+	),
+	new markup.TagMarkup(
+		new markup.Tag("[link]", "[/link]"),
+		new markup.Tag("<a href='", "</a>")
+	),
+	new markup.TagMarkup( 
+		new markup.Tag("[video]", "[/video]"), 
+		new markup.Tag(
 			"<iframe allowfullscreen frameborder='0' height='300' width='500' src='", 
 			"'></iframe>"
 		) 
 	)
-]
+];
 
 /**
- * compareTextToTag 
+ * markup.process
  *
- * Compares a given text substring with a given tag. Returns the tag that
- * was matched if the comparison is "successful".
+ * @param text - text input that needs to have markup processed
+ *
+ * @returns new string that has markup tags identified and replaced with HTML tags.
+ *
+ * Outlines the markup process. First prepare the markup structure (just a list), verify its 
+ * contents, and finally swap the tags for the tags they have been mapped with (see markup.TagMap).
  */
-function compareTextToTag (text, place, tag) {
+markup.process = function (text) {
+	var list = this.prepare(text);
+	var marked = null;
+	if (this.verify(list)) {
+		list = this.swap(list);
+		marked = '';
+		for (var i = 0; i < list.length; i++) {
+			marked += list[i];
+		}
+		return marked.replace(/\n/g, '<br>');
+	}
+};
+
+/**
+ * markup.prepare
+ *
+ * @param text - text input such as "[b]bolded[/b] text".
+ *
+ * @returns markup component list such as ['[b]', 'bolded', '[/b]'].
+ *
+ * Key component of the markup process. This is where we build our markup list. This allows us to
+ * traverse components of the markup easily.
+ */ 
+markup.prepare = function (text) {	
+	var list = [];
+	var prepared = "";
+	for (var i = 0; i < text.length; i++) {
+		var found = false;
+		for (var m = 0; (m < this.TagMap.length) && (!found); m++) {
+			var tag = this.compare(text, i, this.TagMap[m].from.open);
+			tag = (tag == null) ? this.compare(text, i, this.TagMap[m].from.close) : tag;
+			if (tag) {
+				if (prepared) {
+					list.push(prepared);
+				}
+				list.push(tag);
+				i += tag.length - 1;
+				found = true;
+				prepared = "";
+			}
+		}
+		if (!found) {
+			prepared += text[i];
+		}
+	}
+	if (prepared) {
+		list.push(prepared);
+	}
+	return list;
+};
+
+markup.verify = function (list) {
+	var expected = [];
+	for (var i = 0; i < list.length; i++) {
+		var tmap = this.tagmap(list[i]);
+		if (tmap) {
+			if (tmap.flag == "open") {
+				expected.push(tmap.map.from.close);
+			} else if (tmap.flag == "close") {
+				var index = expected.indexOf(tmap.map.from.close);
+				if (index > -1) { 
+					expected.splice(index, 1); 
+				}
+			}
+		}
+	}
+	return (expected.length == 0);
+};
+
+/**
+ * markup.swap
+ *
+ * @param list - markup list containing markup components (as received from markup.prepare).
+ *
+ * @returns markup component list with markup tags exchanged for HTML style tags.
+ *
+ * This finalizes the markup process and returns a list that can simply be printed in-order.
+ */
+markup.swap = function (list) {
+	for (var i = 0; i < list.length; i++) {
+		var tmap = this.tagmap(list[i]);
+		if (tmap) {
+			switch (tmap.map.from[tmap.flag]) {
+				case "[video]":
+					var stuff = this.getContent(list, i);
+					stuff = stuff.replace("watch?v=", "embed/");
+					this.setContent(list, i, stuff);
+					break;
+				case "[quote=":
+					var stuff = this.getContent(list, i);
+					stuff = "Originally posted by <h5>" + stuff;
+					stuff = stuff.replace("]", "</h5> <div class='quote-content'>");
+					this.setContent(list, i, stuff + "</div>");
+					break;
+				case "[link=":
+					var stuff = this.getContent(list, i);
+					var url = (stuff.indexOf("http://") > -1) ? stuff : "http://" + stuff;
+					stuff = url.replace("]", "'>");
+					this.setContent(list, i, stuff);
+					break;
+				case "[link]":
+					var stuff = this.getContent(list, i);
+					var url = (stuff.indexOf("http://") > -1) ? stuff : "http://" + stuff;
+					stuff = url + "'>" + stuff;
+					this.setContent(list, i, stuff);
+					break;
+			}
+			list[i] = tmap.map.to[tmap.flag];
+		}
+	}
+	return list;
+};
+
+markup.compare = function (text, place, tag) {
 	var result = null;
 	if (place + tag.length <= text.length) {
 		var substr = text.substring(place, place + tag.length);
@@ -101,106 +241,32 @@ function compareTextToTag (text, place, tag) {
 			result = tag;
 		}
 	}
-	return result;
-}
- 
-/**
- * buildMarkupList 
- *
- * Builds a list of elements that can be processed. Markup tags and content are
- * separated in the list by the order in which they appear. This will allow us to
- * verify that the markup is correct as well as build the resulting string.
- */
-function buildMarkupList (text) {
-	var markupList = [];
-	var markupContent = "";
-	
-	for (var i = 0; i < text.length; i++) {
-		var markupFound = false;
-		for (var m = 0; (m < TagMap.length) && (!markupFound); m++) {
-			var tag = compareTextToTag(text, i,TagMap[m].from.open);
-			tag = (tag == null) ? compareTextToTag(text, i, TagMap[m].from.close) : tag;
-			
-			if (tag) {
-				if (markupContent) {
-					markupList.push(markupContent);
-				}
-				markupList.push(tag);
-				i += tag.length - 1;
-				markupFound = true;
-				markupContent = "";
-			}
-		}
-		if (!markupFound) {
-			markupContent += text[i];
-		}
-	}
-	if (markupContent) {
-		markupList.push(markupContent);
-	}
-	return markupList;
-}
+	return result;		
+};
 
-/**
- * getTagMapElement 
- *
- * Finds the associated TagMap value for a specified string. Notice that it should
- * return the same object for [b] and [/b] because they are part of the same tag.
- */
-function getTagMapElement (data) {
-	for (var m = 0; m < TagMap.length; m++) {
-		var resultObject = new Object();
-		
-		if (TagMap[m].from.open == data) {
-			resultObject.flag = "open";
-			resultObject.map = TagMap[m];
-			return resultObject;
-		} else if (TagMap[m].from.close == data) {
-			resultObject.flag = "close";
-			resultObject.map = TagMap[m];
-			return resultObject;
+markup.tagmap = function (data) {
+	for (var m = 0; m < this.TagMap.length; m++) {
+		var result = new Object();
+		if (this.TagMap[m].from.open == data) {
+			result.flag = "open";
+			result.map = this.TagMap[m];
+			return result;
+		} else if (this.TagMap[m].from.close == data) {
+			result.flag = "close";
+			result.map = this.TagMap[m];
+			return result;
 		}
 	}
 	return null;
-}
+};
 
 /**
- * verifyMarkupList 
- *
- * Verifies that the markup contained in the Markup List is valid. This
- * means that any open markup tag is closed. The order in which tags
- * are closed is not important.
+ * Obtains string content that falls between an opening tag at the specified
+ * index and the next corresponding closing tag.
  */
-function verifyMarkupList (list) {
-	var expected = [];
- 
-	for (var i = 0; i < list.length; i++) {
-		var tmap = getTagMapElement(list[i]);
-		if (tmap) {
-			if (tmap.flag == "open") {
-				// we are now expecting a closing tag eventually
-				expected.push(tmap.map.from.close);
-			} else if (tmap.flag == "close") {
-				// remove from the expected array
-				var index = expected.indexOf(tmap.map.from.close);
-				if (index > -1) { expected.splice(index, 1); }
-			}
-		}
-	}
-	return (expected.length == 0);
-}
-
-/**
- * getMarkupTagContent 
- *
- * Returns the content (including tags) between a specified open-tag and
- * its corresponding closing tag. Closing tags are determined to be the
- * first closing tag encountered after the open tag.
- */
-function getMarkupTagContent (list, index) {
-	var tmap = getTagMapElement(list[index]);
+markup.getContent = function (list, index) {
+	var tmap = this.tagmap(list[index]);
 	var content = null;
-	
 	if (tmap) {
 		var i = index + 1;
 		content = "";
@@ -210,69 +276,44 @@ function getMarkupTagContent (list, index) {
 		}
 	}
 	return content;
-}
+};
 
 /**
- * setMarkupTagContent 
+ * Clears the content between specified tags (opening tag specified with @list
+ * and @index) and follows up by inserting the new content into the previous
+ * position. 
  *
- * Similar to "getMarkupTagContent" but can be used to modify the contents
- * of a tag. This is necessary for the [video] tag as we see below.
- */
-function setMarkupTagContent (list, index, content) {
-	var tmap = getTagMapElement(list[index]);
-	var contentMarkupList = buildMarkupList(content);
-	
+ * @param list, current list of markup-separated values
+ * @param index, index of the opening tag marking the beginning of the content
+ * @param content, new content that is inserted into @list at @index + 1.
+ */ 
+markup.setContent = function (list, index, content) {
+	var tmap = this.tagmap(list[index]);
+	var contentList = this.prepare(content);
 	if (tmap) {
+		// remove content that was previously there
 		var i = index + 1;
 		while (list[i] != tmap.map.from.close) {
-			list[i] = contentMarkupList[i - index - 1];
-			i++;
+			i++; 
+		}
+		list.splice(index + 1, i - index - 1);
+		// put new content into the list traversing backwards
+		for (i = contentList.length - 1; i > -1; i--) {
+			list.splice(index + 1, 0, contentList[i]);
 		}
 		return true;
 	}
 	return false;
-}
+};
 
-/**
- * swapMarkupList 
- *
- * Uses the TagMap entry to swap tags in the Markup List from the
- * original markup tag to the new mapped tag.
- */
-function swapMarkupList (list) {
-	for (var i = 0; i < list.length; i++) {
-		var tmap = getTagMapElement(list[i]);
-		
-		if (tmap) {
-			if (tmap.map.from[tmap.flag] == "[video]") {
-				var content = getMarkupTagContent(list, i);
-				content = content.replace("watch?v=", "embed/");
-				setMarkupTagContent(list, i, content);
-			} else if (tmap.map.from[tmap.flag] == "[link=") {
-				var content = getMarkupTagContent(list, i);
-				content = content.replace("]", "'>");
-				setMarkupTagContent(list, i, content);
-			}
-			// swap values with the mapped values
-			list[i] = tmap.map.to[tmap.flag];
-		}
-	}
-	return list;
-}
 
-function markup (text) {
-	var markupList = buildMarkupList(text);
-	var marked = null;
-	
-	if (verifyMarkupList(markupList)) {
-		markupList = swapMarkupList(markupList);
-		marked = '';
-		for (var i = 0; i < markupList.length; i++) {
-			marked += markupList[i];
-		}
-		return marked.replace(/\n/g, '<br>');
-	}
-}
+
+
+
+
+
+
+
 
 
 

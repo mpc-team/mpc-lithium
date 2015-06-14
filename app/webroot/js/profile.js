@@ -1,45 +1,66 @@
-var profile = {
 /**
  * profile.js
  *
- * Functions that are used for the JavaScript elements that appear on the Profile page.
- *
- * "Games You Play"
- * "Messages & Invitations"
+ * Functions that are used for the JavaScript elements that appear on the 
+ * Profile page.
  */
+var profile = {
+
 	messageCount: 0,
  
 	searchGames: function (played, gameid) {
 		return played.indexOf(gameid + "") > -1;
 	},
 
-	modifyGames: function (played, userid, gameid, flag) {
+	updateGameUI: function (gameid, status) {				
+		if (status) {
+			$(".game[data-id='" + gameid + "'] .status").html("<span class='glyphicon glyphicon-ok'></span>");
+			$(".game[data-id='" + gameid + "'] .status").addClass("active");
+			$(".game[data-id='" + gameid + "'] .panel").addClass("active");
+		} else {
+			$(".game[data-id='" + gameid + "'] .status").html("");
+			$(".game[data-id='" + gameid + "'] .status").removeClass("active");
+			$(".game[data-id='" + gameid + "'] .panel").removeClass("active");
+		}
+		/* this is a little UI trick to make the button never appear selected */
+		$(".game[data-id='" + gameid + "'] button").blur();
+	},
+	
+	updateGame: function (played, userid, gameid, flag) {
 		var obj = {game: gameid, flag: flag};
-		$.post("/user/edit/" + userid,
-			obj, function (data) {
-				data = JSON.parse(data);
-				if (data.status) {
-					played.length = 0;
-					for (var i = 0; i < data.response.length; i++) {
-						played.push(data.response[i]);
-					}
-					$(".game[data-id='" + gameid + "'] .status").html("<span class='glyphicon glyphicon-ok'></span>");
-					if (profile.searchGames(played, gameid)) {
-						$(".game[data-id='" + gameid + "'] .status").addClass("active");
-						$(".game[data-id='" + gameid + "'] .panel").addClass("active");
-					} else {
-						$(".game[data-id='" + gameid + "'] .status").removeClass("active");
-						$(".game[data-id='" + gameid + "'] .panel").removeClass("active");
-					}
-					profile.refreshGames(played);
-					$(".game[data-id='" + gameid + "'] button").blur();
-				}
+		var find = played.indexOf("" + gameid);
+		/* synchronize local list of played games and assume success, revert changes
+			after AJAX request if the action was not successful */
+		if (!flag) {
+			if (find > -1) {
+				played.splice(find);
 			}
-		);
+		} else {
+			if (find < 0) {
+				played.push(("" + gameid));
+			}
+		}
+		profile.updateGameUI(gameid, flag);
+		
+		$.post("/user/edit/" + userid, obj, function (data) {
+			data = JSON.parse(data);
+			/* if the request was not successful then revert the UI changes */
+			if (!data.status) {
+				profile.updateGameUI(gameid, !flag);
+			} else {
+				/* synchronize games played data with server */
+				played.length = 0;
+				for (var i = 0; i < data.response.length; i++) {
+					played.push(data.response[i]);
+				}
+				/* synchronize UI with data returned by server */
+				profile.refreshGames(played);	
+			}
+		});
 	},
 
 	sendMessage: function (userid, content) {
-		var obj = {post: content};
+		var obj = {wall: content};
 		$.post("/user/edit/" + userid, obj, function (data) {
 			data = JSON.parse(data);
 			if (data.status) {
@@ -51,15 +72,7 @@ var profile = {
 	refreshGames: function (played) {
 		$(".game .status").each(function () {
 			var id = $(this).data('id');
-			if (profile.searchGames(played, id)) {
-				$(this).html("<span class='glyphicon glyphicon-ok'></span>");
-				$(".game[data-id='" + id + "'] .status").addClass("active");
-				$(".game[data-id='" + id + "'] .panel").addClass("active");
-			} else {
-				$(this).html("");
-				$(".game[data-id='" + id + "'] .status").removeClass("active");
-				$(".game[data-id='" + id + "'] .panel").removeClass("active");
-			}
+			profile.updateGameUI(id, profile.searchGames(played, id));
 		});
 	},
 
@@ -108,9 +121,9 @@ var profile = {
 		$(".profile-content .game button").click(function () {
 			var gameid = $(this).data('id');
 			if (profile.searchGames(played, gameid)) {
-				profile.modifyGames(played, userid, gameid, false);
+				profile.updateGame(played, userid, gameid, false);
 			} else {
-				profile.modifyGames(played, userid, gameid, true);
+				profile.updateGame(played, userid, gameid, true);
 			}
 		});
 		$(".profile-content .wall .footer input[type='text']").keyup(function (event) {

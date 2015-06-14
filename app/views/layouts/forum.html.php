@@ -14,8 +14,8 @@
 		'jquery-1.11.2',    'bootstrap', 
 		'navbar',           'field-selection', 
 		'members',          'validate', 
-		'forum',            'scroller', 
-		'markup'
+		'forum',            'markup', 
+		'scroller'
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

@@ -16,20 +16,14 @@ $searchResultLayout = array(
 );
 
 ?>
-<div class="panel-group">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h1>Members</h1>
-			<h4>
-				Currently 
-				<b><?= $data['count'] ?></b> 
-				<?= ($data['count'] > 1) ? "members have" : "member has" ?> registered.
-			</h4>
-		</div>
-	</div>
-</div>
+<h1>Members</h1>
+<h4>
+	Currently 
+	<b><?= $data['count'] ?></b> 
+	<?= ($data['count'] > 1) ? "members have" : "member has" ?> registered.
+</h4>
 <div class="members">
-	<div class="panel-group">
+	<div class="panel-group panel-header">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Search

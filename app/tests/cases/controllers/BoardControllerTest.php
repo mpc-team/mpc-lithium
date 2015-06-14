@@ -15,7 +15,7 @@ class BoardControllerTest extends \lithium\test\Unit {
 			'key2' => array('recent' => array('tstamp' => 15)),
 			'key3' => array('recent' => array('tstamp' => 5))
 		);
-		$sorted = usort($threads, "\app\controllers\BoardController::thread_sort");
+		$sorted = usort($threads, array("\app\controllers\BoardController", "thread_sort"));
 		$sorted_expected = array(
 			'key2' => array('recent' => array('tstamp' => 15)),
 			'key1' => array('recent' => array('tstamp' => 10)),

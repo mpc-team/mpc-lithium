@@ -16,11 +16,9 @@ class ForumController extends \lithium\action\Controller {
 	/**
 	 * Limit amount of posts displayed in the recent-feed. 
 	 */
-	const RECENT_LIMIT = 3;
+	const RECENT_LIMIT = 12;
 	
 	/**
-	 * index
-	 *
 	 * @returns:
 	 *	• $authorized - required by navbar element and possibly other components.
 	 *	• $breadcrumbs - required by breadcrumbs element referenced in the layout.
@@ -32,19 +30,25 @@ class ForumController extends \lithium\action\Controller {
 		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
 		$data = array(
 			'recentfeed' => Posts::find('all', array(
-				'limit' => self::RECENT_LIMIT,
-				'order' => array('tstamp' => 'DESC')))->to('array'),
+				   // 'limit' => self::RECENT_LIMIT,
+				   'order' => array('tstamp' => 'DESC')))->to('array'),
 			'categories' => Categories::find('all')->to('array'),
 		);
+		$recentCount = 0;
 		foreach ($data['recentfeed'] as $key => $recent) {
 			$author = Users::getById($recent['uid']);
 			$thread = Threads::getById($recent['tid']);
-			$forum  = Forums::getById($thread['fid']);
-			$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
-			$data['recentfeed'][$key]['author'] = stripslashes($author['alias']);
-			$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
-			$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
-			$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
+			if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) {
+				$forum = Forums::getById($thread['fid']);
+				$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
+				$data['recentfeed'][$key]['author'] = stripslashes($author['alias']);
+				$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
+				$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
+				$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
+				$recentCount += 1;
+			} else {
+				unset($data['recentfeed'][$key]);
+			}
 		}		
 		$forums = Forums::all()->to('array');
 		foreach ($forums as $key => $forum) {

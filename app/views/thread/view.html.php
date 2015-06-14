@@ -9,7 +9,7 @@ $userpanel = function($mid, $options) {
 	$html .= "<div class='col-xs-2'>";
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit pull-left edit-content-btn-edit' data-id='{$mid}'>
+<button type='button' class='btn btn-edit pull-left btn-edit-edit' data-id='{$mid}'>
 	<i class='fa fa-pencil-square-o'></i>
 	Edit
 </button>
@@ -20,7 +20,7 @@ EOD;
 	if (in_array('delete', $options)) {
 		$html .= <<<EOD
 <form role='form' action='/post/delete/{$mid}' method='post'>
-	<button type='submit' class='btn btn-edit edit-content-btn-delete' data-id='{$mid}'>
+	<button type='submit' class='btn btn-edit btn-edit-delete' data-id='{$mid}'>
 		<i class='fa fa-trash-o'></i>
 		Delete
 	</button>
@@ -32,7 +32,7 @@ EOD;
 	$html .= "<div class='col-xs-8'>";
 	if (in_array('quote', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit pull-right content-quote-btn' data-id='{$mid}'>
+<button type='button' class='btn btn-edit btn-edit-quote pull-right' data-id='{$mid}'>
 	<i class='fa fa-quote-right'></i>
 	Quote
 </button>
@@ -40,12 +40,12 @@ EOD;
 	}
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit pull-right edit-content-btn-cancel' data-id='{$mid}'>
+<button type='button' class='btn btn-edit pull-right btn-edit-cancel' data-id='{$mid}'>
 	<i class='fa fa-times'></i>
 	Cancel
 </button>
 <form class='edit-content-form' data-id='{$mid}' role='form' action='/post/edit/{$mid}' method='post'>
-	<button type='button' class='btn btn-edit pull-right edit-content-btn-update' data-id='{$mid}'>
+	<button type='button' class='btn btn-edit pull-right btn-edit-update' data-id='{$mid}'>
 		<i class='fa fa-check-square-o'></i>
 		Confirm
 	</button>
@@ -86,12 +86,12 @@ EOD;
 <?php foreach ($data['posts'] as $post): ?>
 	<div class="panel-group">
 		<div class="panel panel-default">
-			<a id="forum-thread-message-<?= $post['id'] ?>"></a>
+			<a id="post<?= $post['id'] ?>"></a>
 			<div class="row">
 				<div class="forum-post">
 					<div>
 						<div class="info">
-							<div class="author">
+							<div class="author" data-id="<?= $post['id'] ?>">
 								<a href="/user/view/<?= $post['author']['id'] ?>">
 									<span class="glyphicon glyphicon-user"></span>
 									<?= $post['author']['alias'] ?>
@@ -111,7 +111,7 @@ EOD;
 								<?= $post['date'] ?>
 							</div>
 							<div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
-							<div class=" edit-content-toggle" data-id="<?= $post['id'] ?>">
+							<div class="edit-content-toggle" data-id="<?= $post['id'] ?>">
 								<?php if (isset($post['first'])): ?>
 									<div class="row">
 										<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
@@ -134,7 +134,7 @@ EOD;
 <script type="text/javascript">
 	$( document ).ready(function() {
 		$('.edit-content').each(function(index) {
-			$(this).html(markup($(this).text()));
+			$(this).html(markup.process($(this).text()));
 		});
 	});
 </script>

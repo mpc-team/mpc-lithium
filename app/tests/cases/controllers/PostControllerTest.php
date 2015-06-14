@@ -3,6 +3,7 @@
 namespace app\tests\cases\controllers;
 
 use app\controllers\PostController;
+use app\models\Posts;
 
 class PostControllerTest extends \lithium\test\Unit {
 	
@@ -29,7 +30,7 @@ class PostControllerTest extends \lithium\test\Unit {
 		$case_pass[5] = "Carriage returns should be removed.\n\nCR followed by LF should result in a limited LF-only result.";
 		
 		for ($i = 0; $i < count($case); $i++) {
-			$this->assertEqual($case_pass[$i], PostController::clean($case[$i]));
+			$this->assertEqual($case_pass[$i], Posts::clean($case[$i]));
 		}
 	}
 }

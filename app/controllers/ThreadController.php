@@ -12,24 +12,9 @@ use app\models\Timestamp;
 
 class ThreadController extends ContentController {
 
-	/**
-	 * clean
-	 *
-	 * Cleans a Thread name. Removes carriage-returns and linefeeds and any trailing whitespace. HTML
-	 * tags are not allowed in titles either, but the markup tags are (they are not rendered though).
-	 */
-	public static function clean($text) {
-		$text = strip_tags(trim($text));
-		$text = str_replace('"', '""', $text);
-		$text = str_replace('\r\n', '', $text);
-		$text = str_replace('\n', '', $text);
-		$text = str_replace('\r', '', $text);
-		return $text;
-	}
-
 	public function view() {
+		$this->_render['layout'] = 'forum';
 		if (isset($this->request->id)) {
-			$this->_render['layout'] = 'forum';
 			$authorized = Auth::check('default');
 			if ($thread = self::verify_access($authorized, '\app\models\Threads', $this->request->id)) {
 				$forum = Forums::getById($thread['fid']);
@@ -109,7 +94,7 @@ class ThreadController extends ContentController {
 			if (self::verify_access($authorized, "\app\models\Forums", $this->request->id)) {
 				$thread = Threads::create(array(
 					'fid' => $this->request->id,
-					'name' => self::clean($this->request->data['title']),
+					'name' => Threads::clean($this->request->data['title']),
 					'uid' => $authorized['id'],
 					'tstamp' => null,
 					'permission' => $forum['permission']
@@ -117,14 +102,12 @@ class ThreadController extends ContentController {
 				if ($thread->save()) {
 					$post = Posts::create(array(
 						'tid' => $thread->id,
-						'content' => PostController::clean($this->request->data['content']),
+						'content' => Posts::clean($this->request->data['content']),
 						'uid' => $authorized['id']
 					));
 					if ($post->save()) {
-						/* post created successfully view it with thread controller */
 						return $this->redirect("/thread/view/{$thread->id}");
 					} else {
-						/* post wasn't created successfully, redirect back to forum board */
 						$thread->delete();
 					}
 				}

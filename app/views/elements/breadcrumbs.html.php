@@ -1,10 +1,12 @@
 <?php
 /**
- * (Forum) Breadcrumbs
+ * Breadcrumbs
  * 
- * 	Panel at the top/bottom of Forum that displays user navigation breadcrumbs.
+ * Link > Link > ... > Link
  *
+ * This is the format of the breadcrumb navigation.
  */
+ 
 $navigation = function($path, $links) {
 	$pathcount = count($path);
 	$html = "";
