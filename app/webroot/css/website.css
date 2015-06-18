@@ -366,6 +366,11 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 	overflow: hidden;
 }
 
+.forum-thread a.info .name,
+.forum-thread a.recent .name {
+	padding-bottom: 5px;
+}
+
 .forum-thread .info,
 .forum-thread a.info { width: 55%; }
 
