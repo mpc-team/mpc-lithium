@@ -216,13 +216,17 @@ markup.swap = function (list) {
 					break;
 				case "[link=":
 					var stuff = this.getContent(list, i);
-					var url = (stuff.indexOf("http://") > -1) ? stuff : "http://" + stuff;
+					var hasHttp = stuff.indexOf("http://") > -1;
+					var hasHttps = stuff.indexOf("https://") > -1;
+					var url = (hasHttp || hasHttps) ? stuff : "http://" + stuff;
 					stuff = url.replace("]", "'>");
 					this.setContent(list, i, stuff);
 					break;
 				case "[link]":
 					var stuff = this.getContent(list, i);
-					var url = (stuff.indexOf("http://") > -1) ? stuff : "http://" + stuff;
+					var hasHttp = stuff.indexOf("http://") > -1;
+					var hasHttps = stuff.indexOf("https://") > -1;
+					var url = (hasHttp || hasHttps) ? stuff : "http://" + stuff;
 					stuff = url + "'>" + stuff;
 					this.setContent(list, i, stuff);
 					break;

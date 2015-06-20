@@ -132,6 +132,7 @@ class UserController extends \lithium\action\Controller {
 				foreach ($messages as $key => $message) {
 					$sender = Users::getById($message['uidsender']);
 					$messages[$key]['sender'] = $sender['alias'];
+					$messages[$key]['senderid'] = $sender['id'];
 					$messages[$key]['content'] = stripslashes($message['content']);
 				}
 				$messages = array_values($messages);

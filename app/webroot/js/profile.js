@@ -80,12 +80,12 @@ var profile = {
 		$.get("/user/messages/" + userid,
 			function (messages) {
 				var json = $.parseJSON(messages);
-				var html = '';
+				var html = '';				
 				for (var key in json.response) {
 					html += "<div class='message'>";
 					html += "<span class='name'>";
 					html += "<center>";
-					html += "<a href=/user/view/" + userid + ">";
+					html += "<a href=/user/view/" + json.response[key].senderid + ">";
 					html += json.response[key].sender;
 					html += "</a>";
 					html += "</center>";
