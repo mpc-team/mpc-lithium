@@ -106,9 +106,27 @@ EOD;
 							</div>
 						</div>
 						<div class="content">
-							<div class="time">
-								<span class="glyphicon glyphicon-time"></span>
-								<?= $post['date'] ?>
+							<div class="row header">
+								<span class="hit">
+									<?php $disabled = ($post['hitenabled']) ? '' : ' disabled'; ?>
+									<button class="btn btn-edit punch" data-id="<?= $post['id'] ?>"<?= $disabled ?>>
+										<img src="/img/punch.png" width="20px" height="20px"/>
+									</button>
+									<button class="btn btn-edit kick" data-id="<?= $post['id'] ?>"<?= $disabled ?>>
+										<img src="/img/kick.png" width="20px" height="20px"/>
+									</button>
+									<span class="text">
+										<h5><b>
+											<span class="hits" data-id="<?= $post['id'] ?>">
+												<?= $post['hits'] ?>
+											</span>
+										</b></h5> Hits
+									</span>
+								</span>
+								<span class="time">
+									<span class="glyphicon glyphicon-time"></span>
+									<?= $post['date'] ?>
+								</span>
 							</div>
 							<div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
 							<div class="edit-content-toggle" data-id="<?= $post['id'] ?>">

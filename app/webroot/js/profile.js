@@ -116,8 +116,10 @@ var profile = {
 	
 	init: function (userid, played) {	
 		profile.refreshGames(played);
-		setInterval(function () { profile.refreshMessages(userid); }, 4000);
 		profile.refreshMessages(userid);
+		
+		setInterval(function () { profile.refreshMessages(userid); }, 4000);
+		
 		$(".profile-content .game button").click(function () {
 			var gameid = $(this).data('id');
 			if (profile.searchGames(played, gameid)) {

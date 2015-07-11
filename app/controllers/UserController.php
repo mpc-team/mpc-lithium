@@ -18,7 +18,7 @@ class UserController extends \lithium\action\Controller {
 
 	const RECENT_LIMIT = 9;
 
-	public function profile() {
+	public function profile ( ) {
 		$authorized = Auth::check('default');
 		if ($authorized) {
 			if ($authorized = Users::getById($authorized['id'])) {
@@ -58,7 +58,7 @@ class UserController extends \lithium\action\Controller {
 		return $this->redirect('/login');
 	}
 
-	public function view() {
+	public function view ( ) {
 		if (isset($this->request->id)) {
 			$authorized = Auth::check('default');
 			if ($member = Users::getById($this->request->id)) {
@@ -99,7 +99,16 @@ class UserController extends \lithium\action\Controller {
 		return $this->redirect('/profile');
 	}
 
-	public function edit() {
+	public static function getUserGameIds ($uid) {
+		$games = UserGames::getById($uid);
+		$result = array();
+		foreach ($games as $game) {
+			array_push($result, $game['gid']);
+		}
+		return $result;
+	}
+
+	public function edit ( ) {
 		if (isset($this->request->id)) {
 			$authorized = Auth::check('default');
 			if (isset($this->request->data['game'])) {
@@ -125,7 +134,7 @@ class UserController extends \lithium\action\Controller {
 		return json_encode(array('status' => false, 'response' => 'None'));
 	}
 
-	public function messages () {
+	public function messages ( ) {
 		if (isset($this->request->id)) {
 			if ($user = Users::getById($this->request->id)) {
 				$messages = Messages::getUserMessages($this->request->id);
@@ -143,15 +152,6 @@ class UserController extends \lithium\action\Controller {
 			}
 		}
 		return json_encode(array('status' => false));
-	}
-
-	public static function getUserGameIds ($uid) {
-		$games = UserGames::getById($uid);
-		$result = array();
-		foreach ($games as $game) {
-			array_push($result, $game['gid']);
-		}
-		return $result;
 	}
 
 }

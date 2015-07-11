@@ -9,10 +9,11 @@ use app\models\Threads;
 use app\models\Posts;
 use app\models\Permissions;
 use app\models\Timestamp;
+use app\models\PostHits;
 
 class ThreadController extends ContentController {
 
-	public function view() {
+	public function view ( ) {
 		$this->_render['layout'] = 'forum';
 		if (isset($this->request->id)) {
 			$authorized = Auth::check('default');
@@ -55,6 +56,9 @@ class ThreadController extends ContentController {
 					$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
 					$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($msg['tstamp'], array());
 					$data['posts'][$key]['features'] = array();
+					$data['posts'][$key]['hits'] = count(PostHits::getByPostId($data['posts'][$key]['id']));
+					
+					$data['posts'][$key]['hitenabled'] = PostHits::isPostHittableByUser($data['posts'][$key]['id'], $authorized['id']);
 					$conditions = array(
 						'quote' => (bool) $authorized,
 						'edit' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized)),
@@ -72,7 +76,7 @@ class ThreadController extends ContentController {
 		return $this->redirect('/forum');
 	}
 
-	public function delete() {
+	public function delete ( ) {
 		if (isset($this->request->id)) {
 			$authorized = Auth::check('default');
 			$thread = Threads::getbyId($this->request->id);
@@ -87,7 +91,7 @@ class ThreadController extends ContentController {
 		return $this->redirect('/forum');
 	}
 
-	public function create() {
+	public function create ( ) {
 		if (isset($this->request->id) && $this->request->data) {
 			$authorized = Auth::check('default');
 			$forum = Forums::getById($this->request->id);

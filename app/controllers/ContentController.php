@@ -17,10 +17,11 @@ use app\models\Messages;
 class ContentController extends \lithium\action\Controller {
 
 	/**
-	 * verify_access
-	 *
-	 * Verify access to a particular resource. The resource model should extend the ContentController
-	 * and be added to the above imports via "use".
+	 * Verify access to a particular resource.
+	 *	@params
+	 *		$user - the user accessing the resource.
+	 *		$type - the resource type defined as \lithium\data\Model classes.
+	 *		$id - the resource's unique identifier.
 	 */
 	public function verify_access($user, $type, $id) {
 		$content = $type::find('first', array('conditions' => array('id' => $id)));

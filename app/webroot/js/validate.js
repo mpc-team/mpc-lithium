@@ -31,8 +31,8 @@ function validateAlias (alias) {
  * In addition it cannot start with a number, and must start with an 
  * alphabetic character/
  */
-	var regex = /^(?=[0-9a-zA-Z\s]{3,32}$)[a-zA-Z\s]+[a-zA-Z0-9\s]*/;
-	return((alias != null) && regex.test(alias)); 
+	var regex = /^(?=[!0-9a-zA-Z\s]{3,32}$)[a-zA-Z\s]+[a-zA-Z0-9\s]*/;
+	return ((alias != null) && regex.test(alias)); 
 }
 
 /**

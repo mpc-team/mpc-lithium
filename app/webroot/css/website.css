@@ -7,7 +7,8 @@ html {
 	background-attachment: fixed !IMPORTANT;
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 100%; min-height: 100%;
+	background: linear-gradient(160deg, #151715, #1f211f);
+	/* height: 100%; min-height: 100%; */
 }
 body {
 	padding-top: 50px;
@@ -17,7 +18,7 @@ body {
 	color: rgba(255, 255, 255, 0.6);
 }
 h1, h2, h3 {
-	font-family: "Oswald";
+	/* font-family: "Oswald"; */
 	font-weight: 700;
 }
 h1 > small,
@@ -29,7 +30,7 @@ h3 > small {
 h5 {
 	display: inline;
 	font-size: 12pt;
-	font-family: "Oswald";
+	/* font-family: "Oswald"; */
 }
 
 .navbar {
@@ -105,7 +106,7 @@ span.glyphicon-send { font-size: 22pt; }
 .breadcrumb-text {
 	display: inline;
 	font-size: 12pt;
-	font-family: "Oswald";
+	font-family: "Titillium Web";
 }
 
 span.input-group-addon { height: 34px; width: 100px; }
@@ -130,23 +131,14 @@ a h3,
 a h4,
 a h5 { margin: 0px; }
 
-/* Bootstrap Enhancers */
-.panel { 
-	padding: 0px; 
-	width: 100%; 
-}
+/** Bootstrap Modifiers **/
+
+.panel { padding: 0px; width: 100%; }
 .panel-group { margin-bottom: 2px; }
 .panel-group.panel-header { margin-bottom: 25px; }
-.pull-left { 
-	text-align: left; 
-}
-.page-header h1 { 
-	margin-bottom: 5px; 
-}
-.form-group:last-child { 
-	margin-bottom: 0px; 
-}
-
+.pull-left { text-align: left; }
+.page-header h1 { margin-bottom: 5px; }
+.form-group:last-child { margin-bottom: 0px; }
 .input-group button {
 	padding: 15px;
 	width: 100%;
@@ -154,6 +146,7 @@ a h5 { margin: 0px; }
 	text-align: center;
 	background: linear-gradient(rgba(255,255,255,0.025), rgba(255,255,255,0.05));
 }
+.carousel-indicators li:hover { box-shadow: 0 0 10px #fff; }
 
 /******************************************************************
  *
@@ -188,7 +181,7 @@ a h5 { margin: 0px; }
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 .profile-content .wall .content .message .name {
-	font-family: "Oswald";
+	/* font-family: "Oswald"; */
 	font-size: 105%;
 }
 .profile-content .wall .content .message .text {
@@ -283,7 +276,7 @@ a h5 { margin: 0px; }
 
 .quote-content { padding: 5px 20px 5px 20px; }
  
-.texttags button { font-size: 65%; }
+.texttags button { font-size: 110%; }
  
 .usertool { background: #1a1a1a; }
 .usertool > form { display: inline; }
@@ -333,6 +326,7 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 .forum .categories .count { bottom: 0px; }
 .forum .categories .panel-group { margin-bottom: 1px; }
 
+.forum-header h1 { text-transform: uppercase; }
 .forum-header .forum-thread {
 	font-size: 150%;
 	font-weight: 700;
@@ -362,19 +356,15 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 }
 .forum-thread a.recent .time,
 .forum-thread a.info .name {
+	padding-bottom: 1px;
 	white-space: nowrap;
 	overflow: hidden;
-}
-
-.forum-thread a.info .name,
-.forum-thread a.recent .name {
-	padding-bottom: 5px;
 }
 
 .forum-thread .info,
 .forum-thread a.info { width: 55%; }
 
-.form-thread .count { width: 13%; }
+.form-thread .count { width: 13%; font-size: 9pt; }
 .forum-thread .count h4 { font-size: 18pt; }
 .forum-thread .count h4 small { font-size: 9pt; }
 
@@ -419,20 +409,30 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 	white-space: nowrap;
 	overflow: hidden;
 }
-.forum-post .content .time {
+
+.forum-post .content .header {
 	font-size: 85%;
-	text-align: right;
 	padding-bottom: 5px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+.forum-post .content .time { float: right; }
+.forum-post .content .hit { float: left; }
+.forum-post .content .hit .text { padding-left: 10px; }
+
+.forum-post .content .hit button {
+	padding: 0px;
+	border: none;
+}
+
 .forum-post .info .time { font-size: 85%; }
 .forum-post .info .since { padding-top: 5px; }
 .forum-post .info .author {
 	font-size: 14pt;
 	font-weight: 600;
-	font-family: "Oswald";
+/* 	font-family: "Oswald"; */
 	white-space: nowrap;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: visible;
 }
 
 /******************************************************************
@@ -476,7 +476,8 @@ a .panel-recentfeed h3 { font-size: 18px; }
 	padding: 5px 5px 115px 5px;
 }
 .panel-recentfeed .name {
-	font-family: "Oswald";
+	/* font-family: "Oswald"; */
+	text-transform: uppercase;
 	font-weight: 700;
 	white-space: nowrap;
 	overflow: hidden;

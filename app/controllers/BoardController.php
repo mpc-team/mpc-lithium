@@ -13,19 +13,18 @@ use app\models\Timestamp;
 class BoardController extends ContentController {
 
 	public function view() {	
+		$authorized = Auth::check('default');
+		$data = array();
 		if (isset($this->request->id)) {
 			$this->_render['layout'] = 'forum';
-			$authorized = Auth::check('default');
 			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
 				$breadcrumbs = array(
 					'path' => array("Forum", stripslashes($forum['name'])),
 					'link' => array("/forum", "/board/view/{$this->request->id}")
 				);
-				$data = array(
-					'forum' => $forum,
-					'threads' => Threads::getByForumId($this->request->id),
-					'permissions' => ($authorized) ? array('create') : array()
-				);
+				$data['forum'] = $forum;
+				$data['threads'] = Threads::getByForumId($this->request->id);
+				$data['permissions'] = ($authorized) ? array('create') : array();
 				foreach ($data['threads'] as $key => $thread) {
 					$posts = Posts::find('all', array(
 						'conditions' => array('tid' => $thread['id']),

@@ -8,10 +8,11 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Posts;
 use app\models\Permissions;
+use app\models\PostHits;
 
 class PostController extends ContentController {
 
-	public function create() {
+	public function create ( ) {
 		if (isset($this->request->id)) {
 			if ($this->request->data['content']) {
 				$authorized = Auth::check('default');
@@ -30,7 +31,7 @@ class PostController extends ContentController {
 		return $this->redirect('/forum');
 	}
 
-	public function edit() {
+	public function edit ( ) {
 		if (isset($this->request->id)) {
 			if ($post = Posts::find('first', array('conditions' => array('id' => $this->request->id)))) { 
 				$authorized = Auth::check('default');
@@ -53,7 +54,7 @@ class PostController extends ContentController {
 		return $this->redirect('/forum');
 	}
 	
-	public function delete() {
+	public function delete ( ) {
 		if (isset($this->request->id)) {
 			$authorized = Auth::check('default');
 			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {			
@@ -69,5 +70,40 @@ class PostController extends ContentController {
 			}
 		}
 		return $this->redirect('/forum');
+	}
+	
+	public function hit ( ) {
+		if (isset($this->request->id)) {
+			$authorized = Auth::check('default');
+			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {
+				$conditions = $authorized != NULL && 
+					PostHits::isPostHittableByUser($post['id'], $authorized['id']);
+				if ($conditions) {
+					$hit = PostHits::create(array(
+						'pid' => $post['id'],
+						'uid' => $authorized['id']
+					));
+					return json_encode(array(
+						'status' => $hit->save( )
+					));
+				}
+			}
+		}
+		return json_encode(array('status' => false));
+	}
+	
+	public function getHits ( ) {
+		if (isset($this->request->id)) {
+			$authorized = Auth::check('default');
+			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {
+				$hits = PostHits::getByPostId($post['id']);
+				return json_encode(array(
+					'status' => true,
+					'id' => $post['id'],
+					'value' => count($hits)
+				));
+			}
+		}
+		return json_encode(array('status' => false));
 	}
 }

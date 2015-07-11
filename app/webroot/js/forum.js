@@ -1,6 +1,6 @@
 
 /**
- * Forum UI components that are dynamically manipulated with JQuery.
+ * Forum UI components that are dynamically manipulated client-side.
  */
 var UI_TOGGLED 	= 'edit-content-toggle';
 var UI_TOGGLED_CONTENT = 'edit-content-toggle textarea';
@@ -16,6 +16,10 @@ var UI_HIDDEN_UPDATE_CONTENT = 'edit-content-hidden';
 var UI_HIDDEN_UPDATE_TITLE = 'edit-content-rename-hidden';
 var UI_UPDATE_TITLE = 'edit-content-rename';
 var UI_UPDATE_CONTENT = 'edit-content-text';
+
+var UI_PUNCH = 'punch';
+var UI_KICK  = 'kick';
+var UI_HITS_TEXT = ['hit', 'text', 'hits'];
 
 /**
  * Button classes that correspond to specific Forum text-tag helpers.
@@ -65,7 +69,70 @@ function html2text(html) {
 	return text;
 }
 
+var forum = {
+	hits: {
+		refresh: function (postids) {
+			var matcher = '.' + UI_HITS_TEXT[0] + ' .' + UI_HITS_TEXT[1] + ' .' + UI_HITS_TEXT[2];
+			for (i = 0; i < postids.length; i++) {
+				var data = { pid: postids[i] }
+				
+				$.post("/post/getHits/" + postids[i], data, function (data) {
+					data = JSON.parse(data);
+					if (data.status) {
+						$(matcher).filter('[data-id=' + data.id + ']').html(data.value);
+					}
+				});
+			}
+		},
+		init: function () {
+			// To find post IDs just look for all punch buttons and get the data-id
+			// associated with it, which will yield a list of IDs for posts that we can
+			// currently use/see.
+			var postids = [];
+			var elements = $('.' + UI_PUNCH).each(function (index) {
+				postids[index] = $(this).attr('data-id');
+			});
+			setInterval(function () { forum.hits.refresh(postids); }, 4000);
+	
+			$("." + UI_PUNCH).click( function ( ) {
+				var postid = $(this).data("id");
+				var data = { pid: postid };
+				
+				$.post("/post/hit/" + postid, data, function (data) {
+					data = JSON.parse(data);
+					if (data.status) {
+						var punchButton = $("." + UI_PUNCH).filter("[data-id=" + postid + "]");
+						var kickButton = $("." + UI_KICK).filter("[data-id=" + postid + "]");
+						punchButton.prop('disabled', true);
+						kickButton.prop('disabled', true);
+						forum.hits.refresh([postid]);
+					}
+				});
+			});
+			
+			$("." + UI_KICK).click( function ( ) {
+				var postid = $(this).data("id");
+				var data = { pid: postid }
+				
+				$.post("/post/hit/" + postid, data, function (data) {
+					data = JSON.parse(data);
+					if (data.status) {
+						var punchButton = $("." + UI_PUNCH).filter("[data-id=" + postid + "]");
+						var kickButton = $("." + UI_KICK).filter("[data-id=" + postid + "]");
+						punchButton.prop('disabled', true);
+						kickButton.prop('disabled', true);
+						forum.hits.refresh([postid]);
+					}
+				});
+			});
+		}
+	}
+};
+
 $(document).ready( function () {
+
+	forum.hits.init( );
+
 	$("." + UI_BTN_UPDATE).hide();
 	$("." + UI_BTN_CANCEL).hide();
 	$("." + UI_TOGGLED).hide();

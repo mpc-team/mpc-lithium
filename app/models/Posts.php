@@ -22,7 +22,7 @@ class Posts extends \lithium\data\Model  {
 		}
 		return strip_tags($cleaned);
 	}
-
+	
 	public static function getById ($id) {
 		if ($post = self::find('first', array('conditions' => array('id' => $id)))) {
 			return $post->to('array');
