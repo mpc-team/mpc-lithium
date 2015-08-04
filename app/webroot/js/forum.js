@@ -79,7 +79,9 @@ var forum = {
 				$.post("/post/getHits/" + postids[i], data, function (data) {
 					data = JSON.parse(data);
 					if (data.status) {
-						$(matcher).filter('[data-id=' + data.id + ']').html(data.value);
+						$(matcher).filter('[data-id=' + data.id + ']').html(
+							'<h5><b>' + data.value + '</h5></b> ' + ((data.value == 1) ? 'Hit' : 'Hits')
+						);
 					}
 				});
 			}
@@ -92,6 +94,7 @@ var forum = {
 			var elements = $('.' + UI_PUNCH).each(function (index) {
 				postids[index] = $(this).attr('data-id');
 			});
+			forum.hits.refresh(postids);
 			setInterval(function () { forum.hits.refresh(postids); }, 4000);
 	
 			$("." + UI_PUNCH).click( function ( ) {
@@ -100,6 +103,7 @@ var forum = {
 				
 				$.post("/post/hit/" + postid, data, function (data) {
 					data = JSON.parse(data);
+					console.log( data );
 					if (data.status) {
 						var punchButton = $("." + UI_PUNCH).filter("[data-id=" + postid + "]");
 						var kickButton = $("." + UI_KICK).filter("[data-id=" + postid + "]");

@@ -60,6 +60,7 @@ class PostController extends ContentController {
 			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) {			
 				if (($authorized['id'] == $post['uid']) || Permissions::is_admin($authorized)) {
 					if (Posts::deleteById($post['id'])) {
+						PostHits::deleteByPostId($post['id']);
 						if (!Posts::countByThreadId($post['tid'])) {
 							return $this->redirect("/thread/delete/{$post['tid']}");
 						} else {
@@ -83,9 +84,7 @@ class PostController extends ContentController {
 						'pid' => $post['id'],
 						'uid' => $authorized['id']
 					));
-					return json_encode(array(
-						'status' => $hit->save( )
-					));
+					return json_encode(array('status' => $hit->save()));
 				}
 			}
 		}

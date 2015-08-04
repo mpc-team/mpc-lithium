@@ -116,11 +116,9 @@ EOD;
 										<img src="/img/kick.png" width="20px" height="20px"/>
 									</button>
 									<span class="text">
-										<h5><b>
 											<span class="hits" data-id="<?= $post['id'] ?>">
-												<?= $post['hits'] ?>
+											
 											</span>
-										</b></h5> Hits
 									</span>
 								</span>
 								<span class="time">

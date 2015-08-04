@@ -16,7 +16,7 @@ class ForumController extends \lithium\action\Controller {
 	/**
 	 * Limit amount of posts displayed in the recent-feed. 
 	 */
-	const RECENT_LIMIT = 12;
+	const RECENT_LIMIT = 9;
 	
 	/**
 	 * @returns:

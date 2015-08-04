@@ -56,9 +56,8 @@ class ThreadController extends ContentController {
 					$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
 					$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($msg['tstamp'], array());
 					$data['posts'][$key]['features'] = array();
-					$data['posts'][$key]['hits'] = count(PostHits::getByPostId($data['posts'][$key]['id']));
-					
-					$data['posts'][$key]['hitenabled'] = PostHits::isPostHittableByUser($data['posts'][$key]['id'], $authorized['id']);
+					$data['posts'][$key]['hitenabled'] = $authorized != NULL && 
+						PostHits::isPostHittableByUser($data['posts'][$key]['id'], $authorized['id']);
 					$conditions = array(
 						'quote' => (bool) $authorized,
 						'edit' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized)),

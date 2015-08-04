@@ -61,19 +61,17 @@ textarea.form-control { resize: vertical; height: 10em; }
 .panel .btn { border: none; }
 
 .panel a.btn.info:hover,
-.panel a.btn.info:active {
-	background: linear-gradient(110deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
-}
+.panel a.btn.info:active,
 .panel a.btn.recent:hover,
 .panel a.btn.recent:active {
-	background: linear-gradient(280deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
+	background: rgba(0, 0, 0, 0.2);
 }	
 
 .recentfeed .panel > a.btn:hover,
 .panel a.btn:hover,
 .panel a.btn:active {
 	color: rgba(220,255,220,0.9);
-	background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+	background: rgba(0, 0, 0, 0.2);
 	/* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
 	/* border: 1px solid rgba(220,255,220,0.0); */
 	/* box-shadow: 0 0 40px rgba(255,255,255,0.9); */

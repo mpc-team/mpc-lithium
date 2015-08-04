@@ -23,6 +23,22 @@ class PostHits extends \lithium\data\Model  {
 	}
 	
 	/**
+	 * Deletes all PostHits associated with a certain Post.
+	 *	@params
+	 *		$postid - identifier of Post to delete hits from.
+	 */
+	public static function deleteByPostId ($postid) {
+		$hits = self::find('all', array('conditions' => array('pid' => $postid)));
+		$result = true;
+		foreach ($hits as $hit) {
+			if (!$hit->delete()) {
+				$result = false;
+			}
+		}
+		return $result;
+	}
+	
+	/**
 	 * Results in TRUE or FALSE whether or not a User has liked a specific Post.
 	 *	@params
 	 *		$userid - user that may have 'hit' the post.
