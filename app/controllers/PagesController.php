@@ -31,14 +31,21 @@ class PagesController extends \lithium\action\Controller {
 		$authorized = Auth::check('default');
 		$options = array();
 		$path = func_get_args();
-
+		$breadcrumbs = array(
+			'path' => array('MPC', 'Home'),
+			'link' => array('/', '/')
+		);
+		
 		if (!$path || $path === array('home')) {
 			$path = array('home');
 			$options['compiler'] = array('fallback' => true);
 		}
 
 		$options['template'] = join('/', $path);
-		$this->set(array('authorized' => $authorized));
+		$this->set(array(
+			'authorized' => $authorized,
+			'breadcrumbs' => $breadcrumbs
+		));
 		return $this->render($options);
 	}
 }

@@ -20,7 +20,7 @@
 	));?>
 	<?php echo $this->html->script(array(
 		'jquery-1.11.2',		'bootstrap',
-		'navbar',
+		'navbar',						'moment',
 		'field-selection',	'members',
 		'validate',					'forum',
 		'markup',						'profile',
@@ -32,14 +32,16 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<?=$this->view()->render(
-			array('element' => 'navbar'),
-			array(
-				'authorized' => $authorized,
-				'controller' => $this->_request->controller,
-				'action' => $this->_request->action
+		<?=
+			$this->view()->render(
+				array('element' => 'navbar'),
+				array(
+					'authorized' => $authorized,
+					'controller' => $this->_request->controller,
+					'action' => $this->_request->action
+				)
 			)
-		)?>
+		?>
 	</div>
 	<div class="container">
 		<div class="page-header">
@@ -48,6 +50,12 @@
 				class="img-responsive"
 				alt="mpclogo.png"></img>
 		</div>
+				
+		<?= $this->view()->render(
+			array('element' => 'breadcrumbs'),
+			array('breadcrumbs' => $breadcrumbs)
+		)?>
+		
 		<div class="content">
 			<?php echo $this->content(); ?>
 		</div>

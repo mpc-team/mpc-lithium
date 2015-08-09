@@ -27,7 +27,10 @@ class ForumController extends \lithium\action\Controller {
 	public function index() {		
 		$this->_render['layout'] = 'forum';		
 		$authorized = Auth::check('default');
-		$breadcrumbs = array('path' => array("Forum"), 'link' => array("/forum"));
+		$breadcrumbs = array(
+			'path' => array("MPC", "Forum"), 
+			'link' => array("/", "/forum")
+		);
 		$data = array(
 			'recentfeed' => Posts::find('all', array(
 				   // 'limit' => self::RECENT_LIMIT,

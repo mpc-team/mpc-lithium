@@ -5919,7 +5919,7 @@ button.close {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 4%;
+  /* width: 4%; */
   /* opacity: 0.5; */
   /* filter: alpha(opacity=50); */
   font-size: 40px;

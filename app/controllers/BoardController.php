@@ -19,8 +19,8 @@ class BoardController extends ContentController {
 			$this->_render['layout'] = 'forum';
 			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
 				$breadcrumbs = array(
-					'path' => array("Forum", stripslashes($forum['name'])),
-					'link' => array("/forum", "/board/view/{$this->request->id}")
+					'path' => array("MPC", "Forum", stripslashes($forum['name'])),
+					'link' => array("/", "/forum", "/board/view/{$this->request->id}")
 				);
 				$data['forum'] = $forum;
 				$data['threads'] = Threads::getByForumId($this->request->id);

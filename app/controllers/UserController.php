@@ -28,6 +28,10 @@ class UserController extends \lithium\action\Controller {
 					'played' => json_encode(self::getUserGameIds($authorized['id'])),
 					'options' => array('post')
 				);
+				$breadcrumbs = array(
+					'path' => array('MPC', 'Your Profile'),
+					'link' => array('/', '/profile')
+				);
 				if ($data['recentfeed'] = Posts::find('all', array(
 						'conditions' => array('uid' => $authorized['id']),
 						// 'limit' => self::RECENT_LIMIT,
@@ -52,7 +56,7 @@ class UserController extends \lithium\action\Controller {
 				} else {
 					$data['recentfeed'] = array();
 				}
-				return compact('authorized', 'data');
+				return compact('authorized', 'data', 'breadcrumbs');
 			}
 		}
 		return $this->redirect('/login');
@@ -68,6 +72,10 @@ class UserController extends \lithium\action\Controller {
 					'games' => Games::getList(), 
 					'played' => json_encode(self::getUserGameIds($this->request->id)),
 					'options' => (($authorized) ? array('post') : array())
+				);
+				$breadcrumbs = array(
+					'path' => array('MPC', 'Members', $member['alias']),
+					'link' => array('/', '/members', '/user/view/' + $member['id'])
 				);
 				if ($data['recentfeed'] = Posts::find('all', array(
 						'conditions' => array('uid' => $member['id']),
@@ -93,7 +101,7 @@ class UserController extends \lithium\action\Controller {
 				} else {
 					$data['recentfeed'] = array();
 				}
-				return compact('authorized', 'data');
+				return compact('authorized', 'data', 'breadcrumbs');
 			}
 		}
 		return $this->redirect('/profile');

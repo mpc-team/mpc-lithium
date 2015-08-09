@@ -44,6 +44,10 @@ class MembersController extends \lithium\action\Controller {
 	public function index() {		
 		$authorized = Auth::check('default');
 		$data = array();
+		$breadcrumbs = array(
+			'path' => array('MPC', 'Members'),
+			'link' => array('/', '/members')
+		);
 		$data['count'] = Users::count();
 		$data['games'] = Games::getList();
 		$data['permissions'] = Permissions::is_admin($authorized) ? array('admin') : array('public');
@@ -62,6 +66,6 @@ class MembersController extends \lithium\action\Controller {
 			array_push($membersArray, $userInfo);
 		}
 		$data['members'] = json_encode($membersArray);
-		return compact('authorized', 'data');
+		return compact('authorized', 'data', 'breadcrumbs');
 	}
 }

@@ -20,8 +20,9 @@ class ThreadController extends ContentController {
 			if ($thread = self::verify_access($authorized, '\app\models\Threads', $this->request->id)) {
 				$forum = Forums::getById($thread['fid']);
 				$breadcrumbs = array(
-					'path' => array("Forum", $forum['name'], $thread['name']),
+					'path' => array("MPC", "Forum", $forum['name'], $thread['name']),
 					'link' => array(
+						"/",
 						"/forum", 
 						"/board/view/{$forum['id']}", 
 						"/thread/view/{$this->request->id}"

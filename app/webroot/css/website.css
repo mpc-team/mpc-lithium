@@ -197,7 +197,7 @@ a h5 { margin: 0px; }
 	box-shadow: 0 0 20px rgba(200, 190, 255, 0.9);
 }
 .profile-content .games .panel button:active {
-	box-shadow: 0 0 50px rgba(190, 255, 190, 0.9);
+	box-shadow: 0 0 5px rgba(190, 255, 190, 0.9);
 }
 .profile-content .wall .footer input:focus {
 	box-shadow: 0 0 80px rgba(97, 160, 250, 0.9);
@@ -232,7 +232,7 @@ a h5 { margin: 0px; }
 }
 .profile-content .games .panel.active {
 	border: 1px solid rgba(180, 255, 180, 0.9);
-	box-shadow: 0 0 10px rgba(210, 255, 210, 0.9);
+	box-shadow: 0 0 5px rgba(210, 255, 210, 0.9);
 	background: linear-gradient(140deg, #438a43, #233d23);
 	
 }
@@ -660,7 +660,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 }
 
 .members table > tbody > tr > td { padding: 0px; }
-.members tr > td div { padding: 5px; }
+.members tr > td div { padding: 7px; }
 .members tr > td > a div:hover { background: rgba(0, 0, 0, 0.5); }
 
 .members .icon { padding-right: 5px; }

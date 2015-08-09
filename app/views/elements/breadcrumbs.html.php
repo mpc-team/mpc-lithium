@@ -15,7 +15,6 @@ $navigation = function($path, $links) {
 		$html .= "<li{$active}>";
 		$html .= "<a href='" . $links[$i] . "'>";
 		$html .= "<div class='breadcrumb-text'>";
-		$html .= ($i == 0) ? "<span class='glyphicon glyphicon-th-list'></span> " : "";
 		$html .= stripslashes($path[$i]);
 		$html .= "</div>";
 		$html .= "</li>";

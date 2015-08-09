@@ -15,7 +15,7 @@
 ?>
 <div class="recentfeed">
 	<?php if (count($recentfeed) > 0): ?>
-		<div id="recentfeed-carousel" class="carousel slide" data-ride="carousel">
+		<div id="recentfeed-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
 			<ol class="carousel-indicators">
 				<?php for ($i = 0; $i < $recentPages; $i++): ?>
 				<li data-target="#recentfeed-carousel" 
