@@ -6,7 +6,6 @@ $this->title('My Profile');
 
 $self = $this;
 
-
 ?>
 <div class="profile-header">
 	<div class="page-header">

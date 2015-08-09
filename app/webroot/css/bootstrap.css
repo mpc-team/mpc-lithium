@@ -2767,7 +2767,7 @@ select[multiple].form-group-lg .form-control {
       touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  /* border: 1px solid transparent; */
+  border: 1px solid transparent;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
@@ -5919,7 +5919,7 @@ button.close {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 7%;
+  width: 5%;
   opacity: 0.5;
   filter: alpha(opacity=50);
   font-size: 20px;

@@ -72,32 +72,30 @@ $searchResultLayout = array(
 		</div>
 	</div>
 	<div class="panel-group">
-		<div class="panel panel-default">
-			<table class="table">
-				<thead>
-					<tr class='row'>
-						<div class="alias">
-							<th class='<?= $searchResultLayout['header'] ?>'>
-								Alias
+		<table class="table">
+			<thead>
+				<tr class='row'>
+					<div class="alias">
+						<th class='<?= $searchResultLayout['header'] ?>'>
+							Alias
+						</th>
+					</div>
+					<?php if ($searchResultLayout['admin']): ?>
+						<div class="email">
+							<th class='col-xs-4'>
+									Email
 							</th>
 						</div>
-						<?php if ($searchResultLayout['admin']): ?>
-							<div class="email">
-								<th class='col-xs-4'>
-										Email
-								</th>
-							</div>
-						<?php endif; ?>
-						<div class="played">
-							<th class='<?= $searchResultLayout['header'] ?>'>
-								Games
-							</th>
-						</div>
-					</tr>
-				</thead>
-				<tbody id="results"></tbody>
-			</table>
-		</div>
+					<?php endif; ?>
+					<div class="played">
+						<th class='<?= $searchResultLayout['header'] ?>'>
+							Games
+						</th>
+					</div>
+				</tr>
+			</thead>
+			<tbody id="results"></tbody>
+		</table>
 	</div>
 </div>
 <script type="text/javascript">

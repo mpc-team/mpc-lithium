@@ -20,7 +20,7 @@
 	));?>
 	<?php echo $this->html->script(array(
 		'jquery-1.11.2',		'bootstrap',
-		'moment',       		'navbar',
+		'navbar',
 		'field-selection',	'members',
 		'validate',					'forum',
 		'markup',						'profile',

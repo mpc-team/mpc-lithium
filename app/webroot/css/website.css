@@ -58,16 +58,23 @@ textarea.form-control { resize: vertical; height: 10em; }
 .sidebar li > a:hover,
 .sidebar li > a:active,
 
-.panel .btn { border: none; }
+/* .panel .btn { border: none; } */
 
 .panel a.btn.info:hover,
-.panel a.btn.info:active,
+.panel a.btn.info:active {
+	background: rgba(0, 0, 0, 0.2);
+	/* background: linear-gradient(110deg, rgba(190,255,190,0.1), rgba(255,255,255,0)); */
+}
 .panel a.btn.recent:hover,
 .panel a.btn.recent:active {
 	background: rgba(0, 0, 0, 0.2);
 }	
 
 .recentfeed .panel > a.btn:hover,
+.recentfeed .panel > a.btn:active {
+	background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+}
+
 .panel a.btn:hover,
 .panel a.btn:active {
 	color: rgba(220,255,220,0.9);
@@ -281,7 +288,8 @@ a h5 { margin: 0px; }
 .usertool .btn-edit { 
 	text-align: left; 
 	font-weight: 600; 
-}
+	line-height: 1; /* Any value 1 or less will render the exact same... */
+} 
 .usertool .btn-edit .glyphicon-file { font-size: 22pt; }
 
 a.btn-forum {	background: linear-gradient(170deg, #2a2c2a, #1f1f1f); }
@@ -337,6 +345,7 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 }
 .forum-thread { background: linear-gradient(170deg, #2a2c2a, #1f1f1f); }
 .forum-header .forum-thread { background: transparent; }
+
 .forum-thread > div {
 	display: table-row;
 }
@@ -442,6 +451,11 @@ a .panel-recentfeed h1 { font-size: 26px; }
 a .panel-recentfeed h2 { font-size: 22px; }
 a .panel-recentfeed h3 { font-size: 18px; }
 
+.recentfeed > div {
+	font-size: 150%;
+	font-weight: 700;
+}
+
 .recentfeed .forum-post .content {
 	background: inherit;
 }
@@ -522,7 +536,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
  *	LOGIN & SIGNUP STYLING
  *
  ******************************************************************/
-.login > .panel { padding: 15px 15px 5px 15px; }
+.login .panel { padding: 15px 15px 15px 15px; }
 
 .signup { max-width: 500px; }
 .login { max-width: 700px; }
@@ -560,7 +574,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 
 /******************************************************************
  *
- *	USER TOOLS STYLING
+ *	BUTTON STYLING
  *
  ******************************************************************/
 .btn-delete,
@@ -574,21 +588,23 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-edit:hover,
 .btn-edit:active {
 	color: #ffffff;
-	background-color: rgba(255,255,255,0.1);
+	/* background-color: rgba(255,255,255,0.1); */
+	background-color: rgba(0, 0, 0, 0.2);
 	/* box-shadow: 0 0 10px rgba(255,255,255,0.9); */
 }
 
-
-/******************************************************************
- *
- *	BUTTON STYLING
- *
- ******************************************************************/
 .btn-signup,
 .btn-login {
 	background-color: #447744;
 	border: 1px solid #99ee99;
 }
+.btn-signup:hover,
+.btn-signup:active,
+.btn-login:hover,
+.btn-login:active {
+	box-shadow: 0 0 25px rgba(200, 255, 200, 0.9);
+}
+
 .btn-signup,
 .btn-login { color: #aaffaa; }
 .btn-signup,
@@ -602,7 +618,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 }
 .btn-reply:hover {
 	color: #ffffff;
-	background-color: rgba(255,255,255,0.05);
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 /******************************************************************
@@ -641,6 +657,11 @@ a .panel-recentfeed h3 { font-size: 18px; }
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+.members tr a:hover div {
+	background-color: rgba( 0, 0, 0, 0.2 );
+}
+
 .members .icon { padding-right: 5px; }
 .members .icon img {
 	height: 18px;

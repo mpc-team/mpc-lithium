@@ -50,8 +50,8 @@ members.html = {
 	},
 	alias: function (user, url) {
 		var result = "<td>";
-		result += "<div class='name'>";
 		result += "<a href='" + url + "'>";
+		result += "<div class='name'>";
 		result += "<span class='glyphicon glyphicon-user'></span> ";
 		result += user.alias;
 		result += "</div>";
