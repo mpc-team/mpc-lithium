@@ -49,16 +49,21 @@ members.html = {
 		return "";
 	},
 	alias: function (user, url) {
-		var result = "<td>";
+		var result = "";
+		result += "<td>";
 		result += "<a href='" + url + "'>";
 		result += "<div class='name'>";
 		result += "<span class='glyphicon glyphicon-user'></span> ";
 		result += user.alias;
 		result += "</div>";
-		return (result + "</a></td>");
+		result += "</a>";
+		result += "</td>";
+		return result;
 	},
 	games: function (user) {
-		var result = "<td>";
+		var result = "";
+		result += "<td>";
+		result += "<div>";
 		for (var game in user['played']) {
 			var icon = members.iconMap[user['played'][game].toLowerCase()];
 			if (icon) {
@@ -67,7 +72,9 @@ members.html = {
 				result += "</span>";
 			}
 		}
-		return (result + "</td>");
+		result += "</div>";
+		result += "</td>";
+		return result;
 	}
 };
 
