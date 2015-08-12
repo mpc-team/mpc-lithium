@@ -30,7 +30,7 @@ class UserController extends \lithium\action\Controller {
 				);
 				$breadcrumbs = array(
 					'path' => array('MPC', 'Your Profile'),
-					'link' => array('/', '/profile')
+					'link' => array('/', '/user/profile')
 				);
 				if ($data['recentfeed'] = Posts::find('all', array(
 						'conditions' => array('uid' => $authorized['id']),
@@ -60,6 +60,29 @@ class UserController extends \lithium\action\Controller {
 			}
 		}
 		return $this->redirect('/login');
+	}
+	
+	public function resetpassword ( ) {
+		$authorized = Auth::check('default');
+		if( !$authorized ) {
+			$breadcrumbs = array(
+				'path' => array('MPC', 'Login', 'Reset Password'),
+				'link' => array('/', '/login', '/user/resetpassword')
+			);
+			if( $this->request->data ) {
+				$email = $this->request->data['email'];
+				if( ($user = Users::getByEmail($email)) != null ) {
+					$data = 'This user exists (id = ' . $user['id'] . ').';
+				} else {
+					$data = 'This user does not exist.';
+				}
+			} 
+			if( isset($data) ) {
+				return compact('authorized', 'breadcrumbs', 'data');
+			}
+			return compact('authorized', 'breadcrumbs');
+		}
+		return $this->redirect('/user/profile');
 	}
 
 	public function view ( ) {

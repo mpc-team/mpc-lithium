@@ -10,5 +10,13 @@ class Users extends \lithium\data\Model  {
 		} else {
 			return null;
 		}
+	} 
+	
+	public static function getByEmail ($email) {
+		if ($user = self::find('first', array('conditions' => array('email' => $email)))) {
+			return $user->to('array');
+		} else {
+			return null;
+		}
 	}
 }
