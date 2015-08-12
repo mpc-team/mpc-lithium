@@ -1,8 +1,8 @@
 <?php
 	
-	$this->title('Login');
-	
-	$self = $this;
+$this->title('Login');
+
+$self = $this;
 	
 ?>
 <div class="login">

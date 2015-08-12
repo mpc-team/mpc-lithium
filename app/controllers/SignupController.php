@@ -11,7 +11,11 @@ class SignupController extends \lithium\action\Controller {
 
 	public function index() {
 		if (!($authorized = Auth::check('default'))) {
-			return compact('authorized');
+			$breadcrumbs = array(
+				'path' => array('MPC', 'Signup'),
+				'link' => array('/', '/signup')
+			);
+			return compact('authorized', 'breadcrumbs');
 		}
 		return $this->redirect('/profile');
 	}
@@ -19,6 +23,10 @@ class SignupController extends \lithium\action\Controller {
 	public function complete () {
 		if (!($authorized = Auth::check('default'))) {
 			$data = array('member' => null);
+			$breadcrumbs = array(
+				'path' => array('MPC', 'Signup'),
+				'link' => array('/', '/signup')
+			);
 			if ($this->request->data) {
 				$user = Users::create($this->request->data);
 				$exists = Users::find('first', array('conditions' => array('email' => $user->email)));
@@ -38,7 +46,7 @@ class SignupController extends \lithium\action\Controller {
 					return $this->redirect('/signup');
 				}
 			}
-			return compact('authorized', 'data');
+			return compact('authorized', 'data', 'breadcrumbs');
 		}
 		return $this->redirect('/profile');
 	}

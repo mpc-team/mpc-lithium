@@ -1,4 +1,5 @@
 <?php
+
 $this->title('Information');
 
 $self = $this;
@@ -21,16 +22,16 @@ $self = $this;
 		</nav>
 	</div>
 	<div class="row">
-			<ul class="list-group infoindexlistmar">
-				<h3>Here you will find:</h3>
-				<li class="presentation">Setting Ventrilo to communicate with MPC.</li>
-				<li class="presentation">Watching MPC, or Community Members with live video broadcasting.</li>
-				<li class="presentation">Posting Messages on our website through our forums.</li>
-				<li class="presentation">Learn more about, and how to play PC Games with the dojo.</li>
-				<li class="presentation">Connect with Gaming Service Providers (GSP).</li>
-				<li class="presentation">Learn more about the Top Game Developers.</li>
-				<li class="presentation">See the list of Games.</li>
-			</ul>
+		<ul class="list-group infoindexlistmar">
+			<h3>Here you will find:</h3>
+			<li class="presentation">Setting Ventrilo to communicate with MPC.</li>
+			<li class="presentation">Watching MPC, or Community Members with live video broadcasting.</li>
+			<li class="presentation">Posting Messages on our website through our forums.</li>
+			<li class="presentation">Learn more about, and how to play PC Games with the dojo.</li>
+			<li class="presentation">Connect with Gaming Service Providers (GSP).</li>
+			<li class="presentation">Learn more about the Top Game Developers.</li>
+			<li class="presentation">See the list of Games.</li>
+		</ul>
 	</div>
 	<div class="row">
 		<div class="col-xs-4">

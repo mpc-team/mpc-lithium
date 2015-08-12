@@ -9,15 +9,18 @@ use app\models\Permissions;
 class LoginController extends \lithium\action\Controller {
 
 	public function index() {
-		$authorized = Auth::check('default');
-		if (!$authorized) {
+		if (!($authorized = Auth::check('default'))) {
+			$breadcrumbs = array(
+				'path' => array('MPC', 'Login'),
+				'link' => array('/', '/login')
+			);
 			if ($this->request->data) {
 				Auth::clear('default');
 				if (Auth::check('default', $this->request)) {
 					return $this->redirect('/user/profile');
 				}
 			}
-			return compact ('authorized');
+			return compact ('authorized', 'breadcrumbs');
 		}
 		return $this->redirect('/user/profile');
 	}

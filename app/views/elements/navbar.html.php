@@ -27,6 +27,23 @@
 			<li id='navbar-forum'>
 				<a href='/forum'>Forum</a>
 			</li>
+			<li id='navbar-games' class='dropdown'>
+				<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+					Games <span class='caret'></span>
+				</a>
+				<ul class='dropdown-menu' role='menu'>
+					<li>
+						<a href='/games'>All Games</a>
+					</li>
+					<li class='divider'></li>
+					<li>
+						<a href='/games/heroes'>Heroes of the Storm</a>
+					</li>
+					<li>
+						<a href='/games/sc2'>StarCraft II</a>
+					</li>
+				</ul>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<?php if ($authorized): ?>
