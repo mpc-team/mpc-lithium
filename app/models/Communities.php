@@ -20,14 +20,14 @@ class Communities extends \lithium\data\Model  {
 	 * @condition user may not already own more than MAX_PER_USER communities.
 	 * @condition specified name must not be taken, community names are unique.
 	 */ 
-	public static function make ($userid, $name) {
-		$ownedByUser = self::getByUserId($userid);
-		if (count($ownedByUser) < self::MAX_PER_USER) {
-			$community = self::find('first', array(
-				'conditions' => array('name' => $name)
+	public static function make ( $userid, $name ) {
+		$ownedByUser = self::getByUserId( $userid );
+		if( count($ownedByUser) < self::MAX_PER_USER ) {
+			$community = self::find( 'first', array(
+				'conditions' => array( 'name' => $name )
 			));
-			if (!$community) {
-				$community = self::create(array('name' => $name, 'uid' => $userid));
+			if( !$community ) {
+				$community = self::create( array( 'name' => $name, 'uid' => $userid ) );
 				$community->save();
 				return $community->id;
 			}

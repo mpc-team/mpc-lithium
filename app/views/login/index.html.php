@@ -50,7 +50,7 @@ $self = $this;
 				
 				<hr>
 				
-				<section class="well">
+				<section class="well well-lg">
 					<div class="password-reset" style="padding-bottom:20px">
 						<h3>Password Reset</h3>
 						<span>

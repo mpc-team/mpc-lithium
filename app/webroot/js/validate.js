@@ -16,8 +16,8 @@ function validatePassword (password, confirmed) {
 function validateEmail (email) {
 /**
  * validateEmail
- *
  * Validation of email using a standard regular expression.
+ *
  */
 	var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 	return((email != null) && (regex.test(email))); 
@@ -40,13 +40,10 @@ function validateAlias (alias) {
  *
  *	Updates valid state on a given component to notify the user whether an
  *	entry input is correct or not.
- *
  *	@param	valid
  *		Update validation state to true/false
- *
  *	@param inputval
  *		Value of element being validated, used for checking 'null' or empty values
- *
  *	@param inputid
  *		DOM identifier of the element to add/remove classes
  *
@@ -93,3 +90,15 @@ function validateSignup () {
 	return (emailvalid && passmatch && aliasvalid);
 }
 
+function validatePasswords (groupid) {
+/**
+ * validatePasswords
+ */
+	var password = $('#password').val();
+	var confirmed = $('#confirm').val();
+	var passmatch = validatePassword( password, confirmed );
+	
+	updateValidateStatus( passmatch, confirmed, groupid );
+	
+	return (passmatch);
+}

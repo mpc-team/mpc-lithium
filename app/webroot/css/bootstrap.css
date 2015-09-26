@@ -958,8 +958,8 @@ img {
   border-radius: 50%;
 }
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border: 0;
   border-top: 1px solid #555555;
 }
@@ -4712,7 +4712,7 @@ a.thumbnail.active {
 	margin-top: 20px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 1px;
 }
 .alert h4 {
   margin-top: 0;
@@ -4741,9 +4741,9 @@ a.thumbnail.active {
   color: inherit;
 }
 .alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #3c763d;
+	border: 1px solid #74DE1B;
+  background-color: #467331;
+  color: #9BFF9D;
 }
 .alert-success hr {
   border-top-color: #c9e2b3;
@@ -4775,10 +4775,10 @@ a.thumbnail.active {
   color: #66512c;
 }
 .alert-danger {
-  background-color: #e2cccc;
-	border: 2px solid #aa3344;
+  background-color: #6D2C2C;
+	border: 1px solid #DA1A35;
 	text-align: center;
-  color: #a94442;
+  color: #FF8C8A;
 }
 .alert-danger hr {
   border-top-color: #e4b9c0;

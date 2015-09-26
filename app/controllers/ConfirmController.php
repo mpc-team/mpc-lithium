@@ -12,7 +12,7 @@ class ConfirmController extends \lithium\action\Controller {
 		$authorized = Auth::check('default');
 		if (isset($this->request->query['confirm'])) {
 			$key = $this->request->query['confirm'];
-			$confirm = Confirms::find('first', array('conditions' => array('key' => $key)));
+			$confirm = Confirms::find( 'first', array( 'conditions' => array( 'key' => $key ) ) );
 			if ($confirm) {
 				$user = Users::create(array(
 					'email' => $confirm->email,

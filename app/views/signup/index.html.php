@@ -16,6 +16,7 @@ $self = $this;
 				<hr>
 				
 				<form action="/signup/complete" onsubmit="return validateSignup()" method="post">
+				
 					<?=$this->form->field('email', array(
 						'label'       => array('Email' => array('class' => 'control-label', 'for' => 'email')),
 						'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-email'),

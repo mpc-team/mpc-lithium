@@ -41,19 +41,12 @@ $path = Libraries::get(true, 'path');
 	</div>
 
 	<div class="container">
-		<div class="row-fluid">
-			<h1>An unhandled exception was thrown</h1>
-			<h3>Configuration</h3>
-			<p>
-				This layout can be changed by modifying
-				<code><?="{$path}/views/layouts/error.html.php";?></code>
-			</p>
-			<p>
-				To modify your error-handling configuration, see
-				<code><?="{$path}/config/bootstrap/errors.php";?></code>
-			</p>
+		<div class="page-header">
+			<img id="banner-image"
+				src="/img/mpclogo.png"
+				class="img-responsive"
+				alt="mpclogo.png"></img>
 		</div>
-
 		<div class="content">
 			<?php echo $this->content(); ?>
 		</div>

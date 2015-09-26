@@ -605,7 +605,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-signup:active,
 .btn-login:hover,
 .btn-login:active {
-	box-shadow: 0 0 25px rgba(200, 255, 200, 0.9);
+	box-shadow: 0 0 10px rgba(200, 255, 200, 0.9);
 }
 
 .btn-signup,
