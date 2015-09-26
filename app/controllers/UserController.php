@@ -87,7 +87,7 @@ class UserController extends \lithium\action\Controller {
 				UserResetPasswords::deleteByEmail( $reset['email'] );
 			}
 		}
-		return $this->redirect( '/login' );
+		return $this->redirect( '/login?status=success&op=pwc' );
 	}
 	
 	const STATUS_NONE = "NONE";

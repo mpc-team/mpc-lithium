@@ -4743,6 +4743,7 @@ a.thumbnail.active {
 .alert-success {
 	border: 1px solid #74DE1B;
   background-color: #467331;
+	text-align: center;
   color: #9BFF9D;
 }
 .alert-success hr {

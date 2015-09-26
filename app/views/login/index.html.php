@@ -9,8 +9,14 @@ $self = $this;
 	<form action="/login/index" method="post">
 		<div class="panel panel-default">
 			<div class="login-group">
-				<h1>Login</h1>
-				
+			
+			<?php if ($notification['enabled']): ?>
+				<div class="alert alert-success">
+					<?= $notification['text']; ?>
+				</div>
+			<?php endif; ?>
+			
+				<h1>Login</h1>	
 				<hr>
 				
 				<div class="form-group">

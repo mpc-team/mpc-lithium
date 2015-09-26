@@ -64,9 +64,7 @@ $CONFIRMED = ( strtolower($status) == strtolower(UserController::STATUS_CONFIRME
 			
 				<section class="rpass-info">
 					<div class="alert alert-success">
-						<small>
-							An email has been sent to <?= $email ?>.
-						</small>
+						An email has been sent to <?= $email ?>.
 					</div>
 				</section>
 				
@@ -76,9 +74,7 @@ $CONFIRMED = ( strtolower($status) == strtolower(UserController::STATUS_CONFIRME
 				
 					<section class="rpass-info">
 						<div class="alert alert-danger">
-							<small>
-								That e-mail address does not exist. Perhaps a mistake was made.
-							</small>
+							That e-mail address does not exist. Perhaps a mistake was made.
 						</div>
 					</section>
 					
