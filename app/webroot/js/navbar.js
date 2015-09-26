@@ -24,6 +24,7 @@ navbar.items = {
 	login: "#navbar-login"
 };
  
+ 
 /**
  * navbar.enhance
  *
@@ -41,6 +42,8 @@ navbar.enhance = function (controller, action) {
 			case 'user':
 				if (action == 'profile') {
 					$(this.items.user).addClass('active');
+				} else if (action == 'resetpassword') {
+					$(this.items.login).addClass('active');
 				} else {
 					$(this.items.members).addClass('active');
 				}
@@ -63,6 +66,7 @@ navbar.enhance = function (controller, action) {
 $(document).ready(function () {
 	var components = window.location.href.split('/');
 	var controller = (components.length > 3) ? components[3] : null;
-	var action     = (components.length > 4) ? components[4] : null;
+	var action     = (components.length > 4) ? components[4].split('?')[0] : null;
+	
 	navbar.enhance( controller, action );
 });
