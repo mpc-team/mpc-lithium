@@ -37,10 +37,10 @@
 					</li>
 					<li class='divider'></li>
 					<li>
-						<a href='/games/heroes'>Heroes of the Storm</a>
+						<a href='/games/heroes_of_the_storm'>Heroes of the Storm</a>
 					</li>
 					<li>
-						<a href='/games/sc2'>StarCraft II</a>
+						<a href='/games/starcraft2'>StarCraft II</a>
 					</li>
 				</ul>
 			</li>

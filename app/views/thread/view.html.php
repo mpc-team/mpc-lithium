@@ -1,6 +1,6 @@
 <?php
 
-$this->title($data['thread']['name']);
+$this->title($data['forum']['name'] . ' | ' . $data['thread']['name']);
 
 $self = $this;
 

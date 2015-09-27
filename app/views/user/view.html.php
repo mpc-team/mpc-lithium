@@ -24,6 +24,7 @@ $self = $this;
 		</div>
 	</div>
 </div>
+
 <div class="profile-content">
 	<div class="row">
 		<div class="col-md-4">

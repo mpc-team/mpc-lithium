@@ -3,8 +3,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	
 	<?php echo $this->html->charset();?>
+	
 	<title>MPC | <?php echo $this->title(); ?></title>
+	
 	<?php echo $this->html->style(array(
 		'bootstrap', 
 		'font-awesome', 

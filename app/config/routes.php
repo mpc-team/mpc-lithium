@@ -18,6 +18,7 @@
  */
 use lithium\net\http\Router;
 use lithium\core\Environment;
+use lithium\action\Dispatcher;
 
 /**
  * With globalization enabled a localized route is configured by connecting a
@@ -47,8 +48,13 @@ Router::connect('/', 'Pages::view');
  * `PagesController`, rendering `/views/pages/about.html.php` as a static page.
  */
 Router::connect('/pages/{:args}', 'Pages::view');
-Router::connect('/forum', 'Forum::index');
-Router::connect('/games/{:args}', 'Games::index');
+
+/**
+ * The Games section is managed by the Router because there are many controller modules
+ * that are used to direct traffic to the different games sections.
+ */
+Router::connect('/games/heroes_of_the_storm',array('controller'=>'app\controllers\games\HeroesOfTheStormController'));
+Router::connect('/games/starcraft2',array('controller'=>'app\controllers\games\Starcraft2Controller'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow

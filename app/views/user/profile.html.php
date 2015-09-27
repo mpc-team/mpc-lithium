@@ -7,6 +7,70 @@ $this->title('My Profile');
 $self = $this;
 
 ?>
+
+<!--
+<div class="form-group">
+	<div id="firstname">
+		Steve
+	</div>
+	<div id="firstname-expanded">
+		<input type="text" name="firstname" id="input-firstname" placeholder="First name"/>
+	</div>
+	<div id="lastname">
+		Borger
+	</div>
+	<div id="lastname-expanded">
+		<input type="text" name="lastname" id="input-lastname" placeholder="Last name"/>
+		<button type="button" class="btn btn-edit">
+			<h5>
+				<span class="glyphicon glyphicon-edit"></span>
+			</h5>
+		</button>
+	</div>
+</div>
+ -->
+<script type="text/javascript">
+	$(document).ready( function() {
+		
+		var ids = {
+			firstname: {
+				std: "#firstname",
+				exp: "#firstname-expanded",
+				inp: "#input-firstname"
+			},
+			lastname: {
+				std: "#lastname",
+				exp: "#lastname-expanded",
+				inp: "#input-lastname"
+			}
+		};
+	
+		for( name in ids ) {
+			$(ids[name].exp).hide();
+		}
+	
+		$("#firstname").click( function() {
+			$("#firstname").hide();
+			$("#firstname-expanded").show();
+			$("#input-firstname").focus();
+		});
+		$("#lastname").click( function() {
+			$("#lastname").hide();
+			$("#lastname-expanded").show();
+			$("#input-lastname").focus();
+		});
+		
+		$("#input-firstname").blur( function() {
+			$("#firstname").show();
+			$("#firstname-expanded").hide();
+		});
+		$("#input-lastname").blur( function() {
+			$("#lastname").show();
+			$("#lastname-expanded").hide();
+		});
+	});
+</script>
+
 <div class="profile-header">
 	<div class="page-header">
 		<h1>
@@ -26,6 +90,7 @@ $self = $this;
 		</div>
 	</div>
 </div>
+
 <div class="profile-content">
 	<div class="row">
 		<div class="col-md-4">
