@@ -19,8 +19,15 @@ class Starcraft2 extends ContentController {
 			'authorized'=>$authorized,
 			'breadcrumbs'=>$breadcrumbs
 		));
+		$cwd=getcwd();
+		$path=$cwd."\starcraft2\builds";
+		$dir=scandir($path);
+		$this->set(array('dir'=>$dir));
+		
 		$options=array();
 		$options['template']='../games/starcraft2/index';
 		return $this->render($options);
 	}
+	
+	
 }
