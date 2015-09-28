@@ -1,6 +1,6 @@
 <?php
 
-$this->title('StarCraft II');
+$this->title('World of Warcraft');
 
 $self = $this;
 

@@ -6,7 +6,7 @@ use app\controllers\ContentController;
 use lithium\security\Auth;
 use app\models\Users;
 
-class HeroesOfTheStormController extends ContentController {
+class HeroesOfTheStorm extends ContentController {
 	public function index() {
 		$this->_render['layout'] = 'games';		
 		$authorized = Auth::check('default');
