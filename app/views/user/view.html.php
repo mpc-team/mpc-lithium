@@ -27,42 +27,20 @@ $self = $this;
 
 <div class="profile-content">
 	<div class="row">
-		<div class="col-md-4">
-			<div class="games">
-				<div class="row">
-					<h3>Games <small>This User Plays</small></h3>
-				</div>
-				<div class="row">
-					<?php foreach ($data['games'] as $game): ?>
-						<div class="col-md-6">
-							<div class="game" data-id='<?= $game['id'] ?>'>
-								<div class="panel panel-default">
-									<div class="row">
-										<div class="col-xs-6">
-											<div class="icon">
-												<img src="<?= $game['icon'] ?>" height='40' width='40'></img>
-											</div>
-											<div class="name"><?= $game['name'] ?></div>
-										</div>
-										<div class="col-xs-6">
-											<div class="status" data-id='<?= $game['id'] ?>'>
-												<!-- Content Modified by JavaScript -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-8">
-			<?= $this->view()->render(
-				array('element' => 'wall'),
-				array('member' => $data['member'], 'options' => $data['options'])
-			)?>
-		</div>
+		<?= $this->view()->render(
+			array('element' => 'user/games'),
+			array(
+				'games' => $data['games'],
+				'text' => 'This User Plays',
+				'profile' => false
+			)
+		)?>
+	</div>
+	<div class="row">
+		<?= $this->view()->render(
+			array('element' => 'user/wall'),
+			array('member' => $data['member'], 'options' => $data['options'])
+		)?>
 	</div>
 	<div class="recent">
 		<div class="row">
