@@ -17,8 +17,7 @@ var UI_HIDDEN_UPDATE_TITLE = 'edit-content-rename-hidden';
 var UI_UPDATE_TITLE = 'edit-content-rename';
 var UI_UPDATE_CONTENT = 'edit-content-text';
 
-var UI_PUNCH = 'punch';
-var UI_KICK  = 'kick';
+var UI_HIT = 'post-hit';
 var UI_HITS_TEXT = ['hit', 'text', 'hits'];
 
 /**
@@ -87,17 +86,17 @@ var forum = {
 			}
 		},
 		init: function () {
-			// To find post IDs just look for all punch buttons and get the data-id
+			// To find post IDs just look for all `hit` buttons and get the data-id
 			// associated with it, which will yield a list of IDs for posts that we can
 			// currently use/see.
 			var postids = [];
-			var elements = $('.' + UI_PUNCH).each(function (index) {
+			var elements = $('.' + UI_HIT).each(function (index) {
 				postids[index] = $(this).attr('data-id');
 			});
 			forum.hits.refresh(postids);
 			setInterval(function () { forum.hits.refresh(postids); }, 4000);
 	
-			$("." + UI_PUNCH).click( function ( ) {
+			$("." + UI_HIT).click( function ( ) {
 				var postid = $(this).data("id");
 				var data = { pid: postid };
 				
@@ -105,26 +104,9 @@ var forum = {
 					data = JSON.parse(data);
 					console.log( data );
 					if (data.status) {
-						var punchButton = $("." + UI_PUNCH).filter("[data-id=" + postid + "]");
-						var kickButton = $("." + UI_KICK).filter("[data-id=" + postid + "]");
-						punchButton.prop('disabled', true);
-						kickButton.prop('disabled', true);
-						forum.hits.refresh([postid]);
-					}
-				});
-			});
-			
-			$("." + UI_KICK).click( function ( ) {
-				var postid = $(this).data("id");
-				var data = { pid: postid }
-				
-				$.post("/post/hit/" + postid, data, function (data) {
-					data = JSON.parse(data);
-					if (data.status) {
-						var punchButton = $("." + UI_PUNCH).filter("[data-id=" + postid + "]");
-						var kickButton = $("." + UI_KICK).filter("[data-id=" + postid + "]");
-						punchButton.prop('disabled', true);
-						kickButton.prop('disabled', true);
+						var hitButton = $("." + UI_HIT).filter("[data-id=" + postid + "]");
+						hitButton.prop('disabled', true);
+						hitButton.addClass('post-hit-hit');
 						forum.hits.refresh([postid]);
 					}
 				});

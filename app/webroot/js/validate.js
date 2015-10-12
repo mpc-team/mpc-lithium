@@ -20,7 +20,7 @@ function validateEmail (email) {
  *
  */
 	var regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-	return((email != null) && (regex.test(email))); 
+	return ((email != null) && (regex.test(email))); 
 }
 
 function validateAlias (alias) {

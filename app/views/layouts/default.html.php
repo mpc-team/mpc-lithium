@@ -24,7 +24,7 @@
 		'field-selection',	'members',
 		'validate',					'forum',
 		'markup',						'profile',
-		'scroller'
+		'scroller',					'fileinput'
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

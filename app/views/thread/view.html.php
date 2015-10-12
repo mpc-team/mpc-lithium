@@ -80,9 +80,11 @@ EOD;
 		</div>
 	</div>
 </div>
+
 <?php if (!$data['posts']): ?>
 	<h4>There are currently no Posts on this Topic</h4>
 <?php endif; ?>
+
 <?php foreach ($data['posts'] as $post): ?>
 	<div class="panel-group">
 		<div class="panel panel-default">
@@ -91,6 +93,9 @@ EOD;
 				<div class="forum-post">
 					<div>
 						<div class="info">
+							<div class="avatar">
+								<img src="<?= $post['author']['avatar']; ?>"/>
+							</div>
 							<div class="author" data-id="<?= $post['id'] ?>">
 								<a href="/user/view/<?= $post['author']['id'] ?>">
 									<span class="glyphicon glyphicon-user"></span>
@@ -102,18 +107,18 @@ EOD;
 								<div class="time">
 									<span class="glyphicon glyphicon-time"></span>
 									<?= $post['author']['since'] ?>
+								
 								</div>
 							</div>
 						</div>
 						<div class="content">
 							<div class="row header">
-								<span class="hit">
-									<?php $disabled = ($post['hitenabled']) ? '' : ' disabled'; ?>
-									<button class="btn btn-edit punch" data-id="<?= $post['id'] ?>"<?= $disabled ?>>
+								<?php $tooltip = ($post['hit']) ? 'You have already \'Hit\' this Post.' : '\'Hit\' this Post.'; ?>
+								<span class="hit" title="<?= $tooltip; ?>">
+									<?php $postDisabledProperty = ($post['hitEnabled']) ? '' : ' disabled'; ?>
+									<?php $postIsHitClass = ($post['hit']) ? 'post-hit-hit' : ''; ?>
+									<button class="btn btn-edit post-hit <?= $postIsHitClass ?>" data-id="<?= $post['id'] ?>"<?= $postDisabledProperty ?>>
 										<img src="/img/punch.png" width="20px" height="20px"/>
-									</button>
-									<button class="btn btn-edit kick" data-id="<?= $post['id'] ?>"<?= $disabled ?>>
-										<img src="/img/kick.png" width="20px" height="20px"/>
 									</button>
 									<span class="text">
 											<span class="hits" data-id="<?= $post['id'] ?>">

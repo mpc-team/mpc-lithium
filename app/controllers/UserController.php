@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use lithium\security\Auth;
 use Exception;
+
+use lithium\security\Auth;
 use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
@@ -19,54 +20,129 @@ use app\models\UserResetPasswords;
 class UserController extends \lithium\action\Controller {
 
 	const RECENT_LIMIT = 9;
-
-	public function profile ( ) {
-		$authorized = Auth::check('default');
-		if ($authorized) {
-			if ($authorized = Users::getById($authorized['id'])) {
-				$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
-				$data = array(
-					'games' => Games::getList(),
-					'played' => json_encode(self::getUserGameIds($authorized['id'])),
-					'options' => array('post')
-				);
-				$breadcrumbs = array(
-					'path' => array('MPC', 'Your Profile'),
-					'link' => array('/', '/user/profile')
-				);
-				if ($data['recentfeed'] = Posts::find('all', array(
-						'conditions' => array('uid' => $authorized['id']),
-						// 'limit' => self::RECENT_LIMIT,
-						'order' => array('tstamp' => 'DESC')
-					))) {
-					$data['recentfeed'] = $data['recentfeed']->to('array');
-					$recentCount = 0;
-					foreach ($data['recentfeed'] as $key => $recent) {
-						$thread = Threads::getById($recent['tid']);
-						if ($recentCount < self::RECENT_LIMIT) {
-							$forum = Forums::getById($thread['fid']);
-							$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
-							$data['recentfeed'][$key]['author'] = stripslashes($authorized['alias']);
-							$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
-							$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
-							$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
-							$recentCount += 1;
-						} else {
-							unset($data['recentfeed'][$key]);
-						}
-					}
+	
+	private function profileView($authorized) 
+	{
+		// Information to pass to the corresponding /user/profile View.
+		$data = array(
+			'games' => Games::getList(),
+			'played' => json_encode(self::getUserGameIds($authorized['id'])),
+			'options' => array('post')
+		);
+		$breadcrumbs = array(
+			'path' => array('MPC', 'Your Profile'),
+			'link' => array('/', '/user/profile')
+		);
+		
+		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
+		$data['recentfeed'] = Posts::find('all', array(
+			'conditions' => array('uid' => $authorized['id']),
+			'order' => array('tstamp' => 'DESC')
+		));
+		if ($data['recentfeed']) {
+		
+			$data['recentfeed'] = $data['recentfeed']->to('array');
+			$recentCount = 0;
+			foreach ($data['recentfeed'] as $key => $recent) {
+				$thread = Threads::getById($recent['tid']);
+				if ($recentCount < self::RECENT_LIMIT) {
+					$forum = Forums::getById($thread['fid']);
+					$data['recentfeed'][$key]['content'] = 
+						stripslashes($data['recentfeed'][$key]['content']);
+					$data['recentfeed'][$key]['author'] = 
+						stripslashes($authorized['alias']);
+					$data['recentfeed'][$key]['thread'] = 
+						stripslashes($thread['name']);
+					$data['recentfeed'][$key]['forum'] = 
+						stripslashes($forum['name']);
+					$data['recentfeed'][$key]['date'] = 
+						Timestamp::toDisplayFormat($recent['tstamp']);
+						
+					$recentCount += 1;
 				} else {
-					$data['recentfeed'] = array();
+					// Remove entries past our RECENT_LIMIT.
+					unset($data['recentfeed'][$key]);
 				}
-				return compact('authorized', 'data', 'breadcrumbs');
 			}
+		} else {
+			// Identify a NULL result with an empty array.
+			$data['recentfeed'] = array();
 		}
-		return $this->redirect('/login');
+		
+		// Set View variables and declare render options.
+		$this->set(array(
+			'authorized' => $authorized,
+			'data' => $data,
+			'breadcrumbs' => $breadcrumbs
+		));
+		$options = array();
+		$options['template'] = '../user/profile';
+		
+		$avatarPath = Users::findAvatarImagePath($authorized['email']);
+		if ($avatarPath == null):
+			$avatarPath = '\\users\\avatars\\noprofile.jpg';
+		endif;
+		$this->set(array('avatar' => $avatarPath));
+		
+		// Return and render the View specified above.
+		return $this->render($options);
+		
+	}
+
+	private function profileEdit($authorized, $data)
+	{
+		// First perform the Edit and then load the standard Profile page.
+		if (isset($data['avatarfile']) && $data['avatarfile']):
+			$check = getimagesize($data['avatarfile']['tmp_name']);
+			if ($check !== false):
+				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
+				$saveToPath = '.\\users\\avatars\\'.$authorized['email'].'.'.$fileext;
+				if (file_exists($saveToPath)):
+					unlink($saveToPath);
+				endif;
+				copy($data['avatarfile']['tmp_name'], $saveToPath);
+			else:
+				print ("File is not an image.");
+			endif;
+		endif;
+		
+		return self::profileView($authorized);
 	}
 	
-	///
-	/// `changepassword`
-	///
+	public function profile( ) 
+	{
+		// Handle authorization.
+		$authorized = Auth::check('default');
+		if (!$authorized) 
+			// Only `authorized` Users allowed.
+			return $this->redirect('/login');
+		if (!($authorized = Users::getById($authorized['id'])))
+			// Get User information from Database.
+			return $this->redirect('/login');
+	
+		$redirect = false;
+		$opedit = false;
+		$argc = count($this->request->args);
+		if ($argc == 1) {
+			if ($this->request->args[0] == 'edit')
+				$opedit = true;
+			else
+				$redirect = true;
+		} elseif ($argc > 1) 
+			$redirect = true;
+		
+		if ($redirect)
+			// There was a parameter error.
+			return $this->redirect('/user/profile');
+		
+		if ($opedit) 
+			// Redirect to the /user/profile/edit action.
+			return self::profileEdit($authorized, $this->request->data);
+		else
+			// Redirect to the standard action /user/profile.
+			return self::profileView($authorized);
+	}
+	
 	public function changepassword ( ) {
 		$authorized = Auth::check('default');
 		if( $authorized ) {

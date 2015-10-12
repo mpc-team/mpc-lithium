@@ -7,6 +7,13 @@ $this->title('My Profile');
 $self = $this;
 
 ?>
+<!--
+	Profile Header
+	--------------
+	In a user's Profile page they will be able to see the `alias` they have
+	chosen and the `email` they have registered an account with.
+	
+	-->
 <div class="profile-header">
 	<div class="page-header">
 		<h1>
@@ -28,16 +35,25 @@ $self = $this;
 </div>
 
 <div class="profile-content">
+
 	<div class="row">
-		<h3>Avatar</h3>
-		<div class="row">
-			
+		<div class="user-avatar-select">
+			<center>
+				<div class="panel panel-default">
+					<h3>Avatar</h3>
+				</div>
+				<img id="user-avatar" src="<?= $avatar; ?>" height="200px"/>
+				
+				<form action='/user/profile/edit' method='POST' enctype="multipart/form-data">
+					<span class="file-input btn btn-primary btn-file">
+						<input type="file" name="avatarfile"/>
+					</span>
+					<input type="submit" class="btn btn-edit" value="Upload"/>
+				</form>
+			</center>
 		</div>
-		<form action='' method='POST'>
-			<input type="file" name="file" id="avatar-file"/>
-			<input type="submit" class="btn btn-edit" value="Upload"/>
-		</form>
 	</div>
+	
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/games'),
@@ -48,12 +64,14 @@ $self = $this;
 			)
 		)?>
 	</div>
+	
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/wall'),
 			array('options' => $data['options'])
 		)?>
 	</div>
+	
 	<div class="recent">
 		<div class="row">
 			<h3>Recent<small> Posts On Forum</small></h3>

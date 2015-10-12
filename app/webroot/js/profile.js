@@ -14,10 +14,12 @@ var profile = {
 
 	updateGameUI: function (gameid, status) {				
 		if (status) {
+			$(".btn-edit[data-id='" + gameid + "']").addClass("active");
 			$(".game[data-id='" + gameid + "'] .status").html("<span class='glyphicon glyphicon-ok'></span>");
 			$(".game[data-id='" + gameid + "'] .status").addClass("active");
 			$(".game[data-id='" + gameid + "'] .panel").addClass("active");
 		} else {
+			$(".btn-edit[data-id='" + gameid + "']").removeClass("active");
 			$(".game[data-id='" + gameid + "'] .status").html("");
 			$(".game[data-id='" + gameid + "'] .status").removeClass("active");
 			$(".game[data-id='" + gameid + "'] .panel").removeClass("active");
@@ -83,23 +85,17 @@ var profile = {
 				var html = '';				
 				for (var key in json.response) {
 					html += "<div class='message'>";
-					html += "<span class='name'>";
-					html += "<center>";
+					html += "<div class='name'>";
 					html += "<a href=/user/view/" + json.response[key].senderid + ">";
 					html += json.response[key].sender;
 					html += "</a>";
-					html += "</center>";
-					html += "</span>";
-					html += "<span class='text'>";
-					html += "<center>";
+					html += "</div>";
+					html += "<div class='text'>";
 					html += json.response[key].content;
-					html += "</center>";
-					html += "</span>";
+					html += "</div>";
 					html += "<div class='time'>";
-					html += "<center>";
 					var date = moment(json.response[key].tstamp);
 					html += moment(json.response[key].tstamp).format("h:mm A - dddd DD/MM/YY");
-					html += "</center>";
 					html += "</div>";
 					html += "</div>";
 				}

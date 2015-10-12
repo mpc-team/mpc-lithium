@@ -33,6 +33,19 @@ h5 {
 	/* font-family: "Oswald"; */
 }
 
+/*
+	Scrollbar Properties
+*/
+::-webkit-scrollbar {
+	background: #202320;
+}
+::-webkit-scrollbar-thumb {
+	background: #343D35
+}
+::-webkit-scrollbar-button {
+	background: #000000;
+}
+
 .navbar {
 	font-family: "Passion One";
 	font-size: 14pt;
@@ -114,6 +127,9 @@ span.input-group-addon { border-radius: 0px; }
 
 tr.alt { background-color: #2a2f2a; }
 
+button.active:hover img {
+	-webkit-filter: brightness(1.6) hue-rotate(25deg);
+}
 a.btn:hover iframe,
 a.btn:hover img {
 	filter: brightness(2);
@@ -154,6 +170,37 @@ a h5 { margin: 0px; }
  *	PROFILE STYLING
  *
  ******************************************************************/
+
+.btn-file input[type=file] {
+	min-width: 100%;
+	/* min-height: 100%; */
+	text-align: right;
+	opacity: 0;
+	background: red;
+	cursor: inherit;
+	display: block;
+}
+
+.user-avatar {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.user-avatar-select .btn-file { 
+	padding: 0; 
+	width: 100%;
+}
+.user-avatar-select .btn-edit { 
+	width: 100%; 
+}
+
+.user-avatar-select { 
+	background: rgba(0, 0, 0, 0.2);
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .profile-content > div { padding-bottom: 30px; }
 
 .profile-header,
@@ -161,13 +208,19 @@ a h5 { margin: 0px; }
 .profile-content .games .name {
 	white-space: nowrap;
 }
+
+.profile-content .games button.btn-edit.active:hover {
+	background-color: rgba(156, 255, 159, 0.5);
+}
+
 .profile-header .page-header { margin-bottom: 0; }
 .profile-header .invites,
-.profile-header .wall { padding-left: 20px; }
 .profile-content .wall .header { padding: 5px 0 5px 0; }
-.profile-content .wall .header .bar { 
-	background: rgba(0, 0, 0, 0.35);
-	padding: 5px 0 5px 0;
+.profile-content .wall { 
+	padding-left: 20px; 
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .profile-content .wall .content,
@@ -180,6 +233,9 @@ a h5 { margin: 0px; }
 	word-wrap: break-word;
 	padding: 20px 10px 20px 10px;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
 }
 .profile-content .wall .content .message .name {
 	/* font-family: "Oswald"; */
@@ -193,15 +249,6 @@ a h5 { margin: 0px; }
 	padding-top: 10px;
 }
 
-.profile-content .wall .footer input {
-	box-shadow: 0 0 20px rgba(200, 190, 255, 0.9);
-}
-.profile-content .games .panel button:active {
-	box-shadow: 0 0 5px rgba(190, 255, 190, 0.9);
-}
-.profile-content .wall .footer input:focus {
-	box-shadow: 0 0 80px rgba(97, 160, 250, 0.9);
-}
 .profile-content .wall .footer .text,
 .profile-content .wall .footer .view {
 	padding: 5px 5px 5px 5px;
@@ -209,8 +256,9 @@ a h5 { margin: 0px; }
 }
 
 .profile-content .invites .header,
-.profile-content .wall .header { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-.profile-content .wall .footer,
+.profile-content .wall .footer .panel {
+	padding: 10px;
+}
 .profile-content .invites .footer {
 	padding-top: 5px;
 	border-top: 1px solid rgba(0, 0, 0, 0.2);
@@ -260,12 +308,13 @@ a h5 { margin: 0px; }
 	}
 }
 @media (max-width: 870px) {
-	.profile-content .games .name { display: none; }
+	.profile-content .games .name { 
+		display: none; 
+	}
 }
 @media (max-width: 630px) {
-	.profile-content .games .icon,
 	.profile-content .games .name {
-		display: inline;
+		display: none;
 	}
 }
 
@@ -427,12 +476,28 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 	border: none;
 }
 
+.forum-post .content .hit button.post-hit-hit {
+	background: #009702;
+	border: 1px solid #76FF76;
+	box-shadow: 0 0 5px rgba(200,255,205,1); 
+}
+
 .forum-post .info .time { font-size: 85%; }
 .forum-post .info .since { padding-top: 5px; }
+.forum-post .info .avatar img { 
+	min-height: 120px;
+	min-width: 120px; 
+	max-height: 100%;
+	max-width: 100%;
+}
+.forum-post .info .avatar {
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
 .forum-post .info .author {
+	padding-top: 5px;
 	font-size: 14pt;
 	font-weight: 600;
-/* 	font-family: "Oswald"; */
 	white-space: nowrap;
 	overflow-x: hidden;
 	overflow-y: visible;
@@ -583,7 +648,6 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-delete,
 .btn-edit {
 	font-size: 9pt;
-	color: #88bb88;
 	background-color: transparent;
 }
 .btn-delete:hover,
@@ -591,9 +655,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-edit:hover,
 .btn-edit:active {
 	color: #ffffff;
-	/* background-color: rgba(255,255,255,0.1); */
 	background-color: rgba(0, 0, 0, 0.2);
-	/* box-shadow: 0 0 10px rgba(255,255,255,0.9); */
 }
 
 .btn-signup,

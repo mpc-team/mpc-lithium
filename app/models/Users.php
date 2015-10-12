@@ -43,4 +43,21 @@ class Users extends \lithium\data\Model  {
 			throw new Exception( "user doesn't exist" );
 		}
 	}
+	
+	public static function findAvatarImagePath($email) 
+	{
+		$allowedtypes = array('jpg', 'png');
+		$path = '\\users\\avatars\\' . $email . '.';
+		// Need to search with a '.' in the front of the path because we're looking
+		// in our File System rather than pulling a web resource.
+		$search = '.' . $path; 
+		
+		foreach ($allowedtypes as $imgtype):
+			if (file_exists($search.$imgtype)):
+				return $path.$imgtype;
+			endif;
+		endforeach;
+		
+		return null;
+	}
 }
