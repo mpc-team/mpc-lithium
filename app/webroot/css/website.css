@@ -195,8 +195,8 @@ a h5 { margin: 0px; }
 }
 
 .user-avatar-select { 
-	background: rgba(0, 0, 0, 0.2);
-	width: 80%;
+	background: rgba(0, 0, 0, 0.1);
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -210,7 +210,7 @@ a h5 { margin: 0px; }
 }
 
 .profile-content .games button.btn-edit.active:hover {
-	background-color: rgba(156, 255, 159, 0.5);
+	background-color: rgba(72, 168, 75, 0.7);
 }
 
 .profile-header .page-header { margin-bottom: 0; }
@@ -225,14 +225,15 @@ a h5 { margin: 0px; }
 
 .profile-content .wall .content,
 .profile-content .invites .content {
-	max-height: 500px;
-	min-height: 500px;
+	background: rgba(0, 0, 0, 0.1);
+	max-height: 400px;
+	min-height: 400px;
 	overflow-y: auto;
 }
 .profile-content .wall .content .message { 
 	word-wrap: break-word;
 	padding: 20px 10px 20px 10px;
-	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
 	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
@@ -273,6 +274,8 @@ a h5 { margin: 0px; }
 
 .profile-content .games { padding: 0 5px 10px 5px; }
 .profile-content .games .game { padding: 0 2px 5px 2px; }
+
+.profile-content .games .panel .icon,
 .profile-content .games .panel button {
 	padding: 1px;
 	text-align: left;

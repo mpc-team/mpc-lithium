@@ -27,4 +27,7 @@ $self = $this
 	<div class="well well-sm">
 		<h5>9/26/2015: Passwords can now be reset through the login page.</h5>
 	</div>
+	<div class="well well-sm">
+		<h5>10/11/2015: Added User avatar images to the Profile and Forum section.
+	</div>
 </section>

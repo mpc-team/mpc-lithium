@@ -8,7 +8,7 @@ use app\models\Users;
 
 class TableOfContents extends ContentController {
 
-	const NameMap = array(
+	static $NameMap = array(
 		'heroes_of_the_storm' => 'Heroes of the Storm',
 		'starcraft2' => 'Starcraft II',
 		'world_of_warcraft' => 'World of Warcraft'
@@ -30,7 +30,7 @@ class TableOfContents extends ContentController {
 		foreach($dir as $file){
 			$split=explode('.',$file);
 			if(count($split) == 1){
-				array_push($games,self::NameMap[$file]);
+				array_push($games,self::$NameMap[$file]);
 			}
 		}
 		$this->set(array('games'=>$games));

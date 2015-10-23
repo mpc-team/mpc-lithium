@@ -7,13 +7,6 @@ $this->title('My Profile');
 $self = $this;
 
 ?>
-<!--
-	Profile Header
-	--------------
-	In a user's Profile page they will be able to see the `alias` they have
-	chosen and the `email` they have registered an account with.
-	
-	-->
 <div class="profile-header">
 	<div class="page-header">
 		<h1>

@@ -63,7 +63,7 @@ endforeach;
 					<?php foreach($games as $game): ?>
 						<li>
 							<a href='/games/<?=$game;?>'>
-								<?=TableOfContents::NameMap[$game];?>
+								<?= TableOfContents::$NameMap[$game]; ?>
 							</a>
 						</li>
 					<?php endforeach; ?>

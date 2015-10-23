@@ -27,6 +27,17 @@ $self = $this;
 
 <div class="profile-content">
 	<div class="row">
+		<div class="user-avatar-select">
+			<center>
+				<div class="panel panel-default">
+					<h3>Avatar</h3>
+				</div>
+				<img id="user-avatar" src="<?= $avatar; ?>" height="200px"/>
+				
+			</center>
+		</div>
+	</div>
+	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/games'),
 			array(

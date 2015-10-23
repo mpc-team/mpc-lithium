@@ -29,6 +29,7 @@ $username = isset($member) ? $member['alias'] . "'s" : "My";
 				</center>
 			</div>
 			<div class="messages">
+				<h3>This User does not have any messages.</h3>
 				<!-- Filled By JavaScript -->
 			</div>
 		</div>

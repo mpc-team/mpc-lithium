@@ -21,8 +21,8 @@ class BoardControllerTest extends \lithium\test\Unit {
 			'key1' => array('recent' => array('tstamp' => 10)),
 			'key3' => array('recent' => array('tstamp' => 5))
 		);
-		/* Compare the number of exact matches with the size of the associative
-			array to determine if the arrays are equivalent. */
+		//compare the number of exact matches with the size of the asssociative 
+		//array to determine if the arrays are equivalent.
 		$intersects = array_intersect($threads, $sorted_expected);
 		$matched = count($intersects);
 		$this->assertEqual($matched, count($threads));

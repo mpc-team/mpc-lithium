@@ -5,8 +5,8 @@ namespace app\models;
 use lithium\security\Password;
 use Exception;
 
-class Users extends \lithium\data\Model  { 
-
+class Users extends \lithium\data\Model  
+{ 
 	public static function getById( $id ) 
 	{
 		$user = self::find( 'first', array( 'conditions' => array( 
@@ -27,7 +27,7 @@ class Users extends \lithium\data\Model  {
 		if( $user ) {
 			return $user->to( 'array' );
 		} else {
-			return null;
+			return null; 
 		}
 	}
 	
@@ -47,17 +47,13 @@ class Users extends \lithium\data\Model  {
 	public static function findAvatarImagePath($email) 
 	{
 		$allowedtypes = array('jpg', 'png');
+		$root = $_SERVER['DOCUMENT_ROOT'] . '\\app\\webroot';
 		$path = '\\users\\avatars\\' . $email . '.';
-		// Need to search with a '.' in the front of the path because we're looking
-		// in our File System rather than pulling a web resource.
-		$search = '.' . $path; 
-		
 		foreach ($allowedtypes as $imgtype):
-			if (file_exists($search.$imgtype)):
-				return $path.$imgtype;
+			if (file_exists($root . $path . $imgtype)):
+				return $path . $imgtype;
 			endif;
 		endforeach;
-		
-		return null;
+		return '\\users\\avatars\\noprofile.jpg';
 	}
 }

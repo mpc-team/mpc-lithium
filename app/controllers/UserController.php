@@ -79,9 +79,6 @@ class UserController extends \lithium\action\Controller {
 		$options['template'] = '../user/profile';
 		
 		$avatarPath = Users::findAvatarImagePath($authorized['email']);
-		if ($avatarPath == null):
-			$avatarPath = '\\users\\avatars\\noprofile.jpg';
-		endif;
 		$this->set(array('avatar' => $avatarPath));
 		
 		// Return and render the View specified above.
@@ -96,7 +93,7 @@ class UserController extends \lithium\action\Controller {
 			$check = getimagesize($data['avatarfile']['tmp_name']);
 			if ($check !== false):
 				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
-				$saveToPath = '.\\users\\avatars\\'.$authorized['email'].'.'.$fileext;
+				$saveToPath = '.\\users\\avatars\\' . $authorized['email'] . '.' . $fileext;
 				if (file_exists($saveToPath)):
 					unlink($saveToPath);
 				endif;
@@ -280,7 +277,9 @@ class UserController extends \lithium\action\Controller {
 				} else {
 					$data['recentfeed'] = array();
 				}
-				return compact('authorized', 'data', 'breadcrumbs');
+				
+				$avatar = Users::findAvatarImagePath($member['email']);
+				return compact('authorized', 'data', 'breadcrumbs', 'avatar');
 			}
 		}
 		return $this->redirect('/profile');
