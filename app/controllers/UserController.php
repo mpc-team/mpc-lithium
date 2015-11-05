@@ -21,7 +21,7 @@ class UserController extends \lithium\action\Controller {
 
 	const RECENT_LIMIT = 9;
 	
-	private function profileView($authorized) 
+	private function profile_view($authorized) 
 	{
 		// Information to pass to the corresponding /user/profile View.
 		$data = array(
@@ -78,7 +78,7 @@ class UserController extends \lithium\action\Controller {
 		$options = array();
 		$options['template'] = '../user/profile';
 		
-		$avatarPath = Users::findAvatarImagePath($authorized['email']);
+		$avatarPath = Users::find_avatar_file($authorized['email']);
 		$this->set(array('avatar' => $avatarPath));
 		
 		// Return and render the View specified above.
@@ -86,24 +86,24 @@ class UserController extends \lithium\action\Controller {
 		
 	}
 
-	private function profileEdit($authorized, $data)
+	private function profile_edit($authorized, $data)
 	{
 		// First perform the Edit and then load the standard Profile page.
-		if (isset($data['avatarfile']) && $data['avatarfile']):
+		if (isset($data['avatarfile']) && $data['avatarfile']) {
 			$check = getimagesize($data['avatarfile']['tmp_name']);
-			if ($check !== false):
+			
+			if ($check !== false) {
 				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
+				
+				$cleaned = Users::clean_avatar_files($authorized['email']);
 				$saveToPath = getcwd() . '/users/avatars/' . $authorized['email'] . '.' . $fileext;
-				if (file_exists($saveToPath)):
-					unlink($saveToPath);
-				endif;
 				copy($data['avatarfile']['tmp_name'], $saveToPath);
-			else:
+				
+			} else {
 				print ("File is not an image.");
-			endif;
-		endif;
-		
-		return self::profileView($authorized);
+			}
+		}
+		return $this->redirect('/user/profile');
 	}
 	
 	public function profile( ) 
@@ -134,10 +134,10 @@ class UserController extends \lithium\action\Controller {
 		
 		if ($opedit) 
 			// Redirect to the /user/profile/edit action.
-			return self::profileEdit($authorized, $this->request->data);
+			return self::profile_edit($authorized, $this->request->data);
 		else
 			// Redirect to the standard action /user/profile.
-			return self::profileView($authorized);
+			return self::profile_view($authorized);
 	}
 	
 	public function changepassword ( ) {
@@ -278,7 +278,7 @@ class UserController extends \lithium\action\Controller {
 					$data['recentfeed'] = array();
 				}
 				
-				$avatar = Users::findAvatarImagePath($member['email']);
+				$avatar = Users::find_avatar_file($member['email']);
 				return compact('authorized', 'data', 'breadcrumbs', 'avatar');
 			}
 		}
