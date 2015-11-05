@@ -45,15 +45,16 @@ class Users extends \lithium\data\Model
 	}
 	
 	public static function findAvatarImagePath($email) 
-	{
+	{	
 		$allowedtypes = array('jpg', 'png');
-		$root = $_SERVER['DOCUMENT_ROOT'] . '\\app\\webroot';
-		$path = '\\users\\avatars\\' . $email . '.';
+		$path = '/users/avatars/' . $email . '.';
+		
 		foreach ($allowedtypes as $imgtype):
-			if (file_exists($root . $path . $imgtype)):
+			if (file_exists(getcwd() . $path . $imgtype)):
 				return $path . $imgtype;
 			endif;
 		endforeach;
-		return '\\users\\avatars\\noprofile.jpg';
+		
+		return '/users/avatars/noprofile.jpg';
 	}
 }

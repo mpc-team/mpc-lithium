@@ -93,7 +93,7 @@ class UserController extends \lithium\action\Controller {
 			$check = getimagesize($data['avatarfile']['tmp_name']);
 			if ($check !== false):
 				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
-				$saveToPath = '.\\users\\avatars\\' . $authorized['email'] . '.' . $fileext;
+				$saveToPath = getcwd() . '/users/avatars/' . $authorized['email'] . '.' . $fileext;
 				if (file_exists($saveToPath)):
 					unlink($saveToPath);
 				endif;
