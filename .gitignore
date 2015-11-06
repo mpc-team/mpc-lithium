@@ -6,7 +6,9 @@ app/resources/tmp/*
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+!.elasticbeanstalk/*.global.yml
+
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -25,3 +27,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+app/webroot/users/avatars/
