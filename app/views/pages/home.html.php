@@ -38,6 +38,9 @@ $self = $this
 <section>
 	<h2>News</h2>
 	<div class="well well-sm">
+			<h5>11/06/2015: Avatars are now in complete working order!</h5>
+		</div>
+	<div class="well well-sm">
 		<h5>9/26/2015: Passwords can now be reset through the login page.</h5>
 	</div>
 	<div class="well well-sm">
