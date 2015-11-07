@@ -10,7 +10,7 @@ $self = $this;
 		<div class="panel panel-default">
 			<div class="login-group">
 			
-			<?php if ($notification['enabled']): ?>
+			<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
 				<div class="alert alert-success">
 					<?= $notification['text']; ?>
 				</div>
@@ -24,11 +24,13 @@ $self = $this;
 						<span class="input-group-addon">
 							Email:
 						</span>
-						<?= $this->form->text('email', array(
-							'type' => 'email',
-							'class' => 'form-control',
-							'placeholder' => 'address@example.com'
-						)); ?>
+						<?= 
+							$this->form->text('email', array(
+								'type' => 'email',
+								'class' => 'form-control',
+								'placeholder' => 'address@example.com'
+							)); 
+						 ?>
 					</div>
 				</div>
 				<div class="form-group">
@@ -36,10 +38,12 @@ $self = $this;
 						<span class="input-group-addon">
 							Password:
 						</span>     
-						<?= $this->form->password('password', array(
-							'class' => 'form-control',
-							'placeholder' => 'Password'
-						)); ?>
+						<?= 
+							$this->form->password('password', array(
+								'class' => 'form-control',
+								'placeholder' => 'Password'
+							)); 
+						 ?>
 					</div>
 				</div>
 				
@@ -47,10 +51,12 @@ $self = $this;
 				
 				<div class="form-group">
 					<center>
-						<?= $this->form->submit('Login', array(
-							'class' => 'btn btn-login',
-							'value' => 'Login'
-						)); ?>
+						<?= 
+							$this->form->submit('Login', array(
+								'class' => 'btn btn-login',
+								'value' => 'Login'
+							)); 
+						 ?>
 					</center>
 				</div>
 				

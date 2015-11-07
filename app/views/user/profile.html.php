@@ -38,10 +38,19 @@ $self = $this;
 				<img id="user-avatar" src="<?= $avatar; ?>" height="200px"/>
 				
 				<form action='/user/profile/edit' method='POST' enctype="multipart/form-data">
-					<span class="file-input btn btn-primary btn-file">
-						<input type="file" name="avatarfile"/>
-					</span>
-					<input type="submit" class="btn btn-edit" value="Upload"/>
+					<div>
+						<div>
+							<span class="file-input btn btn-primary btn-file">
+								<label for="avatarfile">
+									Select Image File...
+								</label>
+								<input type="file" name="avatarfile" id="avatarfile"/>
+							</span>
+						</div>
+						<div>
+							<input type="submit" class="btn btn-edit" value="Upload"/>
+						</div>
+					</div>
 				</form>
 			</center>
 		</div>

@@ -23,7 +23,7 @@ class UserController extends \lithium\action\Controller {
 	
 	private function profile_view($authorized) 
 	{
-		// Information to pass to the corresponding /user/profile View.
+		/* Information to pass to the corresponding /user/profile View. */
 		$data = array(
 			'games' => Games::getList(),
 			'played' => json_encode(self::getUserGameIds($authorized['id'])),
@@ -89,18 +89,16 @@ class UserController extends \lithium\action\Controller {
 	private function profile_edit($authorized, $data)
 	{
 		// First perform the Edit and then load the standard Profile page.
-		if (isset($data['avatarfile']) && $data['avatarfile']) {
-			$check = getimagesize($data['avatarfile']['tmp_name']);
-			
-			if ($check !== false) {
+		if (isset($data['avatarfile']) && $data['avatarfile'] && is_file($data['avatarfile'])) {
+		
+			try {
+				$check = getimagesize($data['avatarfile']['tmp_name']);
 				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
-				
 				$cleaned = Users::clean_avatar_files($authorized['email']);
 				$saveToPath = getcwd() . '/users/avatars/' . $authorized['email'] . '.' . $fileext;
 				copy($data['avatarfile']['tmp_name'], $saveToPath);
-				
-			} else {
-				print ("File is not an image.");
+			} catch (Exception $excp) {
+				return $this->redirect('/user/profile');
 			}
 		}
 		return $this->redirect('/user/profile');
@@ -140,22 +138,33 @@ class UserController extends \lithium\action\Controller {
 			return self::profile_view($authorized);
 	}
 	
-	public function changepassword ( ) {
+	
+	/**
+	 * Change a User's password.
+	 */
+	public function changepassword ( ) 
+	{
 		$authorized = Auth::check('default');
+		
 		if( $authorized ) {
-			// If the User is signed in and requests to change their password,
-			// authentication is standard.
+			
+			/* If the User is signed in and requests to change their password, 
+			 * authentication is based on whoever is signed in. */
 		
 		} elseif( isset( $this->request->query['confirm'] ) ) {
-			// If the User is not signed in and requests to change their password,
-			// authentication is based on the Reset Password key included in the email.
+		
+			/* If the User is not signed in and requests to change their password,
+			 * authentication is based on the Reset Password key included in the email. */
+			 
 			$key = $this->request->query['confirm'];
 			$reset = UserResetPasswords::getByKey( $key );
 			
 			if( isset( $this->request->data['password'] ) && $reset ) {
 				$password = $this->request->data['password'];
-				// We have authenticated now we can change the password and end the
-				// `password reset` process.
+				
+				/* We have authenticated now we can change the password and end the
+				 * `password reset` process. */
+				
 				Users::setPassword( $reset['email'], $password );
 				UserResetPasswords::deleteByEmail( $reset['email'] );
 			}

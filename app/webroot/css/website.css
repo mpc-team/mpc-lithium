@@ -172,8 +172,7 @@ a h5 { margin: 0px; }
  ******************************************************************/
 
 .btn-file input[type=file] {
-	min-width: 100%;
-	/* min-height: 100%; */
+	height: 30px;
 	text-align: right;
 	opacity: 0;
 	background: red;
@@ -186,12 +185,18 @@ a h5 { margin: 0px; }
 	max-height: 200px;
 }
 
-.user-avatar-select .btn-file { 
-	padding: 0; 
-	width: 100%;
+.user-avatar-select .btn-file { padding: 0; width: 100%; }
+.user-avatar-select .btn-edit { width: 100%; }
+
+.user-avatar-select form > div { width: 267px; }
+.user-avatar-select form > div > div > input { 
+	width: 267px; 
+	border: 1px solid #111111;
 }
-.user-avatar-select .btn-edit { 
-	width: 100%; 
+.user-avatar-select form > div > div > span > label { 
+	display: block;
+	color: white;
+	position: absolute; 
 }
 
 .user-avatar-select { 
@@ -243,10 +248,11 @@ a h5 { margin: 0px; }
 	font-size: 105%;
 }
 .profile-content .wall .content .message .text {
-	color: rgba(255,255,255, 0.3);
+	
 }
 .profile-content .wall .content .message .time { 
 	font-size: 85%; 
+	color: rgba(255, 255, 255, 0.3);
 	padding-top: 10px;
 }
 
