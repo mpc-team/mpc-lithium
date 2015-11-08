@@ -25,12 +25,12 @@ class TableOfContents extends ContentController {
 			'authorized'=>$authorized,
 			'breadcrumbs'=>$breadcrumbs
 		));
-		$dir=scandir(getcwd().'/../views/games');
-		$games=array();
-		foreach($dir as $file){
-			$split=explode('.',$file);
-			if(count($split) == 1){
-				array_push($games,self::$NameMap[$file]);
+		$dir = scandir(getcwd().'/../views/games');
+		$games = array();
+		foreach ($dir as $file) {
+			$split = explode('.',$file);
+			if (count($split) == 1) {
+				array_push($games, self::$NameMap[$file]);
 			}
 		}
 		$this->set(array('games'=>$games));

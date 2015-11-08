@@ -8,6 +8,19 @@ $self = $this;
 
 ?>
 <div class="profile-header">
+	
+	<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
+		<?php if ($notification['status'] == 'success'): ?>
+			<div class="alert alert-success">
+				<?= $notification['text']; ?>
+			</div>
+		<?php else: ?>
+			<div class="alert alert-danger">
+				<?= $notification['text']; ?>
+			</div>
+		<?php endif; ?>
+	<?php endif; ?>
+	
 	<div class="page-header">
 		<h1>
 			<div class="title">

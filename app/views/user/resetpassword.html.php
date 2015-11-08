@@ -28,9 +28,10 @@ $CONFIRMED = ( strtolower($status) == strtolower(UserController::STATUS_CONFIRME
 		
 				<h5>Choose a new password</h5>
 				<hr>
-				<form 	action="/user/changepassword?confirm=<?= $key ?>" 
-								onsubmit="return validatePasswords('#fg-resetpw-confirm')" 
-								method="post" >
+				<form	action="/user/changepassword?confirm=<?= $key ?>" 
+							onsubmit="return validatePasswords('#fg-resetpw-confirm')" 
+							method="post" >
+						
 					<div class="form-group has-feedback" id="fg-resetpw-pw">
 						<label class="control-label" for="password">
 							New Password:

@@ -5,18 +5,17 @@ namespace app\controllers;
 use lithium\security\Auth;
 use app\models\Users;
 use app\models\Permissions;
+use app\models\utils\Notifications;
 
-class LoginController extends \lithium\action\Controller {
-
+class LoginController extends \lithium\action\Controller 
+{
 	public function index() 
 	{
 		if (!($authorized = Auth::check('default'))) 
 		{
-			$notification = array('enabled' => false, 'text' => '');
 			$breadcrumbs = array(
 				'path' => array('MPC', 'Login'),
-				'link' => array('/', '/login')
-			);
+				'link' => array('/', '/login'));
 			
 			if ($this->request->data) 
 			{
@@ -25,22 +24,7 @@ class LoginController extends \lithium\action\Controller {
 					return $this->redirect('/user/profile');
 			}
 			
-			if (isset($this->request->query['status']) && isset($this->request->query['op'])) 
-			{
-				$status = $this->request->query['status'];
-				$operation = $this->request->query['op'];
-				
-				if ($status == 'success') 
-				{
-					switch ($operation) 
-					{
-						case 'pwc':
-							$notification['enabled'] = true;
-							$notification['text'] = 'Your password change has been processed successfully.';
-							break;
-					}
-				}
-			}
+			$notification = Notifications::parse($this->request->query);
 			return compact ('authorized', 'breadcrumbs', 'notification');
 		}
 		return $this->redirect('/user/profile');

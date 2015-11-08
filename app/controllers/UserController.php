@@ -5,6 +5,7 @@ namespace app\controllers;
 use Exception;
 
 use lithium\security\Auth;
+use app\models\utils\Notifications;
 use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
@@ -21,59 +22,59 @@ class UserController extends \lithium\action\Controller {
 
 	const RECENT_LIMIT = 9;
 	
-	private function profile_view($authorized) 
+	private function profile_view ($authorized, $query) 
 	{
-		/* Information to pass to the corresponding /user/profile View. */
+		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
 		$data = array(
 			'games' => Games::getList(),
 			'played' => json_encode(self::getUserGameIds($authorized['id'])),
-			'options' => array('post')
+			'options' => array('post'),
+			'recentfeed' => Posts::find('all', array(
+				'conditions' => array('uid' => $authorized['id']),
+				'order' => array('tstamp' => 'DESC')
+			))
 		);
 		$breadcrumbs = array(
 			'path' => array('MPC', 'Your Profile'),
 			'link' => array('/', '/user/profile')
 		);
-		
-		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
-		$data['recentfeed'] = Posts::find('all', array(
-			'conditions' => array('uid' => $authorized['id']),
-			'order' => array('tstamp' => 'DESC')
-		));
-		if ($data['recentfeed']) {
-		
+		$notification = Notifications::parse($this->request->query);
+			
+		if ($data['recentfeed']) 
+		{
 			$data['recentfeed'] = $data['recentfeed']->to('array');
 			$recentCount = 0;
-			foreach ($data['recentfeed'] as $key => $recent) {
+			foreach ($data['recentfeed'] as $key => $recent) 
+			{
 				$thread = Threads::getById($recent['tid']);
-				if ($recentCount < self::RECENT_LIMIT) {
+				if ($recentCount < self::RECENT_LIMIT) 
+				{
 					$forum = Forums::getById($thread['fid']);
-					$data['recentfeed'][$key]['content'] = 
-						stripslashes($data['recentfeed'][$key]['content']);
-					$data['recentfeed'][$key]['author'] = 
-						stripslashes($authorized['alias']);
-					$data['recentfeed'][$key]['thread'] = 
-						stripslashes($thread['name']);
-					$data['recentfeed'][$key]['forum'] = 
-						stripslashes($forum['name']);
-					$data['recentfeed'][$key]['date'] = 
-						Timestamp::toDisplayFormat($recent['tstamp']);
+					$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
+					$data['recentfeed'][$key]['author'] = stripslashes($authorized['alias']);
+					$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
+					$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
+					$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
 						
 					$recentCount += 1;
-				} else {
-					// Remove entries past our RECENT_LIMIT.
+				} 
+				else 
+				{
 					unset($data['recentfeed'][$key]);
 				}
 			}
-		} else {
-			// Identify a NULL result with an empty array.
+		} 
+		else 
+		{
 			$data['recentfeed'] = array();
 		}
 		
 		// Set View variables and declare render options.
 		$this->set(array(
 			'authorized' => $authorized,
+			'breadcrumbs' => $breadcrumbs,
+			'notification' => $notification,
 			'data' => $data,
-			'breadcrumbs' => $breadcrumbs
 		));
 		$options = array();
 		$options['template'] = '../user/profile';
@@ -89,19 +90,22 @@ class UserController extends \lithium\action\Controller {
 	private function profile_edit($authorized, $data)
 	{
 		// First perform the Edit and then load the standard Profile page.
-		if (isset($data['avatarfile']) && $data['avatarfile'] && is_file($data['avatarfile'])) {
-		
-			try {
+		if (isset($data['avatarfile']) && $data['avatarfile'] && $data['avatarfile'] != '') {
+			try 
+			{
 				$check = getimagesize($data['avatarfile']['tmp_name']);
 				$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
 				$cleaned = Users::clean_avatar_files($authorized['email']);
 				$saveToPath = getcwd() . '/users/avatars/' . $authorized['email'] . '.' . $fileext;
 				copy($data['avatarfile']['tmp_name'], $saveToPath);
-			} catch (Exception $excp) {
+			} 
+			catch (Exception $excp) 
+			{
 				return $this->redirect('/user/profile');
 			}
+			return $this->redirect('/user/profile?status=success&op=avch');
 		}
-		return $this->redirect('/user/profile');
+		return $this->redirect('/user/profile?status=failed&op=avch');
 	}
 	
 	public function profile( ) 
@@ -135,7 +139,7 @@ class UserController extends \lithium\action\Controller {
 			return self::profile_edit($authorized, $this->request->data);
 		else
 			// Redirect to the standard action /user/profile.
-			return self::profile_view($authorized);
+			return self::profile_view($authorized, $this->request->query);
 	}
 	
 	

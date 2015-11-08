@@ -57,6 +57,7 @@ Router::connect('/games',array('controller'=>'app\controllers\games\TableOfConte
 Router::connect('/games/heroes_of_the_storm',array('controller'=>'app\controllers\games\HeroesOfTheStorm'));
 Router::connect('/games/starcraft2',array('controller'=>'app\controllers\games\Starcraft2'));
 Router::connect('/games/world_of_warcraft',array('controller'=>'app\controllers\games\WorldOfWarcraft'));
+Router::connect('/games/clash_of_clans',array('controller'=>'app\controllers\games\ClashOfClans'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow
