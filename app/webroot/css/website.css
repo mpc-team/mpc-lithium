@@ -3,11 +3,11 @@
 @import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
 
 html {
-	background: url("/img/background.png");
+	background: url("/img/tech_background.jpg");
 	background-attachment: fixed !IMPORTANT;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background: linear-gradient(160deg, #151715, #1f211f);
+	/* background: linear-gradient(160deg, #151715, #1f211f); */
 	/* height: 100%; min-height: 100%; */
 }
 body {
@@ -125,7 +125,8 @@ span.glyphicon-send { font-size: 22pt; }
 span.input-group-addon { height: 34px; width: 100px; }
 span.input-group-addon { border-radius: 0px; }
 
-tr.alt { background-color: #2a2f2a; }
+.members tr.row.alt { background-color: rgba(0, 0, 0, 0.75); }
+.members tr.row { background-color: #2a2a2a; }
 
 button.active:hover img {
 	-webkit-filter: brightness(1.6) hue-rotate(25deg);
@@ -194,29 +195,41 @@ a h5 { margin: 0px; }
 .user-avatar-select .btn-edit { 
 	height: 40px;
 	width: 100%; 
+	background: rgb(22, 23, 22);
 }
 
+/* Area containing both Select/Upload buttons */
 .user-avatar-select form > div { width: 300px; }
+
+/* Upload button in Profile. */
 .user-avatar-select form > div > div > input { 
 	width: 267px; 
 	border: 1px solid #111111;
 }
+
+/* Select image file label in Profile */
 .user-avatar-select form > div > div > span > label { 
 	display: block;
 	color: white;
 	position: absolute; 
-	left: 40%;
-	right: 40%;
+	left: 43%;
+	right: 43%;
+	min-width: 120px;
 	margin-top: 8px;
 }
 
 .user-avatar-select { 
-	background: rgba(0, 0, 0, 0.1);
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
+.user-avatar-select,
+.profile-content .wall .content,
+.profile-content .invites .content {
+	background: rgba(0, 0, 0, 0.6);
+}
+	
 .profile-content > div { padding-top: 30px; }
 
 .profile-header,
@@ -241,7 +254,6 @@ a h5 { margin: 0px; }
 
 .profile-content .wall .content,
 .profile-content .invites .content {
-	background: rgba(0, 0, 0, 0.1);
 	max-height: 400px;
 	min-height: 400px;
 	overflow-y: auto;
@@ -488,6 +500,7 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 }
 .forum-post .info .avatar img {
 	max-width: 100%;
+	min-width: 100%;
 	max-height: 250px;
 }
 @media screen (min-width: 800px) {
@@ -756,7 +769,10 @@ a .panel-recentfeed h3 { font-size: 18px; }
 
 .members table > tbody > tr > td { padding: 0px; }
 .members tr > td div { padding: 7px; }
-.members tr > td > a div:hover { background: rgba(0, 0, 0, 0.5); }
+.members tr > td > a div:hover { 
+	z-index: 10000;
+	box-shadow: 0 0 20px rgba(255,255,255,0.9); 
+}
 
 .members .icon { padding-right: 5px; }
 .members .icon img { height: 17px; width: 17px; }

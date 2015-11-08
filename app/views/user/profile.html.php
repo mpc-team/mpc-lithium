@@ -7,13 +7,12 @@ $this->title('My Profile');
 
 $self = $this;
 
-
 // Get the type of Notification that was sent, if any.
 $notification_type = 'alert alert-info';
 if (isset($notification['status']))
 	if (array_key_exists($notification['status'], Notifications::$s_notificationStyles))
 		$notification_type = Notifications::$s_notificationStyles[$notification['status']];
-		
+
 ?>
 <div class="profile-header">
 	<div class="page-header">

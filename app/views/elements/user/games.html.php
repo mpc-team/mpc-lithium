@@ -16,8 +16,8 @@ $gamecount = 0;
 		<div class="row">
 			<div class="well well-sm">
 				<center>
-					<span class="glyphicon glyphicon-info-sign"></span>
-					Click Games To Select
+					<i class="fa fa-info-circle"></i>
+					Click Games to Select
 				</center>
 			</div>
 		</div>

@@ -19,10 +19,11 @@ class LoginController extends \lithium\action\Controller
 			
 			if ($this->request->data) 
 			{
-				Auth::clear('default');
 				if (Auth::check('default', $this->request))
 					return $this->redirect('/user/profile');
-			}
+				else
+					return $this->redirect('/login?status=failed&op=login');
+			}	
 			
 			$notification = Notifications::parse($this->request->query);
 			return compact ('authorized', 'breadcrumbs', 'notification');

@@ -5,18 +5,19 @@ namespace app\models\utils;
 
 class Notifications
 {
-	/* Messages that can be helpful to the User to notify them of
-	 * what the outcome of an operation was (success, failure, etc.). */
-	static $s_notificationMessages = array(
-	
-		// Profile Notifications (by command code).
+	static $s_valid_commands = array(
+		'pwc', 'avch', 'login'
+	);
+	static $s_valid_statuses = array(
+		'succes', 'failed', 'nofile'
+	);
+
+	static $s_notificationMessages = array(	
 		'profile' => array(
-		
 			// Password change operation.
 			'pwc' => array(
 				'success' => 'Your password change has been processed successfully.',
 			),
-			
 			// Avatar change operation.
 			'avch' => array(
 				'success' => 'Your profile avatar has been updated successfully.',
@@ -24,11 +25,16 @@ class Notifications
 				'failed' => 'Could not update profile avatar.',
 			),
 		),
+		'login' => array(
+			'login' => array(
+				'failed' => 'The login credentials you provided were incorrect.',
+			),
+		),
 	);
 	
-	/* Styles correspond to classes that are applied to HTML elements. 
-	 * The statuses correspond to types of notifications, and in this 
-	 * dictionary are associated with template classes. */
+	/* Styles correspond to classes that are added to HTML elements. Statuses
+	 * correspond to types of notifications, and in this dictionary are associated
+	 * with template classes. */
 	static $s_notificationStyles = array(	
 	
 		// Success.
@@ -50,11 +56,9 @@ class Notifications
 	 */
 	public static function parse ($query)
 	{
-		$valid_status = array('success', 'failed', 'nofile');
-		$valid_ops = array('pwc', 'avch');
 		$conditions = array(
-			'valid_op' => isset($query['op']) && in_array($query['op'], $valid_ops),
-			'valid_status' => isset($query['status']) && in_array($query['status'], $valid_status)
+			'valid_op' => isset($query['op']) && in_array($query['op'], self::$s_valid_commands),
+			'valid_status' => isset($query['status']) && in_array($query['status'], self::$s_valid_statuses)
 		);
 		$notification = array('enabled' => false, 'status' => 'none', 'text' => '');
 		
@@ -71,6 +75,11 @@ class Notifications
 					$notification['enabled'] = true;
 					$notification['status'] = $query['status'];
 					$notification['text'] = self::$s_notificationMessages['profile']['avch'][$notification['status']];
+					break;
+				case 'login':
+					$notification['enabled'] = true;
+					$notification['status'] = $query['status'];
+					$notification['text'] = self::$s_notificationMessages['login']['login'][$notification['status']];
 					break;
 			}
 		}

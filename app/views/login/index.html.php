@@ -1,19 +1,27 @@
 <?php
+
+use app\models\utils\Notifications;
 	
 $this->title('Login');
 
 $self = $this;
 	
+// Get the type of Notification that was sent, if any.
+$notification_type = 'alert alert-info';
+if (isset($notification['status']))
+	if (array_key_exists($notification['status'], Notifications::$s_notificationStyles))
+		$notification_type = Notifications::$s_notificationStyles[$notification['status']];
+
 ?>
 <div class="login">
-	<form action="/login/index" method="post">
+	<form action="/login" method="post">
 		<div class="panel panel-default">
 			<div class="login-group">
 			
 				<a id="op-pwc"></a>
 			
 				<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
-					<div class="alert alert-success">
+					<div class="<?= $notification_type ?>">
 						<?= $notification['text']; ?>
 					</div>
 				<?php endif; ?>
@@ -26,13 +34,7 @@ $self = $this;
 						<span class="input-group-addon">
 							Email:
 						</span>
-						<?= 
-							$this->form->text('email', array(
-								'type' => 'email',
-								'class' => 'form-control',
-								'placeholder' => 'address@example.com'
-							)); 
-						 ?>
+						<input type="email" name="email" class="form-control" placeholder="address@example.com" id="Email"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -40,12 +42,7 @@ $self = $this;
 						<span class="input-group-addon">
 							Password:
 						</span>     
-						<?= 
-							$this->form->password('password', array(
-								'class' => 'form-control',
-								'placeholder' => 'Password'
-							)); 
-						 ?>
+						<input type="password" name="password" class="form-control" placeholder="Password" id="Password"/>
 					</div>
 				</div>
 				

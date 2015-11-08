@@ -7,7 +7,8 @@ use app\models\Users;
 use app\models\Permissions;
 use app\models\Confirms;
 
-class SignupController extends \lithium\action\Controller {
+class SignupController extends \lithium\action\Controller 
+{
 
 	public function index() 
 	{

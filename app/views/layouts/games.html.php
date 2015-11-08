@@ -50,9 +50,9 @@
 	<div class="container">
 		<div class="page-header">
 			<img id="banner-image"
-				src="/img/mpclogo.png"
+				src="/img/mpc-banner.png"
 				class="img-responsive"
-				alt="mpclogo.png"></img>
+				alt="mpc-banner.png"></img>
 		</div>
 				
 		<?= $this->view()->render(

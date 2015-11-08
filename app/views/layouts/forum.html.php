@@ -41,7 +41,10 @@
 			<div class="content">
 		
 				<div class="page-header">
-					<img id="banner-image" src="/img/mpclogo.png" class="img-responsive" alt="mpclogo.png"></img>
+					<img id="banner-image"
+						src="/img/mpc-banner.png"
+						class="img-responsive"
+						alt="mpc-banner.png"></img>
 				</div>
 				
 				<?= $this->view()->render(
