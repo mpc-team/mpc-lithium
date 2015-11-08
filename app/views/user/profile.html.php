@@ -71,6 +71,11 @@ if (isset($notification['status']))
 					</div>
 				</form>
 			</center>
+			<div class='well well-sm'>
+				<center>
+					Allowed types are *.png, *.jpg, or *.jpeg
+				</center>
+			</div>
 		</div>
 	</div>
 	
