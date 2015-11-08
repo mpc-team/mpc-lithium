@@ -31,11 +31,14 @@ class Notifications
 	 * dictionary are associated with template classes. */
 	static $s_notificationStyles = array(	
 	
+		// Success.
 		'success' => 'alert alert-success',
 		
+		// Failure.
 		'failed' => 'alert alert-danger',
 		
-		'nofile' => 'alert alert-info',
+		// No File.
+		'nofile' => 'alert alert-warning',
 	);
 
 	/**
@@ -48,20 +51,21 @@ class Notifications
 	public static function parse ($query)
 	{
 		$valid_status = array('success', 'failed', 'nofile');
+		$valid_ops = array('pwc', 'avch');
 		$conditions = array(
-			'operation_is_set' => isset($query['op']),
-			'status_is_valid' => isset($query['status']) && in_array($query['status'], $valid_status)
+			'valid_op' => isset($query['op']) && in_array($query['op'], $valid_ops),
+			'valid_status' => isset($query['status']) && in_array($query['status'], $valid_status)
 		);
 		$notification = array('enabled' => false, 'status' => 'none', 'text' => '');
 		
-		if ($conditions['status_is_valid'] && $conditions['operation_is_set'])
+		if ($conditions['valid_status'] && $conditions['valid_op'])
 		{
 			switch ($query['op'])
 			{
 				case 'pwc':
 					$notification['enabled'] = true;
 					$notification['status'] = $query['status'];
-					$notification['text'] = self::$s_notificationMessages['profile']['pwd'][$notification['status']];
+					$notification['text'] = self::$s_notificationMessages['profile']['pwc'][$notification['status']];
 					break;
 				case 'avch':
 					$notification['enabled'] = true;

@@ -259,13 +259,13 @@ class UserController extends \lithium\action\Controller
 			$key = $this->request->query['confirm'];			
 			if ($reset = UserResetPasswords::getByKey($key)) 
 			{
-				$status = self::$resetPswrdStatus['confirm'];
+				$status = self::$s_resetPswrdStatus['confirmed'];
 			} 
 			else 
 			{
 				// If the 'confirm' key isn't in the Database then we either have
 				// an out-of-date key being used or a key that doesn't exist.
-				$status = self::$resetPswrdStatus['key_error'];
+				$status = self::$s_resetPswrdStatus['key_error'];
 				throw new Exception(); // Page Not Found
 			}
 			return compact( 'authorized', 'breadcrumbs', 'user', 'status', 'key' );

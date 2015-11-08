@@ -12,10 +12,10 @@ if( isset( $user['email'] ) ) {
 	$email = '<Error>';
 }
 
-$PENDING = ( strtolower($status) == strtolower(UserController::STATUS_PENDING) );
-$NO_USER = ( strtolower($status) == strtolower(UserController::STATUS_NO_USER) );
-$KEY_ERROR = ( strtolower($status) == strtolower(UserController::STATUS_KEY_ERROR) );
-$CONFIRMED = ( strtolower($status) == strtolower(UserController::STATUS_CONFIRMED) );
+$PENDING = ( strtolower($status) == strtolower(UserController::$s_resetPswrdStatus['pending']) );
+$NO_USER = ( strtolower($status) == strtolower(UserController::$s_resetPswrdStatus['no_user']) );
+$KEY_ERROR = ( strtolower($status) == strtolower(UserController::$s_resetPswrdStatus['key_error']) );
+$CONFIRMED = ( strtolower($status) == strtolower(UserController::$s_resetPswrdStatus['confirmed']) );
 
 ?>
 <div class="reset-password">

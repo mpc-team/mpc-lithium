@@ -42,7 +42,10 @@ scroller.getParams = function (url) {
 
 scroller.init = function () { 
 	var params = scroller.getParams(window.location.href);
-	if ("post" in params) {
+	
+	if ("post" in params)
 		$("#post" + params.post).gotoSection();
-	}
+	
+	if ("op" in params)
+		$("#op-" + params.op).gotoSection();
 }

@@ -10,12 +10,14 @@ $self = $this;
 		<div class="panel panel-default">
 			<div class="login-group">
 			
-			<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
-				<div class="alert alert-success">
-					<?= $notification['text']; ?>
-				</div>
-			<?php endif; ?>
+				<a id="op-pwc"></a>
 			
+				<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
+					<div class="alert alert-success">
+						<?= $notification['text']; ?>
+					</div>
+				<?php endif; ?>
+				
 				<h1>Login</h1>	
 				<hr>
 				

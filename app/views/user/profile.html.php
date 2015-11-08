@@ -13,7 +13,6 @@ $notification_type = 'alert alert-info';
 if (isset($notification['status']))
 	if (array_key_exists($notification['status'], Notifications::$s_notificationStyles))
 		$notification_type = Notifications::$s_notificationStyles[$notification['status']];
-
 		
 ?>
 <div class="profile-header">
@@ -38,13 +37,15 @@ if (isset($notification['status']))
 
 <div class="profile-content">
 
-	<span class="row">
-		<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
+	<a id="op-avch"></a>
+	
+	<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
+		<span class="row">
 			<div class="<?= $notification_type; ?>">
 				<?= $notification['text']; ?>
 			</div>
-		<?php endif; ?>
-	</span>
+		</span>
+	<?php endif; ?>
 
 	<div class="row">
 		<div class="user-avatar-select">
