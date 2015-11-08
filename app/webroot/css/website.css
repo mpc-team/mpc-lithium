@@ -217,7 +217,7 @@ a h5 { margin: 0px; }
 	margin-right: auto;
 }
 
-.profile-content > div { padding-bottom: 30px; }
+.profile-content > div { padding-top: 30px; }
 
 .profile-header,
 .profile-content .games .panel button,
