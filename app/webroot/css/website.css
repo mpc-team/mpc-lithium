@@ -172,7 +172,8 @@ a h5 { margin: 0px; }
  ******************************************************************/
 
 .btn-file input[type=file] {
-	height: 30px;
+	height: 100%;
+	width: 100%;
 	text-align: right;
 	opacity: 0;
 	background: red;
@@ -185,8 +186,15 @@ a h5 { margin: 0px; }
 	max-height: 200px;
 }
 
-.user-avatar-select .btn-file { padding: 0; width: 100%; }
-.user-avatar-select .btn-edit { width: 100%; }
+.user-avatar-select .btn-file { 
+	padding: 0; 
+	height: 40px;
+	width: 100%; 
+}
+.user-avatar-select .btn-edit { 
+	height: 40px;
+	width: 100%; 
+}
 
 .user-avatar-select form > div { width: 300px; }
 .user-avatar-select form > div > div > input { 
@@ -199,7 +207,7 @@ a h5 { margin: 0px; }
 	position: absolute; 
 	left: 40%;
 	right: 40%;
-	margin-top: 4px;
+	margin-top: 8px;
 }
 
 .user-avatar-select { 
