@@ -73,7 +73,8 @@ if (isset($notification['status']))
 			</center>
 			<div class='well well-sm'>
 				<center>
-					Allowed types are *.png, *.jpg, or *.jpeg
+					<h5><i class="fa fa-info-circle"></i></h5>
+					Accepted image formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
 				</center>
 			</div>
 		</div>
