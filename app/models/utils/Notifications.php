@@ -2,8 +2,42 @@
 
 namespace app\models\utils;
 
+
 class Notifications
 {
+	/* Messages that can be helpful to the User to notify them of
+	 * what the outcome of an operation was (success, failure, etc.). */
+	static $s_notificationMessages = array(
+	
+		// Profile Notifications (by command code).
+		'profile' => array(
+		
+			// Password change operation.
+			'pwc' => array(
+				'success' => 'Your password change has been processed successfully.',
+			),
+			
+			// Avatar change operation.
+			'avch' => array(
+				'success' => 'Your profile avatar has been updated successfully.',
+				'nofile' => 'Cannot update profile avatar without an image file.',
+				'failed' => 'Could not update profile avatar.',
+			),
+		),
+	);
+	
+	/* Styles correspond to classes that are applied to HTML elements. 
+	 * The statuses correspond to types of notifications, and in this 
+	 * dictionary are associated with template classes. */
+	static $s_notificationStyles = array(	
+	
+		'success' => 'alert alert-success',
+		
+		'failed' => 'alert alert-danger',
+		
+		'nofile' => 'alert alert-info',
+	);
+
 	/**
 	 * Retrieves data for a $notification object based on given query parameters.
 	 *	@params
@@ -13,7 +47,7 @@ class Notifications
 	 */
 	public static function parse ($query)
 	{
-		$valid_status = array('success', 'failed');
+		$valid_status = array('success', 'failed', 'nofile');
 		$conditions = array(
 			'operation_is_set' => isset($query['op']),
 			'status_is_valid' => isset($query['status']) && in_array($query['status'], $valid_status)
@@ -27,15 +61,12 @@ class Notifications
 				case 'pwc':
 					$notification['enabled'] = true;
 					$notification['status'] = $query['status'];
-					$notification['text'] = 'Your password change has been processed successfully.';
+					$notification['text'] = self::$s_notificationMessages['profile']['pwd'][$notification['status']];
 					break;
 				case 'avch':
 					$notification['enabled'] = true;
 					$notification['status'] = $query['status'];
-					if ($notification['status'] == 'success')
-						$notification['text'] = 'Your profile avatar has been updated successfully.';
-					else
-						$notification['text'] = 'There was a problem updating your profile avatar.';
+					$notification['text'] = self::$s_notificationMessages['profile']['avch'][$notification['status']];
 					break;
 			}
 		}

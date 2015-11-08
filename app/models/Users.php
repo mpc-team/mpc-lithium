@@ -69,7 +69,7 @@ class Users extends \lithium\data\Model
 	 * @returns
 	 *	Nothing.
 	 */
-	public static function clean_avatar_files ($email) {
+	public static function clean_existing_avatar_files ($email) {
 		$files = self::find_avatar_files($email);
 		$result = array();
 		

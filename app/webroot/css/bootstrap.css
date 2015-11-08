@@ -4753,10 +4753,10 @@ a.thumbnail.active {
   color: #2b542c;
 }
 .alert-info {
-  background-color: #d9edf7;
+  background-color: #195776;
 	text-align: center;
-  border-color: #0066FF;
-  color: #31708f;
+  border-color: #9DD1FF;
+  color: #9DD1FF;
 }
 .alert-info hr {
   border-top-color: #a6e1ec;
@@ -4765,9 +4765,10 @@ a.thumbnail.active {
   color: #245269;
 }
 .alert-warning {
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-  color: #8a6d3b;
+	border: 1px solid #FFF700;
+  background-color: #BD9F00;
+  color: #FFF945;
+	text-align: center;
 }
 .alert-warning hr {
   border-top-color: #f7e1b5;

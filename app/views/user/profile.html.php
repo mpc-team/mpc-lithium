@@ -1,26 +1,22 @@
 <?php
 
 use app\controllers\UserController;
+use app\models\utils\Notifications;
 
 $this->title('My Profile');
 
 $self = $this;
 
+
+// Get the type of Notification that was sent, if any.
+$notification_type = 'alert alert-info';
+if (isset($notification['status']))
+	if (array_key_exists($notification['status'], Notifications::$s_notificationStyles))
+		$notification_type = Notifications::$s_notificationStyles[$notification['status']];
+
+		
 ?>
 <div class="profile-header">
-	
-	<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
-		<?php if ($notification['status'] == 'success'): ?>
-			<div class="alert alert-success">
-				<?= $notification['text']; ?>
-			</div>
-		<?php else: ?>
-			<div class="alert alert-danger">
-				<?= $notification['text']; ?>
-			</div>
-		<?php endif; ?>
-	<?php endif; ?>
-	
 	<div class="page-header">
 		<h1>
 			<div class="title">
@@ -42,6 +38,14 @@ $self = $this;
 
 <div class="profile-content">
 
+	<span class="row">
+		<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
+			<div class="<?= $notification_type; ?>">
+				<?= $notification['text']; ?>
+			</div>
+		<?php endif; ?>
+	</span>
+
 	<div class="row">
 		<div class="user-avatar-select">
 			<center>
@@ -57,7 +61,7 @@ $self = $this;
 								<label for="avatarfile">
 									Select Image File...
 								</label>
-								<input type="file" name="avatarfile" id="avatarfile"/>
+								<input type="file" name="avatarfile" id="avatarfile" accept="image/*"/>
 							</span>
 						</div>
 						<div>
