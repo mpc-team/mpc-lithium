@@ -188,7 +188,7 @@ a h5 { margin: 0px; }
 .user-avatar-select .btn-file { padding: 0; width: 100%; }
 .user-avatar-select .btn-edit { width: 100%; }
 
-.user-avatar-select form > div { width: 267px; }
+.user-avatar-select form > div { width: 300px; }
 .user-avatar-select form > div > div > input { 
 	width: 267px; 
 	border: 1px solid #111111;
@@ -197,6 +197,9 @@ a h5 { margin: 0px; }
 	display: block;
 	color: white;
 	position: absolute; 
+	left: 40%;
+	right: 40%;
+	margin-top: 4px;
 }
 
 .user-avatar-select { 
