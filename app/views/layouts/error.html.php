@@ -19,8 +19,10 @@ $path = Libraries::get(true, 'path');
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<?php echo $this->html->charset(); ?>
-	<title>Unhandled exception</title>
+	<title>MPC | Page Not Found</title>
 	<?php echo $this->html->style(array('bootstrap', 'website', 'font-awesome')); ?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
@@ -41,12 +43,14 @@ $path = Libraries::get(true, 'path');
 	</div>
 
 	<div class="container">
+
 		<div class="page-header">
 			<img id="banner-image"
-				src="/img/mpclogo.png"
+				src="/img/mpc-banner.png"
 				class="img-responsive"
-				alt="mpclogo.png"></img>
+				alt="mpc-banner.png"></img>
 		</div>
+		
 		<div class="content">
 			<?php echo $this->content(); ?>
 		</div>

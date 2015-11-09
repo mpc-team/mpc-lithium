@@ -27,6 +27,9 @@ h3 > small {
 	font-family: "Passion One";
 	font-weight: 400;
 }
+h1 > small > div {
+	padding-left: 10px;
+}
 h5 {
 	display: inline;
 	font-size: 12pt;
@@ -73,20 +76,20 @@ textarea.form-control { resize: vertical; height: 10em; }
 
 /* .panel .btn { border: none; } */
 
+.recentfeed .panel a.btn:hover,
+.recentfeed .panel a.btn:active,
+.panel a.btn:hover,
+.panel a.btn:active,
 .panel a.btn.info:hover,
-.panel a.btn.info:active {
-	background: rgba(0, 0, 0, 0.2);
-	/* background: linear-gradient(110deg, rgba(190,255,190,0.1), rgba(255,255,255,0)); */
-}
+.panel a.btn.info:active,
 .panel a.btn.recent:hover,
 .panel a.btn.recent:active {
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.7);
 }	
 
 .panel a.btn:hover,
 .panel a.btn:active {
 	color: rgba(220,255,220,0.9);
-	background: rgba(0, 0, 0, 0.2);
 	/* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
 	/* border: 1px solid rgba(220,255,220,0.0); */
 	/* box-shadow: 0 0 40px rgba(255,255,255,0.9); */
@@ -356,6 +359,18 @@ a h5 { margin: 0px; }
  *
  ******************************************************************/
 
+/* Fonts */
+ 
+.forum h1,
+.forum h2,
+.forum h3 { font-family: "Passion One"; }
+ 
+.forum-thread h4 .name,
+.forum-thread h5 .name { 
+	text-transform: lowercase;
+	font-variant: small-caps; 
+}
+ 
 .quote-content { padding: 5px 20px 5px 20px; }
  
 .texttags button { font-size: 110%; }
@@ -409,7 +424,7 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
 .forum .categories .count { bottom: 0px; }
 .forum .categories .panel-group { margin-bottom: 1px; }
 
-.forum-header h1 { text-transform: uppercase; }
+.forum-header h1 { font-variant: small-caps; }
 .forum-header .forum-thread {
 	font-size: 150%;
 	font-weight: 700;
@@ -552,10 +567,6 @@ a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
  *	RECENT FEED
  *
  ******************************************************************/
-.recentfeed .panel > a.btn:hover,
-.recentfeed .panel > a.btn:active {
-	background: rgba(0, 0, 0, 0.2);
-}
  
 a .panel-recentfeed h1 { font-size: 26px; }
 a .panel-recentfeed h2 { font-size: 22px; }
@@ -599,7 +610,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 }
 .panel-recentfeed .name {
 	/* font-family: "Oswald"; */
-	text-transform: uppercase;
+	font-variant: small-caps;
 	font-weight: 700;
 	white-space: nowrap;
 	overflow: hidden;
@@ -650,14 +661,6 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .signup .panel,
 .login .panel { padding: 15px 15px 15px 15px; }
 
-.reset-password .rpass-group,
-.signup .signup-group,
-.login .login-group { 
-	max-width: 700px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 /******************************************************************
  *
  *
@@ -699,7 +702,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .btn-edit:hover,
 .btn-edit:active {
 	color: #ffffff;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-signup,
@@ -770,8 +773,7 @@ a .panel-recentfeed h3 { font-size: 18px; }
 .members table > tbody > tr > td { padding: 0px; }
 .members tr > td div { padding: 7px; }
 .members tr > td > a div:hover { 
-	z-index: 10000;
-	box-shadow: 0 0 20px rgba(255,255,255,0.9); 
+	background: rgba(255, 255, 255, 0.4);
 }
 
 .members .icon { padding-right: 5px; }
