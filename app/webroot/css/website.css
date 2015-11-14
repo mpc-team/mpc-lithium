@@ -67,7 +67,10 @@ textarea.form-control { resize: vertical; height: 10em; }
 
 /* Padding at the bottom of every page to allow the user to scroll as necessary
 	without being blocked by the end of the page. */
-.container { padding-bottom: 500px; }
+.container { 
+	background: rgba(0, 0, 0, 0.7);
+	padding-bottom: 500px; 
+}
 
 .panel a.btn { width: 100%; }
 
