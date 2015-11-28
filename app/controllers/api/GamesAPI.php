@@ -5,7 +5,7 @@ namespace app\controllers\api;
 use app\controllers\ContentController;
 use app\models\Games;
 
-class GamesController extends ContentController
+class GamesAPI extends ContentController
 {
 	/**
 	 * Returns the list of all games as a JSON object.
