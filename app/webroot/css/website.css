@@ -779,7 +779,9 @@ a .panel-recentfeed h3 { font-size: 18px; }
 	background: rgba(255, 255, 255, 0.4);
 }
 
+#navbar-games .icon { padding-right: 5px; }
 .members .icon { padding-right: 5px; }
+#navbar-games .icon img { height: 21px; width: 21px; }
 .members .icon img { height: 17px; width: 17px; }
 
 .members .game {
