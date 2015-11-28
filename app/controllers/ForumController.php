@@ -24,7 +24,8 @@ class ForumController extends \lithium\action\Controller {
 	 *	• $breadcrumbs - required by breadcrumbs element referenced in the layout.
 	 *	• $data - any page-specific information is returned through this associative array.
 	 */
-	public function index() {		
+	public function index() 
+	{		
 		$this->_render['layout'] = 'forum';		
 		$authorized = Auth::check('default');
 		$breadcrumbs = array(
@@ -38,10 +39,13 @@ class ForumController extends \lithium\action\Controller {
 			'categories' => Categories::find('all')->to('array'),
 		);
 		$recentCount = 0;
-		foreach ($data['recentfeed'] as $key => $recent) {
+		foreach ($data['recentfeed'] as $key => $recent) 
+		{
 			$author = Users::getById($recent['uid']);
 			$thread = Threads::getById($recent['tid']);
-			if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) {
+			
+			if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
+			{
 				$forum = Forums::getById($thread['fid']);
 				$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
 				$data['recentfeed'][$key]['author'] = stripslashes($author['alias']);
@@ -49,21 +53,28 @@ class ForumController extends \lithium\action\Controller {
 				$data['recentfeed'][$key]['forum'] = stripslashes($forum['name']);
 				$data['recentfeed'][$key]['date'] = Timestamp::toDisplayFormat($recent['tstamp']);
 				$recentCount += 1;
-			} else {
+			} 
+			else 
+			{
 				unset($data['recentfeed'][$key]);
 			}
 		}		
+		
 		$forums = Forums::all()->to('array');
-		foreach ($forums as $key => $forum) {
+		foreach ($forums as $key => $forum) 
+		{
 			$category = Categories::getById($forum['cid']);
 			$threads = Threads::getByForumId($forum['id']);
 			$forums[$key]['count'] = count($threads);
 			$forums[$key]['category'] = $category['name'];
 			$data['categories'][$category['id']]['forums'][$key] = $forums[$key];
 		}
-		foreach ($data['categories'] as $ckey => $category) {
+		
+		foreach ($data['categories'] as $ckey => $category) 
+		{
 			usort($data['categories'][$ckey]['forums'], array('self', 'forum_sort'));
 		}
+		
 		return compact('authorized', 'breadcrumbs', 'data');
 	}
 	

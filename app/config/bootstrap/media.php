@@ -34,7 +34,7 @@ Collection::formats('lithium\net\http\Media');
  * plugin's `webroot` directory into your main application's `webroot` directory, or adding routing
  * rules in your web server's configuration.
  */
-// use lithium\action\Dispatcher;
+use lithium\action\Dispatcher;
 // use lithium\action\Response;
 // use lithium\net\http\Media;
 //
@@ -56,5 +56,23 @@ Collection::formats('lithium\net\http\Media');
 // 	}
 // 	return $chain->next($self, $params, $chain);
 // });
+
+Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
+	$next = $chain->next($self, $params, $chain);
+
+	if ($params['request']->admin) {
+
+		Media::type('default', null, array(
+			'view' => 'lithium\template\View',
+			'paths' => array(
+				'layout' => '{:library}/views/layouts/{:layout}.{:type}.php',
+				'template' => '{:library}/views/games/{:controller}/{:template}.{:type}.php'
+			)
+		));
+	}
+
+	return $next;
+
+});
 
 ?>

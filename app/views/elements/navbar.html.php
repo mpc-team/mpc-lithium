@@ -13,7 +13,7 @@
  *	To get a list of the games that we currently have pages hosted for, we need
  *	to navigate to `app\views\games` and count the directories.
  */
-use app\controllers\games\TableOfContents;
+use app\controllers\games\TableOfContentsController;
  
 $dir = scandir(getcwd() . '/../views/games');
 $games = array();
@@ -63,7 +63,7 @@ endforeach;
 					<?php foreach($games as $game): ?>
 						<li>
 							<a href='/games/<?=$game;?>'>
-								<?= TableOfContents::$NameMap[$game]; ?>
+								<?= TableOfContentsController::$NameMap[$game]; ?>
 							</a>
 						</li>
 					<?php endforeach; ?>

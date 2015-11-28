@@ -53,11 +53,17 @@ Router::connect('/pages/{:args}', 'Pages::view');
  * The Games section is managed by the Router because there are many controller modules
  * that are used to direct traffic to the different games sections.
  */
-Router::connect('/games',array('controller'=>'app\controllers\games\TableOfContents'));
-Router::connect('/games/heroes_of_the_storm',array('controller'=>'app\controllers\games\HeroesOfTheStorm'));
-Router::connect('/games/starcraft2',array('controller'=>'app\controllers\games\Starcraft2'));
-Router::connect('/games/world_of_warcraft',array('controller'=>'app\controllers\games\WorldOfWarcraft'));
-Router::connect('/games/clash_of_clans',array('controller'=>'app\controllers\games\ClashOfClans'));
+// Router::connect('/games', 'games/TableOfContents::index');
+// Router::connect('/games/heroes_of_the_storm', 'games/HeroesOfTheStorm::index');
+// Router::connect('/games/starcraft2', 'games/Starcraft2::index');
+// Router::connect('/games/world_of_warcraft', 'games/WorldOfWarcraft::index');
+// Router::connect('/games/clash_of_clans', 'games/ClashOfClans::index');
+
+Router::connect('/games', array('controller' => 'app\controllers\games\TableOfContentsController'));
+Router::connect('/games/heroes_of_the_storm', array('controller' => 'app\controllers\games\HeroesOfTheStormController'));
+Router::connect('/games/starcraft2', array('controller' => 'app\controllers\games\Starcraft2Controller'));
+Router::connect('/games/world_of_warcraft', array('controller' => 'app\controllers\games\WorldOfWarcraftController'));
+Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashofclansController'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow

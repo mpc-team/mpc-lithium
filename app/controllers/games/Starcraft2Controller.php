@@ -6,7 +6,7 @@ use app\controllers\ContentController;
 use lithium\security\Auth;
 use app\models\Users;
 
-class Starcraft2 extends ContentController {
+class Starcraft2Controller extends ContentController {
 
 	public function index() {
 		$this->_render['layout'] = 'games';		
@@ -20,7 +20,7 @@ class Starcraft2 extends ContentController {
 			'breadcrumbs'=>$breadcrumbs
 		));
 		$cwd=getcwd();
-		$path=$cwd."\starcraft2\builds";
+		$path=$cwd."/starcraft2/builds";
 		$dir=scandir($path);
 		$this->set(array('dir'=>$dir));
 		

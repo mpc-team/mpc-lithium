@@ -12,12 +12,15 @@ use app\models\Timestamp;
 
 class BoardController extends ContentController {
 
-	public function view() {	
+	public function view() 
+	{	
 		$authorized = Auth::check('default');
 		$data = array();
-		if (isset($this->request->id)) {
+		if (isset($this->request->id)) 
+		{
 			$this->_render['layout'] = 'forum';
-			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) {
+			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) 
+			{
 				$breadcrumbs = array(
 					'path' => array("MPC", "Forum", stripslashes($forum['name'])),
 					'link' => array("/", "/forum", "/board/view/{$this->request->id}")
@@ -25,7 +28,8 @@ class BoardController extends ContentController {
 				$data['forum'] = $forum;
 				$data['threads'] = Threads::getByForumId($this->request->id);
 				$data['permissions'] = ($authorized) ? array('create') : array();
-				foreach ($data['threads'] as $key => $thread) {
+				foreach ($data['threads'] as $key => $thread) 
+				{
 					$posts = Posts::find('all', array(
 						'conditions' => array('tid' => $thread['id']),
 						'order' => array('tstamp' => 'DESC')
@@ -39,7 +43,8 @@ class BoardController extends ContentController {
 					$data['threads'][$key]['features'] = ($author['id'] == $authorized['id'] || 
 						Permissions::is_admin($authorized)) ? array('delete') : array();
 						
-					if ($data['threads'][$key]['recent']) {
+					if ($data['threads'][$key]['recent']) 
+					{
 						$author = Users::getById($data['threads'][$key]['recent']['uid']);
 						$data['threads'][$key]['recent']['author'] = stripslashes($author['alias']);
 						$data['threads'][$key]['recent']['date'] = 

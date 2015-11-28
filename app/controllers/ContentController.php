@@ -14,8 +14,8 @@ use app\models\Forums;
 use app\models\Threads;
 use app\models\Messages;
 
-class ContentController extends \lithium\action\Controller {
-
+class ContentController extends \lithium\action\Controller 
+{
 	/**
 	 * Verify access to a particular resource.
 	 *	@params
@@ -23,19 +23,22 @@ class ContentController extends \lithium\action\Controller {
 	 *		$type - the resource type defined as \lithium\data\Model classes.
 	 *		$id - the resource's unique identifier.
 	 */
-	public function verify_access($user, $type, $id) {
-		$content = $type::find('first', array('conditions' => array('id' => $id)));
-		if ($content) {
-			if ($content->permission > 0) {
-				// non-public content
-				if ($user && $content->permission <= $user['permission']) {
-					return $content->to('array');
-				}
-			} else {
-				// public content
+	public function verify_access($user, $type, $id)
+	{
+		$content = $type::find('first', array('conditions' => array('id' => $id)));	
+		if (!$content)
+			return null;
+		
+		if ($content->permission > 0) 
+		{
+			// Non-public content.
+			if ($user && $content->permission <= $user['permission'])
 				return $content->to('array');
-			}
 		}
-		return null;
+		else
+		{
+			// Public content.
+			return $content->to('array');
+		}
 	}
 }
