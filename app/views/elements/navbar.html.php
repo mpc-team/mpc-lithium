@@ -50,6 +50,9 @@ $games = Games::getList();
 					<?php foreach($games as $game): ?>
 						<li>
 							<a href='/games/<?= $game['realname']; ?>'>
+								<span class="icon">
+									<img src="<?= $game['icon']; ?>"></img>
+								</span>
 								<?= $game['name']; ?>
 							</a>
 						</li>
