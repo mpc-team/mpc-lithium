@@ -62,7 +62,7 @@ Router::connect('/games', array('controller' => 'app\controllers\games\GamesCont
 Router::connect('/games/heroes_of_the_storm', array('controller' => 'app\controllers\games\HeroesOfTheStormController'));
 Router::connect('/games/starcraft2', array('controller' => 'app\controllers\games\Starcraft2Controller'));
 Router::connect('/games/world_of_warcraft', array('controller' => 'app\controllers\games\WorldOfWarcraftController'));
-Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashofclansController'));
+Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashOfClansController'));
 
 //##################################################################################################
 //#
@@ -70,7 +70,7 @@ Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\
 //#
 //##################################################################################################
 
-Router::connect('/api/games/all', array('controller' => 'app\controllers\api\GamesController'));
+Router::connect('/api/games/{:action}', array('controller' => 'app\controllers\api\GamesAPI'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow
