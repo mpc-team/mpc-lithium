@@ -5,6 +5,7 @@ namespace app\controllers\games;
 use app\controllers\ContentController;
 use lithium\security\Auth;
 use app\models\Users;
+use app\models\Games;
 
 class GamesController extends ContentController 
 {
@@ -15,10 +16,12 @@ class GamesController extends ContentController
 			'path' => array('MPC','Games'),
 			'link' => array('/','/games')
 		);
+		$games = Games::getList();
 		
 		$this->set(array(
 			'authorized' => $authorized,
 			'breadcrumbs' => $breadcrumbs,
+			'games' => $games,
 		));	
 	}
 }
