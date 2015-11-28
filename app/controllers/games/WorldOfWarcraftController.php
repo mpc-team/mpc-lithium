@@ -11,15 +11,13 @@ class WorldOfWarcraftController extends ContentController
 	public function index() 
 	{
 		$this->_render['layout'] = 'games';		
-		$authorized = Auth::check('default');
-		$breadcrumbs = array(
-			'path' => array('MPC','Games','World of Warcraft'),
-			'link' => array('/','/games','/games/world_of_warcraft')
-		);
 		
 		$this->set(array(
-			'authorized'=>$authorized,
-			'breadcrumbs'=>$breadcrumbs
+			'authorized' => Auth::check('default'),
+			'breadcrumbs' => array(
+				'path' => array('MPC','Games','World of Warcraft'),
+				'link' => array('/','/games','/games/world_of_warcraft')
+			),
 		));
 	}
 }

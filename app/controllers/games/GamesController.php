@@ -8,11 +8,6 @@ use app\models\Users;
 
 class GamesController extends ContentController 
 {
-	/**
-	 *
-	 * 
-	 *
-	 */
 	public function index() 
 	{
 		$authorized = Auth::check('default');	
@@ -20,7 +15,6 @@ class GamesController extends ContentController
 			'path' => array('MPC','Games'),
 			'link' => array('/','/games')
 		);
-		
 		
 		$this->set(array(
 			'authorized' => $authorized,

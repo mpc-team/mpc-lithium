@@ -11,21 +11,15 @@ class Starcraft2Controller extends ContentController {
 	public function index() 
 	{
 		$this->_render['layout'] = 'games';		
-		$authorized = Auth::check('default');
-		$breadcrumbs = array(
-			'path' => array('MPC','Games','Starcraft II'),
-			'link' => array('/','/games','/games/starcraft2')
-		);
 		
 		$this->set(array(
-			'authorized'=>$authorized,
-			'breadcrumbs'=>$breadcrumbs
+			'dir' => scandir(getcwd() . "/starcraft2/builds"),
+			'authorized' => Auth::check('default'),
+			'breadcrumbs' => array(
+				'path' => array('MPC','Games','Starcraft II'),
+				'link' => array('/','/games','/games/starcraft2'),
+			),
 		));
-		
-		$cwd = getcwd();
-		$path = $cwd . "/starcraft2/builds";
-		$dir = scandir($path);
-		$this->set(array('dir' => $dir));
 	}
 	
 	

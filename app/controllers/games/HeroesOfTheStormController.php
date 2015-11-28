@@ -11,15 +11,13 @@ class HeroesOfTheStormController extends ContentController
 	public function index() 
 	{
 		$this->_render['layout'] = 'games';		
-		$authorized = Auth::check('default');
-		$breadcrumbs = array(
-			'path' => array('MPC','Games','Heroes of the Storm'),
-			'link' => array('/','/games','/games/heroes_of_the_storm')
-		);
 		
 		$this->set(array(
-			'authorized'=>$authorized,
-			'breadcrumbs'=>$breadcrumbs
+			'authorized' => Auth::check('default'),
+			'breadcrumbs' => array(
+				'path' => array('MPC','Games','Heroes of the Storm'),
+				'link' => array('/','/games','/games/heroes_of_the_storm')
+			),
 		));
 	}
 }
