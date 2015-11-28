@@ -26,20 +26,32 @@ members.elements = {
 	alias: "#alias"
 };
 
-members.iconMap = {
-	'counter-strike': '/img/csgoicon.png',
-	'hearthstone': '/img/hearthstoneicon.png',
-	'world of warcraft': '/img/wowicon.png',
-	'heroes of the storm': '/img/hotsicon.png',
-	'starcraft ii': '/img/sc2icon.png',
-	'clash of clans': '/img/clashofclansicon.png',
-	'diablo iii': '/img/d3icon.png',
-	'league of legends': '/img/lolicon.png'
-};
+/* The icons are retrieved from the Database synchronously to
+ * make sure we have the paths loaded when we use them later. */
+ 
+members.iconMap = {};
+$.ajax({
+	url: "/api/games/all",
+	success: function (games) {
+		var name;
+		var icon;
+	
+		for (var game in games) {
+			name = games[game]['name'];
+			icon = games[game]['icon'];
+		
+			members.iconMap[name.toLowerCase()] = icon;
+		}
+	},
+	async: false,
+});
 
-members.html = {
-	email: function (user, display) {
-		if (display) {
+members.html = 
+{
+	email: function (user, display) 
+	{
+		if (display) 
+		{
 			var result = "<td>";
 			result += "<div class='email'>";
 			result += user.email;
@@ -48,7 +60,9 @@ members.html = {
 		}
 		return "";
 	},
-	alias: function (user, url) {
+	
+	alias: function (user, url) 
+	{
 		var result = "";
 		result += "<td>";
 		result += "<a href='" + url + "'>";
@@ -60,13 +74,17 @@ members.html = {
 		result += "</td>";
 		return result;
 	},
-	games: function (user) {
+	
+	games: function (user) 
+	{
 		var result = "";
 		result += "<td>";
 		result += "<div>";
-		for (var game in user['played']) {
+		for (var game in user['played']) 
+		{
 			var icon = members.iconMap[user['played'][game].toLowerCase()];
-			if (icon) {
+			if (icon) 
+			{
 				result +=  "<span class='icon'>";
 				result += "<img src='" + members.iconMap[user['played'][game].toLowerCase()] + "'></img>";
 				result += "</span>";
@@ -78,13 +96,16 @@ members.html = {
 	}
 };
 
-members.doRegexFilter = function (userList, criteria, filterBy) {
+members.doRegexFilter = function (userList, criteria, filterBy) 
+{
 	var regex = new RegExp(RegExp.escape(criteria.toLowerCase()));
 	var users = [];
 	var len = userList.length;
-	for (var i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++) 
+	{
 		var matched = null;
-		switch (filterBy) {
+		switch (filterBy) 
+		{
 			case members.FILTER_BY_ALIAS:
 				matched = userList[i].alias.toLowerCase().match(regex);
 				break;
@@ -92,29 +113,38 @@ members.doRegexFilter = function (userList, criteria, filterBy) {
 				matched = userList[i].email.toLowerCase().match(regex);
 				break;
 		}
-		if (matched) {
+		if (matched) 
+		{
 			users.push(userList[i]);
 		}
 	}
 	return users;
 }
 
-members.doGamesFilter = function (userList, games) {
+members.doGamesFilter = function (userList, games) 
+{
 	var checkGroup = [];
-	for (var i = 0; i < games.length; i++) {
-		if (games[i].checked) {
+	for (var i = 0; i < games.length; i++) 
+	{
+		if (games[i].checked) 
+		{
 			checkGroup.push(games[i].id);
 		}
 	}
-	if (checkGroup.length > 0) {
+	if (checkGroup.length > 0) 
+	{
 		var usersFiltered = [];
-		for (var i = 0; i < userList.length; i++) {
+		for (var i = 0; i < userList.length; i++) 
+		{
 			var matched = 0;
-			for (var ch = 0; ch < checkGroup.length; ch++) {
+			for (var ch = 0; ch < checkGroup.length; ch++) 
+			{
 				var match = false;
-				for (var p = 0; (p < userList[i].played.length) && (!match); p++) {
+				for (var p = 0; (p < userList[i].played.length) && (!match); p++) 
+				{
 					var name = userList[i].played[p].toLowerCase().replace(/\s+/g, '');
-					if (name == checkGroup[ch]) {
+					if (name == checkGroup[ch]) 
+					{
 						matched++;
 						match = true;
 					}
@@ -129,23 +159,27 @@ members.doGamesFilter = function (userList, games) {
 	return userList;
 }
 
-members.updateList = function (userList, options) {
+members.updateList = function (userList, options) 
+{
 	var value;
-	if ((userList != null) && (userList.length > 0)) {
+	if ((userList != null) && (userList.length > 0)) 
+	{
 		value = $(members.elements.alias).val();
 		userList = members.doRegexFilter(userList, value, members.FILTER_BY_ALIAS);
-		if (options.indexOf("admin") > -1) {
+		if (options.indexOf("admin") > -1) 
+		{
 			value = $(members.elements.email).val();
 			userList = members.doRegexFilter(userList, value, members.FILTER_BY_EMAIL);
 		}
 		userList = members.doGamesFilter(userList, $(".game input"));
 		var result = '';
-		for (var i = 0; i < userList.length; i++)  {
-			if (i % 2) {
+		for (var i = 0; i < userList.length; i++)  
+		{
+			if (i % 2)
 				result += "<tr class='row'>";
-			} else {
+			else
 				result += "<tr class='row alt'>";
-			}
+				
 			result += members.html.alias(userList[i], "/user/view/" + userList[i].id);
 			result += members.html.email(userList[i], options.indexOf("admin") > -1);
 			result += members.html.games(userList[i]);
@@ -155,8 +189,10 @@ members.updateList = function (userList, options) {
 	}
 }
 
-members.init = function (memberList, permissions, games) {
-	for (var game in games) {
+members.init = function (memberList, permissions, games) 
+{
+	for (var game in games) 
+	{
 		var name = games[game].name.toLowerCase();
 		members.elements[name] = '#' + name.replace(/\s+/g, '');
 	}
