@@ -1,0 +1,675 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
+@import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
+
+html {
+	background: url("/img/background.png");
+	background-attachment: fixed !IMPORTANT;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: linear-gradient(160deg, #151715, #1f211f);
+	/* height: 100%; min-height: 100%; */
+}
+body {
+	padding-top: 50px;
+	height: inherit;
+	background: transparent;
+	font-family: "Titillium Web";
+	color: rgba(255, 255, 255, 0.6);
+}
+h1, h2, h3 {
+	/* font-family: "Oswald"; */
+	font-weight: 700;
+}
+h1 > small,
+h2 > small,
+h3 > small {
+	font-family: "Passion One";
+	font-weight: 400;
+}
+h5 {
+	display: inline;
+	font-size: 12pt;
+	/* font-family: "Oswald"; */
+}
+
+.navbar {
+	font-family: "Passion One";
+	font-size: 14pt;
+	font-weight: 500;
+}
+.navbar .glyphicon-user { font-size: 80%; }
+
+/* Make dropdown menus automatically dropdown when hovered. */
+ul.nav li.dropdown:hover > ul.dropdown-menu { display: block; }
+
+/* Prevent textarea boxes from being resized and set dimensions. */
+textarea.form-control { resize: vertical; height: 10em; }
+
+/* Formatting style for image displayed in MPC banner. */
+#banner-image { display: block; max-height: 200px; margin-left: auto; margin-right: auto; }
+
+/* Padding at the bottom of every page to allow the user to scroll as necessary
+	without being blocked by the end of the page. */
+.container { padding-bottom: 500px; }
+
+.panel a.btn { width: 100%; }
+
+.sidebar li > a:hover,
+.sidebar li > a:active,
+
+.panel .btn { border: none; }
+
+.panel a.btn.info:hover,
+.panel a.btn.info:active {
+	background: linear-gradient(110deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
+}
+.panel a.btn.recent:hover,
+.panel a.btn.recent:active {
+	background: linear-gradient(280deg, rgba(190,255,190,0.1), rgba(255,255,255,0));
+}	
+
+.recentfeed .panel > a.btn:hover,
+.panel a.btn:hover,
+.panel a.btn:active {
+	color: rgba(220,255,220,0.9);
+	background: linear-gradient(160deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+	/* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
+	/* border: 1px solid rgba(220,255,220,0.0); */
+	/* box-shadow: 0 0 40px rgba(255,255,255,0.9); */
+}
+
+/* Set Bold Style with "font-weight" property */
+b { font-weight: 900; }
+
+/* Limit size elements for graphics and modules (videos). */
+img { width: auto; }
+iframe,
+img { max-width: 90%; }
+.recentfeed-content iframe,
+.recentfeed-content img { max-width: 80%; }
+
+/* Increase size of Forum Reply button */
+span.glyphicon-send { font-size: 22pt; }
+
+/* Add divider and extra bottom space for the footer */
+.page-footer {	padding-top: 9px; margin-top: 50px; border-top: 1px solid #aaaaaa; }
+
+.sidebar-content { padding-left: 1em; }
+.sidebar li > a {
+	font-family: "Oswald";
+	font-size: 14pt;
+	font-weight: 500;
+	text-align: left;
+}
+
+.breadcrumb-text {
+	display: inline;
+	font-size: 12pt;
+	font-family: "Titillium Web";
+}
+
+span.input-group-addon { height: 34px; width: 100px; }
+span.input-group-addon { border-radius: 0px; }
+
+tr.alt { background-color: #2a2f2a; }
+tr.alt { border-top: 1px solid #232323; }
+
+a.btn:hover iframe,
+a.btn:hover img {
+	filter: brightness(2);
+	-webkit-filter: brightness(2);
+}
+a.btn {
+	padding: 7px;
+	border-radius: 1px;
+}
+
+a h1,
+a h2,
+a h3,
+a h4,
+a h5 { margin: 0px; }
+
+/** Bootstrap Modifiers **/
+
+.panel { padding: 0px; width: 100%; }
+.panel-group { margin-bottom: 2px; }
+.panel-group.panel-header { margin-bottom: 25px; }
+.pull-left { text-align: left; }
+.page-header h1 { margin-bottom: 5px; }
+.form-group:last-child { margin-bottom: 0px; }
+.input-group button {
+	padding: 15px;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	background: linear-gradient(rgba(255,255,255,0.025), rgba(255,255,255,0.05));
+}
+.carousel-indicators li:hover { box-shadow: 0 0 10px #fff; }
+
+/******************************************************************
+ *
+ *	PROFILE STYLING
+ *
+ ******************************************************************/
+.profile-content > div { padding-bottom: 30px; }
+
+.profile-header,
+.profile-content .games .panel button,
+.profile-content .games .name {
+	white-space: nowrap;
+}
+.profile-header .page-header { margin-bottom: 0; }
+.profile-header .invites,
+.profile-header .wall { padding-left: 20px; }
+.profile-content .wall .header { padding: 5px 0 5px 0; }
+.profile-content .wall .header .bar { 
+	background: rgba(0, 0, 0, 0.35);
+	padding: 5px 0 5px 0;
+}
+
+.profile-content .wall .content,
+.profile-content .invites .content {
+	max-height: 500px;
+	min-height: 500px;
+	overflow-y: auto;
+}
+.profile-content .wall .content .message { 
+	word-wrap: break-word;
+	padding: 20px 10px 20px 10px;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.profile-content .wall .content .message .name {
+	/* font-family: "Oswald"; */
+	font-size: 105%;
+}
+.profile-content .wall .content .message .text {
+	color: rgba(255,255,255, 0.3);
+}
+.profile-content .wall .content .message .time { 
+	font-size: 85%; 
+	padding-top: 10px;
+}
+
+.profile-content .wall .footer input {
+	box-shadow: 0 0 20px rgba(200, 190, 255, 0.9);
+}
+.profile-content .games .panel button:active {
+	box-shadow: 0 0 50px rgba(190, 255, 190, 0.9);
+}
+.profile-content .wall .footer input:focus {
+	box-shadow: 0 0 80px rgba(97, 160, 250, 0.9);
+}
+.profile-content .wall .footer .text,
+.profile-content .wall .footer .view {
+	padding: 5px 5px 5px 5px;
+	font-size: 95%;
+}
+
+.profile-content .invites .header,
+.profile-content .wall .header { border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+.profile-content .wall .footer,
+.profile-content .invites .footer {
+	padding-top: 5px;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.profile-content .wall .footer,
+.profile-content .invites .footer { padding-bottom: 5px; }
+.profile-content .wall .panel,
+.profile-content .invites .panel {
+	/* padding: 5px; */
+	background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
+}
+
+.profile-content .games { padding: 0 5px 10px 5px; }
+.profile-content .games .game { padding: 0 2px 5px 2px; }
+.profile-content .games .panel button {
+	padding: 1px;
+	text-align: left;
+	width: 100%;
+}
+.profile-content .games .panel.active {
+	border: 1px solid rgba(180, 255, 180, 0.9);
+	box-shadow: 0 0 10px rgba(210, 255, 210, 0.9);
+	background: linear-gradient(140deg, #438a43, #233d23);
+	
+}
+.profile-content .games .panel.active .name {	color: #aaffaa; }
+
+.profile-content .games .name {
+	display: inline;
+	padding-left: 3px;
+	white-space: nowrap;
+	font-size: 9pt;
+}
+.profile-content .games .status {
+	font-size: 300%;
+	color: #aaffaa;
+	text-align: center;
+	padding-right: 10px;
+}
+
+@media (max-width: 870px) {
+	.profile-content .game > .panel {
+		max-height: 50px;
+	}
+	.profile-content .game .status {
+		font-size: 200%;
+	}
+}
+@media (max-width: 870px) {
+	.profile-content .games .name { display: none; }
+}
+@media (max-width: 630px) {
+	.profile-content .games .icon,
+	.profile-content .games .name {
+		display: inline;
+	}
+}
+
+/******************************************************************
+ *
+ *	FORUM STYLING
+ *
+ ******************************************************************/
+
+.quote-content { padding: 5px 20px 5px 20px; }
+ 
+.texttags button { font-size: 110%; }
+ 
+.usertool { background: #1a1a1a; }
+.usertool > form { display: inline; }
+.usertool .btn-edit { 
+	text-align: left; 
+	font-weight: 600; 
+}
+.usertool .btn-edit .glyphicon-file { font-size: 22pt; }
+
+a.btn-forum {	background: linear-gradient(170deg, #2a2c2a, #1f1f1f); }
+a.btn-forum:hover { background: linear-gradient(170deg, #aaacaa, #7f7f7f); }
+
+.panel-control .panel-heading {
+	font-size: inherit;
+	padding: 5px 5px 5px 10px;
+}
+
+.panel-forum .forum {
+	min-height: 70px;
+	max-height: 70px;
+	overflow: hidden;
+}
+@media (min-width: 630px) {
+	.panel-forum .forum {
+		min-height: 130px;
+		max-height: 130px;
+	}
+}
+
+.forum .login-notice > .panel {
+	background: linear-gradient(160deg, #2f3a2f, #222222);
+	padding: 5px 0 10px 0;
+}
+.forum .login-notice .icon {
+	font-size: 300%;
+	margin-bottom: -7px;
+}
+.forum .login-notice .conten {
+	vertical-align: middle;
+}
+
+.panel-forum h5 {
+	font-weight: 600;
+	font-size: 14pt;
+}
+
+.forum .categories .count { bottom: 0px; }
+.forum .categories .panel-group { margin-bottom: 1px; }
+
+.forum-header h1 { text-transform: uppercase; }
+.forum-header .forum-thread {
+	font-size: 150%;
+	font-weight: 700;
+}
+
+.forum-thread {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.forum-thread { background: linear-gradient(170deg, #2a2c2a, #1f1f1f); }
+.forum-header .forum-thread { background: transparent; }
+.forum-thread > div {
+	display: table-row;
+}
+.forum-thread > div > div { display: table-cell; }
+.forum-thread > div > a {
+	display: table-cell;
+	max-height: 70px;
+	vertical-align: top;
+}
+
+.forum-thread a.info,
+.forum-thread a.recent {
+	white-space: nowrap;
+	overflow: hidden;
+}
+.forum-thread a.recent .time,
+.forum-thread a.info .name {
+	padding-bottom: 1px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.forum-thread .info,
+.forum-thread a.info { width: 55%; }
+
+.form-thread .count { width: 13%; font-size: 9pt; }
+.forum-thread .count h4 { font-size: 18pt; }
+.forum-thread .count h4 small { font-size: 9pt; }
+
+.forum-thread .recent,
+.forum-thread a.recent { width: 32%; }
+
+.forum-thread .info div { text-align: left; }
+.forum-thread .recent div { text-align: right; }
+
+.forum-post {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 150px;
+}
+.forum-post > div {
+	width: 25%;
+	display: table-row;
+}
+.forum-post > div > div { display: table-cell; }
+
+.forum-post .info {
+	background-color: #222222;
+	padding: 10px;
+	vertical-align: top;
+}
+.forum-post .content {
+	white-space: normal;
+	word-wrap: break-word;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	width: 75%;
+	padding: 10px 10px 20px 20px;
+	background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
+}
+.forum-post .content h2,
+.forum-post .content h3 { display: inline; }
+.forum-post .content .edit-content-toggle,
+.forum-post .content .edit-content { padding-top: 5px; }
+
+.forum-post .time {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.forum-post .content .header {
+	font-size: 85%;
+	padding-bottom: 5px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.forum-post .content .time { float: right; }
+.forum-post .content .hit { float: left; }
+.forum-post .content .hit .text { padding-left: 10px; }
+
+.forum-post .content .hit button {
+	padding: 0px;
+	border: none;
+}
+
+.forum-post .info .time { font-size: 85%; }
+.forum-post .info .since { padding-top: 5px; }
+.forum-post .info .author {
+	font-size: 14pt;
+	font-weight: 600;
+/* 	font-family: "Oswald"; */
+	white-space: nowrap;
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+
+/******************************************************************
+ *
+ *	RECENT FEED
+ *
+ ******************************************************************/
+a .panel-recentfeed h1 { font-size: 26px; }
+a .panel-recentfeed h2 { font-size: 22px; }
+a .panel-recentfeed h3 { font-size: 18px; }
+
+.recentfeed .forum-post .content {
+	background: inherit;
+}
+
+.recentfeed .panel > a.btn {
+	padding: 7px 5px 5px 5px;
+	background: linear-gradient(170deg, #2a2c2a,#1f1f1f);
+}
+
+.panel-recentfeed {
+	min-height: 120px;
+	max-height: 120px;
+	overflow: hidden;
+	word-wrap: break-word;
+}
+.panel-recentfeed > .row {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 630px) {
+	.panel-recentfeed {
+		min-height: 180px;
+		max-height: 180px;
+	}
+}
+.panel-recentfeed .recentfeed-content {
+	font-size: 90%;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.6);
+	padding: 5px 5px 115px 5px;
+}
+.panel-recentfeed .name {
+	/* font-family: "Oswald"; */
+	text-transform: uppercase;
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.panel-recentfeed .forum {
+	padding: 0 5px 5px 0;
+	font-size: 110%;
+	text-align: right;
+}
+
+.panel-recentfeed-footer .author,
+.panel-recentfeed-footer .time { width: 50%; }
+.panel-recentfeed-footer .author {
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+	text-align: left;
+}
+.panel-recentfeed-footer .time {
+	float: right;
+	text-align: right;
+}
+
+.panel-recentfeed-footer {
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 0px;
+	padding-top: 5px;
+	font-size: 90%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.col-md-4 .panel > a.btn,
+.col-xs-4 .panel > a.btn,
+.col-xs-6 .panel > a.btn {
+	text-align: left;
+}
+.col-xs-1,
+.col-xs-2 { text-align: center; }
+
+
+/******************************************************************
+ *
+ *	LOGIN & SIGNUP STYLING
+ *
+ ******************************************************************/
+.login > .panel { padding: 15px 15px 5px 15px; }
+
+.signup { max-width: 500px; }
+.login { max-width: 700px; }
+.login,
+.signup {
+	margin: auto;
+	text-align: center;
+}
+
+/******************************************************************
+ *
+ *
+ *
+ ******************************************************************/
+.modal-content { color: rgb(122, 183, 51); }
+.modal-body > .panel { background-color: transparent; }
+.modal-body > .panel-default > .form-group { margin-bottom: 20px; }
+
+
+/******************************************************************
+ *
+ *	FORUM TEXT-TAG STYLING
+ *
+ ******************************************************************/
+.edit-tag-header1 > h1,
+.edit-tag-header2 > h2,
+.edit-tag-header3 > h3 {
+	text-align: left;
+	padding: 5px;
+	margin: 0px;
+}
+.edit-tag-header1,
+.edit-tag-header2,
+.edit-tag-header3 { padding: 0px; }
+
+/******************************************************************
+ *
+ *	USER TOOLS STYLING
+ *
+ ******************************************************************/
+.btn-delete,
+.btn-edit {
+	font-size: 9pt;
+	color: #88bb88;
+	background-color: transparent;
+}
+.btn-delete:hover,
+.btn-delete:active,
+.btn-edit:hover,
+.btn-edit:active {
+	color: #ffffff;
+	background-color: rgba(255,255,255,0.1);
+	/* box-shadow: 0 0 10px rgba(255,255,255,0.9); */
+}
+
+
+/******************************************************************
+ *
+ *	BUTTON STYLING
+ *
+ ******************************************************************/
+.btn-signup,
+.btn-login {
+	background-color: #447744;
+	border: 1px solid #99ee99;
+}
+.btn-signup,
+.btn-login { color: #aaffaa; }
+.btn-signup,
+.btn-login,
+.btn-reply { min-width: 100px; }
+.btn-reply {
+	background-color: transparent;
+	margin-left: auto;
+	margin-right: auto;
+	color: #88bb88;
+}
+.btn-reply:hover {
+	color: #ffffff;
+	background-color: rgba(255,255,255,0.05);
+}
+
+/******************************************************************
+ *
+ *	REPLY PANEL STYLING
+ *
+ ******************************************************************/
+.panel-reply {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+.panel-reply .header { margin: 10px; }
+.panel-reply .header { background-color: transparent; }
+.panel-reply .form-group { margin: 10px; }
+.panel-reply .form-group { background-color: #1f1f1f; }
+.panel-reply .input-group {
+	text-align: center;
+	padding: 0px;
+	width: 100%;
+}
+
+/******************************************************************
+ *
+ *	MEMBERS STYLING
+ *
+ ******************************************************************/
+/* If the Members page gets really small the table acts funny, this is
+	to ensure that does not happen and to make the table values look
+	decent at a small resolution */
+.members .panel {	padding: 5px; }
+.members table { table-layout: fixed; }
+.members .email,
+.members .icon,
+.members .name {
+	white-space: nowrap;
+	overflow: hidden;
+}
+.members .icon { padding-right: 5px; }
+.members .icon img {
+	height: 18px;
+	width: 18px;
+}
+
+.members .game {
+	font-size: 80%;
+}
+.members .game input { transform: scale(1.3); }
+.members .game .input-group-addon {
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
+	font-size: 95%;
+	max-width: 100%;
+	padding-left: 5px;
+}
+
+.members .game .row > .col-xs-2 span { text-align: right; }
+
+/*Streamer's Global CSS Data Only */
+
+/* ID Only */
+#thelungy-streampopup-bg-image {
+    background-image: url(../../pics/background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
