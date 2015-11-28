@@ -7,23 +7,10 @@
  *
  */
 
-/**
- * Games
- * -----
- *	To get a list of the games that we currently have pages hosted for, we need
- *	to navigate to `app\views\games` and count the directories.
- */
-use app\controllers\games\TableOfContentsController;
- 
-$dir = scandir(getcwd() . '/../views/games');
-$games = array();
-foreach($dir as $file):
-	$split = explode('.', $file);
-	if(count($split) == 1):
-		array_push($games, $file);
-	endif;
-endforeach;
- 
+use app\models\Games;
+
+$games = Games::getList();
+
 ?>
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-header">
@@ -62,8 +49,8 @@ endforeach;
 					
 					<?php foreach($games as $game): ?>
 						<li>
-							<a href='/games/<?=$game;?>'>
-								<?= TableOfContentsController::$NameMap[$game]; ?>
+							<a href='/games/<?= $game['realname']; ?>'>
+								<?= $game['name']; ?>
 							</a>
 						</li>
 					<?php endforeach; ?>

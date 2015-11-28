@@ -59,7 +59,7 @@ Router::connect('/pages/{:args}', 'Pages::view');
 // Router::connect('/games/world_of_warcraft', 'games/WorldOfWarcraft::index');
 // Router::connect('/games/clash_of_clans', 'games/ClashOfClans::index');
 
-Router::connect('/games', array('controller' => 'app\controllers\games\TableOfContentsController'));
+Router::connect('/games', array('controller' => 'app\controllers\games\GamesController'));
 Router::connect('/games/heroes_of_the_storm', array('controller' => 'app\controllers\games\HeroesOfTheStormController'));
 Router::connect('/games/starcraft2', array('controller' => 'app\controllers\games\Starcraft2Controller'));
 Router::connect('/games/world_of_warcraft', array('controller' => 'app\controllers\games\WorldOfWarcraftController'));
