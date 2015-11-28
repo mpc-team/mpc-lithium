@@ -26,7 +26,7 @@
 						<?php endforeach; ?>
 					</ul>		
 					<div class="tab-content">
-						<div role="tabpanel" class="tab-pane fade in" id="general">
+						<div role="tabpanel" class="tab-pane fade in active" id="general">
 							<div class="well">
 								<small>MPC's Form of Clan Communication is based on the follow selections above. Use these methods to get in contact with MPC members outside of the games you play, and during your gaming experience...</small>
 							</div>
