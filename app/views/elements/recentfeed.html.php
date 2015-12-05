@@ -38,7 +38,7 @@
 						<div class="col-md-4">
 							<div class="panel-group">
 								<div class="panel panel-default">
-									<a class="btn" href="/thread/view/<?= $recent['tid'] ?>?post=<?= $recent['id'] ?>">
+									<a class="btn" href="/thread/view/<?= $recent['tid'] ?>?post=<?= $recent['id'] ?>#post<?= $recent['id'] ?>">
 										<div class="panel-recentfeed">
 											<div class="row">
 												<h4>
@@ -93,7 +93,7 @@
 	<script type="text/javascript">
 		$( document ).ready(function() {
 			$('.recentfeed-content').each(function(index) {
-				$(this).html(markup.process($(this).text()));
+				$(this).html(markup.process($(this).text(), markup.PREVIEW));
 			});
 		});
 	</script>

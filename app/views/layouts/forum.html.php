@@ -11,13 +11,18 @@
 	<?php echo $this->html->style(array(
 		'bootstrap', 
 		'font-awesome', 
-		'website'
+		'website',
+        'markup'
 	)); ?>
 	<?php echo $this->html->script(array(
-		'jquery-1.11.2',    'bootstrap', 
-		'navbar',           'field-selection', 
-		'members',          'validate', 
-		'forum',            'markup', 
+		'jquery-1.11.2',    
+        'bootstrap', 
+		'navbar',           
+        'field-selection', 
+		'members',          
+        'validate', 
+		'forum',            
+        'markup', 
 		'scroller'
 	));?>
 	<?php echo $this->scripts(); ?>

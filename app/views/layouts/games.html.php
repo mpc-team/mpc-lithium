@@ -20,14 +20,20 @@
 	<?php echo $this->html->style(array(
 		'bootstrap',
 		'font-awesome',
-		'website'
+		'website',
+        'markup'
 	));?>
 	<?php echo $this->html->script(array(
-		'jquery-1.11.2',		'bootstrap',
-		'navbar',						'moment',
-		'field-selection',	'members',
-		'validate',					'forum',
-		'markup',						'profile',
+		'jquery-1.11.2',		
+        'bootstrap',
+		'navbar',						
+        'moment',
+		'field-selection',	
+        'members',
+		'validate',					
+        'forum',
+		'markup',						
+        'profile',
 		'scroller'
 	));?>
 	<?php echo $this->scripts(); ?>

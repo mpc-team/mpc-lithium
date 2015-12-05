@@ -20,16 +20,17 @@ $.fn.gotoSection = function(section) {
 	}
 }
 
-$(window).on('load', function() { 
-	scroller.init();
-});
+$(window).on('load', function () { scroller.init(); });
 
-/**
- * The scroller.js code will take care of scrolling to a particular post when
- * the page is loaded and the URL request has a 'post' query such as ?post=20. 
- */ 
 var scroller = {};
 
+/**
+ * Gets the query parameters from the URL.
+ * 
+ * @param {string} url - the URL to parse.
+ * 
+ * @returns {object} - dictionary of query parameters.
+ */
 scroller.getParams = function (url) {
 	var params = url.slice(url.indexOf('?') + 1, url.length).split('&');
 	var result = {};

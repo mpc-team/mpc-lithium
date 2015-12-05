@@ -6,6 +6,7 @@ $self = $this;
 
 $userpanel = function($mid, $options) {
 	$html = "<div class='row usertool'>";
+	$html .= "<div class='col-xs-9 pull-right'>";
 	$html .= "<div class='col-xs-2'>";
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
@@ -55,7 +56,7 @@ EOD;
 </form>
 EOD;
 	}
-	$html .= "</div></div>";
+	$html .= "</div></div></div>";
 	return $html;
 };
 ?>

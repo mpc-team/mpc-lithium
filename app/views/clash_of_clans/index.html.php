@@ -5,5 +5,4 @@ $this->title('Clash of Clans');
 $self = $this;
 
 ?>
-
-This is in /Views.
+<h1><?=$this->title;?></h1>
