@@ -12,7 +12,8 @@ class SignupController extends \lithium\action\Controller
 
 	public function index() 
 	{
-		if (!($authorized = Auth::check('default'))) {
+		if (!($authorized = Auth::check('default'))) 
+        {
 			$breadcrumbs = array(
 				'path' => array('MPC', 'Signup'),
 				'link' => array('/', '/signup')

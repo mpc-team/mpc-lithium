@@ -23,8 +23,7 @@ navbar.items = {
 	signup: "#navbar-signup",
 	login: "#navbar-login"
 };
- 
- 
+
 /**
  * navbar.enhance
  *
