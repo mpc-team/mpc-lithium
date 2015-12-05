@@ -275,10 +275,15 @@ markup.swap = function (list, map, mode)
 			{
 				case "[video]":
 					var stuff = this.getContent(list, i, map);
+					
 					switch (mode)
 					{
 						case markup.PREVIEW:
-							stuff = stuff.replace("watch?v=", "vi/").replace("https://www", "http://img") + "/0.jpg";
+							stuff = stuff.replace("watch?v=", "vi/");
+							stuff = stuff.replace("https://www", "http://img");
+							stuff = stuff.trim();
+							stuff = stuff.split("#")[0];
+							stuff += "/0.jpg";
 							break;;
 						default:
 							stuff = stuff.replace("watch?v=", "embed/");
