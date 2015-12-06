@@ -49,6 +49,12 @@ h5
     /* font-family: "Oswald"; */
 }
 
+#news,
+#announcements
+{
+    padding: 10px;
+}
+
 /*
 	Scrollbar Properties
 */
