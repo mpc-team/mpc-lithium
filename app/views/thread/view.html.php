@@ -86,73 +86,76 @@ EOD;
 	<h4>There are currently no Posts on this Topic</h4>
 <?php endif; ?>
 
-<?php foreach ($data['posts'] as $post): ?>
-	<div class="panel-group">
-		<div class="panel panel-default">
-			<a id="post<?= $post['id'] ?>"></a>
-			<div class="row">
-				<div class="forum-post">
-					<div>
-						<div class="info">
-							<div class="avatar">
-								<img src="<?= $post['author']['avatar']; ?>"/>
-							</div>
-							<div class="author" data-id="<?= $post['id'] ?>">
-								<a href="/user/view/<?= $post['author']['id'] ?>">
-									<span class="glyphicon glyphicon-user"></span>
-									<?= $post['author']['alias'] ?>
-								</a>
-							</div>
-							<div class="since">
-								Join Date:<br>
-								<div class="time">
-									<span class="glyphicon glyphicon-time"></span>
-									<?= $post['author']['since'] ?>
+<div class="forum-content">
+    <?php foreach ($data['posts'] as $post): ?>
+	    <div class="panel-group">
+		    <div class="panel panel-default">
+			    <a id="post<?= $post['id'] ?>"></a>
+			    <div class="row">
+				    <div class="forum-post">
+					    <div>
+						    <div class="info">
+							    <div class="avatar">
+								    <img src="<?= $post['author']['avatar']; ?>"/>
+							    </div>
+							    <div class="author" data-id="<?= $post['id'] ?>">
+								    <a href="/user/view/<?= $post['author']['id'] ?>">
+									    <span class="glyphicon glyphicon-user"></span>
+									    <?= $post['author']['alias'] ?>
+								    </a>
+							    </div>
+							    <div class="since">
+								    Join Date:<br>
+								    <div class="time">
+									    <span class="glyphicon glyphicon-time"></span>
+									    <?= $post['author']['since'] ?>
 								
-								</div>
-							</div>
-						</div>
-						<div class="content">
-							<div class="row header">
-								<?php $tooltip = ($post['hit']) ? 'You have already \'Hit\' this Post.' : '\'Hit\' this Post.'; ?>
-								<span class="hit" title="<?= $tooltip; ?>">
-									<?php $postDisabledProperty = ($post['hitEnabled']) ? '' : ' disabled'; ?>
-									<?php $postIsHitClass = ($post['hit']) ? 'post-hit-hit' : ''; ?>
-									<button class="btn btn-edit post-hit <?= $postIsHitClass ?>" data-id="<?= $post['id'] ?>"<?= $postDisabledProperty ?>>
-										<img src="/img/punch.png" width="20px" height="20px"/>
-									</button>
-									<span class="text">
-											<span class="hits" data-id="<?= $post['id'] ?>">
+								    </div>
+							    </div>
+						    </div>
+						    <div class="content">
+							    <div class="row header">
+								    <?php $tooltip = ($post['hit']) ? 'You have already \'Hit\' this Post.' : '\'Hit\' this Post.'; ?>
+								    <span class="hit" title="<?= $tooltip; ?>">
+									    <?php $postDisabledProperty = ($post['hitEnabled']) ? '' : ' disabled'; ?>
+									    <?php $postIsHitClass = ($post['hit']) ? 'post-hit-hit' : ''; ?>
+									    <button class="btn btn-edit post-hit <?= $postIsHitClass ?>" data-id="<?= $post['id'] ?>"<?= $postDisabledProperty ?>>
+										    <img src="/img/punch.png" width="20px" height="20px"/>
+									    </button>
+									    <span class="text">
+											    <span class="hits" data-id="<?= $post['id'] ?>">
 											
-											</span>
-									</span>
-								</span>
-								<span class="time">
-									<span class="glyphicon glyphicon-time"></span>
-									<?= $post['date'] ?>
-								</span>
-							</div>
-							<div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
-							<div class="edit-content-toggle" data-id="<?= $post['id'] ?>">
-								<?php if (isset($post['first'])): ?>
-									<div class="row">
-										<input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
-									</div>
-								<?php endif; ?>
-								<?= $this->view()->render(
-									array('element' => 'texttags'),
-									array('id' => $post['id'], 'disabled' => '')
-								)?>
-								<textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<?php echo $userpanel($post['id'], $post['features']); ?>
-		</div>
-	</div>
-<?php endforeach; ?>
+											    </span>
+									    </span>
+								    </span>
+								    <span class="time">
+									    <span class="glyphicon glyphicon-time"></span>
+									    <?= $post['date'] ?>
+								    </span>
+							    </div>
+							    <div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
+							    <div class="edit-content-toggle" data-id="<?= $post['id'] ?>">
+								    <?php if (isset($post['first'])): ?>
+									    <div class="row">
+										    <input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+									    </div>
+								    <?php endif; ?>
+								    <?= $this->view()->render(
+									    array('element' => 'texttags'),
+									    array('id' => $post['id'], 'disabled' => '')
+								    )?>
+								    <textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			    <?php echo $userpanel($post['id'], $post['features']); ?>
+		    </div>
+	    </div>
+    <?php endforeach; ?>
+</div>
+
 <script type="text/javascript">
 	$( document ).ready(function() {
 		$('.edit-content').each(function(index) {

@@ -122,68 +122,70 @@ $features = function($tid, $options) {
 		<?php endif; ?>
 	</div>
 </div>
-<?php foreach ($data['threads'] as $thread): ?>
-	<div class="panel-group">
-		<div class="panel panel-default">
-			<div class="row">
-				<div class="forum-thread">
-					<div>
-						<a class="btn info" href="/thread/view/<?= $thread['id'] ?>">
-							<h5>
-								<div class="name">
-									<?= $thread['name'] ?>
-								</div>
-								<div class="author">
-									<small>
-										<span class="glyphicon glyphicon-user"></span> 
-										<?= $thread['author'] ?>
-									</small>
-								</div>
-								<div class="time">
-									<small>
-										<span class="glyphicon glyphicon-time"></span>  
-										<?= $thread['date'] ?>
-									</small>
-								</div>
-							</h5>
-						</a>
-						<div class="count">
-							<center>
-								<h4>
-									<div>
-										<b><?= $thread['count'] - 1; ?></b>
-									</div>
-									<small>
-										<div>
-											<?= ($thread['count'] - 1 == 1) ? "reply" : "replies" ?>
-										</div>
-									</small>
-								</h4>
-							</center>
-						</div>
-						<a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>?post=<?= $thread['recent']['id'] ?>">
-							<h5>
-								<div class="name">
-									Recent Post
-								</div>
-								<div class="author">
-									<small>
-										<span class="glyphicon glyphicon-user"></span>
-										<?= $thread['recent']['author'] ?>
-									</small>
-								</div>
-								<div class="time">
-									<small>
-										<span class="glyphicon glyphicon-time"></span>
-										<?= $thread['recent']['date'] ?>
-									</small>
-								</div>
-							</h5>
-						</a>
-					</div>
-				</div>	
-			</div>
-			<?php echo $features($thread['id'], $thread['features']); ?>
-		</div>
-	</div>
-<?php endforeach; ?>
+<div class="forum-content">
+    <?php foreach ($data['threads'] as $thread): ?>
+	    <div class="panel-group">
+		    <div class="panel panel-default">
+			    <div class="row">
+				    <div class="forum-thread">
+					    <div>
+						    <a class="btn info" href="/thread/view/<?= $thread['id'] ?>">
+							    <h5>
+								    <div class="name">
+									    <?= $thread['name'] ?>
+								    </div>
+								    <div class="author">
+									    <small>
+										    <span class="glyphicon glyphicon-user"></span> 
+										    <?= $thread['author'] ?>
+									    </small>
+								    </div>
+								    <div class="time">
+									    <small>
+										    <span class="glyphicon glyphicon-time"></span>  
+										    <?= $thread['date'] ?>
+									    </small>
+								    </div>
+							    </h5>
+						    </a>
+						    <div class="count">
+							    <center>
+								    <h4>
+									    <div>
+										    <b><?= $thread['count'] - 1; ?></b>
+									    </div>
+									    <small>
+										    <div>
+											    <?= ($thread['count'] - 1 == 1) ? "reply" : "replies" ?>
+										    </div>
+									    </small>
+								    </h4>
+							    </center>
+						    </div>
+						    <a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>?post=<?= $thread['recent']['id'] ?>">
+							    <h5>
+								    <div class="name">
+									    Recent Post
+								    </div>
+								    <div class="author">
+									    <small>
+										    <span class="glyphicon glyphicon-user"></span>
+										    <?= $thread['recent']['author'] ?>
+									    </small>
+								    </div>
+								    <div class="time">
+									    <small>
+										    <span class="glyphicon glyphicon-time"></span>
+										    <?= $thread['recent']['date'] ?>
+									    </small>
+								    </div>
+							    </h5>
+						    </a>
+					    </div>
+				    </div>	
+			    </div>
+			    <?php echo $features($thread['id'], $thread['features']); ?>
+		    </div>
+	    </div>
+    <?php endforeach; ?>
+</div>

@@ -79,6 +79,8 @@ if (isset($notification['status']))
 		</div>
 	</div>
 	
+    <hr />
+
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/games'),
@@ -90,13 +92,15 @@ if (isset($notification['status']))
 		)?>
 	</div>
 	
+    <hr />
+
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/wall'),
 			array('options' => $data['options'])
 		)?>
 	</div>
-	
+
 	<div class="recent">
 		<div class="row">
 			<h3>Recent<small> Posts On Forum</small></h3>

@@ -37,6 +37,9 @@ $self = $this;
 			</center>
 		</div>
 	</div>
+
+    <hr />
+
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/games'),
@@ -47,12 +50,16 @@ $self = $this;
 			)
 		)?>
 	</div>
+
+    <hr />
+
 	<div class="row">
 		<?= $this->view()->render(
 			array('element' => 'user/wall'),
 			array('member' => $data['member'], 'options' => $data['options'])
 		)?>
 	</div>
+
 	<div class="recent">
 		<div class="row">
 			<h3>Recent Posts <small>On Forum</small></h3>

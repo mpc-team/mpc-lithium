@@ -10,6 +10,7 @@ $self = $this;
 <div class="row">
 	<h3>Recent Activity</h3>
 </div>
+
 <div class="row">
 	<?= $this->view()->render(
 		array('element' => 'recentfeed'),
@@ -19,6 +20,7 @@ $self = $this;
 		)
 	)?>
 </div>
+
 <div class="row page-header">
 	<h1>
 		<div class="title">

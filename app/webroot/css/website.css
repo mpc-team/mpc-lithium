@@ -175,6 +175,9 @@ span.glyphicon-send
     border-top: 1px solid #aaaaaa;
     border-top: 2px solid #BEFDBE;
     box-shadow: 0px 0px 8px #BEFDBE;
+    position: absolute;
+    right: 0;
+    left: 0;
 }
 
 .sidebar-content
@@ -662,6 +665,11 @@ a.btn-forum:hover
     font-size: 14pt;
 }
 
+.forum .categories
+{
+    padding-bottom: 50px;
+}
+
 .forum .categories .count
 {
     bottom: 0px;
@@ -682,6 +690,11 @@ a.btn-forum:hover
 {
     font-size: 150%;
     font-weight: 700;
+}
+
+.forum-content
+{
+    padding-bottom: 50px;
 }
 
 .forum-thread
@@ -1168,6 +1181,11 @@ a .panel-recentfeed h3
  *	REPLY PANEL STYLING
  *
  ******************************************************************/
+.thread-reply
+{
+    padding-top: 20px;
+}
+
 .panel-reply
 {
     text-align: center;

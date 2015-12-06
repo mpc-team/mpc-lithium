@@ -13,6 +13,9 @@
 	$recentLimit = $recentlimit;
 	$recentPages = $recentLimit / $recentPerPage;
 ?>
+
+<hr />
+
 <div class="recentfeed">
 	<?php if (count($recentfeed) > 0): ?>
 		<div id="recentfeed-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -103,3 +106,5 @@
 		</div>	
 	<?php endif; ?>
 </div>
+
+<hr />
