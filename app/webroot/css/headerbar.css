@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
+@import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
+
+.page-header-navigation ul.nav > li:active 
+{
+    border-bottom: 5px solid #b9ffb6;
+}
+
+.page-header > hr.top-divider
+{
+    margin-bottom: 0px;
+}
+
+.page-header > hr.bottom-divider
+{
+    margin-top: 0px;
+}

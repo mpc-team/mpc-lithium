@@ -1710,6 +1710,7 @@
     <Compile Include="app\views\layouts\error.html.php" />
     <Compile Include="app\views\layouts\forum.html.php" />
     <Compile Include="app\views\layouts\games.html.php" />
+    <Compile Include="app\views\layouts\LayoutConstants.php" />
     <Compile Include="app\views\login\index.html.php" />
     <Compile Include="app\views\members\index.html.php" />
     <Compile Include="app\views\pages\home.html.php" />

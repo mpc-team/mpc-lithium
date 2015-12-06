@@ -23,13 +23,31 @@ members.FILTER_BY_GAMES = 2;
 members.elements = { 
 	result: "#results",
 	email: "#email",
-	alias: "#alias"
+	alias: "#alias",
 };
+
+/**
+ * Clears the Search Filter.
+ */
+members.clearFilter = function ()
+{
+
+	$(members.elements.email).val('');
+	$(members.elements.alias).val('');
+	$('.game input').each(function () { $(this).attr('checked', false) });
+
+	console.log("cleared");
+}
+
+members.actions = {
+	clear: "#members-clear-filter",
+}
 
 /* The icons are retrieved from the Database synchronously to
  * make sure we have the paths loaded when we use them later. */
  
 members.iconMap = {};
+
 $.ajax({
 	url: "/api/games/all",
 	success: function (games) {
@@ -46,6 +64,9 @@ $.ajax({
 	async: false,
 });
 
+/**
+ * HTML Components used to Display JavaScript Results.
+ */
 members.html = 
 {
 	email: function (user, display) 
@@ -96,6 +117,13 @@ members.html =
 	}
 };
 
+/**
+ * Filters Userlist based on Name/Alias and Email.
+ * @param {type} userList
+ * @param {type} criteria
+ * @param {type} filterBy
+ * @returns {type} 
+ */
 members.doRegexFilter = function (userList, criteria, filterBy) 
 {
 	var regex = new RegExp(RegExp.escape(criteria.toLowerCase()));
@@ -121,6 +149,12 @@ members.doRegexFilter = function (userList, criteria, filterBy)
 	return users;
 }
 
+/**
+ * Filters Userlist based on Games.
+ * @param {type} userList
+ * @param {type} games
+ * @returns {type} 
+ */
 members.doGamesFilter = function (userList, games) 
 {
 	var checkGroup = [];
@@ -159,6 +193,11 @@ members.doGamesFilter = function (userList, games)
 	return userList;
 }
 
+/**
+ * Updates the UI List of Members.
+ * @param {type} userList
+ * @param {type} options
+ */
 members.updateList = function (userList, options) 
 {
 	var value;
@@ -189,6 +228,12 @@ members.updateList = function (userList, options)
 	}
 }
 
+/**
+ * Members JavaScript Setup
+ * @param {type} memberList
+ * @param {type} permissions
+ * @param {type} games
+ */
 members.init = function (memberList, permissions, games) 
 {
 	for (var game in games) 
@@ -196,13 +241,24 @@ members.init = function (memberList, permissions, games)
 		var name = games[game].name.toLowerCase();
 		members.elements[name] = '#' + name.replace(/\s+/g, '');
 	}
+
 	members.updateList(memberList, permissions);
-	for (var elem in members.elements) {
-		$(members.elements[elem]).keyup(function () {
+
+	for (var elem in members.elements)
+	{
+		$(members.elements[elem]).keyup(function ()
+		{
 			members.updateList(memberList, permissions);
 		});
-		$(members.elements[elem]).change(function () {
+		$(members.elements[elem]).change(function ()
+		{
 			members.updateList(memberList, permissions);
 		});
 	}
+
+	$(members.actions.clear).click(function ()
+	{
+		members.clearFilter();
+		members.updateList(memberList, permissions);
+	});
 }
