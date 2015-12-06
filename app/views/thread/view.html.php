@@ -64,7 +64,7 @@ EOD;
 	<h1>
 		<div><?= $data['thread']['name'] ?></div>
 		<small>
-			<div><?= $data['forum']['name'] ?></div>
+			<div><?= $data['forum']['name'] ?> Forum</div>
 		</small>
 	</h1>
 	<div class="col-xs-6">

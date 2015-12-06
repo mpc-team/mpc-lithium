@@ -1,10 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
 @import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
 
 html
 {
-    background: url("/img/tech_background.jpg");
+    background: url("/img/darksky_background.jpg");
     background-attachment: fixed !IMPORTANT;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,7 +18,7 @@ body
     padding-top: 50px;
     height: inherit;
     background: transparent;
-    font-family: "Titillium Web";
+    font-family: "Montserrat";
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -31,8 +32,9 @@ h1 > small,
 h2 > small,
 h3 > small
 {
-    font-family: "Passion One";
-    font-weight: 400;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-variant: normal;
 }
 
 h1 > small > div
@@ -65,11 +67,12 @@ h5
     background: #000000;
 }
 
-.navbar
+.navbar-inverse
 {
-    font-family: "Passion One";
+    /*font-family: "Passion One";*/
     font-size: 14pt;
     font-weight: 500;
+    height: 60px;
 }
 
 .navbar .glyphicon-user
@@ -168,9 +171,10 @@ span.glyphicon-send
 /* Add divider and extra bottom space for the footer */
 .page-footer
 {
-    padding-top: 9px;
     margin-top: 50px;
     border-top: 1px solid #aaaaaa;
+    border-top: 2px solid #BEFDBE;
+    box-shadow: 0px 0px 8px #BEFDBE;
 }
 
 .sidebar-content
@@ -190,7 +194,7 @@ span.glyphicon-send
 {
     display: inline;
     font-size: 12pt;
-    font-family: "Titillium Web";
+    /*font-family: "Titillium Web";*/
 }
 
 span.input-group-addon
@@ -277,7 +281,7 @@ a h5
 .input-group button
 {
     padding: 15px;
-    width: 100%;
+    width: 30%;
     height: auto;
     text-align: center;
     background: linear-gradient(rgba(255,255,255,0.025), rgba(255,255,255,0.05));
@@ -554,7 +558,14 @@ a h5
 .forum h2,
 .forum h3
 {
-    font-family: "Passion One";
+    /*font-family: "Montserrat";
+    font-weight: 700;*/
+}
+
+.forum h1
+{
+    font-variant: small-caps;
+    font-size: 350%;
 }
 
 .forum-thread h4 .name,
@@ -596,10 +607,10 @@ a h5
     font-size: 22pt;
 }
 
-a.btn-forum
+/*a.btn-forum
 {
     background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
-}
+}*/
 
 a.btn-forum:hover
 {
@@ -630,7 +641,7 @@ a.btn-forum:hover
 
 .forum .login-notice > .panel
 {
-    background: linear-gradient(160deg, #2f3a2f, #222222);
+    /*background: linear-gradient(160deg, #2f3a2f, #222222);*/
     padding: 5px 0 10px 0;
 }
 
@@ -661,9 +672,10 @@ a.btn-forum:hover
     margin-bottom: 1px;
 }
 
-.forum-header h1
+.forum-header
 {
-    font-variant: small-caps;
+    padding-bottom: 10px;
+    font-size: 120%;
 }
 
 .forum-header .forum-thread
@@ -681,7 +693,7 @@ a.btn-forum:hover
 
 .forum-thread
 {
-    background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
+    /*background: linear-gradient(170deg, #2a2c2a, #1f1f1f);*/
 }
 
 .forum-header .forum-thread
@@ -779,10 +791,9 @@ a.btn-forum:hover
 }
 
 
-
 .forum-post .info
 {
-    background-color: #222222;
+    background-color: #111111;
     vertical-align: top;
 }
 
@@ -846,7 +857,7 @@ a.btn-forum:hover
     margin-top: 0px;
     width: 75%;
     padding: 10px 10px 20px 20px;
-    background: linear-gradient(170deg, #2a2c2a, #1f1f1f);
+    /*background: linear-gradient(170deg, #2a2c2a, #1f1f1f);*/
 }
 
 .forum-post .content h2,
@@ -934,10 +945,15 @@ a .panel-recentfeed h3
     background: inherit;
 }
 
+.recentfeed .panel-group
+{
+    margin: 5px;
+}
+
 .recentfeed .panel > a.btn
 {
     padding: 7px 5px 5px 5px;
-    background: linear-gradient(170deg, #2a2c2a,#1f1f1f);
+    /*background: linear-gradient(170deg, #2a2c2a,#1f1f1f);*/
 }
 
 .panel-recentfeed
@@ -1177,6 +1193,7 @@ a .panel-recentfeed h3
 .panel-reply .form-group
 {
     background-color: #1f1f1f;
+    padding: 10px;
 }
 
 .panel-reply .input-group
@@ -1237,6 +1254,7 @@ a .panel-recentfeed h3
     padding-right: 5px;
 }
 
+#headerbar-games .icon img,
 #navbar-games .icon img
 {
     height: 21px;

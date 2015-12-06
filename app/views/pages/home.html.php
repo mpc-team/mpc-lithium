@@ -16,8 +16,6 @@ $self = $this
 
 ?>
 <h2>Announcements</h2>
-<div class="panel panel-default">
-	<div class="panel-heading">
 		<div class="well well-sm">
 			<h5>5 in a row</h5>
 			<img src="http://www.mpcgaming.com/app/webroot/img/clashofclans/assassins/victory10302015.png" class="img-rounded img-responsive" alt="victory103002015.png" style="margin: auto;" />
@@ -33,8 +31,6 @@ $self = $this
 		<div class="well well-sm">
 			<h5>10/20/2015: Clash of Clans MPC assassins Starting War against Furia De Roig</h5>
 		</div>
-	</div>
-</div>
 <section>
 	<h2>News</h2>
 	<div class="well well-sm">

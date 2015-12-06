@@ -42,7 +42,7 @@ $self = $this;
 			array('element' => 'user/games'),
 			array(
 				'games' => $data['games'],
-				'text' => 'This User Plays',
+				'text' => $data['member']['alias'] . ' plays',
 				'profile' => false
 			)
 		)?>

@@ -1688,6 +1688,7 @@
     <Compile Include="app\utilities\Path.php" />
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
+    <Compile Include="app\views\elements\headerbar.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
     <Compile Include="app\views\elements\user\wall.html.php" />
     <Compile Include="app\views\elements\breadcrumbs.html.php" />
@@ -2923,5 +2924,10 @@
     <Folder Include="libraries\lithium" />
     <Folder Include="libraries\_source" />
     <Folder Include="libraries" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\webroot\css\headerbar.css" />
+    <Content Include="app\webroot\css\markup.css" />
+    <Content Include="app\webroot\js\headerbar.js" />
   </ItemGroup>
 </Project>

@@ -132,7 +132,7 @@ class UserController extends \lithium\action\Controller
 			{
 				// Make sure that an image file was uploaded.
 				$check = getimagesize($data['avatarfile']['tmp_name']);
-				$image_types = array(IMAGETYPE_JPG, IMAGETYPE_JPEG, IMAGETYPE_PNG);
+				$image_types = array(IMAGETYPE_JPEG, IMAGETYPE_PNG);
 				
 				if (in_array($check[2], $image_types))
 				{

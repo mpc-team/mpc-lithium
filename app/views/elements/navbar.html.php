@@ -21,7 +21,7 @@ $games = Games::getList();
 		</button>
 		<ul class="nav navbar-nav">
 			<li id='navbar-home'>
-				<a href='/' class='navbar-brand'>MPC</a>
+				<a title="Lobby" href='/'>MPC</a>
 			</li>
 		</ul>
 	</div>
@@ -29,16 +29,20 @@ $games = Games::getList();
 		<ul class="nav navbar-nav">
 
 			<li id='navbar-members'>
-				<a href='/members'>Members</a>
+				<a title="Members" href='/members'>
+                    <i class="fa fa-users"></i>
+                </a>
 			</li>
 			
 			<li id='navbar-forum'>
-				<a href='/forum'>Forum</a>
+				<a title="Forum" href='/forum'>
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
 			</li>
 			
 			<li id='navbar-games' class='dropdown'>
 				<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
-					Games <span class='caret'></span>
+					<i class="fa fa-gamepad"></i> <span class='caret'></span>
 				</a>
 				<ul class='dropdown-menu' role='menu'>
 					<li>

@@ -145,15 +145,14 @@ markup.TagMap = {
 }
 
 /**
- * markup.process
- *
- * @param text - text input that needs to have markup processed
- * @param mode - modes for special markup behavior as defined above.
- *
- * @returns new string that has markup tags identified and replaced with HTML tags.
- *
- * Outlines the markup process. First prepare the markup structure (just a list), verify its 
- * contents, and finally swap the tags for the tags they have been mapped with (see markup.TagMap).
+ * Outlines the whole markup procses. The tag-mapping used is able to 
+ * differ based on the `mode` to provide customizeable results in
+ * a variety of situations.
+ * 
+ * @param {string} text - string to perform markup on.
+ * @param {int} mode - markup mode, defaults to NORMAL (expects markup.NORMAL or markup.PREVIEW).
+ * 
+ * @returns {string} - The end-result of the markup process, in a form that can be printed.
  */
 markup.process = function (text, mode)
 {
@@ -189,6 +188,7 @@ markup.process = function (text, mode)
  * 
  * @param {string} text - build markup components from this string.
  * @param {list} map - the TagMarkup mappings to consider.
+ * 
  * @returns {list} - markup components in list form.
  */
 markup.prepare = function (text, map)
@@ -228,7 +228,9 @@ markup.prepare = function (text, map)
 
 /**
  * Verifies that a list of markup components is properly constructed.
+ * 
  * @param {array} list - list of markup components.
+ * 
  * @returns {bool} True if the markup list is valid. 
  */
 markup.verify = function (list, map)
@@ -262,6 +264,7 @@ markup.verify = function (list, map)
  * @param {list} list - list of markup components.
  * @param {list} map - list of TagMarkup entries used to corresponding entries.
  * @param {int} mode - the markup mode, for specific processing of certain tags.
+ * 
  * @returns {list} - markup component list with corresponding tags swapped. 
  */
 markup.swap = function (list, map, mode)
@@ -343,6 +346,7 @@ markup.compare = function (text, place, tag)
  * 
  * @param {string} str - the string to find a mapping for.
  * @param {list} map - the list of tag mapping entries.
+ * 
  * @returns {TagMarkup} - the TagMarkup object corresponding to `str` in the given list.
  */
 markup.tagmap = function (str, map)
@@ -388,13 +392,16 @@ markup.getContent = function (list, index, map)
 };
 
 /**
- * Clears the content between specified tags (opening tag specified with @list
- * and @index) and follows up by inserting the new content into the previous
- * position. 
- *
- * @param list, current list of markup-separated values
- * @param index, index of the opening tag marking the beginning of the content
- * @param content, new content that is inserted into @list at @index + 1.
+ * Clears content between a specified set of tags. The opening tag location
+ * is specified with `list[index]`. The new content is inserted between the
+ * specified "open" tag and its corresponding "close" tag.
+ * 
+ * @param {list} list - markup component list.
+ * @param {int} index - index of the opening tag in the markup component list.
+ * @param {string} content - new content to be inserted.
+ * @param {list} map - the tag-mapping that is being used for markup.
+ * 
+ * @returns {bool} - True if successful, false if the tag couldn't be found.
  */
 markup.setContent = function (list, index, content, map)
 {

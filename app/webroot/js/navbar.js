@@ -21,7 +21,8 @@ navbar.items = {
 	forum: "#navbar-forum",
 	user: "#navbar-user",
 	signup: "#navbar-signup",
-	login: "#navbar-login"
+	login: "#navbar-login",
+	games: '#navbar-games',
 };
 
 /**
@@ -51,6 +52,10 @@ navbar.enhance = function (controller, action) {
 			case 'board':
 			case 'thread':
 				$(this.items.forum).addClass('active');
+				break;
+			case 'games':
+				$(this.items.games).addClass('active');
+				break;
 		}
 		if (controller == 'user') {
 			if (action == 'profile') {	

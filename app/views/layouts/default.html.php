@@ -1,10 +1,14 @@
 <?php
 /**
- * Lithium: the most rad php framework
- *
- * @copyright     Copyright 2013, Union of RAD (http://union-of-rad.org)
- * @license       http://opensource.org/licenses/bsd-license.php The BSD License
+ * Default Layout
+ * 
+ * @author Steve
+ * 
+ * Built on Lithium.
  */
+
+use app\views\layouts\LayoutConstants;
+
 ?>
 <!doctype html>
 <html>
@@ -20,9 +24,10 @@
         'markup'
 	));?>
 	<?php echo $this->html->script(array(
-		'jquery-1.11.2', 
+		LayoutConstants::JQUERY_PATH,
         'bootstrap',
 		'navbar', 
+        'headerbar',
         'moment',
 		'field-selection',	
         'members',
@@ -40,15 +45,15 @@
 <body>
 	<div class="container-fluid">
 		<?=
-			$this->view()->render(
-				array('element' => 'navbar'),
-				array(
-					'authorized' => $authorized,
-					'controller' => $this->_request->controller,
-					'action' => $this->_request->action
-				)
-			)
-		?>
+        $this->view()->render(
+            array('element' => 'navbar'),
+            array(
+                'authorized' => $authorized,
+                'controller' => $this->_request->controller,
+                'action' => $this->_request->action
+            )
+        )
+        ?>
 	</div>
 	<div class="container">
 		<div class="page-header">
@@ -56,6 +61,17 @@
 				src="/img/mpc-banner.png"
 				class="img-responsive"
 				alt="mpc-banner.png"></img>
+            
+		    <?=
+                $this->view()->render(
+                    array('element' => 'headerbar'),
+                    array(
+                        'authorized' => $authorized,
+                        'controller' => $this->_request->controller,
+                        'action' => $this->_request->action
+                    )
+                )
+            ?>
 		</div>
 				
 		<?= $this->view()->render(

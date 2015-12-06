@@ -1,10 +1,13 @@
 <?php
 /**
- * Lithium: the most rad php framework
- *
- * @copyright     Copyright 2013, Union of RAD (http://union-of-rad.org)
- * @license       http://opensource.org/licenses/bsd-license.php The BSD License
+ * Error Layout
+ * 
+ * @author Steve
+ * 
+ * Built on Lithium.
  */
+
+use app\views\layouts\LayoutConstants;
 
 /**
  * This layout is used to render error pages in both development and production. It is recommended
@@ -39,7 +42,7 @@ $path = Libraries::get(true, 'path');
 					'action' => $this->_request->action
 				)
 			)
-		?>
+        ?>
 	</div>
 
 	<div class="container">
@@ -49,8 +52,19 @@ $path = Libraries::get(true, 'path');
 				src="/img/mpc-banner.png"
 				class="img-responsive"
 				alt="mpc-banner.png"></img>
+
+		    <?=
+                $this->view()->render(
+                    array('element' => 'headerbar'),
+                    array(
+                        'authorized' => $authorized,
+                        'controller' => $this->_request->controller,
+                        'action' => $this->_request->action
+                    )
+                )
+            ?>
 		</div>
-		
+
 		<div class="content">
 			<?php echo $this->content(); ?>
 		</div>

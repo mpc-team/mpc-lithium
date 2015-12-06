@@ -1,3 +1,15 @@
+<?php
+/**
+ * Forum Layout
+ * 
+ * @author Steve
+ * 
+ * Built on Lithium.
+ */
+
+use app\views\layouts\LayoutConstants;
+
+?>
 <!doctype html>
 <html>
 <head>
@@ -15,9 +27,10 @@
         'markup'
 	)); ?>
 	<?php echo $this->html->script(array(
-		'jquery-1.11.2',    
+		LayoutConstants::JQUERY_PATH,
         'bootstrap', 
-		'navbar',           
+		'navbar',
+        'headerbar',
         'field-selection', 
 		'members',          
         'validate', 
@@ -50,6 +63,17 @@
 						src="/img/mpc-banner.png"
 						class="img-responsive"
 						alt="mpc-banner.png"></img>
+
+		            <?=
+                        $this->view()->render(
+                            array('element' => 'headerbar'),
+                            array(
+                                'authorized' => $authorized,
+                                'controller' => $this->_request->controller,
+                                'action' => $this->_request->action
+                            )
+                        )
+                    ?>
 				</div>
 				
 				<?= $this->view()->render(
