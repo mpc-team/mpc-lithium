@@ -29,7 +29,7 @@
 		</ul>
 	</div>
 	<div class="row">
-		<h2>Ventrilo Setup Insturctions:</h2>
+		<h2>Ventrilo Setup Instructions:</h2>
 		<?php 
 			include('../views/information/ventrilo_content/vent_accordion.php');
 		?>

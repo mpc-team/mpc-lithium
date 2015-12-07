@@ -25,7 +25,7 @@
 .list-group-item:hover {
 	background-color: #000;
 	color: #aaffaa;
-	text-shadow: 5px 5px 10px #fff;
+	text-shadow: 1px 1px 10px #fff;
 }
 .glyphicon-size {
 	margin: auto;
@@ -41,7 +41,9 @@
 	position: relative;
 	z-index: 5;
 	color: #aaffaa;
+	text-shadow: 5px 5px 10px #aaffaa;
 }
 .media:hover a {
 	color: #fff;
+	text-shadow: 5px 5px 10px #aaffaa;
 }
