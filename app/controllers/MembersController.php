@@ -41,7 +41,8 @@ class MembersController extends \lithium\action\Controller {
 	 * 			of parameters for every page. Each page should get roughly the same thing, with the 
 	 *			variance being the data sent through "response".
 	 */
-	public function index() {		
+	public function index() 
+    {		
 		$authorized = Auth::check('default');
 		$data = array();
 		$breadcrumbs = array(

@@ -1592,6 +1592,7 @@
     <Compile Include="app\config\bootstrap.php" />
     <Compile Include="app\config\routes.php" />
     <Compile Include="app\controllers\api\GamesAPI.php" />
+    <Compile Include="app\controllers\AnnouncementsController.php" />
     <Compile Include="app\controllers\games\ClashOfClansController.php" />
     <Compile Include="app\controllers\games\GamesController.php" />
     <Compile Include="app\controllers\games\HeroesOfTheStormController.php" />
@@ -1616,6 +1617,7 @@
     <Compile Include="app\extensions\data\source\empty" />
     <Compile Include="app\extensions\helper\empty" />
     <Compile Include="app\libraries\_source\empty" />
+    <Compile Include="app\models\Announcements.php" />
     <Compile Include="app\models\utils\Notifications.php" />
     <Compile Include="app\models\Categories.php" />
     <Compile Include="app\models\Communities.php" />
@@ -2930,5 +2932,6 @@
     <Content Include="app\webroot\css\headerbar.css" />
     <Content Include="app\webroot\css\markup.css" />
     <Content Include="app\webroot\js\headerbar.js" />
+    <Content Include="app\webroot\js\announcements.js" />
   </ItemGroup>
 </Project>

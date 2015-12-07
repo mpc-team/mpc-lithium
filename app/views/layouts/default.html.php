@@ -39,7 +39,8 @@ use app\views\layouts\LayoutConstants;
         'profile',
 		'scroller',					
         'fileinput',
-		'information-page.js'
+        //'information-page',
+        'announcements',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
