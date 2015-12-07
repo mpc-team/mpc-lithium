@@ -21,11 +21,13 @@ use app\views\layouts\LayoutConstants;
 		'bootstrap',
 		'font-awesome',
 		'website',
-        'markup'
+        'markup',
+		'information_page'
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+		'jquery-ui.min',
 		'navbar', 
         'headerbar',
         'moment',
@@ -36,7 +38,8 @@ use app\views\layouts\LayoutConstants;
 		'markup',						
         'profile',
 		'scroller',					
-        'fileinput'
+        'fileinput',
+		'information-page.js'
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

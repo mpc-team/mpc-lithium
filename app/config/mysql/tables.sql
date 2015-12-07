@@ -6,7 +6,7 @@ create table forums (
 	`tstamp` timestamp not null default current_timestamp,
 	primary key (`id`),
 	unique key `name` (`name`)
-);
+);	
 
 create table permissions (       
 	`id` int(11) not null auto_increment,
