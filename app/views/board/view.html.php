@@ -11,11 +11,14 @@ $self = $this;
  *	Currently only allows an administrator or the author of a thread
  *	to delete a thread.
  */
-$features = function($tid, $options) {
+$features = function($tid, $options) 
+{
 	$html = "";
-	if (count($options) > 0) {
+	if (count($options) > 0) 
+    {
 		$html = "<div class='row usertool'>";
-		if (in_array('delete', $options)) {
+		if (in_array('delete', $options)) 
+        {
 			$html .= "<form role='form' action='/thread/delete/{$tid}' method='post'>";
 			$html .= "<button type='submit' class='btn btn-edit pull-right'>";
 			$html .= "<i class='fa fa-trash-o'></i> Delete";
@@ -162,7 +165,7 @@ $features = function($tid, $options) {
 								    </h4>
 							    </center>
 						    </div>
-						    <a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>?post=<?= $thread['recent']['id'] ?>">
+						    <a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>#<?= $thread['recent']['id'] ?>">
 							    <h5>
 								    <div class="name">
 									    Recent Post

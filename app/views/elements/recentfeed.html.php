@@ -41,7 +41,7 @@
 						<div class="col-md-4">
 							<div class="panel-group">
 								<div class="panel panel-default">
-									<a class="btn" href="/thread/view/<?= $recent['tid'] ?>?post=<?= $recent['id'] ?>#post<?= $recent['id'] ?>">
+									<a class="btn" href="/thread/view/<?= $recent['tid'] ?>#<?= $recent['id'] ?>">
 										<div class="panel-recentfeed">
 											<div class="row">
 												<h4>

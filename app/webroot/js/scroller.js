@@ -14,13 +14,18 @@
  * Currently no better place to put this. Utility function added to JQuery that
  * scrolls to the JQuery selected element with an offset to align better.
  */
-$.fn.gotoSection = function(section) {
-	if ($(this).offset() != null) {
+$.fn.gotoSection = function (section)
+{
+	if ($(this).offset() != null)
+	{
 		$("html, body").animate({scrollTop: $(this).offset().top - 160}, 300);
 	}
 }
 
-$(window).on('load', function () { scroller.init(); });
+$(window).on('load', function ()
+{
+	scroller.init();
+});
 
 var scroller = {};
 
@@ -31,22 +36,42 @@ var scroller = {};
  * 
  * @returns {object} - dictionary of query parameters.
  */
-scroller.getParams = function (url) {
+scroller.getParams = function (url)
+{
 	var params = url.slice(url.indexOf('?') + 1, url.length).split('&');
 	var result = {};
-	for (var i = 0; i < params.length; i++) {
+	for (var i = 0; i < params.length; i++)
+	{
 		var composites = params[i].split('=');
 		result[composites[0]] = composites[1];
 	}
 	return result;
 }
 
-scroller.init = function () { 
-	var params = scroller.getParams(window.location.href);
+/**
+ * Returns the string at the end of a URL that acts as a location 
+ * directory for where the page needs to load. Anything after the 
+ * '#' character in the URL is returned.
+ * 
+ * @param {string} url - The URL as a string.
+ * 
+ * @returns {string} - The string that comes after '#'. 
+ */
+scroller.getPageDirectoryId = function (url)
+{
+	return url.slice(url.indexOf('#') + 1, url.length);
+}
+
+scroller.init = function ()
+{
+	var dir = scroller.getPageDirectoryId(window.location.href);
+
+	$('#' + dir).gotoSection();
+	//var params = scroller.getParams(window.location.href);
 	
-	if ("post" in params)
-		$("#post" + params.post).gotoSection();
+	//if ("post" in params)
+	//	$("#post" + params.post).gotoSection();
 	
-	if ("op" in params)
-		$("#op-" + params.op).gotoSection();
+	//if ("op" in params)
+	//	$("#op-" + params.op).gotoSection();
 }

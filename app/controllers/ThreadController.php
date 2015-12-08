@@ -11,8 +11,12 @@ use app\models\Permissions;
 use app\models\Timestamp;
 use app\models\PostHits;
 
-class ThreadController extends ContentController {
-
+class ThreadController extends ContentController 
+{
+	/**
+	 * The primary view of a Thread.
+	 * @return array|object
+	 */
 	public function view ( ) 
 	{
 		$this->_render['layout'] = 'forum';
@@ -35,10 +39,12 @@ class ThreadController extends ContentController {
 				"/thread/view/{$this->request->id}"
 			)
 		);
+
 		$author = Users::getById($thread['uid']);
 		$thread['author'] = $author;
 		$thread['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
 		$thread['name'] = stripslashes($thread['name']);
+
 		$data = array(
 			'thread' => $thread,
 			'forum' => $forum,

@@ -26,6 +26,8 @@ h1, h2, h3
 {
     /* font-family: "Oswald"; */
     font-weight: 700;
+    color: #aaffaa;
+    text-shadow: 1px 1px 10px #aaffaa;
 }
 
 h1 > small,
@@ -35,6 +37,7 @@ h3 > small
     font-family: 'Montserrat';
     font-weight: 700;
     font-variant: normal;
+    text-shadow: none;
 }
 
 h1 > small > div

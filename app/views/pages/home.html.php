@@ -17,6 +17,15 @@ $self = $this
 ?>
 <section id="announcements" class="col-md-8">
     <h2>Announcements</h2>
+
+    <span class="input-group-addon glyphicon"></span>
+    <textarea class="form-control" type="text" placeholder="Enter an Announcement - then click submit." name="announcement-text"></textarea>
+    <div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-edit">Submit Announcement</button>
+        </div>
+    </div>
+
     <div id="announcements-content">
         <!--<div class="well well-sm">
             <h5>5 in a row</h5>
@@ -54,7 +63,5 @@ $self = $this
     $(document).ready(function ()
     {
         var objects = announcements.pull();
-
-        var object = announcements.create('Hello There.');
     });
 </script>

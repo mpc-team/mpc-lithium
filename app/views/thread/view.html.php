@@ -90,7 +90,7 @@ EOD;
     <?php foreach ($data['posts'] as $post): ?>
 	    <div class="panel-group">
 		    <div class="panel panel-default">
-			    <a id="post<?= $post['id'] ?>"></a>
+			    <a id="<?= $post['id'] ?>"></a>
 			    <div class="row">
 				    <div class="forum-post">
 					    <div>
