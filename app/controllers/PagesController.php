@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 use lithium\security\Auth;
+use app\models\Permissions;
 
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
@@ -25,27 +26,40 @@ use lithium\security\Auth;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class PagesController extends \lithium\action\Controller {
+class PagesController extends \lithium\action\Controller 
+{
 
-	public function view() {
+	public function view() 
+    {
 		$authorized = Auth::check('default');
-		$options = array();
-		$path = func_get_args();
 		$breadcrumbs = array(
 			'path' => array('MPC', 'Home'),
 			'link' => array('/', '/')
 		);
+		$options = array();
+		$path = func_get_args();
 		
-		if (!$path || $path === array('home')) {
+		if (!$path || $path === array('home')) 
+        {
 			$path = array('home');
 			$options['compiler'] = array('fallback' => true);
 		}
 
+        $permissions = array(
+            'announcements' => array(
+                'edit' => Permissions::is_admin($authorized),
+                'create' => Permissions::is_admin($authorized),
+                'delete' => Permissions::is_admin($authorized),
+            ),
+        );
+
 		$options['template'] = join('/', $path);
 		$this->set(array(
 			'authorized' => $authorized,
-			'breadcrumbs' => $breadcrumbs
+			'breadcrumbs' => $breadcrumbs,
+            'features' => $permissions,
 		));
+
 		return $this->render($options);
 	}
 }
