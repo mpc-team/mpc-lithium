@@ -1,10 +1,16 @@
-
-
-var UI_UPDATE_CONTENT = 'edit-content-text';
+/**
+ *
+ *		TextTags
+ * 
+ *	v1.0
+ *	Steve
+ * 
+ */
 
 var texttags = {};
 
-texttags.buttonClasses = {
+texttags.buttonClasses =
+{
 	bold: 'edit-tag-bold',
 	italic: 'edit-tag-italic',
 	underline: 'edit-tag-underline',

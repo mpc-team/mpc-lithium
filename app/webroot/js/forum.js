@@ -21,47 +21,6 @@ var UI_HIT = 'post-hit';
 var UI_HITS_TEXT = ['hit', 'text', 'hits'];
 
 /**
- * Button classes that correspond to specific Forum text-tag helpers.
- */
-var BTN_TAGS_BOLD = 'edit-tag-bold';
-var BTN_TAGS_ITALIC = 'edit-tag-italic';
-var BTN_TAGS_UNDERLINE	= 'edit-tag-underline';
-var BTN_TAGS_STRIKE = 'edit-tag-strike';
-var BTN_TAGS_HEAD_1 = 'edit-tag-header1';
-var BTN_TAGS_HEAD_2 = 'edit-tag-header2';
-var BTN_TAGS_HEAD_3 = 'edit-tag-header3';
-var BTN_TAGS_SUP	= 'edit-tag-superscript';
-var BTN_TAGS_SUB = 'edit-tag-subscript';
-var BTN_TAGS_ULIST	= 'edit-tag-ulist';
-var BTN_TAGS_LISTITEM = 'edit-tag-ulist-item';
-var BTN_TAGS_PARAGRAPH	= 'edit-tag-paragraph';
-var BTN_TAGS_CENTER = 'edit-tag-center';
-var BTN_TAGS_LINK = 'edit-tag-link';
-var BTN_TAGS_IMAGE = 'edit-tag-image';
-var BTN_TAGS_VIDEO	= 'edit-tag-video';
-
-/**
- * Markup tags applied to text when helpers are clicked.
- */
-var TAGS_BOLD	= ["[b]", "[/b]"];
-var TAGS_ITALIC = ["[i]", "[/i]"];
-var TAGS_UNDERLINE = ["[u]", "[/u]"];
-var TAGS_STRIKE	= ["[strike]", "[/strike]"];
-var TAGS_HEADER1 = ["[h1]", "[/h1]"];
-var TAGS_HEADER2 = ["[h2]", "[/h2]"];
-var TAGS_HEADER3 = ["[h3]", "[/h3]"];
-var TAGS_SUP = ["[sup]", "[/sup]"];
-var TAGS_SUB = ["[sub]", "[/sub]"];
-var TAGS_ULIST = ["[ul]", "[/ul]"];
-var TAGS_LISTITEM = ["[li]", "[/li]"];
-var TAGS_PARAGRAPH = ["[p]", "[/p]"];
-var TAGS_CENTER = ["[center]", "[/center]"];
-var TAGS_LINK = ['[link]', '[/link]'];
-var TAGS_IMAGE = ["[img]", "[/img]"];
-var TAGS_VIDEO = ["[video]", "[/video]"];
-var TAGS_QUOTE = ["[quote=", "[/quote]"];
-
-/**
  * Converts tabs and HTML <br> tags to spaces and new-line characters.
  * @param {string} html - the HTML string to convert.
  * @returns {string} - the converted text. 
@@ -137,6 +96,7 @@ forum.hits.init = function ()
 $(document).ready( function () {
 
 	texttags.init(UI_UPDATE_CONTENT);
+
 	forum.hits.init( );
 
 	$("." + UI_BTN_UPDATE).hide();
