@@ -1,10 +1,16 @@
-
-
-var UI_UPDATE_CONTENT = 'edit-content-text';
+/**
+ *
+ *		TextTags
+ * 
+ *	v1.0
+ *	Steve
+ * 
+ */
 
 var texttags = {};
 
-texttags.buttonClasses = {
+texttags.buttonClasses =
+{
 	bold: 'edit-tag-bold',
 	italic: 'edit-tag-italic',
 	underline: 'edit-tag-underline',
@@ -96,8 +102,6 @@ texttags.init = function (inputToUpdate)
 			var elements = $('[data-id=' + id + ']');
 			var inputElement = elements.filter('.' + inputToUpdate);
 			var typeInstance = texttags.findButtonType($(this).attr('class'));
-
-			console.log(typeInstance);
 
 			inputElement.fieldSelection(
 				texttags.tags[typeInstance][0] 
