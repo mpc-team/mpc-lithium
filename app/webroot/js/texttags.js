@@ -103,8 +103,6 @@ texttags.init = function (inputToUpdate)
 			var inputElement = elements.filter('.' + inputToUpdate);
 			var typeInstance = texttags.findButtonType($(this).attr('class'));
 
-			console.log(typeInstance);
-
 			inputElement.fieldSelection(
 				texttags.tags[typeInstance][0] 
 				+ inputElement.fieldSelection().text 
