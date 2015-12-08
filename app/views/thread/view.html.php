@@ -90,7 +90,9 @@ EOD;
     <?php foreach ($data['posts'] as $post): ?>
 	    <div class="panel-group">
 		    <div class="panel panel-default">
+
 			    <a id="<?= $post['id'] ?>"></a>
+
 			    <div class="row">
 				    <div class="forum-post">
 					    <div>
@@ -119,13 +121,15 @@ EOD;
 								    <span class="hit" title="<?= $tooltip; ?>">
 									    <?php $postDisabledProperty = ($post['hitEnabled']) ? '' : ' disabled'; ?>
 									    <?php $postIsHitClass = ($post['hit']) ? 'post-hit-hit' : ''; ?>
+
 									    <button class="btn btn-edit post-hit <?= $postIsHitClass ?>" data-id="<?= $post['id'] ?>"<?= $postDisabledProperty ?>>
+
 										    <img src="/img/punch.png" width="20px" height="20px"/>
 									    </button>
 									    <span class="text">
-											    <span class="hits" data-id="<?= $post['id'] ?>">
-											
-											    </span>
+
+											    <span class="hits" data-id="<?= $post['id'] ?>"></span>
+
 									    </span>
 								    </span>
 								    <span class="time">
@@ -133,19 +137,27 @@ EOD;
 									    <?= $post['date'] ?>
 								    </span>
 							    </div>
+
 							    <div class="edit-content" data-id="<?= $post['id'] ?>"><?php echo $post['content']; ?></div>
+
 							    <div class="edit-content-toggle" data-id="<?= $post['id'] ?>">
+
 								    <?php if (isset($post['first'])): ?>
 									    <div class="row">
+
 										    <input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+
 									    </div>
 								    <?php endif; ?>
 								    <?= $this->view()->render(
 									    array('element' => 'texttags'),
 									    array('id' => $post['id'], 'disabled' => '')
 								    )?>
+
 								    <textarea class="form-control edit-content-text" data-id="<?= $post['id'] ?>"><?= $post['content']; ?></textarea>
+
 							    </div>
+
 						    </div>
 					    </div>
 				    </div>
@@ -157,9 +169,12 @@ EOD;
 </div>
 
 <script type="text/javascript">
-	$( document ).ready(function() {
-		$('.edit-content').each(function(index) {
+    $(document).ready(function ()
+    {
+        /* Process Markup On Posts */
+        $('.edit-content').each(function (index)
+        {
 			$(this).html(markup.process($(this).text()));
-		});
+        });
 	});
 </script>
