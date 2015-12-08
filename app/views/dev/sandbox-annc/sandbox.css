@@ -15,35 +15,20 @@
 		margin: auto;
 		color: #aaffaa;
 		text-shadow: 3px 3px 20px #aaffaa;
-		
 	}
 /*
 	*body
 */
 	#admin-announcement-gui {
 		margin: 5% 0 5% 0;
-		background-color: #000;
 	}
 	#admin-announcement-gui .well {
 		margin: auto;
 		box-shadow: 1px 1px 20px #aaffaa;
 	}
-	#annoucement-table {
-		margin: 1% 5% 1% 5%;
-	}
-	/*announcement well test*/
-	.annc-test {
-		margin: auto;
-		box-shadow: 1px 1px 20px #aaffaa;
-	}
-	#announcement-table .well {
-		margin: auto;
-		box-shadow: 1px 1px 20px #aaffaa;
-	}
-	#announcement-text {
+	#announcement-textarea {
 		color: #000;
 		background-color: #f2f2f2;
-		font-family: Arial, Georgia, san-serif;
 		width: 100%;
 		clear: both;
 	}
@@ -51,10 +36,4 @@
 		color: #fff;
 		background-color: #000;
 		box-shadow: 1px 1px 20px #fff;
-	}
-	.btn-group-justified {
-		color: #fff;
-		background-color: #000;
-		box-shadow: 1px 1px 20px #fff;
-		margin-top: 5%;
 	}
