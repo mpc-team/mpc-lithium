@@ -33,13 +33,14 @@ use app\views\layouts\LayoutConstants;
 		'field-selection',	
         'members',
 		'validate',					
-        'forum',
-		'markup',						
+        'texttags',
+		'markup',				
         'profile',
 		'scroller',					
         'fileinput',
         //'information-page',
         'announcements',
+        'texttags',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

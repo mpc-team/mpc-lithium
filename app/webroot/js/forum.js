@@ -61,69 +61,90 @@ var TAGS_IMAGE = ["[img]", "[/img]"];
 var TAGS_VIDEO = ["[video]", "[/video]"];
 var TAGS_QUOTE = ["[quote=", "[/quote]"];
 
-function html2text(html) {
+/**
+ * Converts tabs and HTML <br> tags to spaces and new-line characters.
+ * @param {string} html - the HTML string to convert.
+ * @returns {string} - the converted text. 
+ */
+function html2text(html)
+{
 	var text = html.trim( );
 	text = text.replace(/\\t/g, "");
 	text = text.replace(/<br>/g, "\n");
 	return text;
 }
 
-var forum = {
-	hits: {
-		refresh: function (postids) {
-			var matcher = '.' + UI_HITS_TEXT[0] + ' .' + UI_HITS_TEXT[1] + ' .' + UI_HITS_TEXT[2];
-			for (i = 0; i < postids.length; i++) {
-				var data = { pid: postids[i] }
+forum = {};
+forum.hits = {};
+
+/**
+ * Refreshes the Hit counter on a list of Post IDs.
+ * @param {list} postids - the list of identifiers.
+ */
+forum.hits.refresh = function (postids)
+{
+	var matcher = '.' + UI_HITS_TEXT[0] + ' .' + UI_HITS_TEXT[1] + ' .' + UI_HITS_TEXT[2];
+	for (i = 0; i < postids.length; i++)
+	{
+		var data = { pid: postids[i] }
 				
-				$.post("/post/getHits/" + postids[i], data, function (data) {
-					data = JSON.parse(data);
-					if (data.status) {
-						$(matcher).filter('[data-id=' + data.id + ']').html(
-							'<h5><b>' + data.value + '</h5></b> ' + ((data.value == 1) ? 'Hit' : 'Hits')
-						);
-					}
-				});
+		$.post("/post/getHits/" + postids[i], data, function (data)
+		{
+			data = JSON.parse(data);
+			if (data.status)
+			{
+				$(matcher).filter('[data-id=' + data.id + ']').html(
+					'<h5><b>' + data.value + '</h5></b> ' + ((data.value == 1) ? 'Hit' : 'Hits')
+				);
 			}
-		},
-		init: function () {
-			// To find post IDs just look for all `hit` buttons and get the data-id
-			// associated with it, which will yield a list of IDs for posts that we can
-			// currently use/see.
-			var postids = [];
-			var elements = $('.' + UI_HIT).each(function (index) {
-				postids[index] = $(this).attr('data-id');
-			});
-			forum.hits.refresh(postids);
-			setInterval(function () { forum.hits.refresh(postids); }, 4000);
-	
-			$("." + UI_HIT).click( function ( ) {
-				var postid = $(this).data("id");
-				var data = { pid: postid };
-				
-				$.post("/post/hit/" + postid, data, function (data) {
-					data = JSON.parse(data);
-					console.log( data );
-					if (data.status) {
-						var hitButton = $("." + UI_HIT).filter("[data-id=" + postid + "]");
-						hitButton.prop('disabled', true);
-						hitButton.addClass('post-hit-hit');
-						forum.hits.refresh([postid]);
-					}
-				});
-			});
-		}
+		});
 	}
+}
+
+/**
+ * Initializes the Click event for the Hit buttons.
+ */
+forum.hits.init = function ()
+{
+	var postids = [];
+	var elements = $('.' + UI_HIT).each(function (index)
+	{
+		postids[index] = $(this).attr('data-id');
+	});
+	forum.hits.refresh(postids);
+	setInterval(function () { forum.hits.refresh(postids); }, 4000);
+	
+	$("." + UI_HIT).click(function ()
+	{
+		var postid = $(this).data("id");
+		var data = { pid: postid };
+				
+		$.post("/post/hit/" + postid, data, function (data)
+		{
+			data = JSON.parse(data);
+			console.log( data );
+			if (data.status)
+			{
+				var hitButton = $("." + UI_HIT).filter("[data-id=" + postid + "]");
+				hitButton.prop('disabled', true);
+				hitButton.addClass('post-hit-hit');
+				forum.hits.refresh([postid]);
+			}
+		});
+	});
 };
 
 $(document).ready( function () {
 
+	texttags.init(UI_UPDATE_CONTENT);
 	forum.hits.init( );
 
 	$("." + UI_BTN_UPDATE).hide();
 	$("." + UI_BTN_CANCEL).hide();
 	$("." + UI_TOGGLED).hide();
 	
-	$("." + UI_BTN_QUOT).click( function () {
+	$("." + UI_BTN_QUOT).click(function ()
+	{
 		var $elem = $(this);
 		var msgid = $elem.data("id");
 		var $elems = $("[data-id=" + msgid +"]");
@@ -132,12 +153,13 @@ $(document).ready( function () {
 		cleaned = text.trim();
 		
 		$("#thread-reply-text").fieldSelection(
-			TAGS_QUOTE[0] + author.trim() + "]" + cleaned + TAGS_QUOTE[1]
+			texttags.tags.quote[0] + author.trim() + "]" + cleaned + texttags.tags.quote[1]
 		);
 		$("#thread-reply").gotoSection();
 	});
 	
-	$("." + UI_BTN_EDIT).click( function () {
+	$("." + UI_BTN_EDIT).click(function ()
+	{
 		var $elem = $(this);
 		var msgid = $elem.data("id");
 		var $elems = $("[data-id=" + msgid + "]");
@@ -154,7 +176,8 @@ $(document).ready( function () {
 		$("#post" + msgid).gotoSection();
 	});
 	
-	$("." + UI_BTN_CANCEL).click( function () {
+	$("." + UI_BTN_CANCEL).click(function ()
+	{
 		var $elem = $(this);
 		var msgid = $elem.data("id");
 		var $elems = $("[data-id=" + msgid + "]");
@@ -167,7 +190,8 @@ $(document).ready( function () {
 		$elems.filter("." + UI_BTN_QUOT).show();
 	});
 	
-	$("." + UI_BTN_UPDATE).click( function () {
+	$("." + UI_BTN_UPDATE).click(function ()
+	{
 		var $elem = $(this);
 		var msgid = $elem.data("id");
 		var $elems = $("[data-id=" + msgid + "]");
@@ -181,133 +205,5 @@ $(document).ready( function () {
 		$elems.filter("." + UI_HIDDEN_UPDATE_TITLE).val( $elems.filter("." + UI_UPDATE_TITLE).val() );
 		$elems.filter("." + UI_HIDDEN_UPDATE_CONTENT).val( $elems.filter("." + UI_UPDATE_CONTENT).val() );
 		$elems.filter("." + UI_FORM_UPDATE).submit();
-	});
-	
-	$("." + BTN_TAGS_BOLD).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_BOLD[0] + text.fieldSelection().text + TAGS_BOLD[1]);
-	});
-	
-	$("." + BTN_TAGS_ITALIC).click( function (){
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_ITALIC[0] + text.fieldSelection().text + TAGS_ITALIC[1]);
-	});
-	
-	$("." + BTN_TAGS_UNDERLINE).click( function (){
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_UNDERLINE[0] + text.fieldSelection().text + TAGS_UNDERLINE[1]);
-	});
-	
-	$("." + BTN_TAGS_STRIKE).click( function (){
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_STRIKE[0] + text.fieldSelection().text + TAGS_STRIKE[1]);
-	});
-	
-	$("." + BTN_TAGS_HEAD_1).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_HEADER1[0] + text.fieldSelection().text + TAGS_HEADER1[1]);
-	});
-	
-	$("." + BTN_TAGS_HEAD_2).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_HEADER2[0] + text.fieldSelection().text + TAGS_HEADER2[1]);
-	});
-	
-	$("." + BTN_TAGS_HEAD_3).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_HEADER3[0] + text.fieldSelection().text + TAGS_HEADER3[1]);
-	});
-	
-	$("." + BTN_TAGS_SUP).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_SUP[0] + text.fieldSelection().text + TAGS_SUP[1]);
-	});
-	
-	$("." + BTN_TAGS_SUB).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_SUB[0] + text.fieldSelection().text + TAGS_SUB[1]);
-	});
-	
-	$("." + BTN_TAGS_ULIST).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_ULIST[0] + text.fieldSelection().text + TAGS_ULIST[1]);
-	});
-	
-	$("." + BTN_TAGS_LISTITEM).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_LISTITEM[0] + text.fieldSelection().text + TAGS_LISTITEM[1]);
-	});
-	
-	$("." + BTN_TAGS_PARAGRAPH).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_PARAGRAPH[0] + text.fieldSelection().text + TAGS_PARAGRAPH[1]);
-	});
-	
-	$("." + BTN_TAGS_CENTER).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_CENTER[0] + text.fieldSelection().text + TAGS_CENTER[1]);
-	});
-	
-	$("." + BTN_TAGS_LINK).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_LINK[0] + text.fieldSelection().text + TAGS_LINK[1]);
-	});
-	
-	$("." + BTN_TAGS_IMAGE).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_IMAGE[0] + text.fieldSelection().text + TAGS_IMAGE[1]);
-	});
-	
-	$("." + BTN_TAGS_VIDEO).click( function () {
-		var $elem = $(this);
-		var msgid = $elem.data("id");
-		var $elems = $("[data-id=" + msgid + "]");
-		var text = $elems.filter("." + UI_UPDATE_CONTENT);
-		text.fieldSelection(TAGS_VIDEO[0] + text.fieldSelection().text + TAGS_VIDEO[1]);
 	});
 });

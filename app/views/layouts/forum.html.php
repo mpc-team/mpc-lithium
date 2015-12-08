@@ -33,7 +33,8 @@ use app\views\layouts\LayoutConstants;
         'headerbar',
         'field-selection', 
 		'members',          
-        'validate', 
+        'validate', 					
+        'texttags',
 		'forum',            
         'markup', 
 		'scroller'

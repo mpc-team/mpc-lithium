@@ -30,7 +30,10 @@ $placeholder = $reply['enabled'] ? 'Enter a message...' : $disabledPlaceholder;
 				    <div class='row'>
 					    <?= $this->view()->render(
 						    array('element' => 'texttags'),
-						    array('id' => $reply['id'], 'disabled' => $disabled)
+						    array(
+                                'id' => $reply['id'], 
+                                'disabled' => $disabled
+                            )
 					    )?>
 				    </div>
 				    <div class="row">
