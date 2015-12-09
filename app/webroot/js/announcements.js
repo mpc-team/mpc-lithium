@@ -32,14 +32,25 @@ announcements.stringify = function (object)
 {
 	var result = '';
 	result += "<div class='well well-sm'>";
-	result += "<div class='info'>";
-	result += 'Written by: ' + object.author + '<br />';
-	result += 'Written on: ' + object.tstamp + '<br />';
+
+	result += "<div class='title'>";
+	if (object.title != null)
+		result += "<h2>" + object.title + "</h3>";
+	else
+		result += "<h3>Announcement #" + object.id + "</h3>";
 	result += "</div>";
+
 	result += "<div class='content'>";
 	result += object.content;
 	result += "</div>";
+	result += "<div class='info'>";
+	result += "<div class='author'>Written by: ";
+	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
 	result += "</div>";
+	result += 'Written on: ' + object.tstamp + '<br />';
+	result += "</div>";
+	result += "</div>";
+
 	return result;
 }
 
@@ -79,13 +90,16 @@ announcements.append = function (object)
  * @param {string} message - Content of the Announcement to create.
  * @returns {bool} - False if validation failed, otherwise true.
  */
-announcements.create = function (message)
+announcements.create = function (title, message)
 {
 	if (!announcements.validate(message))
 	{
 		return false;
 	}
-	var body = { 'content': message };
+	var body = {
+		'title': title,
+		'content': message,
+	};
 	$.post('/announcements/create', body, function (data)
 	{
 		var output = $(announcements.htmlElements.content);
@@ -103,6 +117,21 @@ announcements.pull = function ()
 {
 	$.get('/announcements/all', null, function (data)
 	{
-		announcements.print(data);
+		var dataArray = [];
+		for (key in data)
+		{
+			dataArray.push(data[key]);
+		}
+
+		dataArray.sort(function (a, b)
+		{
+			var time = [new Date(a.tstamp),	new Date(b.tstamp),];
+
+			return time[1].getTime() - time[0].getTime();
+		});
+
+		console.log(dataArray);
+
+		announcements.print(dataArray);
 	});
 }

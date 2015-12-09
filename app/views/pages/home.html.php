@@ -26,6 +26,8 @@ $self = $this
 
 		<div class="collapse" id="announcement-create">
 			<div class="well well-sm">
+                <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." />
+
 				<div class='row'>
 					<?= $this->view()->render(
 						array('element' => 'texttags'),
@@ -108,11 +110,13 @@ $self = $this
 
         $('#announcement-submit').click(function ()
         {
+            var title = $('#announcement-title-input').val();
             var content = $('#announcement-input').val();
 
-            announcements.create(content);
+            announcements.create(title, content);
 
             $('#announcement-input').val('');
+            $('#announcement-title-input').val('');
             $('#announcement-btn').click();
         });
     });

@@ -1,0 +1,28 @@
+
+
+#announcement-btn 
+{
+	margin-bottom: 10px;
+}
+
+#announcements-content .title h1,
+#announcements-content .title h2,
+#announcements-content .title h3
+{
+    margin-top: 0px;
+}
+
+#announcements-content .content
+{
+    padding-bottom: 5px;
+}
+
+#announcements-content .info
+{
+    padding-top: 5px;
+}
+
+#announcements-content .info .author > a
+{
+    font-size: 150%;
+}

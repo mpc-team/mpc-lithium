@@ -39,14 +39,21 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
         
-        if (!self::validate($this->request->data['content']))
+        $content = Announcements::cleanContent($this->request->data['content']);
+        $title = Announcements::cleanTitle($this->request->data['title']);
+
+        if (!self::validate($content))
         {
             $result = array('error' => 'Invalid Parameters',);
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 
+        if (strlen($title) == 0)
+            $title = null;
+
         $announcement = Announcements::create(array(
-            'content' => $this->request->data['content'],
+            'title' => $title,
+            'content' => $content,
             'authorid' => $authorized['id'],
         ));
 
@@ -70,9 +77,6 @@ class AnnouncementsController extends ContentController
      */
     public function all()
     {
-        //$result = array('hello' => 'world');
-        //return $this->render(array('json' => $result, 'status' => '200'));
-
         $announcements = Announcements::getList();
         return $this->render(array('json' => $announcements, 'status' => '200'));
     }

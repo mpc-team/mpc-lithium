@@ -22,6 +22,7 @@ use app\views\layouts\LayoutConstants;
 		'font-awesome',
 		'website',
         'markup',
+        'announcements',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
