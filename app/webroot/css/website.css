@@ -26,6 +26,8 @@ h1, h2, h3
 {
     /* font-family: "Oswald"; */
     font-weight: 700;
+    color: #aaffaa;
+    text-shadow: 1px 1px 10px #aaffaa;
 }
 
 h1 > small,
@@ -35,6 +37,7 @@ h3 > small
     font-family: 'Montserrat';
     font-weight: 700;
     font-variant: normal;
+    text-shadow: none;
 }
 
 h1 > small > div
@@ -51,9 +54,15 @@ h5
 
 #news,
 #announcements
-{
-    padding: 10px;
+{
+    padding: 10px;
 }
+
+#announcement-btn 
+{
+	margin-bottom: 10px;
+}
+
 
 /*
 	Scrollbar Properties
@@ -1315,10 +1324,3 @@ a .panel-recentfeed h3
 {
     text-align: right;
 }
-/* Admin Announcement CSS*/
-	#admin-announcement-gui {
-		margin: 5px 0 10px 0;
-	}
-	#announcement-btn {
-		margin-bottom: 10px;
-	}

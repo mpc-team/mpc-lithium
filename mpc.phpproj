@@ -2929,8 +2929,11 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\webroot\css\admin_announcement_gui.css" />
     <Content Include="app\webroot\css\headerbar.css" />
+    <Content Include="app\webroot\css\information_page.css" />
     <Content Include="app\webroot\css\markup.css" />
+    <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
     <Content Include="app\webroot\js\announcements.js" />
   </ItemGroup>

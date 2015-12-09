@@ -7,16 +7,26 @@
 var announcements = {};
 
 /**
- *
+ * HTML Elements.
  */
 announcements.htmlElements = {
 	content: '#announcements-content',
 };
 
 /**
- * 
- * @param {type} object
- * @returns {type} 
+ * Validates the content of an Announcement.
+ * @param {string} content - Content being validated.
+ * @returns {bool} - True if the content is valid.
+ */
+announcements.validate = function (content)
+{
+	return content.length > 0;
+}
+
+/**
+ * Returns HTML representing an Announcement.
+ * @param {object} object - The Announcement.
+ * @returns {string} - HTML representing the UI of the Announcement.
  */
 announcements.stringify = function (object)
 {
@@ -65,21 +75,29 @@ announcements.append = function (object)
 }
 
 /**
- * 
- * @param {type} message
+ * Creates an Announcement with a REST API call.
+ * @param {string} message - Content of the Announcement to create.
+ * @returns {bool} - False if validation failed, otherwise true.
  */
 announcements.create = function (message)
-{ 
-	var data = { 'content': message };
-
-	$.post('/announcements/create', data, function (data)
+{
+	if (!announcements.validate(message))
 	{
+		return false;
+	}
+	var body = { 'content': message };
+	$.post('/announcements/create', body, function (data)
+	{
+		var output = $(announcements.htmlElements.content);
+
 		announcements.append(data['announcement']);
+		output.val('');
 	});
+	return true;
 }
 
 /**
- * Returns a list of all Announcements.
+ * Retrieves a list of all Announcements and prints them as HTML UI elements.
  */
 announcements.pull = function ()
 {

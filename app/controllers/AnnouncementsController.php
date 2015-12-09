@@ -10,6 +10,19 @@ use app\models\Announcements;
 
 class AnnouncementsController extends ContentController 
 {
+    
+    /**
+     * Validates the input received to create an Announcement.
+     * 
+     * @param mixed $content - The input being validated, as a string.
+     * 
+     * @return bool - True if the Announcement content is valid.
+     */
+    public static function validate($content)
+    {
+        return strlen($content) > 0;
+    }
+
     /**
      * Creates an Announcement authored by the currently authorized User.
      * 
@@ -23,6 +36,12 @@ class AnnouncementsController extends ContentController
         if (!Permissions::is_admin($authorized))
         {
             $result = array('error' => 'Insufficient Permissions',);
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+        
+        if (!self::validate($this->request->data['content']))
+        {
+            $result = array('error' => 'Invalid Parameters',);
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 

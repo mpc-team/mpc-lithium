@@ -24,8 +24,6 @@ var profile = {
 			$(".game[data-id='" + gameid + "'] .status").removeClass("active");
 			$(".game[data-id='" + gameid + "'] .panel").removeClass("active");
 		}$
-		/* this is a little UI trick to make the button never appear selected */
-		$(".game[data-id='" + gameid + "'] button").blur();
 	},
 	
 	updateGame: function (played, userid, gameid, flag) {

@@ -17,45 +17,39 @@ $self = $this
 ?>
 <section id="announcements" class="col-md-8">
     <h2>Announcements</h2>
-	<div class="row" id="admin-announcement-gui">
-		<button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#collapse-announcement" aria-expanded="false" aria-controls="collapse-announcement" id="announcement-btn">
+	<div class="row">
+
+		<button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" id="announcement-btn">
 		  <span class="glyphicon glyphicon-plus"></span>
 		   Add an Announcement
 		</button>
-		<div class="collapse" id="collapse-announcement">
-			<div class="well">
+
+		<div class="collapse" id="announcement-create">
+			<div class="well well-sm">
 				<div class='row'>
 					<?= $this->view()->render(
 						array('element' => 'texttags'),
-						array('id' => 1, 'disabled' => false)
+						array('id' => '1', 'disabled' => false)
 					)?>
 				</div>
 
-				<textarea type="text" placeholder="Enter an Announcement - then click submit." value="" aria-describedby="annc-addon" name="announcement-text" id="announcement-textarea" class="form-control"  rows="4" wrap="hard"></textarea>
+				<textarea type="text" class='form-control announcement-input' placeholder="Enter your Announcement and click Submit." id="announcement-input" data-id="1"></textarea>
 
 				<div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-edit annc-submitbtn" onclick="announcements.pull()">
+						<button type="button" id="announcement-submit" class="btn btn-edit">
                             Submit Announcement
                         </button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script>
-            $("#announcement-btn").click(function ()
-            {
-                $('#announcement-btn').blur();
-			    $("#announcement-btn span").toggleClass("glyphicon-minus");
-            });
-
-            $('#collapse-announcement').on('shown.bs.collapse', function ()
-            {
-                $('#announcement-textarea').focus();
-            });
-		</script>
 	</div>
+
+    <hr />
+
     <div id="announcements-content">
+        <!--
         <div class="well well-sm">
             <h5>5 in a row</h5>
             <img src="http://www.mpcgaming.com/app/webroot/img/clashofclans/assassins/victory10302015.png" class="img-rounded img-responsive" alt="victory103002015.png" style="margin: auto;" />
@@ -73,6 +67,7 @@ $self = $this
         <div class="well well-sm">
             <h5>10/20/2015: Clash of Clans MPC assassins Starting War against Furia De Roig</h5>
         </div>
+             -->
     </div>
 </section>
 <section id="news" class="col-md-4">
@@ -91,6 +86,34 @@ $self = $this
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        var objects = announcements.pull();		
+        var objects = announcements.pull();
+
+        texttags.init('announcement-input');
+
+        // When the Announcement input is shown, focus it (and change Icon to Minus (-)).
+        $('#announcement-create').on('shown.bs.collapse', function ()
+        {
+            $('#announcement-input').focus();
+
+            $("#announcement-btn span").toggleClass("glyphicon-plus");
+            $("#announcement-btn span").toggleClass("glyphicon-minus");
+        });
+
+        // When the Announcements are hidden, change the Icon to a Plus (+).
+        $('#announcement-create').on('hidden.bs.collapse', function ()
+        {
+            $("#announcement-btn span").toggleClass("glyphicon-plus");
+            $("#announcement-btn span").toggleClass("glyphicon-minus");
+        });
+
+        $('#announcement-submit').click(function ()
+        {
+            var content = $('#announcement-input').val();
+
+            announcements.create(content);
+
+            $('#announcement-input').val('');
+            $('#announcement-btn').click();
+        });
     });
 </script>
