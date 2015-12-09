@@ -20,28 +20,39 @@ $self = $this
 	<div class="row" id="admin-announcement-gui">
 		<button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#collapse-announcement" aria-expanded="false" aria-controls="collapse-announcement" id="announcement-btn">
 		  <span class="glyphicon glyphicon-plus"></span>
-		  Add an Announcement
+		   Add an Announcement
 		</button>
 		<div class="collapse" id="collapse-announcement">
 			<div class="well">
 				<div class='row'>
 					<?= $this->view()->render(
 						array('element' => 'texttags'),
-						array('id' => $reply['id'], 'disabled' => $disabled)
+						array('id' => 1, 'disabled' => false)
 					)?>
 				</div>
+
 				<textarea type="text" placeholder="Enter an Announcement - then click submit." value="" aria-describedby="annc-addon" name="announcement-text" id="announcement-textarea" class="form-control"  rows="4" wrap="hard"></textarea>
+
 				<div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-edit annc-submitbtn" onclick="announcements.pull()">Submit Announcement</button>
+						<button type="button" class="btn btn-edit annc-submitbtn" onclick="announcements.pull()">
+                            Submit Announcement
+                        </button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script>
-			$("#announcement-btn").click(function(){
-					$("#announcement-btn span").toggleClass("glyphicon-minus");
-			});
+            $("#announcement-btn").click(function ()
+            {
+                $('#announcement-btn').blur();
+			    $("#announcement-btn span").toggleClass("glyphicon-minus");
+            });
+
+            $('#collapse-announcement').on('shown.bs.collapse', function ()
+            {
+                $('#announcement-textarea').focus();
+            });
 		</script>
 	</div>
     <div id="announcements-content">
