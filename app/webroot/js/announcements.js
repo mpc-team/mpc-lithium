@@ -20,8 +20,6 @@ announcements.htmlElements = {
  */
 announcements.stringify = function (object)
 {
-	console.log(object);
-
 	var result = '';
 	result += "<div class='well well-sm'>";
 	result += "<div class='info'>";
