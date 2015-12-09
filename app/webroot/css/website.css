@@ -1316,7 +1316,9 @@ a .panel-recentfeed h3
     text-align: right;
 }
 /* Admin Announcement CSS*/
-	#admin-announcement-gui .well {
-		margin: auto;
-		box-shadow: 1px 1px 20px #aaffaa;
+	#admin-announcement-gui {
+		margin: 5px 0 10px 0;
+	}
+	#announcement-btn {
+		margin-bottom: 10px;
 	}

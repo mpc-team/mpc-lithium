@@ -17,17 +17,35 @@ $self = $this
 ?>
 <section id="announcements" class="col-md-8">
     <h2>Announcements</h2>
-
-    <span class="input-group-addon glyphicon"></span>
-    <textarea class="form-control" type="text" placeholder="Enter an Announcement - then click submit." name="announcement-text"></textarea>
-    <div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-edit">Submit Announcement</button>
-        </div>
-    </div>
-
+	<div class="row" id="admin-announcement-gui">
+		<button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#collapse-announcement" aria-expanded="false" aria-controls="collapse-announcement" id="announcement-btn">
+		  <span class="glyphicon glyphicon-plus"></span>
+		  Add an Announcement
+		</button>
+		<div class="collapse" id="collapse-announcement">
+			<div class="well">
+				<div class='row'>
+					<?= $this->view()->render(
+						array('element' => 'texttags'),
+						array('id' => $reply['id'], 'disabled' => $disabled)
+					)?>
+				</div>
+				<textarea type="text" placeholder="Enter an Announcement - then click submit." value="" aria-describedby="annc-addon" name="announcement-text" id="announcement-textarea" class="form-control"  rows="4" wrap="hard"></textarea>
+				<div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-edit annc-submitbtn" onclick="announcements.pull()">Submit Announcement</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$("#announcement-btn").click(function(){
+					$("#announcement-btn span").toggleClass("glyphicon-minus");
+			});
+		</script>
+	</div>
     <div id="announcements-content">
-        <!--<div class="well well-sm">
+        <div class="well well-sm">
             <h5>5 in a row</h5>
             <img src="http://www.mpcgaming.com/app/webroot/img/clashofclans/assassins/victory10302015.png" class="img-rounded img-responsive" alt="victory103002015.png" style="margin: auto;" />
         </div>
@@ -43,7 +61,7 @@ $self = $this
         </div>
         <div class="well well-sm">
             <h5>10/20/2015: Clash of Clans MPC assassins Starting War against Furia De Roig</h5>
-        </div> -->
+        </div>
     </div>
 </section>
 <section id="news" class="col-md-4">
@@ -59,29 +77,9 @@ $self = $this
 	</div>
 </section>
 
-<div class="row" id="admin-announcement-gui">
-	<div class="well">
-		<h2>Announcement Board
-			<span class="label label-default">Admin Software</span>
-		</h2>
-		<div class='row'>
-			<?= $this->view()->render(
-				array('element' => 'texttags'),
-				array('id' => $reply['id'], 'disabled' => $disabled)
-			)?>
-		</div>
-		<textarea type="text" placeholder="Enter an Announcement - then click submit." value="" aria-describedby="annc-addon" name="announcement-text" id="announcement-textarea" class="form-control"  rows="4" wrap="hard" autofocus></textarea>
-		<div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
-			<div class="btn-group" role="group">
-				<button type="button" class="btn btn-default annc-submitbtn" onclick="announcements.pull()">Submit Announcement</button>
-			</div>
-		</div>
-	</div>
-</div>
-
 <script type="text/javascript">
     $(document).ready(function ()
     {
-        var objects = announcements.pull();
+        var objects = announcements.pull();		
     });
 </script>
