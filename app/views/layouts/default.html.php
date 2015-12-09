@@ -26,6 +26,7 @@ use app\views\layouts\LayoutConstants;
         'external/effects/hover',
         'external/effects/component',
         'announcements',
+        'information-page',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
