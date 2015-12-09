@@ -60,7 +60,9 @@ class AnnouncementsController extends ContentController
         if ($announcement->save())
         {
             $created = Announcements::getById($announcement->id);
-            $created['author'] = Users::getById($created['authorid'])['alias'];
+            $created['author'] = Users::getById($created['authorid']);
+            if ($created['author'])
+                $created['author'] = $created['author']['alias'];
 
             $result = array('announcement' => $created);
             return $this->render(array('json' => $result, 'status' => '200'));

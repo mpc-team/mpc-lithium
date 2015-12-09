@@ -130,8 +130,6 @@ announcements.pull = function ()
 			return time[1].getTime() - time[0].getTime();
 		});
 
-		console.log(dataArray);
-
 		announcements.print(dataArray);
 	});
 }
