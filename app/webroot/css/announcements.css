@@ -2,7 +2,7 @@
 
 #announcement-btn 
 {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 #announcements-content .title h1,
@@ -25,4 +25,19 @@
 #announcements-content .info .author > a
 {
     font-size: 150%;
+}
+
+#announcements-content > div > hr
+{
+    margin: 0px;
+    border-top: 2px solid gray;
+    box-shadow: none;
+}
+
+#announcements-content > .well
+{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

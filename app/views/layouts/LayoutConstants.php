@@ -16,5 +16,6 @@ class LayoutConstants
     const JQUERY_PATH_OLD = 'jquery-1.11.2';
     const JQUERY_PATH = 'jquery-1.11.3.min';
 
-
+    /* External Effects */
+    
 }

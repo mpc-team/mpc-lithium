@@ -22,12 +22,14 @@ use app\views\layouts\LayoutConstants;
 		'font-awesome',
 		'website',
         'markup',
+        'headerbar',
+        'external/effects/hover',
+        'external/effects/component',
         'announcements',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
-		'jquery-ui.min',
 		'navbar', 
         'headerbar',
         'moment',

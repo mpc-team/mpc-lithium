@@ -40,7 +40,7 @@
 					
 						<div class="col-md-4">
 							<div class="panel-group">
-								<div class="panel panel-default">
+								<div class="panel panel-default hvr-grow">
 									<a class="btn" href="/thread/view/<?= $recent['tid'] ?>#<?= $recent['id'] ?>">
 										<div class="panel-recentfeed">
 											<div class="row">

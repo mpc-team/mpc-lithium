@@ -15,7 +15,9 @@ announcements.htmlElements = {
 
 /**
  * Validates the content of an Announcement.
+ * 
  * @param {string} content - Content being validated.
+ * 
  * @returns {bool} - True if the content is valid.
  */
 announcements.validate = function (content)
@@ -25,7 +27,9 @@ announcements.validate = function (content)
 
 /**
  * Returns HTML representing an Announcement.
+ * 
  * @param {object} object - The Announcement.
+ * 
  * @returns {string} - HTML representing the UI of the Announcement.
  */
 announcements.stringify = function (object)
@@ -43,6 +47,7 @@ announcements.stringify = function (object)
 	result += "<div class='content'>";
 	result += object.content;
 	result += "</div>";
+	result += "<hr />"
 	result += "<div class='info'>";
 	result += "<div class='author'>Written by: ";
 	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
@@ -87,7 +92,9 @@ announcements.append = function (object)
 
 /**
  * Creates an Announcement with a REST API call.
+ * 
  * @param {string} message - Content of the Announcement to create.
+ * 
  * @returns {bool} - False if validation failed, otherwise true.
  */
 announcements.create = function (title, message)
@@ -111,25 +118,29 @@ announcements.create = function (title, message)
 }
 
 /**
- * Retrieves a list of all Announcements and prints them as HTML UI elements.
+ * Sends a GET request to `/announcements/all`.
  */
 announcements.pull = function ()
 {
-	$.get('/announcements/all', null, function (data)
-	{
-		var dataArray = [];
-		for (key in data)
+	$.get('/announcements/all', null,
+		/**
+		 * Response callback for the GET request above.
+		 * 
+		 * @param {object} data - The requested announcements.
+		 */
+		function (data)
 		{
-			dataArray.push(data[key]);
+			var dataArray = [];
+			for (key in data)
+				dataArray.push(data[key]);
+
+			dataArray.sort(function (a, b)
+			{
+				var time = [new Date(a.tstamp), new Date(b.tstamp), ];
+
+				return time[1].getTime() - time[0].getTime();
+			});
+			announcements.print(dataArray);
 		}
-
-		dataArray.sort(function (a, b)
-		{
-			var time = [new Date(a.tstamp),	new Date(b.tstamp),];
-
-			return time[1].getTime() - time[0].getTime();
-		});
-
-		announcements.print(dataArray);
-	});
+	);
 }

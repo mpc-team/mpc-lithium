@@ -26,8 +26,16 @@ $path = Libraries::get(true, 'path');
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<?php echo $this->html->charset(); ?>
 	<title>MPC | Page Not Found</title>
-	<?php echo $this->html->style(array('bootstrap', 'website', 'font-awesome')); ?>
-	<?php echo $this->scripts(); ?>
+	<?php echo $this->html->style(array(
+        'bootstrap', 
+        'website', 
+        'font-awesome',
+        'headerbar',
+    )); ?>
+	<?php echo $this->scripts(array(
+        'navbar',
+        'headerbar',
+    )); ?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
 </head>

@@ -6108,7 +6108,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 .navbar-default .navbar-nav > .active > a:focus
 {
     color: inherit;
-    border-bottom: 5px solid #b4ffb8;
+    /*border-bottom: 5px solid #b4ffb8;*/
     /*   color: #aaaaff;
 	border: 1px solid rgba(190, 190, 255, 0.3); */
 }

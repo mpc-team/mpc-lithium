@@ -59,14 +59,21 @@ scroller.getParams = function (url)
  */
 scroller.getPageDirectoryId = function (url)
 {
-	return url.slice(url.indexOf('#') + 1, url.length);
+	var index = url.indexOf('#');
+	if (index > 0)
+		return url.slice(index + 1, url.length);
+	else
+		return null;
 }
 
 scroller.init = function ()
 {
 	var dir = scroller.getPageDirectoryId(window.location.href);
 
-	$('#' + dir).gotoSection();
+	if (dir != null)
+	{
+		$('#' + dir).gotoSection();
+	}
 	//var params = scroller.getParams(window.location.href);
 	
 	//if ("post" in params)

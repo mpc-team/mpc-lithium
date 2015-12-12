@@ -24,7 +24,10 @@ use app\views\layouts\LayoutConstants;
 		'bootstrap',
 		'font-awesome',
 		'website',
-        'markup'
+        'markup',
+        'headerbar',
+        'external/effects/hover',
+        'external/effects/component',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,

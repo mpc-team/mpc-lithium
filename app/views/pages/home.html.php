@@ -16,37 +16,40 @@ $self = $this
 
 ?>
 <section id="announcements" class="col-md-8">
+
     <h2>Announcements</h2>
-	<div class="row">
 
-		<button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" id="announcement-btn">
-		  <span class="glyphicon glyphicon-plus"></span>
-		   Add an Announcement
-		</button>
+    <?php if ($permissions['announcements']['CREATE']): ?>
+	    <div class="row">
+		    <button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" id="announcement-btn">
+		      <span class="glyphicon glyphicon-plus"></span>
+		       Add an Announcement
+		    </button>
 
-		<div class="collapse" id="announcement-create">
-			<div class="well well-sm">
-                <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." />
+		    <div class="collapse" id="announcement-create">
+			    <div class="well well-sm">
+                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." />
 
-				<div class='row'>
-					<?= $this->view()->render(
-						array('element' => 'texttags'),
-						array('id' => '1', 'disabled' => false)
-					)?>
-				</div>
-
-				<textarea type="text" class='form-control announcement-input' placeholder="Enter your Announcement and click Submit." id="announcement-input" data-id="1"></textarea>
-
-				<div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
-					<div class="btn-group" role="group">
-						<button type="button" id="announcement-submit" class="btn btn-edit">
-                            Submit Announcement
-                        </button>
+					<div class='row'>
+						<?= $this->view()->render(
+							array('element' => 'texttags'),
+							array('id' => '1', 'disabled' => false)
+						)?>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+				    <textarea type="text" class='form-control announcement-input' placeholder="Enter your Announcement and click Submit." id="announcement-input" data-id="1"></textarea>
+
+				    <div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
+					    <div class="btn-group" role="group">
+						    <button type="button" id="announcement-submit" class="btn btn-edit">
+                                Submit Announcement
+                            </button>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    <?php endif; ?>
 
     <hr />
 

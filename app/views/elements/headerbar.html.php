@@ -7,29 +7,37 @@
  *
  */
 
+$button_hover_class = 'cl-effect-3';
+
 ?>
 <div class="page-header-navigation">
 
     <hr style="position: absolute; right: 0; left: 0; margin: 0px 0px 0px 0px;" />
 
-    <nav role="navigation" class="navbar navbar-default">
+    <nav role="navigation" class="navbar navbar-default cl-effect-1">
         <ul class="nav navbar-nav">
             <li id='headerbar-home'>
-                <a href='/'>MPC</a>
+                <a href='/'>
+                    MPC
+                </a>
             </li>
         </ul>
         <ul class="nav navbar-nav">
 
             <li id='headerbar-members'>
-                <a href='/members'>Members</a>
+                <a href='/members'>
+                    Members
+                </a>
             </li>
 
             <li id='headerbar-forum'>
-                <a href='/forum'>Forum</a>
+                <a href='/forum'>
+                    Forum
+                </a>
             </li>
 
             <li id='headerbar-games' class='dropdown'>
-                <a href='/games' role='button'>
+                <a href='/games'>
                     Games
                 </a>
             </li>
@@ -38,13 +46,15 @@
         <ul class="nav navbar-nav pull-right">
             <?php if ($authorized): ?>
             <li id='headerbar-user' class='dropdown'>
-                <a href='/user/profile' role='button'>
+                <a href='/user/profile'>
                     <span class='glyphicon glyphicon-user'></span>
                     <?= $authorized['alias'] ?>
                 </a>
                 <ul class='dropdown-menu' role='menu'>
                     <li>
-                        <a href='/user/profile'>Profile</a>
+                        <a href='/user/profile'>
+                            Profile
+                        </a>
                     </li>
                     <li class='divider'></li>
                     <li>
@@ -57,15 +67,19 @@
             </li>
             <?php else: ?>
             <li id='headerbar-signup'>
-                <a href='/signup'>Signup</a>
+                <a href='/signup'>
+                    Signup
+                </a>
             </li>
             <li id='headerbar-login'>
-                <a href='/login'>Login</a>
+                <a href='/login'>
+                    Login
+                </a>
             </li>
             <?php endif; ?>
         </ul>
     </nav>
 
     <hr style="position: absolute; right: 0; left: 0; margin: 0px 0px 0px 0px;" />
-    
+
 </div>

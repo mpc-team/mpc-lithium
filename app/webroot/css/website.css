@@ -577,15 +577,15 @@ a h5
 
 .forum h1
 {
-    font-variant: small-caps;
+    /*font-variant: small-caps;*/
     font-size: 350%;
 }
 
 .forum-thread h4 .name,
 .forum-thread h5 .name
 {
-    text-transform: lowercase;
-    font-variant: small-caps;
+    /*text-transform: lowercase;
+    font-variant: small-caps;*/
 }
 
 .quote-content
@@ -1012,7 +1012,7 @@ a .panel-recentfeed h3
 .panel-recentfeed .name
 {
     /* font-family: "Oswald"; */
-    font-variant: small-caps;
+    /*font-variant: small-caps;*/
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;

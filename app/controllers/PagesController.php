@@ -30,7 +30,7 @@ class PagesController extends \lithium\action\Controller
 {
 
 	public function view() 
-    {
+	{
 		$authorized = Auth::check('default');
 		$breadcrumbs = array(
 			'path' => array('MPC', 'Home'),
@@ -40,16 +40,16 @@ class PagesController extends \lithium\action\Controller
 		$path = func_get_args();
 		
 		if (!$path || $path === array('home')) 
-        {
+		{
 			$path = array('home');
 			$options['compiler'] = array('fallback' => true);
 		}
 
         $permissions = array(
             'announcements' => array(
-                'edit' => Permissions::is_admin($authorized),
-                'create' => Permissions::is_admin($authorized),
-                'delete' => Permissions::is_admin($authorized),
+                'EDIT' => $authorized && Permissions::is_admin($authorized),
+                'CREATE' => $authorized && Permissions::is_admin($authorized),
+                'DELETE' => $authorized && Permissions::is_admin($authorized),
             ),
         );
 
@@ -57,7 +57,7 @@ class PagesController extends \lithium\action\Controller
 		$this->set(array(
 			'authorized' => $authorized,
 			'breadcrumbs' => $breadcrumbs,
-            'features' => $permissions,
+			'permissions' => $permissions,
 		));
 
 		return $this->render($options);
