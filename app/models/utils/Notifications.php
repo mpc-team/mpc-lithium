@@ -9,7 +9,7 @@ class Notifications
 		'pwc', 'avch', 'login'
 	);
 	static $s_valid_statuses = array(
-		'succes', 'failed', 'nofile'
+		'success', 'failed', 'nofile'
 	);
 
 	static $s_notificationMessages = array(	
@@ -61,7 +61,7 @@ class Notifications
 			'valid_status' => isset($query['status']) && in_array($query['status'], self::$s_valid_statuses)
 		);
 		$notification = array('enabled' => false, 'status' => 'none', 'text' => '');
-		
+
 		if ($conditions['valid_status'] && $conditions['valid_op'])
 		{
 			switch ($query['op'])
