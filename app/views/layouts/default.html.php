@@ -25,6 +25,7 @@ use app\views\layouts\LayoutConstants;
         'headerbar',
         'external/effects/hover',
         'external/effects/component',
+        'utils/fileselect',
         'announcements',
         'information-page',
 	));?>
@@ -42,9 +43,9 @@ use app\views\layouts\LayoutConstants;
         'profile',
 		'scroller',					
         'fileinput',
-        //'information-page',
         'announcements',
         'texttags',
+        'utils/fileselect',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

@@ -93,6 +93,7 @@ $self = $this
     {
         var objects = announcements.pull();
 
+        // Initialize TextTags for the create/edit Announcement input.
         texttags.init('announcement-input');
 
         // When the Announcement input is shown, focus it (and change Icon to Minus (-)).
@@ -111,6 +112,7 @@ $self = $this
             $("#announcement-btn span").toggleClass("glyphicon-minus");
         });
 
+        // Submit an Announcement, clear the UI inputs afterwards.
         $('#announcement-submit').click(function ()
         {
             var title = $('#announcement-title-input').val();

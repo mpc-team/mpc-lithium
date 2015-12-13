@@ -29,7 +29,7 @@ $gamecount = 0;
 			<div class="col-xs-2">
 			
 				<div class="game" data-id='<?= $game['id'] ?>'>
-					<div class="panel panel-default hvr-pop">
+					<div class="panel panel-default">
 					
 					<?php if ($profile): ?>
 						<button class='btn btn-edit' data-id='<?= $game['id'] ?>'>

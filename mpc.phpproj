@@ -2729,12 +2729,16 @@
     <Folder Include="app\views\_errors" />
     <Folder Include="app\views" />
     <Folder Include="app\webroot\css" />
+    <Folder Include="app\webroot\css\external\" />
+    <Folder Include="app\webroot\css\external\effects\" />
+    <Folder Include="app\webroot\css\utils\" />
     <Folder Include="app\webroot\fonts" />
     <Folder Include="app\webroot\img\e_files" />
     <Folder Include="app\webroot\img\toolbar" />
     <Folder Include="app\webroot\img\_vti_cnf" />
     <Folder Include="app\webroot\img" />
     <Folder Include="app\webroot\js" />
+    <Folder Include="app\webroot\js\utils\" />
     <Folder Include="app\webroot\starcraft2\builds" />
     <Folder Include="app\webroot\starcraft2" />
     <Folder Include="app\webroot\users\avatars" />
@@ -2929,12 +2933,15 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\webroot\css\admin_announcement_gui.css" />
+    <Content Include="app\webroot\css\external\effects\component.css" />
+    <Content Include="app\webroot\css\external\effects\hover.css" />
     <Content Include="app\webroot\css\headerbar.css" />
-    <Content Include="app\webroot\css\information_page.css" />
+    <Content Include="app\webroot\css\announcements.css" />
     <Content Include="app\webroot\css\markup.css" />
+    <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
     <Content Include="app\webroot\js\announcements.js" />
+    <Content Include="app\webroot\js\utils\fileselect.js" />
   </ItemGroup>
 </Project>

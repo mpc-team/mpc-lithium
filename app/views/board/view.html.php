@@ -51,33 +51,23 @@ $features = function($tid, $options)
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							&times;
 						</button>
-						<h1 class="modal-title" id="modal-label">
+						<h2 class="modal-title" id="modal-label">
 							Create New Thread
-						</h1>
+						</h2>
 					</div>
 					<div class="modal-body">
-						<div class="panel panel-default">
-							<div class="form-group">
-								<label class="control-label" for="title">
-									<h3><small>Thread</small> Title</h3>
-								</label>
-								<input type="text" name="title" class="form-control" placeholder="Title..." required/>
+						<div class="form-group">
+							<input type="text" name="title" class="form-control" placeholder="Title..." required/>
+						</div>
+						<div class="form-group">						
+							<div class='row'>
+								<?= $this->view()->render(
+									array('element' => 'texttags'),
+									array('id' => $data['forum']['id'], 'disabled' => '')
+								)?>
 							</div>
-							<div class="form-group">						
-								<div class='row'>
-									<label class="control-label" for="title">
-										<h3><small>Thread</small> Content</h3>
-									</label>
-								</div>
-								<div class='row'>
-									<?= $this->view()->render(
-										array('element' => 'texttags'),
-										array('id' => $data['forum']['id'], 'disabled' => '')
-									)?>
-								</div>
-								<div class='row'>
-									<textarea name="content" class="form-control edit-content-text" placeholder="Post content..." data-id="<?= $data['forum']['id'] ?>" required></textarea>
-								</div>
+							<div class='row'>
+								<textarea name="content" class="form-control edit-content-text" placeholder="Post content..." data-id="<?= $data['forum']['id'] ?>" required></textarea>
 							</div>
 						</div>
 					</div>

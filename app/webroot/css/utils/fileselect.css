@@ -1,0 +1,20 @@
+﻿
+.fs-conf-modal
+{
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.fs-conf-modal > .modal-dialog
+{
+    padding-top: 10%;
+}
+
+.fs-btn-modify > .info
+{
+    padding-top: 5px;
+}
+
+.fs-btn-modify:hover > img
+{
+    -webkit-filter: brightness(2);
+}
