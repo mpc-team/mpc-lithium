@@ -20,15 +20,11 @@ use app\models\UserResetPasswords;
 
 class UserController extends \lithium\action\Controller 
 {
-
 	// The amount of Recent Threads to display.
 	const RECENT_LIMIT = 9;
 	
-	
 	// Accepted Image Types for Profile Avatars.
 	static $s_imageTypes = array('IMG_JPG','IMG_JPEG','IMG_PNG','IMG_GIF');
-	
-	
 	
 	public static function getUserGameIds ($uid) 
 	{
@@ -39,7 +35,6 @@ class UserController extends \lithium\action\Controller
 			
 		return $result;
 	}
-	
 	
 	/**
 	 * <Needs To Be Filled In>
@@ -134,7 +129,7 @@ class UserController extends \lithium\action\Controller
 				$check = getimagesize($data['avatarfile']['tmp_name']);
 				$image_types = array(IMAGETYPE_JPEG, IMAGETYPE_PNG);
 				
-				if (in_array($check[2], $image_types))
+				if ($check && in_array($check[2], $image_types))
 				{
 					$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
 					$cleaned = Users::clean_existing_avatar_files($authorized['email']);
