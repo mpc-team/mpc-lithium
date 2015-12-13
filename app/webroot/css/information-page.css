@@ -1,0 +1,78 @@
+/* Information Page CSS */
+#ventrilologo {
+	margin: auto;
+	max-height: auto;
+	max-width: 80%;
+	min-height: auto;
+	min-width: 5%;
+}
+#ventrilobanner {
+	margin: auto;
+	max-height: auto;
+	max-width: 100%;
+	min-height: auto;
+	min-width: 10%;
+	box-shadow: 1px 1px 20px #fff;
+}
+#ventrilobanner:hover {
+	box-shadow: 1px 1px 20px #aaffaa;
+	
+}
+#ventrilo .list-group-item {
+	background-color: #f2f2f2;
+	color: #000;
+    margin: 0 2% 0 2%;
+}
+#ventrilo .list-group-item:hover {
+	background-color: #000;
+	color: #aaffaa;
+	text-shadow: 1px 1px 10px #fff;
+}
+#ventrilo .glyphicon-size {
+	margin: auto;
+	max-width: 100%;
+	min-width: 50%;
+    height: auto;
+}
+#ventrilo .media-list {
+	margin-top: 5%;
+}
+#ventrilo .media:hover {
+	position: relative;
+	z-index: 5;
+	color: #aaffaa;
+	text-shadow: 5px 5px 10px #aaffaa;
+}
+#ventrilo .media:hover a {
+	color: #fff;
+	text-shadow: 5px 5px 10px #aaffaa;
+}
+#ventrilo #ventrilo-tutorial {
+    margin: auto;
+    max-width: 600px;
+    height: auto;
+}
+#ventrilo .img-center {
+    margin: auto;
+}
+#ventrilo .img-center:hover {
+    box-shadow: 1px 1px 15px #aaffaa;
+}
+#ventrilo p {
+    margin: 1% 10% 1% 10%;
+}
+#vent-installation-pillgroup {
+    margin: auto;
+}
+#ventrilo p {
+      text-indent: 50px;
+}
+#ventrilo .nav-pills > li.active > a, #ventrilo > .nav-pills > li.active > a:hover, #ventrilo .nav-pills > li.active > a:focus{
+
+    color: black;
+    background-color: #aaffaa;
+
+}
+#vent-setup-content p b {
+    color: #aaffaa;
+}
