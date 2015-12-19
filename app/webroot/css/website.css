@@ -52,12 +52,24 @@ h5
     /* font-family: "Oswald"; */
 }
 
+.page-banner
+{
+    background: url('/img/mpc-banner-background.png');
+    min-height: 70px;
+}
+
+.page-banner #banner-image
+{
+    display: block;
+    position: relative;
+    min-height: 70px;
+}
+
 #news,
 #announcements
 {
     padding: 10px;
 }
-
 
 /*
 	Scrollbar Properties
@@ -101,15 +113,6 @@ textarea.form-control
 {
     resize: vertical;
     height: 10em;
-}
-
-/* Formatting style for image displayed in MPC banner. */
-#banner-image
-{
-    display: block;
-    max-height: 200px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* Padding at the bottom of every page to allow the user to scroll as necessary

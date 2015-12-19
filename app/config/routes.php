@@ -49,26 +49,12 @@ Router::connect('/', 'Pages::view');
  */
 Router::connect('/pages/{:args}', 'Pages::view');
  
-//##################################################################################################
-//#
-//#	RESTful API Controllers
-//#
-//##################################################################################################
-/*
- *	The Games section is managed by the Router because there are many controller modules
- *	that are used to direct traffic to the different games sections. 
- */
 Router::connect('/games', array('controller' => 'app\controllers\games\GamesController'));
+//Router::connect('/games/{:controller}/{:action}', array('controller' => 'app\controllers\games\{:controller}Controller'));
 Router::connect('/games/heroes_of_the_storm', array('controller' => 'app\controllers\games\HeroesOfTheStormController'));
 Router::connect('/games/starcraft2', array('controller' => 'app\controllers\games\Starcraft2Controller'));
 Router::connect('/games/world_of_warcraft', array('controller' => 'app\controllers\games\WorldOfWarcraftController'));
 Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashOfClansController'));
-
-//##################################################################################################
-//#
-//#	RESTful API Controllers
-//#
-//##################################################################################################
 
 Router::connect('/api/games/{:action}', array('controller' => 'app\controllers\api\GamesAPI'));
 

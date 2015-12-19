@@ -74,6 +74,25 @@ class AnnouncementsController extends ContentController
         }
     }
 
+    public function delete()
+    {
+        if (!isset($this->request->id))
+        {
+            $result = array('error' => 'Insufficient Permissions');
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+        $id = $this->request->id;
+
+        $authorized = Auth::check('default');
+        if (!Permissions::is_admin($authorized))
+        {
+            $result = array('error' => 'Insufficient Permissions');
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+
+        $announcement = Announcements::getById(id);
+    }
+
     /**
      * Returns a list of *all* Announcements.
      */

@@ -27,15 +27,35 @@ $path = Libraries::get(true, 'path');
 	<?php echo $this->html->charset(); ?>
 	<title>MPC | Page Not Found</title>
 	<?php echo $this->html->style(array(
-        'bootstrap', 
-        'website', 
-        'font-awesome',
+		'bootstrap',
+		'font-awesome',
+		'website',
+        'markup',
         'headerbar',
-    )); ?>
-	<?php echo $this->scripts(array(
-        'navbar',
+        'external/effects/hover',
+        'external/effects/component',
+        'utils/fileselect',
+        'announcements',
+        'information-page',
+	));?>
+	<?php echo $this->html->script(array(
+		LayoutConstants::JQUERY_PATH,
+        'bootstrap',
+		'navbar', 
         'headerbar',
-    )); ?>
+        'moment',
+		'field-selection',	
+        'members',
+		'validate',					
+        'texttags',
+		'markup',				
+        'profile',
+		'scroller',					
+        'fileinput',
+        'announcements',
+        'texttags',
+        'utils/fileselect',
+	));?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
 </head>
@@ -52,15 +72,14 @@ $path = Libraries::get(true, 'path');
 			)
         ?>
 	</div>
-
 	<div class="container">
-
 		<div class="page-header">
-			<img id="banner-image"
-				src="/img/mpc-banner.png"
-				class="img-responsive"
-				alt="mpc-banner.png"></img>
-
+            <?= 
+                $this->view()->render(
+                    array('element' => 'banner'),
+                    array()
+                )
+            ?>
 		    <?=
                 $this->view()->render(
                     array('element' => 'headerbar'),

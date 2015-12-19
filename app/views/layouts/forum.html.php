@@ -61,13 +61,13 @@ use app\views\layouts\LayoutConstants;
 	<div class="container">
 		<div class="forum">
 			<div class="content">
-		
 				<div class="page-header">
-					<img id="banner-image"
-						src="/img/mpc-banner.png"
-						class="img-responsive"
-						alt="mpc-banner.png"></img>
-
+                    <?= 
+                        $this->view()->render(
+                            array('element' => 'banner'),
+                            array()
+                        )
+                    ?>
 		            <?=
                         $this->view()->render(
                             array('element' => 'headerbar'),
