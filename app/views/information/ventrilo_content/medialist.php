@@ -27,6 +27,6 @@
 	</div>
 	<div class="media-body">
 		<h4 class="media-heading">What Device Do I Need to do to get it?</h4>
-		<small>Ventrilo is used by computers, , laptops, tablets, and mobile phones. For mobile phones, both Google Andriod and Apple Iphones are compatible with Ventrilo's mobile application. <a href="#downloadventrilo">Click here</a>, or the icon on the left to download.</small>
+		<small>Ventrilo is used by computers, , laptops, tablets, and mobile phones. For mobile phones, both Google Andriod and Apple iPhones are compatible with Ventrilo's mobile application. <a href="#downloadventrilo">Click here</a>, or the icon on the left to download.</small>
 	</div>
 </div>

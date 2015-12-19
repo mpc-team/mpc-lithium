@@ -1,11 +1,8 @@
 /* Information Page CSS */
-#ventrilologo {
-	margin: auto;
-	max-height: auto;
-	max-width: 80%;
-	min-height: auto;
-	min-width: 5%;
-}
+/*
+    *each comment identifies the page the ID / Class is on.
+*/
+/*ventrilo.html.php*/
 #ventrilobanner {
 	margin: auto;
 	max-height: auto;
@@ -13,6 +10,9 @@
 	min-height: auto;
 	min-width: 10%;
 	box-shadow: 1px 1px 20px #fff;
+}
+#information-ventfirstparagraph {
+    margin: 1% 10% 1% 10%;
 }
 #ventrilobanner:hover {
 	box-shadow: 1px 1px 20px #aaffaa;
@@ -28,6 +28,23 @@
 	color: #aaffaa;
 	text-shadow: 1px 1px 10px #fff;
 }
+#ventrilo #ventrilo-tutorial {
+    margin: auto;
+    max-width: 600px;
+    height: auto;
+}
+#ventrilo-status {
+    height: 300px;
+}
+/*vent-installation-pc.php*/
+#install-ventwinpc-ullist {
+    margin: auto;
+}
+#install-ventwinpc-ullist b{
+    color: #aaffaa;
+    font-weight: 300;
+}
+/*information/ventrilo_content/medialist.php*/
 #ventrilo .glyphicon-size {
 	margin: auto;
 	max-width: 100%;
@@ -47,12 +64,10 @@
 	color: #fff;
 	text-shadow: 5px 5px 10px #aaffaa;
 }
-#ventrilo #ventrilo-tutorial {
-    margin: auto;
-    max-width: 600px;
-    height: auto;
-}
 #ventrilo .img-center {
+    margin: auto;
+}
+#ventrilo .vid-center {
     margin: auto;
 }
 #ventrilo .img-center:hover {
@@ -61,6 +76,7 @@
 #ventrilo p {
     margin: 1% 10% 1% 10%;
 }
+/**/
 #vent-installation-pillgroup {
     margin: auto;
 }
@@ -73,6 +89,22 @@
     background-color: #aaffaa;
 
 }
-#vent-setup-content p b {
+#vent-setup-content p b, #vent-advsetup-content p b {
     color: #aaffaa;
+}
+#ventrilologo-img {
+    width: 300px;
+    height: auto;
+}
+#mac-app-logo {
+    width: 200px;
+    height: auto;
+}
+/*Not sure*/
+#ventrilologo {
+	margin: auto;
+	max-height: auto;
+	max-width: 80%;
+	min-height: auto;
+	min-width: 5%;
 }
