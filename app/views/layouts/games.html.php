@@ -33,6 +33,7 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'utils/fileselect',
 		'navbar',
         'texttags',
         'headerbar',
@@ -42,7 +43,7 @@ use app\views\layouts\LayoutConstants;
 		'validate',
 		'markup',						
         'profile',
-		'scroller'
+		'scroller',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

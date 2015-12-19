@@ -6,6 +6,7 @@
 
 var announcements = {};
 
+
 /**
  * HTML Elements.
  */
@@ -47,15 +48,32 @@ announcements.stringify = function (object)
 	result += "<div class='content'>";
 	result += object.content;
 	result += "</div>";
-	result += "<hr />"
+	result += "<hr />";
+
+	result += "<table>";
+	result += "<tbody>";
+	result += "<tr>";
+	result += "<td>";
 	result += "<div class='info'>";
 	result += "<div class='author'>Written by: ";
 	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
 	result += "</div>";
 	result += 'Written on: ' + object.tstamp + '<br />';
 	result += "</div>";
+	result += "</td>";
+	result += "<td align='right'>";
+	result += "<div class='control'>";
+	result += "<button class='btn btn-edit' data-id='" + object.id + "'>";
+	result += " Edit";
+	result += "</button>";
 	result += "</div>";
+	result += "</td>";
+	result += "</div>";
+	result += "</tr>";
+	result += "</tbody>";
+	result += "</table>";
 
+	result += "</div>";
 	return result;
 }
 

@@ -32,6 +32,7 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'utils/fileselect',
 		'navbar', 
         'headerbar',
         'moment',
@@ -45,7 +46,6 @@ use app\views\layouts\LayoutConstants;
         'fileinput',
         'announcements',
         'texttags',
-        'utils/fileselect',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

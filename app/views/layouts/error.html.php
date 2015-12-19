@@ -41,6 +41,7 @@ $path = Libraries::get(true, 'path');
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'utils/fileselect',
 		'navbar', 
         'headerbar',
         'moment',
@@ -54,7 +55,6 @@ $path = Libraries::get(true, 'path');
         'fileinput',
         'announcements',
         'texttags',
-        'utils/fileselect',
 	));?>
 	<?php echo $this->styles(); ?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>

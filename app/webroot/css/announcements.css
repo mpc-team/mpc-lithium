@@ -12,6 +12,16 @@
     margin-top: 0px;
 }
 
+#announcements-content table
+{
+    width: 100%;
+}
+
+#announcements-content tr > td
+{
+    width: 50%;
+}
+
 #announcements-content .content
 {
     padding-bottom: 5px;
@@ -38,6 +48,5 @@
 {
     margin-top: 10px;
     margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
 }

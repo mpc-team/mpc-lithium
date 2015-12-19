@@ -74,6 +74,21 @@ class Announcements extends \lithium\data\Model
 	}
 
     /**
+     * Deletes an Announcement by a unique identifier.
+     *
+     * @param mixed $id
+     *
+     * @return mixed
+     */
+    public static function deleteById ($id)
+    {
+        if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
+            return $announcement->delete();
+        else
+            return false;
+    }  
+
+    /**
      * Return a list of *all* Announcements.
      *
      * @return mixed - List of Announcements.

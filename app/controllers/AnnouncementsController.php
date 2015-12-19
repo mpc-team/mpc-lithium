@@ -78,7 +78,7 @@ class AnnouncementsController extends ContentController
     {
         if (!isset($this->request->id))
         {
-            $result = array('error' => 'Insufficient Permissions');
+            $result = array('error' => 'Insufficient Arguments.');
             return $this->render(array('json' => $result, 'status' => '500'));
         }
         $id = $this->request->id;
@@ -90,7 +90,20 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 
-        $announcement = Announcements::getById(id);
+        $announcement = Announcements::getById($id);
+        if ($announcement == null)
+        {
+            $result = array('error' => 'Does not exist.');
+            return $this->render(array('json' => $result, 'status' => '404'));
+        }
+
+        if (!Announcements::deleteById($id))
+        {
+            $result = array('error' => 'Unable to Delete Announcement.');
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+
+        return $this->render(array('status' => '200'));
     }
 
     /**
@@ -100,6 +113,20 @@ class AnnouncementsController extends ContentController
     {
         $announcements = Announcements::getList();
         return $this->render(array('json' => $announcements, 'status' => '200'));
+    }
+
+    /**
+     * Returns the template for an Announcement.
+     */
+    public function template()
+    {
+        $path = '../views/templates/announcement.html';
+        $file = fopen($path, 'r');
+        $html = fread($file, filesize($path));
+        fclose($file);
+
+        $object = array('template' => $html);
+        return $this->render(array('json' => $object, 'status' => '200'));
     }
 }
 

@@ -32,6 +32,7 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap', 
+        'utils/fileselect',
 		'navbar',
         'headerbar',
         'field-selection',
@@ -40,7 +41,7 @@ use app\views\layouts\LayoutConstants;
         'texttags',
 		'forum',            
         'markup', 
-		'scroller'
+		'scroller',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
