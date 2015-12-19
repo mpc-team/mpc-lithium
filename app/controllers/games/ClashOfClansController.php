@@ -1,5 +1,4 @@
 <?php
-
 namespace app\controllers\games;
 
 use app\controllers\ContentController;

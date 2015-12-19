@@ -28,6 +28,7 @@ use app\views\layouts\LayoutConstants;
         'headerbar',
         'external/effects/hover',
         'external/effects/component',
+        'clash-of-clans',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
