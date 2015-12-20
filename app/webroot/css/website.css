@@ -5,7 +5,7 @@
 
 html
 {
-    background: url("/img/darksky_background.jpg");
+    background-image: url("/img/darksky_background.jpg");
     background-attachment: fixed !IMPORTANT;
     background-repeat: no-repeat;
     background-size: cover;

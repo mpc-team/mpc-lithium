@@ -5,8 +5,8 @@ use app\controllers\ContentController;
 use lithium\security\Auth;
 use app\models\Users;
 
-class ClashOfClansController extends ContentController {
-
+class ClashOfClansController extends ContentController 
+{
 	public function index() 
 	{
 		$this->_render['layout'] = 'games';		

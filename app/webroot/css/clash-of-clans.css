@@ -9,12 +9,12 @@ a.btn, a {
     color: #fff;
 }
 /*Overide HTML*/
-html {
+/*html {
     background: url("/img/clash_of_clans/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
+}*/
 
 /*Nav Bar*/
 .navbar-clash-of-clans {

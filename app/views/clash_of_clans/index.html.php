@@ -15,6 +15,7 @@ $coc_navBar = array
     );
 
 ?>
+
 <div id="clash-of-clans">
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
