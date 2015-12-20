@@ -8,8 +8,10 @@
  */
 
 use app\models\Games;
+use app\models\Forums;
 
 $games = Games::getList();
+$forums = Forums::GetList();
 
 ?>
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
@@ -34,10 +36,30 @@ $games = Games::getList();
                 </a>
 			</li>
 			
-			<li id='navbar-forum'>
-				<a title="Forum" href='/forum'>
-                    <span class="glyphicon glyphicon-th-list"></span>
+			<li id='navbar-forum' class='dropdown'>
+                <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+                    <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
+                <ul class='dropdown-menu' role='menu'>
+                    <li>
+                        <a title="Forum" href='/forum'>MPC Forums</a>
+                    </li>
+                    <li class='divider'></li>
+                    <?php foreach ($forums as $forum): ?>
+                        <li>
+                            <a href='/board/view/<?= $forum['id'] ?>'>
+                                <?= $forum['name'] ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+
+                    <li>
+                        <a title="General Forum" href='/forum/board/view/6'>General</a>
+                    </li>
+                    <li>
+                        <a title="StarCraft II Forum" href='/forum/board/view/6'>StarCraft II</a>
+                    </li>
+                </ul>
 			</li>
 			
 			<li id='navbar-games' class='dropdown'>

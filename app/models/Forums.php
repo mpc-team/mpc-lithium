@@ -16,4 +16,12 @@ class Forums extends \lithium\data\Model  {
 			return null;
 		}
 	}
+
+    /**
+     * Returns a list of Names of the current Forums.
+     */
+    public static function GetList ()
+    {
+        return self::find('all', array('fields' => array('id', 'name')))->to('array');
+    }
 }
