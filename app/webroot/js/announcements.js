@@ -36,6 +36,7 @@ announcements.validate = function (content)
  */
 announcements.ui.stringify = function (object)
 {
+	var date = moment(object.tstamp);
 	var result = '';
 	result += "<div class='well well-sm' data-id='" + object.id + "'>";
 
@@ -71,7 +72,7 @@ announcements.ui.stringify = function (object)
 	result += "<div class='author'>Created by: ";
 	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
 	result += "</div>";
-	result += 'Created on: ' + object.tstamp + '<br />';
+	result += 'Created on: ' + date.format("h:mm A - dddd DD, MMM YYYY") + '<br />';
 	result += "</div>";
 	result += "</div>";
 
@@ -237,7 +238,7 @@ announcements.ui.append = function (object)
 	outputString = announcements.ui.stringify(object) + outputString;
 	output.html(outputString);
 
-	announcements.ui.register(object.id);
+	$('.well').each(function () { announcements.ui.register($(this).data('id')); });
 }
 
 /**
@@ -282,10 +283,7 @@ announcements.create = function (title, message)
 	};
 	$.post('/announcements/create', body, function (data)
 	{
-		var output = $(announcements.htmlElements.content);
-
 		announcements.ui.append(data['announcement']);
-		output.val('');
 	});
 	return true;
 }
