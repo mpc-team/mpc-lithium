@@ -49,10 +49,10 @@
 /*index.html.php*/
 #clash-of-clans {
     background-image: url("/img/clash_of_clans/sidebackground.png");
-    background-repeat: repeat-y, no-repeat;
-    background-position: top center, top center;
-    background-attachment: scroll, fixed;
-    background-size: auto, auto;
+    background-repeat: repeat-y,;
+    background-position: top center;
+    background-attachment: scroll;
+    background-size: auto;
 }
  #clash-of-clans .row {
     margin: 5% 0 5% 0;
