@@ -89,6 +89,26 @@ class Announcements extends \lithium\data\Model
     }  
 
     /**
+     * Edits a specified Announcement.
+     *
+     * @param string $id The identifier.
+     * @param string $title The new title.
+     * @param string $content The new content.
+     *
+     * @return boolean True if the Announcement was edited successfully.
+     */
+    public static function editById ($id, $title, $content)
+    {
+        if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
+        {
+            $announcement->title = $title;
+            $announcement->content = $content;
+            return $announcement->save();
+        }
+        return false;
+    }
+
+    /**
      * Return a list of *all* Announcements.
      *
      * @return mixed - List of Announcements.

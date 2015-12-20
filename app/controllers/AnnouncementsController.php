@@ -74,6 +74,61 @@ class AnnouncementsController extends ContentController
         }
     }
 
+    /**
+     * Edits an Announcement by a specified identifier.
+     *
+     * @param string $this->request->id Identifier of the Announcement.
+     * @param mixed $this->request->data List of arguments for operation.
+     *
+     * @return {JSON}: Returns the updated Announcement object.
+     */
+    public function edit()
+    {
+        if (!isset($this->request->id))
+        {
+            $result = array('error' => 'Insufficient Arguments.');
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+        $id = $this->request->id;
+
+        $authorized = Auth::check('default');
+        if (!Permissions::is_admin($authorized))
+        {
+            $result = array('error' => 'Insufficient Permissions');
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+        
+        $content = Announcements::cleanContent($this->request->data['content']);
+        $title = Announcements::cleanTitle($this->request->data['title']);
+
+        if (!self::validate($content))
+        {
+            $result = array('error' => 'Invalid Parameters',);
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+
+        if (!Announcements::editById($id, $title, $content))
+        {
+            $result = array('error' => 'Unable to Edit',);
+            return $this->render(array('json' => $result, 'status' => '500'));
+        }
+
+        $updated = Announcements::getById($id);
+        $updated['author'] = Users::getById($updated['authorid']);
+        if ($updated['author'])
+            $updated['author'] = $updated['author']['alias'];
+        $result = array('announcement' => $updated);
+
+        return $this->render(array('json' => $result, 'status' => 200));
+    }
+
+    /**
+     * Deletes an Announcement by a specified identifier.
+     *
+     * @param $this->request->id - The identifier of the Announcement.
+     *
+     * @return {JSON}: Value `true`, or an Object with an "error" field.
+     */
     public function delete()
     {
         if (!isset($this->request->id))
@@ -97,13 +152,8 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '404'));
         }
 
-        if (!Announcements::deleteById($id))
-        {
-            $result = array('error' => 'Unable to Delete Announcement.');
-            return $this->render(array('json' => $result, 'status' => '500'));
-        }
-
-        return $this->render(array('status' => '200'));
+        Announcements::deleteById($id);
+        return $this->render(array('json' => true, 'status' => '200'));
     }
 
     /**

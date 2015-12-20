@@ -15,6 +15,11 @@ background.change = function (uri)
 background.init = function ()
 {
 	var uri = window.location.href;
+	if (uri == null || uri.split('/').length < 5)
+	{
+		background.change(background.map['default']);
+		return;
+	}
 	var components = uri.split('/');
 
 	var controller = components[3];
