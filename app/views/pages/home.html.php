@@ -17,7 +17,7 @@ $self = $this
 ?>
 <section id="announcements" class="col-md-8">
 
-    <h2>Announcements</h2>
+    <h1>Announcements</h1>
 
     <?php if ($permissions['announcements']['CREATE']): ?>
 	    <div class="row">
