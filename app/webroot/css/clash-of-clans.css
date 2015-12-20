@@ -1,20 +1,13 @@
 ﻿/*Clash of Clans CSS*/
-
-/*Overide Bootstrap*/
-a.btn, a {
+/* Container Div / Parent Div ID = #clash-of-clans */
+/*Overwriting: Bootstrap , Website.css */
+#clash-of-clans .breadcrumb-text {
     text-decoration: none;
     color: #FAF1BF;
 }
-.breadcrumb .active a {
+#clash-of-clans .breadcrumb-text .active a {
     color: #fff;
 }
-/*Overide HTML*/
-/*html {
-    background: url("/img/clash_of_clans/background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}*/
 
 /*Nav Bar*/
 .navbar-clash-of-clans {
@@ -54,15 +47,54 @@ a.btn, a {
     color: #fff;
 }
 /*index.html.php*/
-
-.row {
+#clash-of-clans {
+    background-image: url("/img/clash_of_clans/sidebackground.png");
+    background-repeat: repeat-y, no-repeat;
+    background-position: top center, top center;
+    background-attachment: scroll, fixed;
+    background-size: auto, auto;
+}
+ #clash-of-clans .row {
     margin: 5% 0 5% 0;
 }
-.col-md-9 .well, .col-md-3 .well {
-    padding-top: 1%;
-    padding-bottom: 1%;
+#clash-of-clans .col-md-8 .well{
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
-.col-md-9, .col-md-3 {
+#clash-of-clans .col-md-4 .well {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+#clash-of-clans .col-md-8, #clash-of-clans .col-md-4 {
     padding-right: 1%;
     padding-left: 1%;
+}
+/*chat-box.html.php*/
+#coc-chat-box h2 {
+    color: #FAF1BF;
+}
+/*online-members.html.php*/
+#coc-online-members h2 {
+    color: #FAF18F;
+}
+/*member-status.html.php*/
+#coc-member-status h2 {
+    color: #FAF18F;
+}
+/*events.html.php*/
+#coc-events h2 {
+    color: #FAF18F;
+}
+/*welcome-msg.html.php*/
+#coc-welcome-msg h2 {
+    color: #FAF18F;
+}
+/*activity-feed.html.php*/
+#coc-activity-feed h2 {
+    color: #FAF18F;
+}
+/**/
+/*footer.html.php*/
+#coc-footer h2 {
+    color: #FAF18F;
 }

@@ -13,6 +13,20 @@ $coc_navBar = array
         'News' => '../games/clash_of_clans/members',
         'WAR' => '../games.clash_of_clans/war',
     );
+$coc_sideIndexes = array(
+
+        'coc-chat-box' => 'Chat Box',
+        'coc-online-members' => 'Online Members',
+        'coc-member-status' => 'Member Availability',
+        'coc-events' => 'Events',
+
+        );
+$coc_mainIndexes = array
+    (
+        'coc-welcome-msg' => 'Welcome',
+        'coc-activity-feed' => 'Activity Feed - Show What\'s New',
+        'coc-forum' => 'Forum',
+    );
 
 ?>
 
@@ -20,45 +34,41 @@ $coc_navBar = array
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
         <li role="presentation">
-            <a href="<?= $coc_btnLink; ?>"><?= $coc_btnTitle; ?></a>
+            <a href="<?= $coc_btnLink; ?>">
+                <?= $coc_btnTitle; ?>
+            </a>
         </li>
         <?php endforeach;?>
         <li class="navbar-right" id="cocnavbar-title">MPC Assassins</li>
     </ul>
     <div class="row">
-
-        <div class="col-md-9">
-
+        <div class="col-md-8">
+            <?php foreach($coc_mainIndexes as $coc_index => $coc_indexTitle): ?>
             <div class="well">
-
-                <p>test</p>
-
+                <div class="page-header coc-page-header">
+                    <?= $coc_indexTitle; ?>
+                </div>
+                <div class="row">
+                    <?php include('../views/clash_of_clans/' . $coc_index . '.html.php'); ?>
+                </div>
             </div>
-
+            <?php endforeach; ?>
         </div>
-        <div class="col-md-3">
-
+        <div class="col-md-4">           
+            <?php foreach($coc_sideIndexes as $coc_index => $coc_indexTitle): ?>
             <div class="well">
-                <p>test</p>
-
+                <div class="page-header coc-page-header">
+                    <?= $coc_indexTitle; ?>
+                </div>
+                <div class="row">
+                    <?php include('../views/clash_of_clans/' . $coc_index . '.html.php'); ?>
+                </div>
             </div>
-            <div class="well">
-                <p>test</p>
-
-            </div>
-            <div class="well">
-
-                <p>test</p>
-            </div>
-            <div class="well">
-                <p>test</p>
-
-            </div>
+            <?php endforeach; ?>
         </div>
-
     </div>
     <div class="row">
-        <div class="well">
+        <div class="well coc-footer">
 
             <h2>footer</h2>
 
