@@ -36,8 +36,6 @@ announcements.validate = function (content)
  */
 announcements.ui.stringify = function (object)
 {
-	console.log(object.content);
-
 	var result = '';
 	result += "<div class='well well-sm' data-id='" + object.id + "'>";
 
@@ -236,7 +234,7 @@ announcements.ui.append = function (object)
 	var output = $(announcements.htmlElements.content);
 	var outputString = output.html();
 
-	outputString = markupannouncements.ui.stringify(object) + outputString;
+	outputString = announcements.ui.stringify(object) + outputString;
 	output.html(outputString);
 
 	announcements.ui.register(object.id);
