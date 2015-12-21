@@ -42,6 +42,7 @@ $path = Libraries::get(true, 'path');
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
         'utils/fileselect',
+        'user/notification',
         'background',
 		'navbar', 
         'headerbar',

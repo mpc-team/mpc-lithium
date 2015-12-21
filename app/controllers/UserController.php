@@ -68,7 +68,7 @@ class UserController extends \lithium\action\Controller
 			$recentCount = 0;
 			foreach ($data['recentfeed'] as $key => $recent) 
 			{
-				$thread = Threads::getById($recent['tid']);
+				$thread = Threads::Get($recent['tid']);
 				if ($recentCount < self::RECENT_LIMIT) 
 				{
 					$forum = Forums::getById($thread['fid']);
@@ -322,7 +322,7 @@ class UserController extends \lithium\action\Controller
 					$recentCount = 0;
 					foreach ($data['recentfeed'] as $key => $recent) 
 					{
-						$thread = Threads::getById($recent['tid']);
+						$thread = Threads::Get($recent['tid']);
 						if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
 						{
 							$forum = Forums::getById($thread['fid']);

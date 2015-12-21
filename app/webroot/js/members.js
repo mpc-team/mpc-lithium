@@ -100,14 +100,14 @@ members.html =
 	{
 		var result = "";
 		result += "<td>";
-		result += "<div>";
+		result += "<div class='games'>";
 		for (var game in user['played']) 
 		{
 			var icon = members.iconMap[user['played'][game].toLowerCase()];
 			if (icon) 
 			{
 				result +=  "<span class='icon'>";
-				result += "<img src='" + members.iconMap[user['played'][game].toLowerCase()] + "'></img>";
+				result += "<img src='" + icon + "'></img>";
 				result += "</span>";
 			}
 		}

@@ -46,6 +46,10 @@ if (isset($notification['status']))
 		</span>
     <?php endif; ?>
 
+    <div class="row thread-subscriptions">
+        
+    </div>
+
 	<div class="row">
 		<div class="user-avatar-select">
 			<center>

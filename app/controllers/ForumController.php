@@ -42,7 +42,7 @@ class ForumController extends \lithium\action\Controller {
 		foreach ($data['recentfeed'] as $key => $recent) 
 		{
 			$author = Users::getById($recent['uid']);
-			$thread = Threads::getById($recent['tid']);
+			$thread = Threads::Get($recent['tid']);
 			
 			if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
 			{
@@ -64,7 +64,7 @@ class ForumController extends \lithium\action\Controller {
 		foreach ($forums as $key => $forum) 
 		{
 			$category = Categories::getById($forum['cid']);
-			$threads = Threads::getByForumId($forum['id']);
+			$threads = Threads::GetByForum($forum['id']);
 			$forums[$key]['count'] = count($threads);
 			$forums[$key]['category'] = $category['name'];
 			$data['categories'][$category['id']]['forums'][$key] = $forums[$key];

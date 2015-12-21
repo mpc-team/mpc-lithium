@@ -10,6 +10,7 @@ use app\models\Posts;
 use app\models\Permissions;
 use app\models\Timestamp;
 use app\models\PostHits;
+use app\models\ThreadSubscriptions;
 
 class ThreadController extends ContentController 
 {
@@ -71,8 +72,8 @@ class ThreadController extends ContentController
 			$data['posts'][$key]['author']['avatar'] = Users::find_avatar_file($author['email']);
 			$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($msg['tstamp'], array());
 			$data['posts'][$key]['features'] = array();
-			$data['posts'][$key]['hit'] = $authorized && PostHits::isPostHitByUser($data['posts'][$key]['id'], $authorized['id']);
-			$data['posts'][$key]['hitEnabled'] = $authorized && PostHits::isPostHittableByUser($data['posts'][$key]['id'], $authorized['id']);
+			$data['posts'][$key]['hit'] = $authorized && PostHits::IsHitByUser($data['posts'][$key]['id'], $authorized['id']);
+			$data['posts'][$key]['hitEnabled'] = $authorized && PostHits::IsHitEnabledForUser($data['posts'][$key]['id'], $authorized['id']);
 			$conditions = array(
 				'quote' => (bool) $authorized,
 				'edit' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized)),
@@ -88,16 +89,13 @@ class ThreadController extends ContentController
 	}
 
 	/**
-	 *
 	 * Deletes a specific Thread.
 	 *
-	 * @params
-	 *	$this->request->id: the identifier for the thread to delete.
+	 * @param int $this->request->id Thread identifier.
 	 *
 	 * @returns
 	 *	On success, redirects to the Board where the Thread was present. Any errors redirect
 	 *	to the Forum homepage (/forum).
-	 *
 	 */
 	public function delete ( ) 
 	{
@@ -105,7 +103,7 @@ class ThreadController extends ContentController
 			return $this->redirect('/forum');
 	
 		$authorized = Auth::check('default');
-		$thread = Threads::getbyId($this->request->id);
+		$thread = Threads::Get($this->request->id);
 		
 		if (!$thread || !$authorized)
 			return $this->redirect('/forum');
@@ -113,23 +111,21 @@ class ThreadController extends ContentController
 		if ($authorized['id'] != $thread['uid'] && !Permissions::is_admin($authorized))
 			return $this->redirect('/forum');
 				
-		Posts::deleteByThreadId($this->request->id);
-		Threads::deleteById($this->request->id);
+		Posts::DeletePosts($this->request->id);
+		Threads::DeleteThread($this->request->id);
+        ThreadSubscriptions::DeleteByThread($this->request->id);
 		return $this->redirect("/board/view/{$thread['fid']}");
 	}
 
 	/**
-	 *
 	 * Creates a Thread in a specified Forum.
 	 *
-	 * @params
-	 *	$this->request->id: the identifier for the __forum__.
-	 *	$this->request->data: data that is the first post in the new thread.
+	 * @param int $this->request->id Forum identifier.
+	 * @param array $this->request->data Form data.
 	 *
-	 * @returns
+	 * @return
 	 *	On success, redirects to the newly created thread. On failure, will return to the
 	 *	Forum homepage (/forum) or the Board where the thread was attempted to be created.
-	 *
 	 */
 	public function create ( ) 
 	{
@@ -144,7 +140,7 @@ class ThreadController extends ContentController
 		
 		$thread = Threads::create(array(
 			'fid' => $this->request->id,
-			'name' => Threads::clean($this->request->data['title']),
+			'name' => Threads::CleanTitle($this->request->data['title']),
 			'uid' => $authorized['id'],
 			'tstamp' => null,
 			'permission' => $forum['permission']
@@ -158,9 +154,14 @@ class ThreadController extends ContentController
 				'uid' => $authorized['id']
 			));
 			if ($post->save())
-				return $this->redirect("/thread/view/{$thread->id}");
+            {
+                ThreadSubscriptions::NewSubscription($authorized['id'], $thread->id);
+                return $this->redirect("/thread/view/{$thread->id}");
+            }
 			else
+            {
 				$thread->delete();
+            }
 		}
 		return $this->redirect("/board/view/{$this->request->id}");
 	}

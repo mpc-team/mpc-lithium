@@ -26,7 +26,7 @@ class BoardController extends ContentController {
 					'link' => array("/", "/forum", "/board/view/{$this->request->id}")
 				);
 				$data['forum'] = $forum;
-				$data['threads'] = Threads::getByForumId($this->request->id);
+				$data['threads'] = Threads::GetByForum($this->request->id);
 				$data['permissions'] = ($authorized) ? array('create') : array();
 				foreach ($data['threads'] as $key => $thread) 
 				{

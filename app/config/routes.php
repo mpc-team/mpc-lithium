@@ -57,6 +57,8 @@ Router::connect('/games/world_of_warcraft', array('controller' => 'app\controlle
 Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashOfClansController'));
 
 Router::connect('/api/games/{:action}', array('controller' => 'app\controllers\api\GamesAPI'));
+Router::connect('/api/users/notifications/{:id}', array(
+    'controller' => 'app\controllers\api\UserNotificationsAPI', 'action' => 'GetByType'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow

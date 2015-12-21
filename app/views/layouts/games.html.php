@@ -34,6 +34,7 @@ use app\views\layouts\LayoutConstants;
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
         'utils/fileselect',
+        'user/notification',
         'background',
 		'navbar',
         'texttags',

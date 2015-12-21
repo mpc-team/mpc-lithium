@@ -2,9 +2,10 @@
 
 namespace app\models;
 
-class Threads extends \lithium\data\Model  {
-
-	public static function clean ($text) {
+class Threads extends \lithium\data\Model  
+{
+	public static function CleanTitle ($text) 
+    {
 		$text = strip_tags(trim($text));
 		$text = str_replace('"', '""', $text);
 		$text = str_replace('\r\n', '', $text);
@@ -13,23 +14,34 @@ class Threads extends \lithium\data\Model  {
 		return $text;
 	}
 
-	public static function getById ($id) {
-		if ($thread = self::find('first', array('conditions' => array('id' => $id)))) {
+	public static function Get ($id) 
+    {
+		if ($thread = self::find('first', array('conditions' => array('id' => $id)))) 
 			return $thread->to('array');
-		} else {
+		else
 			return null;
-		}
 	}
 
-	public static function getByForumId ($fid) {
+    public static function UpdateThreadName ($id, $name)
+    {
+        $thread = self::find('first', array('conditions' => array('id' => $id)));
+        if ($thread)
+        {
+            $thread->name = self::CleanTitle($name);
+            $thread->save();
+        }
+    }
+
+	public static function GetByForum ($fid) 
+    {
 		return self::find('all', array('conditions' => array('fid' => $fid)))->to('array');;
 	}
 
-	public static function deleteById ($id) {
-		if ($thread = self::find('first', array('conditions' => array('id' => $id)))) {
+	public static function DeleteThread ($id) 
+    {
+		if ($thread = self::find('first', array('conditions' => array('id' => $id))))
 			return $thread->delete();
-		} else {
+		else
 			return false;
-		}
 	}
 }

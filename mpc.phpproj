@@ -1593,6 +1593,7 @@
     <Compile Include="app\config\routes.php" />
     <Compile Include="app\controllers\api\GamesAPI.php" />
     <Compile Include="app\controllers\AnnouncementsController.php" />
+    <Compile Include="app\controllers\games\ClashOfClansActivityController.php" />
     <Compile Include="app\controllers\games\ClashOfClansController.php" />
     <Compile Include="app\controllers\games\GamesController.php" />
     <Compile Include="app\controllers\games\HeroesOfTheStormController.php" />
@@ -1618,6 +1619,8 @@
     <Compile Include="app\extensions\helper\empty" />
     <Compile Include="app\libraries\_source\empty" />
     <Compile Include="app\models\Announcements.php" />
+    <Compile Include="app\models\UserNotifications.php" />
+    <Compile Include="app\models\ThreadSubscriptions.php" />
     <Compile Include="app\models\utils\Notifications.php" />
     <Compile Include="app\models\Categories.php" />
     <Compile Include="app\models\Communities.php" />
@@ -1692,7 +1695,6 @@
     <Compile Include="app\views\clash_of_clans\index.html.php" />
     <Compile Include="app\views\elements\headerbar.html.php" />
     <Compile Include="app\views\elements\banner.html.php" />
-    <Compile Include="app\views\elements\announcement.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
     <Compile Include="app\views\elements\user\wall.html.php" />
     <Compile Include="app\views\elements\breadcrumbs.html.php" />
@@ -2935,12 +2937,14 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\webroot\css\clash-of-clans.css" />
     <Content Include="app\webroot\css\external\effects\component.css" />
     <Content Include="app\webroot\css\external\effects\hover.css" />
     <Content Include="app\webroot\css\headerbar.css" />
     <Content Include="app\webroot\css\announcements.css" />
     <Content Include="app\webroot\css\markup.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
+    <Content Include="app\webroot\js\background.js" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
     <Content Include="app\webroot\js\announcements.js" />

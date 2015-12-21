@@ -2,14 +2,15 @@
 
 namespace app\models;
 
-class PostHits extends \lithium\data\Model  { 
-
+class PostHits extends \lithium\data\Model  
+{
 	/**
 	 * Retrieves the set of entries that correspond with a specified 'pid'.
 	 *	@params
 	 *		$postid - unique identifier of post in database
 	 */
-	public static function getByPostId ($postid) {
+	public static function Get ($postid) 
+    {
 		return self::find('all', array('conditions' => array('pid' => $postid)))->to('array');
 	}
 	
@@ -18,7 +19,8 @@ class PostHits extends \lithium\data\Model  {
 	 *	@params
 	 *		$userid - the user that has "hit" the post.
 	 */
-	public static function getByUserId ($userid) {
+	public static function GetByUser ($userid) 
+    {
 		return self::find('all', array('conditions' => array('uid' => $userid)))->to('array');
 	}
 	
@@ -27,14 +29,13 @@ class PostHits extends \lithium\data\Model  {
 	 *	@params
 	 *		$postid - identifier of Post to delete hits from.
 	 */
-	public static function deleteByPostId ($postid) {
+	public static function DeletePostHits ($postid) 
+    {
 		$hits = self::find('all', array('conditions' => array('pid' => $postid)));
 		$result = true;
-		foreach ($hits as $hit) {
-			if (!$hit->delete()) {
+		foreach ($hits as $hit)
+			if (!$hit->delete())
 				$result = false;
-			}
-		}
 		return $result;
 	}
 	
@@ -44,13 +45,12 @@ class PostHits extends \lithium\data\Model  {
 	 *		$userid - user that may have 'hit' the post.
 	 *		$postid - the post in question.
 	 */
-	public static function isPostHitByUser ($postid, $userid) {
-		$userHits = PostHits::getByUserId($userid);
-		foreach ($userHits as $hit) {
-			if ($hit['pid'] == $postid) {
+	public static function IsHitByUser ($postid, $userid) 
+    {
+		$userHits = PostHits::GetByUser($userid);
+		foreach ($userHits as $hit)
+			if ($hit['pid'] == $postid)
 				return true;
-			}
-		}
 		return false;
 	}
 	
@@ -61,10 +61,11 @@ class PostHits extends \lithium\data\Model  {
 	 *		$userid - user that would hit the post.
 	 *		$postid - the post being specified.
 	 */
-	public static function isPostHittableByUser ($postid, $userid) {
-		$post = Posts::getById($postid);
+	public static function IsHitEnabledForUser ($postid, $userid) 
+    {
+		$post = Posts::Get($postid);
 		return ($post != null && $post['uid'] != $userid &&
-			!PostHits::isPostHitByUser($postid, $userid));
+			!PostHits::IsHitByUser($postid, $userid));
 	}
 	
 }

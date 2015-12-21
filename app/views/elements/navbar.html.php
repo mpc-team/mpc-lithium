@@ -92,6 +92,7 @@ $forums = Forums::GetList();
 			<?php if ($authorized): ?>
 				<li id='navbar-user' class='dropdown'>
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+                        <span class='badge badge-usr-notify'></span>
 						<span class='glyphicon glyphicon-user'></span>
 						<?= $authorized['alias'] ?> <span class='caret'></span>
 					</a>
