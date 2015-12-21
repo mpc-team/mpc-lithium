@@ -5,8 +5,16 @@
     text-decoration: none;
     color: #FAF1BF;
 }
-#clash-of-clans .breadcrumb-text .active a {
+#clash-of-clans .coc-page-header {
     color: #fff;
+    background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
+    height: 52px;
+    line-height: 25px;
+    vertical-align: middle;
+
+
 }
 
 /*Nav Bar*/
@@ -47,25 +55,19 @@
     color: #fff;
 }
 /*index.html.php*/
-#clash-of-clans {
-    background-image: url("/img/clash_of_clans/sidebackground.png");
-    background-repeat: repeat-y,;
-    background-position: top center;
-    background-attachment: scroll;
-    background-size: auto;
-}
+
  #clash-of-clans .row {
     margin: 5% 0 5% 0;
 }
-#clash-of-clans .col-md-8 .well{
+#clash-of-clans .col-md-7 .well{
     margin-top: 1%;
     margin-bottom: 1%;
 }
-#clash-of-clans .col-md-4 .well {
+#clash-of-clans .col-md-5 .well {
     margin-top: 10%;
     margin-bottom: 10%;
 }
-#clash-of-clans .col-md-8, #clash-of-clans .col-md-4 {
+#clash-of-clans .col-md-7, #clash-of-clans .col-md-5 {
     padding-right: 1%;
     padding-left: 1%;
 }

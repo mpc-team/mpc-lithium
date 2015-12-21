@@ -24,13 +24,14 @@ $coc_sideIndexes = array(
 $coc_mainIndexes = array
     (
         'coc-welcome-msg' => 'Welcome',
-        'coc-activity-feed' => 'Activity Feed - Show What\'s New',
+        'coc-activity-feed' => 'Activity Feed Show What\'s New',
         'coc-forum' => 'Forum',
     );
 
 ?>
 
 <div id="clash-of-clans">
+    <img src="/img/clash_of_clans/sidebackground.png" class="img-responsive ." alt="sidebackground.png" />
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
         <li role="presentation">
@@ -42,10 +43,10 @@ $coc_mainIndexes = array
         <li class="navbar-right" id="cocnavbar-title">MPC Assassins</li>
     </ul>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <?php foreach($coc_mainIndexes as $coc_index => $coc_indexTitle): ?>
             <div class="well">
-                <div class="page-header coc-page-header">
+                <div class="page-header coc-page-header text-center">
                     <?= $coc_indexTitle; ?>
                 </div>
                 <div class="row">
@@ -54,10 +55,10 @@ $coc_mainIndexes = array
             </div>
             <?php endforeach; ?>
         </div>
-        <div class="col-md-4">           
+        <div class="col-md-5">           
             <?php foreach($coc_sideIndexes as $coc_index => $coc_indexTitle): ?>
             <div class="well">
-                <div class="page-header coc-page-header">
+                <div class="page-header coc-page-header text-center">
                     <?= $coc_indexTitle; ?>
                 </div>
                 <div class="row">
@@ -74,4 +75,5 @@ $coc_mainIndexes = array
 
         </div>
     </div>
+    <img src="/img/clash_of_clans/sidebackground.png" class="img-responsive .right" alt="sidebackground.png" />
 </div>
