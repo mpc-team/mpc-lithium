@@ -36,6 +36,16 @@ if (isset($notification['status']))
 
 <div class="profile-content">
 
+
+    <div class="row">
+        <h3>Notifications</h3>
+        <div class="profile-notifications">
+            
+        </div>
+    </div>
+
+    <hr />
+
 	<a id="op-avch"></a>
 
 	<?php if (isset($notification['enabled']) && $notification['enabled']): ?>
@@ -46,22 +56,12 @@ if (isset($notification['status']))
 		</span>
     <?php endif; ?>
 
-    <div class="row thread-subscriptions">
-        
-    </div>
-
 	<div class="row">
-		<div class="user-avatar-select">
-			<center>
-				<div class="panel panel-default">
-					<h3>
-                        Avatar
-                    </h3>
-				</div>
-
+        <center>
+		    <div class="user-avatar-select">
                 <div class="fs-container" data-id="1">
                     <button class="btn btn-edit fs-btn-modify" data-id="1">
-                        <img id="user-avatar" src="<?= $avatar; ?>" height="200px" />
+                        <img id="user-avatar" src="<?= $avatar; ?>" />
                         <div class="info">
                             Click to Change Avatar Image
                         </div>
@@ -133,39 +133,39 @@ if (isset($notification['status']))
                         </div>
                     </div>
                 </div>
-
-			</center>
-			<div class='well well-sm'>
-				<center>
-					<h5><i class="fa fa-info-circle"></i></h5>
-					Accepted image formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
-				</center>
-			</div>
-		</div>
+			    <div class='well well-sm'>
+				    <h5><i class="fa fa-info-circle"></i></h5>
+				    Accepted image formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
+			    </div>
+		    </div>
+        </center>
 	</div>
 	
     <hr />
 
 	<div class="row">
-		<?= $this->view()->render(
-			array('element' => 'user/games'),
-			array(
-				'games' => $data['games'],
-				'text' => 'You Play',
-				'profile' => true
-			)
-		)?>
+        <div class="col-md-4">
+            <h3>Games <small>You Play</small></h3>
+
+		    <?= $this->view()->render(
+			    array('element' => 'user/games'),
+			    array(
+				    'games' => $data['games'],
+				    'profile' => true
+			    )
+		    )?>
+        </div>
+
+        <div class="col-md-8">
+            <h3><small>My </small>Messages</h3>
+
+		    <?= $this->view()->render(
+			    array('element' => 'user/wall'),
+			    array('options' => $data['options'])
+		    )?>
+        </div>
 	</div>
 	
-    <hr />
-
-	<div class="row">
-		<?= $this->view()->render(
-			array('element' => 'user/wall'),
-			array('options' => $data['options'])
-		)?>
-	</div>
-
 	<div class="recent">
 		<div class="row">
 			<h3>Recent<small> Posts On Forum</small></h3>

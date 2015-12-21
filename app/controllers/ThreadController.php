@@ -11,11 +11,13 @@ use app\models\Permissions;
 use app\models\Timestamp;
 use app\models\PostHits;
 use app\models\ThreadSubscriptions;
+use app\models\UserNotifications;
 
 class ThreadController extends ContentController 
 {
 	/**
 	 * The primary view of a Thread.
+     *
 	 * @return array|object
 	 */
 	public function view ( ) 
@@ -49,7 +51,7 @@ class ThreadController extends ContentController
 		$data = array(
 			'thread' => $thread,
 			'forum' => $forum,
-			'posts' => Posts::getByThreadId($this->request->id),
+			'posts' => Posts::GetByThread($this->request->id),
 			'replyform' => array(
 				'user' => $authorized,
 				'id' => $this->request->id,
@@ -64,13 +66,17 @@ class ThreadController extends ContentController
 		
 		reset($data['posts']);
 		$data['posts'][key($data['posts'])]['first'] = true;
-		foreach ($data['posts'] as $key => $msg) {
-			$author = Users::getById($msg['uid']);
+
+		foreach ($data['posts'] as $key => $post) 
+        {
+            UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::FORUM);
+
+			$author = Users::getById($post['uid']);
 			$data['posts'][$key]['content'] = stripslashes($data['posts'][$key]['content']);
 			$data['posts'][$key]['author'] = $author;
 			$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
 			$data['posts'][$key]['author']['avatar'] = Users::find_avatar_file($author['email']);
-			$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($msg['tstamp'], array());
+			$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($post['tstamp'], array());
 			$data['posts'][$key]['features'] = array();
 			$data['posts'][$key]['hit'] = $authorized && PostHits::IsHitByUser($data['posts'][$key]['id'], $authorized['id']);
 			$data['posts'][$key]['hitEnabled'] = $authorized && PostHits::IsHitEnabledForUser($data['posts'][$key]['id'], $authorized['id']);
@@ -79,11 +85,9 @@ class ThreadController extends ContentController
 				'edit' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized)),
 				'delete' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized))
 			);
-			foreach ($conditions as $feature => $condition) {
-				if ($condition) { 
+			foreach ($conditions as $feature => $condition)
+				if ($condition)
 					array_push($data['posts'][$key]['features'], $feature);
-				}
-			}
 		}
 		return compact('authorized', 'breadcrumbs', 'data', 'reply');
 	}

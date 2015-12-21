@@ -74,7 +74,7 @@ h5
 /*
 	Scrollbar Properties
 */
-::-webkit-scrollbar
+/*::-webkit-scrollbar
 {
     background: #202320;
 }
@@ -87,7 +87,7 @@ h5
 ::-webkit-scrollbar-button
 {
     background: #000000;
-}
+}*/
 
 .navbar-inverse
 {
@@ -314,33 +314,16 @@ a h5
  *
  ******************************************************************/
 
-.user-avatar
-{
-    max-width: 200px;
-    max-height: 200px;
-}
-
-.user-avatar-select .usr-avtr-select button:hover > img
-{
-    -webkit-filter: brightness(1.6);
-}
-
-.user-avatar-select .usr-avtr-select button > .info
-{
-    padding-top: 5px;
-    /*padding-bottom: 5px;*/
-}
-
 .profile-content .wall .content,
 .profile-content .invites .content
 {
     background: rgba(0, 0, 0, 0.6);
 }
 
-.profile-content > div
+/*.profile-content > div
 {
     padding-top: 30px;
-}
+}*/
 
 .profile-header,
 .profile-content .games .panel button,
@@ -367,10 +350,10 @@ a h5
 
 .profile-content .wall
 {
-    padding-left: 20px;
-    width: 90%;
+    /*padding-left: 20px;*/
+    /*width: 90%;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto;*/
 }
 
 .profile-content .wall .content,
@@ -486,7 +469,7 @@ a h5
     padding-right: 10px;
 }
 
-@media (max-width: 870px)
+/*@media (max-width: 870px)
 {
     .profile-content .game > .panel
     {
@@ -497,7 +480,7 @@ a h5
     {
         font-size: 200%;
     }
-}
+}*/
 
 @media (max-width: 870px)
 {

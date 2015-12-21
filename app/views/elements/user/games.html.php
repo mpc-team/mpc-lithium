@@ -7,11 +7,7 @@
 $gamecount = 0;
  
 ?>
-<div class="games">
-	<div class="row">
-		<h3>Games <small><?= $text; ?></small></h3>
-	</div>
-	
+<div class="games">	
 	<?php if ($profile): ?>
 		<div class="row">
 			<div class="well well-sm">
@@ -35,19 +31,9 @@ $gamecount = 0;
 						<button class='btn btn-edit' data-id='<?= $game['id'] ?>'>
 					<?php endif; ?>
 					
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="icon">
-										<img src="<?= $game['icon'] ?>" height='40' width='40'></img>
-									</div>
-									<div class="name"><?= $game['name'] ?></div>
-								</div>
-								<div class="col-xs-6">
-									<div class="status" data-id='<?= $game['id'] ?>'>
-
-									</div>
-								</div>
-							</div>
+						<div class="icon">
+							<img class="profile-game-icon" src="<?= $game['icon'] ?>"></img>
+						</div>
 							
 					<?php if ($profile): ?>
 						</button>

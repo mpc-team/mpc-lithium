@@ -1628,7 +1628,7 @@ h6 .small,
 h1,
 .h1
 {
-    font-size: 36px;
+    font-size: 52px;
 }
 
 h2,
@@ -6249,16 +6249,16 @@ fieldset[disabled] .navbar-default .btn-link:focus
 {
     /* color: #9d9d9d; */
     color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus
 {
-    color: rgba(190, 255, 190, 0.9);
-    border: 1px solid rgba(190, 255, 190, 0.9);
-    box-shadow: 0 0 10px rgba(210, 255, 210, 0.9);
+    /*color: rgba(190, 255, 190, 0.9);*/
+    /*border: 1px solid rgba(190, 255, 190, 0.9);*/
+    /*box-shadow: 0 0 10px rgba(210, 255, 210, 0.9);*/
 }
 
 .navbar-inverse .navbar-nav > .active > a

@@ -32,6 +32,28 @@ class UserNotifications extends \lithium\data\Model
     }
 
     /**
+     * Deletes a specific Notification for a User.
+     *
+     * @param int $userid User identifier.
+     * @param int $contentid Content identifier.
+     * @param string $type Type of Notification.
+     *
+     * @return bool True if successful.
+     */
+    public static function DeleteNotification ($userid, $contentid, $type)
+    {
+        $notification = self::find('first', array('conditions' => array(
+            'userid' => $userid,
+            'contentid' => $contentid,
+            'type' => $type
+        )));
+        if ($notification)
+            return $notification->delete();
+        else
+            return false;
+    }
+
+    /**
      * Returns Notifications for a specified User.
      *
      * @param int $userid User identifier.

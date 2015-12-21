@@ -47,7 +47,7 @@ class Posts extends \lithium\data\Model
         }
     }
 
-	public static function getByThreadId ($tid) 
+	public static function GetByThread ($tid) 
     {
 		return self::find('all', array(
 			'conditions' => array('tid' => $tid),
@@ -55,7 +55,7 @@ class Posts extends \lithium\data\Model
 		))->to('array');
 	}
 	
-	public static function countByThreadId ($tid) 
+	public static function CountByThread ($tid) 
     {
 		return self::count('all', array(
 			'conditions' => array('tid' => $tid)

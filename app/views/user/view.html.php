@@ -29,11 +29,7 @@ $self = $this;
 	<div class="row">
 		<div class="user-avatar-select">
 			<center>
-				<div class="panel panel-default">
-					<h3>Avatar</h3>
-				</div>
 				<img id="user-avatar" src="<?= $avatar; ?>" height="200px"/>
-				
 			</center>
 		</div>
 	</div>
@@ -41,23 +37,26 @@ $self = $this;
     <hr />
 
 	<div class="row">
-		<?= $this->view()->render(
-			array('element' => 'user/games'),
-			array(
-				'games' => $data['games'],
-				'text' => $data['member']['alias'] . ' plays',
-				'profile' => false
-			)
-		)?>
-	</div>
+        <div class="col-md-4">
+            <h3>Games <small>You Play</small></h3>
 
-    <hr />
+		    <?= $this->view()->render(
+			    array('element' => 'user/games'),
+			    array(
+				    'games' => $data['games'],
+				    'text' => $data['member']['alias'] . ' plays',
+				    'profile' => false
+			    )
+		    )?>
+        </div>
+        <div class="col-md-8">
+            <h3>Games <small>You Play</small></h3>
 
-	<div class="row">
-		<?= $this->view()->render(
-			array('element' => 'user/wall'),
-			array('member' => $data['member'], 'options' => $data['options'])
-		)?>
+		    <?= $this->view()->render(
+			    array('element' => 'user/wall'),
+			    array('member' => $data['member'], 'options' => $data['options'])
+		    )?>
+        </div>
 	</div>
 
 	<div class="recent">

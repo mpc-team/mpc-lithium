@@ -77,7 +77,7 @@ class PostController extends ContentController
                 {
 					if (Posts::DeletePost($post['id'])) 
                     {
-						if (!Posts::countByThreadId($post['tid'])) 
+						if (!Posts::CountByThread($post['tid'])) 
 							return $this->redirect("/thread/delete/{$post['tid']}");
                         else 
 							return $this->redirect("/thread/view/{$post['tid']}");
