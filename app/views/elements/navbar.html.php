@@ -91,11 +91,13 @@ $forums = Forums::GetList();
 		<ul class="nav navbar-nav navbar-right">
 			<?php if ($authorized): ?>
 				<li id='navbar-user' class='dropdown'>
+
 					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
-                        <span class='badge badge-usr-notify'></span>
 						<span class='glyphicon glyphicon-user'></span>
-						<?= $authorized['alias'] ?> <span class='caret'></span>
+						<?= $authorized['alias'] ?> 
+                        <span class='caret'></span>
 					</a>
+
 					<ul class='dropdown-menu' role='menu'>
 						<li>
 							<a href='/user/profile'>Profile</a>
@@ -109,6 +111,15 @@ $forums = Forums::GetList();
 						</li>
 					</ul>
 				</li>
+                <li id='navbar-notifications' class='dropdown'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+                        <span class='badge user-notification-count'></span>
+                        <span class='caret'></span>
+                    </a>
+                    <ul class='dropdown-menu user-notification-list' role='menu'>
+                        
+                    </ul>
+                </li>
 			<?php else: ?>
 				<li id='navbar-signup'>
 					<a href='/signup'>Signup</a>

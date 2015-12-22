@@ -76,7 +76,7 @@ class Posts extends \lithium\data\Model
             if ($post->delete())
             {
                 PostHits::DeletePostHits($id);
-                UserNotifications::DeleteNotifications($id, UserNotifications::FORUM);
+                UserNotifications::DeleteNotifications($id, UserNotifications::POST);
                 return true;
             }
         }
@@ -98,7 +98,7 @@ class Posts extends \lithium\data\Model
             if ($post->delete())
             {
                 PostHits::DeletePostHits($post->id);
-                UserNotifications::DeleteNotifications($post->id, UserNotifications::FORUM);
+                UserNotifications::DeleteNotifications($post->id, UserNotifications::POST);
             }
         }
 	}

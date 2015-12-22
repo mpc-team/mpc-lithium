@@ -31,6 +31,7 @@ $path = Libraries::get(true, 'path');
 		'font-awesome',
 		'website',
         'markup',
+        'navbar',
         'headerbar',
         'external/effects/hover',
         'external/effects/component',

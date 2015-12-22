@@ -34,7 +34,7 @@ class BoardController extends ContentController {
 						'conditions' => array('tid' => $thread['id']),
 						'order' => array('tstamp' => 'DESC')
 					))->to('array');
-					$author = Users::getById($thread['uid']);
+					$author = Users::Get($thread['uid']);
 					$data['threads'][$key]['name'] = stripslashes($thread['name']);
 					$data['threads'][$key]['author'] = stripslashes($author['alias']);
 					$data['threads'][$key]['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
@@ -45,7 +45,7 @@ class BoardController extends ContentController {
 						
 					if ($data['threads'][$key]['recent']) 
 					{
-						$author = Users::getById($data['threads'][$key]['recent']['uid']);
+						$author = Users::Get($data['threads'][$key]['recent']['uid']);
 						$data['threads'][$key]['recent']['author'] = stripslashes($author['alias']);
 						$data['threads'][$key]['recent']['date'] = 
 							Timestamp::toDisplayFormat($data['threads'][$key]['recent']['tstamp'], array());

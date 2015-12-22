@@ -10,7 +10,7 @@ use app\models\Posts;
 
 class PostsAPI extends ContentController
 {
-	public function GetInfo() 
+	public function info() 
 	{
         if (!isset($this->request->id))
             return $this->render(array('json' => null, 'status' => 500));

@@ -49,7 +49,7 @@ class PostController extends ContentController
                         {
                             if ($subsc['userid'] != $userid)
                                 $notification = UserNotifications::NewNotification(
-                                    $subsc['userid'], $post->id, UserNotifications::FORUM);
+                                    $subsc['userid'], $post->id, UserNotifications::POST);
                         }
 						return $this->redirect("/thread/view/{$threadid}#{$post->id}");
 					}

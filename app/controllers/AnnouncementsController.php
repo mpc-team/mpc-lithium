@@ -60,7 +60,7 @@ class AnnouncementsController extends ContentController
         if ($announcement->save())
         {
             $created = Announcements::getById($announcement->id);
-            $created['author'] = Users::getById($created['authorid']);
+            $created['author'] = Users::Get($created['authorid']);
             if ($created['author'])
                 $created['author'] = $created['author']['alias'];
 
@@ -114,7 +114,7 @@ class AnnouncementsController extends ContentController
         }
 
         $updated = Announcements::getById($id);
-        $updated['author'] = Users::getById($updated['authorid']);
+        $updated['author'] = Users::Get($updated['authorid']);
         if ($updated['author'])
             $updated['author'] = $updated['author']['alias'];
         $result = array('announcement' => $updated);

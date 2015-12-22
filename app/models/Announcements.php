@@ -121,7 +121,7 @@ class Announcements extends \lithium\data\Model
         ))->to('array');
         foreach ($announcements as $key => $announcement)
         {
-            $author = Users::getById($announcement['authorid']);
+            $author = Users::Get($announcement['authorid']);
             $announcements[$key]['author'] = $author['alias'];
         }
         return $announcements;

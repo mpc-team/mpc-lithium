@@ -26,6 +26,7 @@ use app\views\layouts\LayoutConstants;
 		'website',
         'markup',
         'headerbar',
+        'navbar',
         'external/effects/hover',
         'external/effects/component',
         'clash-of-clans',

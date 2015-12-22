@@ -7,7 +7,7 @@ use Exception;
 
 class Users extends \lithium\data\Model  
 { 
-	public static function getById( $id ) 
+	public static function Get( $id ) 
 	{
 		$user = self::find( 'first', array( 'conditions' => array( 
 			'id' => $id 

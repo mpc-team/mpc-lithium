@@ -25,6 +25,7 @@ use app\views\layouts\LayoutConstants;
 		'font-awesome', 
 		'website',
         'markup',
+        'navbar',
         'headerbar',
         'external/effects/hover',
         'external/effects/component',

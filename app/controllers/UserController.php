@@ -71,7 +71,7 @@ class UserController extends \lithium\action\Controller
 				$thread = Threads::Get($recent['tid']);
 				if ($recentCount < self::RECENT_LIMIT) 
 				{
-					$forum = Forums::getById($thread['fid']);
+					$forum = Forums::Get($thread['fid']);
 					$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);
 					$data['recentfeed'][$key]['author'] = stripslashes($authorized['alias']);
 					$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
@@ -300,7 +300,7 @@ class UserController extends \lithium\action\Controller
 		if( isset( $this->request->id ) ) 
 		{
 			$authorized = Auth::check('default');
-			if ($member = Users::getById($this->request->id)) 
+			if ($member = Users::Get($this->request->id)) 
 			{
 				$member['date'] = Timestamp::toDisplayFormat($member['tstamp']);
 				$data = array(
@@ -325,7 +325,7 @@ class UserController extends \lithium\action\Controller
 						$thread = Threads::Get($recent['tid']);
 						if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
 						{
-							$forum = Forums::getById($thread['fid']);
+							$forum = Forums::Get($thread['fid']);
 							$data['recentfeed'][$key]['content'] = stripslashes($recent['content']);
 							$data['recentfeed'][$key]['author'] = stripslashes($member['alias']);
 							$data['recentfeed'][$key]['thread'] = stripslashes($thread['name']);
@@ -394,12 +394,12 @@ class UserController extends \lithium\action\Controller
 	{
 		if (isset($this->request->id)) 
 		{
-			if ($user = Users::getById($this->request->id)) 
+			if ($user = Users::Get($this->request->id)) 
 			{
 				$messages = Messages::getUserMessages($this->request->id);
 				foreach ($messages as $key => $message) 
 				{
-					$sender = Users::getById($message['uidsender']);
+					$sender = Users::Get($message['uidsender']);
 					$messages[$key]['sender'] = $sender['alias'];
 					$messages[$key]['senderid'] = $sender['id'];
 					$messages[$key]['content'] = stripslashes($message['content']);

@@ -32,7 +32,7 @@ class ThreadController extends ContentController
 		if (!$thread)
 			return $this->redirect('/forum');
 			
-		$forum = Forums::getById($thread['fid']);
+		$forum = Forums::Get($thread['fid']);
 		$breadcrumbs = array(
 			'path' => array("MPC", "Forum", $forum['name'], $thread['name']),
 			'link' => array(
@@ -43,7 +43,7 @@ class ThreadController extends ContentController
 			)
 		);
 
-		$author = Users::getById($thread['uid']);
+		$author = Users::Get($thread['uid']);
 		$thread['author'] = $author;
 		$thread['date'] = Timestamp::toDisplayFormat($thread['tstamp']);
 		$thread['name'] = stripslashes($thread['name']);
@@ -69,9 +69,9 @@ class ThreadController extends ContentController
 
 		foreach ($data['posts'] as $key => $post) 
         {
-            UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::FORUM);
+            UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::POST);
 
-			$author = Users::getById($post['uid']);
+			$author = Users::Get($post['uid']);
 			$data['posts'][$key]['content'] = stripslashes($data['posts'][$key]['content']);
 			$data['posts'][$key]['author'] = $author;
 			$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
@@ -137,7 +137,7 @@ class ThreadController extends ContentController
 			return $this->redirect('/forum');
 		
 		$authorized = Auth::check('default');
-		$forum = Forums::getById($this->request->id);
+		$forum = Forums::Get($this->request->id);
 		
 		if (!self::verify_access($authorized, "\app\models\Forums", $this->request->id))
 			return $this->redirect('/forum');

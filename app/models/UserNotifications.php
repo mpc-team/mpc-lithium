@@ -10,6 +10,7 @@ namespace app\models;
  */
 class UserNotifications extends \lithium\data\Model  
 {
+    const POST = "post";
     const FORUM = "forum";
 
     /**
@@ -60,13 +61,30 @@ class UserNotifications extends \lithium\data\Model
      *
      * @return array Notifications array, or null if the query failed.
      */
-    public static function GetUserNotifications ($userid)
+    public static function GetUserNotifications ($userid, $limit = null)
     {
-        $notifications = self::find('all', array('conditions' => array('userid' => $userid)));
+        $conditions = array('userid' => $userid);
+        if ($limit != null)
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+        else
+            $notifications = self::find('all', array('conditions' => $conditions,));
+
         if ($notifications)
             return $notifications->to('array');
         else
             return null;
+    }
+
+    /**
+     * Count of Notifications of any Type for a specified User.
+     *
+     * @param int $userid User identifier.
+     *
+     * @return int Number of Notifications.
+     */
+    public static function CountUserNotifications ($userid)
+    {
+        return self::count('all', array('conditions' => array('userid' => $userid)));
     }
 
     /**
@@ -77,9 +95,14 @@ class UserNotifications extends \lithium\data\Model
      *
      * @return array Notifications array, or null if the query failed.
      */
-    public static function GetUserNotificationsOfType ($userid, $type)
+    public static function GetUserNotificationsOfType ($userid, $type, $limit = null)
     {
-        $notifications = self::find('all', array('conditions' => array('userid' => $userid, 'type' => $type)));
+        $conditions = array('userid' => $userid, 'type' => $type);
+        if ($limit != null)
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+        else
+            $notifications = self::find('all', array('conditions' => $conditions,));
+
         if ($notifications)
             return $notifications->to('array');
         else
@@ -94,9 +117,14 @@ class UserNotifications extends \lithium\data\Model
      *
      * @return array Notifications of the specified type for the specified Content.
      */
-    public static function GetNotifications ($contentid, $type)
+    public static function GetNotifications ($contentid, $type, $limit = null)
     {
-        $notifications = self::find('all', array('conditions' => array('contentid' => $contentid, 'type' => $type)));
+        $conditions = array('contentid' => $contentid, 'type' => $type);
+        if ($limit != null)
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+        else
+            $notifications = self::find('all', array('conditions' => $conditions,));
+
         if ($notifications)
             return $notifications->to('array');
         else

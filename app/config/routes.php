@@ -58,7 +58,7 @@ Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\
 
 Router::connect('/api/games/{:action}', array('controller' => 'app\controllers\api\GamesAPI'));
 Router::connect('/api/posts/{:id}', array('controller' => 'app\controllers\api\PostsAPI', 'action' => 'GetInfo'));
-Router::connect('/api/users/notifications/{:id}', array('controller' => 'app\controllers\api\UserNotificationsAPI', 'action' => 'GetByType'));
+Router::connect('/api/users/notifications/{:action}', array('controller' => 'app\controllers\api\UserNotificationsAPI'));
 
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow

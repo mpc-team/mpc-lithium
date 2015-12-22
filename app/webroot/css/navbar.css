@@ -1,0 +1,15 @@
+#navbar-notifications .user-notification-list
+{
+    padding: 5px;
+    min-width: 500px;
+}
+
+.user-notification-list .date
+{
+    font-size: 80%;
+}
+
+.dropdown-menu.user-notification-list > li > a
+{
+    padding: 0;
+}
