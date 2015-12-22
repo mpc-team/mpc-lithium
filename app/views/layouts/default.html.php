@@ -23,7 +23,7 @@ use app\views\layouts\LayoutConstants;
 		'website',
         'markup',
         'headerbar',
-        'profile',
+        'user',
         'external/effects/hover',
         'external/effects/component',
         'utils/fileselect',

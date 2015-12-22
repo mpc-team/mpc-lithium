@@ -26,7 +26,6 @@ if (isset($notification['status']))
 			<?php endif; ?>
 				
 			<h1>Login</h1>	
-			<hr>
 				
 			<div class="form-group">
 				<div class="input-group">
@@ -44,9 +43,6 @@ if (isset($notification['status']))
 					<input type="password" name="password" class="form-control" placeholder="Password" id="Password"/>
 				</div>
 			</div>
-				
-			<hr>
-				
 			<div class="form-group">
 				<center>
 					<?= 
@@ -57,9 +53,6 @@ if (isset($notification['status']))
 						?>
 				</center>
 			</div>
-				
-			<hr>
-				
 			<section class="well well-lg">
 				<div class="password-reset" style="padding-bottom:20px">
 					<h3>Password Reset</h3>

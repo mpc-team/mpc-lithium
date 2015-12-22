@@ -1,0 +1,40 @@
+.user-avatar-select > .well
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-avatar
+{
+    height: 300px;
+    max-width: 600px;
+}
+
+.profile-game-icon
+{
+    max-height: 80%;
+    max-width: 80%;
+    min-height: 30%;
+    min-width: 30%;
+}
+
+.signup .signup-group,
+.login .login-group
+{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 300px;
+}
+
+.signup-group .form-group,
+.login-group .form-group
+{
+    margin-bottom: 10px;
+}
+
+.signup-group .form-group:last-child,
+.login-group .form-group:last-child
+{
+    margin-top: 25px;
+}

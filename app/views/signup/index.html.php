@@ -8,11 +8,8 @@ $self = $this;
 <div class="row">
     <div class="signup">
         <div class="signup-group">
-            <h1>
-                Member Signup
-            </h1>
 
-            <hr />
+            <h1>Member Signup</h1>
 
             <form action="/signup/complete" onsubmit="return validateSignup()" method="post">
 
@@ -50,8 +47,6 @@ $self = $this;
 					'placeholder' => 'Enter name or game-tag',
 					'class'       => 'form-control'
 				))?>
-
-                <hr />
 
                 <div class="form-group form-signup">
                     <center>
