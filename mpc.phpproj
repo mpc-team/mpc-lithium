@@ -2940,7 +2940,8 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\webroot\css\profile.css" />
+    <Content Include="app\webroot\css\navbar.css" />
+    <Content Include="app\webroot\css\user.css" />
     <Content Include="app\webroot\css\clash-of-clans.css" />
     <Content Include="app\webroot\css\external\effects\component.css" />
     <Content Include="app\webroot\css\external\effects\hover.css" />

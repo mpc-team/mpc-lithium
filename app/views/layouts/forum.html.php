@@ -27,6 +27,7 @@ use app\views\layouts\LayoutConstants;
         'markup',
         'navbar',
         'headerbar',
+        'user',
         'external/effects/hover',
         'external/effects/component',
 	)); ?>
@@ -38,6 +39,7 @@ use app\views\layouts\LayoutConstants;
         'background',
 		'navbar',
         'headerbar',
+        'moment',
         'field-selection',
 		'members',          
         'validate', 					

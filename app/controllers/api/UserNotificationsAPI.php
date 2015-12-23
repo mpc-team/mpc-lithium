@@ -70,11 +70,11 @@ class UserNotificationsAPI extends ContentController
             $thread = Threads::Get($post['tid']);
             $forum = Forums::Get($thread['fid']);
             $notifications[$key]['post'] = array(
-                'thread' => $thread['name'],
+                'thread' => stripslashes($thread['name']),
                 'threadid' => $thread['id'],
-                'forum' => $forum['name'],
-                'content' => $post['content'],
-                'author' => $author['alias'],
+                'forum' => stripslashes($forum['name']),
+                'content' => stripslashes($post['content']),
+                'author' => stripslashes($author['alias']),
                 'authorid' => $author['id'],
             );
         }

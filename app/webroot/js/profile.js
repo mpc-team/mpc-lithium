@@ -70,18 +70,18 @@ profile.updateGame = function (played, userid, gameid, flag)
 
 profile.refreshGames = function (played)
 {
-	$(".game .status").each(function ()
+	$(".game").each(function ()
 	{
 		var id = $(this).data('id');
 		profile.updateGameUI(id, profile.searchGames(played, id));
 	});
 }
 
-//==========================================================================================
+//------------------------------------------------------------------------------------------
 
 profile.sendMessage = function (userid, content)
 {
-	var obj = {wall: content};
+	var obj = { wall: content };
 	$.post("/user/edit/" + userid, obj, function (data) 
 	{
 		data = JSON.parse(data);
@@ -89,6 +89,10 @@ profile.sendMessage = function (userid, content)
 			profile.refreshMessages(userid);
 	});
 }
+
+/**
+ * THIS NEEDS TO BE REFACTORED TO ALLOW FOR LIMITS.
+ */
 
 profile.refreshMessages = function (userid)
 {
@@ -125,7 +129,7 @@ profile.refreshMessages = function (userid)
 	);
 }
 
-//==========================================================================================
+//------------------------------------------------------------------------------------------
 	
 profile.init = function (userid, played) 
 {	
@@ -133,8 +137,9 @@ profile.init = function (userid, played)
 	profile.refreshMessages(userid);
 	
 	setInterval(function () 
-	{ profile.refreshMessages(userid); 
-	}, 4000);
+	{
+		profile.refreshMessages(userid);
+	}, 5000);
 		
 	$(".profile-content .game button").click(function () 
 	{

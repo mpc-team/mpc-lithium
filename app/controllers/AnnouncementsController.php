@@ -63,6 +63,7 @@ class AnnouncementsController extends ContentController
             $created['author'] = Users::Get($created['authorid']);
             if ($created['author'])
                 $created['author'] = $created['author']['alias'];
+            $created['content'] = stripslashes($created['content']);
 
             $result = array('announcement' => $created);
             return $this->render(array('json' => $result, 'status' => '200'));
@@ -117,6 +118,7 @@ class AnnouncementsController extends ContentController
         $updated['author'] = Users::Get($updated['authorid']);
         if ($updated['author'])
             $updated['author'] = $updated['author']['alias'];
+        $updated['content'] = stripslashes($updated['content']);
         $result = array('announcement' => $updated);
 
         return $this->render(array('json' => $result, 'status' => 200));
@@ -161,22 +163,8 @@ class AnnouncementsController extends ContentController
      */
     public function all()
     {
-        $announcements = Announcements::getList();
+        $announcements = Announcements::GetList();
         return $this->render(array('json' => $announcements, 'status' => '200'));
-    }
-
-    /**
-     * Returns the template for an Announcement.
-     */
-    public function template()
-    {
-        $path = '../views/templates/announcement.html';
-        $file = fopen($path, 'r');
-        $html = fread($file, filesize($path));
-        fclose($file);
-
-        $object = array('template' => $html);
-        return $this->render(array('json' => $object, 'status' => '200'));
     }
 }
 

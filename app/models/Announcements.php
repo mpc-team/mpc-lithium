@@ -113,7 +113,7 @@ class Announcements extends \lithium\data\Model
      *
      * @return mixed - List of Announcements.
      */
-    public static function getList()
+    public static function GetList()
     {
         $announcements = self::find('all', array(
             'limit' => self::MAX_ANNOUNCEMENTS_TO_LIST,
@@ -123,6 +123,7 @@ class Announcements extends \lithium\data\Model
         {
             $author = Users::Get($announcement['authorid']);
             $announcements[$key]['author'] = $author['alias'];
+            $announcements[$key]['content'] = stripslashes($announcements[$key]['content']);
         }
         return $announcements;
     }
