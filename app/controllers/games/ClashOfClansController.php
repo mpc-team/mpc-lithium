@@ -2,6 +2,7 @@
 namespace app\controllers\games;
 
 use app\controllers\ContentController;
+
 use lithium\security\Auth;
 use app\models\Users;
 

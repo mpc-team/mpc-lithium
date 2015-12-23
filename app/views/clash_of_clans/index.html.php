@@ -1,5 +1,7 @@
 <?php
 
+use app\controllers\games\ClashOfClansController;
+
 $this->title('Clash of Clans');
 
 $self = $this;
@@ -19,7 +21,6 @@ $coc_sideIndexes = array(
         'coc-online-members' => 'Online Members',
         'coc-member-status' => 'Member Availability',
         'coc-events' => 'Events',
-
         );
 $coc_mainIndexes = array
     (
@@ -31,7 +32,16 @@ $coc_mainIndexes = array
 ?>
 
 <div id="clash-of-clans">
-    <img src="/img/clash_of_clans/sidebackground.png" class="img-responsive ." alt="sidebackground.png" />
+    <div class="well">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/img/clash_of_clans/coc-head-banner.png" alt="coc-head-banner.png" class="img-rounded img-responsive coc-headbanner" />
+            </div>
+            <div class="col-md-6">
+                <img src="/img/mpc/mpcgaming-logo.png" alt="mpcgaming-logo.png" class="img-rounded img-responsive coc-headbanner" style="width: 55%;" />
+            </div>
+        </div>
+    </div>
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
         <li role="presentation">
@@ -55,14 +65,16 @@ $coc_mainIndexes = array
             </div>
             <?php endforeach; ?>
         </div>
-        <div class="col-md-5">           
+        <div class="col-md-5">
             <?php foreach($coc_sideIndexes as $coc_index => $coc_indexTitle): ?>
             <div class="well">
                 <div class="page-header coc-page-header text-center">
                     <?= $coc_indexTitle; ?>
                 </div>
                 <div class="row">
-                    <?php include('../views/clash_of_clans/' . $coc_index . '.html.php'); ?>
+                  
+                    <?php include('../views/clash_of_clans/'. $coc_index .'.html.php');?>
+
                 </div>
             </div>
             <?php endforeach; ?>
@@ -71,9 +83,10 @@ $coc_mainIndexes = array
     <div class="row">
         <div class="well coc-footer">
 
-            <h2>footer</h2>
+            $this->view()->render(
+            array('element' => 'discordapp')
+            )
 
         </div>
     </div>
-    <img src="/img/clash_of_clans/sidebackground.png" class="img-responsive .right" alt="sidebackground.png" />
 </div>
