@@ -117,7 +117,7 @@ $forums = Forums::GetList();
                         <span class='caret'></span>
                     </a>
                     <ul class='dropdown-menu user-notification-list' role='menu'>
-                        
+
                     </ul>
                 </li>
 			<?php else: ?>

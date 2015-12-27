@@ -1,7 +1,7 @@
 #navbar-notifications .user-notification-list
 {
     padding: 5px;
-    min-width: 500px;
+    min-width: 600px;
 }
 
 .user-notification-list .date
@@ -14,8 +14,18 @@
     padding: 0;
 }
 
+.dropdown-menu.user-notification-list li > a:hover
+{
+    color: inherit;
+}
+
+.dropdown-menu.user-notification-list li > a > .row:hover
+{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /*.dropdown-menu.user-notification-list > li,*/
-.dropdown-menu.user-notification-list > li > a > .row
+.dropdown-menu.user-notification-list li > a > .row
 {
     max-height: 100px;
     min-height: 60px;

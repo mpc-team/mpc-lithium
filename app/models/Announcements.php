@@ -16,10 +16,9 @@ class Announcements extends \lithium\data\Model
      * 
      * @return mixed
      */
-    public static function cleanTitle ($text)
+    public static function CleanTitle ($text)
     {
 		$text = strip_tags(trim($text));
-		$text = str_replace('"', '""', $text);
 		$text = str_replace('\r\n', '', $text);
 		$text = str_replace('\n', '', $text);
 		$text = str_replace('\r', '', $text);
@@ -33,7 +32,7 @@ class Announcements extends \lithium\data\Model
      * 
 	 * @return string
 	 */
-	public static function cleanContent ($text) 
+	public static function CleanContent ($text) 
     {
 		$text = trim($text);
 		$cleaned = '';
@@ -65,7 +64,7 @@ class Announcements extends \lithium\data\Model
      * 
      * @return mixed
      */
-	public static function getById ($id)
+	public static function Get ($id)
     {
 		if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
 			return $announcement->to('array');
@@ -80,7 +79,7 @@ class Announcements extends \lithium\data\Model
      *
      * @return mixed
      */
-    public static function deleteById ($id)
+    public static function Destroy ($id)
     {
         if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
             return $announcement->delete();
@@ -97,7 +96,7 @@ class Announcements extends \lithium\data\Model
      *
      * @return boolean True if the Announcement was edited successfully.
      */
-    public static function editById ($id, $title, $content)
+    public static function Edit ($id, $title, $content)
     {
         if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
         {

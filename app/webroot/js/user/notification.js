@@ -7,10 +7,56 @@ user.notifications.types = {
 	post: 'post',
 };
 
-user.notifications.stringify = function (object)
-{
+//--------------------------------------------------------------------------------------
 
+user.notifications.forum = {};
+user.notifications.forum.stringify = function (object)
+{
+	var date = moment(object['tstamp']);
+	var html = "<li>";
+	html += "<a href='/thread/view/" + object['post']['threadid'] + "#" + object['contentid'] + "'>";
+	html += "<div class='row'>";
+	html += "<div class='col-xs-3 info'>";
+	html += "<div class='row author'>";
+	html += object['post']['author'];
+	html += "</div>";
+	html += "<div class='row date'>";
+	html += date.format("MMM DD - h:mm A ");
+	html += "</div>";
+	html += "</div>";
+	html += "<div class='col-xs-9 content'>";
+	html += "<h3>" + object['post']['thread'] + "</h3>";
+	html += markup.process(object['post']['content'], markup.NORMAL);
+	html += "</div>";
+	html += "</div>";
+	html += "</a>";
+	html += "</li>";
+	return html;
 }
+
+user.notifications.posthits = {};
+user.notifications.posthits.stringify = function (object)
+{
+	var html = "<li>";
+	html += "<a href='/thread/view/" + object['posthit']['threadid'] + '#' + object['contentid'] + "'>";
+	html += "<div class='row'>";
+	html += "<h3>";
+	html += "<div>";
+	html += object['posthit']['thread'];
+	html += "</div>";
+	html += "<div>";
+	html += "<small>";
+	html += object['posthit']['sender'];
+	html += "</small>";
+	html += "</div>";
+	html += "</h3>";
+	html += "</div>";
+	html += "</a>";
+	html += "</li>";
+	return html;
+}
+
+//--------------------------------------------------------------------------------------
 
 user.notifications.updateCountElements = function (htmlClass)
 {
@@ -21,6 +67,25 @@ user.notifications.updateCountElements = function (htmlClass)
 }
 
 user.notifications.updateListElements = function (htmlListClass)
+{
+	var prepared = "<div class='row'>";
+	prepared += "<div class='col-xs-9'>";
+
+	prepared += "</div>";
+	prepared += "<div class='col-xs-3'>";
+
+	prepared += "</div>";
+	prepared += "</div>";
+
+	$(htmlListClass).html(prepared)
+
+	user.notifications.updateForumNotifications($(htmlListClass + ' > .row > .col-xs-9'));
+	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row > .col-xs-3'));
+}
+
+//--------------------------------------------------------------------------------------
+
+user.notifications.updateForumNotifications = function (jqueryElement)
 {
 	$.get('/api/users/notifications/all?type=post&limit=4', null, function (data)
 	{
@@ -34,31 +99,32 @@ user.notifications.updateListElements = function (htmlListClass)
 
 		for (key in data)
 		{
-			var notification = data[key];
-			var date = moment(notification['tstamp']);
-
 			html += "<li class='divider'></li>";
-			html += "<li>";
-			html += "<a href='/thread/view/" + notification['post']['threadid'] + "#" + notification['contentid'] + "'>";
-			html += "<div class='row'>";
-			html += "<div class='col-xs-3 info'>";
-			html += "<div class='row author'>";
-			html += notification['post']['author'];
-			html += "</div>";
-			html += "<div class='row date'>";
-			html += date.format("MMM DD - h:mm A ");
-			html += "</div>";
-			html += "</div>";
-			html += "<div class='col-xs-9 content'>";
-			html += markup.process(notification['post']['content'], markup.NORMAL);
-			html += "</div>";
-			html += "</div>";
-			html += "</a>";
-			html += "</li>";
+			html += user.notifications.forum.stringify(data[key]);
 		}
-		$(htmlListClass).html(html);
+		html += "</div>";
+
+		jqueryElement.html(html);
 	});
 }
+
+user.notifications.updatePostHitNotifications = function (jqueryElement)
+{
+	$.get('/api/users/notifications/all?type=posthit&limit=4', null, function (data)
+	{
+		var html = "<h4>Post Hits</h4>";
+		html += "<li class='divider'></li>";
+
+		for (key in data)
+		{
+			html += user.notifications.posthits.stringify(data[key]);
+		}
+
+		jqueryElement.html(html);
+	});
+}
+
+//--------------------------------------------------------------------------------------
 
 $(document).ready(function ()
 {
@@ -69,5 +135,5 @@ $(document).ready(function ()
 	{
 		user.notifications.updateCountElements('.user-notification-count');
 		user.notifications.updateListElements('.user-notification-list');
-	}, 5000);
+	}, 10000);
 });

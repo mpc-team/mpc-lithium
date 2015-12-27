@@ -10,19 +10,12 @@ $username = isset($member) ? $member['alias'] . "'s" : "My";
  
 ?>
 <div class="wall">
-	<div class="content">
-		<div class="top">
-			<center>
-				<h4>
-					Oldest Message
-				</h4>
-			</center>
-		</div>
-		<div class="messages">
+    <div class="nano">
+	    <div class="nano-content">
 			<h3>This User does not have any messages.</h3>
 			<!-- Filled By JavaScript -->
-		</div>
-	</div>
+	    </div>
+    </div>
 	<div class="footer">
 		<?php if (in_array('post', $options)): ?>
 			<div class="panel panel-default">

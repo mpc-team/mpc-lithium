@@ -13,6 +13,26 @@ class PostHits extends \lithium\data\Model
     {
 		return self::find('all', array('conditions' => array('pid' => $postid)))->to('array');
 	}
+
+    /**
+     * Creates a "Post Hit" entry with the specificed criteria.
+     *
+     * @param int $postid Post identifier.
+     * @param int $userid user identifier.
+     *
+     * @return object Newly created "Post Hit".
+     */
+    public static function Hit ($postid, $userid)
+    {
+        $ph = self::create(array(
+            'pid' => $postid,
+            'uid' => $userid,
+        ));
+        if ($ph->save())
+            return $ph->to('array');
+        else
+            return null;
+    }
 	
 	/**
 	 * Retrieves the set of entries that correspond with a specific User.

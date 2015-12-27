@@ -39,8 +39,8 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
         
-        $content = Announcements::cleanContent($this->request->data['content']);
-        $title = Announcements::cleanTitle($this->request->data['title']);
+        $content = Announcements::CleanContent($this->request->data['content']);
+        $title = Announcements::CleanTitle($this->request->data['title']);
 
         if (!self::validate($content))
         {
@@ -59,7 +59,7 @@ class AnnouncementsController extends ContentController
 
         if ($announcement->save())
         {
-            $created = Announcements::getById($announcement->id);
+            $created = Announcements::Get($announcement->id);
             $created['author'] = Users::Get($created['authorid']);
             if ($created['author'])
                 $created['author'] = $created['author']['alias'];
@@ -99,8 +99,8 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
         
-        $content = Announcements::cleanContent($this->request->data['content']);
-        $title = Announcements::cleanTitle($this->request->data['title']);
+        $content = Announcements::CleanContent($this->request->data['content']);
+        $title = Announcements::CleanTitle($this->request->data['title']);
 
         if (!self::validate($content))
         {
@@ -108,13 +108,13 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 
-        if (!Announcements::editById($id, $title, $content))
+        if (!Announcements::Edit($id, $title, $content))
         {
             $result = array('error' => 'Unable to Edit',);
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 
-        $updated = Announcements::getById($id);
+        $updated = Announcements::Get($id);
         $updated['author'] = Users::Get($updated['authorid']);
         if ($updated['author'])
             $updated['author'] = $updated['author']['alias'];
@@ -147,14 +147,14 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '500'));
         }
 
-        $announcement = Announcements::getById($id);
+        $announcement = Announcements::Get($id);
         if ($announcement == null)
         {
             $result = array('error' => 'Does not exist.');
             return $this->render(array('json' => $result, 'status' => '404'));
         }
 
-        Announcements::deleteById($id);
+        Announcements::Destroy($id);
         return $this->render(array('json' => true, 'status' => '200'));
     }
 

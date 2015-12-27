@@ -31,6 +31,10 @@ class UserNotificationsAPI extends ContentController
                 case 'post':
                     $notifications = UserNotificationsAPI::GetUserPostNotifications($authorized['id'], $limit);
                     break;
+                case 'posthits':
+                case 'posthit':
+                    $notifications = UserNotificationsAPI::GetUserPostHitNotifications($authorized['id'], $limit);
+                    break;
             }
         }
         else
@@ -40,6 +44,10 @@ class UserNotificationsAPI extends ContentController
         return $this->render(array('json' => $notifications, 'status' => 200));
     }
 
+    /**
+     * Responds with a total count on the Notifications that the authorized User
+     * has. This includes Notifications for the Forum, etc.
+     */
     public function count()
     {
         $authorized = Auth::check('default');
@@ -53,12 +61,12 @@ class UserNotificationsAPI extends ContentController
 # ------------------------------------------------------------------------------------------------------
 
     /**
-     * Retrieves information for Notifications associated with a Forum Post.
+     * Retrieve Post-related Notification data for the authorized User.
      *
      * @param int $userid User identifier.
      * @param int $limit Limit number of results.
      *
-     * @return array List of Notifications with the `post` attribute for storing information.
+     * @return array List of Notifications with the `post` attribute for related information.
      */
     private static function GetUserPostNotifications($userid, $limit)
     {
@@ -76,6 +84,33 @@ class UserNotificationsAPI extends ContentController
                 'content' => stripslashes($post['content']),
                 'author' => stripslashes($author['alias']),
                 'authorid' => $author['id'],
+            );
+        }
+        return $notifications;
+    }
+
+    /**
+     * Retrieve Post "Hit"-related Notification data for the authorized User.
+     *
+     * @param int $userid User identifier.
+     * @param int $limit Limit number of results.
+     *
+     * @return array List of Notifications with the `posthit` attribute for related information.
+     */
+    private static function GetUserPostHitNotifications($userid, $limit)
+    {
+        $notifications = UserNotifications::GetUserNotificationsOfType($userid, 'posthit', $limit);
+        foreach ($notifications as $key => $notification)
+        {
+            $post = Posts::Get($notification['contentid']);
+            $sender = Users::Get($notification['senderid']);
+            $thread = Threads::Get($post['tid']);
+            $forum = Forums::Get($thread['fid']);
+            $notifications[$key]['posthit'] = array(
+                'thread' => stripslashes($thread['name']),
+                'threadid' => $thread['id'],
+                'forum' => stripslashes($forum['name']),
+                'sender' => stripslashes($sender['alias']),
             );
         }
         return $notifications;

@@ -2949,7 +2949,9 @@
     <Content Include="app\webroot\css\announcements.css" />
     <Content Include="app\webroot\css\markup.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
+    <Content Include="app\webroot\css\utils\nanoscroller.css" />
     <Content Include="app\webroot\js\background.js" />
+    <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
     <Content Include="app\webroot\js\announcements.js" />

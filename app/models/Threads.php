@@ -7,7 +7,6 @@ class Threads extends \lithium\data\Model
 	public static function CleanTitle ($text) 
     {
 		$text = strip_tags(trim($text));
-		$text = str_replace('"', '""', $text);
 		$text = str_replace('\r\n', '', $text);
 		$text = str_replace('\n', '', $text);
 		$text = str_replace('\r', '', $text);

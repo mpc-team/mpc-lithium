@@ -100,7 +100,7 @@ profile.refreshMessages = function (userid)
 		function (messages) 
 		{
 			var json = $.parseJSON(messages);
-			var html = '';				
+			var html = '';
 			for (var key in json.response) 
 			{
 				html += "<div class='message'>";
@@ -118,19 +118,21 @@ profile.refreshMessages = function (userid)
 				html += "</div>";
 				html += "</div>";
 			}
-			var feed = $(".profile-content .wall .content .messages");
-			var container = $(".profile-content .wall .content");
+			var feed = $(".profile-content .wall .nano-content");
+			var container = $(".profile-content .wall .nano");
 			feed.html(html);
 			if (profile.messageCount < json.response.length)
 				container.scrollTop(container[0].scrollHeight);
 
 			profile.messageCount = json.response.length;
+
+			$(".nano").nanoScroller();
 		}
 	);
 }
 
 //------------------------------------------------------------------------------------------
-	
+
 profile.init = function (userid, played) 
 {	
 	profile.refreshGames(played);
@@ -139,7 +141,9 @@ profile.init = function (userid, played)
 	setInterval(function () 
 	{
 		profile.refreshMessages(userid);
-	}, 5000);
+	}, 10000);
+
+	//$(".profile-content .wall .content .messages").nanoScroller();
 		
 	$(".profile-content .game button").click(function () 
 	{

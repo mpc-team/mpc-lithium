@@ -11,7 +11,10 @@ namespace app\models;
 class UserNotifications extends \lithium\data\Model  
 {
     const POST = "post";
+    const POST_HIT = "posthit";
+
     const FORUM = "forum";
+
 
     /**
      * Creates a new Notification for a User.
@@ -22,12 +25,13 @@ class UserNotifications extends \lithium\data\Model
      *
      * @return bool True if successful.
      */
-    public static function NewNotification ($userid, $contentid, $type)
+    public static function NewNotification ($userid, $contentid, $type, $senderid = null)
     {
         $notification = self::create(array(
             'userid' => $userid,
             'contentid' => $contentid,
             'type' => $type,
+            'senderid' => $senderid,
         ));
         return $notification->save();
     }

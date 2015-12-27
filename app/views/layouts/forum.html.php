@@ -28,6 +28,7 @@ use app\views\layouts\LayoutConstants;
         'navbar',
         'headerbar',
         'user',
+        'utils/nanoscroller',
         'external/effects/hover',
         'external/effects/component',
 	)); ?>
@@ -35,6 +36,7 @@ use app\views\layouts\LayoutConstants;
 		LayoutConstants::JQUERY_PATH,
         'bootstrap', 
         'utils/fileselect',
+        'utils/jquery.nanoscroller',
         'user/notification',
         'background',
 		'navbar',

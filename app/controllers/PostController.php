@@ -14,14 +14,9 @@ use app\models\UserNotifications;
 
 class PostController extends ContentController 
 {
-	/**
-	 * Creates a Post with the Thread identifier provided.
-     *
-     * @param string $this->request->id Thread identifier parenting the Post.
-     * @param string $this->request->data Provides the 'content' of the Post.
-     *
-	 * @return redirect Links to Thread to view the Post.
-	 */
+
+# ------------------------------------------------------------------------------------------------------
+
 	public function create ( ) 
     {
 		if (isset($this->request->id)) 
@@ -40,10 +35,12 @@ class PostController extends ContentController
 					));
 					if ($post->save()) 
                     {   
+                        /* Subscribe to the Thread if necessary. */
                         if (!ThreadSubscriptions::IsSubscribed($userid, $threadid) 
                                 && $authorized['subsc_thread_on_post'])
                             ThreadSubscriptions::NewSubscription($userid, $threadid);
                         
+                        /* Create a User Notification for all subscribers. */
                         $subscriptions = ThreadSubscriptions::GetByThread($threadid);
                         foreach ($subscriptions as $subsc)
                         {
@@ -59,13 +56,6 @@ class PostController extends ContentController
 		return $this->redirect('/forum');
 	}
 	
-	/**
-	 * Deletes a Post. If the Post is the last one in a Thread, deletes the Thread.
-     *
-     * @param int $this->request->id Post identifier.
-     *
-	 * @return redirect Redirects to view the Thread.
-	 */
 	public function delete ( ) 
     {
 		if (isset($this->request->id)) 
@@ -88,10 +78,6 @@ class PostController extends ContentController
 		return $this->redirect('/forum');
 	}
 
-	/**
-	 * Summary of edit
-	 * @return object
-	 */
 	public function edit ( ) 
     {
 		if (isset($this->request->id)) 
@@ -120,10 +106,8 @@ class PostController extends ContentController
 		return $this->redirect('/forum');
 	}
 	
-	/**
-	 * Summary of hit
-	 * @return string
-	 */
+# ------------------------------------------------------------------------------------------------------
+
 	public function hit ( ) 
     {
 		if (isset($this->request->id)) 
@@ -131,27 +115,23 @@ class PostController extends ContentController
 			$authorized = Auth::check('default');
 			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) 
             {
-				$conditions = $authorized != NULL && 
-					PostHits::IsHitEnabledForUser($post['id'], $authorized['id']);
+                $authid = $authorized['id'];
+                $postid = $post['id'];
 
-				if ($conditions) 
+				if ($authorized != NULL && PostHits::IsHitEnabledForUser($postid, $authid)) 
                 {
-					$hit = PostHits::create(array(
-						'pid' => $post['id'],
-						'uid' => $authorized['id']
-					));
-					return json_encode(array('status' => $hit->save()));
+                    $notification = UserNotifications::NewNotification(
+                        $post['uid'], $post['id'], UserNotifications::POST_HIT, $authid);
+
+                    $hit = PostHits::Hit($post['id'], $authorized['id']);
+                    return json_encode(array('status' => ($hit != null)));
 				}
 			}
 		}
 		return json_encode(array('status' => false));
 	}
 	
-	/**
-	 * Gets the number of Hits the Post has. 
-	 * @return string
-	 */
-	public function getHits ( ) 
+	public function hits ( ) 
     {
 		if (isset($this->request->id)) 
         {
@@ -168,4 +148,7 @@ class PostController extends ContentController
 		}
 		return json_encode(array('status' => false));
 	}
+
+# ------------------------------------------------------------------------------------------------------
+
 }

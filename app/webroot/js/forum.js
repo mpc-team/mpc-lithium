@@ -47,7 +47,7 @@ forum.hits.refresh = function (postids)
 	{
 		var data = { pid: postids[i] }
 				
-		$.post("/post/getHits/" + postids[i], data, function (data)
+		$.post("/post/hits/" + postids[i], data, function (data)
 		{
 			data = JSON.parse(data);
 			if (data.status)

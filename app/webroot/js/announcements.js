@@ -7,11 +7,11 @@
 var announcements = {};
 announcements.ui = {};
 
-
 /**
  * HTML Elements.
  */
-announcements.htmlElements = {
+announcements.htmlElements =
+{
 	content: '#announcements-content',
 };
 
@@ -48,9 +48,14 @@ announcements.ui.stringify = function (object)
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
+	{
 		result += "<input type='text' class='form-control' placeholder='Enter title...' data-id='" + object.id + "'/>";
+	}
 	else
-		result += "<input type='text' class='form-control' value='" + object.title.replace("'", "&#39") + "' data-id='" + object.id + "'/>";
+	{
+		object.title = object.title.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;');
+		result += "<input type='text' class='form-control' value='" + object.title + "' data-id='" + object.id + "'/>";
+	}
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";
@@ -72,7 +77,7 @@ announcements.ui.stringify = function (object)
 	result += "<div class='author'>Created by: ";
 	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
 	result += "</div>";
-	result += 'Created on: ' + date.format("h:mm A - dddd DD, MMM YYYY") + '<br />';
+	result += date.format("h:mm A - dddd DD, MMM YYYY") + '<br />';
 	result += "</div>";
 	result += "</div>";
 
