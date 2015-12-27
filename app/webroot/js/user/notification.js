@@ -26,6 +26,12 @@ user.notifications.updateListElements = function (htmlListClass)
 	{
 		var html = "<h4>Forum Notifications</h4>";
 
+		if (Object.keys(data).length == 0)
+		{
+			html += "<li class='divider'></li>";
+			html += "<h5>You have no Forum Notifications.</h5>";
+		}
+
 		for (key in data)
 		{
 			var notification = data[key];

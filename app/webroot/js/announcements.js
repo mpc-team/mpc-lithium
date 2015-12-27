@@ -47,10 +47,10 @@ announcements.ui.stringify = function (object)
 		result += "<h3>Announcement #" + object.id + "</h3>";
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
-	if (object.title != null)
-		result += "<input type='text' class='form-control' value='" + object.title + "' data-id='" + object.id + "'/>";
-	else
+	if (object.title == null || object.title == "")
 		result += "<input type='text' class='form-control' placeholder='Enter title...' data-id='" + object.id + "'/>";
+	else
+		result += "<input type='text' class='form-control' value='" + object.title.replace("'", "&#39") + "' data-id='" + object.id + "'/>";
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";

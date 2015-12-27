@@ -123,7 +123,7 @@ class Announcements extends \lithium\data\Model
         {
             $author = Users::Get($announcement['authorid']);
             $announcements[$key]['author'] = $author['alias'];
-            $announcements[$key]['content'] = stripslashes($announcements[$key]['content']);
+            $announcements[$key]['content'] = stripslashes($announcement['content']);
         }
         return $announcements;
     }
