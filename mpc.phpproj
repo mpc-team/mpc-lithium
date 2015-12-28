@@ -1593,6 +1593,7 @@
     <Compile Include="app\config\routes.php" />
     <Compile Include="app\controllers\api\GamesAPI.php" />
     <Compile Include="app\controllers\AnnouncementsController.php" />
+    <Compile Include="app\controllers\api\UsersAPI.php" />
     <Compile Include="app\controllers\api\PostsAPI.php" />
     <Compile Include="app\controllers\api\UserNotificationsAPI.php" />
     <Compile Include="app\controllers\games\ClashOfClansActivityController.php" />
@@ -1704,7 +1705,6 @@
     <Compile Include="app\views\elements\navbar.html.php" />
     <Compile Include="app\views\elements\recentfeed.html.php" />
     <Compile Include="app\views\elements\reply.html.php" />
-    <Compile Include="app\views\elements\replyform.html.php" />
     <Compile Include="app\views\elements\sidebar.html.php" />
     <Compile Include="app\views\elements\texttags.html.php" />
     <Compile Include="app\views\errors\404.html.php" />
@@ -1870,14 +1870,13 @@
     <Compile Include="app\webroot\img\wowicon.png" />
     <Compile Include="app\webroot\js\bootstrap.js" />
     <Compile Include="app\webroot\js\field-selection.js" />
-    <Compile Include="app\webroot\js\fileinput.js" />
     <Compile Include="app\webroot\js\forum.js" />
     <Compile Include="app\webroot\js\jquery-1.11.2.js" />
     <Compile Include="app\webroot\js\markup.js" />
     <Compile Include="app\webroot\js\members.js" />
     <Compile Include="app\webroot\js\moment.js" />
     <Compile Include="app\webroot\js\navbar.js" />
-    <Compile Include="app\webroot\js\profile.js" />
+    <Compile Include="app\webroot\js\user\profile.js" />
     <Compile Include="app\webroot\js\scroller.js" />
     <Compile Include="app\webroot\js\validate.js" />
     <Compile Include="app\webroot\starcraft2\builds\Build001.txt" />
@@ -2951,6 +2950,7 @@
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
     <Content Include="app\webroot\js\background.js" />
+    <Content Include="app\webroot\js\user\wall.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />

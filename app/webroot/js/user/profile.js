@@ -8,8 +8,6 @@
 // This is already defined in /user/wall
 var profile = {};
 
-profile.messageCount = 0;
-
 profile.updateGameUI = function (gameid, status)
 {
 	if (status) 
@@ -85,10 +83,10 @@ profile.init = function (userid, played)
 {	
 	profile.refreshGames(played);
 
-	profile.wall.refreshMessages(userid);
+	profile.wall.refreshMessages(userid, true);
 	setInterval(function () 
 	{
-		profile.wall.refreshMessages(userid);
+		profile.wall.refreshMessages(userid, false);
 	}, 10000);
 	
 	$(".profile-content .game button").click(function () 

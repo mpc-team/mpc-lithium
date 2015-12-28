@@ -346,7 +346,6 @@ announcements.pull = function ()
 			dataArray.sort(function (a, b)
 			{
 				var time = [new Date(a.tstamp), new Date(b.tstamp), ];
-
 				return time[1].getTime() - time[0].getTime();
 			});
 			announcements.ui.print(dataArray);

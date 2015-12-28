@@ -2,35 +2,41 @@
 
 namespace app\models;
 
-class Messages extends \lithium\data\Model  {
-
-	public static function getUserMessages ($id) {
-		return Messages::find('all', array(
+class Messages extends \lithium\data\Model  
+{
+	public static function GetUserMessages ($id, $limit) 
+    {
+		return self::find('all', array(
 			'conditions' => array('uidreceiver' => $id),
-			'order' => array('tstamp' => 'ASC')
+			'order' => array('tstamp' => 'DESC'),
+            'limit' => $limit,
 		))->to('array');
 	}
 	
-	public static function send ($type, $sender, $receiver, $content) {
+	public static function Send ($type, $sender, $receiver, $content) 
+    {
 		$result = -1;
-		if ($content != null) {
-			$cleanedContent = self::clean($content);
-			if (strlen($cleanedContent) > 0) {		
+		if ($content != null) 
+        {
+			$cleanedContent = self::CleanMessage($content);
+			if (strlen($cleanedContent) > 0) 
+            {		
 				$message = self::create(array(
 					'uidsender' => $sender,
 					'uidreceiver' => $receiver,
 					'content' => $cleanedContent,
 					'type' => $type
 				));
-				if ($message->save()) {
+
+				if ($message->save())
 					$result = $message->id;
-				}
 			}
 		}
 		return $result;
 	}
 
-	public static function clean ($text) {
+	public static function CleanMessage ($text) 
+    {
 		$text = trim($text);
 		$text = str_replace('\r\n', '', $text);
 		$text = str_replace('\n', '', $text);

@@ -12,28 +12,14 @@ $username = isset($member) ? $member['alias'] . "'s" : "My";
 <div class="wall">
     <div class="nano">
 	    <div class="nano-content">
-			<h3>This User does not have any messages.</h3>
 			<!-- Filled By JavaScript -->
 	    </div>
     </div>
 	<div class="footer">
 		<?php if (in_array('post', $options)): ?>
-			<div class="panel panel-default">
-				<div class="input-group">
-					<div class="row">
-						<div class="text">
-							<h5>
-								<?php if (isset($member)): ?>
-									Leave a message for <?= $member['alias'] ?>
-								<?php else: ?>
-									Post on your Wall
-								<?php endif; ?>
-							</h5>
-						</div>
-					</div>
-					<div class="row">
-						<input type="text" name="message-text" placeholder="Type message and press 'Enter'..." class="form-control"/>
-					</div>
+			<div class="input-group">
+				<div class="row">
+					<input type="text" name="message-text" placeholder="Type message and press 'Enter'..." class="form-control"/>
 				</div>
 			</div>
 		<?php endif; ?>

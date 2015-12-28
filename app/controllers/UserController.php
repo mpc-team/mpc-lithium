@@ -377,7 +377,7 @@ class UserController extends \lithium\action\Controller
 			{
 				if ($authorized) 
 				{
-					$mid = Messages::send('text', $authorized['id'], $this->request->id, $this->request->data['wall']);
+					$mid = Messages::Send('text', $authorized['id'], $this->request->id, $this->request->data['wall']);
 					return json_encode(array(
 						'status' => true,
 						'response' => $mid
@@ -387,31 +387,4 @@ class UserController extends \lithium\action\Controller
 		}
 		return json_encode(array('status' => false, 'response' => 'None'));
 	}
-
-	
-	
-	public function messages ( ) 
-	{
-		if (isset($this->request->id)) 
-		{
-			if ($user = Users::Get($this->request->id)) 
-			{
-				$messages = Messages::getUserMessages($this->request->id);
-				foreach ($messages as $key => $message) 
-				{
-					$sender = Users::Get($message['uidsender']);
-					$messages[$key]['sender'] = $sender['alias'];
-					$messages[$key]['senderid'] = $sender['id'];
-					$messages[$key]['content'] = stripslashes($message['content']);
-				}
-				$messages = array_values($messages);
-				return json_encode(array(
-					'status' => true,
-					'response' => $messages
-				));
-			}
-		}
-		return json_encode(array('status' => false));
-	}
-
 }

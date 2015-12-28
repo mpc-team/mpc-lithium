@@ -38,3 +38,150 @@
 {
     margin-top: 25px;
 }
+
+
+.profile-content .wall .nano-content,
+.profile-content .invites .content
+{
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/*.profile-content > div
+{
+    padding-top: 30px;
+}*/
+
+.profile-header,
+.profile-content .games .panel button,
+.profile-content .games .name
+{
+    white-space: nowrap;
+}
+
+.profile-content .games button.btn-edit.active:hover
+{
+    background-color: rgba(72, 168, 75, 0.7);
+}
+
+.profile-header .page-header
+{
+    margin-bottom: 0;
+}
+
+.profile-header .invites,
+.profile-content .wall .header
+{
+    padding: 5px 0 5px 0;
+}
+
+.profile-content .wall
+{
+    /*padding-left: 20px;*/
+    /*width: 90%;*/
+    /*margin-right: auto;*/
+    /*margin-left: auto;*/
+}
+
+.profile-content .wall .nano
+{
+    height: 400px;
+}
+
+.profile-content .wall .nano-content,
+.profile-content .invites .content
+{
+    /*max-height: 400px;*/
+    /*min-height: 400px;*/
+    /*overflow-y: auto;*/
+}
+
+.profile-content .wall .nano-content .message
+{
+    word-wrap: break-word;
+    padding: 10px 10px 10px 10px;
+    border-top: 1px solid rgba(200, 200, 200, 0.1);
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile-content .wall .nano-content .message .name
+{
+    /* font-family: "Oswald"; */
+    font-size: 105%;
+}
+
+.profile-content .wall .nano-content .message .text
+{
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.profile-content .wall .footer > .input-group
+{
+    border-top: 1px solid rgba(200, 200, 200, 0.1);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile-content .games
+{
+    padding: 0 5px 10px 5px;
+}
+
+.profile-content .games .game
+{
+    padding: 0 2px 5px 2px;
+}
+
+.profile-content .games .panel .icon,
+.profile-content .games .panel button
+{
+    padding: 1px;
+    text-align: left;
+    width: 100%;
+}
+
+.profile-content .games .panel.active
+{
+    border: 1px solid rgba(180, 255, 180, 0.9);
+    box-shadow: 0 0 5px rgba(210, 255, 210, 0.9);
+    background: linear-gradient(140deg, #438a43, #233d23);
+}
+
+.profile-content .games .panel.active .name
+{
+    color: #aaffaa;
+}
+
+.profile-content .games .name
+{
+    display: inline;
+    padding-left: 3px;
+    white-space: nowrap;
+    font-size: 9pt;
+}
+
+.profile-content .games .status
+{
+    font-size: 300%;
+    color: #aaffaa;
+    text-align: center;
+    padding-right: 10px;
+}
+
+@media (max-width: 870px)
+{
+    .profile-content .games .name
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 630px)
+{
+    .profile-content .games .name
+    {
+        display: none;
+    }
+}
