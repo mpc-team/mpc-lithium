@@ -70,6 +70,7 @@ class ThreadController extends ContentController
 		foreach ($data['posts'] as $key => $post) 
         {
             UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::POST);
+            UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::POST_HIT);
 
 			$author = Users::Get($post['uid']);
 			$data['posts'][$key]['content'] = stripslashes($data['posts'][$key]['content']);
