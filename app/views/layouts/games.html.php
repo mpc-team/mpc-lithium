@@ -46,8 +46,7 @@ use app\views\layouts\LayoutConstants;
 		'field-selection',	
         'members',
 		'validate',
-		'markup',						
-        'profile',
+		'markup',
 		'scroller',
 	));?>
 	<?php echo $this->scripts(); ?>

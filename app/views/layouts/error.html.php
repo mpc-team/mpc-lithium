@@ -54,10 +54,8 @@ $path = Libraries::get(true, 'path');
         'members',
 		'validate',					
         'texttags',
-		'markup',				
-        'profile',
-		'scroller',					
-        'fileinput',
+		'markup',
+		'scroller',	
         'announcements',
         'texttags',
 	));?>

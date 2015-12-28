@@ -4,6 +4,8 @@
  * Functions that are used for the JavaScript elements that appear on the 
  * Profile page.
  */
+//
+// This is already defined in /user/wall
 var profile = {};
 
 profile.messageCount = 0;
@@ -79,72 +81,16 @@ profile.refreshGames = function (played)
 
 //------------------------------------------------------------------------------------------
 
-profile.sendMessage = function (userid, content)
-{
-	var obj = { wall: content };
-	$.post("/user/edit/" + userid, obj, function (data) 
-	{
-		data = JSON.parse(data);
-		if (data.status) 
-			profile.refreshMessages(userid);
-	});
-}
-
-/**
- * THIS NEEDS TO BE REFACTORED TO ALLOW FOR LIMITS.
- */
-
-profile.refreshMessages = function (userid)
-{
-	$.get("/user/messages/" + userid,
-		function (messages) 
-		{
-			var json = $.parseJSON(messages);
-			var html = '';
-			for (var key in json.response) 
-			{
-				html += "<div class='message'>";
-				html += "<div class='name'>";
-				html += "<a href=/user/view/" + json.response[key].senderid + ">";
-				html += json.response[key].sender;
-				html += "</a>";
-				html += "</div>";
-				html += "<div class='text'>";
-				html += json.response[key].content;
-				html += "</div>";
-				html += "<div class='time'>";
-				var date = moment(json.response[key].tstamp);
-				html += moment(json.response[key].tstamp).format("h:mm A - dddd DD/MM/YY");
-				html += "</div>";
-				html += "</div>";
-			}
-			var feed = $(".profile-content .wall .nano-content");
-			var container = $(".profile-content .wall .nano");
-			feed.html(html);
-			if (profile.messageCount < json.response.length)
-				container.scrollTop(container[0].scrollHeight);
-
-			profile.messageCount = json.response.length;
-
-			$(".nano").nanoScroller();
-		}
-	);
-}
-
-//------------------------------------------------------------------------------------------
-
 profile.init = function (userid, played) 
 {	
 	profile.refreshGames(played);
-	profile.refreshMessages(userid);
-	
+
+	profile.wall.refreshMessages(userid);
 	setInterval(function () 
 	{
-		profile.refreshMessages(userid);
+		profile.wall.refreshMessages(userid);
 	}, 10000);
-
-	//$(".profile-content .wall .content .messages").nanoScroller();
-		
+	
 	$(".profile-content .game button").click(function () 
 	{
 		var gameid = $(this).data('id');
@@ -153,6 +99,7 @@ profile.init = function (userid, played)
 		else
 			profile.updateGame(played, userid, gameid, true);
 	});
+
 	$(".profile-content .wall .footer input[type='text']").keyup(function (event) 
 	{
 		if (event.keyCode == 13) 
@@ -160,7 +107,7 @@ profile.init = function (userid, played)
 			var message = $(".profile-content .wall .footer input").val();
 			if (message != null && message.length > 0) 
 			{
-				profile.sendMessage(userid, message);
+				profile.wall.sendMessage(userid, message);
 				$(".profile-content .wall .footer input").val("");
 			}
 		}
