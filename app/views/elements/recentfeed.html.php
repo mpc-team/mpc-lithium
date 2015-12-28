@@ -14,8 +14,6 @@
 	$recentPages = $recentLimit / $recentPerPage;
 ?>
 
-<hr />
-
 <div class="recentfeed">
 	<?php if (count($recentfeed) > 0): ?>
 		<div id="recentfeed-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -23,9 +21,7 @@
 				<?php for ($i = 0; $i < $recentPages; $i++): ?>
 				<li data-target="#recentfeed-carousel" data-slide-to="<?= $i ?>" 
 					<?php if ($i == 0): ?>
-						class="active hvr-grow"
-                    <?php else: ?>
-                        class="hvr-grow"
+						class="active"
 					<?php endif; ?>
 				></li>
 				<?php endfor; ?>
@@ -86,11 +82,11 @@
 			</div>
 			
 			<a class="left carousel-control" href="#recentfeed-carousel" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left hvr-grow" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
 			</a>
 			<a class="right carousel-control" href="#recentfeed-carousel" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right hvr-grow" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
@@ -114,5 +110,3 @@
 		</div>	
 	<?php endif; ?>
 </div>
-
-<hr />

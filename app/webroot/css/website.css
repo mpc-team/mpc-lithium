@@ -95,7 +95,6 @@ h5
     /*font-family: "Passion One";*/
     font-size: 14pt;
     font-weight: 500;
-    height: 60px;
 }
 
 .navbar .glyphicon-user
@@ -302,11 +301,6 @@ a h5
     height: auto;
     text-align: center;
     background: linear-gradient(rgba(255,255,255,0.025), rgba(255,255,255,0.05));
-}
-
-.carousel-indicators li:hover
-{
-    box-shadow: 0 0 50px #ccffcc;
 }
 
 /******************************************************************
@@ -752,8 +746,8 @@ a .panel-recentfeed h3
 {
     .panel-recentfeed
     {
-        min-height: 180px;
-        max-height: 180px;
+        min-height: 140px;
+        max-height: 140px;
     }
 }
 

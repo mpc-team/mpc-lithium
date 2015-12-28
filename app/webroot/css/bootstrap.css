@@ -1844,7 +1844,7 @@ a.bg-danger:hover
 .page-header
 {
     padding-bottom: 9px;
-    margin: 10px 0 20px;
+    margin: 0 0 20px;
 }
 
 ul,
@@ -5826,8 +5826,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-nav > li > a
 {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    /*padding-top: 15px;
+    padding-bottom: 15px;*/
 }
 
 @media (max-width: 375px)
@@ -5877,8 +5877,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
     .navbar-nav > li > a
     {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        /*padding-top: 15px;*/
+        /*padding-bottom: 15px;*/
     }
 }
 
@@ -8526,9 +8526,9 @@ button.close
     /* opacity: 0.5; */
     /* filter: alpha(opacity=50); */
     font-size: 40px;
-    color: #011001;
+    color: rgba(80, 80, 80, 0.8);
     text-align: center;
-    text-shadow: 1px 0px 1px #bbffbb, -1px 0px 1px #bbffbb, 0px 1px 1px #bbffbb, 0px -1px 1px #bbffbb;
+    /*text-shadow: 1px 0px 1px #bbffbb, -1px 0px 1px #bbffbb, 0px 1px 1px #bbffbb, 0px -1px 1px #bbffbb;*/
 }
 
 .carousel-control.left
@@ -8620,6 +8620,7 @@ button.close
     z-index: 15;
     width: 60%;
     margin-left: -30%;
+    margin-bottom: -40px;
     padding-left: 0;
     list-style: none;
     text-align: center;
@@ -8630,22 +8631,23 @@ button.close
     display: inline-block;
     width: 20px;
     height: 20px;
-    margin: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
     text-indent: -999px;
-    border: 1px solid #aaffaa;
+    /*border: 1px solid #aaffaa;*/
     border-radius: 10px;
     cursor: pointer;
-    background-color: #000000;
-    box-shadow: 0 0 10px #ffffff;
+    background-color: #404040;
+    /*box-shadow: 0 0 10px #ffffff;*/
 }
 
 .carousel-indicators .active
 {
     /* margin: 3px; */
-    border-radius: 3px;
-    width: 25px;
-    height: 25px;
-    /* background-color: #011001; */
+    /*border-radius: 3px;*/
+    /*width: 25px;*/
+    /*height: 25px*/;
+    background-color: #888; 
 }
 
 .carousel-caption

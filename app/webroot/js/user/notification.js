@@ -95,7 +95,7 @@ user.notifications.updateForumNotifications = function (jqueryElement)
 		if (Object.keys(data).length == 0)
 		{
 			html += "<li class='divider'></li>";
-			html += "<h5>You have no Forum Notifications.</h5>";
+			html += "You have no Forum Notifications.";
 		}
 
 		for (key in data)
