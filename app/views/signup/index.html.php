@@ -21,8 +21,6 @@ $self = $this;
 					'class'       => 'form-control'
 				))?>
 
-                <hr />
-
                 <?=$this->form->field('password', array(
 					'label'       => array('Password' => array('class' => 'control-label', 'for' => 'password')),
 					'wrap'        => array('class' => 'form-group form-signup has-feedback', 'id' => 'input-signup-pass'),
@@ -37,8 +35,6 @@ $self = $this;
 					'placeholder' => 'Re-enter Password',
 					'class'       => 'form-control'
 				))?>
-
-                <hr />
 
                 <?=$this->form->field('alias', array(
 					'label'       => array('Alias' => array('class' => 'control-label', 'for' => 'alias')),

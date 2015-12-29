@@ -35,12 +35,10 @@ $placeholder = $reply['enabled'] ? 'Enter a message...' : $disabledPlaceholder;
                         )
 					)?>
 				</div>
-				<div class="row">
-					<div class="input-group">
-						<textarea name="content" id='thread-reply-text' class="form-control edit-content-text" 
-							data-id='<?= $reply['id'] ?>' placeholder='<?= $placeholder ?>'
-							required <?= $disabled ?>></textarea>
-					</div>
+				<div class="row" style="padding: 0 5px 0 5px;">
+					<textarea name="content" id='thread-reply-text' class="form-control edit-content-text" 
+						data-id='<?= $reply['id'] ?>' placeholder='<?= $placeholder ?>'
+						required <?= $disabled ?>></textarea>
 				</div>
 				<div class="row btn-reply-row">
 					<div class="input-group">

@@ -40,11 +40,6 @@ h3 > small
     text-shadow: none;
 }
 
-h1 > small > div
-{
-    padding-left: 10px;
-}
-
 h5
 {
     display: inline;
@@ -718,9 +713,9 @@ a .panel-recentfeed h3
     background: inherit;
 }
 
-.recentfeed .panel-group
-{
-    margin: 5px;
+.recentfeed .panel-group
+{
+    margin: 2px;
 }
 
 .recentfeed .panel > a.btn
@@ -923,9 +918,10 @@ a .panel-recentfeed h3
 
 .panel-reply .form-group
 {
-    /*margin: 10px;*/
     background-color: rgba(40, 40, 40, 0.8);
-    /*padding: 10px;*/
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .panel-reply .input-group
