@@ -16,13 +16,8 @@ $self = $this;
 		</h1>
 	</div>
 	<div class="since">
-		<h4>
-			Member since:
-			<small>
-				<?= $data['member']['date'] ?>
-			</small>
-		</div>
-	</div>
+	    Member since <b><?= $data['member']['date'] ?></b>
+    </div>
 </div>
 
 <div class="profile-content">

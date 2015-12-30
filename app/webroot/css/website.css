@@ -5,11 +5,11 @@
 
 html
 {
-    background-image: url("/img/darksky_background.jpg");
+    /*background-image: url("/img/darksky_background.jpg");*/
     background-attachment: fixed !IMPORTANT;
     background-repeat: no-repeat;
     background-size: cover;
-    /* background: linear-gradient(160deg, #151715, #1f211f); */
+    /*background: linear-gradient(160deg, #151715, #1f211f);*/ 
     /* height: 100%; min-height: 100%; */
 }
 
@@ -419,6 +419,7 @@ a.btn-forum:hover
 .forum .categories .panel-group
 {
     margin-bottom: 1px;
+    margin-left: 1px;
 }
 
 .forum-header

@@ -28,9 +28,7 @@ if (isset($notification['status']))
 		</h1>
 	</div>
 	<div class="since">
-		<h4>
-			Member since: <small><?= $authorized['date'] ?></small>
-		</div>
+		Member since <b><?= $authorized['date'] ?></b>
 	</div>
 </div>
 

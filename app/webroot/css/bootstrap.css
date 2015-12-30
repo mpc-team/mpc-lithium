@@ -2115,15 +2115,23 @@ pre code
     }
 }
 
-@media (min-width: 992px)
+@media (min-width: 1000px)
 {
     .container
     {
-        width: 1000px;
+        width: 992px;
     }
 }
 
 @media (min-width: 1200px)
+{
+    .container
+    {
+        width: 1176px;
+    }
+}
+
+@media (min-width: 1300px)
 {
     .container
     {

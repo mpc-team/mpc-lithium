@@ -8,7 +8,7 @@ $self = $this;
 
 ?>
 <div class="row">
-	<h3>Recent Activity</h3>
+	<h3 style="margin-top:0">Recent Activity</h3>
 </div>
 
 <div class="row">
