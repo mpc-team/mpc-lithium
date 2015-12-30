@@ -3,6 +3,7 @@
 #announcement-btn 
 {
 	margin-bottom: 5px;
+    font-size: 100%;
 }
 
 #announcements-content .title h1,
@@ -22,6 +23,7 @@
     width: 50%;
 }
 
+#announcements-content .title-edit,
 #announcements-content .content
 {
     padding-bottom: 5px;
@@ -41,13 +43,14 @@
 #announcements-content > div > hr
 {
     margin: 0px;
-    border-top: 2px solid gray;
+    border-top: 1px solid #444;
     box-shadow: none;
 }
 
-#announcements-content > .well
+#announcements-content > .announcement
 {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 20px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: rgba(40,40,40,0.8);
 }

@@ -24,10 +24,8 @@ $navigation = function($path, $links) {
 };
 
 ?>
-<div class="navbar-forum">
-	<nav role='navigation' class='navbar navbar-default navbar-static-top'>
-		<ul class='breadcrumb'>
-			<?php echo $navigation($breadcrumbs['path'], $breadcrumbs['link']); ?>
-		</ul>
-	</nav>
-</div>
+<nav role='navigation' class='navbar navbar-default navbar-static-top'>
+	<ul class='breadcrumb'>
+		<?php echo $navigation($breadcrumbs['path'], $breadcrumbs['link']); ?>
+	</ul>
+</nav>

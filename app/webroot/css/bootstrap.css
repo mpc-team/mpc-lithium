@@ -1843,8 +1843,8 @@ a.bg-danger:hover
 
 .page-header
 {
-    padding-bottom: 9px;
-    margin: 0 0 20px;
+    /*padding-bottom: 9px;*/
+    /*margin: 0 0 20px;*/
 }
 
 ul,
@@ -6067,8 +6067,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-default
 {
-    /*   background-color: #333333;
-	border: 1px solid #101010; */
+    /*background-color: #333333;*/
+	/*border: 1px solid #101010;*/ 
 }
 
 .navbar-default .navbar-brand
@@ -6221,6 +6221,7 @@ fieldset[disabled] .navbar-default .btn-link:focus
 
 .navbar-inverse .navbar-brand
 {
+    padding-top: 15px; /* Makes alignment better */
     color: #9d9d9d;
 }
 
@@ -6242,6 +6243,7 @@ fieldset[disabled] .navbar-default .btn-link:focus
     color: #aaffaa;
     text-shadow: 1px 1px 10px #aaffaa;
     border: 1px solid transparent;
+    height: 52px;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -6378,8 +6380,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus
 {
     /*font-family: "Oswald";*/
     font-size: 12pt;
-    padding: 8px 15px;
-    margin-bottom: 10px;
+    padding: 15px;
+    /*margin-bottom: 10px;*/
     list-style: none;
     border-radius: 1px;
 }
@@ -8685,13 +8687,13 @@ button.close
     .carousel-control .glyphicon-chevron-left,
     .carousel-control .icon-prev
     {
-        margin-left: -45px;
+        margin-left: -35px;
     }
 
     .carousel-control .glyphicon-chevron-right,
     .carousel-control .icon-next
     {
-        margin-right: -45px;
+        margin-right: -35px;
     }
 
     .carousel-caption

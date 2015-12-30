@@ -21,7 +21,7 @@ EOD;
 	if (in_array('delete', $options)) {
 		$html .= <<<EOD
 <form role='form' action='/post/delete/{$mid}' method='post'>
-	<button type='submit' class='btn btn-edit btn-edit-delete' data-id='{$mid}'>
+	<button type='submit' class='btn btn-edit btn-edit-delete' data-id='{$mid}' onclick='confirm("Are you sure you want to delete this Post?")'>
 		<i class='fa fa-trash-o'></i>
 		Delete
 	</button>

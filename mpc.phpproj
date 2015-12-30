@@ -1593,6 +1593,7 @@
     <Compile Include="app\config\routes.php" />
     <Compile Include="app\controllers\api\GamesAPI.php" />
     <Compile Include="app\controllers\AnnouncementsController.php" />
+    <Compile Include="app\controllers\api\EventsAPI.php" />
     <Compile Include="app\controllers\api\UsersAPI.php" />
     <Compile Include="app\controllers\api\PostsAPI.php" />
     <Compile Include="app\controllers\api\UserNotificationsAPI.php" />
@@ -1622,6 +1623,7 @@
     <Compile Include="app\extensions\helper\empty" />
     <Compile Include="app\libraries\_source\empty" />
     <Compile Include="app\models\Announcements.php" />
+    <Compile Include="app\models\Events.php" />
     <Compile Include="app\models\UserNotifications.php" />
     <Compile Include="app\models\ThreadSubscriptions.php" />
     <Compile Include="app\models\utils\Notifications.php" />
@@ -2954,10 +2956,11 @@
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
     <Content Include="app\webroot\js\background.js" />
-    <Content Include="app\webroot\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="app\webroot\js\fullcalendar\fullcalendar.js" />
     <Content Include="app\webroot\js\user\user.js" />
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />
+    <Content Include="app\webroot\js\utils\EventsCalendar.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />

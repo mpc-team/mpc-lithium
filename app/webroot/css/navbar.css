@@ -4,6 +4,11 @@
     min-width: 600px;
 }
 
+.page-header-nav .nav > li > a.navbar-brand
+{
+    padding: 15px 15px
+}
+
 .user-notification-list .date
 {
     font-size: 80%;
@@ -32,9 +37,12 @@
 	background-color: #333;
 }
 
-.dropdown-menu.columns-3
+@media screen and (min-width: 500px)
 {
-    min-width: 500px;
+    .dropdown-menu.columns-3
+    {
+        min-width: 500px;
+    }
 }
 
 .dropdown-menu.columns-3 > div.row > div > h4

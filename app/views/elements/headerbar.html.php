@@ -10,7 +10,7 @@
 $button_hover_class = 'cl-effect-3';
 
 ?>
-<div class="page-header-navigation">
+<div class="page-header-nav">
 
     <hr style="position: absolute; right: 0; left: 0; margin: 0px 0px 0px 0px;" />
 

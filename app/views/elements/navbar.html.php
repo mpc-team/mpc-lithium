@@ -24,7 +24,7 @@ $forumsByCategory = Forums::GetByCategory();
 		</button>
 		<ul class="nav navbar-nav">
 			<li id='navbar-home'>
-				<a title="Lobby" href='/'>MPC</a>
+				<a title="Lobby" class="navbar-brand" href='/'>MPC</a>
 			</li>
 		</ul>
 	</div>
@@ -38,7 +38,7 @@ $forumsByCategory = Forums::GetByCategory();
 			</li>
 			
 			<li id='navbar-forum' class='dropdown'>
-                <a href='/forum' class='dropdown-toggle' role='button'>
+                <a href='/forum' class='dropdown-toggle' role='button' style="padding-top: 12px">
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
                 <ul class='dropdown-menu columns-3'>

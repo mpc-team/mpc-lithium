@@ -24,7 +24,12 @@ announcements.htmlElements =
  */
 announcements.validate = function (content)
 {
-	return content && content.length > 0;
+	if (content == null)
+		return "nulldata";
+	else if (content.length == 0)
+		return "empty";
+	else
+		return "valid";
 }
 
 /**
@@ -38,10 +43,9 @@ announcements.ui.stringify = function (object)
 {
 	var date = moment(object.tstamp);
 	var result = '';
-	result += "<div class='well well-sm' data-id='" + object.id + "'>";
-
+	result += "<div class='announcement' data-id='" + object.id + "'>";
 	result += "<div class='title' data-id='" + object.id + "'>";
-	if (object.title != null)
+	if (object.title != null && object.title != "")
 		result += "<h2>" + object.title + "</h3>";
 	else
 		result += "<h3>Announcement #" + object.id + "</h3>";
@@ -66,6 +70,8 @@ announcements.ui.stringify = function (object)
 	result += object.content;
 	result += "</textarea>";
 	result += "</div>";
+
+	result += "<div class='feedback' data-id='" + object.id + "'></div>";
 	result += "<hr />";
 
 	result += "<table>";
@@ -74,10 +80,10 @@ announcements.ui.stringify = function (object)
 	result += "<td>";
 
 	result += "<div class='info'>";
-	result += "<div class='author'>Created by: ";
+	result += "<div class='author'>Created by ";
 	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
+	result += " on " + date.format("dddd - MMMM Do YYYY");
 	result += "</div>";
-	result += date.format("h:mm A - dddd DD, MMM YYYY") + '<br />';
 	result += "</div>";
 	result += "</div>";
 
@@ -121,7 +127,7 @@ announcements.ui.editButton = function (dataid) { return $('.ctrl-edit').filter(
 announcements.ui.cancelButton = function (dataid) { return $('.ctrl-cancel').filter('[data-id="' + dataid + '"]'); }
 announcements.ui.deleteButton = function (dataid) { return $('.ctrl-delete').filter('[data-id="' + dataid + '"]'); }
 announcements.ui.confirmButton = function (dataid) { return $('.ctrl-confirm').filter('[data-id="' + dataid + '"]'); }
-announcements.ui.wellcontainer = function (dataid) { return $('.well').filter('[data-id="' + dataid + '"]'); }
+announcements.ui.container = function (dataid) { return $('.announcement').filter('[data-id="' + dataid + '"]'); }
 
 /**
  * Edit Button Clicked callback.
@@ -144,8 +150,11 @@ announcements.ui.onCancelClicked = function ()
  */
 announcements.ui.onDeleteClicked = function ()
 {
-	announcements.delete($(this).data('id'));
-	announcements.ui.setEditMode($(this).data('id'), false);
+	if (window.confirm("Are you sure you want to delete this Announcement?"))
+	{
+		announcements.delete($(this).data('id'));
+		announcements.ui.setEditMode($(this).data('id'), false);
+	}
 }
 
 /**
@@ -154,11 +163,17 @@ announcements.ui.onDeleteClicked = function ()
 announcements.ui.onConfirmClicked = function ()
 {
 	var id = $(this).data('id');
+	var title = announcements.ui.editTitleInput(id).val();
+	var content = announcements.ui.editContentInput(id).val();
 
-	announcements.edit(id,
-		announcements.ui.editTitleInput(id).val(),
-		announcements.ui.editContentInput(id).val()
-	);
+	var editStatus = announcements.edit(id, title, content);
+	console.log(editStatus);
+
+	if (editStatus != true)
+		$('.announcement .feedback').filter('[data-id="' + id + '"]').html("Error: " + editStatus);
+	else if (editStatus == true)
+		$('.announcement .feedback').filter('[data-id="' + id + '"]').html("Success: Created!");
+		
 	announcements.ui.setEditMode(id, false);
 }
 
@@ -243,7 +258,7 @@ announcements.ui.append = function (object)
 	outputString = announcements.ui.stringify(object) + outputString;
 	output.html(outputString);
 
-	$('.well').each(function () { announcements.ui.register($(this).data('id')); });
+	$('.announcement').each(function () { announcements.ui.register($(this).data('id')); });
 }
 
 /**
@@ -253,7 +268,7 @@ announcements.ui.append = function (object)
  */
 announcements.ui.remove = function (id)
 {
-	announcements.ui.wellcontainer(id).remove();
+	announcements.ui.container(id).remove();
 }
 
 /**
@@ -263,7 +278,7 @@ announcements.ui.remove = function (id)
  */
 announcements.ui.update = function (id, object)
 {
-	announcements.ui.wellcontainer(id).replaceWith(announcements.ui.stringify(object));
+	announcements.ui.container(id).replaceWith(announcements.ui.stringify(object));
 
 	announcements.ui.register(id);
 	announcements.ui.setEditMode(id, false);
@@ -278,9 +293,10 @@ announcements.ui.update = function (id, object)
  */
 announcements.create = function (title, message)
 {
-	if (!announcements.validate(message))
+	var validStatus = announcements.validate(message);
+	if (validStatus != "valid")
 	{
-		return false;
+		return validStatus;
 	}
 	var body = {
 		'title': title,
@@ -309,9 +325,10 @@ announcements.delete = function (id)
 
 announcements.edit = function (id, title, content)
 {
-	if (!announcements.validate(content))
+	var validStatus = announcements.validate(content);
+	if (validStatus != "valid")
 	{
-		return false;
+		return validStatus;
 	}
 	var body = {
 		'title': title,
@@ -324,6 +341,7 @@ announcements.edit = function (id, title, content)
 			announcements.ui.update(id, data['announcement']);
 		}
 	});
+	return true;
 }
 
 /**
@@ -333,7 +351,7 @@ announcements.pull = function ()
 {
 	$.get('/announcements/all', null,
 		/**
-		 * Response callback for the GET request above.
+		 * Response callback for the GET request.
 		 * 
 		 * @param {object} data - The requested announcements.
 		 */
@@ -352,3 +370,9 @@ announcements.pull = function ()
 		}
 	);
 }
+
+$(function ()
+{
+	announcements.pull();
+	setInterval(announcements.pull, 15000);
+})

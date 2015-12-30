@@ -27,7 +27,6 @@ h1, h2, h3
     /* font-family: "Oswald"; */
     font-weight: 700;
     color: #aaffaa;
-    text-shadow: 1px 1px 10px #aaffaa;
 }
 
 h1 > small,
@@ -67,23 +66,10 @@ h5
     word-wrap: break-word;
 }
 
-/*
-	Scrollbar Properties
-*/
-/*::-webkit-scrollbar
+.feedback
 {
-    background: #202320;
+    /*padding: 10px;*/
 }
-
-::-webkit-scrollbar-thumb
-{
-    background: #343D35;
-}
-
-::-webkit-scrollbar-button
-{
-    background: #000000;
-}*/
 
 .navbar-inverse
 {

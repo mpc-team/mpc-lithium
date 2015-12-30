@@ -2,15 +2,21 @@
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
 @import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
 
-.page-header-navigation
+.page-header-nav
 {
     font-family: "Oswald";
     font-size: 150%;
 }
 
-.page-header-navigation .navbar-default .navbar-nav > .active > a
+.page-header-nav .navbar-default .navbar-nav > .active > a
 {
     border-bottom: 5px solid #b9ffb6;
+}
+
+.page-header-nav .nav > li > a
+{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .page-header > hr.top-divider
