@@ -1,6 +1,4 @@
 ﻿
-var user = {};
-
 user.notifications = {};
 user.notifications.types = {
 	forum: 'forum',
@@ -129,12 +127,23 @@ user.notifications.updatePostHitNotifications = function (jqueryElement)
 
 $(document).ready(function ()
 {
-	user.notifications.updateCountElements('.user-notification-count');
-	user.notifications.updateListElements('.user-notification-list');
-
+	user.auth.check(function (authenticated)
+	{
+		if (authenticated.constructor !== Array)
+		{
+			user.notifications.updateCountElements('.user-notification-count');
+			user.notifications.updateListElements('.user-notification-list');
+		}
+	});
 	setInterval(function ()
 	{
-		user.notifications.updateCountElements('.user-notification-count');
-		user.notifications.updateListElements('.user-notification-list');
+		user.auth.check(function (authenticated)
+		{
+			if (authenticated.constructor !== Array)
+			{
+				user.notifications.updateCountElements('.user-notification-count');
+				user.notifications.updateListElements('.user-notification-list');
+			}
+		});
 	}, 10000);
 });

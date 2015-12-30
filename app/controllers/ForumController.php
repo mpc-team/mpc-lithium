@@ -63,7 +63,7 @@ class ForumController extends \lithium\action\Controller {
 		$forums = Forums::all()->to('array');
 		foreach ($forums as $key => $forum) 
 		{
-			$category = Categories::getById($forum['cid']);
+			$category = Categories::Get($forum['cid']);
 			$threads = Threads::GetByForum($forum['id']);
 			$forums[$key]['count'] = count($threads);
 			$forums[$key]['category'] = $category['name'];

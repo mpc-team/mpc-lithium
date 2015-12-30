@@ -5,6 +5,7 @@ namespace app\controllers\api;
 use lithium\security\Auth;
 
 use app\controllers\ContentController;
+
 use app\models\UserNotifications;
 use app\models\Posts;
 use app\models\Threads;
@@ -29,11 +30,11 @@ class UserNotificationsAPI extends ContentController
             {
                 case 'posts':
                 case 'post':
-                    $notifications = UserNotificationsAPI::GetUserPostNotifications($authorized['id'], $limit);
+                    $notifications = self::GetUserPostNotifications($authorized['id'], $limit);
                     break;
                 case 'posthits':
                 case 'posthit':
-                    $notifications = UserNotificationsAPI::GetUserPostHitNotifications($authorized['id'], $limit);
+                    $notifications = self::GetUserPostHitNotifications($authorized['id'], $limit);
                     break;
             }
         }

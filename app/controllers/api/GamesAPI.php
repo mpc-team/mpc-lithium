@@ -3,6 +3,7 @@
 namespace app\controllers\api;
 
 use app\controllers\ContentController;
+
 use app\models\Games;
 
 class GamesAPI extends ContentController

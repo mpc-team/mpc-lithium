@@ -9,9 +9,10 @@
 
 use app\models\Games;
 use app\models\Forums;
+use app\models\Categories;
 
 $games = Games::getList();
-$forums = Forums::GetList();
+$forumsByCategory = Forums::GetByCategory();
 
 ?>
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
@@ -37,28 +38,31 @@ $forums = Forums::GetList();
 			</li>
 			
 			<li id='navbar-forum' class='dropdown'>
-                <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+                <a href='/forum' class='dropdown-toggle' role='button'>
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
-                <ul class='dropdown-menu' role='menu'>
-                    <li>
-                        <a title="Forum" href='/forum'>MPC Forums</a>
-                    </li>
-                    <li class='divider'></li>
-                    <?php foreach ($forums as $forum): ?>
-                        <li>
-                            <a href='/board/view/<?= $forum['id'] ?>'>
-                                <?= $forum['name'] ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
+                <ul class='dropdown-menu columns-3'>
+                    <div class="row">
 
-                    <li>
-                        <a title="General Forum" href='/forum/board/view/6'>General</a>
-                    </li>
-                    <li>
-                        <a title="StarCraft II Forum" href='/forum/board/view/6'>StarCraft II</a>
-                    </li>
+                        <?php foreach ($forumsByCategory as $cid => $category): ?>
+                            <?php if ($category['name'] == 'General'): ?>
+                                <div class="col-sm-4">
+                            <?php elseif ($category['name'] == 'Gaming'): ?>
+                                <div class="col-sm-8">
+                            <?php endif; ?>
+                                <h4><?= $category['name'] ?></h4>
+                                <ul class="multi-column-dropdown">
+                                    <?php foreach ($category['forums'] as $forum): ?>
+                                        <li>
+                                            <a href='/board/view/<?= $forum['id'] ?>'>
+                                                <?= $forum['name'] ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </ul>
 			</li>
 			
@@ -92,7 +96,7 @@ $forums = Forums::GetList();
 			<?php if ($authorized): ?>
 				<li id='navbar-user' class='dropdown'>
 
-					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+					<a href='/user/profile' class='dropdown-toggle' role='button'>
 						<span class='glyphicon glyphicon-user'></span>
 						<?= $authorized['alias'] ?> 
                         <span class='caret'></span>

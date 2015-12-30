@@ -45,6 +45,8 @@ $path = Libraries::get(true, 'path');
         'bootstrap',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
+        'user/user',
+        'user/auth',
         'user/notification',
         'background',
 		'navbar', 

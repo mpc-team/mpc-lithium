@@ -2103,7 +2103,7 @@ pre code
 {
     .container
     {
-        width: 670px;
+        width: 700px;
     }
 }
 
@@ -2111,7 +2111,7 @@ pre code
 {
     .container
     {
-        width: 800px;
+        width: 870px;
     }
 }
 
@@ -2119,7 +2119,7 @@ pre code
 {
     .container
     {
-        width: 970px;
+        width: 1000px;
     }
 }
 
@@ -2127,7 +2127,7 @@ pre code
 {
     .container
     {
-        width: 1170px;
+        width: 1276px;
     }
 }
 
@@ -5998,7 +5998,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 
 .navbar-nav > li > .dropdown-menu
 {
-    min-width: 250px;
+    /*min-width: 250px;*/
     margin-top: -1px;
     border-top-right-radius: 0;
     border-top-left-radius: 0;

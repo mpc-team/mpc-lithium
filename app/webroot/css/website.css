@@ -873,6 +873,11 @@ a .panel-recentfeed h3
     color: #aaffaa;
 }
 
+.btn-reply-row
+{
+    padding-bottom: 5px;
+}
+
 .btn-signup,
 .btn-login,
 .btn-reply
@@ -980,14 +985,14 @@ a .panel-recentfeed h3
 #headerbar-games .icon img,
 #navbar-games .icon img
 {
-    height: 21px;
-    width: 21px;
+    height: 26px;
+    width: 26px;
 }
 
 .members .icon img
 {
-    height: 28px;
-    width: 28px;
+    height: 26px;
+    width: 26px;
 }
 
 .members .game

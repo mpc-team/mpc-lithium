@@ -2736,6 +2736,7 @@
     <Folder Include="app\webroot\css" />
     <Folder Include="app\webroot\css\external\" />
     <Folder Include="app\webroot\css\external\effects\" />
+    <Folder Include="app\webroot\css\fullcalendar\" />
     <Folder Include="app\webroot\css\utils\" />
     <Folder Include="app\webroot\fonts" />
     <Folder Include="app\webroot\img\e_files" />
@@ -2743,6 +2744,7 @@
     <Folder Include="app\webroot\img\_vti_cnf" />
     <Folder Include="app\webroot\img" />
     <Folder Include="app\webroot\js" />
+    <Folder Include="app\webroot\js\fullcalendar\" />
     <Folder Include="app\webroot\js\user\" />
     <Folder Include="app\webroot\js\utils\" />
     <Folder Include="app\webroot\starcraft2\builds" />
@@ -2939,7 +2941,9 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\webroot\css\fullcalendar\fullcalendar.css" />
     <Content Include="app\webroot\css\navbar.css" />
+    <Content Include="app\webroot\css\members.css" />
     <Content Include="app\webroot\css\user.css" />
     <Content Include="app\webroot\css\clash-of-clans.css" />
     <Content Include="app\webroot\css\external\effects\component.css" />
@@ -2950,6 +2954,9 @@
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
     <Content Include="app\webroot\js\background.js" />
+    <Content Include="app\webroot\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="app\webroot\js\user\user.js" />
+    <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />

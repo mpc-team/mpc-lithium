@@ -41,15 +41,11 @@ $placeholder = $reply['enabled'] ? 'Enter a message...' : $disabledPlaceholder;
 						required <?= $disabled ?>></textarea>
 				</div>
 				<div class="row btn-reply-row">
-					<div class="input-group">
-						<button title="Submit Reply" type="submit" style="height: 50px;" class="btn btn-edit" <?= $disabled ?>>
-							<i style="opacity: 0.8; transform: rotate(-180deg); position: absolute; bottom: 0; height: 50px; overflow: hidden; font-size:500%; z-index: 0;" class="fa fa-reply"></i>
-
-                            <span style="color: rgba(255, 255, 255, 255);">
-                                <h5 style="font-size: 150%;">Reply</h5>
-                            </span>
-						</button>
-					</div>
+					<button title="Submit Reply" type="submit" style="height: 50px; padding-left: 50px; padding-right: 50px; border: 1px solid rgba(255,255,255,0.1);" class="btn btn-edit" <?= $disabled ?>>
+                        <span style="color: rgba(255, 255, 255, 255);">
+                            <h5 style="font-size: 150%;">Reply</h5>
+                        </span>
+					</button>
 				</div>
 			</div>
 		</form>

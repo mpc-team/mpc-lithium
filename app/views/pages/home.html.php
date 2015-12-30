@@ -15,6 +15,9 @@ $this->title('Home');
 $self = $this
 
 ?>
+
+<div id="calendar"></div>
+
 <section id="announcements" class="col-md-8">
 
     <h1>Announcements</h1>
