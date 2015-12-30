@@ -46,12 +46,12 @@ EventsCalendar.createDefault = function ()
 {
 	var obj = {
 		'header': {
-			'left': 'prev,next today',
+			'left': 'prev,next',
 			'center': 'title',
-			'right': 'month,agendaWeek,agendaDay',
+			'right': null,
 		},
 		'defaultDate': '2016-01-01',
-		'editable': false,
+		'editable': true,
 		'eventLimit': true,
 		'events': [],
 	};

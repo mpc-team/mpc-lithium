@@ -12,6 +12,9 @@ class EventsAPI extends ContentController
 {
 	public function index()
     {
-        return $this->render(array('json' => Events::All(25), 'status' => 200));   
+        $limit = 25;
+        $events = Events::All($limit);
+
+        return $this->render(array('json' => $events, 'status' => 200));   
     }
 }
