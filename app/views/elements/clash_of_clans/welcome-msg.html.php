@@ -1,5 +1,12 @@
-<div id="coc-welcome-msg">
+<?php
 
+use app\controllers\games\ClashOfClansController;
+$this->title('Clash of Clans');
+$self = $this;
+
+?>
+
+<div id="coc-welcome-msg">
     <h2 class="text-center">Welcome to MPC Assassins</h2>
     <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
     <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>

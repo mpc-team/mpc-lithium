@@ -10,7 +10,7 @@ $coc_navBar = array
     (
         'Home' => '../games/clash_of_clans',
         'Forum' => '../board/view/5',
-        'Activity Feed' => '../clash_of_clans/activity',
+        'Activity Feed' => '../views/clash_of_clans/coc-activity',
         'Events' => '../games/clash_of_clans/events',
         'News' => '../games/clash_of_clans/members',
         'WAR' => '../games.clash_of_clans/war',
@@ -28,6 +28,10 @@ $coc_mainIndexes = array
         'activity-feed' => 'Activity Feed Show What\'s New',
         'forum' => 'Forum',
     );
+
+
+
+
 
 ?>
 
