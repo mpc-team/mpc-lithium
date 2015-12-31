@@ -126,7 +126,7 @@ $forumsByCategory = Forums::GetByCategory();
                                 <div></div>
                                 <div></div>
                             </div>
-                            <div class='col-xs-3'>
+                            <div class='col-xs-3'></div>
                         </div>
                     </ul>
                 </li>

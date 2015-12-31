@@ -64,6 +64,31 @@ class UserNotificationsAPI extends ContentController
         return $this->render(array('json' => $count, 'status' => 200));
     }
     
+    /**
+     * Deletes a User Notification.
+     *
+     * @param int $this->request->id Notification identifier.
+     * 
+     * @return json Boolean whether the deletion was successful. If it wasn't
+     *  then there was most likely an exception (internal error) thrown.
+     */ 
+    public function delete()
+    {
+        $authorized = Auth::check('default');
+        if (!$authorized)
+            return $this->render(array('json' => null, 'status' => 500));
+
+        if (!isset($this->request->id))
+            return $this->render(array('json' => null, 'status' => 500));
+
+        $notification = UserNotifications::Get($this->request->id);
+        if ($notification && $authorized['id'] != $notification['userid'])
+            return $this->render(array('json' => null, 'status' => 500));
+
+        $deleted = UserNotifications::DeleteById($this->request->id);
+        return $this->render(array('json' => $deleted, 'status' => 200));
+    }
+
 # ------------------------------------------------------------------------------------------------------
 
     /**

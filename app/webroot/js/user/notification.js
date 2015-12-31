@@ -1,11 +1,15 @@
 ﻿
 user.notifications = {};
 user.notifications.types = {
-	forum: 'forum',
 	post: 'post',
 	posthit: 'posthit',
 	announcement: 'announcement',
 };
+
+user.notifications.classes = {};
+user.notifications.classes.button = {
+	'dismiss': 'btn-annc-dismiss',
+}
 
 //--------------------------------------------------------------------------------------
 
@@ -61,13 +65,50 @@ user.notifications.announcement = {};
 user.notifications.announcement.stringify = function (object)
 {
 	var html = "<li>";
+	html += "<div class='row'>";
+	html += "<div class='col-xs-10'>";
 	if (object['title'] != null && object['title'] != "")
 		html += "<h3>" + object['title'] + "</h3>";
 	else
 		html += "<h3>Announcement #" + object['id'] + "</h3>";
 	html += object['content'];
+	html += "</div>";
+	html += "<div class='col-xs-2'>";
+	html += "<button class='btn btn-edit " + user.notifications.classes.button.dismiss + "' data-id='" + object['id'] + "'>";
+	html += " Dismiss";
+	html += "</button>";
+	html += "</div>";
+	html += "</div>";
 	html += "</li>";
 	return html;
+}
+
+//--------------------------------------------------------------------------------------
+
+user.notifications.announcement.delete = function (identifier)
+{
+	console.log(identifier);
+
+	$.get('/api/users/notifications/delete/' + identifier, null, function (data)
+	{
+		user.notifications.updateCountElements($('.user-notification-count'));
+		user.notifications.updateAnnouncementNotifications($('.user-notification-list > .row > .col-xs-9 > div:nth-child(2)'));
+	});
+}
+
+user.notifications.announcement.onDismiss = function ()
+{
+	user.notifications.announcement.delete($(this).attr('data-id'));
+	//user.notifications.updateAnnouncementNotifications($('.user-notification-list > .row > .col-xs-9 > div:nth-child(1)'));
+}
+
+//--------------------------------------------------------------------------------------
+
+user.notifications.updateListElements = function (htmlListClass)
+{
+	user.notifications.updateForumNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(1)'));
+	user.notifications.updateAnnouncementNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(2)'));
+	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row > .col-xs-3'));
 }
 
 //--------------------------------------------------------------------------------------
@@ -79,15 +120,6 @@ user.notifications.updateCountElements = function (htmlClass)
 		$(htmlClass).each(function () { $(this).html(data); });
 	});
 }
-
-user.notifications.updateListElements = function (htmlListClass)
-{
-	user.notifications.updateForumNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(1)'));
-	user.notifications.updateAnnouncementNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(2)'));
-	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row > .col-xs-3'));
-}
-
-//--------------------------------------------------------------------------------------
 
 user.notifications.updateForumNotifications = function (jqueryElement)
 {
@@ -103,7 +135,6 @@ user.notifications.updateForumNotifications = function (jqueryElement)
 			html += "<li class='divider'></li>";
 			html += user.notifications.posts.stringify(data[key]);
 		}
-
 		jqueryElement.html(html);
 	});
 }
@@ -135,8 +166,9 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 				html += "<li class='divider'></li>";
 				html += user.notifications.announcement.stringify(data[key]);
 			}
-		html += "</div>";
 		jqueryElement.html(html);
+
+		$('.' + user.notifications.classes.button.dismiss).click(user.notifications.announcement.onDismiss);
 	});
 }
 

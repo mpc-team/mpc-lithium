@@ -16,6 +16,22 @@ class UserNotifications extends \lithium\data\Model
     const ANNOUNCEMENT = "announcement";
 
     /**
+     * Returns a User Notification searching by its identifier.
+     *
+     * @param int $id Notification identifier.
+     *
+     * @return object User Notification object.
+     */
+    public static function Get ($id)
+    {
+        $notification = self::find('first', array('conditions' => array('id' => $id)));
+        if ($notification)
+            return $notification->to('array');
+        else
+            return null;
+    }
+    
+    /**
      * Creates a new Notification for a User.
      *
      * @param int $userid User identifier.
@@ -33,6 +49,22 @@ class UserNotifications extends \lithium\data\Model
             'senderid' => $senderid,
         ));
         return $notification->save();
+    }
+
+    /**
+     * Deletes a User Notification by its identifier.
+     *
+     * @param int $id Notification identifier.
+     *
+     * @return bool True for successful.
+     */
+    public static function DeleteById ($id)
+    {
+        if ($notification = self::find('first', array('conditions' => array('id' => $id))))
+        {
+            return $notification->delete();
+        }
+        return false;
     }
 
     /**
