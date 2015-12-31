@@ -37,6 +37,7 @@ use app\views\layouts\LayoutConstants;
         'bootstrap',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
+        'utils/AreYouSure',
         'user/user',
         'user/auth',
         'user/notification',

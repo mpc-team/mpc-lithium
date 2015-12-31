@@ -79,13 +79,16 @@ class Announcements extends \lithium\data\Model
      *
      * @return mixed
      */
-    public static function Destroy ($id)
+    public static function DeleteAnnouncement ($id)
     {
         if ($announcement = self::find('first', array('conditions' => array('id' => $id))))
-            return $announcement->delete();
-        else
-            return false;
-    }  
+        {
+            if ($announcement->delete())
+            {
+                UserNotifications::DeleteNotifications($id, UserNotifications::ANNOUNCEMENT);
+            }
+        }
+    }
 
     /**
      * Edits a specified Announcement.

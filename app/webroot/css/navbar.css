@@ -4,6 +4,19 @@
     min-width: 600px;
 }
 
+#navbar-notifications .user-notification-list > .row > .col-xs-9 > div > li > h3
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#navbar-notifications .user-notification-list > .row > .col-xs-9 > div > h4
+{
+    margin: 0;
+    padding: 10px;
+    background: #111;
+}
+
 .page-header-nav .nav > li > a.navbar-brand
 {
     padding: 15px 15px
@@ -25,6 +38,7 @@
 {
     display: block;
     clear: both;
+    padding: 5px 5px 5px 10px;
     line-height: 1.428571429;
     color: #9d9d9d;
     white-space: normal;
@@ -54,7 +68,7 @@
 
 .dropdown-menu li a 
 {
-	padding: 5px 15px;
+	/*padding: 5px 15px;*/
 	font-weight: 300;
 }
 

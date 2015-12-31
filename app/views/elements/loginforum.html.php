@@ -5,7 +5,7 @@
  * 	until they login.
  */
 ?>
-<div class="login-notice">
+<div class="login-notice" style="padding-bottom: 20px">
 	<div class="panel panel-default">
 		<center>
 			<div class="icon">

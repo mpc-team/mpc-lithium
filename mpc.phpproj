@@ -2960,6 +2960,7 @@
     <Content Include="app\webroot\js\user\user.js" />
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />
+    <Content Include="app\webroot\js\utils\AreYouSure.js" />
     <Content Include="app\webroot\js\utils\EventsCalendar.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />

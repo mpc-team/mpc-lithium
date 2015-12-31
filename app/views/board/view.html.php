@@ -20,7 +20,7 @@ $features = function($tid, $options)
 		if (in_array('delete', $options)) 
         {
 			$html .= "<form role='form' action='/thread/delete/{$tid}' method='post'>";
-			$html .= "<button type='submit' class='btn btn-edit pull-right'>";
+			$html .= "<button type='submit' class='btn btn-edit btn-are-you-sure pull-right'>";
 			$html .= "<i class='fa fa-trash-o'></i> Delete";
 			$html .= "</button>";
 			$html .= "</form>";

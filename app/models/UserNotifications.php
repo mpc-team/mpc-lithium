@@ -12,9 +12,8 @@ class UserNotifications extends \lithium\data\Model
 {
     const POST = "post";
     const POST_HIT = "posthit";
-
     const FORUM = "forum";
-
+    const ANNOUNCEMENT = "announcement";
 
     /**
      * Creates a new Notification for a User.
@@ -54,6 +53,23 @@ class UserNotifications extends \lithium\data\Model
         )));
         if ($notification)
             return $notification->delete();
+        else
+            return false;
+    }
+
+    /**
+     * Deletes Notifications for specified Content.
+     *
+     * @param int $contentid Content identifier.
+     * @param string $type Type of Notification.
+     *
+     * @return bool True if deleted.
+     */
+    public static function DeleteNotifications ($contentid, $type)
+    {
+        $notifications = self::find('all', array('conditions' => array('contentid' => $contentid, 'type' => $type)));
+        if ($notifications)
+            return $notifications->delete();
         else
             return false;
     }
@@ -133,22 +149,5 @@ class UserNotifications extends \lithium\data\Model
             return $notifications->to('array');
         else
             return null;
-    }
-
-    /**
-     * Deletes Notifications for specified Content.
-     *
-     * @param int $contentid Content identifier.
-     * @param string $type Type of Notification.
-     *
-     * @return bool True if deleted.
-     */
-    public static function DeleteNotifications ($contentid, $type)
-    {
-        $notifications = self::find('all', array('conditions' => array('contentid' => $contentid, 'type' => $type)));
-        if ($notifications)
-            return $notifications->delete();
-        else
-            return false;
     }
 }

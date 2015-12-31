@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use lithium\security\Auth;
 
+use app\models\UserNotifications;
 use app\models\Users;
 use app\models\Permissions;
 use app\models\Announcements;
@@ -59,6 +60,12 @@ class AnnouncementsController extends ContentController
 
         if ($announcement->save())
         {
+            // Go through all Users (except for the one making the Announcement) and create a Notification for them.
+            $allUsers = Users::All();
+            foreach ($allUsers as $user)
+                if ($user['id'] != $authorized['id'])
+                    UserNotifications::NewNotification($user['id'], $announcement->id, UserNotifications::ANNOUNCEMENT, $authorized['id']);            
+
             $created = Announcements::Get($announcement->id);
             $created['author'] = Users::Get($created['authorid']);
             if ($created['author'])
@@ -154,7 +161,7 @@ class AnnouncementsController extends ContentController
             return $this->render(array('json' => $result, 'status' => '404'));
         }
 
-        Announcements::Destroy($id);
+        Announcements::DeleteAnnouncement($id);
         return $this->render(array('json' => true, 'status' => '200'));
     }
 

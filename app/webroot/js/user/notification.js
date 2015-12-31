@@ -3,12 +3,14 @@ user.notifications = {};
 user.notifications.types = {
 	forum: 'forum',
 	post: 'post',
+	posthit: 'posthit',
+	announcement: 'announcement',
 };
 
 //--------------------------------------------------------------------------------------
 
-user.notifications.forum = {};
-user.notifications.forum.stringify = function (object)
+user.notifications.posts = {};
+user.notifications.posts.stringify = function (object)
 {
 	var date = moment(object['tstamp']);
 	var html = "<li>";
@@ -55,6 +57,19 @@ user.notifications.posthits.stringify = function (object)
 	return html;
 }
 
+user.notifications.announcement = {};
+user.notifications.announcement.stringify = function (object)
+{
+	var html = "<li>";
+	if (object['title'] != null && object['title'] != "")
+		html += "<h3>" + object['title'] + "</h3>";
+	else
+		html += "<h3>Announcement #" + object['id'] + "</h3>";
+	html += object['content'];
+	html += "</li>";
+	return html;
+}
+
 //--------------------------------------------------------------------------------------
 
 user.notifications.updateCountElements = function (htmlClass)
@@ -67,18 +82,8 @@ user.notifications.updateCountElements = function (htmlClass)
 
 user.notifications.updateListElements = function (htmlListClass)
 {
-	var prepared = "<div class='row'>";
-	prepared += "<div class='col-xs-9'>";
-
-	prepared += "</div>";
-	prepared += "<div class='col-xs-3'>";
-
-	prepared += "</div>";
-	prepared += "</div>";
-
-	$(htmlListClass).html(prepared)
-
-	user.notifications.updateForumNotifications($(htmlListClass + ' > .row > .col-xs-9'));
+	user.notifications.updateForumNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(1)'));
+	user.notifications.updateAnnouncementNotifications($(htmlListClass + ' > .row > .col-xs-9 > div:nth-child(2)'));
 	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row > .col-xs-3'));
 }
 
@@ -86,22 +91,18 @@ user.notifications.updateListElements = function (htmlListClass)
 
 user.notifications.updateForumNotifications = function (jqueryElement)
 {
-	$.get('/api/users/notifications/all?type=post&limit=4', null, function (data)
+	$.get('/api/users/notifications/all?type=' + user.notifications.types.post + '&limit=4', null, function (data)
 	{
 		var html = "<h4>Forum Notifications</h4>";
 
 		if (Object.keys(data).length == 0)
-		{
-			html += "<li class='divider'></li>";
-			html += "You have no Forum Notifications.";
-		}
+			html += "You have no Forum Notifications";
 
 		for (key in data)
 		{
 			html += "<li class='divider'></li>";
-			html += user.notifications.forum.stringify(data[key]);
+			html += user.notifications.posts.stringify(data[key]);
 		}
-		html += "</div>";
 
 		jqueryElement.html(html);
 	});
@@ -109,16 +110,32 @@ user.notifications.updateForumNotifications = function (jqueryElement)
 
 user.notifications.updatePostHitNotifications = function (jqueryElement)
 {
-	$.get('/api/users/notifications/all?type=posthit&limit=4', null, function (data)
+	$.get('/api/users/notifications/all?type=' + user.notifications.types.posthit + '&limit=4', null, function (data)
 	{
-		var html = "<h4>Post Hits</h4>";
-		html += "<li class='divider'></li>";
-
+		var html = "<center><h4>Post Hits</h4></center>";
 		for (key in data)
 		{
 			html += user.notifications.posthits.stringify(data[key]);
 		}
+		jqueryElement.html(html);
+	});
+}
 
+user.notifications.updateAnnouncementNotifications = function (jqueryElement)
+{
+	$.get('/api/users/notifications/all?type=' + user.notifications.types.announcement + '&limit=4', null, function (data)
+	{
+		var html = "<h4>Announcements</h4>";
+
+		if (Object.keys(data).length == 0)
+			html += "No Announcements";
+		else
+			for (key in data)
+			{
+				html += "<li class='divider'></li>";
+				html += user.notifications.announcement.stringify(data[key]);
+			}
+		html += "</div>";
 		jqueryElement.html(html);
 	});
 }

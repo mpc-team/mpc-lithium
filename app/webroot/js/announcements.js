@@ -304,6 +304,7 @@ announcements.create = function (title, message)
 	};
 	$.post('/announcements/create', body, function (data)
 	{
+		console.log(data);
 		announcements.ui.append(data['announcement']);
 	});
 	return true;

@@ -121,7 +121,13 @@ $forumsByCategory = Forums::GetByCategory();
                         <span class='caret'></span>
                     </a>
                     <ul class='dropdown-menu user-notification-list' role='menu'>
-
+                        <div class='row'>
+                            <div class='col-xs-9'>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class='col-xs-3'>
+                        </div>
                     </ul>
                 </li>
 			<?php else: ?>

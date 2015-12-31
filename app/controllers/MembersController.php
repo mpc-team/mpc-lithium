@@ -52,7 +52,7 @@ class MembersController extends \lithium\action\Controller {
 		$data['count'] = Users::count();
 		$data['games'] = Games::getList();
 		$data['permissions'] = Permissions::is_admin($authorized) ? array('admin') : array('public');
-		$members = Users::all()->to('array');
+		$members = Users::All();
 		$membersArray = array();
 		foreach ($members as $user) { 
 			$userGames = UserGames::getById($user['id']); 

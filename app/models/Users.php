@@ -9,15 +9,28 @@ class Users extends \lithium\data\Model
 { 
 	public static function Get( $id ) 
 	{
-		$user = self::find( 'first', array( 'conditions' => array( 
-			'id' => $id 
-		) ) );
-		if( $user ) {
-			return $user->to( 'array' );
-		} else {
+		$user = self::find('first', array('conditions' => array('id' => $id)));
+		if($user)
+			return $user->to('array');
+		else
 			return null;
-		}
 	} 
+
+    /**
+     * Returns all Users, can optionally limit the number.
+     *
+     * @param int $limit Limit of results.
+     *
+     * @return array All Users.
+     */
+    public static function All ($limit = null)
+    {
+        $users = self::find('all', array('limit' => $limit));
+        if ($users)
+            return $users->to('array');
+        else
+            return null;
+    }
 	
 	public static function getByEmail ($email) {
 		$user = self::find( 'first', array( 'conditions' => array( 

@@ -7,6 +7,7 @@ use lithium\security\Auth;
 use app\controllers\ContentController;
 
 use app\models\UserNotifications;
+use app\models\Announcements;
 use app\models\Posts;
 use app\models\Threads;
 use app\models\Forums;
@@ -35,6 +36,10 @@ class UserNotificationsAPI extends ContentController
                 case 'posthits':
                 case 'posthit':
                     $notifications = self::GetUserPostHitNotifications($authorized['id'], $limit);
+                    break;
+                case 'announcements':
+                case 'announcement':
+                    $notifications = self::GetUserAnnouncementNotifications($authorized['id'], $limit);
                     break;
             }
         }
@@ -117,4 +122,25 @@ class UserNotificationsAPI extends ContentController
         return $notifications;
     }
 
+    /**
+     * Retrieve Announcement-related Notification data for the authorized User.
+     *
+     * @param int $userid User identifier.
+     * @param int $limit Limit number of results.
+     *
+     * @return array List of Notifications with the `posthit` attribute for related information.
+     */
+    private static function GetUserAnnouncementNotifications($userid, $limit)
+    {
+        $notifications = UserNotifications::GetUserNotificationsOfType($userid, 'announcement', $limit);
+        foreach ($notifications as $key => $notification)
+        {
+            $announcement = Announcements::Get($notification['contentid']);
+            $sender = Users::Get($notification['senderid']);
+            $notifications[$key]['sender'] = $sender['alias'];
+            $notifications[$key]['title'] = $announcement['title'];
+            $notifications[$key]['content'] = $announcement['content'];
+        }
+        return $notifications;
+    }
 }
