@@ -22,7 +22,10 @@
 {
     padding-left: 0;
     padding-right: 0;
+    padding-top: 15px;
+    height: 60px;
 }
+
 .page-header > hr.top-divider
 {
     margin-bottom: 0px;

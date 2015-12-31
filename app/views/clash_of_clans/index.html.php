@@ -17,16 +17,16 @@ $coc_navBar = array
     );
 $coc_sideIndexes = array(
 
-        'coc-chat-box' => 'Chat Box',
-        'coc-online-members' => 'Online Members',
-        'coc-member-status' => 'Member Availability',
-        'coc-events' => 'Events',
+        'chat-box' => 'Chat Box',
+        'online-members' => 'Online Members',
+        'member-status' => 'Member Availability',
+        'events' => 'Events',
         );
 $coc_mainIndexes = array
     (
-        'coc-welcome-msg' => 'Welcome',
-        'coc-activity-feed' => 'Activity Feed Show What\'s New',
-        'coc-forum' => 'Forum',
+        'welcome-msg' => 'Welcome',
+        'activity-feed' => 'Activity Feed Show What\'s New',
+        'forum' => 'Forum',
     );
 
 ?>
@@ -60,7 +60,9 @@ $coc_mainIndexes = array
                     <?= $coc_indexTitle; ?>
                 </div>
                 <div class="row">
-                    <?php include('../views/clash_of_clans/' . $coc_index . '.html.php'); ?>
+                    <?= $this->view()->render(
+                        array('element' => 'clash_of_clans/' . $coc_index)
+                    ); ?>
                 </div>
             </div>
             <?php endforeach; ?>
@@ -72,9 +74,9 @@ $coc_mainIndexes = array
                     <?= $coc_indexTitle; ?>
                 </div>
                 <div class="row">
-                  
-                    <?php include('../views/clash_of_clans/'. $coc_index .'.html.php');?>
-
+                    <?= $this->view()->render(
+                        array('element' => 'clash_of_clans/' . $coc_index )
+                    ); ?>
                 </div>
             </div>
             <?php endforeach; ?>

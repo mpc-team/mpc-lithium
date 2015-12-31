@@ -15,8 +15,6 @@ $(function ()
 	{
 		$(AreYouSure.classes[key]).click(function ()
 		{
-			console.log('CLICKED');
-
 			if (window.confirm("Are you would like to Delete this content?"))
 			{
 				return true;

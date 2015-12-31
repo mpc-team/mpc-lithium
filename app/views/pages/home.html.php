@@ -16,7 +16,10 @@ $self = $this
 
 ?>
 
+<h1>MPC Home</h1>
+
 <div id="calendar"></div>
+
 <section id="announcements">
     <h1>Announcements</h1>
     <?php if ($permissions['announcements']['CREATE']): ?>
