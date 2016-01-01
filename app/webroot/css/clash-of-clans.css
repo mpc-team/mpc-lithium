@@ -7,7 +7,7 @@
 }
 #clash-of-clans .coc-page-header {
     color: #fff;
-    background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");
+    /*background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");*/
     background-size: 100% 70%;
     background-repeat: no-repeat;
     height: 52px;
@@ -52,12 +52,21 @@
     text-align: center;
 
 }
-.navbar-clash-of-clans a {
+.navbar-clash-of-clans li a {
     font-family: Arial;
     font-size: 13px;
     text-decoration: none;
     color: #FAF1BF;
     font-weight: bold;
+}
+.navbar-clash-of-clans li a:hover {
+    font-family: Arial;
+    font-size: 13px;
+    text-decoration: none;
+    color: #C74230;
+    background-color: #FAF1BF;
+    font-weight: bold;
+    box-shadow: 1px 1px 20px #FAF1BF;
 }
 #cocnavbar-title {
     line-height: 3; 
@@ -85,38 +94,41 @@
     padding-right: 1%;
     padding-left: 1%;
 }
-/*chat-box.html.php*/
-#coc-chat-box h2 {
+/*rules.html.php*/
+#clash-of-clans h2 {
     color: #F2E7AB;
 }
+#clash-of-clans .list-group-item {
+    background-color: #474948;
+}
 /*online-members.html.php*/
-#coc-online-members h2 {
+#clash-of-clans #online-members h2 {
     color: #F2E7AB;
 }
 /*member-status.html.php*/
-#coc-member-status h2 {
+#clash-of-clans #member-status h2 {
     color: #F2E7AB;
 }
 /*events.html.php*/
-#coc-events h2 {
+#clash-of-clans #events h2 {
     color: #F2E7AB;
 }
 /*welcome-msg.html.php*/
-#coc-welcome-msg h2 {
+#clash-of-clans #welcome-msg h2 {
     color: #F2E7AB;
 }
 
-#coc-welcome-msg p {
+#clash-of-clans #welcome-msg p {
     padding: 1% 5% 1% 5%;;
 }
-#coc-welcome-msg .list-group {
+#clash-of-clans #welcome-msg .list-group {
     margin: 50px;
 }
-#coc-img-center{
+#clash-of-clans .coc-img-center{
     margin: auto;
 }
 /*activity-feed.html.php*/
-#coc-activity-feed h2 {
+#clash-of-clans h2, #clash-of-clans small {
     color: #F2E7AB;
 }
 /*
@@ -127,6 +139,6 @@
     margin: auto;
 }    
 /*footer.html.php*/
-#coc-footer h2 {
+#clash-of-clans footer h2 {
     color: #F2E7AB;
 }
