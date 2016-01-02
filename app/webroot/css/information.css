@@ -1,4 +1,17 @@
 /* Information Page CSS */
-#mpc-information .row .col-md-4 .well{
+#mpc-information .row .col-md-4 .well {
     margin: 1%;
+}
+#mpc-information .row .col-md-4 div:hover {
+    -ms-transform: scale(1.1,1.1); /* IE 9 */
+    -webkit-transform: scale(1.1,1.1); /* Safari */
+    transform: scale(1.1,1.1); /* Standard syntax */
+    transition-duration: .2s;
+    box-shadow: 1px 1px 15px #aaffaa;
+}   
+/*index.html.php*/
+
+/*Banners for Each Well in the First Row*/
+#info-aboutus-banner, #info-members-banner, #info-communication-banner {
+    margin: auto;
 }
