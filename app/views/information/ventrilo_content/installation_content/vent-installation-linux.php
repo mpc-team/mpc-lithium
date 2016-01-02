@@ -1,1 +1,0 @@
-<h3 class="text-center">Installing Ventrilo on Linux</h3>

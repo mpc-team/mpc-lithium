@@ -5,16 +5,12 @@
             <a class="btn btn-forum" href="/board/view/5">
                 <div class="panel-forum">
                     <div class="row">
-                        <div class="forum">
+                        <div class="forum count">
                             <h4>
                                 <small>
                                     Discuss, Post, Comment, Communicate, and Share Clash of Clans Here.
                                 </small>
                             </h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="count">
                             <h4>
                                 <small>Currently</small>
                                 <b>13</b>
@@ -23,7 +19,6 @@
                         </div>
                     </div>
                 </div>
-
             </a>
         </div>
     </div>

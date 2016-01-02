@@ -44,7 +44,7 @@ $coc_mainIndexes = array
         <?php endforeach;?>
         <li class="navbar-right" id="cocnavbar-title">MPC Assassins</li>
     </ul>
-    <div class="row">
+    <div class="row" id="coc-wellpanels">
         <div class="col-md-7">
             <?php foreach($coc_mainIndexes as $coc_index): ?>
             <div class="well">

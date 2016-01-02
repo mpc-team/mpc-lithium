@@ -32,7 +32,7 @@ use app\views\layouts\LayoutConstants;
         'utils/nanoscroller',
         'utils/fileselect',
         'announcements',
-        'information-page',
+        'information',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
@@ -59,6 +59,7 @@ use app\views\layouts\LayoutConstants;
 		'scroller',	
         'announcements',
         'texttags',
+        'information',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

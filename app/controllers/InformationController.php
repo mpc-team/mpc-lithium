@@ -18,7 +18,7 @@ class InformationController extends \lithium\action\Controller
 	{
 		$authorized = Auth::check('default');	
 		$breadcrumbs = array(
-			'path' => array('MPC','information'),
+			'path' => array('MPC','Information'),
 			'link' => array('/','/Information')
 		);
 		
