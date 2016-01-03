@@ -1,8 +1,11 @@
 /* Information Page CSS */
-#mpc-information .row .col-md-4 .well {
+#info-accordion .panel div .well {
+    margin-bottom: 0px;
+}
+#mpc-information .row .col-md-4 a .well {
     margin: 1%;
 }
-#mpc-information .row .col-md-4 div:hover {
+#mpc-information > .row > .col-md-4 > a > div:hover {
     -ms-transform: scale(1.1,1.1); /* IE 9 */
     -webkit-transform: scale(1.1,1.1); /* Safari */
     transform: scale(1.1,1.1); /* Standard syntax */
@@ -10,7 +13,9 @@
     box-shadow: 1px 1px 15px #aaffaa;
 }   
 /*index.html.php*/
-
+#info-accordion {
+    margin-top: 2%;
+}
 /*Banners for Each Well in the First Row*/
 #info-aboutus-banner, #info-members-banner, #info-communication-banner {
     margin: auto;
