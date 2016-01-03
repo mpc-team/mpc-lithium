@@ -1,30 +1,25 @@
 <?php
 
+use app\models\Permissions;
+
 $this->title('Members');
 
 $self = $this;
 
-/* used to get the appropriate icon path when matching with the name of the game */
-foreach ($data['games'] as $key => $game) {
-	$data['games'][$key]['cleaned'] = strtolower(str_replace(' ', '', $game['name']));
-}
+$adminPermissions = $authorized && Permissions::is_admin($authorized);
 
-/* slight variances in the html layout depending on permissions granted by server */
-$searchResultLayout = array(
-	'admin' => in_array('admin', $data['permissions']),
-	'header' => (in_array('admin', $data['permissions'])) ? "col-xs-4" : "col-xs-6"
-);
+/* used to get the appropriate icon path when matching with the name of the game */
+//foreach ($data['games'] as $key => $game) {
+//    $data['games'][$key]['cleaned'] = strtolower(str_replace(' ', '', $game['name']));
+//}
 
 ?>
 <h1>Members</h1>
-<h4>
-	Currently 
-	<b><?= $data['count'] ?></b> 
-	<?= ($data['count'] > 1) ? "members have" : "member has" ?> registered.
-</h4>
+<h5>Currently <span id="members-count">0</span> members have registered.</h5>
+
 <div class="members">
 	<div class="panel-heading">
-		Search <small><button id="members-clear-filter" class='btn btn-edit'>Clear Filter</button></small>
+		Search <small><button id="members-clear" class='btn btn-edit'>Clear Filter</button></small>
 	</div>
 	<div class="form-group">
 		<div class="input-group">
@@ -33,7 +28,9 @@ $searchResultLayout = array(
 				placeholder="Search by player alias..."/>				
 		</div>
 	</div>
-	<?php if ($searchResultLayout['admin']): ?>
+
+	<?php if ($adminPermissions): ?>
+        <!-- Email Input Only Available for Administrators/Moderators -->
 		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon">Email</span>
@@ -42,61 +39,46 @@ $searchResultLayout = array(
 			</div>
 		</div>
 	<?php endif; ?>
+
 	<div class="form-group">
 		<div class="input-group">
 			<span class="input-group-addon">Games</span>
-				<div class="row">
-					<?php foreach ($data['games'] as $game): ?>
-						<div class="col-md-3">
-							<div class="game">
-								<div class="row">	
-									<div class="col-xs-2">
-										<span class="input-group-addon">
-											<input type="checkbox" id="<?= $game['cleaned'] ?>" value="<?= $game['cleaned'] ?>"/>
-										</span>
-									</div>
-									<div class="col-xs-10">
-										<span class="input-group-addon">
-											<?= $game['name'] ?>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					<?php endforeach; ?>
-			</div>
+			<div class="row" id="members-games"></div>
 		</div>
 	</div>
     <table class="table">
 	    <thead>
 		    <tr class='row'>
-			    <th class='<?= $searchResultLayout['header'] ?>'>
-				    <div class="alias">
-					    Alias
-				    </div>
-			    </th>
-			    <?php if ($searchResultLayout['admin']): ?>
+                <?php if ($adminPermissions): ?>
+                    <th class='col-xs-4'>
+                <?php else: ?>
+                    <th class='col-xs-6'>
+                <?php endif; ?>
+                        <div class='alias'>
+                            Alias
+                        </div>
+                    </th>
+
+                <?php if ($adminPermissions): ?>
 				    <th class='col-xs-4'>
 					    <div class="email">
 						    Email
 					    </div>
 				    </th>
-			    <?php endif; ?>
-			    <th class='<?= $searchResultLayout['header'] ?>'>
-				    <div class="played">
-					    Games
-				    </div>
-			    </th>
+                <?php endif; ?>
+
+
+                <?php if ($adminPermissions): ?>
+                    <th class='col-xs-4'>
+                <?php else: ?>
+                    <th class='col-xs-6'>
+                <?php endif; ?>
+				        <div class="played">
+					        Games
+				        </div>
+			        </th>
 		    </tr>
 	    </thead>
-	    <tbody id="results"></tbody>
+	    <tbody id="members-results"></tbody>
     </table>
 </div>
-<script type="text/javascript">
-	var memberList = <?php echo $data['members'] ?>;
-	var permissions  = <?php echo json_encode($data['permissions']) ?>;
-	var games = <?php echo json_encode($data['games']) ?>;
-	$( document ).ready(function() {
-		members.init(memberList, permissions, games);
-	});
-</script>

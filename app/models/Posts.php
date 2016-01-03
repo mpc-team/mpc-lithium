@@ -47,6 +47,20 @@ class Posts extends \lithium\data\Model
         }
     }
 
+    public static function CreatePost ($threadid, $content, $authorid)
+    {
+        $post = self::create(array(
+            'tid' => $threadid,
+            'content' => $content,
+            'uid' => $authorid,
+        ));
+        if ($post->save())
+        {
+            return $post->to('array');
+        }
+        return false;
+    }
+
 	public static function GetByThread ($tid) 
     {
 		return self::find('all', array(

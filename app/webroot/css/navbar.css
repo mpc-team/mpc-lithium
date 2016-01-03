@@ -4,12 +4,18 @@
     min-width: 600px;
 }
 
-#navbar-notifications .user-notification-list > .row > .col-xs-9 > div > li h3
+#navbar-notifications .user-notification-list .row
 {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-bottom: 5px;
 }
 
+#navbar-notifications .user-notification-list > .row .row
+{
+    max-height: 100px;
+    overflow: hidden;
+}
+
+#navbar-notifications .user-notification-list > .row > h4,
 #navbar-notifications .user-notification-list > .row > .col-xs-9 > div > h4
 {
     margin: 0;

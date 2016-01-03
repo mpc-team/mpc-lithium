@@ -167,7 +167,6 @@ announcements.ui.onConfirmClicked = function ()
 	var content = announcements.ui.editContentInput(id).val();
 
 	var editStatus = announcements.edit(id, title, content);
-	console.log(editStatus);
 
 	if (editStatus != true)
 		$('.announcement .feedback').filter('[data-id="' + id + '"]').html("Error: " + editStatus);
@@ -304,7 +303,6 @@ announcements.create = function (title, message)
 	};
 	$.post('/announcements/create', body, function (data)
 	{
-		console.log(data);
 		announcements.ui.append(data['announcement']);
 	});
 	return true;

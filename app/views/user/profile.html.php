@@ -35,12 +35,12 @@ if (isset($notification['status']))
 <div class="profile-content">
 
 
-    <div class="row">
+    <!--<div class="row">
         <h3>Notifications</h3>
         <div class="profile-notifications">
             
         </div>
-    </div>
+    </div>-->
 
     <hr />
 
@@ -166,7 +166,9 @@ if (isset($notification['status']))
 	
 	<div class="recent">
 		<div class="row">
-			<h3>Recent<small> Posts On Forum</small></h3>
+			<h3 style="margin-bottom: 10px; margin-top: 10px;">
+                Recent <small>Posts On Forum</small>
+            </h3>
 		</div>
 		<div class="row">
 			<?= $this->view()->render(

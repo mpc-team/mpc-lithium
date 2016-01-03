@@ -16,7 +16,7 @@ class GamesController extends ContentController
 			'path' => array('MPC','Games'),
 			'link' => array('/','/games')
 		);
-		$games = Games::getList();
+		$games = Games::All();
 		
 		$this->set(array(
 			'authorized' => $authorized,

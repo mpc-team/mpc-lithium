@@ -14,6 +14,7 @@ class UserNotifications extends \lithium\data\Model
     const POST_HIT = "posthit";
     const FORUM = "forum";
     const ANNOUNCEMENT = "announcement";
+    const MESSAGE = "message";
 
     /**
      * Returns a User Notification searching by its identifier.

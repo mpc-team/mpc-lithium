@@ -16,15 +16,25 @@ $self = $this
 
 ?>
 
-<h1>MPC Home</h1>
+<section id="events">
+    <h1>Events</h1>
+    <?php if ($permissions['events']['CREATE']): ?>
+        <div class="row">
+            <button class="btn btn-edit" style="margin-bottom:5px;font-size:100%">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add an Event
+            </button>
+        </div>
+    <?php endif; ?>
 
-<div id="calendar"></div>
+    <div id="calendar"></div>
+</section>
 
 <section id="announcements">
     <h1>Announcements</h1>
     <?php if ($permissions['announcements']['CREATE']): ?>
 	    <div class="row">
-		    <button class="btn btn-edit" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" id="announcement-btn">
+		    <button class="btn btn-edit" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
 		        <span class="glyphicon glyphicon-plus"></span>
 		        Add an Announcement
 		    </button>

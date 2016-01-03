@@ -21,10 +21,13 @@ $self = $this;
 </div>
 
 <div class="profile-content">
+    
+    <hr />
+
 	<div class="row">
 		<div class="user-avatar-select">
 			<center>
-				<img id="user-avatar" src="<?= $avatar; ?>" height="200px"/>
+				<img id="user-avatar" src="<?= $avatar; ?>" />
 			</center>
 		</div>
 	</div>

@@ -11,7 +11,7 @@ use app\models\Games;
 use app\models\Forums;
 use app\models\Categories;
 
-$games = Games::getList();
+$games = Games::All();
 $forumsByCategory = Forums::GetByCategory();
 
 ?>
@@ -121,10 +121,11 @@ $forumsByCategory = Forums::GetByCategory();
                         <span class='caret'></span>
                     </a>
                     <ul class='dropdown-menu user-notification-list' role='menu'>
+                        <div class='row'></div>
                         <div class='row'>
                             <div class='col-xs-9'>
-                                <div></div>
-                                <div></div>
+                                <div class='row'></div>
+                                <div class='row'></div>
                             </div>
                             <div class='col-xs-3'></div>
                         </div>

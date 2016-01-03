@@ -7,7 +7,7 @@
 }
 #clash-of-clans .coc-page-header {
     color: #fff;
-    /*background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");*/
+    background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");
     background-size: 100% 70%;
     background-repeat: no-repeat;
     height: 52px;
@@ -17,12 +17,15 @@
 
 }
 /*Image Class Properties for Clash of Clans*/
-#clash-of-clans .head-banner {
+#clash-of-clans .coc-headbanner {
     margin: auto;
 }
-#clash-of-clans .coc-img-center {
+.coc-img-properties {
     margin: auto;
-    padding: 5%;
+    box-shadow: 5px 5px 20px #FAF1BF;
+}
+.coc-img-properties:hover {
+    box-shadow: 5px 5px 20px #fff;
 }
 /*Nav Bar*/
 .navbar-clash-of-clans {
@@ -49,21 +52,12 @@
     text-align: center;
 
 }
-.navbar-clash-of-clans li a {
+.navbar-clash-of-clans a {
     font-family: Arial;
     font-size: 13px;
     text-decoration: none;
     color: #FAF1BF;
     font-weight: bold;
-}
-.navbar-clash-of-clans li a:hover {
-    font-family: Arial;
-    font-size: 13px;
-    text-decoration: none;
-    color: #C74230;
-    background-color: #FAF1BF;
-    font-weight: bold;
-    box-shadow: 1px 1px 20px #FAF1BF;
 }
 #cocnavbar-title {
     line-height: 3; 
@@ -72,26 +66,6 @@
 }
 /*index.html.php*/
 
-#clash-of-clans #coc-wellpanels .col-md-7 .well {
-    -webkit-border-image: url('/img/clash_of_clans/borders/wall.png');
-    -o-border-image: url('/img/clash_of_clans/borders/wall.png');
-    border-image: url('/img/clash_of_clans/borders/wall.png');
-    border-image-repeat: repeat;
-    border-image-slice: 1000;
-    border-image-width: 20px;
-    border-image-outset: 10px 1px 10px;
-    margin-bottom: 20px;
-}
-#clash-of-clans #coc-wellpanels .col-md-5 .well {
-    -webkit-border-image: url('/img/clash_of_clans/borders/wall.png');
-    -o-border-image: url('/img/clash_of_clans/borders/wall.png');
-    border-image: url('/img/clash_of_clans/borders/wall.png');
-    border-image-repeat: repeat;
-    border-image-slice: 1000;
-    border-image-width: 20px;
-    border-image-outset: 10px 1px 10px;
-    margin-bottom: 20px;
-}
  #clash-of-clans .row {
     margin: 5% 0 5% 0;
 }
@@ -111,47 +85,47 @@
     padding-right: 1%;
     padding-left: 1%;
 }
-
-/*rules.html.php*/
-#clash-of-clans h2 {
+/*chat-box.html.php*/
+#coc-chat-box h2 {
     color: #F2E7AB;
 }
-#clash-of-clans .list-group-item {
-    background-color: #474948;
-}
 /*online-members.html.php*/
-#clash-of-clans #online-members h2 {
+#coc-online-members h2 {
     color: #F2E7AB;
 }
 /*member-status.html.php*/
-#clash-of-clans #member-status h2 {
+#coc-member-status h2 {
     color: #F2E7AB;
 }
 /*events.html.php*/
-#clash-of-clans #events h2 {
+#coc-events h2 {
     color: #F2E7AB;
 }
 /*welcome-msg.html.php*/
-#clash-of-clans #welcome-msg h2 {
+#coc-welcome-msg h2 {
     color: #F2E7AB;
 }
-
-#clash-of-clans #welcome-msg p {
+#coc-welcome-msg p {
     padding: 1% 5% 1% 5%;;
 }
-#clash-of-clans #welcome-msg .list-group {
+#coc-welcome-msg .list-group {
     margin: 50px;
 }
-/*communication.html.php*/
-#clash-of-clans h2, #clash-of-clans small {
+#coc-img-center{
+    margin: auto;
+}
+/*activity-feed.html.php*/
+#coc-activity-feed h2 {
     color: #F2E7AB;
 }
-/*Forum.html.php*/
-#clash-of-clans .panel a.btn {
-    width: 100%;
-    height: 100px;
-}
+/*
+    views/elements/discordapp.html.php 
+
+*/
+#discord-widget .widget {
+    margin: auto;
+}    
 /*footer.html.php*/
-#clash-of-clans footer h2 {
+#coc-footer h2 {
     color: #F2E7AB;
 }

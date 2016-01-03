@@ -15,11 +15,6 @@ use app\models\UserNotifications;
 
 class ThreadController extends ContentController 
 {
-	/**
-	 * The primary view of a Thread.
-     *
-	 * @return array|object
-	 */
 	public function view ( ) 
 	{
 		$this->_render['layout'] = 'forum';
@@ -72,11 +67,13 @@ class ThreadController extends ContentController
             UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::POST);
             UserNotifications::DeleteNotification($authorized['id'], $post['id'], UserNotifications::POST_HIT);
 
+            $privateInformation = Users::Get($post['uid'], Users::$FIELDS_PRIVATE);
+
 			$author = Users::Get($post['uid']);
 			$data['posts'][$key]['content'] = stripslashes($data['posts'][$key]['content']);
 			$data['posts'][$key]['author'] = $author;
 			$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
-			$data['posts'][$key]['author']['avatar'] = Users::find_avatar_file($author['email']);
+			$data['posts'][$key]['author']['avatar'] = Users::FindAvatarFile($privateInformation['email']);
 			$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($post['tstamp'], array());
 			$data['posts'][$key]['features'] = array();
 			$data['posts'][$key]['hit'] = $authorized && PostHits::IsHitByUser($data['posts'][$key]['id'], $authorized['id']);
@@ -116,9 +113,7 @@ class ThreadController extends ContentController
 		if ($authorized['id'] != $thread['uid'] && !Permissions::is_admin($authorized))
 			return $this->redirect('/forum');
 				
-		Posts::DeletePosts($this->request->id);
-		Threads::DeleteThread($this->request->id);
-        ThreadSubscriptions::DeleteByThread($this->request->id);
+		Threads::DeleteThread($this->request->id); // Should delete all associated stuff.
 		return $this->redirect("/board/view/{$thread['fid']}");
 	}
 
@@ -143,29 +138,20 @@ class ThreadController extends ContentController
 		if (!self::verify_access($authorized, "\app\models\Forums", $this->request->id))
 			return $this->redirect('/forum');
 		
-		$thread = Threads::create(array(
-			'fid' => $this->request->id,
-			'name' => Threads::CleanTitle($this->request->data['title']),
-			'uid' => $authorized['id'],
-			'tstamp' => null,
-			'permission' => $forum['permission']
-		));
-		
-		if ($thread->save()) 
+        $threadName = Threads::CleanTitle($this->request->data['title']);
+        $thread = Threads::CreateThread($this->request->id, $threadName, $authorized['id'], $forum['permission']);
+        if ($thread)
 		{
-			$post = Posts::create(array(
-				'tid' => $thread->id,
-				'content' => Posts::clean($this->request->data['content']),
-				'uid' => $authorized['id']
-			));
-			if ($post->save())
+            $content = Posts::clean($this->request->data['content']);
+            $post = Posts::CreatePost($thread['id'], $content, $authorized['id']);
+            if ($post)
             {
-                ThreadSubscriptions::NewSubscription($authorized['id'], $thread->id);
-                return $this->redirect("/thread/view/{$thread->id}");
+                ThreadSubscriptions::NewSubscription($authorized['id'], $thread['id']);
+                return $this->redirect("/thread/view/{$thread['id']}");
             }
 			else
             {
-				$thread->delete();
+                Threads::DeleteThread($thread['id']);
             }
 		}
 		return $this->redirect("/board/view/{$this->request->id}");

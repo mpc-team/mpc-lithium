@@ -6,11 +6,41 @@ use lithium\security\Auth;
 
 use app\controllers\ContentController;
 
+use app\models\UserGames;
 use app\models\Messages;
 use app\models\Users;
+use app\models\Games;
+use app\models\Permissions;
 
 class UsersAPI extends ContentController
 {
+    
+    /**
+     * Returns a list of all the Users with options.
+     *
+     * @param int $this->request->query['limit'] Limit of Users returned.
+     * @param bool $this->request->query['ext'] Extended information of Users (games played, etc.).
+     *
+     * @return json List of members.
+     */
+    public function all()
+    {
+        $authorized = Auth::check('default');
+        $fields = ($authorized && Permissions::is_admin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
+
+        if (isset($this->request->query['limit']))
+            $members = Users::All($this->request->query['limit'], $fields);
+        else
+            $members = Users::All(null, $fields);
+
+        if (isset($this->request->query['ext']) && $this->request->query['ext'])
+        {
+            $this->GetExtendedUserInformation($members);
+        }
+
+        return $this->render(array('json' => $members, 'status' => 200));
+    }
+
     /**
      * Returns a list of Messages sent to a specified User.
      *
@@ -80,6 +110,27 @@ class UsersAPI extends ContentController
             return $this->render(array('json' => Auth::check('default'), 'status' => 200));
         else
             return $this->render(array('json' => null, 'status' => 200));
+    } 
+
+    /**
+     * Get extended information for a list of Users. Information is
+     * directly inserted into the passed array in the appropriate position.
+     *
+     * @param array $users List of Users. Passed by reference.
+     */
+    private function GetExtendedUserInformation (&$users)
+    {
+        foreach ($users as $key => $user)
+        {
+            $userData = Users::Get($user['id'], Users::$FIELDS_PRIVATE);
+            $playedGames = UserGames::GetPlayedGames($user['id']);
+            $users[$key]['avatar'] = Users::FindAvatarFile($userData['email']);
+            $users[$key]['games'] = array();
+            foreach ($playedGames as $userGame)
+            {
+                array_push($users[$key]['games'], Games::Get($userGame['gid']));
+            }
+        }
     }
 
 }

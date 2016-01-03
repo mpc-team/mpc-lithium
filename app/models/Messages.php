@@ -2,8 +2,22 @@
 
 namespace app\models;
 
+abstract class MessageTypes
+{
+    const TEXT = "text";
+}
+
 class Messages extends \lithium\data\Model  
 {
+    public static function Get ($id)
+    {
+        $message = self::find('first', array('conditions' => array('id' => $id)));
+        if ($message)
+            return $message->to('array');
+        else
+            return null;
+    }
+
 	public static function GetUserMessages ($id, $limit) 
     {
 		return self::find('all', array(
@@ -27,9 +41,10 @@ class Messages extends \lithium\data\Model
 					'content' => $cleanedContent,
 					'type' => $type
 				));
-
 				if ($message->save())
-					$result = $message->id;
+                {
+                    $result = $message->id;
+                }
 			}
 		}
 		return $result;

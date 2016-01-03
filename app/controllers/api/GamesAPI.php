@@ -16,7 +16,10 @@ class GamesAPI extends ContentController
 	 */
 	public function all() 
 	{
-		$games = Games::getList();
+        if (isset($this->request->query['limit']))
+		    $games = Games::All($this->request->query['limit']);
+        else
+            $games = Games::All();
 		
 		return $this->render(array('json' => $games, 'status' => 200));
 	}

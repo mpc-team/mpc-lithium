@@ -81,7 +81,6 @@ forum.hits.init = function ()
 		$.post("/post/hit/" + postid, data, function (data)
 		{
 			data = JSON.parse(data);
-			console.log( data );
 			if (data.status)
 			{
 				var hitButton = $("." + UI_HIT).filter("[data-id=" + postid + "]");

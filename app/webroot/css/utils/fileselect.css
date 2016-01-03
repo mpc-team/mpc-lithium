@@ -1,7 +1,22 @@
 ﻿
+.fs-container
+{
+    padding-bottom: 10px;
+}
+
 .fs-conf-modal
 {
     background: rgba(0, 0, 0, 0.75);
+}
+
+.fs-btn-modify
+{
+    transition-duration: 0.2s;
+}
+.fs-btn-modify:hover
+{
+    background: #000;
+    transform: scale(1.1);
 }
 
 .fs-conf-modal > .modal-dialog

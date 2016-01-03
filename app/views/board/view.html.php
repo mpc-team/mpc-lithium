@@ -30,63 +30,63 @@ $features = function($tid, $options)
 	return $html;
 };
 ?>
-<?php if (in_array('create', $data['permissions'])): ?>
-	<div class="panel panel-default">
-		<div class="panel-control">
-			<div class="panel-heading">
-				Board Control Panel
-			</div>
-			<div class="row usertool">
-				<button title="New Thread" class="btn btn-edit" data-toggle="modal" data-target="#modal-newthread">
-					<span class="glyphicon glyphicon-file"></span> 
-				</button>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="modal-newthread" tabindex="-1" aria-labelledby="modal-newthread">
-		<div class="modal-dialog">
-			<form action="/thread/create/<?= $data['forum']['id'] ?>" method="post">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h2 class="modal-title" id="modal-label">
-							Create New Thread
-						</h2>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<input type="text" name="title" class="form-control" placeholder="Title..." required/>
-						</div>
-						<div class="form-group">						
-							<div class='row'>
-								<?= $this->view()->render(
-									array('element' => 'texttags'),
-									array('id' => $data['forum']['id'], 'disabled' => '')
-								)?>
-							</div>
-							<div class='row'>
-								<textarea name="content" class="form-control edit-content-text" placeholder="Post content..." data-id="<?= $data['forum']['id'] ?>" required></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="submit" class="btn btn-edit" value="Create"/>
-						<button type="button" class="btn btn-edit" data-dismiss="modal">Cancel</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-<?php endif; ?>
 <div class="row forum-header">
-	<h1>
+	<h1 style='margin-bottom: 10px;'>
 		<div><?= $data['forum']['name'] ?></div>
 		<small>
 			<div>Topics</div>
 		</small>
 	</h1>
+    <?php if (in_array('create', $data['permissions'])): ?>
+	    <div class="panel panel-default" style="margin-bottom: 10px">
+		    <div class="panel-control">
+			    <div class="panel-heading">
+				    Board Control Panel
+			    </div>
+			    <div class="row usertool">
+				    <button title="New Thread" class="btn btn-edit" data-toggle="modal" data-target="#modal-newthread">
+					    <span class="glyphicon glyphicon-file"></span> 
+				    </button>
+			    </div>
+		    </div>
+	    </div>
+	    <div class="modal fade" id="modal-newthread" tabindex="-1" aria-labelledby="modal-newthread">
+		    <div class="modal-dialog">
+			    <form action="/thread/create/<?= $data['forum']['id'] ?>" method="post">
+				    <div class="modal-content">
+					    <div class="modal-header">
+						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							    &times;
+						    </button>
+						    <h2 class="modal-title" id="modal-label">
+							    Create New Thread
+						    </h2>
+					    </div>
+					    <div class="modal-body">
+						    <div class="form-group">
+							    <input type="text" name="title" class="form-control" placeholder="Title..." required/>
+						    </div>
+						    <div class="form-group">						
+							    <div class='row'>
+								    <?= $this->view()->render(
+									    array('element' => 'texttags'),
+									    array('id' => $data['forum']['id'], 'disabled' => '')
+								    )?>
+							    </div>
+							    <div class='row'>
+								    <textarea name="content" class="form-control edit-content-text" placeholder="Post content..." data-id="<?= $data['forum']['id'] ?>" required></textarea>
+							    </div>
+						    </div>
+					    </div>
+					    <div class="modal-footer">
+						    <input type="submit" class="btn btn-edit" value="Create"/>
+						    <button type="button" class="btn btn-edit" data-dismiss="modal">Cancel</button>
+					    </div>
+				    </div>
+			    </form>
+		    </div>
+	    </div>
+    <?php endif; ?>
 	<div class="forum-thread">
 		<?php if ($data['threads']): ?>
 			<div>

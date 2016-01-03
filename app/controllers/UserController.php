@@ -6,6 +6,7 @@ use Exception;
 
 use lithium\security\Auth;
 use app\models\utils\Notifications;
+use app\models\UserNotifications;
 use app\models\Users;
 use app\models\Forums;
 use app\models\Threads;
@@ -28,7 +29,7 @@ class UserController extends \lithium\action\Controller
 	
 	public static function getUserGameIds ($uid) 
 	{
-		$games = UserGames::getById($uid);
+		$games = UserGames::GetPlayedGames($uid);
 		$result = array();
 		foreach ($games as $game) 
 			array_push($result, $game['gid']);
@@ -44,11 +45,11 @@ class UserController extends \lithium\action\Controller
 	 *	@returns
 	 *
 	 */
-	private function profile_view ($authorized, $query) 
+	private function ViewProfile ($authorized, $query) 
 	{
 		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
 		$data = array(
-			'games' => Games::getList(),
+			'games' => Games::All(),
 			'played' => json_encode(self::getUserGameIds($authorized['id'])),
 			'options' => array('post'),
 			'recentfeed' => Posts::find('all', array(
@@ -101,7 +102,7 @@ class UserController extends \lithium\action\Controller
 		$options = array();
 		$options['template'] = '../user/profile';
 		
-		$avatarPath = Users::find_avatar_file($authorized['email']);
+		$avatarPath = Users::FindAvatarFile($authorized['email']);
 		$this->set(array('avatar' => $avatarPath));
 		
 		// Return and render the View specified above.
@@ -118,7 +119,7 @@ class UserController extends \lithium\action\Controller
 	 *	@returns
 	 *
 	 */
-	private function profile_edit($authorized, $data)
+	private function EditProfile($authorized, $data)
 	{
 		// First perform the Edit and then load the standard Profile page.
 		if (isset($data['avatarfile']) && $data['avatarfile']) 
@@ -132,7 +133,7 @@ class UserController extends \lithium\action\Controller
 				if ($check && in_array($check[2], $image_types))
 				{
 					$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
-					$cleaned = Users::clean_existing_avatar_files($authorized['email']);
+					$cleaned = Users::CleanAvatarFiles($authorized['email']);
 					
 					$saveToPath = getcwd().'/users/avatars/'.$authorized['email'].'.'.$fileext;
 					copy($data['avatarfile']['tmp_name'], $saveToPath);
@@ -176,10 +177,10 @@ class UserController extends \lithium\action\Controller
 		
 		if ($opedit) 
 			// Redirect to the /user/profile/edit action.
-			return self::profile_edit($authorized, $this->request->data);
+			return self::EditProfile($authorized, $this->request->data);
 		else
 			// Redirect to the standard action /user/profile.
-			return self::profile_view($authorized, $this->request->query);
+			return self::ViewProfile($authorized, $this->request->query);
 	}
 	
 	
@@ -305,7 +306,7 @@ class UserController extends \lithium\action\Controller
 				$member['date'] = Timestamp::toDisplayFormat($member['tstamp']);
 				$data = array(
 					'member' => $member,
-					'games' => Games::getList(), 
+					'games' => Games::All(), 
 					'played' => json_encode(self::getUserGameIds($this->request->id)),
 					'options' => (($authorized) ? array('post') : array())
 				);
@@ -344,7 +345,8 @@ class UserController extends \lithium\action\Controller
 					$data['recentfeed'] = array();
 				}
 				
-				$avatar = Users::find_avatar_file($member['email']);
+                $privateInformation = Users::Get($member['id'], Users::$FIELDS_PRIVATE);
+				$avatar = Users::FindAvatarFile($privateInformation['email']);
 				return compact('authorized', 'data', 'breadcrumbs', 'avatar');
 			}
 		}
@@ -364,7 +366,7 @@ class UserController extends \lithium\action\Controller
 				$flag = ($this->request->data['flag'] == "true") ? true : false;
 				if ($authorized && $authorized['id'] == $this->request->id) 
 				{
-					if (UserGames::set($this->request->id, $this->request->data['game'], $flag)) 
+					if (UserGames::Set($this->request->id, $this->request->data['game'], $flag)) 
 					{
 						return json_encode(array(
 							'status' => true,
@@ -378,10 +380,11 @@ class UserController extends \lithium\action\Controller
 				if ($authorized) 
 				{
 					$mid = Messages::Send('text', $authorized['id'], $this->request->id, $this->request->data['wall']);
-					return json_encode(array(
-						'status' => true,
-						'response' => $mid
-					));
+
+                    if ($authorized['id'] != $this->request->id)
+                        UserNotifications::NewNotification($this->request->id, $mid, UserNotifications::MESSAGE, $authorized['id']);
+
+					return json_encode(array('status' => true, 'response' => $mid));
 				}
 			}
 		}

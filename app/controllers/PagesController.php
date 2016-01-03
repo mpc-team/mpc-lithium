@@ -51,6 +51,11 @@ class PagesController extends \lithium\action\Controller
                 'CREATE' => $authorized && Permissions::is_admin($authorized),
                 'DELETE' => $authorized && Permissions::is_admin($authorized),
             ),
+            'events' => array(
+                'EDIT' => false,
+                'CREATE' => $authorized && Permissions::is_admin($authorized),
+                'DELETE' => false,
+            ),
         );
 
 		$options['template'] = join('/', $path);

@@ -120,7 +120,6 @@ $(document).ready(function ()
 	$(fileselect.BTN_CONFIRM).click(function ()
 	{
 		var dataid = $(this).attr('data-id');
-		console.log($(this));
 		fileselect.filterDataId(fileselect.MODAL, dataid).modal('hide');
 		fileselect.filterDataId(fileselect.FORM_INPUT_SUBMIT, dataid).click();
 	});

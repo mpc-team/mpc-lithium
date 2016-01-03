@@ -22,11 +22,14 @@ body
     color: rgba(255, 255, 255, 0.6);
 }
 
-h1, h2, h3
+h1, 
+h2, 
+h3
 {
     /* font-family: "Oswald"; */
     font-weight: 700;
     color: #aaffaa;
+    margin: 0;
 }
 
 h1 > small,
@@ -66,6 +69,11 @@ h5
     word-wrap: break-word;
 }
 
+#calendar
+{
+    margin-top: 15px;
+}
+
 .feedback
 {
     /*padding: 10px;*/
@@ -76,6 +84,7 @@ h5
     /*font-family: "Passion One";*/
     font-size: 14pt;
     font-weight: 500;
+    background: #111;
 }
 
 .navbar .glyphicon-user

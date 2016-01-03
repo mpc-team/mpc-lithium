@@ -12,6 +12,7 @@ use app\models\Posts;
 use app\models\Threads;
 use app\models\Forums;
 use app\models\Users;
+use app\models\Messages;
 
 class UserNotificationsAPI extends ContentController
 {
@@ -40,6 +41,13 @@ class UserNotificationsAPI extends ContentController
                 case 'announcements':
                 case 'announcement':
                     $notifications = self::GetUserAnnouncementNotifications($authorized['id'], $limit);
+                    break;
+                case 'messages':
+                case 'message':
+                    $notifications = self::GetUserMessageNotifications($authorized['id'], $limit);
+                    break;
+                default:
+                    $notifications = null;
                     break;
             }
         }
@@ -153,7 +161,7 @@ class UserNotificationsAPI extends ContentController
      * @param int $userid User identifier.
      * @param int $limit Limit number of results.
      *
-     * @return array List of Notifications with the `posthit` attribute for related information.
+     * @return array List of Notifications.
      */
     private static function GetUserAnnouncementNotifications($userid, $limit)
     {
@@ -165,6 +173,27 @@ class UserNotificationsAPI extends ContentController
             $notifications[$key]['sender'] = $sender['alias'];
             $notifications[$key]['title'] = $announcement['title'];
             $notifications[$key]['content'] = $announcement['content'];
+        }
+        return $notifications;
+    }
+
+    /**
+     * Retrieves Message-related Notification data for the authorized User.
+     *
+     * @param int $userid User identifier.
+     * @param int $limit Limit number of results.
+     * 
+     * @return array List of Notifications.
+     */
+    private static function GetUserMessageNotifications ($userid, $limit)
+    {
+        $notifications = UserNotifications::GetUserNotificationsOfType($userid, 'message', $limit);
+        foreach ($notifications as $key => $notification)
+        {
+            $message = Messages::Get($notification['contentid']);
+            $sender = Users::Get($notification['senderid']);
+            $notifications[$key]['sender'] = $sender['alias'];
+            $notifications[$key]['content'] = $message['content'];
         }
         return $notifications;
     }

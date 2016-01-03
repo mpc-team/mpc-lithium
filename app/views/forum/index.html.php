@@ -8,7 +8,7 @@ $self = $this;
 
 ?>
 <div class="row">
-	<h3 style="margin-top:0">Recent Activity</h3>
+	<h3 style="margin-top:0; margin-bottom:10px">Recent Activity</h3>
 </div>
 
 <div class="row">
@@ -22,7 +22,7 @@ $self = $this;
 </div>
 
 <div class="row page-header">
-	<h1>
+	<h1 style="margin-top: 20px; margin-bottom: 10px;">
 		<div class="title">
 			Forum 
 		</div>
@@ -37,7 +37,7 @@ $self = $this;
 	<?php foreach ($data['categories'] as $category): ?>
 		<div class="row">
 			<div class="name">
-				<h3>
+				<h3 style="margin-bottom: 10px; margin-top: 10px;">
 					<?= $category['name'] ?> <small>Forums</small>
 				</h3>
 			</div>

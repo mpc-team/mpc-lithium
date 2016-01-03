@@ -19,6 +19,7 @@ use app\views\layouts\LayoutConstants;
 	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array(
 		'bootstrap',
+        'bootstrap-datepicker',
 		'font-awesome',
         'fullcalendar/fullcalendar.css',
 		'website',
@@ -31,18 +32,21 @@ use app\views\layouts\LayoutConstants;
         'external/effects/component',
         'utils/nanoscroller',
         'utils/fileselect',
+        'utils/tooltip',
         'announcements',
-        'information',
+        'information-page',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'bootstrap-datepicker',
         'moment',
         'fullcalendar/fullcalendar.js',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
         'utils/EventsCalendar',
         'utils/AreYouSure',
+        'utils/tooltip',
         'user/user',
         'user/auth',
         'user/notification',
@@ -59,7 +63,6 @@ use app\views\layouts\LayoutConstants;
 		'scroller',	
         'announcements',
         'texttags',
-        'information',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
