@@ -11,6 +11,9 @@
     transform: scale(1.1,1.1); /* Standard syntax */
     transition-duration: .2s;
     box-shadow: 1px 1px 15px #aaffaa;
+}
+#mpc-information .well-glow {
+    box-shadow: 1px 1px 15px #aaffaa;
 }   
 /*index.html.php*/
 #info-accordion {
@@ -19,4 +22,32 @@
 /*Banners for Each Well in the First Row*/
 #info-aboutus-banner, #info-members-banner, #info-communication-banner {
     margin: auto;
+}
+/*elements/information/Aboutus.html.php ID's and Classes*/
+#mpc-information #infoaboutus img {
+    margin: auto;
+    box-shadow: 1px 1px 15px #aaffaa;
+}
+#mpc-information #infoaboutus img:hover {
+    box-shadow: 1px 1px 15px #fff;
+  }
+#infoaboutus .row h2, #infoaboutus .row p {
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #fff;
+}
+#mpc-information h2, #mpc-information h1 {
+    color: #aaffaa;
+}
+/*elements/information/communication.html.php ID's and Classes*/
+#infocommunication .row p {
+    color: #fff;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#infocommunication .list-group-item {
+    color: #aaffaa;
+    background-color: #808080;
 }
