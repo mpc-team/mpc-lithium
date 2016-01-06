@@ -1,4 +1,4 @@
-<div id="coc-welcome-msg">
+<div id="welcome-msg">
 
     <h2 class="text-center">Welcome to MPC Assassins</h2>
     <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
@@ -13,9 +13,4 @@
     </ul>
     <p>Not sure how to install Discord App? Learn how to get set up by going <a href="#">Here</a>.</p>
     <h4>Thanks for Joining MPC Assassins, get on Discord, and lets WIN some WARS!</h4>
-    <div class="row">
-        <?= $this->view()->render(
-		        array('element' => 'discordapp')
-	        )?>
-    </div>
 </div>

@@ -34,7 +34,7 @@ use app\views\layouts\LayoutConstants;
         'utils/fileselect',
         'utils/tooltip',
         'announcements',
-        'information-page',
+        'information',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,

@@ -1,4 +1,7 @@
 /* Information Page CSS */
+#mpc-information img {
+    margin: auto;
+}
 #info-accordion .panel div .well {
     margin-bottom: 0px;
 }
@@ -24,6 +27,9 @@
     margin: auto;
 }
 /*elements/information/Aboutus.html.php ID's and Classes*/
+#infoaboutus p {
+    text-indent: 50px;
+}
 #mpc-information #infoaboutus img {
     margin: auto;
     box-shadow: 1px 1px 15px #aaffaa;
@@ -42,6 +48,9 @@
     color: #aaffaa;
 }
 /*elements/information/communication.html.php ID's and Classes*/
+#infocommunication iframe {
+   height: 800px;
+}
 #infocommunication .row p {
     color: #fff;
     margin-top: 5%;
@@ -50,4 +59,8 @@
 #infocommunication .list-group-item {
     color: #aaffaa;
     background-color: #808080;
+}
+#infocommunication .row {
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
