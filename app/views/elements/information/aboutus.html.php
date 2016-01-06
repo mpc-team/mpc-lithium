@@ -16,10 +16,23 @@ $aboutUs_dialogSource = array
 (
     'mpcintro'=>'https://www.youtube.com/embed/ZfK_PgBBacs',
     'micro'=>'https://www.youtube.com/embed/YbpCLqryN-Q',
-);    
+); 
+
+$array = array
+(
+    'mpcintro' => array
+    ('source'=>'https://www.youtube.com/embed/ZfK_PgBBacs','credit'=>'MPC-SeaDog'),
+
+    'micro' => array
+    ('source'=>'https://www.youtube.com/embed/YbpCLqryN-Q','credit'=>'Nada & Moon'),
+
+    'macro' => array
+    ('source'=>'https://www.youtube.com/embed/dhs17SOnTCs','credit'=>'Someone Unknown')
+
+);   
 ?>
 <div id="infoaboutus">
-    <div class="row" id="infompc">
+    <div class="row">
         <h1 class="text-center">
             Miacro Power Clan:
             <span class="label label-default">MPC</span>
@@ -56,14 +69,20 @@ $aboutUs_dialogSource = array
     </div>
 
 <!--Hidden Content-->
-    <?php foreach($aboutUs_dialogSource as $type => $source): ?>
-    <div class="modal fade <?= $type ?>-modal" tabindex="-1" role="dialog" aria-labelledby="<?= $type ?>ModalLabel">
+    <?php foreach($array as $key => $item): ?>
+    <div class="modal fade <?= $key ?>-modal" tabindex="-1" role="dialog" aria-labelledby="<?= $key ?>ModalLabel">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="<?= $source ?>"></iframe>
+                <div class="modal-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="<?= $item['source'] ?>"></iframe>
+                    </div>
                 </div>
+                <div class="modal-footer">
+                    <?= $item['credit'] ?>
+                </div>                
             </div>
+
         </div>
     </div>
     <?php endforeach; ?>

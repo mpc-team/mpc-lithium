@@ -6,7 +6,7 @@ $self = $this;
 /*
  *information/index.html.php 
  */
-//array to operate the 1 row collapsible.
+//array to operate the (information -1- indexexs) row collapsible.
 $info1Indexes = array
     (
         'aboutus',
@@ -17,6 +17,7 @@ $info1Indexes = array
 ?>
 <div id="mpc-information">
     <div class="row">
+        <!--Only 2 tiles in the first index array. 3rd is static.-->
         <?php foreach($info1Indexes as $infoIndex):?>
         <div class="col-md-4">
             <a role="button" data-toggle="collapse" data-parent="#info-accordion" href="#info-<?= $infoIndex ?>-collapse" aria-expanded="true" aria-controls="info-<?= $infoIndex ?>-collapse">
@@ -26,6 +27,7 @@ $info1Indexes = array
             </a>
         </div>
         <?php endforeach; ?>
+        <!--static link to our members section.-->
         <div class="col-md-4">
             <a role="button" href="http://mpcgaming.com/members">
                 <div class="well">
@@ -34,18 +36,17 @@ $info1Indexes = array
             </a>
         </div>
     </div>
+    <!--Panels to go with what is selected above. You will need to copy/paste this code and rename $info1indexes to info2indexes in order to create the next set of tiles to be working with the panels.-->
     <div class="panel-group" id="info-accordion" role="tablist" aria-multiselectable="true">
         <div class="panel">
             <?php foreach($info1Indexes as $infoIndex):?>
-
-            <div id="info-<?= $infoIndex ?>-collapse" class="panel-collapse collapse fade" role="tabpanel" aria-labelledby="info-<?= $infoIndex ?>-collapseheading">
-                <div class="well well-glow">
-                    <?= $this->view()->render(
-                        array('element' => 'information/' . $infoIndex)
-                    ); ?>
+                <div id="info-<?= $infoIndex ?>-collapse" class="panel-collapse collapse fade" role="tabpanel" aria-labelledby="info-<?= $infoIndex ?>-collapseheading">
+                    <div class="well well-glow">
+                        <?= $this->view()->render(
+                            array('element' => 'information/' . $infoIndex)
+                        ); ?>
+                    </div>
                 </div>
-            </div>
-
             <?php endforeach; ?>
         </div>
     </div>
