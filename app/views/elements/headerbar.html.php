@@ -30,6 +30,12 @@ $button_hover_class = 'cl-effect-3';
                 </a>
             </li>
 
+            <li id="headerbar-connect">
+                <a href='/connect'>
+                    Connect
+                </a>
+            </li>
+
             <li id='headerbar-forum'>
                 <a href='/forum'>
                     Forum

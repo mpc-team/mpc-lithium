@@ -1,12 +1,16 @@
-<div id="infocommunication">
-    <div class="row">
-        <h1 class="text-center">
-            <span class="label label-default">
-                <a href="https://discordapp.com/apps" target="_blank">
-                    DiscordApp
-                </a>
-            </span>
-        </h1>
+<?php
+
+$this->title('Connect');
+
+$self = $this;
+
+?>
+<div id="connectdiscord">
+    <div class="row text-center">
+        <h3>Connect to MPC</h3>
+        <a href="https://discordapp.com/apps" target="_blank">
+            <img src="/img/connect/discord-logo.png" alt="discord.png" class="img-responsive img-rounded" id="connect-discordlogo" />
+        </a>
     </div>    
     <div class="row">
         <img src="/img/information/discord.png" alt="discord.png" class="img-responsive img-rounded" />
@@ -27,10 +31,14 @@
             <a class="btn btn-edit" role="button" data-toggle="collapse" href="#showdiscordserver" aria-expanded="false" aria-controls="showdiscordserver">
   Show Server
             </a>
-            <div class="collapse" id="showdiscordserver">
+            <div class="collapse text-center" id="showdiscordserver">
                 <?= $this->view()->render(
 		          array('element' => 'discordapp')
 	            )?>
+                    <br />
+                    <a class="btn btn-edit" role="button" data-toggle="collapse" href="#showdiscordserver" aria-expanded="false" aria-controls="showdiscordserver">
+      Close
+                </a>
             </div>
         </div>
     </div>

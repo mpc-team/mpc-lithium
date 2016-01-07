@@ -48,19 +48,27 @@
     color: #aaffaa;
 }
 /*elements/information/communication.html.php ID's and Classes*/
-#infocommunication iframe {
+#connectdiscord #discord-app {
+    margin: 0 auto 0 14%;
+}
+#connectdiscord iframe {
    height: 800px;
 }
-#infocommunication .row p {
+#connectdiscord .row p {
     color: #fff;
     margin-top: 5%;
     margin-bottom: 5%;
 }
-#infocommunication .list-group-item {
+#connectdiscord .list-group-item {
     color: #aaffaa;
-    background-color: #808080;
+    background-color: #1a1a1a;
 }
-#infocommunication .row {
+#connectdiscord .list-group-item:hover {
+    background-color: #1a1a1a;
+    color: #1a1a1a;
+    box-shadow: 1px 1px 5px 20px #aaffaa inset;
+}
+#connectdiscord .row {
     margin-top: 5%;
     margin-bottom: 5%;
 }

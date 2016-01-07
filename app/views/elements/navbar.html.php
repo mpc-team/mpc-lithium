@@ -37,6 +37,12 @@ $forumsByCategory = Forums::GetByCategory();
                 </a>
 			</li>
 			
+            <li id='navbar-connect'>
+                <a title="Connect" href='/connect'>
+                    <i class="fa"></i>
+                </a>
+            </li>
+
 			<li id='navbar-forum' class='dropdown'>
                 <a href='/forum' class='dropdown-toggle' role='button' style="padding-top: 12px">
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>

@@ -1015,3 +1015,40 @@ a .panel-recentfeed h3
 {
     text-align: right;
 }
+
+/*
+    /connect -> #connectdiscord parent div
+
+*/
+#connect-discordlogo {
+    min-width: 10%;
+    max-width: 80%;
+    height: auto;
+    box-shadow: 1px 1px 20px #aaffaa;
+}
+#connectdiscord .row img {
+    margin: auto;
+}
+#connectdiscord #discord-app {
+    margin: 0 auto 0 14%;
+}
+#connectdiscord iframe {
+   height: 1000px;
+}
+#connectdiscord .row p {
+    color: #fff;
+    margin: 5% 15% 5% 15%;
+}
+#connectdiscord .list-group-item {
+    color: #aaffaa;
+    background-color: #1a1a1a;
+}
+#connectdiscord .list-group-item:hover {
+    background-color: #1a1a1a;
+    color: #1a1a1a;
+    box-shadow: 1px 1px 5px 20px #aaffaa inset;
+}
+#connectdiscord .row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
