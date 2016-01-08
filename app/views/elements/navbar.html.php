@@ -39,7 +39,7 @@ $forumsByCategory = Forums::GetByCategory();
 			
             <li id='navbar-connect'>
                 <a title="Connect" href='/connect'>
-                    <i class="fa"></i>
+                    <i class="fa fa-feed"></i>
                 </a>
             </li>
 
