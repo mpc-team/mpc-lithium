@@ -1052,3 +1052,6 @@ a .panel-recentfeed h3
     margin-top: 5%;
     margin-bottom: 5%;
 }
+#connectdiscord #showserver {
+    margin-left: 5px;
+}

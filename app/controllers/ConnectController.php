@@ -12,8 +12,8 @@ class ConnectController extends \lithium\action\Controller
 	{
 		$authorized = Auth::check('default');	
 		$breadcrumbs = array(
-			'path' => array('MPC','connect'),
-			'link' => array('/','/Connect')
+			'path' => array('MPC','Connect'),
+			'link' => array('/','/connect')
 		);
 		
 		$this->set(array(

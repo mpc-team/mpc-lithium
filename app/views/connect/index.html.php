@@ -7,7 +7,7 @@ $self = $this;
 ?>
 <div id="connectdiscord">
     <div class="row text-center">
-        <h3>Connect to MPC</h3>
+        <h3>Connect with MPC</h3>
         <a href="https://discordapp.com/apps" target="_blank">
             <img src="/img/connect/discord-logo.png" alt="discord.png" class="img-responsive img-rounded" id="connect-discordlogo" />
         </a>
