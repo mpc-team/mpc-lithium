@@ -28,7 +28,7 @@ $self = $this;
             </ul>
         </div>
         <div class="col-md-6">
-            <a class="btn btn-edit" role="button" data-toggle="collapse" href="#showdiscordserver" aria-expanded="false" aria-controls="showdiscordserver">
+            <a class="btn btn-edit" role="button" data-toggle="collapse" href="#showdiscordserver" aria-expanded="false" aria-controls="showdiscordserver" id="showserver">
   Show Server
             </a>
             <div class="collapse text-center" id="showdiscordserver">

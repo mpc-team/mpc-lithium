@@ -416,8 +416,10 @@ a.btn-forum:hover
 }
 
 .forum .categories
-{
-    padding-bottom: 50px;
+{
+
+    padding-bottom: 50px;
+
 }
 
 .forum .categories .count
@@ -432,9 +434,12 @@ a.btn-forum:hover
 }
 
 .forum-header
-{
-    padding-bottom: 10px;
-    font-size: 120%;
+{
+
+    padding-bottom: 10px;
+
+    font-size: 120%;
+
 }
 
 .forum-header .forum-thread
@@ -444,8 +449,10 @@ a.btn-forum:hover
 }
 
 .forum-content
-{
-    padding-bottom: 50px;
+{
+
+    padding-bottom: 50px;
+
 }
 
 .forum-thread
@@ -896,8 +903,10 @@ a .panel-recentfeed h3
 }
 
 .thread-reply
-{
-    padding-top: 20px;
+{
+
+    padding-top: 20px;
+
 }
 
 .panel-reply
@@ -1053,5 +1062,5 @@ a .panel-recentfeed h3
     margin-bottom: 5%;
 }
 #connectdiscord #showserver {
-    margin-left: 5px;
+    margin-left: 5%;
 }
