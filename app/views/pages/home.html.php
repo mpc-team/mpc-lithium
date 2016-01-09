@@ -20,10 +20,53 @@ $self = $this
     <h1>Events</h1>
     <?php if ($permissions['events']['CREATE']): ?>
         <div class="row">
-            <button class="btn btn-edit" style="margin-bottom:5px;font-size:100%">
+            <button class="btn btn-edit" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">
                 <span class="glyphicon glyphicon-plus"></span>
                 Add an Event
             </button>
+            <div class="modal fade" id="modal-newevent" tabindex="-1" aria-labelledby="modal-newevent">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h2 class="modal-title">
+                                Create New Event
+                            </h2>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Event title..." 
+                                        style="font-size: 26px; height: auto" id="event-title" required />
+                                <div class="input-group date" id="event-start-datepicker">
+                                    <span class="input-group-addon" style="border: none">
+                                        Start Date/Time:
+                                    </span>
+                                    <input type="text" placeholder="Select a Date/Time" class="form-control" />
+                                    <span class="input-group-addon input-date">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                                <div class="input-group date" id="event-end-datepicker">
+                                    <span class="input-group-addon" style="border: none">
+                                        Finish Date/Time:
+                                    </span>
+                                    <input type="text" placeholder="Select a Date/Time" class="form-control" />
+                                    <span class="input-group-addon input-date">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-edit" id="create-event">
+                                Create Event
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -40,7 +83,7 @@ $self = $this
 		    </button>
 		    <div class="collapse" id="announcement-create">
 			    <div class="well well-sm">
-                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." />
+                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." style="font-size:26px;height:auto" />
 					<div class='row'>
 						<?= $this->view()->render(
 							array('element' => 'texttags'),
@@ -89,5 +132,9 @@ $self = $this
             $('#announcement-title-input').val('');
             $('#announcement-btn').click();
         });
+
+        // Initialize Date/Time Pickers.
+        $('#event-start-datepicker').datetimepicker();
+        $('#event-end-datepicker').datetimepicker();
     });
 </script>

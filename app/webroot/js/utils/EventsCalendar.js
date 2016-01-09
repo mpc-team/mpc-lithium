@@ -7,16 +7,58 @@
 // Namespace.
 var EventsCalendar = {};
 
-/**
- * This element is queried with jQuery and used to parent the Calendar components.
- * This criteria would appear in an HTML template.
- */ 
-EventsCalendar.element = "#calendar";
+//----------------------------------------------------------------------------------------------------------
 
-EventsCalendar.requestEvents = function (callback)
+EventsCalendar.UI = {};
+EventsCalendar.UI.Elements = {};
+
+EventsCalendar.UI.Elements.CreateEvent = '#create-event';
+EventsCalendar.UI.Elements.Container = "#calendar";
+EventsCalendar.UI.Elements.Modal = "#modal-newevent";
+
+EventsCalendar.UI.Elements.Inputs = {};
+EventsCalendar.UI.Elements.Inputs.Title = "#event-title";
+EventsCalendar.UI.Elements.Inputs.StartDate = "#event-start-datepicker";
+EventsCalendar.UI.Elements.Inputs.FinishDate = "#event-end-datepicker";
+
+
+//----------------------------------------------------------------------------------------------------------
+
+EventsCalendar.RequestEvents = function (callback)
 {
 	$.get('/api/events', null, callback);
 }
+
+EventsCalendar.SaveEvent = function (eventData, callback)
+{
+	$.post('/api/events/create', eventData, callback);
+}
+
+//----------------------------------------------------------------------------------------------------------
+
+EventsCalendar.Callbacks = {};
+EventsCalendar.Callbacks.CreateEvent = function ()
+{
+	var bodyData = {};
+	var startDate = $(EventsCalendar.UI.Elements.Inputs.StartDate).data("DateTimePicker").date().format("MMMM Do YYYY hh:mm:ss");
+	var endDate = $(EventsCalendar.UI.Elements.Inputs.FinishDate).data("DateTimePicker").date().format("MMMM Do YYYY hh:mm:ss");
+
+	bodyData.title = $(EventsCalendar.UI.Elements.Inputs.Title).val();
+	bodyData.start = startDate;
+	bodyData.finish = endDate;
+
+	$(EventsCalendar.UI.Elements.Inputs.Title).val("");
+
+	EventsCalendar.SaveEvent(bodyData, function (savedEvent)
+	{
+		console.log(savedEvent);
+
+		$(EventsCalendar.UI.Elements.Inputs.Title).val("");
+		$(EventsCalendar.UI.Elements.Modal).modal('hide');
+	});
+}
+
+//----------------------------------------------------------------------------------------------------------
 
 /**
  * Inserts an Event into a specified Calendar configuration object.
@@ -26,7 +68,7 @@ EventsCalendar.requestEvents = function (callback)
  * @param {string} start: Start-time.
  * @param {string} end: End-time.
  */
-EventsCalendar.insertEvent = function (calendar, title, start, end)
+EventsCalendar.Insert = function (calendar, title, start, end)
 {
 	var event = {
 		'title': title,
@@ -42,7 +84,7 @@ EventsCalendar.insertEvent = function (calendar, title, start, end)
  * 
  * @returns {object}: Default Calendar configuration.
  */
-EventsCalendar.createDefault = function ()
+EventsCalendar.CreateDefault = function ()
 {
 	var obj = {
 		'header': {
@@ -58,18 +100,24 @@ EventsCalendar.createDefault = function ()
 	return obj;
 }
 
+//----------------------------------------------------------------------------------------------------------
+
 // Initialization.
 $(function ()
 {
-	EventsCalendar.requestEvents(function (events)
+	// Populate Current Events.
+	EventsCalendar.RequestEvents(function (events)
 	{
-		var calendar = EventsCalendar.createDefault();
+		var calendar = EventsCalendar.CreateDefault();
 		for (key in events)
 		{
 			var event = events[key];
 
-			EventsCalendar.insertEvent(calendar, event['title'], event['start'], event['end']);
+			EventsCalendar.Insert(calendar, event['title'], event['start'], event['end']);
 		}
-		$(EventsCalendar.element).fullCalendar(calendar);
+		$(EventsCalendar.UI.Elements.Container).fullCalendar(calendar);
 	});
+
+	// Register Event Callbacks.
+	$(EventsCalendar.UI.Elements.CreateEvent).click(EventsCalendar.Callbacks.CreateEvent);
 });

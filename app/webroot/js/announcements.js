@@ -46,19 +46,19 @@ announcements.ui.stringify = function (object)
 	result += "<div class='announcement' data-id='" + object.id + "'>";
 	result += "<div class='title' data-id='" + object.id + "'>";
 	if (object.title != null && object.title != "")
-		result += "<h2>" + object.title + "</h3>";
+		result += "<h2 style='margin-bottom: 15px;'>" + object.title + "</h3>";
 	else
-		result += "<h3>Announcement #" + object.id + "</h3>";
+		result += "<h3 style='margin-bottom: 15px;'>Announcement #" + object.id + "</h3>";
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
 	{
-		result += "<input type='text' class='form-control' placeholder='Enter title...' data-id='" + object.id + "'/>";
+		result += "<input type='text' class='form-control' style='font-size:26px;height:auto' placeholder='Enter title...' data-id='" + object.id + "'/>";
 	}
 	else
 	{
 		object.title = object.title.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;');
-		result += "<input type='text' class='form-control' value='" + object.title + "' data-id='" + object.id + "'/>";
+		result += "<input type='text' class='form-control' style='font-size:26px;height:auto' value='" + object.title + "' data-id='" + object.id + "'/>";
 	}
 	result += "</div>";
 

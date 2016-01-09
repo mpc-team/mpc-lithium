@@ -4274,8 +4274,8 @@ fieldset[disabled] .btn-default.active
 
 .btn-primary
 {
-    color: #4444aa;
-    background-color: #2E4827;
+    /*color: #4444aa;*/
+    /*background-color: #2E4827;*/
     border-color: #46A42E;
 }
 

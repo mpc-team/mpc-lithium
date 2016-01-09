@@ -1,0 +1,17 @@
+﻿#modal-newthread .modal-dialog
+{
+    margin-top: 14%;
+    background: rgba(40, 40, 40, 0.8);
+    border: 1px solid #444;
+}
+
+#modal-newthread .modal-footer
+{
+    padding: 0;
+}
+
+#modal-newthread .modal-header .close
+{
+    font-size: 46px;
+    margin-top: 0;
+}

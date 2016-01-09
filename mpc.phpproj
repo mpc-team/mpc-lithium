@@ -1597,7 +1597,6 @@
     <Compile Include="app\controllers\api\UsersAPI.php" />
     <Compile Include="app\controllers\api\PostsAPI.php" />
     <Compile Include="app\controllers\api\UserNotificationsAPI.php" />
-    <Compile Include="app\controllers\games\ClashOfClansActivityController.php" />
     <Compile Include="app\controllers\games\ClashOfClansController.php" />
     <Compile Include="app\controllers\games\GamesController.php" />
     <Compile Include="app\controllers\games\HeroesOfTheStormController.php" />
@@ -1713,7 +1712,6 @@
     <Compile Include="app\views\forum\index.html.php" />
     <Compile Include="app\views\games\index.html.php" />
     <Compile Include="app\views\heroes_of_the_storm\index.html.php" />
-    <Compile Include="app\views\information\gamedevelopers.html.php" />
     <Compile Include="app\views\information\index.html.php" />
     <Compile Include="app\views\layouts\default.html.php" />
     <Compile Include="app\views\layouts\default.xml.php" />
@@ -1724,7 +1722,6 @@
     <Compile Include="app\views\login\index.html.php" />
     <Compile Include="app\views\members\index.html.php" />
     <Compile Include="app\views\pages\home.html.php" />
-    <Compile Include="app\views\pages\home.htmlOLD.php" />
     <Compile Include="app\views\sandbox\bootstrap.css" />
     <Compile Include="app\views\sandbox\font-awesome.css" />
     <Compile Include="app\views\sandbox\forum.php" />
@@ -2943,6 +2940,8 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\webroot\css\bootstrap-datetimepicker.css" />
+    <Content Include="app\webroot\css\forums.css" />
     <Content Include="app\webroot\css\fullcalendar\fullcalendar.css" />
     <Content Include="app\webroot\css\navbar.css" />
     <Content Include="app\webroot\css\members.css" />
@@ -2955,7 +2954,9 @@
     <Content Include="app\webroot\css\markup.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
+    <Content Include="app\webroot\css\utils\tooltip.css" />
     <Content Include="app\webroot\js\background.js" />
+    <Content Include="app\webroot\js\bootstrap-datetimepicker.js" />
     <Content Include="app\webroot\js\fullcalendar\fullcalendar.js" />
     <Content Include="app\webroot\js\user\user.js" />
     <Content Include="app\webroot\js\user\auth.js" />
@@ -2968,5 +2969,6 @@
     <Content Include="app\webroot\js\announcements.js" />
     <Content Include="app\webroot\js\user\notification.js" />
     <Content Include="app\webroot\js\utils\fileselect.js" />
+    <Content Include="app\webroot\js\utils\tooltip.js" />
   </ItemGroup>
 </Project>

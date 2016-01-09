@@ -19,7 +19,6 @@ use app\views\layouts\LayoutConstants;
 	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array(
 		'bootstrap',
-        'bootstrap-datepicker',
 		'font-awesome',
         'fullcalendar/fullcalendar.css',
 		'website',
@@ -39,7 +38,6 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
-        'bootstrap-datepicker',
         'moment',
         'fullcalendar/fullcalendar.js',
         'utils/fileselect',

@@ -21,4 +21,26 @@ class Events extends \lithium\data\Model
         else
             return null;
     }
+
+    /**
+     * Creates a new Events entry with some criteria.
+     *
+     * @param string $title Title of the Event.
+     * @param string $startDate Starting Date/Time of the Event.
+     * @param string $finishDate Ending Date/Time of the Event.
+     *
+     * @return array On success, returns the saved Event object (as array).
+     */
+    public static function NewEvent ($title, $startDate, $finishDate)
+    {
+        $event = self::create(array(
+            'title' => $title,
+            'start' => $startDate,
+            'end' => $finishDate,
+        ));
+        if ($event->save())
+            return $event->to('array');
+        else
+            return null;
+    }
 }

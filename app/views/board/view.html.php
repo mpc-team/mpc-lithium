@@ -58,13 +58,14 @@ $features = function($tid, $options)
 						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 							    &times;
 						    </button>
-						    <h2 class="modal-title" id="modal-label">
+						    <h2 class="modal-title">
 							    Create New Thread
 						    </h2>
 					    </div>
 					    <div class="modal-body">
 						    <div class="form-group">
-							    <input type="text" name="title" class="form-control" placeholder="Title..." required/>
+							    <input type="text" name="title" class="form-control" placeholder="Title..." 
+                                        style="font-size:26px; height:auto" required/>
 						    </div>
 						    <div class="form-group">						
 							    <div class='row'>
@@ -80,7 +81,6 @@ $features = function($tid, $options)
 					    </div>
 					    <div class="modal-footer">
 						    <input type="submit" class="btn btn-edit" value="Create"/>
-						    <button type="button" class="btn btn-edit" data-dismiss="modal">Cancel</button>
 					    </div>
 				    </div>
 			    </form>

@@ -62,10 +62,8 @@ h5
     min-height: 70px;
 }
 
-#news,
 #announcements
 {
-    padding: 10px;
     word-wrap: break-word;
 }
 
@@ -213,6 +211,49 @@ span.input-group-addon
 {
     border-radius: 0px;
 }
+
+#modal-newevent .modal-dialog
+{
+    margin-top: 15%;
+    background: rgba(40, 40, 40, 0.8);
+    border: 1px solid #444;
+}
+
+#modal-newevent .modal-dialog .modal-body .input-group
+{
+    padding: 0px;
+    background: transparent;
+    padding-top: 10px;
+}
+
+#modal-newevent .modal-dialog .modal-body .input-group-addon
+{
+    cursor: default;
+}
+
+#modal-newevent .modal-dialog .modal-body .input-date:hover 
+{
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#modal-newevent .modal-dialog .modal-body .input-group-addon
+{
+    border: 1px solid #333;
+    border-left: none;
+}
+
+#modal-newevent .modal-footer
+{
+    padding: 0;
+}
+
+#modal-newevent .modal-header .close
+{
+    font-size: 46px;
+    margin-top: 0;
+}
+
 
 .members tr.row.alt
 {

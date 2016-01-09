@@ -143,7 +143,8 @@ EOD;
 								    <?php if (isset($post['first'])): ?>
 									    <div class="row">
 
-										    <input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" data-id="<?= $post['id'] ?>"/>
+										    <input type="text" class="form-control edit-content-rename" placeholder="Type here to edit title" 
+                                                    data-id="<?= $post['id'] ?>" style="font-size:26px; height:auto" />
 
 									    </div>
 								    <?php endif; ?>
