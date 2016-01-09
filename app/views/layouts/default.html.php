@@ -63,6 +63,7 @@ use app\views\layouts\LayoutConstants;
 		'scroller',	
         'announcements',
         'texttags',
+        'twitch.min',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
