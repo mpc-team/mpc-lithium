@@ -64,6 +64,7 @@ use app\views\layouts\LayoutConstants;
         'announcements',
         'texttags',
         'twitch.min',
+        'https://apis.google.com/js/platform.js',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

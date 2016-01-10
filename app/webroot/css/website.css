@@ -1026,20 +1026,24 @@ a .panel-recentfeed h3
 }
 
 /*
-    /connect -> #connectdiscord parent div
+    views/connect -> #connectdiscord
 
 */
+#connectdiscord h1 {
+    margin: 5% 5% 5% 5%;
+    text-shadow: 2px 2px 8px #aaffaa;
+}
 #connect-discordlogo {
     min-width: 10%;
-    max-width: 80%;
+    max-width: 70%;
     height: auto;
+    margin: auto;
     box-shadow: 1px 1px 20px #aaffaa;
 }
-#connectdiscord .row img {
+#connectdiscord > #connect-discordimg {
     margin: auto;
-}
-#connectdiscord #discord-app {
-    margin: 0 auto 0 14%;
+    min-width: 10%;
+    max-width: 70%;
 }
 #connectdiscord iframe {
    height: 1000px;
@@ -1051,16 +1055,37 @@ a .panel-recentfeed h3
 #connectdiscord .list-group-item {
     color: #aaffaa;
     background-color: #1a1a1a;
+    padding: 5% 2% 5% 2%;
+    text-align: center;
+    margin: 0 5% 0 5%;
 }
 #connectdiscord .list-group-item:hover {
+    text-align: center;
     background-color: #1a1a1a;
-    color: #1a1a1a;
-    box-shadow: 1px 1px 5px 20px #aaffaa inset;
+    color: #fff;
+    box-shadow: 1px 1px 5px 15px #aaffaa inset;
 }
 #connectdiscord .row {
     margin-top: 5%;
     margin-bottom: 5%;
 }
 #connectdiscord #showserver {
-    margin-left: 5%;
+    width: 100%;
 }
+/*
+    views/stream #streamdir
+
+*/
+#streamer-list .list-group-item {
+     color: #aaffaa;
+    background-color: #1a1a1a;
+    padding: 5% 2% 5% 2%;
+    text-align: center;
+    margin: 0 5% 0 5%;
+}
+#streamer-list .list-group-item:hover {
+     text-align: center;
+    background-color: #1a1a1a;
+    color: #fff;
+    box-shadow: 1px 1px 5px 15px #aaffaa inset;
+  }

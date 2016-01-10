@@ -1,52 +1,4 @@
-<?php
-
-$var = 0;
-/*
-
-/twitch.tv/kraken/oauth2/clients
-managed application: mpc-lithium
-
-Name: mpc-lithium
-
-Displayed to users when authorizing your application.
-
-Redirect URI: http://www.mpcgaming.com/stream
-
-Will receive the result of all client authorizations: either an access token or a failure message. This must exactly match the redirect_uri parameter passed to the authorization endpoint. When testing locally, you can set this to http://localhost.
-
-Client ID: 4fzsmbnkisk18wiuvdq3ds3xzhts31w
-
-Passed to authorization endpoints to identify your application. You cannot change your application's client id.
-
-Client Secret: stt529r7v4yie1pv703krv0cvy1rqhm
-
- 
-*/
-/**/
-
-?>
-<div id="twitch-div">  
-    <!--Buttons for USER to USE-->
-    <div class="row">
-        <h3>Login to Twitch</h3>
-        <div class="btn-group" role="group" aria-label="twitch-btngroup">
-            <button type="button" class="btn btn-edit twitch-connect" href="#"><p>Log IN</p></button>
-            <button type="button" class="btn btn-edit twitch-disconnect" href="#" ><p>Log OUT</p></button>
-        </div>    
-        <div class="alert" role="alert" id="twitch-alertdiv" style="display: none">
-            <span class="glyphicon" aria-hidden="true"></span>
-            <span class="sr-only">twitch-msg-response:</span>
-            <!--JS Reponse Message-->
-            <p></p>
-            <!--End JS response Message-->
-        </div>
-    </div>
-    <!--End of Buttons for USER-->
-</div>
-<script>
-  
-
-
+﻿
 
 
 //Init Twitch
@@ -129,8 +81,3 @@ Twitch.api({method: 'channel'}, function(error, channel) {
 });//End of Twitch API
 
 
-
-
-
-
-</script>
