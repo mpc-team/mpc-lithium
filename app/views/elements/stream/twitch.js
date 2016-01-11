@@ -1,5 +1,14 @@
 ﻿
 
+function initiateTwitch() {
+
+    
+
+
+}
+
+
+
 
 //Init Twitch
 Twitch.init({clientId: '4fzsmbnkisk18wiuvdq3ds3xzhts31w'}, function(error, status) {

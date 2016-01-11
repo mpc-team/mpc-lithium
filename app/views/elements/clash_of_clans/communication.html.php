@@ -2,7 +2,7 @@
     <div class="row">
         <img src="/img/clash_of_clans/communication-banner.png" alt="communication-banner.png" class="img-rounded img-responsive coc-img-center" />
         <br />
-        <p style="color: #aaffaa;">Join us on our server via DiscordApp:</p>
+        <p class="text-center" style="color: #aaffaa;">Join us on our server via DiscordApp:</p>
         <p>These buttons are for MPC Assassins. Use the connect button at the bottom of the live server status to connect to MPC's HQ Lobby.</p>
         <div class="btn-group" role="group" aria-label="discordconnect-arialabel">
             <a type="button" class="btn btn-edit btn-lg" href="https://discord.gg/0iDKElOIs9mVj3hR" target="_blank">
@@ -22,7 +22,7 @@
                 Server Status
             </a>
         </div>
-        <div class="collapse" id="discord-cochelp">
+        <div class="collapse" id="discord-cochelp"> 
             <div class="well">
                 <?=
                     $this->view()->render(

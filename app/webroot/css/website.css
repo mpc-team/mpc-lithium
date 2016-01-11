@@ -1029,9 +1029,16 @@ a .panel-recentfeed h3
     views/connect -> #connectdiscord
 
 */
+#connectdiscord .panel-body p {
+    text-indent: 50px;
+}
 #connectdiscord h1 {
     margin: 5% 5% 5% 5%;
     text-shadow: 2px 2px 8px #aaffaa;
+}
+#connectdiscord > #connect-discordimg {
+    margin: auto;
+
 }
 #connect-discordlogo {
     min-width: 10%;
@@ -1040,13 +1047,9 @@ a .panel-recentfeed h3
     margin: auto;
     box-shadow: 1px 1px 20px #aaffaa;
 }
-#connectdiscord > #connect-discordimg {
-    margin: auto;
-    min-width: 10%;
-    max-width: 70%;
-}
 #connectdiscord iframe {
    height: 1000px;
+   width: 400px;
 }
 #connectdiscord .row p {
     color: #fff;
@@ -1072,10 +1075,14 @@ a .panel-recentfeed h3
 #connectdiscord #showserver {
     width: 100%;
 }
+#connectdiscord #connectserver {
+    width: 100%;
+}
 /*
     views/stream #streamdir
 
 */
+
 #streamer-list .list-group-item {
      color: #aaffaa;
     background-color: #1a1a1a;

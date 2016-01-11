@@ -24,6 +24,7 @@ use app\views\layouts\LayoutConstants;
 		'bootstrap', 
 		'font-awesome', 
 		'website',
+        'forums',
         'markup',
         'navbar',
         'headerbar',

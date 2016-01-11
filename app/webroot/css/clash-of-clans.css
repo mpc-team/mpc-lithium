@@ -5,26 +5,18 @@
     text-decoration: none;
     color: #FAF1BF;
 }
-#clash-of-clans .coc-page-header {
-    color: #fff;
-    background-image: url("/img/clash_of_clans/page-header/background-pageheader.png");
-    background-size: 100% 70%;
-    background-repeat: no-repeat;
-    height: 52px;
-    line-height: 25px;
-    vertical-align: middle;
-
-
+#clash-of-clans p {
+    text-indent: 50px;
 }
 /*Image Class Properties for Clash of Clans*/
 #clash-of-clans .coc-headbanner {
     margin: auto;
 }
-.coc-img-properties {
+.coc-img-center {
     margin: auto;
     box-shadow: 5px 5px 20px #FAF1BF;
 }
-.coc-img-properties:hover {
+.coc-img-center:hover {
     box-shadow: 5px 5px 20px #fff;
 }
 /*Nav Bar*/
@@ -59,6 +51,11 @@
     color: #FAF1BF;
     font-weight: bold;
 }
+#clash-of-clans .navbar-clash-of-clans a:hover {
+    color: #FAF1BF;
+    background-color: #D44835;
+    box-shadow: 1px 1px 5px 15px #010101 inset;
+  }
 #cocnavbar-title {
     line-height: 3; 
     margin-right: 5px;
@@ -85,47 +82,35 @@
     padding-right: 1%;
     padding-left: 1%;
 }
-/*chat-box.html.php*/
-#coc-chat-box h2 {
+/*rules.html.php*/
+#clash-of-clans #rules h2 {
     color: #F2E7AB;
 }
-/*online-members.html.php*/
-#coc-online-members h2 {
-    color: #F2E7AB;
+#clash-of-clans .list-group .list-group-item {
+    background-color: #010101;
+    color: inherit;
+    text-align: center;
 }
-/*member-status.html.php*/
-#coc-member-status h2 {
-    color: #F2E7AB;
-}
-/*events.html.php*/
-#coc-events h2 {
-    color: #F2E7AB;
+#clash-of-clans .list-group .list-group-item:hover {
+    background-color: #F2E7AB;
+    color: #010101;
+
 }
 /*welcome-msg.html.php*/
-#coc-welcome-msg h2 {
+#clash-of-clans > #welcome-msg > h2 {
     color: #F2E7AB;
 }
-#coc-welcome-msg p {
+#clash-of-clans > #welcome-msg > p {
     padding: 1% 5% 1% 5%;;
 }
-#coc-welcome-msg .list-group {
+#clash-of-clans #welcome-msg .list-group {
     margin: 50px;
 }
-#coc-img-center{
+#clash-of-clans #img-center {
     margin: auto;
 }
-/*activity-feed.html.php*/
-#coc-activity-feed h2 {
-    color: #F2E7AB;
-}
-/*
-    views/elements/discordapp.html.php 
-
-*/
-#discord-widget .widget {
-    margin: auto;
-}    
 /*footer.html.php*/
-#coc-footer h2 {
+#clash-of-clans #footer h2 {
     color: #F2E7AB;
 }
+

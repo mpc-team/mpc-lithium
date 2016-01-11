@@ -47,28 +47,3 @@
 #mpc-information h2, #mpc-information h1 {
     color: #aaffaa;
 }
-/*elements/information/communication.html.php ID's and Classes*/
-#connectdiscord #discord-app {
-    margin: 0 auto 0 14%;
-}
-#connectdiscord iframe {
-   height: 800px;
-}
-#connectdiscord .row p {
-    color: #fff;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-#connectdiscord .list-group-item {
-    color: #aaffaa;
-    background-color: #1a1a1a;
-}
-#connectdiscord .list-group-item:hover {
-    background-color: #1a1a1a;
-    color: #1a1a1a;
-    box-shadow: 1px 1px 5px 20px #aaffaa inset;
-}
-#connectdiscord .row {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}

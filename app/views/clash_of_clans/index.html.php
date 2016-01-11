@@ -10,23 +10,19 @@ $coc_navBar = array
     (
         'Home' => '../games/clash_of_clans',
         'Forum' => '../board/view/5',
-        'Activity Feed' => '../clash_of_clans/activity',
-        'Events' => '../games/clash_of_clans/events',
-        'News' => '../games/clash_of_clans/members',
-        'WAR' => '../games.clash_of_clans/war',
+        'Discord' => '/connect',
     );
 $coc_sideIndexes = array(
 
-        'chat-box' => 'Chat Box',
-        'online-members' => 'Online Members',
-        'member-status' => 'Member Availability',
-        'events' => 'Events',
+        'rules',
+        'official-website',
+
         );
 $coc_mainIndexes = array
     (
-        'welcome-msg' => 'Welcome',
-        'activity-feed' => 'Activity Feed Show What\'s New',
-        'forum' => 'Forum',
+        'welcome-msg',
+        'communication',
+        'forum',
     );
 
 ?>
@@ -42,6 +38,7 @@ $coc_mainIndexes = array
             </div>
         </div>
     </div>
+
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
         <li role="presentation">
@@ -54,11 +51,8 @@ $coc_mainIndexes = array
     </ul>
     <div class="row">
         <div class="col-md-7">
-            <?php foreach($coc_mainIndexes as $coc_index => $coc_indexTitle): ?>
+            <?php foreach($coc_mainIndexes as $coc_index): ?>
             <div class="well">
-                <div class="page-header coc-page-header text-center">
-                    <?= $coc_indexTitle; ?>
-                </div>
                 <div class="row">
                     <?= $this->view()->render(
                         array('element' => 'clash_of_clans/' . $coc_index)
@@ -68,11 +62,8 @@ $coc_mainIndexes = array
             <?php endforeach; ?>
         </div>
         <div class="col-md-5">
-            <?php foreach($coc_sideIndexes as $coc_index => $coc_indexTitle): ?>
+            <?php foreach($coc_sideIndexes as $coc_index): ?>
             <div class="well">
-                <div class="page-header coc-page-header text-center">
-                    <?= $coc_indexTitle; ?>
-                </div>
                 <div class="row">
                     <?= $this->view()->render(
                         array('element' => 'clash_of_clans/' . $coc_index )
@@ -84,10 +75,6 @@ $coc_mainIndexes = array
     </div>
     <div class="row">
         <div class="well coc-footer">
-
-            $this->view()->render(
-            array('element' => 'discordapp')
-            )
 
         </div>
     </div>
