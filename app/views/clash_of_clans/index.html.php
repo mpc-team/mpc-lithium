@@ -13,7 +13,8 @@ $coc_navBar = array
         'Discord' => '/connect',
     );
 $coc_sideIndexes = array(
-
+        
+        'lovetorub16',
         'rules',
         'official-website',
 
@@ -47,6 +48,15 @@ $coc_mainIndexes = array
             </a>
         </li>
         <?php endforeach;?>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stream<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/stream">Live</a></li>
+            <li><a href="#">Casted Videos</a></li>
+          </ul>
+        </li>
+
         <li class="navbar-right" id="cocnavbar-title">MPC Assassins</li>
     </ul>
     <div class="row">

@@ -35,7 +35,7 @@ $self = $this;
         ?>        
         </div>
         <div class="row">
-            <a class="btn btn-edit" role="button"href="https://discordapp.com/invite/0iDKElOIs9oj5nKq?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank" id="connectserver"><h1>Connect to Our Server</h1></a>
+            <a class="btn btn-edit" role="button"href="https://discord.gg/0iDKElOIs9mPyws8" target="_blank" id="connectserver"><h1>Connect to Our Server</h1></a>
             <a class="btn btn-edit" role="button" data-toggle="collapse" href="#showdiscordserver" aria-expanded="false" aria-controls="showdiscordserver" id="showserver">
   <h1>See Our Server Status</h1>
             </a>

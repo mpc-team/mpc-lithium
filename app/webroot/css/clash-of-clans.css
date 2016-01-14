@@ -1,12 +1,13 @@
 ﻿/*Clash of Clans CSS*/
+
 /* Container Div / Parent Div ID = #clash-of-clans */
+
 /*Overwriting: Bootstrap , Website.css */
+
+/*Constant Scheme*/
 #clash-of-clans .breadcrumb-text {
     text-decoration: none;
     color: #FAF1BF;
-}
-#clash-of-clans p {
-    text-indent: 50px;
 }
 /*Image Class Properties for Clash of Clans*/
 #clash-of-clans .coc-headbanner {
@@ -14,10 +15,11 @@
 }
 .coc-img-center {
     margin: auto;
-    box-shadow: 5px 5px 20px #FAF1BF;
+    box-shadow: 1px 1px 15px #FAF1BF;
+    margin-bottom: 5%;
 }
 .coc-img-center:hover {
-    box-shadow: 5px 5px 20px #fff;
+    box-shadow: 1px 1px 20px #fff;
 }
 /*Nav Bar*/
 .navbar-clash-of-clans {
@@ -61,6 +63,17 @@
     margin-right: 5px;
     color: #fff;
 }
+#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu {
+    background-color: #D44835;
+
+}
+#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu {
+    color: #faf1bf;
+}
+
+
+
+
 /*index.html.php*/
 
  #clash-of-clans .row {
@@ -106,11 +119,14 @@
 #clash-of-clans #welcome-msg .list-group {
     margin: 50px;
 }
-#clash-of-clans #img-center {
-    margin: auto;
-}
 /*footer.html.php*/
 #clash-of-clans #footer h2 {
     color: #F2E7AB;
 }
-
+/*lovetorub16.html.php*/
+#lovetorub-div > .list-group > .list-group-item {
+    color: #F2E7AB;
+}
+#lovetorub-div > .list-group > .list-group-item:hover {
+    color: initial;
+}

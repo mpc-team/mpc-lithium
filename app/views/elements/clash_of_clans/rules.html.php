@@ -1,6 +1,6 @@
 <div class="row">
     <a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">
-        <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded" style="margin-bottom: 5%;" />
+        <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded coc-img-center" style="margin-bottom: 5%;" />
     </a>
     <p><a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">View Rules</a></p>
     <div class="collapse" id="coc-clanrules-drpdwnbtn">
