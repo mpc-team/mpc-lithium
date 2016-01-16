@@ -93,7 +93,7 @@ EventsCalendar.CreateDefault = function ()
 			'right': null,
 		},
 		'defaultDate': '2016-01-01',
-		'editable': true,
+		'editable': false,
 		'eventLimit': true,
 		'events': [],
 	};

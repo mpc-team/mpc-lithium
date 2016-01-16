@@ -13,6 +13,13 @@ class Events extends \lithium\data\Model
             return null;
     }
 
+    /**
+     * Returns all Events.
+     *
+     * @param int $limit Limit number of results.
+     *
+     * @return array Event objects in an array.
+     */
     public static function All ($limit)
     {
         $events = self::find('all', array('limit' => $limit));

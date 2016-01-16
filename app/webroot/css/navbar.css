@@ -12,6 +12,7 @@
 #navbar-notifications .user-notification-list .row
 {
     padding-bottom: 5px;
+    word-break: break-word;
 }
 
 #navbar-notifications .user-notification-list > .row > .row
