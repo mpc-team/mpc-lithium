@@ -65,7 +65,7 @@ $features = function($tid, $options)
 					    <div class="modal-body">
 						    <div class="form-group">
 							    <input type="text" name="title" class="form-control" placeholder="Title..." 
-                                        style="font-size:26px; height:auto" required/>
+                                        style="font-size:20px; height:auto" required/>
 						    </div>
 						    <div class="form-group">						
 							    <div class='row'>

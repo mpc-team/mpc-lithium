@@ -68,18 +68,21 @@ user.notifications.announcement.stringify = function (object)
 {
 	var html = "<li>";
 	html += "<div class='row'>";
+
 	html += "<div class='col-xs-10'>";
 	if (object['title'] != null && object['title'] != "")
 		html += "<h3>" + object['title'] + "</h3>";
 	else
 		html += "<h3>Announcement #" + object['id'] + "</h3>";
-	html += object['content'];
+	html += markup.process(object['content'], markup.PREVIEW);
 	html += "</div>";
+
 	html += "<div class='col-xs-2'>";
 	html += "<button class='btn btn-edit " + user.notifications.classes['dismiss-annc'] + "' data-id='" + object['id'] + "'>";
 	html += " Dismiss";
 	html += "</button>";
 	html += "</div>";
+
 	html += "</div>";
 	html += "</li>";
 	return html;
@@ -192,6 +195,9 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 	$.get('/api/users/notifications/all?type=' + user.notifications.types.announcement + '&limit=4', null, function (data)
 	{
 		var html = "<h4>Announcements</h4>";
+
+		html += "<div class='nano'>";
+		html += "<div class='nano-content'>";
 		if (Object.keys(data).length == 0)
 			html += "No Announcements";
 		else
@@ -200,7 +206,10 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 				html += "<li class='divider'></li>";
 				html += user.notifications.announcement.stringify(data[key]);
 			}
+		html += "</div>";
+		html += "</div>";
 		jqueryElement.html(html);
+		$('.nano').nanoScroller();
 
 		$('.' + user.notifications.classes['dismiss-annc']).click(user.notifications.announcement.onDismiss);
 	});

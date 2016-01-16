@@ -1,3 +1,8 @@
+#navbar-notifications .user-notification-list .nano
+{
+    height: 200px;
+}
+
 #navbar-notifications .user-notification-list
 {
     padding: 5px;
@@ -9,7 +14,7 @@
     padding-bottom: 5px;
 }
 
-#navbar-notifications .user-notification-list > .row .row
+#navbar-notifications .user-notification-list > .row > .row
 {
     max-height: 100px;
     overflow: hidden;

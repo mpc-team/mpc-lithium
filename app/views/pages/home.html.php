@@ -38,7 +38,7 @@ $self = $this
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Event title..." 
-                                        style="font-size: 26px; height: auto" id="event-title" required />
+                                        style="font-size: 20px; height: auto" id="event-title" required />
                                 <div class="input-group date" id="event-start-datepicker">
                                     <span class="input-group-addon" style="border: none">
                                         Start Date/Time:
@@ -73,7 +73,7 @@ $self = $this
     <div id="calendar"></div>
 </section>
 
-<section id="announcements">
+<section id="announcements" style="margin-top:20px">
     <h1>Announcements</h1>
     <?php if ($permissions['announcements']['CREATE']): ?>
 	    <div class="row">
@@ -83,7 +83,7 @@ $self = $this
 		    </button>
 		    <div class="collapse" id="announcement-create">
 			    <div class="well well-sm">
-                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." style="font-size:26px;height:auto" />
+                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." style="font-size:20px;height:auto" />
 					<div class='row'>
 						<?= $this->view()->render(
 							array('element' => 'texttags'),

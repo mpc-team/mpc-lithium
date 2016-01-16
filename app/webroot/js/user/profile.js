@@ -51,8 +51,6 @@ profile.updateGame = function (played, userid, gameid, flag)
 		
 	$.post("/user/edit/" + userid, obj, function (data) 
 	{
-		console.log(data);
-
 		data = JSON.parse(data);
 		/* if the request was not successful then revert the UI changes */
 		if (!data.status)
