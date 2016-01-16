@@ -14,7 +14,7 @@ $coc_navBar = array
     );
 $coc_sideIndexes = array(
         
-        'lovetorub16',
+        'coc-streamers',
         'rules',
         'official-website',
 
@@ -26,9 +26,19 @@ $coc_mainIndexes = array
         'forum',
     );
 
+    $arrayId = array
+    (
+
+        'lovetorub16',
+        'marshall',
+    );
+
+    $idAccordion = 'coc-streamers-accordion';
+
 ?>
 
 <div id="clash-of-clans">
+
     <div class="well">
         <div class="row">
             <div class="col-md-6">
@@ -50,10 +60,15 @@ $coc_mainIndexes = array
         <?php endforeach;?>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stream<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/stream">Live</a></li>
-            <li><a href="#">Casted Videos</a></li>
+            <li class="dropdown-header">MPC Clash of Clan Casters</li>
+            <li role="separator" class="divider"></li>
+            <?php foreach($arrayId as $id): ?>
+            <li><a href="#" data-toggle="modal" data-target="#coc-<?= $id ?>-streammodal"><?= $id ?></a></li>
+            <?php endforeach; ?>
+            <li role="separator" class="divider"></li>
+            <li><a href="/stream">All MPC Streamers</a></li>           
           </ul>
         </li>
 
@@ -63,11 +78,9 @@ $coc_mainIndexes = array
         <div class="col-md-7">
             <?php foreach($coc_mainIndexes as $coc_index): ?>
             <div class="well">
-                <div class="row">
-                    <?= $this->view()->render(
-                        array('element' => 'clash_of_clans/' . $coc_index)
-                    ); ?>
-                </div>
+                <?= $this->view()->render(
+                    array('element' => 'clash_of_clans/' . $coc_index)
+                ); ?>
             </div>
             <?php endforeach; ?>
         </div>
@@ -85,7 +98,10 @@ $coc_mainIndexes = array
     </div>
     <div class="row">
         <div class="well coc-footer">
-
+            
         </div>
     </div>
 </div>
+<script>
+    
+</script>

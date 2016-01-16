@@ -56,7 +56,7 @@
 #clash-of-clans .navbar-clash-of-clans a:hover {
     color: #FAF1BF;
     background-color: #D44835;
-    box-shadow: 1px 1px 5px 15px #010101 inset;
+    box-shadow: 1px 1px 5px 15px #d44835 inset;
   }
 #cocnavbar-title {
     line-height: 3; 
@@ -64,15 +64,25 @@
     color: #fff;
 }
 #clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu {
-    background-color: #D44835;
+    color: #faf1bf;
 
 }
-#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu {
+
+#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu > .dropdown-header {
+    display: block;
+    padding: 3px 20px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #faf1bf;
+    white-space: nowrap;
+}
+#clash-of-clans > .dropdown-menu > li > a {
     color: #faf1bf;
 }
-
-
-
+#clash-of-clans > .dropdown-menu > li > a:hover {
+    background-color: #010101;
+    color: #faf1bf;
+}
 
 /*index.html.php*/
 
@@ -124,9 +134,16 @@
     color: #F2E7AB;
 }
 /*lovetorub16.html.php*/
-#lovetorub-div > .list-group > .list-group-item {
+#coc-lovetorub-div > .list-group > .list-group-item {
     color: #F2E7AB;
 }
-#lovetorub-div > .list-group > .list-group-item:hover {
+#coc-lovetorub-div > .list-group > .list-group-item:hover {
+    color: initial;
+}
+/*marshall.html.php*/
+#coc-marshall-div > .list-group > .list-group-item {
+    color: #F2E7AB;
+}
+#coc-marshall-div > .list-group > .list-group-item:hover {
     color: initial;
 }

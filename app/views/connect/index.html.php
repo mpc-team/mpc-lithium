@@ -9,9 +9,38 @@ $self = $this;
 
     <div class="row text-center">
         <h1>Connect to MPC HQ with</h1>
-        <a href="https://discordapp.com" target="_blank">
-            <img src="/img/connect/discord-logo.png" alt="discord.png" class="img-responsive img-rounded" id="connect-discordlogo" />
-        </a>
+            <img src="/img/connect/discord-logo.png" alt="discord-logo.png" class="img-responsive img-rounded" id="connect-discordlogo" onclick="createNewWindowUrl(this);" />
+            <script>
+                function createNewWindowUrl(x) {
+                //Phase 1
+                    //Get image $(this).ID                    
+                        var imgId = x.id;
+                    //Put to String              
+                        var idToString = imgId.toString();
+                    //Search ID for ("Something") and give a position number.
+                        var imgDiscord = idToString.search("discord");
+
+                //Phase 2
+                    //If true, slice discord and return to imgId
+                        if (imgDiscord == TRUE){
+                            var imgIsDiscord = idToString.slice(imgDiscord,6);
+                            return imgId;                        
+                        }//End Slice If
+
+                //Phase 3
+                   //Make a Decision
+                        switch(imgId){
+                            case discord:
+                                window.open("https://discordapp.com");
+                            break;
+                            default: 
+                                document.write("Something Went Wrong!");
+                        }//End Switch                    
+                };//End Function
+                
+
+
+            </script>
     </div>  
   
     <div class="row text-center">
