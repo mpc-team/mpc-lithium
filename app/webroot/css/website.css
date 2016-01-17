@@ -1072,79 +1072,17 @@ a .panel-recentfeed h3
 
 */
 #connectdiscord > img {
-    padding: 5% 0 5% 0;
+   margin: auto;
 }
-#connectdiscord > #discord-menudiv, #connectdiscord > #discord-menudiv > a {
-    padding-top: 5px;
-    margin-right: 50px;
-}
-#connectdiscord h1 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-#connectdiscord .panel-body p {
-    text-indent: 50px;
-}
-#connectdiscord h1 {
-    margin: 5% 5% 5% 5%;
-    text-shadow: 2px 2px 8px #aaffaa;
-}
-#connectdiscord > #connect-discordimg {
-    margin: auto;
-
+#connectdiscord > #discord-btns > .btn-edit {
+    color: #aaffaa;
 }
 #connectdiscord iframe {
    height: 1000px;
    width: 600px;
 }
-#connectdiscord .row p {
-    color: #fff;
-    margin: 5% 15% 5% 15%;
-}
-#connectdiscord .list-group-item {
-    color: #aaffaa;
-    background-color: #1a1a1a;
-    padding: 5% 2% 5% 2%;
-    text-align: center;
-    margin: 0 5% 0 5%;
-}
-#connectdiscord .list-group-item:hover {
-    text-align: center;
-    background-color: #1a1a1a;
-    color: #fff;
-    box-shadow: 1px 1px 5px 15px #aaffaa inset;
-}
-#connectdiscord .row {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-#ios-footer, #android-footer, #mac-footer, #windows-footer, #linux-footer {
-    background: url('/img/connect/modal/downloadbtn.png');
-    margin: auto;
-    background-repeat: no-repeat;
-    height: 50px;
-    background-position: center;
-    background-size: 95%;
-}
- #discord-downloadtilept2 .row .col-xs-5, #discord-downloadtilept1 .row .col-xs-4 {
+#discord-downloadtilept2 .row .col-xs-5, #discord-downloadtilept1 .row .col-xs-4 {
     padding: 1px;
-}
-.panel-discord > .panel-body > img {
-    width: 80px;
-    height: 80px;
-    margin: auto;
-}   
-#discord-downloadtilept2 .row .col-xs-5:hover, #discord-downloadtilept1 .row .col-xs-4:hover {
-    -ms-transform: scale(1.1,1.1); /* IE 9 */
-    -webkit-transform: scale(1.1,1.1); /* Safari */
-    transform: scale(1.1,1.1); /* Standard syntax */
-    transition-duration: .2s;
-    margin: auto;
-    background-repeat: no-repeat;
-    height: 50px;
-    background-position: center;
-    background-size: 95%;
 }
 
 /*
