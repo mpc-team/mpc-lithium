@@ -52,9 +52,11 @@ $forumsByCategory = Forums::GetByCategory();
 
                         <?php foreach ($forumsByCategory as $cid => $category): ?>
                             <?php if ($category['name'] == 'General'): ?>
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                             <?php elseif ($category['name'] == 'Gaming'): ?>
-                                <div class="col-sm-8">
+                                <div class="col-sm-5">
+                            <?php elseif ($category['name'] == 'Community'): ?>
+                                <div class="col-sm-4">
                             <?php endif; ?>
                                 <h4><?= $category['name'] ?></h4>
                                 <ul class="multi-column-dropdown">

@@ -8,18 +8,16 @@ $gamecount = 0;
  
 ?>
 <div class="games">	
-	<?php if ($profile): ?>
+	<div class="row">
+            
 		<div class="row">
 			<div class="well well-sm">
 				<center>
 					<i class="fa fa-info-circle"></i>
-					Click Games to Select
+					Click Game Icons to Mark as Played
 				</center>
 			</div>
-		</div>
-	<?php endif; ?>
-	
-	<div class="row">
+		</div> 
 	
 		<?php foreach ($games as $game): ?>
 			<div class="col-xs-2">
@@ -27,7 +25,7 @@ $gamecount = 0;
 				<div class="game" data-id='<?= $game['id'] ?>'>
 					<div class="panel panel-default">
 					
-					<?php if ($profile): ?>
+					<?php if ($gamesClickable): ?>
 						<button class='btn btn-edit' data-id='<?= $game['id'] ?>'>
 					<?php endif; ?>
 					
@@ -35,7 +33,7 @@ $gamecount = 0;
 							<img class="profile-game-icon" src="<?= $game['icon'] ?>"></img>
 						</div>
 							
-					<?php if ($profile): ?>
+					<?php if ($gamesClickable): ?>
 						</button>
 					<?php endif; ?>
 						

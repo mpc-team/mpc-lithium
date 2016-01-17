@@ -196,21 +196,23 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 	{
 		var html = "<h4>Announcements</h4>";
 
-		html += "<div class='nano'>";
-		html += "<div class='nano-content'>";
 		if (Object.keys(data).length == 0)
 			html += "No Announcements";
 		else
+		{
+			html += "<div class='nano'>";
+			html += "<div class='nano-content'>";
 			for (key in data)
 			{
 				html += "<li class='divider'></li>";
 				html += user.notifications.announcement.stringify(data[key]);
 			}
-		html += "</div>";
-		html += "</div>";
+			html += "</div>";
+			html += "</div>";
+		}
 		jqueryElement.html(html);
 		$('.nano').nanoScroller();
-
+		
 		$('.' + user.notifications.classes['dismiss-annc']).click(user.notifications.announcement.onDismiss);
 	});
 }

@@ -279,7 +279,7 @@ a.btn:hover img
 
 a.btn
 {
-    padding: 7px;
+    padding: 4px;
     border-radius: 1px;
 }
 
@@ -392,7 +392,6 @@ a h5
 .usertool .btn-edit
 {
     text-align: left;
-    font-weight: 600;
     line-height: 1; /* Any value 1 or less will render the exact same... */
 }
 
@@ -476,24 +475,13 @@ a.btn-forum:hover
 
 .forum-header
 {
-
-    padding-bottom: 10px;
-
+    padding-bottom: 2px;
     font-size: 120%;
-
-}
-
-.forum-header .forum-thread
-{
-    font-size: 150%;
-    font-weight: 700;
 }
 
 .forum-content
 {
-
     padding-bottom: 50px;
-
 }
 
 .forum-thread
@@ -503,14 +491,10 @@ a.btn-forum:hover
     width: 100%;
 }
 
-.forum-thread
-{
-    /*background: linear-gradient(170deg, #2a2c2a, #1f1f1f);*/
-}
-
 .forum-header .forum-thread
 {
     background: transparent;
+    font-weight: 700;
 }
 
 .forum-thread > div
@@ -762,11 +746,11 @@ a .panel-recentfeed h3
     margin: 2px;
 }
 
-.recentfeed .panel > a.btn
+/*.recentfeed .panel > a.btn
 {
     padding: 7px 5px 5px 5px;
-    /*background: linear-gradient(170deg, #2a2c2a,#1f1f1f);*/
-}
+    background: linear-gradient(170deg, #2a2c2a,#1f1f1f);
+}*/
 
 .panel-recentfeed
 {
@@ -800,7 +784,7 @@ a .panel-recentfeed h3
 
 .panel-recentfeed .name
 {
-    /* font-family: "Oswald"; */
+    /* font-family: "Oswald"; 
     /*font-variant: small-caps;*/
     font-weight: 700;
     white-space: nowrap;

@@ -36,19 +36,15 @@ $self = $this;
 
 	<div class="row">
         <div class="col-md-4">
-            <h3>Games <small>You Play</small></h3>
+            <h3><small><?= $data['member']['alias'] ?>'s</small> Games</h3>
 
 		    <?= $this->view()->render(
 			    array('element' => 'user/games'),
-			    array(
-				    'games' => $data['games'],
-				    'text' => $data['member']['alias'] . ' plays',
-				    'profile' => false
-			    )
+			    array('games' => $data['games'], 'gamesClickable' => false)
 		    )?>
         </div>
         <div class="col-md-8">
-            <h3>Games <small>You Play</small></h3>
+            <h3><small><?= $data['member']['alias'] ?>'s</small> Wall</h3>
 
 		    <?= $this->view()->render(
 			    array('element' => 'user/wall'),
@@ -59,7 +55,7 @@ $self = $this;
 
 	<div class="recent">
 		<div class="row">
-			<h3>Recent Posts <small>On Forum</small></h3>
+			<h3><small><?= $data['member']['alias'] ?>'s</small> Forum Activity</h3>
 		</div>
 		<div class="row">
 			<?= $this->view()->render(

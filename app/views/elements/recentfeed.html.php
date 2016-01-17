@@ -105,8 +105,8 @@
 		});
 	</script>
 	<?php else: ?>	
-		<div>
-			There are no recent topics to display.
+		<div style="margin-top: 20px">
+			This User has yet to make a single Post on the Forum.
 		</div>	
 	<?php endif; ?>
 </div>

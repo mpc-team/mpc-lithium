@@ -143,19 +143,16 @@ if (isset($notification['status']))
 
 	<div class="row">
         <div class="col-md-4">
-            <h3>Games <small>You Play</small></h3>
+            <h3><small>Your</small> Games</h3>
 
 		    <?= $this->view()->render(
 			    array('element' => 'user/games'),
-			    array(
-				    'games' => $data['games'],
-				    'profile' => true
-			    )
+			    array('games' => $data['games'], 'gamesClickable' => true)
 		    )?>
         </div>
 
         <div class="col-md-8">
-            <h3><small>My </small>Messages</h3>
+            <h3><small>Your</small> Wall</h3>
 
 		    <?= $this->view()->render(
 			    array('element' => 'user/wall'),
@@ -167,7 +164,7 @@ if (isset($notification['status']))
 	<div class="recent">
 		<div class="row">
 			<h3 style="margin-bottom: 10px; margin-top: 10px;">
-                Recent <small>Posts On Forum</small>
+                <small>Your</small> Forum Activity
             </h3>
 		</div>
 		<div class="row">
