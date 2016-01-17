@@ -30,3 +30,6 @@ $RECYCLE.BIN/
 
 
 app/webroot/users/avatars/
+
+# Windows Visual Studio Files
+.suo
