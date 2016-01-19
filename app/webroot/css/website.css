@@ -1071,35 +1071,48 @@ a .panel-recentfeed h3
    
 
 */
-#connectdiscord > img {
+#connectdiscord > #discordbanner {
    margin: auto;
 }
-#connectdiscord > #discord-btns > .btn-edit {
-    color: #aaffaa;
-}
+/*discord iframe for live server status*/
 #connectdiscord iframe {
    height: 1000px;
-   width: 600px;
+   width: 400px;
 }
-#discord-downloadtilept2 .row .col-xs-5, #discord-downloadtilept1 .row .col-xs-4 {
-    padding: 1px;
+/*server status div*/
+#serverstatus-collapse {
+    margin-top: 52px;
 }
-
+/*button group*/
+#discord-btns {    
+    margin-top: 1%;
+    margin-right: 20px;
+}
+/*button properties*/
+#connectdiscord > #discord-btns > .btn-edit {
+    color: #fff;
+    background-color: #738BD7;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin: 2px 2px 2px 2px;
+}
+/*close server button properties*/
+#closeserver-btn {
+    margin: auto;
+    background-color: #738BD7;
+    color: #fff;
+}
 /*
     views/stream #streamdir
 
 */
 
-#streamer-list .list-group-item {
-     color: #aaffaa;
-    background-color: #1a1a1a;
-    padding: 5% 2% 5% 2%;
-    text-align: center;
-    margin: 0 5% 0 5%;
+/*
+
+    *views/starcraft currently: #starcraft2lotv
+
+*/
+
+#starcraft2lotv {
+
 }
-#streamer-list .list-group-item:hover {
-     text-align: center;
-    background-color: #1a1a1a;
-    color: #fff;
-    box-shadow: 1px 1px 5px 15px #aaffaa inset;
-  }
