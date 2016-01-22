@@ -224,8 +224,12 @@ class UserController extends \lithium\action\Controller
 	
 	
 	static $s_resetPswrdStatus = array(
-		'none' => 'NONE', 'confirmed' => 'CONFIRMED', 'pending' => 'PENDING',
-		'no_user' => 'NO_USER', 'key_error' => 'KEY_ERROR' );
+		'none' => 'NONE', 
+        'confirmed' => 'CONFIRMED', 
+        'pending' => 'PENDING',
+		'no_user' => 'NO_USER', 
+        'key_error' => 'KEY_ERROR' 
+    );
 	
 	/**
 	 * <Needs To Be Filled In>
@@ -284,7 +288,7 @@ class UserController extends \lithium\action\Controller
 					'key' => md5( $user['email'] . date( 'dmY' ) )
 				) );
 				$reset->save();
-				UserResetPasswords::sendReset( $user, $reset->key );
+				UserResetPasswords::SendResetEmail( $user, $reset->key );
 				$status = self::$s_resetPswrdStatus['pending'];
 			} 
 			else 

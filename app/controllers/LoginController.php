@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use lithium\security\Auth;
+use lithium\storage\session\adapter\Cookie;
+
 use app\models\Users;
 use app\models\Permissions;
 use app\models\utils\Notifications;
@@ -11,23 +13,46 @@ class LoginController extends \lithium\action\Controller
 {
 	public function index() 
 	{
-		if (!($authorized = Auth::check('default'))) 
-		{
-			$breadcrumbs = array(
-				'path' => array('MPC', 'Login'),
-				'link' => array('/', '/login'));
+        // Pull authenticated User as a check.
+        $authorized = Auth::check('default');
 			
-			if ($this->request->data) 
-			{
-				if (Auth::check('default', $this->request))
-					return $this->redirect('/user/profile');
-				else
-					return $this->redirect('/login?status=failed&op=login');
-			}	
+        // Keep record of the state of the Login.
+        $redirect = null; 
+        $success = false;
+
+        // Redirect to Login if already authenticated.
+        if( $authorized )
+        {
+            $redirect = '/user/profile';
+            $success = true;
+        }
+
+		if( !$success && $this->request->data ) 
+			if (Auth::check('default', $this->request))
+            {
+                $redirect = '/user/profile';
+                $success = true;
+            }
+			else
+            {
+                $redirect = '/login?status=failed&op=login';
+                $success = false;
+            }
 			
-			$notification = Notifications::parse($this->request->query);
-			return compact ('authorized', 'breadcrumbs', 'notification');
-		}
-		return $this->redirect('/user/profile');
+        //// Write authentication Cookie if Login successful.
+        //if( $redirect && $success )
+        //    Cookie::write('Credentials', 'You\'re a Dumbass');
+
+        if( $redirect )
+            return $this->redirect( $redirect );
+
+        // Login feedback notification data.
+		$notification = Notifications::parse($this->request->query);
+
+        // Page breadcrumb link data.
+		$breadcrumbs = array('path' => array('MPC', 'Login'), 'link' => array('/', '/login'));
+
+        // Render the Login template.
+		return compact('authorized', 'breadcrumbs', 'notification');
 	}
 }

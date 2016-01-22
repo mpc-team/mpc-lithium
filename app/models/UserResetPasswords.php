@@ -4,7 +4,7 @@ namespace app\models;
 
 class UserResetPasswords extends \lithium\data\Model  { 
 
-	public static function sendReset( $user, $key ) 
+	public static function SendResetEmail( $user, $key ) 
 	{
 		$message = 
 <<<EOD

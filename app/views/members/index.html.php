@@ -8,11 +8,6 @@ $self = $this;
 
 $adminPermissions = $authorized && Permissions::is_admin($authorized);
 
-/* used to get the appropriate icon path when matching with the name of the game */
-//foreach ($data['games'] as $key => $game) {
-//    $data['games'][$key]['cleaned'] = strtolower(str_replace(' ', '', $game['name']));
-//}
-
 ?>
 <h1>Members</h1>
 <h5>Currently <span id="members-count">0</span> members have registered.</h5>
