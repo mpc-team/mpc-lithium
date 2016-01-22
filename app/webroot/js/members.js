@@ -170,7 +170,7 @@ members.ui.alias.stringify = function (object)
 	else
 		result += "<br />";
 	result += "Member since <b>" + memberSince + "</b>";
-	result += "<img src='" + object.avatar + "'></img>";
+	result += "<img src='" + object.avatar + "' style='width: 300px'></img>";
 	result += "</div>";
 	result += "</div>";
 

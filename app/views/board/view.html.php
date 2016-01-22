@@ -29,16 +29,17 @@ $features = function($tid, $options)
 	}
 	return $html;
 };
+
 ?>
 <div class="row forum-header">
-	<h1 style='margin-bottom: 10px;'>
+	<h1 style='margin-bottom: 15px;'>
 		<div><?= $data['forum']['name'] ?></div>
 		<small>
 			<div>Topics</div>
 		</small>
 	</h1>
     <?php if (in_array('create', $data['permissions'])): ?>
-	    <div class="panel panel-default" style="margin-bottom: 10px">
+	    <div class="panel panel-default" style="margin-bottom: 10px;">
 		    <div class="panel-control">
 			    <div class="panel-heading">
 				    Board Control Panel
@@ -109,7 +110,7 @@ $features = function($tid, $options)
 				</div>
 			</div>
 		<?php else: ?>
-			<div>
+			<div style='padding-top: 30px; display: block;'>
 				There are no Topics posted on this Forum Board.
 			</div>	
 		<?php endif; ?>
