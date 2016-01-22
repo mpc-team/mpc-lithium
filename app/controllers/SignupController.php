@@ -20,7 +20,7 @@ class SignupController extends \lithium\action\Controller
 			);
 			return compact('authorized', 'breadcrumbs');
 		}
-		return $this->redirect('/profile');
+		return $this->redirect('/user/profile');
 	}
 	
 	public function complete () 
@@ -52,6 +52,6 @@ class SignupController extends \lithium\action\Controller
 			}
 			return compact('authorized', 'data', 'breadcrumbs');
 		}
-		return $this->redirect('/profile');
+		return $this->redirect('/user/profile');
 	}
 }
