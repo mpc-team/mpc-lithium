@@ -21,6 +21,7 @@ Session::config(array(
 		// 'strategies' => array('Encrypt' => array('secret' => 'f00bar#11li3php')),
 		// 'name' => $name
 	// ),
+    'cookie' => array('adapter' => 'Cookie',),
 	'default' => array('adapter' => 'Php', 'session.name' => $name)
 ));
 
@@ -49,7 +50,7 @@ Auth::config(array(
 		'adapter' => 'Form',
 		'model' => 'app\models\Users',
 		'fields' => array('email', 'password'),
-	)
+	),
 ));
 
 ?>
