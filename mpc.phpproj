@@ -1701,13 +1701,11 @@
     <Compile Include="app\views\clash_of_clans\index.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
     <Compile Include="app\views\elements\clanwars\discord.html.php" />
-    <Compile Include="app\views\elements\clash_of_clans\coc-streamers.html.php" />
+    <Compile Include="app\views\elements\clash_of_clans\casters-accordion.html.php" />
+    <Compile Include="app\views\elements\clash_of_clans\castlist.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\communication.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\forum.html.php" />
-    <Compile Include="app\views\elements\clash_of_clans\lovetorub16-modal.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\lovetorub16.html.php" />
-    <Compile Include="app\views\elements\clash_of_clans\marshall-modal.html.php" />
-    <Compile Include="app\views\elements\clash_of_clans\marshall.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\modals-arrray.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\official-website.html.php" />
     <Compile Include="app\views\elements\clash_of_clans\rules.html.php" />

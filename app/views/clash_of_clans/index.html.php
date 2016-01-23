@@ -14,7 +14,7 @@ $coc_navBar = array
     );
 $coc_sideIndexes = array(
         
-        'coc-streamers',
+        'casters-accordion',
         'rules',
         'official-website',
 
@@ -26,20 +26,21 @@ $coc_mainIndexes = array
         'forum',
     );
 
-    $arrayId = array
-    (
+       //This is for creating additional casters section with ease. This populates for the coc-streamers.html.php
+        $arrayId = array
+        (
 
-        'lovetorub16',
-        'marshall',
-    );
+            'lovetorub16',
+            'marshall',
+        );
 
-    $idAccordion = 'coc-streamers-accordion';
+        $idAccordion = 'coc-streamers-accordion';
 
 ?>
 
 <div id="clash-of-clans">
 
-    <div class="well">
+    <!--<div class="well">
         <div class="row">
             <div class="col-md-6">
                 <img src="/img/clash_of_clans/coc-head-banner.png" alt="coc-head-banner.png" class="img-rounded img-responsive coc-headbanner" />
@@ -48,7 +49,7 @@ $coc_mainIndexes = array
                 <img src="/img/mpc/mpcgaming-logo.png" alt="mpcgaming-logo.png" class="img-rounded img-responsive coc-headbanner" style="width: 55%;" />
             </div>
         </div>
-    </div>
+    </div>-->
 
     <ul class="nav nav-pills navbar-clash-of-clans">
         <?php foreach($coc_navBar as $coc_btnTitle => $coc_btnLink): ?>
@@ -58,14 +59,13 @@ $coc_mainIndexes = array
             </a>
         </li>
         <?php endforeach;?>
-
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Streaming<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="dropdown-header">MPC Clash of Clan Casters</li>
             <li role="separator" class="divider"></li>
             <?php foreach($arrayId as $id): ?>
-            <li><a href="#" data-toggle="modal" data-target="#coc-<?= $id ?>-streammodal"><?= $id ?></a></li>
+            <li><a href="#coc-casters" data-toggle="collapse" data-target="#coc-<?= $id ?>-collapse"><?= $id ?></a></li>
             <?php endforeach; ?>
             <li role="separator" class="divider"></li>
             <li><a href="/stream">All MPC Streamers</a></li>           
@@ -87,7 +87,7 @@ $coc_mainIndexes = array
         <div class="col-md-5">
             <?php foreach($coc_sideIndexes as $coc_index): ?>
             <div class="well">
-                <div class="row">
+                <div class="row"><a name="coc-casters"></a>
                     <?= $this->view()->render(
                         array('element' => 'clash_of_clans/' . $coc_index )
                     ); ?>
@@ -102,6 +102,3 @@ $coc_mainIndexes = array
         </div>
     </div>
 </div>
-<script>
-    
-</script>
