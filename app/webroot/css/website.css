@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:400,900);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
@@ -19,33 +20,42 @@ body
     height: inherit;
     background: transparent;
     font-family: "Montserrat";
+    /*font-family: "Alegreya Sans";*/ 
+    /*font-size: 16pt;*/
+    /*font-weight: 600;*/
     color: rgba(255, 255, 255, 0.6);
 }
 
 h1, 
 h2, 
-h3
+h3,
+h4,
+h5
 {
-    /* font-family: "Oswald"; */
-    font-weight: 700;
+    font-family: "Alegreya Sans"; 
+    font-weight: 700; 
     color: #aaffaa;
     margin: 0;
 }
 
 h1 > small,
 h2 > small,
-h3 > small
+h3 > small,
+/*h4 > small,
+h5 > small*/
 {
-    font-family: 'Montserrat';
-    font-weight: 700;
+    font-family: "Alegreya Sans"; 
+    font-weight: 500;
     font-variant: normal;
     text-shadow: none;
 }
 
+
+
 h5
 {
     display: inline;
-    font-size: 12pt;
+    /*font-size: 12pt;*/
     /* font-family: "Oswald"; */
 }
 
@@ -212,7 +222,7 @@ span.input-group-addon
     border-radius: 0px;
 }
 
-#modal-newevent .modal-dialog
+.modal-dialog
 {
     margin-top: 15%;
     background: rgba(40, 40, 40, 0.8);
@@ -776,7 +786,7 @@ a .panel-recentfeed h3
 
 .panel-recentfeed .recentfeed-content
 {
-    font-size: 90%;
+    font-size: 80%;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
     padding: 5px 5px 115px 5px;
@@ -784,8 +794,9 @@ a .panel-recentfeed h3
 
 .panel-recentfeed .name
 {
-    /* font-family: "Oswald"; 
+     /*font-family: "Oswald";*/
     /*font-variant: small-caps;*/
+    /*font-size: 90%;*/
     font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
@@ -794,7 +805,7 @@ a .panel-recentfeed h3
 .panel-recentfeed .forum
 {
     padding: 0 5px 5px 0;
-    font-size: 110%;
+    /*font-size: 110%;*/
     text-align: right;
 }
 
@@ -977,13 +988,20 @@ a .panel-recentfeed h3
     table-layout: fixed;
 }
 
+.members .name
+{
+    font-family: "Alegreya Sans"; 
+    font-weight: 700;
+    font-size: 14pt;
+}
+
 .members .email,
 .members .icon,
 .members .name
 {
     white-space: nowrap;
     overflow: hidden;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
 }
 
 .members table > tbody > tr > td
@@ -993,8 +1011,8 @@ a .panel-recentfeed h3
 
 .members tr > td div
 {
-    padding: 7px;
-		height: 40px;
+    padding: 5px;
+	height: 35px;
 }
 
 .members tr > td > a div:hover
@@ -1013,12 +1031,7 @@ a .panel-recentfeed h3
 }
 
 #headerbar-games .icon img,
-#navbar-games .icon img
-{
-    height: 26px;
-    width: 26px;
-}
-
+#navbar-games .icon img,
 .members .icon img
 {
     height: 26px;

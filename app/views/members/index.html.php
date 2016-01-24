@@ -10,7 +10,7 @@ $adminPermissions = $authorized && Permissions::is_admin($authorized);
 
 ?>
 <h1>Members</h1>
-<h5>Currently <span id="members-count">0</span> members have registered.</h5>
+<h3>Currently <span id="members-count">0</span> members have registered.</h3>
 
 <div class="members">
 	<div class="panel-heading">

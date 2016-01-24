@@ -14,7 +14,7 @@ $gamecount = 0;
 			<div class="well well-sm">
 				<center>
 					<i class="fa fa-info-circle"></i>
-					Click Game Icons to Mark as Played
+					Click games to select the ones you play
 				</center>
 			</div>
 		</div> 

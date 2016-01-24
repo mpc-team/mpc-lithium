@@ -46,7 +46,7 @@ announcements.ui.stringify = function (object)
 	result += "<div class='announcement' data-id='" + object.id + "'>";
 	result += "<div class='title' data-id='" + object.id + "'>";
 	if (object.title != null && object.title != "")
-		result += "<h2 style='margin-bottom: 15px;'>" + object.title + "</h3>";
+		result += "<h3 style='margin-bottom: 15px;'>" + object.title + "</h3>";
 	else
 		result += "<h3 style='margin-bottom: 15px;'>Announcement #" + object.id + "</h3>";
 	result += "</div>";

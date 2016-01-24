@@ -28,7 +28,7 @@ class EventsAPI extends ContentController
         if (!Permissions::is_admin($authorized))
             return $this->render(array('json' => null, 'status' => 500));
 
-        $requiredData = ['title','start','finish'];
+        $requiredData = array('title','start','finish');
         foreach ($requiredData as $req)
             if (!isset($this->request->data[$req]))
                 return $this->render(array('json' => null, 'status' => 500));

@@ -1417,7 +1417,7 @@ html
 body
 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.42857143;
     color: #888888;
     background-color: #101010;
@@ -6250,7 +6250,7 @@ fieldset[disabled] .navbar-default .btn-link:focus
 .navbar-inverse .navbar-nav > li > a
 {
     color: #aaffaa;
-    text-shadow: 1px 1px 10px #aaffaa;
+    /*text-shadow: 1px 1px 10px #aaffaa;*/
     border: 1px solid transparent;
     height: 47px;
     margin-top: -3px;
@@ -7923,6 +7923,7 @@ a.list-group-item-danger.active:focus
 {
     padding: 9px;
     border-radius: 1px;
+    border: 1px solid #444;
 }
 
 .close
@@ -8098,7 +8099,7 @@ button.close
 {
     .modal-dialog
     {
-        width: 600px;
+        width: 60%;
         margin: 30px auto;
     }
     /* .modal-content {

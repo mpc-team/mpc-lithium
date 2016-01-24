@@ -230,7 +230,6 @@ user.notifications.updateMessageNotifications = function (jqueryElement)
 				html += "<li class='divider'></li>";
 				html += user.notifications.message.stringify(data[key]);
 			}
-		html += "<li class='divider'></li>";
 		jqueryElement.html(html);
 
 		$('.' + user.notifications.classes['dismiss-msg']).click(user.notifications.message.onDismiss);

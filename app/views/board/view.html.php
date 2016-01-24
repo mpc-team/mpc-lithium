@@ -124,7 +124,7 @@ $features = function($tid, $options)
 				    <div class="forum-thread">
 					    <div>
 						    <a class="btn info" href="/thread/view/<?= $thread['id'] ?>">
-							    <h5>
+							    <h4>
 								    <div class="name">
 									    <?= $thread['name'] ?>
 								    </div>
@@ -140,9 +140,9 @@ $features = function($tid, $options)
 										    <?= $thread['date'] ?>
 									    </small>
 								    </div>
-							    </h5>
+							    </h4>
 						    </a>
-						    <div class="count">
+						    <div class="count" style='padding-top: 15px'>
 							    <center>
 								    <h4>
 									    <div>
@@ -157,7 +157,7 @@ $features = function($tid, $options)
 							    </center>
 						    </div>
 						    <a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>#<?= $thread['recent']['id'] ?>">
-							    <h5>
+							    <h4>
 								    <div class="name">
 									    Recent Post
 								    </div>
@@ -173,7 +173,7 @@ $features = function($tid, $options)
 										    <?= $thread['recent']['date'] ?>
 									    </small>
 								    </div>
-							    </h5>
+							    </h4>
 						    </a>
 					    </div>
 				    </div>	
