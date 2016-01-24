@@ -1726,7 +1726,7 @@
     <Compile Include="app\views\elements\information\miacro.html.php" />
     <Compile Include="app\views\elements\information\micro.html.php" />
     <Compile Include="app\views\elements\information\organization.html.php" />
-    <Compile Include="app\views\elements\stream\twitch.html.php" />
+    <Compile Include="app\views\elements\twitch\connect.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
     <Compile Include="app\views\elements\user\wall.html.php" />
     <Compile Include="app\views\elements\breadcrumbs.html.php" />
@@ -2735,11 +2735,7 @@
     <Folder Include="app\views\elements\discordapp\" />
     <Folder Include="app\views\elements\discordapp\downmenu\" />
     <Folder Include="app\views\elements\information\" />
-    <Folder Include="app\views\elements\stream\" />
-    <Folder Include="app\views\elements\stream\twitch-js-sdk-master\" />
-    <Folder Include="app\views\elements\stream\twitch-js-sdk-master\lib\" />
-    <Folder Include="app\views\elements\stream\twitch-js-sdk-master\test\" />
-    <Folder Include="app\views\elements\stream\twitch-js-sdk-master\test\integration\" />
+    <Folder Include="app\views\elements\twitch\" />
     <Folder Include="app\views\elements\user" />
     <Folder Include="app\views\elements" />
     <Folder Include="app\views\errors" />
@@ -2968,26 +2964,7 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\.gitignore" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\lib\twitch.auth.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\lib\twitch.core.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\lib\twitch.events.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\lib\twitch.init.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\lib\twitch.storage.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\LICENSE" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\Makefile" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\package.json" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\README.md" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\index.html" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\integration.html" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\integration\test.integration.api.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\server.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\test.auth.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\test.core.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\test\test.init.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\twitch.js" />
-    <Content Include="app\views\elements\stream\twitch-js-sdk-master\twitch.min.js" />
-    <Content Include="app\views\elements\stream\twitch.js" />
+    <Content Include="app\views\elements\twitch\twitch.js" />
     <Content Include="app\webroot\css\bootstrap-datetimepicker.css" />
     <Content Include="app\webroot\css\forums.css" />
     <Content Include="app\webroot\css\fullcalendar\fullcalendar.css" />
