@@ -15,13 +15,14 @@
 }
 .fs-btn-modify:hover
 {
-    background: #000;
-    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.9);
+    /*border: 1px solid #555;*/
+    transform: scale(1.025);
 }
 
 .fs-conf-modal > .modal-dialog
 {
-    padding-top: 10%;
+    /*padding-top: 10%;*/
 }
 
 .fs-btn-modify > .info

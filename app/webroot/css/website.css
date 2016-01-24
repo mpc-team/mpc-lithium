@@ -229,6 +229,12 @@ span.input-group-addon
     border: 1px solid #444;
 }
 
+.dialog-transparent
+{
+    background: none;
+    border: none;
+}
+
 #modal-newevent .modal-dialog .modal-body .input-group
 {
     padding: 0px;
@@ -988,22 +994,22 @@ a .panel-recentfeed h3
     table-layout: fixed;
 }
 
-.members .name
-{
-    font-family: "Alegreya Sans"; 
-    font-weight: 700;
-    font-size: 14pt;
-}
-
 .members .email,
 .members .icon,
 .members .name
 {
     white-space: nowrap;
     overflow: hidden;
-    /*padding-top: 10px;*/
+    padding-top: 10px;
 }
 
+.members .name
+{
+    font-family: "Alegreya Sans"; 
+    font-weight: 700;
+    font-size: 14pt;
+    padding-top: 5px;
+}
 .members table > tbody > tr > td
 {
     padding: 0px;

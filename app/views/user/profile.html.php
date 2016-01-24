@@ -66,7 +66,7 @@ if (isset($notification['status']))
                     </button>
 
                     <div class="modal fade fs-conf-modal" data-id="1" role="dialog">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog dialog-transparent">
                             <div class="modal-content">
                                 <div class="pending" data-id="1">
                                     <div>
@@ -132,8 +132,8 @@ if (isset($notification['status']))
                     </div>
                 </div>
 			    <div class='well well-sm'>
-				    <h5><i class="fa fa-info-circle"></i></h5>
-				    Accepted image formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
+				    <i class="fa fa-info-circle"></i>
+				    Supported formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
 			    </div>
 		    </div>
         </center>
