@@ -43,6 +43,7 @@ $path = Libraries::get(true, 'path');
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'utils/goTo',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
         'utils/AreYouSure',
@@ -58,7 +59,6 @@ $path = Libraries::get(true, 'path');
 		'validate',					
         'texttags',
 		'markup',
-		'scroller',	
         'announcements',
         'texttags',
 	));?>

@@ -91,7 +91,7 @@ EOD;
 	    <div class="panel-group">
 		    <div class="panel panel-default">
 
-			    <a id="<?= $post['id'] ?>"></a>
+			    <a id="<?= $post['id'] ?>" class="offset"></a>
 
 			    <div class="row">
 				    <div class="forum-post">

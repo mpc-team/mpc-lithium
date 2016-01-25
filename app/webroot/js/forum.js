@@ -114,7 +114,7 @@ $(document).ready( function () {
 		$("#thread-reply-text").fieldSelection(
 			texttags.tags.quote[0] + author.trim() + "]" + cleaned + texttags.tags.quote[1]
 		);
-		$("#thread-reply").gotoSection();
+		$("#thread-reply").goTo();
 	});
 	
 	$("." + UI_BTN_EDIT).click(function ()
@@ -132,7 +132,7 @@ $(document).ready( function () {
 		$elems.filter("." + UI_BTN_CANCEL).show();
 		$elems.filter("." + UI_BTN_UPDATE).show();
 		$elems.filter("." + UI_UPDATE_CONTENT).html(text);
-		$("#post" + msgid).gotoSection();
+		$("#post" + msgid).goTo();
 	});
 	
 	$("." + UI_BTN_CANCEL).click(function ()

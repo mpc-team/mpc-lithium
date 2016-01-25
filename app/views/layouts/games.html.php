@@ -35,6 +35,7 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'utils/goTo',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
         'utils/AreYouSure',
@@ -50,7 +51,6 @@ use app\views\layouts\LayoutConstants;
         'members',
 		'validate',
 		'markup',
-		'scroller',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
