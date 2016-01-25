@@ -468,8 +468,8 @@ a.btn-forum:hover
 {
     .panel-forum .forum
     {
-        min-height: 130px;
-        max-height: 130px;
+        min-height: 90px;
+        max-height: 90px;
     }
 }
 
