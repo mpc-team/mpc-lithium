@@ -1891,7 +1891,6 @@
     <Compile Include="app\webroot\js\moment.js" />
     <Compile Include="app\webroot\js\navbar.js" />
     <Compile Include="app\webroot\js\user\profile.js" />
-    <Compile Include="app\webroot\js\scroller.js" />
     <Compile Include="app\webroot\js\validate.js" />
     <Compile Include="app\webroot\starcraft2\builds\Build001.txt" />
     <Compile Include="app\webroot\users\avatars\b0rg3r@40gmail.com.jpg" />
@@ -3012,6 +3011,7 @@
     <Content Include="app\webroot\js\user\wall.js" />
     <Content Include="app\webroot\js\utils\AreYouSure.js" />
     <Content Include="app\webroot\js\utils\EventsCalendar.js" />
+    <Content Include="app\webroot\js\utils\goTo.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
