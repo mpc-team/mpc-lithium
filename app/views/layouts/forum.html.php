@@ -74,12 +74,9 @@ use app\views\layouts\LayoutConstants;
 		<div class="forum">
 			<div class="content">
 				<div class="page-header">
-                    <?= 
-                        $this->view()->render(
-                            array('element' => 'banner'),
-                            array()
-                        )
-                    ?>
+                    <span class="page-header-text">
+                        MPCgaming
+                    </span>
 		            <?=
                         $this->view()->render(
                             array('element' => 'headerbar'),

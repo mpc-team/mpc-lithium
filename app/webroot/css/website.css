@@ -3,6 +3,7 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
 @import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Aldrich);
 
 html
 {
@@ -70,6 +71,21 @@ h5
     display: block;
     position: relative;
     min-height: 70px;
+}
+
+.page-header-text
+{
+    font-size: 42pt;
+    font-weight: 700;
+    font-family: "Aldrich";
+}
+
+@media (min-width: 630px)
+{
+    .page-header-text
+    {
+        font-size: 72pt;
+    }
 }
 
 #announcements
@@ -744,6 +760,11 @@ a .panel-recentfeed h2
 a .panel-recentfeed h3
 {
     font-size: 18px;
+}
+
+.recentfeed .carousel-inner
+{
+    border: 1px solid #444;
 }
 
 .recentfeed > div

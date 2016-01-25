@@ -80,12 +80,9 @@ $path = Libraries::get(true, 'path');
 	</div>
 	<div class="container">
 		<div class="page-header">
-            <?= 
-                $this->view()->render(
-                    array('element' => 'banner'),
-                    array()
-                )
-            ?>
+            <span class="page-header-text">
+                MPCgaming
+            </span>
 		    <?=
                 $this->view()->render(
                     array('element' => 'headerbar'),
