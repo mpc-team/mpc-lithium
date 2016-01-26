@@ -6,47 +6,44 @@ $self = $this;
 
 $userpanel = function($mid, $options) {
 	$html = "<div class='row usertool'>";
-	$html .= "<div class='col-xs-9 pull-right'>";
-	$html .= "<div class='col-xs-2'>";
+    $html .= "<div class='pull-right'>";
+    //$html .= "<div class='col-xs-9'>";
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit pull-left btn-edit-edit' data-id='{$mid}'>
+<button type='button' class='btn btn-edit btn-edit-edit btn-icon-only' data-id='{$mid}'>
 	<i class='fa fa-pencil-square-o'></i>
-	Edit
 </button>
 EOD;
 	}
-	$html .= "</div>";
-	$html .= "<div class='col-xs-2'>";
+    //$html .= "</div>";
+    //$html .= "<div class='col-xs-2'>";
 	if (in_array('delete', $options)) {
 		$html .= <<<EOD
 <form role='form' action='/post/delete/{$mid}' method='post'>
-	<button type='submit' class='btn btn-edit btn-edit-delete btn-are-you-sure' data-id='{$mid}'>
+	<button type='submit' class='btn btn-edit btn-edit-delete btn-icon-only btn-are-you-sure' data-id='{$mid}'>
 		<i class='fa fa-trash-o'></i>
-		Delete
 	</button>
 	<input type='hidden' name='id' value='{$mid}'/>
 </form>
 EOD;
 	}
-	$html .= "</div>";
-	$html .= "<div class='col-xs-8'>";
+    //$html .= "</div>";
+    //$html .= "<div class='col-xs-8'>";
 	if (in_array('quote', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit btn-edit-quote pull-right' data-id='{$mid}'>
+<button type='button' class='btn btn-edit btn-edit-quote btn-icon-only' data-id='{$mid}'>
 	<i class='fa fa-quote-right'></i>
-	Quote
 </button>
 EOD;
 	}
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit pull-right btn-edit-cancel' data-id='{$mid}'>
+<button type='button' class='btn btn-edit btn-edit-cancel' data-id='{$mid}'>
 	<i class='fa fa-times'></i>
 	Cancel
 </button>
 <form class='edit-content-form' data-id='{$mid}' role='form' action='/post/edit/{$mid}' method='post'>
-	<button type='button' class='btn btn-edit pull-right btn-edit-update' data-id='{$mid}'>
+	<button type='button' class='btn btn-edit btn-edit-update' data-id='{$mid}'>
 		<i class='fa fa-check-square-o'></i>
 		Confirm
 	</button>
@@ -56,7 +53,8 @@ EOD;
 </form>
 EOD;
 	}
-	$html .= "</div></div></div>";
+    //$html .= "</div></div></div>";
+    $html .= "</div></div>";
 	return $html;
 };
 ?>

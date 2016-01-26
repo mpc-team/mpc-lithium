@@ -8,3 +8,375 @@
     font-size: 24px;
     margin-top: 0;
 }
+
+.forum h1,
+.forum h2,
+.forum h3
+{
+    /*font-family: "Montserrat";
+    font-weight: 700;*/
+}
+
+.forum h1
+{
+    /*font-variant: small-caps;*/
+    font-size: 350%;
+}
+
+.forum-thread h4 .name,
+.forum-thread h5 .name
+{
+    /*text-transform: lowercase;
+    font-variant: small-caps;*/
+}
+
+.quote-content
+{
+    padding: 5px 20px 5px 20px;
+}
+
+.texttags button
+{
+    font-size: 110%;
+    padding: 5px;
+}
+
+.texttags .dropdown-menu > li > button
+{
+    width: 300px;
+}
+
+.usertool
+{
+    background: #1a1a1a;
+}
+
+.usertool form
+{
+    display: inline;
+}
+
+.usertool .btn-edit
+{
+    text-align: left;
+    line-height: 1; /* Any value 1 or less will render the exact same... */
+}
+
+.usertool .btn-edit .fa
+{
+    /*font-size: 10pt;*/
+}
+
+.usertool .btn-edit .glyphicon-file
+{
+    font-size: 22pt;
+}
+
+.usertool .btn-edit .fa.fa-pencil-square-o,
+.usertool .btn-edit .fa.fa-quote-right,
+.usertool .btn-edit .fa.fa-trash-o
+{
+    font-size: 18pt;
+}
+
+a.btn-forum:hover
+{
+    background: linear-gradient(170deg, #aaacaa, #7f7f7f);
+}
+
+.panel-control .panel-heading
+{
+    font-size: inherit;
+    padding: 5px 5px 5px 10px;
+}
+
+.panel-forum .forum
+{
+    min-height: 70px;
+    max-height: 70px;
+    overflow: hidden;
+}
+
+@media (min-width: 630px)
+{
+    .panel-forum .forum
+    {
+        min-height: 90px;
+        max-height: 90px;
+    }
+}
+
+.forum .login-notice > .panel
+{
+    /*background: linear-gradient(160deg, #2f3a2f, #222222);*/
+    padding: 5px 0 10px 0;
+}
+
+.forum .login-notice .icon
+{
+    font-size: 300%;
+    margin-bottom: -7px;
+}
+
+.forum .login-notice .conten
+{
+    vertical-align: middle;
+}
+
+.panel-forum h5
+{
+    font-weight: 600;
+    font-size: 14pt;
+}
+
+.forum .categories
+{
+
+    padding-bottom: 50px;
+
+}
+
+.forum .categories .count
+{
+    bottom: 0px;
+}
+
+.forum .categories .panel-group
+{
+    margin-bottom: 1px;
+    margin-left: 1px;
+}
+
+.forum-header
+{
+    padding-bottom: 2px;
+    font-size: 120%;
+}
+
+.forum-content
+{
+    padding-bottom: 50px;
+}
+
+.forum-thread
+{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.forum-header .forum-thread
+{
+    background: transparent;
+    font-weight: 700;
+}
+
+.forum-thread > div
+{
+    display: table-row;
+}
+
+.forum-thread > div > div
+{
+    display: table-cell;
+}
+
+.forum-thread > div > a
+{
+    display: table-cell;
+    max-height: 70px;
+    vertical-align: top;
+}
+
+.forum-thread a.info,
+.forum-thread a.recent
+{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.forum-thread a.recent .time,
+.forum-thread a.info .name
+{
+    padding-bottom: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.forum-thread .info,
+.forum-thread a.info
+{
+    width: 55%;
+}
+
+.form-thread .count
+{
+    width: 13%;
+    font-size: 9pt;
+}
+
+.forum-thread .count h4
+{
+    font-size: 18pt;
+}
+
+.forum-thread .count h4 small
+{
+    font-size: 9pt;
+}
+
+.forum-thread .recent,
+.forum-thread a.recent
+{
+    width: 32%;
+}
+
+.forum-thread .info div
+{
+    text-align: left;
+}
+
+.forum-thread .recent div
+{
+    text-align: right;
+}
+
+.forum-post
+{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 150px;
+}
+
+.forum-post > div > div
+{
+    display: table-cell;
+}
+
+.forum-post > div
+{
+    width: 25%;
+    display: table-row;
+}
+
+
+.forum-post .info
+{
+    background-color: #111111;
+    vertical-align: top;
+}
+
+.forum-post .info .since,
+.forum-post .info .author
+{
+    padding: 5px;
+}
+
+.forum-post .info .since
+{
+    padding-top: 0px;
+}
+
+.forum-post .info .author
+{
+    padding-bottom: 0px;
+}
+
+.forum-post .info .author
+{
+    font-size: 12pt;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.forum-post .info .time
+{
+    font-size: 85%;
+}
+
+.forum-post .info .avatar
+{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.forum-post .info .avatar img
+{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 180px;
+}
+
+@media screen (min-width: 800px)
+{
+    .forum-post .info .avatar
+    {
+        max-height: 100px;
+    }
+}
+
+.forum-post .content
+{
+    white-space: normal;
+    word-wrap: break-word;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 84%;
+    padding: 10px 10px 20px 20px;
+}
+
+.forum-post .content h2,
+.forum-post .content h3
+{
+    display: inline;
+}
+
+.forum-post .content .edit-content-toggle,
+.forum-post .content .edit-content
+{
+    padding-top: 5px;
+}
+
+.forum-post .time
+{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.forum-post .content .header
+{
+    font-size: 85%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.forum-post .content .time
+{
+    float: right;
+}
+
+.forum-post .content .hit
+{
+    float: left;
+}
+
+.forum-post .content .hit .text
+{
+    padding-left: 10px;
+}
+
+.forum-post .content .hit button
+{
+    padding: 0px;
+    border: none;
+}
+
+.forum-post .content .hit button.post-hit-hit
+{
+    background: #009702;
+    border: 1px solid #76FF76;
+    box-shadow: 0 0 5px rgba(200,255,205,1);
+}
