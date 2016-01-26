@@ -7,6 +7,7 @@ $self = $this;
 ?>
 <div id="starcraft2lotv">
 
+    <!--header row-->
     <div class="row page-header">
         <h1>
             <div class="title">
@@ -20,34 +21,108 @@ $self = $this;
         </h1>        
     </div>
     <h3>
-        MPC - Miacro Power Clan
-        <small>The Sc2 clan</small>
+        MPC - The "Miacro Power Clan"
+        <small>a Sc2 clan</small>
     </h3>
     <div class="row">
-        <div class="panel" style="max-width: 400px; margin: auto;">
-            <div class="panel-body">
-                <div class="row">
-
-                    <p>Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments.</p>
-
+        <a>
+            <div class="panel-group">
+                <div class="panel" style="max-width: 600px; margin: auto;">
+                    <div class="panel-body">
+                        <div class="row">
+                            <h3 class="panel-title">
+                                Welcome to Starcraft MPC
+                            </h3>
+                            <p class="text-indent">Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
+
+
+
+
+    <!--row-->
     <h3>
         Seadog's Game
         <small>a SC2 Arcade Game</small>
     </h3>
     <div class="row">
-        <div class="panel">
-            <div class="panel-heading">
-                <h3 class="panel-title">Trump's Revenge</h3>
+        <a>
+            <div class="panel-group">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            The Trump's Revenge
+                        </h3>
+                        <small>Genre: Survival</small>
+                    </div>
+                    <div class="panel-body" style="margin: 15px;">
+                        <p class="text-indent">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten.
+                            <br />
+                            <br />
+                            <button type="button" data-toggle="collapse" data-target="#trumpshow" aria-expanded="false" aria-controls="trumpshow">Show More</button></p>
+                        <div class="collapse" id="trumpshow">
+                            <p>Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                Written Txt
-            </div>
-        </div>
+        </a>
     </div>
+
+    <!--row-->
+    <div class="row">
+        <h3>
+            Forums
+            <small>
+                Starcraft 2
+            </small>
+        </h3>
+        <a href="/board/view/2">
+            <div class="panel-group">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                           Forums
+                        </h3>
+                    </div>
+                    <div class="panel-body" style="color: #777;">
+                        <p>See what's happening, and leave a post on the board. Learn, discuss, compare strategies, offer suggestions, and create insightful topics for others to see when they arrive here. Don't be shy because you might have something.</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <!--row-->
+    <h3>
+        Car Bot Animatioons
+        <small>
+            SC2 Community
+        </small>
+    </h3>
+    <div class="row">
+        <a href="/board/view/2">
+            <div class="panel-group">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Car Bot Animations
+                        </h3>
+                    </div>
+                    <div class="panel-body" style="color: #777;">
+                        
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!--row-->
     <h3>
         Clan Wars
         <small>
@@ -115,6 +190,7 @@ $self = $this;
             </div>
         </div>
     </div>
+    <!--hidden objects-->
         <div class="modal fade" id="clanwarsmodal" tabindex="-1" role="dialog" aria-labelledby="clanwarsmodal-label">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -127,7 +203,7 @@ $self = $this;
                     <div class="media">
                         <div class="media-left">
                         <a href="#">
-                            <img class="media-object" src="..." alt="...">
+                            <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
                         </a>
                         </div>
                         <div class="media-body">
@@ -137,7 +213,7 @@ $self = $this;
                     </div>
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object" src="..." alt="...">
+                            <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
                         </a>
                         </div>
                         <div class="media-body">
@@ -147,7 +223,7 @@ $self = $this;
                     </div>
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object" src="..." alt="...">
+                            <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
                         </a>
                         </div>
                         <div class="media-body">
@@ -164,11 +240,11 @@ $self = $this;
         </div>
     </div>      
     <div class="collapse" id="sc2caster-vaevictissc-collapse">
-        <div class="row text-center" style="padding-top: 5%; padding-left: 8%;">
+        <div class="row" style="padding-top: 5%; padding-left: 8%;">
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=vaevictissc"></iframe>
             </div>                
-            <a role="button" href="#casterchat-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-vaevictissc-collapse">Show Chat</a>
+            <a role="button" class="btn btn-lg" href="#casterchat-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-vaevictissc-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
         </div>
         <div class="collapse" id="casterchat-vaevictissc-collapse" style="padding-top: 5%; padding-left: 8%;">
             <div class="embed-responsive embed-responsive-4by3">
