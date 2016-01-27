@@ -33,17 +33,13 @@ $self = $this;
                             <h3 class="panel-title">
                                 Welcome to Starcraft MPC
                             </h3>
-                            <p class="text-indent">Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments.</p>
+                            <p class="text-indent">Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans from around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </a>
     </div>
-
-
-
-
     <!--row-->
     <h3>
         Seadog's Game
@@ -60,12 +56,9 @@ $self = $this;
                         <small>Genre: Survival</small>
                     </div>
                     <div class="panel-body" style="margin: 15px;">
-                        <p class="text-indent">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten.
-                            <br />
-                            <br />
-                            <button type="button" data-toggle="collapse" data-target="#trumpshow" aria-expanded="false" aria-controls="trumpshow">Show More</button></p>
+                        <button type="button" data-toggle="collapse" data-target="#trumpshow" aria-expanded="false" aria-controls="trumpshow" style="color: #000; margin-bottom: 5px;">View Description</button>
                         <div class="collapse" id="trumpshow">
-                            <p>Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
+                            <p class="text-indent">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten. Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
                         </div>
                     </div>
                 </div>
@@ -97,31 +90,6 @@ $self = $this;
         </a>
 
     </div>
-
-    <!--row-->
-    <h3>
-        Car Bot Animatioons
-        <small>
-            SC2 Community
-        </small>
-    </h3>
-    <div class="row">
-        <a href="/board/view/2">
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Car Bot Animations
-                        </h3>
-                    </div>
-                    <div class="panel-body" style="color: #777;">
-                        
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-
     <!--row-->
     <h3>
         Clan Wars
@@ -129,29 +97,8 @@ $self = $this;
             SC2 Community
         </small>
     </h3>   
-    <div class="row">        
-        <div class="col-md-4">
-            <a role="button" href="#sc2caster-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="sc2caster-vaevictissc-collapse">
-                <div class="panel-group">
-                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                              MPC Caster - VaevictisSC
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <p>Check the Sign Up's page to see the next cast, and Starcraft 2 Events.</p>
-                                <br />
-                                <br />
-                                <br />
-                            </div>
-                        </div>                
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
+    <div class="row">                
+        <div class="col-md-6">
             <a href="/board/view/11">
                 <div class="panel-group">
                      <div class="panel">
@@ -169,7 +116,7 @@ $self = $this;
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <a href="#clanwarsmodal" data-toggle="modal" data-target="#clanwarsmodal">
                 <div class="panel-group">
                      <div class="panel">
@@ -188,6 +135,36 @@ $self = $this;
                     </div>
                 </a>
             </div>
+        </div>
+         <!--row-->
+        <h3>
+            MPC Casters
+            <small>
+                SC2 Community
+            </small>
+        </h3>
+        <div class="row">
+            <div class="col-md-12">
+                <a role="button" href="#sc2caster-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="sc2caster-vaevictissc-collapse">
+                    <div class="panel-group">
+                            <div class="panel">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    MPC Caster - VaevictisSC
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <p>Check the Sign Up's page to see the next cast, and Starcraft 2 Events.</p>
+                                    <br />
+                                    <br />
+                                    <span class="glyphicon glyphicon-arrow-down" style="margin-left: 50%;"></span>
+                                </div>
+                            </div>                
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
     <!--hidden objects-->
@@ -246,11 +223,12 @@ $self = $this;
             </div>                
             <a role="button" class="btn btn-lg" href="#casterchat-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-vaevictissc-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
         </div>
-        <div class="collapse" id="casterchat-vaevictissc-collapse" style="padding-top: 5%; padding-left: 8%;">
+        <div class="collapse text-center" id="casterchat-vaevictissc-collapse" style="padding-top: 5%; padding-left: 8%;">
             <div class="embed-responsive embed-responsive-4by3">
                 <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/vaevictissc/chat?popout=">
                 </iframe>
             </div>
-        </div>  
+            <p>Now Showing up properly? View His <a class="btn" href="http://www.twitch.tv/vaevictissc" target="_blank">Page</a>.</p>
+        </div>          
     </div> 
 </div>
