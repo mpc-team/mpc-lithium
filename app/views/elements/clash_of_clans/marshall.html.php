@@ -10,6 +10,6 @@
             <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/marshall/chat?popout=">
             </iframe>
         </div>
-        <p>Now Showing up properly? View His <a class="btn" href="http://www.twitch.tv/marshall" target="_blank">Page</a>.</p>
+        <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/marshall" target="_blank">Page</a>.</p>
     </div>
 </div>

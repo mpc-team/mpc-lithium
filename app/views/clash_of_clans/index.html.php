@@ -22,53 +22,47 @@ $self = $this;
     </div>-->
     <!-- header row-->
     <h3>
-        Clash of Clans - The Revolution Begins
+        Clash of Clans - "The Revolution Begins"
         <small>Games</small>
     </h3>
     <div class="row">
-        <a>
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <img src="/img/clash_of_clans/overview-banner.png" class="img-responsive img-rounded" />
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row text-center">
-                            <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
-                            <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>
-                            <p>New to discordapp ? Learn by going <a href="/connect">Here</a>.</p>                            
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <h4>Thanks for Joining MPC Assassins, get on Discord, and lets WIN some WARS!</h4>
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <img src="/img/clash_of_clans/overview-banner.png" class="img-responsive img-rounded" />
+                    </h3>
+                </div>
+                <div class="panel-body" >
+                    <div class="row text-center">
+                        <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
+                        <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <p style="color: #FAF1BF;">MPC HQ is held on Discord Server. You may connect with MPC by going <a href="/connect">Here</a>.</p>
+                </div>
             </div>
-        </a>
+        </div>
     </div>
     <h3>
         MPC on Twitch T.V.
         <small>Clash of Clans</small>
     </h3>
-    <?php $id = array('lovetorub16' => 'LoveToRub16', 'marshall' => 'Marshall'); ?>
+    <?php $cocCasters = array('lovetorub16', 'marshall'); ?>
     <div class="row">
-        <?php foreach($cocCasters as $id => $displayName): ?>
+        <?php foreach($cocCasters as $id): ?>
         <div class="col-md-6">
-             <a>
+             <a role="button" data-toggle="collapse" href="#caster-<?= $id ?>-collapse" aria-expanded="false" aria-controls="caster-<?= $id ?>-collapse" >
                 <div class="panel-group">
                     <div class="panel">
                         <div class="panel-heading">
-                            MPC Caster - <?= $displayName ?>
+                            Caster
                         </div>
                         <div class="panel-body">
                              <div class="row">
-                                <img src="/img/clash_of_clans/<?= $id ?>/description.png" alt="description.png" class="img-responsive img-rounded" id="<?= $id?>-descriptionpng" role="button" data-toggle="collapse" href="#caster-<?= $id ?>-collapse" aria-expanded="false" aria-controls="caster-<?= $id ?>-collapse" />
-                            </div>
-                            <div class="collapse" id="caster-<?= $id ?>-collapse">
-                                <?= $this->view()->render(array('element' => 'clash_of_clans/'. $id )) ?>           
-                            </div>
+                                <img src="/img/clash_of_clans/<?= $id ?>/description.png" alt="description.png" class="img-responsive img-rounded" id="<?= $id?>-descriptionpng" />
+                            </div>                            
                         </div>
                         <div class="panel-footer">
                             <span class="glyphicon glyphicon-arrow-down" style="margin-left: 50%;"></span>
@@ -77,8 +71,42 @@ $self = $this;
                 </div>
             </a>
         </div>
-        <?php endforeach; ?>       
+        <?php endforeach; ?>        
     </div>
+    <div class="collapse" id="caster-lovetorub16-collapse">
+            <div id="caster-lovetorub16-twitchdiv">
+                <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=lovetorub16"></iframe>
+                    </div>                
+                    <a role="button" class="btn btn-lg" href="#casterchat-lovetorub16-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-lovetorub16-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
+                </div>
+                <div class="collapse text-center" id="casterchat-lovetorub16-collapse" style="padding-top: 5%; padding-left: 8%;">
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/lovetorub16/chat?popout=">
+                        </iframe>
+                    </div>
+                    <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/lovetorub16" target="_blank">Page</a>.</p>
+                </div>
+            </div> 
+        </div>
+        <div class="collapse" id="caster-marshall-collapse">
+            <div id="caster-marshall-twitchdiv">
+                <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=marshall"></iframe>
+                    </div>                
+                    <a role="button" class="btn btn-lg" href="#casterchat-marshall-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-marshall-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
+                </div>
+                <div class="collapse text-center" id="casterchat-marshall-collapse" style="padding-top: 5%; padding-left: 8%;">
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/marshall/chat?popout=">
+                        </iframe>
+                    </div>
+                    <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/marshall" target="_blank">Page</a>.</p>
+                </div>
+            </div>   
+        </div>
     <h3>
         Communication is Key
         <small>Clash of Clans</small>
@@ -140,7 +168,7 @@ $self = $this;
             <div class="panel-group">
                 <div class="panel">
                     <div class="panel-heading">
-                         <img src="/img/clash_of_clans/forum-banner.png" class="img-responsive img-rounded" alt="forum-banner.png" id="coc-form-bannerpng" />
+                         <img src="/img/clash_of_clans/forum-banner.png" class="img-responsive img-rounded" alt="forum-banner.png" />
                     </div>
                     <div class="panel-body">
                          <div class="row">
@@ -166,7 +194,7 @@ $self = $this;
                         <h3 class="panel-title">Clan Rules of Regulation</h3>
                     </div>
                     <div class="panel-body">
-                        <? $this->view()->render(array('element' => 'clash_of_clans/rules')) ?>
+                        <?= $this->view()->render(array('element' => 'clash_of_clans/rules')) ?>
                     </div>
                     <div class="panel-footer">
                         <p>Updated: 01/25/2016</p>
@@ -184,7 +212,7 @@ $self = $this;
             <div class="panel-group">
                 <div class="panel">
                     <div class="panel-heading">
-                        <img src="/img/clash_of_clans/official-website-banner.png" alt="official-website-banner.png" class="img-responsive img-rounded coc-img-center" id="officialwebsite-banner" />
+                        <img src="/img/clash_of_clans/official-website-banner.png" alt="official-website-banner.png" class="img-responsive img-rounded coc-img-center" />
                     </div>
                     <div class="panel-body">
                         

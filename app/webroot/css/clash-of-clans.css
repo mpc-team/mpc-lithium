@@ -1,149 +1,26 @@
-﻿/*Clash of Clans CSS*/
-
-/* Container Div / Parent Div ID = #clash-of-clans */
-
-/*Overwriting: Bootstrap , Website.css */
-
-/*Constant Scheme*/
-#clash-of-clans .breadcrumb-text {
-    text-decoration: none;
+﻿#clash-of-clans h3 {
+    margin: 15px 0 15px 0;
+    color: #FAF1BF;
+    text-shadow: 1px 1px 15px #000;
+}
+#clash-of-clans h3 small {
+    color: #aaffaa;
+    text-shadow: 1px 1px 15px #000;
+}
+#clash-of-clans .row {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#clash-of-clans .text-center p {
     color: #FAF1BF;
 }
-/*Image Class Properties for Clash of Clans*/
-#clash-of-clans .coc-headbanner {
+#clash-of-clans img {
     margin: auto;
+    box-shadow: 1px 1px 10px #FAF1BF;
 }
-.coc-img-center {
-    margin: auto;
-    box-shadow: 1px 1px 15px #FAF1BF;
-    margin-bottom: 5%;
+#clash-of-clans img:hover{
+    box-shadow: 1px 1px 20px #FAF1BF;
 }
-.coc-img-center:hover {
-    box-shadow: 1px 1px 20px #fff;
-}
-/*Nav Bar*/
-.navbar-clash-of-clans {
-    background: url("/img/clash_of_clans/navbar-background.png");
-    background-image: url("/img/clash_of_clans/navbar-background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
-    padding-top: 0px !important;
-    padding-right: 5% !important;
-    padding-bottom: 0px !important;
-    padding-left: 5% !important;
-    border-top-right-radius: 0px;
-    -moz-border-radius-topright: 0px;
-    -webkit-border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    -moz-border-radius-topleft: 0px;
-    -webkit-border-top-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    -moz-border-radius-bottomright: 0px;
-    -webkit-border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    -moz-border-radius-bottomleft: 0px;
-    text-align: center;
-
-}
-.navbar-clash-of-clans a {
-    font-family: Arial;
-    font-size: 13px;
-    text-decoration: none;
+#clash-of-clans .panel-group a .panel .panel-footer {
     color: #FAF1BF;
-    font-weight: bold;
-}
-#clash-of-clans .navbar-clash-of-clans a:hover {
-    color: #FAF1BF;
-    background-color: #D44835;
-    box-shadow: 1px 1px 5px 15px #d44835 inset;
-  }
-#cocnavbar-title {
-    line-height: 3; 
-    margin-right: 5px;
-    color: #fff;
-}
-#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu {
-    color: #faf1bf;
-
-}
-
-#clash-of-clans > .navbar-clash-of-clans > .dropdown > .dropdown-menu > .dropdown-header {
-    display: block;
-    padding: 3px 20px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #faf1bf;
-    white-space: nowrap;
-}
-#clash-of-clans > .dropdown-menu > li > a {
-    color: #faf1bf;
-}
-#clash-of-clans > .dropdown-menu > li > a:hover {
-    background-color: #010101;
-    color: #faf1bf;
-}
-
-/*index.html.php*/
-
- #clash-of-clans .row {
-    margin: 5% 0 5% 0;
-}
-#clash-of-clans .col-md-7 .well {
-    background-color: #000;
-    color: #F2E7AB;
-    opacity: 0.8;
-    filter: Alpha(opacity=80); /* IE8 and earlier */
-}
-#clash-of-clans .col-md-5 .well {
-    background-color: #000;
-    color: #F2E7AB;
-    opacity: 0.8;
-    filter: Alpha(opacity=80); /* IE8 and earlier */
-}
-#clash-of-clans .col-md-7, #clash-of-clans .col-md-5 {
-    padding-right: 1%;
-    padding-left: 1%;
-}
-/*rules.html.php*/
-#clash-of-clans #rules h2 {
-    color: #F2E7AB;
-}
-#clash-of-clans .list-group .list-group-item {
-    background-color: #010101;
-    color: inherit;
-    text-align: center;
-}
-#clash-of-clans .list-group .list-group-item:hover {
-    background-color: #F2E7AB;
-    color: #010101;
-
-}
-/*welcome-msg.html.php*/
-#clash-of-clans > #welcome-msg > h2 {
-    color: #F2E7AB;
-}
-#clash-of-clans > #welcome-msg > p {
-    padding: 1% 5% 1% 5%;;
-}
-#clash-of-clans #welcome-msg .list-group {
-    margin: 50px;
-}
-/*footer.html.php*/
-#clash-of-clans #footer h2 {
-    color: #F2E7AB;
-}
-/*lovetorub16.html.php*/
-#coc-lovetorub-div > .list-group > .list-group-item {
-    color: #F2E7AB;
-}
-#coc-lovetorub-div > .list-group > .list-group-item:hover {
-    color: initial;
-}
-/*marshall.html.php*/
-#coc-marshall-div > .list-group > .list-group-item {
-    color: #F2E7AB;
-}
-#coc-marshall-div > .list-group > .list-group-item:hover {
-    color: initial;
 }
