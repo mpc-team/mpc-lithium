@@ -72,7 +72,8 @@ class ForumController extends \lithium\action\Controller {
 		
 		foreach ($data['categories'] as $ckey => $category) 
 		{
-			usort($data['categories'][$ckey]['forums'], array('self', 'forum_sort'));
+            if (array_key_exists('forums', $data['categories'][$ckey]) && $data['categories'][$ckey]['forums'] != null)
+			    usort($data['categories'][$ckey]['forums'], array('self', 'forum_sort'));
 		}
 		
 		return compact('authorized', 'breadcrumbs', 'data');

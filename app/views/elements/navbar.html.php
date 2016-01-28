@@ -48,29 +48,31 @@ $forumsByCategory = Forums::GetByCategory();
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
                 <ul class='dropdown-menu columns-3'>
-                    <div class="row">
+                    <?php $counterToSeparateColumns = 0; ?>
+                    <?php foreach ($forumsByCategory as $cid => $category): ?>
+                        <?php if ($counterToSeparateColumns % 2 == 0): ?>
+                            <div class='row'>
+                        <?php endif; ?>
 
-                        <?php foreach ($forumsByCategory as $cid => $category): ?>
-                            <?php if ($category['name'] == 'General'): ?>
-                                <div class="col-sm-3">
-                            <?php elseif ($category['name'] == 'Gaming'): ?>
-                                <div class="col-sm-5">
-                            <?php elseif ($category['name'] == 'Community'): ?>
-                                <div class="col-sm-4">
-                            <?php endif; ?>
-                                <h4><?= $category['name'] ?></h4>
-                                <ul class="multi-column-dropdown">
-                                    <?php foreach ($category['forums'] as $forum): ?>
-                                        <li>
-                                            <a href='/board/view/<?= $forum['id'] ?>'>
-                                                <?= $forum['name'] ?>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
+                        <div class="col-sm-6">
+
+                            <h4><?= $category['name'] ?></h4>
+                            <ul class="multi-column-dropdown">
+                                <?php foreach ($category['forums'] as $forum): ?>
+                                    <li>
+                                        <a href='/board/view/<?= $forum['id'] ?>'>
+                                            <?= $forum['name'] ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+
+                        <?php if ($counterToSeparateColumns % 2 == 1): ?>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
+                        <?php endif; ?>
+                        <?php $counterToSeparateColumns++; ?>
+                    <?php endforeach; ?>
                 </ul>
 			</li>
 			
