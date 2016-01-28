@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use lithium\security\Auth;
 use app\models\Users;
+use app\models\Categories;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Posts;
@@ -28,11 +29,13 @@ class ThreadController extends ContentController
 			return $this->redirect('/forum');
 			
 		$forum = Forums::Get($thread['fid']);
+        $category = Categories::Get($forum['cid']);
 		$breadcrumbs = array(
-			'path' => array("MPC", "Forum", $forum['name'], $thread['name']),
+			'path' => array("MPC", "Forum", $category['name'], $forum['name'], $thread['name']),
 			'link' => array(
 				"/",
 				"/forum", 
+                "/forum#{$category['name']}",
 				"/board/view/{$forum['id']}", 
 				"/thread/view/{$this->request->id}"
 			)
@@ -45,6 +48,7 @@ class ThreadController extends ContentController
 
 		$data = array(
 			'thread' => $thread,
+            'category' => $category,
 			'forum' => $forum,
 			'posts' => Posts::GetByThread($this->request->id),
 			'replyform' => array(

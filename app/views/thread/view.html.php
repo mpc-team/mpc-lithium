@@ -60,7 +60,8 @@ EOD;
 ?>
 <div class="row forum-header">
 	<h1 style="margin-bottom: 10px;">
-		<div><?= $data['thread']['name'] ?></div>
+        <div class='forum-context-title'><?= $data['forum']['name'] . ' ' . $data['category']['name'] ?></div>
+		<div class='forum-title'><?= $data['thread']['name'] ?></div>
 		<small>
 			<div><?= $data['forum']['name'] ?> Forum</div>
 		</small>

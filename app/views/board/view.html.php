@@ -33,7 +33,8 @@ $features = function($tid, $options)
 ?>
 <div class="row forum-header">
 	<h1 style='margin-bottom: 15px;'>
-		<div><?= $data['forum']['name'] ?></div>
+        <div class='forum-context-title'><?= $data['category']['name'] ?></div>
+		<div class='forum-title'><?= $data['forum']['name'] ?></div>
 		<small>
 			<div>Topics</div>
 		</small>

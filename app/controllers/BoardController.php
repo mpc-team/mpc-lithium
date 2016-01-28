@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use lithium\security\Auth;
 use app\models\Users;
+use app\models\Categories;
 use app\models\Forums;
 use app\models\Threads;
 use app\models\Posts;
@@ -21,11 +22,13 @@ class BoardController extends ContentController {
 			$this->_render['layout'] = 'forum';
 			if ($forum = self::verify_access($authorized, '\app\models\Forums', $this->request->id)) 
 			{
+                $category = Categories::Get($forum['cid']);
 				$breadcrumbs = array(
-					'path' => array("MPC", "Forum", stripslashes($forum['name'])),
-					'link' => array("/", "/forum", "/board/view/{$this->request->id}")
+					'path' => array("MPC", "Forum", $category['name'], stripslashes($forum['name'])),
+					'link' => array("/", "/forum", "/forum#{$category['name']}", "/board/view/{$this->request->id}")
 				);
 				$data['forum'] = $forum;
+                $data['category'] = $category;
 				$data['threads'] = Threads::GetByForum($this->request->id);
 				$data['permissions'] = ($authorized) ? array('create') : array();
 				foreach ($data['threads'] as $key => $thread) 

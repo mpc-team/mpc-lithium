@@ -30,6 +30,17 @@
     font-variant: small-caps;*/
 }
 
+.forum-context-title
+{
+    color: #444;
+    margin-bottom: -25px;
+}
+
+.forum-title
+{
+    font-size: 72pt;
+}
+
 .quote-content
 {
     padding: 5px 20px 5px 20px;
