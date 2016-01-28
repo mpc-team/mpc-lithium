@@ -20,7 +20,7 @@
 .forum h1
 {
     /*font-variant: small-caps;*/
-    font-size: 350%;
+    /*font-size: 350%;*/
 }
 
 .forum-thread h4 .name,
@@ -140,11 +140,21 @@ a.btn-forum:hover
     font-size: 14pt;
 }
 
+.forum .row > h1 > small > .subtitle
+{
+    margin-top: -20px;
+    font-weight: 700;
+}
+
 .forum .categories
 {
-
+    padding-top: 20px;
     padding-bottom: 50px;
+}
 
+.forum .categories h3
+{
+    font-size: 30pt;
 }
 
 .forum .categories .count

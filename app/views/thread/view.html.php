@@ -66,9 +66,6 @@ EOD;
             <?= $data['forum']['name'] ?>
         </div>
 		<div class='forum-title'><?= $data['thread']['name'] ?></div>
-		<small>
-			<div><?= $data['forum']['name'] ?> Forum</div>
-		</small>
 	</h1>
 	<div class="col-xs-6">
 		Created by

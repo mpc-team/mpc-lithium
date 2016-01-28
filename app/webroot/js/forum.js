@@ -92,8 +92,8 @@ forum.hits.init = function ()
 	});
 };
 
-$(document).ready( function () {
-
+$(document).ready(function ()
+{
 	texttags.init(UI_UPDATE_CONTENT);
 
 	forum.hits.init( );

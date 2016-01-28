@@ -7,6 +7,9 @@ $this->title('Forum');
 $self = $this;
 
 ?>
+
+<h1>Forums</h1>
+
 <div class="row">
 	<h3 style="margin-top:0; margin-bottom:10px">Recent Activity</h3>
 </div>
@@ -21,21 +24,9 @@ $self = $this;
 	)?>
 </div>
 
-<div class="row page-header">
-	<h1 style="margin-top: 20px; margin-bottom: 10px;">
-		<div class="title">
-			Forum 
-		</div>
-		<small>
-			<div class="subtitle">
-				Categories
-			</div>
-		</small>
-	</h1>
-</div>
 <div class="categories">
 	<?php foreach ($data['categories'] as $category): ?>
-        <section id="<?= $category['name'] ?>">
+        <section id="<?= $category['name'] ?>" class="offset">
             <?php if (array_key_exists('forums', $category)): ?>
 		        <div class="row">
 			        <div class="name">

@@ -105,6 +105,11 @@ a h5
     margin: 0px;
 }
 
+.content > h1
+{
+    font-size: 70pt;
+}
+
 .btn.btn-icon-only
 {
     padding: 1px 10px;
