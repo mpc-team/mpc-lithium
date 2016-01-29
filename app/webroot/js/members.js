@@ -79,7 +79,7 @@ members.ui.renderMembers = function (users)
 	var alternate = true;
 	
 	users = $.map(users, function (property) { return property; });
-	users.sort(function (a, b) { return (a.alias < b.alias) ? -1 : 1; });
+	users.sort(function (a, b) { return (a.alias.toLowerCase() < b.alias.toLowerCase()) ? -1 : 1; });
 
 	for (index in users)
 	{
