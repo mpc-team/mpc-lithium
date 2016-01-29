@@ -794,4 +794,14 @@ a .panel-recentfeed h3
 #starcraft2lotv .text-indent {
     text-indent: 50px;
 }
-
+#starcraft2lotv #castershowchat-vaevictissc-collapsebtn {
+    background-color: #fff;
+    border: 1px #00fff;
+    color: #000;
+    width: 80%;
+    margin-left: 55px;
+}
+#starcraft2lotv #trumpsrevenger-bannerimg {
+    margin: auto;
+    box-shadow: 1px 1px 10px #aaffaa;
+}
