@@ -34,9 +34,7 @@ class UsersAPI extends ContentController
             $members = Users::All(null, $fields);
 
         if (isset($this->request->query['ext']) && $this->request->query['ext'])
-        {
             $this->GetExtendedUserInformation($members);
-        }
 
         return $this->render(array('json' => $members, 'status' => 200));
     }
