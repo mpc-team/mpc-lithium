@@ -42,26 +42,43 @@ $self = $this;
     </div>
     <!--row-->
     <h3>
-        Seadog's Game
+        sEadogsc2's Games
         <small>a SC2 Arcade Game</small>
     </h3>
     <div class="row">
-        <a>
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <img src="/img/sc2/trumpsrevenge-banner.png" alt="trumpsrevenger-banner.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" />
-                    </div>
-                    <div class="panel-body" style="margin: 15px;">
-                        <button type="button" data-toggle="collapse" data-target="#trumpshow" aria-expanded="false" aria-controls="trumpshow" style="color: #000; margin-bottom: 5px;">View Description</button>
-                        <div class="collapse" id="trumpshow">
-                            <small>Genre: Survival</small>
-                            <p class="text-indent">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten. Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
+        <div class="col-md-6">
+            <a>
+                <div class="panel-group">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <img src="/img/sc2/trumpsrevenge-icon.png" alt="trumpsrevenger-banner.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" style="box-shadow: none;" />
+                        </div>
+                        <div class="panel-body" style="margin: 15px;">
+                            <button type="button" data-toggle="collapse" data-target="#trumpshow" aria-expanded="false" aria-controls="trumpshow" style="color: #000; margin-bottom: 5px;">View Description</button>
+                            <div class="collapse" id="trumpshow">
+                                <small>Genre: Survival</small>
+                                <p class="text-indent">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten. Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Micro Tournament</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Coming Soon!</p>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Fall 2016</p>
+                    </div>
+                </div>           
+            </a>
+        </div>
     </div>
 
     <!--row-->
@@ -129,16 +146,16 @@ $self = $this;
                                 <br />
                             </div>
                         </div>                
-                    </div>
-                </a>
-            </div>
-        </div>
-         <!--row-->
-        <h3>
-            MPC Casters
-            <small>
-                SC2 Community
-            </small>
+                    </div>                
+                </div>
+            </a>
+        </div><!--col-6-->
+    </div><!--row-->
+      <h3>
+        MPC Casters
+        <small>
+            SC2 Community
+        </small>
         </h3>
         <div class="row">
             <div class="col-md-12">
@@ -152,7 +169,7 @@ $self = $this;
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                     <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                                        <div class="row" style="padding-top: 5%; padding-left: 8%;">
                                         <div class="embed-responsive embed-responsive-16by9">
                                             <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=vaevictissc"></iframe>
                                         </div>                
@@ -173,13 +190,31 @@ $self = $this;
                 </div>
             </a>
         </div>
-    </div>
     <script>
         $('#starcraft2lotv .preventdefault .panel').mouseover(function() {
            event.preventdefault(); 
            $(this).css('background-color','#fff');
         });
     </script>
+    <h3>
+        Official Website
+        <small>Blizzard Entertainment</small>
+    </h3>
+    <div class="row">
+        <a href="http://us.battle.net/sc2/en/legacy-of-the-void/" target="_blank">
+            <div class="panel">
+                <div class="panel-heading">
+                    <img src="/img/sc2/officialwebsite.png" alt="officialwebsite.png" class="img-rounded img-responsive" id="sc2-officialwebsite-png" />
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title">See the Starcraft 2 Official Website</h3>
+                </div>
+                <div class="panel-footer">
+                    <p>http://us.battle.net/sc2/en/legacy-of-the-void/</p>
+                </div>
+            </div>
+        </a>
+    </div>
     <!--hidden objects-->
         <div class="modal fade" id="clanwarsmodal" tabindex="-1" role="dialog" aria-labelledby="clanwarsmodal-label">
           <div class="modal-dialog" role="document">
