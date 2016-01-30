@@ -1,7 +1,4 @@
 <div class="row">
-    <a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">
-        <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded coc-img-center" style="margin-bottom: 5%;" />
-    </a>
     <p><a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">View Rules</a></p>
     <div class="collapse" id="coc-clanrules-drpdwnbtn">
         <ul class="list-group">
@@ -11,15 +8,16 @@
                 Use Discord APP.
             </li>
             <li role="presentation" class="list-group-item">
-                If you need to connect to MPC HQ, click the Connect button on the Discord App below.
+                Have a proper target selected; that you can realistically clear a three star base.
             </li>
             <li role="presentation" class="list-group-item">
-                If you're opted into a clan war, you must show up, or let us know to opt-out as soon as possible.
+                Plan your army, and attack with a leader. 
             </li>
             <li role="presentation" class="list-group-item">
-                Ask for Help when needed, or see our
-                <a href="#">tutorial video</a>
-                on how to setup Discord on any device.
+                Call your attack on clash caller, and execute the planned attack in the first four hours of war.
+            </li>
+            <li role="presentation" class="list-group-item">
+                When war begins, use both attacks with the first four hours, or notify an offier when you can possible attack, or ASAP. 
             </li>
             <li role="presentation" class="list-group-item">
                 Best Behavoir, and respectiable kindness to members, and hard working Officers.

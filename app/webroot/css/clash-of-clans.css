@@ -17,10 +17,19 @@
 #clash-of-clans img {
     margin: auto;
     box-shadow: 1px 1px 10px #FAF1BF;
+    width: 100%;
 }
 #clash-of-clans img:hover{
     box-shadow: 1px 1px 20px #FAF1BF;
 }
 #clash-of-clans .panel-group a .panel .panel-footer {
     color: #FAF1BF;
+}
+#clash-of-clans #coc-clanrules-drpdwnbtn .list-group-item {
+    color: #FAF1BF;
+    background-color: #000;
+}
+#clash-of-clans #coc-clanrules-drpdwnbtn .list-group-item:hover {
+    color: #000;
+    background-color: #FAF1BF;
 }
