@@ -14,7 +14,13 @@ use app\models\Permissions;
 
 class UsersAPI extends ContentController
 {
-    
+ 
+    // The number of days before Users are no longer considered "new members".
+    const NEW_MEMBER_DAYS = 7;
+
+    /* User Information
+    -------------------------------------------------------------------------------------------------------- */
+   
     /**
      * Returns a list of all the Users with options.
      *
@@ -38,6 +44,9 @@ class UsersAPI extends ContentController
 
         return $this->render(array('json' => $members, 'status' => 200));
     }
+
+    /* User Messages
+    -------------------------------------------------------------------------------------------------------- */
 
     /**
      * Returns a list of Messages sent to a specified User.
@@ -85,7 +94,8 @@ class UsersAPI extends ContentController
             return $this->Authenticated();
     }
 
-//--------------------------------------------------------------------------------------
+    /* Authentication
+    -------------------------------------------------------------------------------------------------------- */
 
     /**
      * Authenticates with specified credentials.
@@ -110,6 +120,9 @@ class UsersAPI extends ContentController
             return $this->render(array('json' => null, 'status' => 200));
     } 
 
+    /* Extended User Information
+    -------------------------------------------------------------------------------------------------------- */
+
     /**
      * Get extended information for a list of Users. Information is
      * directly inserted into the passed array in the appropriate position.
@@ -118,17 +131,30 @@ class UsersAPI extends ContentController
      */
     private function GetExtendedUserInformation (&$users)
     {
+        $today = strtotime(date('Y-m-d H:i:s'));
+
         foreach ($users as $key => $user)
         {
+            // Find User's avatar image.
             $userData = Users::Get($user['id'], Users::$FIELDS_PRIVATE);
-            $playedGames = UserGames::GetPlayedGames($user['id']);
             $users[$key]['avatar'] = Users::FindAvatarFile($userData['email']);
+
+            // Calculate if the User is new based on the number of days since creation.
+            $daysSinceJoined = $today - strtotime($users[$key]['tstamp']);
+            $daysSinceJoined = $daysSinceJoined / 86400.0;
+            $users[$key]['newuser'] = $daysSinceJoined < self::NEW_MEMBER_DAYS;
+            
+            // Add Games played by the User.
+            $playedGames = UserGames::GetPlayedGames($user['id']);
             $users[$key]['games'] = array();
             foreach ($playedGames as $userGame)
-            {
                 array_push($users[$key]['games'], Games::Get($userGame['gid']));
-            }
         }
+    }
+
+    private function IsNewUser ($user)
+    {
+        
     }
 
 }

@@ -75,7 +75,6 @@ EventsCalendar.Insert = function (calendar, title, start, end)
 		'start': start,
 		'end': end,
 	};
-	console.log(event);
 	calendar['events'].push(event);
 }
 
@@ -101,16 +100,14 @@ EventsCalendar.CreateDefault = function ()
 	return obj;
 }
 
-//----------------------------------------------------------------------------------------------------------
+/* Initialization
+---------------------------------------------------------------------------------------------------- */
 
-// Initialization.
 $(function ()
 {
 	// Populate Current Events.
 	EventsCalendar.RequestEvents(function (events)
 	{
-		console.log(events);
-
 		var calendar = EventsCalendar.CreateDefault();
 		for (key in events)
 		{

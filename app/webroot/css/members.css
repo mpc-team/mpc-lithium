@@ -3,3 +3,35 @@
 {
     font-size: 9pt;
 }
+
+/* Member Table
+-------------------------------------------------------------------------------- */
+
+.members tr.row
+{
+    border: 1px solid transparent;
+    background-color: #2a2a2a;
+}
+
+.members tr.row.alt
+{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* New Member Graphics
+-------------------------------------------------------------------------------- */
+
+.members tr.row.new
+{
+    border: 2px solid #aaffaa;
+    background-color: #445544;
+}
+
+.members tr.row.new .name > .badge
+{
+    float: right;
+    font-size: 12pt;
+    margin-top: 2px;
+    background: #1a2a1a;
+    color: #aaffaa;
+}

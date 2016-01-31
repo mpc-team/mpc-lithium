@@ -282,16 +282,6 @@ span.input-group-addon
     margin-top: 0;
 }
 
-.members tr.row.alt
-{
-    background-color: rgba(0, 0, 0, 0.75);
-}
-
-.members tr.row
-{
-    background-color: #2a2a2a;
-}
-
 button.active:hover img
 {
     /*-webkit-filter: brightness(1.6) hue-rotate(25deg);*/

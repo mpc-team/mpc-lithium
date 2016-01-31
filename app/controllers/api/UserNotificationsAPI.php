@@ -97,7 +97,9 @@ class UserNotificationsAPI extends ContentController
         return $this->render(array('json' => $deleted, 'status' => 200));
     }
 
-# ------------------------------------------------------------------------------------------------------
+
+    /* Internal Behavior
+    ------------------------------------------------------------------------------------------------ */
 
     /**
      * Retrieve Post-related Notification data for the authorized User.

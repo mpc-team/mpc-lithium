@@ -6,11 +6,8 @@
  */
 var members = {};
 
-//----------------------------------------------------------------------------------------------------------
-//
-//		NETWORK UPDATES
-//
-//----------------------------------------------------------------------------------------------------------
+/* Network Updates
+------------------------------------------------------------------------------------------------------------ */
 
 members.games = {};
 members.games.list = [];
@@ -44,11 +41,8 @@ members.users.update = function (additionalCallback)
 	});
 }
 
-//----------------------------------------------------------------------------------------------------------
-//
-//		UI FUNCTIONS
-//
-//----------------------------------------------------------------------------------------------------------
+/* UI Functions
+------------------------------------------------------------------------------------------------------------ */
 
 members.ui = {};
 
@@ -79,11 +73,23 @@ members.ui.renderMembers = function (users)
 	var alternate = true;
 	
 	users = $.map(users, function (property) { return property; });
-	users.sort(function (a, b) { return (a.alias.toLowerCase() < b.alias.toLowerCase()) ? -1 : 1; });
+
+	console.log(users);
+
+	users.sort(function (a, b)
+	{
+		var dates = { 'a': new Date(a.tstamp), 'b': new Date(b.tstamp) };
+
+		// Sort so that the newest members appear at the front of the list.
+		return (dates.a > dates.b) ? -1 : 1;
+	});
 
 	for (index in users)
 	{
-		html += (alternate) ? "<tr class='row alt'>" : "<tr class='row'>";
+		html += "<tr class='row";
+		if (alternate) html += " alt";
+		if (users[index].newuser) html += " new";
+		html += "'>";
 		alternate = !alternate;
 		html += members.ui.alias.stringify(users[index]);
 		if ('email' in users[index])
@@ -159,6 +165,10 @@ members.ui.alias.stringify = function (object)
 	result += "<div class='name'>";
 	result += "<span class='glyphicon glyphicon-user'></span> ";
 	result += object.alias;
+
+	if (object.newuser)
+		result += "<span class='badge'>New Member</span>";
+
 	result += "</div>";
 	result += "</a>";
 
@@ -197,11 +207,8 @@ members.ui.games.stringify = function (object)
 	return result;
 }
 
-//----------------------------------------------------------------------------------------------------------
-//
-//		FILTER FUNCTIONS
-//
-//----------------------------------------------------------------------------------------------------------
+/* List Filtering Functions
+------------------------------------------------------------------------------------------------------------ */
 
 members.list = {};
 members.list.filtertypes = {};
@@ -290,11 +297,8 @@ members.list.filterByGames = function (users, games)
 	return filtered;
 }
 
-//----------------------------------------------------------------------------------------------------------
-//
-//		UPDATE
-//
-//----------------------------------------------------------------------------------------------------------
+/* Members Update
+------------------------------------------------------------------------------------------------------------ */
 
 /**
  * Updates the Members UI to reflect the controls applied by the User. We don't need to actually
@@ -331,11 +335,8 @@ members.updateMembers = function ()
 	members.ui.renderMembers(filteredUsers);
 }
 
-//----------------------------------------------------------------------------------------------------------
-//
-//		INITIALIZATION
-//
-//----------------------------------------------------------------------------------------------------------
+/* Initialization
+------------------------------------------------------------------------------------------------------------ */
 
 //Initialization.
 $(function ()

@@ -380,6 +380,7 @@ hr.fc-divider {
 
 .fc th {
 	text-align: center;
+    font-size: 12pt;
 }
 
 .fc th,
@@ -625,6 +626,13 @@ be a descendant of the grid when it is being dragged.
 	white-space: nowrap;
 	overflow: hidden;
     padding: 4px;
+    font-size: 6pt;
+}
+
+@media (min-width: 500px) {
+    .fc-day-grid-event .fc-content {
+        font-size: 12pt;
+    }
 }
 
 .fc-day-grid-event .fc-time {
@@ -768,8 +776,8 @@ a.fc-more:hover {
 }
 
 .fc-basic-view .fc-body .fc-row {
-    max-height: 100px;
-	min-height: 4em; /* ensure that all rows are at least this tall */
+    max-height: 200px;
+	min-height: 60px; /* ensure that all rows are at least this tall */
 }
 
 /* a "rigid" row will take up a constant amount of height because content-skeleton is absolute */
