@@ -70,7 +70,7 @@ $self = $this;
                     <?php foreach($cocCasters as $id => $displayName): ?>
                     <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
                         <div id="caster-<?= $id ?>-twitchdiv">
-                            <img src="/img/clash_of_clans/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
+                            <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
                             <div class="row" style="padding-top: 5%; padding-left: 8%;">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
@@ -91,7 +91,11 @@ $self = $this;
                 </div><!--tab content-->
             </div><!--panel body-->
             <div class="panel-footer">
-                
+                 <ul class="nav nav-tabs" role="tablist">
+                    <?php foreach($cocCasters as $id => $displayName): ?>
+                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
         </div>
     <h3>
@@ -148,7 +152,37 @@ $self = $this;
                         <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded" style="margin-bottom: 5%;" />
                     </div>
                     <div class="panel-body">
-                        <?= $this->view()->render(array('element' => 'clash_of_clans/rules')) ?>
+                        <div class="row">
+                            <p><a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">View Rules</a></p>
+                            <div class="collapse" id="coc-clanrules-drpdwnbtn">
+                                <ul class="list-group">
+                                    <li role="presentation" class="list-group-item">
+                                        If you plan on participating you
+                                        <b>MUST</b>
+                                        Use Discord APP.
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        Have a proper target selected; that you can realistically clear a three star base.
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        Plan your army, and attack with a leader. 
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        Call your attack on clash caller, and execute the planned attack in the first four hours of war.
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        When war begins, use both attacks with the first four hours, or notify an offier when you can possible attack, or ASAP. 
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        Best Behavoir, and respectiable kindness to members, and hard working Officers.
+                                    </li>
+                                    <li role="presentation" class="list-group-item">
+                                        Most Importantly Have fun.
+                                    </li>
+                                </ul>
+                            </div>    
+                        </div>
+
                     </div>
                     <div class="panel-footer">
                         <p>Updated: 01/30/2016</p>

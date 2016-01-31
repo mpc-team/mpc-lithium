@@ -740,7 +740,7 @@ a .panel-recentfeed h3
     margin-right: 20px;
 }
 
-#connectdiscord > .row > .col-md-7-offset > #discord-btns > .btn-edit, #connectdiscord > .row > .col-md-7-offset > .list-group li 
+#connectdiscord > .row > .col-md-8-offset > #discord-btns > .btn-edit, #connectdiscord > .row > .col-md-8-offset > .list-group li 
 {
     color: #fff;
     background-color: #738BD7;
@@ -749,7 +749,7 @@ a .panel-recentfeed h3
     margin: 2px 2px 2px 2px;
 }
 
-#connectdiscord > .row > .col-md-7-offset > .list-group li {
+#connectdiscord > .row > .col-md-6-offset > .list-group li {
     
 }
 #closeserver-btn 

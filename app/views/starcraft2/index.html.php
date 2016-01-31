@@ -152,50 +152,58 @@ $self = $this;
         </div><!--col-6-->
     </div><!--row-->
       <h3>
-        MPC Casters
-        <small>
-            SC2 Community
-        </small>
-        </h3>
-        <div class="row">
-            <div class="col-md-12">
-                <a class="preventdefault">
-                    <div class="panel-group">
-                            <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    MPC Caster - VaevictisSC
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                        <div class="row" style="padding-top: 5%; padding-left: 8%;">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=vaevictissc"></iframe>
-                                        </div>                
-                                        <a role="button" class="btn btn-lg" href="#casterchat-vaevictissc-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-vaevictissc-collapse" id="castershowchat-vaevictissc-collapsebtn">Show Chat</a>
-                                    </div>
-                                    <div class="collapse text-center" id="casterchat-vaevictissc-collapse" style="padding-top: 5%; padding-left: 8%;">
-                                        <div class="embed-responsive embed-responsive-4by3">
-                                            <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/vaevictissc/chat?popout=">
-                                            </iframe>
-                                        </div>
-                                        <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/vaevictissc" target="_blank">Page</a>.</p>
-                                    </div>    
-                                    <!--<span class="glyphicon glyphicon-arrow-down" style="margin-left: 50%;"></span>-->
-                                </div>
-                            </div>                
-                        </div>
+        MPC on Twitch T.V.
+        <small><?= $this->title ?></small>
+    </h3>
+    <?php 
+        
+        $sc2Casters = array('vaevictissc' => 'VaeVictisSC', 'seadogsc2' => 'sEadogSC2'); 
+        
+    ?>
+        <div class="panel">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs" role="tablist">
+                    <?php foreach($sc2Casters as $id => $displayName): ?>
+                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div><!--panelheading-->
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tabpanel" class="tab-pane fade in"> 
+                        <h3>Select a Caster Above...</h3>
                     </div>
-                </div>
-            </a>
+                    <?php foreach($sc2Casters as $id => $displayName): ?>
+                    <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
+                        <div id="caster-<?= $id ?>-twitchdiv">
+                            <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
+                            <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
+                                </div><!--embed video-->              
+                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000; width: 80%; margin-left: 40px;">Show Chat</a>
+                            </div><!--row-->
+
+                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%; padding-left: 8%;">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/<?= $id ?>/chat?popout=">
+                                    </iframe>
+                                </div><!--embed chat-->
+                                <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/<?= $id ?>" target="_blank">Page</a>.</p>
+                            </div><!--Collapse Div-->
+                        </div> <!-- Caster ID -->
+                    </div><!--tab panel-->
+                    <?php endforeach; ?>
+                </div><!--tab content-->
+            </div><!--panel body-->
+            <div class="panel-footer">
+                 <ul class="nav nav-tabs" role="tablist">
+                    <?php foreach($sc2Casters as $id => $displayName): ?>
+                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
         </div>
-    <script>
-        $('#starcraft2lotv .preventdefault .panel').mouseover(function() {
-           event.preventdefault(); 
-           $(this).css('background-color','#fff');
-        });
-    </script>
     <h3>
         Official Website
         <small>Blizzard Entertainment</small>
