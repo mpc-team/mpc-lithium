@@ -24,7 +24,7 @@
 .members tr.row.new
 {
     border: 2px solid #aaffaa;
-    background-color: #445544;
+    background-color: #1C211C;
 }
 
 .members tr.row.new .name > .badge
@@ -34,4 +34,25 @@
     margin-top: 2px;
     background: #1a2a1a;
     color: #aaffaa;
+}
+
+/* Member Cards (User Tooltips)
+-------------------------------------------------------------------------------- */
+
+.members .user-tooltip
+{
+    position: absolute;
+    display: none;
+    z-index: 999;
+}
+
+.members .user-tooltip div
+{
+    height: auto;
+}
+
+.members .user-tooltip > div
+{
+    background-color: rgba(40, 40, 40, 0.95);
+    border-color: #444;
 }

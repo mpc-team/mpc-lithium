@@ -161,8 +161,9 @@ members.ui.alias.stringify = function (object)
 {
 	var memberSince = moment(object.tstamp).format('MMMM Do YYYY');
 	var result = "<td>";
-	result += "<a href='/user/view/" + object.id + "' onmouseover='tooltip.pop(this, \"#tooltip" + object.id + "\")'>";
-	result += "<div class='name'>";
+	//result += "<a id='member-" + object.id + "' href='/user/view/" + object.id + "' onmouseover='tooltip.pop(this, \"#tooltip" + object.id + "\")'>";
+	result += "<a href='/user/view/" + object.id + "'>";
+	result += "<div id='member-" + object.id + "' class='name' onmouseover='Tooltip.OnMouseOver(this.id)'>";
 	result += "<span class='glyphicon glyphicon-user'></span> ";
 	result += object.alias;
 
@@ -172,19 +173,28 @@ members.ui.alias.stringify = function (object)
 	result += "</div>";
 	result += "</a>";
 
-	result += "<div class='tooltip-container' style='display:none'>";
-	result += "<div id='tooltip" + object.id + "'>";
-	result += "<a href='/user/view/" + object.id + "'>" + "<h2>" + object.alias + "</h2>" + "</a>";
+	result += "<div id='member-" + object.id + "-tooltip' class='user-tooltip'>"
+	result += "<div class='panel panel-default'>";
+
+	result += "<div class='row'>";
+	result += "<a href='/user/view/" + object.id + "'>";
+	result += "<h2>" + object.alias + "</h2>" + "</a>";
 	if ('email' in object)
 		result += "<h2><small>" + object.email + "</small></h2>";
-	else
-		result += "<br />";
-	result += "Member since <b>" + memberSince + "</b>";
-	result += "<img src='" + object.avatar + "' style='width: 300px'></img>";
-	result += "</div>";
 	result += "</div>";
 
+	result += "<div class='row'>";
+	result += "Member since <b>" + memberSince + "</b>";
+	result += "</div>";
+
+	result += "<div class='row'>";
+	result += "<img src='" + object.avatar + "' style='width: 300px'></img>";
+	result += "</div>";
+
+	result += "</div>";
+	result += "</div>";
 	result += "</td>";
+
 	return result;
 }
 
