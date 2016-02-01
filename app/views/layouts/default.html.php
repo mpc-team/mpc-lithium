@@ -47,7 +47,7 @@ use app\views\layouts\LayoutConstants;
         'utils/jquery.nanoscroller',
         'utils/EventsCalendar',
         'utils/AreYouSure',
-        'utils/tooltip',
+        'utils/tooltip/Tooltip',
         'user/user',
         'user/auth',
         'user/notification',
