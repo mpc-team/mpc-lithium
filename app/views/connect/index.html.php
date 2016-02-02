@@ -25,7 +25,7 @@ $self = $this;
               <a role="button" class="btn btn-edit" href="https://discordapp.com/apps" target="_blank">Download</a>
               <a role="button" class="btn btn-edit" href="https://www.youtube.com/channel/UCZ5XnGb-3t7jCkXdawN2tkA/videos" target="_blank">YouTube</a>
             </div><!--btngroup-->
-            <ul class="list-group pull-left" id="discord-directionlist" style="margin: 5px 20px 0 0;">
+            <ul class="list-group pull-left" id="discord-directionlist" style="margin: 5px 20px 5px 0;">
                 <li class="list-group-item">
                     1) Click Show, or Connect.
                 </li>
@@ -45,18 +45,42 @@ $self = $this;
 </div><!--discord-->
 <div id="connect-twitch">
     <div class="row">
-        //img
+        <img src="/img/connect/twitch-banner.png" class="img-rounded img-responsive" id="connect-twitchbanner-png" />
     </div>
     <div class="row">
-        panelhead//buttons tab navs of casters
-
-        panelbody//collapse casters
-
-        panelfoot//butons tab navs of casters
-    </div>
-</div>
+        <div class="panel">
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="#" role="button" data-toggle="collapse" data-parent="#caster-accordion" href="#caster-1-collapse" aria-expanded="false" aria-controls="caster-1-collapse">Person1</a></li>
+                    <li role="presentation"><a href="#" role="button" data-toggle="collapse" data-parent="#caster-accordion" href="#caster-2-collapse" aria-expanded="false" aria-controls="caster-2-collapse">Person2</a></li>
+                    <li role="presentation"><a href="#" role="button" data-toggle="collapse" data-parent="#caster-accordion" href="#caster-3-collapse" aria-expanded="false" aria-controls="caster-3-collapse">Person3</a></li>
+                </ul>
+            </div><!--head-->
+            <div class="panel-body">
+                <div class="panel-group" id="caster-accordion" role="tablist" aria-multiselectable="true">
+                    <div id="caster-1-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse--heading">
+                    one
+                    </div>
+                    <div id="caster-2-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse--heading">
+                        two
+                    </div>
+<div id="caster-3-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse--heading">
+                three
+                    </div>
+                </div><!--multi select collapseable-->
+            </div><!--body-->
+            <div class="panel-footer">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="#">button</a></li>
+                    <li role="presentation"><a href="#">follow</a></li>
+                    <li role="presentation"><a href="#">share</a></li>
+                    <li role="presentation"><a href="#">url</a></li>
+                </ul>
+            </div><!--foot-->
+        </div><!--panel-->
+    </div><!--row-->
+</div><!--connect-twitch-->
 <script>
-
     $(function(){
         $('#serverstatus-collapse').on('show.bs.collapse', function(){
             $('#discord-directionlist').removeClass('pull-left');
