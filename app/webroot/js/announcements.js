@@ -63,7 +63,7 @@ announcements.ui.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";
-	result += markup.process(object.content, markup.NORMAL);
+	result += markup.process(object.content, markup.NORMAL | markup.MARKDOWN);
 	result += "</div>";
 	result += "<div class='content-edit' data-id='" + object.id + "'>";
 	result += "<textarea type='text' class='form-control' data-id='" + object.id + "'>";

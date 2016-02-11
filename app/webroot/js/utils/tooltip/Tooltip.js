@@ -32,10 +32,6 @@ Tooltip.GetElemTooltipId = function (tooltipid)
 /* UI Functions
 -------------------------------------------------------------------------------- */
 
-/* Whether a Tooltip is currently being displayed. Multiple Tooltips shouldn't
- * be shown on the page at the same time. */
-Tooltip.GlobalExists = false; // Set to True for tests.
-
 /* Keep a reference to the expiry timer so we can interrupt it if necessary. */
 Tooltip.ExpiryTimeout = null;
 
@@ -59,7 +55,6 @@ Tooltip.Render = function (targetid, tooltipid)
 	$(tooltipid).css('width', 'auto');
 
 	// Configure Tooltip to be setup.
-	Tooltip.GlobalExists = true;
 	Tooltip.CurrentElement = tooltipid;
 }
 
@@ -67,8 +62,6 @@ Tooltip.Expire = function (tooltipid)
 {
 	$(tooltipid).css('display', 'none');
 
-	// Set GlobalExists false after expiry.
-	Tooltip.GlobalExists = false;
 	Tooltip.CurrentElement = null;
 }
 

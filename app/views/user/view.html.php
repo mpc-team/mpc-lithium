@@ -25,11 +25,19 @@ $self = $this;
     <hr />
 
 	<div class="row">
-		<div class="user-avatar-select">
-			<center>
-				<img id="user-avatar" src="<?= $avatar; ?>" />
-			</center>
-		</div>
+        <div class="col-md-4">
+            <span>
+                <h2><small>CLAN</small></h2>
+                <h1 id='user-profile-clan' style='margin-top: -10px'>None</h1>
+            </span>
+        </div>
+        <div class="col-md-8">
+		    <div class="user-avatar-select pull-left">
+                <div class="user-avatar-container">
+		            <img src="<?= $avatar; ?>" />
+                </div>
+		    </div>
+        </div>
 	</div>
 
     <hr />

@@ -95,9 +95,8 @@
         {
             $('.recentfeed-content').each(function (index)
             {
-				$(this).html(markup.process($(this).text(), markup.PREVIEW));
+				$(this).html(markup.process($(this).text(), markup.PREVIEW | markup.MARKDOWN));
             });
-
             $('.carousel-control').click(function ()
             {
                 $(this).blur();

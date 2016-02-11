@@ -1,6 +1,10 @@
 ﻿
+/* Types & Classes
+-------------------------------------------------------------------------------------------------------------------------------- */
+
 user.notifications = {};
-user.notifications.types = {
+user.notifications.types =
+{
 	post: 'post',
 	posthit: 'posthit',
 	announcement: 'announcement',
@@ -13,7 +17,8 @@ user.notifications.classes =
 	'dismiss-msg': 'btn-msg-dismiss',
 };
 
-//--------------------------------------------------------------------------------------
+/* Stringify Functions (Convert Objects to HTML Output)
+-------------------------------------------------------------------------------------------------------------------------------- */
 
 user.notifications.posts = {};
 user.notifications.posts.stringify = function (object)
@@ -32,7 +37,7 @@ user.notifications.posts.stringify = function (object)
 	html += "</div>";
 	html += "<div class='col-xs-9 content'>";
 	html += "<h3>" + object['post']['thread'] + "</h3>";
-	html += markup.process(object['post']['content'], markup.NORMAL);
+	html += markup.process(object['post']['content'], markup.NORMAL | markup.MARKDOWN);
 	html += "</div>";
 	html += "</div>";
 	html += "</a>";
@@ -43,7 +48,7 @@ user.notifications.posts.stringify = function (object)
 user.notifications.posthits = {};
 user.notifications.posthits.stringify = function (object)
 {
-	var html = "<li>";
+	var html = "<li class='user-notification-hit'>";
 	html += "<a href='/thread/view/" + object['posthit']['threadid'] + '#' + object['contentid'] + "'>";
 	html += "<div class='row'>";
 	html += "<h5>";
@@ -74,7 +79,7 @@ user.notifications.announcement.stringify = function (object)
 		html += "<h3>" + object['title'] + "</h3>";
 	else
 		html += "<h3>Announcement #" + object['id'] + "</h3>";
-	html += markup.process(object['content'], markup.PREVIEW);
+	html += markup.process(object['content'], markup.PREVIEW | markup.MARKDOWN);
 	html += "</div>";
 
 	html += "<div class='col-xs-2'>";
@@ -110,7 +115,8 @@ user.notifications.message.stringify = function (object)
 	return html;
 }
 
-//--------------------------------------------------------------------------------------
+/* Delete Notifications
+-------------------------------------------------------------------------------------------------------------------------------- */
 
 user.notifications.message.delete = function (identifier)
 {
@@ -140,7 +146,8 @@ user.notifications.message.onDismiss = function ()
 	user.notifications.message.delete($(this).attr('data-id'));
 }
 
-//--------------------------------------------------------------------------------------
+/* Update Elements
+-------------------------------------------------------------------------------------------------------------------------------- */
 
 user.notifications.updateListElements = function (htmlListClass)
 {
@@ -149,8 +156,6 @@ user.notifications.updateListElements = function (htmlListClass)
 	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row:nth-child(2) > .col-xs-3'));
 	user.notifications.updateMessageNotifications($(htmlListClass + ' > .row:nth-child(1)'));
 }
-
-//--------------------------------------------------------------------------------------
 
 user.notifications.updateCountElements = function (htmlClass)
 {
@@ -236,7 +241,8 @@ user.notifications.updateMessageNotifications = function (jqueryElement)
 	});
 }
 
-//--------------------------------------------------------------------------------------
+/* Initialization
+-------------------------------------------------------------------------------------------------------------------------------- */
 
 $(document).ready(function ()
 {

@@ -1,43 +1,12 @@
-#navbar-notifications .user-notification-list .nano
-{
-    height: 200px;
-}
 
-#navbar-notifications .user-notification-list
-{
-    padding: 5px;
-    min-width: 600px;
-}
-
-#navbar-notifications .user-notification-list .row
-{
-    /*padding-bottom: 5px;*/
-    word-break: break-word;
-}
-
-#navbar-notifications .user-notification-list > .row > .row
-{
-    max-height: 100px;
-    overflow: hidden;
-}
-
-#navbar-notifications .user-notification-list > .row > h4,
-#navbar-notifications .user-notification-list > .row > .col-xs-9 > div > h4
-{
-    margin: 0;
-    padding: 10px;
-    background: #111;
-}
 
 .page-header-nav .nav > li > a.navbar-brand
 {
     padding: 15px 15px
 }
 
-.user-notification-list .date
-{
-    font-size: 80%;
-}
+/* Navbar Dropdowns
+------------------------------------------------------------------------------------ */
 
 .multi-column-dropdown
 {
@@ -63,7 +32,15 @@
 	background-color: #333;
 }
 
-@media screen and (min-width: 500px)
+@media screen and (min-width: 720px)
+{
+    .dropdown-menu.columns-3
+    {
+        min-width: 600px;
+    }
+}
+
+@media screen and (max-width: 720px)
 {
     .dropdown-menu.columns-3
     {
@@ -84,25 +61,70 @@
 	font-weight: 300;
 }
 
-.dropdown-menu.user-notification-list > li > a
+/* User Notification List
+------------------------------------------------------------------------------------ */
+
+.user-notification-list .nano
+{
+    height: 200px;
+}
+
+.user-notification-list
+{
+    padding: 5px;
+    min-width: 600px;
+}
+
+.user-notification-list .row
+{
+    /*padding-bottom: 5px;*/
+    word-break: break-word;
+}
+
+.user-notification-list > .row > .row
+{
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.user-notification-list > .row > h4,
+.user-notification-list > .row > .col-xs-9 > div > h4
+{
+    margin: 0;
+    padding: 10px;
+    background: #111;
+}
+
+.user-notification-list .date
+{
+    font-size: 80%;
+}
+
+.user-notification-list > li > a
 {
     padding: 0;
 }
 
-.dropdown-menu.user-notification-list li > a:hover
+.user-notification-list li > a:hover
 {
     color: inherit;
 }
 
-.dropdown-menu.user-notification-list li > a > .row:hover
+.user-notification-list li > a > .row:hover
 {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/*.dropdown-menu.user-notification-list > li,*/
-.dropdown-menu.user-notification-list li > a > .row
+.user-notification-list li > a > .row
 {
     max-height: 100px;
-    min-height: 60px;
+    /*min-height: 60px;*/
     overflow-y: hidden;
+}
+
+.user-notification-list .user-notification-hit
+{
+    padding: 7px;
+    padding-top: 3px;
+    padding-bottom: 0px;
 }

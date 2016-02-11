@@ -35,6 +35,8 @@ use app\views\layouts\LayoutConstants;
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
         'bootstrap',
+        'highlight/highlight.pack',
+        'markdown-js/markdown.min',
         'utils/goTo',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
@@ -48,7 +50,6 @@ use app\views\layouts\LayoutConstants;
         'headerbar',
         'moment',
 		'field-selection',	
-        'members',
 		'validate',
 		'markup',
 	));?>

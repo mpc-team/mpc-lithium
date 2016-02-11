@@ -4,7 +4,6 @@ namespace app\models;
 
 class UserGames extends \lithium\data\Model  
 {
-
     /**
      * Checks if a specific Game is played by a specified User.
      *

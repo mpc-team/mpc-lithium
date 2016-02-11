@@ -31,8 +31,8 @@ $forumsByCategory = Forums::GetByCategory();
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 
-			<li id='navbar-members'>
-				<a title="Members" href='/members'>
+			<li id='navbar-community'>
+				<a title="Community" href='/community'>
                     <i class="fa fa-users"></i>
                 </a>
 			</li>
@@ -48,13 +48,14 @@ $forumsByCategory = Forums::GetByCategory();
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
                 <ul class='dropdown-menu columns-3'>
+                    <?php $columnsPerRow = 3; ?>
                     <?php $counterToSeparateColumns = 0; ?>
                     <?php foreach ($forumsByCategory as $cid => $category): ?>
-                        <?php if ($counterToSeparateColumns % 2 == 0): ?>
+                        <?php if ($counterToSeparateColumns % $columnsPerRow == 0): ?>
                             <div class='row'>
                         <?php endif; ?>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
 
                             <h4><?= $category['name'] ?></h4>
                             <ul class="multi-column-dropdown">
@@ -68,7 +69,7 @@ $forumsByCategory = Forums::GetByCategory();
                             </ul>
                         </div>
 
-                        <?php if ($counterToSeparateColumns % 2 == 1): ?>
+                        <?php if ($counterToSeparateColumns % $columnsPerRow == ($columnsPerRow - 1)): ?>
                             </div>
                         <?php endif; ?>
                         <?php $counterToSeparateColumns++; ?>

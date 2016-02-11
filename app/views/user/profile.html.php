@@ -55,11 +55,19 @@ if (isset($notification['status']))
     <?php endif; ?>
 
 	<div class="row">
-        <center>
-		    <div class="user-avatar-select">
+        <div class="col-md-4">
+            <span>
+                <h2><small>CLAN</small></h2>
+                <h1 id='user-profile-clan' style='margin-top: -10px'>None</h1>
+            </span>
+        </div>
+        <div class="col-md-8">
+		    <div class="user-avatar-select pull-left">
                 <div class="fs-container" data-id="1">
                     <button class="btn btn-edit fs-btn-modify" data-id="1">
-                        <img id="user-avatar" src="<?= $avatar; ?>" />
+                        <div class="user-avatar-container">
+                            <img src="<?= $avatar; ?>" />
+                        </div>
                         <div class="info">
                             Click to Change Avatar Image
                         </div>
@@ -132,11 +140,13 @@ if (isset($notification['status']))
                     </div>
                 </div>
 			    <div class='well well-sm'>
-				    <i class="fa fa-info-circle"></i>
-				    Supported formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
+                    <center>
+				        <i class="fa fa-info-circle"></i>
+				        Supported formats are <b>PNG</b>, <b>JPG</b>, and <b>JPEG</b>.
+                    </center>
 			    </div>
 		    </div>
-        </center>
+        </div>
 	</div>
 	
     <hr />

@@ -8,6 +8,27 @@
 // This is already defined in /user/wall
 var profile = {};
 
+/* User Clan
+------------------------------------------------------------------------------------------------ */
+
+profile.Clan = {};
+profile.Clan.PageElementId = "#user-profile-clan";
+
+profile.Clan.UpdatePageElement = function (userid)
+{
+	$.get('/api/users/single/' + userid + "?ext=true", null, function (response)
+	{
+		var text = "None";
+		if (response.clan != null)
+			text = response.clan.shortname;
+		
+		$(profile.Clan.PageElementId).html(text);
+	});
+}
+
+/* Player's Games
+------------------------------------------------------------------------------------------------ */
+
 profile.updateGameUI = function (gameid, status)
 {
 	if (status) 
@@ -77,18 +98,24 @@ profile.refreshGames = function (played)
 	});
 }
 
-//------------------------------------------------------------------------------------------
+/* Initialization
+------------------------------------------------------------------------------------------------ */
 
 profile.init = function (userid, played) 
-{	
+{
+	/* Initialize User Information */
+	profile.Clan.UpdatePageElement(userid);
+
 	profile.refreshGames(played);
 
+	/* Initialize User Messages */
 	profile.wall.refreshMessages(userid, true);
 	setInterval(function () 
 	{
 		profile.wall.refreshMessages(userid, false);
 	}, 10000);
 	
+	/* Initialize Game Buttons */
 	$(".profile-content .game button").click(function () 
 	{
 		var gameid = $(this).data('id');
@@ -98,6 +125,7 @@ profile.init = function (userid, played)
 			profile.updateGame(played, userid, gameid, true);
 	});
 
+	/* Initialize Wall */
 	$(".profile-content .wall .footer input[type='text']").keyup(function (event) 
 	{
 		if (event.keyCode == 13) 

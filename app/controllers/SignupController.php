@@ -45,7 +45,7 @@ class SignupController extends \lithium\action\Controller
 					) );
 					$confirm->save();
 					$data['member'] = $user->to('array');
-					Confirms::sendConfirmation($data['member'], $confirm->key);
+					Confirms::SendMemberConfirmationEmail($data['member']['email'], $confirm->key);
 				} else {
 					return $this->redirect('/signup');
 				}

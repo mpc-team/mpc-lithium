@@ -4,6 +4,17 @@
     font-size: 9pt;
 }
 
+/* Community Register Modal
+-------------------------------------------------------------------------------- */
+
+#register-clan-users
+{
+    min-height: 300px;
+    max-height: 300px;
+    border: 1px solid #444;
+    background-color: #111;
+}
+
 /* Member Table
 -------------------------------------------------------------------------------- */
 

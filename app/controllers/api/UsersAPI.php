@@ -7,6 +7,7 @@ use lithium\security\Auth;
 use app\controllers\ContentController;
 
 use app\models\UserGames;
+use app\models\UserClans;
 use app\models\Messages;
 use app\models\Users;
 use app\models\Games;
@@ -40,9 +41,38 @@ class UsersAPI extends ContentController
             $members = Users::All(null, $fields);
 
         if (isset($this->request->query['ext']) && $this->request->query['ext'])
-            $this->GetExtendedUserInformation($members);
+            $this->GetExtendedUsersInformation($members);
 
         return $this->render(array('json' => $members, 'status' => 200));
+    }
+
+    /**
+     * Returns a single User specified by an identifier.
+     *
+     * @param int $this->request->id User identifier.
+     * @param bool $this->request->query['ext'] Extended information of User.
+     *
+     * @return json Single Member properties.
+     */
+    public function single()
+    {
+        // Return 404 if the User identifier is not specified.
+        if (!isset($this->request->id))
+            return $this->render(array('json' => null, 'status' => 404));
+
+        // Decide fields to retrieve based on Authenticatino status.
+        $authorized = Auth::check('default');
+        $fields = ($authorized && Permissions::is_admin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
+        $fields = ($authorized && $authorized['id'] == $this->request->id) ? Users::$FIELDS_PRIVATE : $fields;
+
+        $user = Users::Get($this->request->id, $fields);
+        if (!$user)
+            return $this->render(array('json' => null, 'status' => 404));
+
+        if (isset($this->request->query['ext']) && $this->request->query['ext'])
+            $this->GetExtendedUserData($user);
+
+        return $this->render(array('json' => $user, 'status' => 200));
     }
 
     /* User Messages
@@ -129,32 +159,43 @@ class UsersAPI extends ContentController
      *
      * @param array $users List of Users. Passed by reference.
      */
-    private function GetExtendedUserInformation (&$users)
+    private function GetExtendedUsersInformation (&$users)
+    {
+        foreach ($users as $key => $user)
+            self::GetExtendedUserData($users[$key]);
+    }
+
+    /**
+     * Get extended data for a specific User.
+     *
+     * @param object $user User object passed by reference.
+     *
+     * @return none 
+     */ 
+    private function GetExtendedUserData (&$user)
     {
         $today = strtotime(date('Y-m-d H:i:s'));
 
-        foreach ($users as $key => $user)
-        {
-            // Find User's avatar image.
-            $userData = Users::Get($user['id'], Users::$FIELDS_PRIVATE);
-            $users[$key]['avatar'] = Users::FindAvatarFile($userData['email']);
+        // Find User's avatar image.
+        $userData = Users::Get($user['id'], Users::$FIELDS_PRIVATE);
+        $user['avatar'] = Users::FindAvatarFile($userData['email']);
 
-            // Calculate if the User is new based on the number of days since creation.
-            $daysSinceJoined = $today - strtotime($users[$key]['tstamp']);
-            $daysSinceJoined = $daysSinceJoined / 86400.0;
-            $users[$key]['newuser'] = $daysSinceJoined < self::NEW_MEMBER_DAYS;
+        // Calculate if the User is new based on the number of days since creation.
+        $daysSinceJoined = $today - strtotime($user['tstamp']);
+        $daysSinceJoined = $daysSinceJoined / 86400.0;
+        $user['newuser'] = $daysSinceJoined < self::NEW_MEMBER_DAYS;
             
-            // Add Games played by the User.
-            $playedGames = UserGames::GetPlayedGames($user['id']);
-            $users[$key]['games'] = array();
-            foreach ($playedGames as $userGame)
-                array_push($users[$key]['games'], Games::Get($userGame['gid']));
-        }
-    }
+        // Add Games played by the User.
+        $playedGames = UserGames::GetPlayedGames($user['id']);
+        $user['games'] = array();
+        foreach ($playedGames as $userGame)
+            array_push($user['games'], Games::Get($userGame['gid']));
 
-    private function IsNewUser ($user)
-    {
-        
+        // Find the User's Clan.
+        $userClan = UserClans::GetUserClan($user['id']);
+        $user['clan'] = $userClan;
+
+        return $user;
     }
 
 }

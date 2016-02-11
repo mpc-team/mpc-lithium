@@ -24,9 +24,9 @@ $button_hover_class = 'cl-effect-3';
         </ul>
         <ul class="nav navbar-nav">
 
-            <li id='headerbar-members'>
-                <a href='/members'>
-                    Members
+            <li id='headerbar-community'>
+                <a href='/community'>
+                    Community
                 </a>
             </li>
 

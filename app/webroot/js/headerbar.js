@@ -4,7 +4,7 @@ var headerbar = {};
 
 headerbar.items = {
 	home: "#headerbar-home",
-	members: "#headerbar-members",
+	community: "#headerbar-community",
 	forum: "#headerbar-forum",
 	games: "#headerbar-games",
 	user: "#headerbar-user",
@@ -28,7 +28,7 @@ headerbar.enhance = function (controller, action)
 				} else if (action == 'resetpassword') {
 					$(this.items.login).addClass('active');
 				} else {
-					$(this.items.members).addClass('active');
+					$(this.items.community).addClass('active');
 				}
 				break;
 			case 'forum':
@@ -44,7 +44,7 @@ headerbar.enhance = function (controller, action)
 			if (action == 'profile') {	
 				$(this.items.user).addClass('active');
 			} else if (action == 'view') {
-				$(this.items.members).addClass('active');
+				$(this.items.community).addClass('active');
 			}
 		}
 	}

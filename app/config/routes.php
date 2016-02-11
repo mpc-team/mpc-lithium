@@ -67,6 +67,8 @@ Router::connect('/api/users/{:action}/{:id}', array('controller' => 'app\control
 
 Router::connect('/api/events/{:action}', array('controller' => 'app\controllers\api\EventsAPI'));
 
+Router::connect('/api/clans/{:action}', array('controller' => 'app\controllers\api\ClansAPI'));
+
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow
  * browser-based access to the test suite for running unit and integration tests for the Lithium

@@ -98,7 +98,9 @@ EOD;
 					    <div>
 						    <div class="info">
 							    <div class="avatar">
-								    <img src="<?= $post['author']['avatar']; ?>"/>
+                                    <div class='user-avatar-container'>
+								        <img src="<?= $post['author']['avatar']; ?>"/>
+                                    </div>
 							    </div>
 							    <div class="author" data-id="<?= $post['id'] ?>">
 								    <a href="/user/view/<?= $post['author']['id'] ?>">
@@ -173,7 +175,7 @@ EOD;
         /* Process Markup On Posts */
         $('.edit-content').each(function (index)
         {
-			$(this).html(markup.process($(this).text()));
+			$(this).html(markup.process($(this).text(), markup.NORMAL | markup.MARKDOWN));
         });
 	});
 </script>

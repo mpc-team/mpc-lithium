@@ -27,13 +27,12 @@ body
     color: rgba(255, 255, 255, 0.6);
 }
 
-.offset::before
+code
 {
-    display: block;
-    content: " ";
-    height: 50px;
-    margin-top: -50px;
-    visibility: hidden;
+    background-color: #444;
+    font-size: 100%;
+    color: #fff;
+    padding: 2px 6px;
 }
 
 h1, 
@@ -50,9 +49,7 @@ h5
 
 h1 > small,
 h2 > small,
-h3 > small,
-/*h4 > small,
-h5 > small*/
+h3 > small
 {
     font-family: "Alegreya Sans"; 
     font-weight: 500;
@@ -80,7 +77,16 @@ img
 iframe,
 img
 {
-    /*max-width: 90%;*/
+    max-width: 100%;
+}
+
+.offset::before
+{
+    display: block;
+    content: " ";
+    height: 50px;
+    margin-top: -50px;
+    visibility: hidden;
 }
 
 a.btn:hover iframe,
@@ -108,6 +114,39 @@ a h5
 .content > h1
 {
     font-size: 70pt;
+}
+
+.content hr
+{
+    box-shadow: none;
+    border-top: 1px solid #888;
+}
+
+.container
+{
+    padding-bottom: 500px;
+}
+
+.container-padding-default
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Panels & Tiles
+---------------------------------------------------------------------------------------------------- */
+
+.padded-tile-sm { padding: 5px; }
+.padded-tile-med { padding: 10px; }
+.padded-tile-lg { padding: 15px; }
+
+.padded-panel-sm { padding: 5px !important; }
+.padded-panel-med { padding: 10px !important; }
+.padded-panel-lg { padding: 15px !important; }
+
+.panel-padded
+{
+    padding: 5px !important;
 }
 
 .btn.btn-icon-only
@@ -172,11 +211,6 @@ textarea.form-control
     height: 10em;
 }
 
-.container
-{
-    padding-bottom: 500px;
-}
-
 #announcements
 {
     word-wrap: break-word;
@@ -236,7 +270,7 @@ span.input-group-addon
 
 .modal-dialog
 {
-    margin-top: 15%;
+    margin-top: 5%;
     background: rgba(40, 40, 40, 0.8);
     border: 1px solid #444;
 }
@@ -269,11 +303,6 @@ span.input-group-addon
 {
     border: 1px solid #333;
     border-left: none;
-}
-
-#modal-newevent .modal-footer
-{
-    padding: 0;
 }
 
 #modal-newevent .modal-header .close
@@ -628,6 +657,15 @@ a .panel-recentfeed h3
     width: 100%;
 }
 
+/* Community Styles ( Clans & Members)
+-------------------------------------------------------------------------------------------------------- */
+
+#community-container .clan
+{
+    min-height: 100px;
+    max-height: 100px;
+}
+
 .members .panel
 {
     padding: 5px;
@@ -693,11 +731,6 @@ a .panel-recentfeed h3
     font-size: 80%;
 }
 
-.members .game input
-{
-    transform: scale(1.7);
-}
-
 .members .game .input-group-addon
 {
     white-space: nowrap;
@@ -712,12 +745,10 @@ a .panel-recentfeed h3
 {
     text-align: right;
 }
-/*
-    * views/connect
-    * Parent Div is #connectdiscord
-    * Discord Styles
 
-*/
+/* Connect Styles
+-------------------------------------------------------------------------------------------------------- */ 
+
 #connectdiscord > #discordbanner 
 {
    margin: auto;

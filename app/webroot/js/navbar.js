@@ -15,9 +15,10 @@ var navbar = {};
  * HTML elements IDs that identify the appropriate elements to modify within the template. These
  * are used to select and modify elements via JQuery.
  */
-navbar.items = {		
+navbar.items =
+{
 	home: "#navbar-home",
-	members: "#navbar-members",
+	community: "#navbar-community",
 	forum: "#navbar-forum",
 	user: "#navbar-user",
 	signup: "#navbar-signup",
@@ -30,23 +31,26 @@ navbar.items = {
  *
  * Processes a controller/action pair and adds the appropriate classes to the appropriate element.
  */
-navbar.enhance = function (controller, action) {	
-	if (action == null) {
-		if (controller == null || controller.length == 0) {
+navbar.enhance = function (controller, action)
+{
+	if (action == null)
+	{
+		if (controller == null || controller.length == 0)
 			$(this.items.home).addClass('active');
-		} else {
+		else
 			$(this.items[controller]).addClass('active');
-		}
-	} else {
-		switch (controller) {
+	}
+	else
+	{
+		switch (controller)
+		{
 			case 'user':
-				if (action == 'profile') {
+				if (action == 'profile')
 					$(this.items.user).addClass('active');
-				} else if (action == 'resetpassword') {
+				else if (action == 'resetpassword')
 					$(this.items.login).addClass('active');
-				} else {
+				else
 					$(this.items.members).addClass('active');
-				}
 				break;
 			case 'forum':
 			case 'board':
@@ -57,17 +61,18 @@ navbar.enhance = function (controller, action) {
 				$(this.items.games).addClass('active');
 				break;
 		}
-		if (controller == 'user') {
-			if (action == 'profile') {	
+		if (controller == 'user')
+		{
+			if (action == 'profile')
 				$(this.items.user).addClass('active');
-			} else if (action == 'view') {
+			else if (action == 'view')
 				$(this.items.members).addClass('active');
-			}
 		}
 	}
 };
  
-$(document).ready(function () {
+$(document).ready(function ()
+{
 	var components = window.location.href.split('/');
 	var controller = (components.length > 3) ? components[3] : null;
 	var action     = (components.length > 4) ? components[4].split('?')[0] : null;

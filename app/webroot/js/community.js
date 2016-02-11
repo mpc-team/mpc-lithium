@@ -1,13 +1,32 @@
 /**
- * members.js
+ * community.js
  *
- * Interactive list of members that can be searched/filtered and provides
- * additional information when individual Members names are moused over.
+ * Everything on the /community Page is managed here. Currently supports a list of Clans as well 
+ * as a list of Members which are organized by Clan. There should be support on this page for
+ * registering a new Clan with selected Members. 
+ * 
  */
+var community = {};
 var members = {};
 
 /* Network Updates
 ------------------------------------------------------------------------------------------------------------ */
+
+community.clans = {};
+community.clans.list = [];
+community.clans.updated = false;
+community.clans.update = function (additionalCallback)
+{
+	$.get('/api/clans/all', null, function (clans)
+	{
+		community.clans.list = [];
+		for (index in clans)
+			community.clans.list.push(clans[index]);
+		community.clans.updated = true;
+		if (typeof (additionalCallback) == "function")
+			additionalCallback(clans);
+	});
+}
 
 members.games = {};
 members.games.list = [];
@@ -20,7 +39,7 @@ members.games.update = function (additionalCallback)
 		for (index in games)
 			members.games.list.push(games[index]);
 		members.games.updated = true;
-		if (typeof(additionalCallback) == "function")
+		if (typeof (additionalCallback) == "function")
 			additionalCallback(games);
 	});
 }
@@ -41,7 +60,48 @@ members.users.update = function (additionalCallback)
 	});
 }
 
-/* UI Functions
+/* Community UI Functions
+------------------------------------------------------------------------------------------------------------ */
+
+community.ui = {};
+
+community.ui.elements =
+{
+	container: "#community-container",
+	count: '#clans-count',
+	register: {
+		members: "#register-clan-users",
+	}
+}
+
+community.ui.renderCommunity = function (clans)
+{
+	var html = ""
+	for (index in clans)
+	{
+		html += "<div class='col-md-4'>";
+		html += "<div class='padded-tile-sm'>"
+		html += "<div class='panel panel-default padded-panel-med'>";
+		html += "<div class='clan'>"
+		html += "<h2>" + clans[index].name + "</h2>";
+		html += "<h2><small>" + clans[index].shortname + "</small></h2>";
+		html += "</div>";
+		html += "</div>";
+		html += "</div>";
+		html += "</div>";
+	}
+	$(community.ui.elements.container).html(html);
+	$(community.ui.elements.count).html(community.clans.list.length);
+}
+
+community.ui.register = {};
+community.ui.register.member = {};
+community.ui.register.member.stringify = function (user)
+{
+
+}
+
+/* Members UI Functions
 ------------------------------------------------------------------------------------------------------------ */
 
 members.ui = {};
@@ -53,7 +113,7 @@ members.ui.elements =
 {
 	result: "#members-results",
 	count: '#members-count',
-	clear: "#members-clear",
+	clear: "#members-clear-filter",
 	inputs: {
 		email: '#email',
 		alias: '#alias',
@@ -72,9 +132,8 @@ members.ui.renderMembers = function (users)
 	var html = "";
 	var alternate = true;
 	
+	// Map the `users` object to an array so we can sort it.
 	users = $.map(users, function (property) { return property; });
-
-	console.log(users);
 
 	users.sort(function (a, b)
 	{
@@ -133,7 +192,7 @@ members.ui.input.game.stringify = function (game)
 	html += "</span>";
 	html += "</div>";
 
-	html += "<div class='col-xs-10'>";
+	html += "<div class='col-xs-10' style='margin-left: -10px'>";
 	html += "<span class='input-group-addon'>";
 	html += game.name;
 	html += "</span>";
@@ -351,6 +410,9 @@ members.updateMembers = function ()
 //Initialization.
 $(function ()
 {
+	// Update Community section immediately (not periodically for now).
+	community.clans.update(community.ui.renderCommunity);
+
 	// Update Games immediately and periodically.
 	members.games.update(members.ui.renderGameInputs);
 	setInterval(function () { members.games.update(members.ui.renderGameInputs); }, 60000);

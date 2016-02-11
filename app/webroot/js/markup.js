@@ -12,8 +12,10 @@
 var markup = {};
 
 /* Markup Mode Constants */
-markup.NORMAL = 0;
-markup.PREVIEW = 1;
+markup.NORMAL = 1;
+markup.PREVIEW = 2;
+markup.MARKDOWN = 4;
+
 markup.MAP_NORMAL = "standard";
 markup.MAP_PREVIEW = "preview";
 
@@ -157,30 +159,43 @@ markup.TagMap = {
 markup.process = function (text, mode)
 {
 	var mappings = this.TagMap["standard"];
+	var list = null;
+	var result = text;
+
+	if (mode & this.MARKDOWN)
+		result = markdown.toHTML(result);
 
 	switch (mode)
 	{
+		case this.MARKDOWN:
+			mappings = null;
+			break;
+		case (this.MARKDOWN | this.PREVIEW):
 		case this.PREVIEW:
 			mappings = mappings.concat(this.TagMap["extended-preview"]);
 			break;
+		case (this.MARKDOWN | this.NORMAL):
 		default:
 			mappings = mappings.concat(this.TagMap["extended"]);
 			break;
 	}
 
-	var list = this.prepare(text, mappings);
-	var marked = null;
-
-	if (this.verify(list, mappings))
+	if (mappings != null)	
 	{
-		list = this.swap(list, mappings, mode);
-		marked = '';
-		for (var i = 0; i < list.length; i++)
+		list = this.prepare(result, mappings);
+		if (this.verify(list, mappings))
 		{
-			marked += list[i];
+			list = this.swap(list, mappings, mode);
+			result = '';
+			for (var i = 0; i < list.length; i++)
+			{
+				result += list[i];
+			}
+			//result = result.replace(/\n/g, '<br>');
 		}
-		return marked.replace(/\n/g, '<br>');
 	}
+
+	return result;
 };
 
 /**

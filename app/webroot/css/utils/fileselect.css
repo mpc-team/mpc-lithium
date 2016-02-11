@@ -17,7 +17,7 @@
 {
     background: rgba(0, 0, 0, 0.9);
     /*border: 1px solid #555;*/
-    transform: scale(1.025);
+    /*transform: scale(1.025);*/
 }
 
 .fs-conf-modal > .modal-dialog
@@ -32,5 +32,5 @@
 
 .fs-container
 {
-    text-align: center;
+    /*text-align: center;*/
 }

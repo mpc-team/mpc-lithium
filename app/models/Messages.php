@@ -5,6 +5,7 @@ namespace app\models;
 abstract class MessageTypes
 {
     const TEXT = "text";
+    const CLAN_INVITE = "claninvite";
 }
 
 class Messages extends \lithium\data\Model  
@@ -21,11 +22,20 @@ class Messages extends \lithium\data\Model
 	public static function GetUserMessages ($id, $limit) 
     {
 		return self::find('all', array(
-			'conditions' => array('uidreceiver' => $id),
+			'conditions' => array('uidreceiver' => $id, 'type' => 'text'),
 			'order' => array('tstamp' => 'DESC'),
             'limit' => $limit,
 		))->to('array');
 	}
+
+    public static function GetUserClanInvites ($id, $limit)
+    {
+        return self::find('all', array(
+            'conditions' => array('uidreceiver' => $id, 'type' => 'claninvite'),
+            'order' => array('tstamp' => 'DESC'),
+            'limit' => $limit,
+        ))->to('array');
+    }
 	
 	public static function Send ($type, $sender, $receiver, $content) 
     {

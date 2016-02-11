@@ -1,9 +1,4 @@
-﻿#modal-newthread .modal-footer
-{
-    padding: 0;
-}
-
-#modal-newthread .modal-header .close
+﻿#modal-newthread .modal-header .close
 {
     font-size: 24px;
     margin-top: 0;
@@ -71,7 +66,7 @@
 .usertool .btn-edit
 {
     text-align: left;
-    line-height: 1; /* Any value 1 or less will render the exact same... */
+    line-height: 1.2; 
 }
 
 .usertool .btn-edit .fa
@@ -319,17 +314,15 @@ a.btn-forum:hover
     font-size: 85%;
 }
 
-.forum-post .info .avatar
+/*.forum-post .info .avatar
 {
     overflow-x: hidden;
     overflow-y: hidden;
-}
+}*/
 
-.forum-post .info .avatar img
+.forum-post .info .avatar .user-avatar-container
 {
-    max-width: 100%;
-    min-width: 100%;
-    max-height: 180px;
+    max-height: 200px;
 }
 
 @media screen (min-width: 800px)
@@ -347,7 +340,7 @@ a.btn-forum:hover
     margin-bottom: 0px;
     margin-top: 0px;
     width: 75%;
-    padding: 10px 10px 20px 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 .forum-post .content h2,

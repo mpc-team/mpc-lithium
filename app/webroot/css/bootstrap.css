@@ -4218,10 +4218,10 @@ fieldset[disabled] .btn
 
 .btn-default
 {
-    color: rgb(122, 183, 51);
+    color: #aaffaa;
     min-width: 100px;
     background-color: #101010;
-    border-color: rgb(122, 183, 51);
+    border-color: #444;
 }
 
 .btn-default:hover,
@@ -4231,9 +4231,9 @@ fieldset[disabled] .btn
 .btn-default.active,
 .open > .dropdown-toggle.btn-default
 {
-    color: #77aaff;
-    background-color: rgba(97, 155, 240, 0.5);
-    border-color: rgb(133, 178, 243);
+    color: #fff;
+    background-color: #444;
+    /*border-color: rgb(133, 178, 243);*/
 }
 
 .btn-default:active,
@@ -4262,8 +4262,9 @@ fieldset[disabled] .btn-default:active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active
 {
-    background-color: #ffffff;
-    border-color: #cccccc;
+    color: #aaa;
+    background-color: #444;
+    border-color: #aaa;
 }
 
 .btn-default .badge
@@ -8042,7 +8043,7 @@ button.close
 .modal-header
 {
     padding: 15px;
-    border-bottom: 1px solid #2a2a2f;
+    border-bottom: 1px solid #444;
     min-height: 16.42857143px;
 }
 
@@ -8065,9 +8066,9 @@ button.close
 
 .modal-footer
 {
-    padding: 15px;
+    /*padding: 15px;*/
     text-align: right;
-    border-top: 1px solid #2a2a2f;
+    border-top: 1px solid #444;
 }
 
 .modal-footer .btn + .btn
