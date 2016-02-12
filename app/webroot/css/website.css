@@ -749,15 +749,23 @@ a .panel-recentfeed h3
     margin: 2px 2px 2px 2px;
 }
 
-#connectdiscord > .row > .col-md-6-offset > .list-group li {
-    
-}
 #closeserver-btn 
 {
     margin: auto;
     background-color: #738BD7;
     color: #fff;
 }
+/*
+    *views/heroes_of_the_storm/index
+    *HOTS Styles
+    *Parent Div is currently: #heroes-of-the-storm
+*/
+
+#heroes-of-the-storm img {
+    margin: auto;
+    width: 100%;
+}
+
 
 /*
     *views/starcraft2/index
@@ -794,4 +802,7 @@ a .panel-recentfeed h3
 #starcraft2lotv img {
     margin: auto;
     box-shadow: 1px 1px 10px #aaffaa;
+}
+#starcraft2lotv .sc2modalbullet {
+    width: 80%;
 }

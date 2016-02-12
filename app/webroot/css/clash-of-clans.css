@@ -25,11 +25,11 @@
 #clash-of-clans .panel-group a .panel .panel-footer {
     color: #FAF1BF;
 }
-#clash-of-clans #coc-clanrules-drpdwnbtn .list-group-item {
+#clash-of-clans .list-group-item {
     color: #FAF1BF;
     background-color: #000;
 }
-#clash-of-clans #coc-clanrules-drpdwnbtn .list-group-item:hover {
+#clash-of-clans .list-group-item:hover {
     color: #000;
     background-color: #FAF1BF;
 }

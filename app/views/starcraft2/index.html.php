@@ -157,7 +157,7 @@ $self = $this;
     </h3>
     <?php 
         
-        $sc2Casters = array('vaevictissc' => 'VaeVictisSC', 'seadogsc2' => 'sEadogSC2'); 
+        $sc2Casters = array('vaevictissc' => 'VaeVictisSC', 'seadogsc2' => 'sEadogSC2', 'chefsstream' => 'Chef'); 
         
     ?>
         <div class="panel">
@@ -177,14 +177,14 @@ $self = $this;
                     <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
                         <div id="caster-<?= $id ?>-twitchdiv">
                             <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
-                            <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                            <div class="row" style="padding-top: 5%;">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
                                 </div><!--embed video-->              
-                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000; width: 80%; margin-left: 40px;">Show Chat</a>
+                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
                             </div><!--row-->
 
-                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%; padding-left: 8%;">
+                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%;">
                                 <div class="embed-responsive embed-responsive-4by3">
                                     <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/<?= $id ?>/chat?popout=">
                                     </iframe>
@@ -196,13 +196,6 @@ $self = $this;
                     <?php endforeach; ?>
                 </div><!--tab content-->
             </div><!--panel body-->
-            <div class="panel-footer">
-                 <ul class="nav nav-tabs" role="tablist">
-                    <?php foreach($sc2Casters as $id => $displayName): ?>
-                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
         </div>
     <h3>
         Official Website

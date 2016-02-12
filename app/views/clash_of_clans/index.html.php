@@ -46,7 +46,7 @@ $self = $this;
         </div>
     </div>
     <h3>
-        MPC on Twitch T.V.
+        Twitch
         <small>Clash of Clans</small>
     </h3>
     <?php 
@@ -71,14 +71,14 @@ $self = $this;
                     <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
                         <div id="caster-<?= $id ?>-twitchdiv">
                             <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
-                            <div class="row" style="padding-top: 5%; padding-left: 8%;">
+                            <div class="row" style="padding-top: 5%;">
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
                                 </div><!--embed video-->              
-                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000; width: 80%; margin-left: 50px;">Show Chat</a>
+                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
                             </div><!--row-->
 
-                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%; padding-left: 8%;">
+                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%;">
                                 <div class="embed-responsive embed-responsive-4by3">
                                     <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/<?= $id ?>/chat?popout=">
                                     </iframe>
@@ -90,16 +90,9 @@ $self = $this;
                     <?php endforeach; ?>
                 </div><!--tab content-->
             </div><!--panel body-->
-            <div class="panel-footer">
-                 <ul class="nav nav-tabs" role="tablist">
-                    <?php foreach($cocCasters as $id => $displayName): ?>
-                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
         </div>
     <h3>
-        Communication is Key
+        Discord
         <small>Clash of Clans</small>
     </h3>
     <div class="row">
@@ -108,7 +101,7 @@ $self = $this;
                 <div class="panel">
                     <div class="panel-heading">
                         <img src="/img/clash_of_clans/communication-banner.png" alt="communication-banner.png" class="img-rounded img-responsive" />
-                        <a class="btn btn-lg" href="/connect" id="coc-communication" style="color: #000; background-color: #FAF1BF; margin: auto;">Join Us with Discord</a>
+                        <a class="btn btn-lg" href="/connect" id="coc-communication" style="color: #000; background-color: #FAF1BF; margin: 5% 0 0 0;">Connect Discord</a>
                     </div>
                 </div><!--panel-->
                 <div class="panel-footer">
@@ -141,7 +134,7 @@ $self = $this;
         </a>
     </div>
     <h3>
-        Law and Order
+        Rules from MPC
         <small>Clash of Clans</small>
     </h3>
     <div class="row">
@@ -153,34 +146,31 @@ $self = $this;
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <p><a class="btn" role="button" data-toggle="collapse" href="#coc-clanrules-drpdwnbtn" aria-expanded="false" aria-controls="coc-clanrules-drpdwnbtn-ariacontrols">View Rules</a></p>
-                            <div class="collapse" id="coc-clanrules-drpdwnbtn">
-                                <ul class="list-group">
-                                    <li role="presentation" class="list-group-item">
-                                        If you plan on participating you
-                                        <b>MUST</b>
-                                        Use Discord APP.
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        Have a proper target selected; that you can realistically clear a three star base.
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        Plan your army, and attack with a leader. 
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        Call your attack on clash caller, and execute the planned attack in the first four hours of war.
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        When war begins, use both attacks with the first four hours, or notify an offier when you can possible attack, or ASAP. 
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        Best Behavoir, and respectiable kindness to members, and hard working Officers.
-                                    </li>
-                                    <li role="presentation" class="list-group-item">
-                                        Most Importantly Have fun.
-                                    </li>
-                                </ul>
-                            </div>    
+                            <ul class="list-group">
+                                <li role="presentation" class="list-group-item">
+                                    If you plan on participating you
+                                    <b>MUST</b>
+                                    Use Discord APP.
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    Have a proper target selected; that you can realistically clear a three star base.
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    Plan your army, and attack with a leader. 
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    Call your attack on clash caller, and execute the planned attack in the first four hours of war.
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    When war begins, use both attacks with the first four hours, or notify an offier when you can possible attack, or ASAP. 
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    Best Behavoir, and respectiable kindness to members, and hard working Officers.
+                                </li>
+                                <li role="presentation" class="list-group-item">
+                                    Most Importantly Have fun.
+                                </li>
+                            </ul>
                         </div>
 
                     </div>

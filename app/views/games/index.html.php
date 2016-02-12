@@ -14,7 +14,7 @@ $self = $this;
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <a class="btn" href="/games/<?= $game['realname'] ?>">
-				            <h4><?= $game['name'] ?></h4>
+                            <img src="/img/games/<?= $game['realname']?>.png" alt="<?= $game['realname']?>.png" class="img-rounded img-responsive" style="margin: auto;" />
                         </a>
                     </div>
                 </div>
