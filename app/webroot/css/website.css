@@ -713,7 +713,7 @@ a .panel-recentfeed h3
     text-align: right;
 }
 /*
-    * views/connect.html.php
+    * views/connect
     * Parent Div is #connectdiscord
     * Discord Styles
 
@@ -736,7 +736,7 @@ a .panel-recentfeed h3
 
 #discord-btns 
 {    
-    margin-top: 1%;
+    margin-top: 5px;
     margin-right: 20px;
 }
 
@@ -756,7 +756,23 @@ a .panel-recentfeed h3
     color: #fff;
 }
 /*
-    *views/heroes_of_the_storm/index
+    *views/connect
+    Twitch Connect Div
+    Current Parent Div: #connecttwitch
+
+*/
+#connecttwitch > .row > #twitch-btns > .btn-edit, #connecttwitch > .row > .list-group li {
+    color: #fff;
+    background-color: #6441A5;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin: 2px 2px 2px 2px;
+}
+#twitch-btns {
+    margin-top: 5px;
+}
+/*
+    *views/games/heroes_of_the_storm
     *HOTS Styles
     *Parent Div is currently: #heroes-of-the-storm
 */
@@ -768,7 +784,7 @@ a .panel-recentfeed h3
 
 
 /*
-    *views/starcraft2/index
+    *views/games/starcraft2
     * Sc2 Styles
     * Parent Div is currently: #starcraft2lotv
 
@@ -805,4 +821,12 @@ a .panel-recentfeed h3
 }
 #starcraft2lotv .sc2modalbullet {
     width: 80%;
+}
+/*
+    *views/games
+    Games Page Styles
+    Current Parent Div: #games
+*/
+#games img {
+    width: 100%;
 }

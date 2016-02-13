@@ -27,7 +27,7 @@ $self = $this;
               <a role="button" class="btn btn-edit" href="https://www.youtube.com/channel/UCZ5XnGb-3t7jCkXdawN2tkA/videos" target="_blank">YouTube</a>
             </div><!--btngroup-->
             <ul class="list-group pull-left" id="discord-directionlist" style="margin: 5px 20px 5px 0;">
-                <li class="list-group-item">
+               <li class="list-group-item">
                     1) Click Show, or Connect Server.
                 </li>
                 <li class="list-group-item">
@@ -35,20 +35,45 @@ $self = $this;
                 </li>
                 <li class="list-group-item">
                     3) Use temporary, or Register a Login with an email.
-
                 </li>
                 <li class="list-group-item">
-                    3) Begin Speaking, and texting. Done!
+                    4) Begin Speaking, and texting. Done!
                 </li>
             </ul>
-        </div><!--col-md-7-->    
+        </div><!--col-md-8-->    
     </div><!--row-->
 </div><!--discord-->
-<div id="connect-twitch">
-    <div class="row">
+<div id="connecttwitch">
+    <div class="row">       
         <img src="/img/connect/twitch-banner.png" class="img-rounded img-responsive" id="connect-twitchbanner-png" />
     </div>
-   
+    <div class="row">
+
+            <div class="btn-group pull-left" role="group" aria-label="twitch-btns" id="twitch-btns">     
+              <a role="button" class="btn btn-edit" id="twitch-showbtn">Show Twitch</a>
+              <a role="button" class="btn btn-edit" href="http://www.twitch.tv" target="_blank">Website</a>
+            </div><!--btngroup-->            
+
+    </div><!--row-->   
+    <div class="row">
+    <ul class="list-group pull-right" id="twitch-directionlist" style="margin: 5px 0px 5px 0px;">                                
+            <li class="list-group-item">
+            1) Login to Twitch from Here.
+        </li>
+        <li class="list-group-item">
+            2) Stream Games.
+        </li>
+        <li class="list-group-item">
+            3) Viewer interaction.
+        </li>
+        <li class="list-group-item">
+            4) Brand yourself.
+        </li>
+        <li class="list-group-item">
+            5) Generate Followers.
+        </li>
+    </ul>
+</div>
 </div><!--connect-twitch-->
 <script>
     $(function(){

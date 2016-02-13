@@ -5,7 +5,7 @@ $this->title('Games');
 $self = $this;
 
 ?>
-<section>
+<section id="games">
 	<h1>Games</h1>
 	
     <div class="row">
