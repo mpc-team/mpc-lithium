@@ -131,7 +131,7 @@ user.notifications.message.stringify = function (object)
 	html += " Dismiss";
 	html += "</button>";
 	html += "</div>";
-	html += "<p>" + object['content'] + "</p>";
+	html += "<p>" + markup.process(object['content'], markup.NORMAL | markup.MARKDOWN) + "</p>";
 	html += "</div>";
 	html += "</li>";
 	return html;

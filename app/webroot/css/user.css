@@ -94,7 +94,7 @@
 
 .profile-content .games button.btn-edit.active:hover
 {
-    background-color: rgba(72, 168, 75, 0.7);
+    background-color: rgba(117, 176, 118, 0.7);
 }
 
 .profile-header .page-header
@@ -180,7 +180,7 @@
 {
     border: 1px solid rgba(180, 255, 180, 0.9);
     box-shadow: 0 0 5px rgba(210, 255, 210, 0.9);
-    background: linear-gradient(140deg, #438a43, #233d23);
+    background: #334433;
 }
 
 .profile-content .games .panel.active .name

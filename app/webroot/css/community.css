@@ -54,7 +54,7 @@
 
 .members tr.row.alt
 {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 /* New Member Graphics
@@ -92,6 +92,6 @@
 
 .members .user-tooltip > div
 {
-    background-color: rgba(40, 40, 40, 0.95);
+    background-color: rgba(40, 40, 40, 0.8);
     border-color: #444;
 }

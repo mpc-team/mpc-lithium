@@ -56,10 +56,11 @@ if (isset($notification['status']))
 
 	<div class="row">
         <div class="col-md-4">
-            <span>
+            <div class="row">
                 <h2><small>CLAN</small></h2>
                 <h1 id='user-profile-clan' style='margin-top: -10px'>None</h1>
-            </span>
+                <button id="clan-leave" class="btn btn-edit btn-are-you-sure" data-message="Are you sure you want to leave your Clan?">Leave Clan</button>
+            </div>
         </div>
         <div class="col-md-8">
 		    <div class="user-avatar-select pull-left">

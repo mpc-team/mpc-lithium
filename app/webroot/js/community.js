@@ -271,6 +271,8 @@ members.ui.alias.stringify = function (object)
 	result += "<div id='member-" + object.id + "' class='name' onmouseover='Tooltip.OnMouseOver(this.id)'>";
 	result += "<span class='glyphicon glyphicon-user'></span> ";
 	result += object.alias;
+	if (object.clan != null)
+		result += ' <small style="color: #888">' + object.clan.shortname + '</small>';
 
 	if (object.newuser)
 		result += "<span class='badge'>New Member</span>";
@@ -283,7 +285,10 @@ members.ui.alias.stringify = function (object)
 
 	result += "<div class='row'>";
 	result += "<a href='/user/view/" + object.id + "'>";
-	result += "<h2>" + object.alias + "</h2>" + "</a>";
+	result += "<h2>" + object.alias;
+	if (object.clan != null)
+		result += " <small>" + object.clan.shortname + "</small>";
+	result += "</h2></a>";
 	if ('email' in object)
 		result += "<h2><small>" + object.email + "</small></h2>";
 	result += "</div>";

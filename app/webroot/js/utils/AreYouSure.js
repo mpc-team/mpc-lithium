@@ -15,7 +15,11 @@ $(function ()
 	{
 		$(AreYouSure.classes[key]).click(function ()
 		{
-			if (window.confirm("Are you would like to Delete this content?"))
+			var message = $(this).data('message');
+			if (message == null)
+				message = "Are you would like to Delete this content?";
+
+			if (window.confirm(message))
 			{
 				return true;
 			}

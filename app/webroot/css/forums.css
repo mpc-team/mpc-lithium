@@ -32,9 +32,11 @@
     margin-bottom: -15px;
 }
 
+.forum-context-title,
 .forum-title
 {
-    font-size: 72pt;
+    /*font-size: 72pt;*/
+    text-shadow: 0 0 10px #000;
 }
 
 .quote-content
@@ -151,6 +153,7 @@ a.btn-forum:hover
 .forum .categories h3
 {
     font-size: 30pt;
+    text-shadow: 0 0 10px #000;
 }
 
 .forum .categories .count

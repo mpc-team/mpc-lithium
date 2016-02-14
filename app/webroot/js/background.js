@@ -2,7 +2,7 @@
 
 background.map = {
 	//'default': '/img/darksky_background.jpg',
-	'default': '/img/darksky_background.jpg',
+	'default': '/img/metalscratches_background.jpg',
 	'games': {
 	    'clash_of_clans': '/img/clash_of_clans/background.png',
 	    'starcraft2': '/img/sc2/background.png',
