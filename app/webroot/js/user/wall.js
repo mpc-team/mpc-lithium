@@ -38,7 +38,7 @@ profile.wall.stringify = function (object)
 	html += "</a>";
 	html += "</div>";
 	html += "<div class='text'>";
-	html += object.content;
+	html += markup.process(object.content, markup.NORMAL | markup.MARKDOWN);
 	html += "</div>";
 	html += "</div>";
 	return html;
@@ -69,9 +69,13 @@ profile.wall.refreshMessages = function (userid, scrollToRecent)
 			}
 			$(".profile-content .wall .nano-content").html(html);
 
-			$(".nano").nanoScroller();
-			if (scrollToRecent)
-				$(".nano").nanoScroller({ scroll: 'bottom' });
+			setTimeout(function ()
+			{
+				$(".nano").nanoScroller();
+				if (scrollToRecent)
+					$(".nano").nanoScroller({ scroll: 'bottom' });
+			}, 1000);
+
 		}
 	);
 }

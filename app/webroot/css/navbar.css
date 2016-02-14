@@ -75,6 +75,17 @@
     min-width: 600px;
 }
 
+.user-notification-list p
+{
+    margin: 0;
+}
+
+.user-notification-list p,
+.user-notification-list h3
+{
+    display: inline;
+}
+
 .user-notification-list .row
 {
     /*padding-bottom: 5px;*/
@@ -88,7 +99,7 @@
 }
 
 .user-notification-list > .row > h4,
-.user-notification-list > .row > .col-xs-9 > div > h4
+.user-notification-list > .row > div > h4
 {
     margin: 0;
     padding: 10px;
@@ -127,4 +138,17 @@
     padding: 7px;
     padding-top: 3px;
     padding-bottom: 0px;
+}
+
+.notification-forum-post,
+.notification-post-hit,
+.notification-announcement,
+.notification-clan-invite,
+.notification-message
+{
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    padding-left: 5px;
+    padding-right: 0px;
 }

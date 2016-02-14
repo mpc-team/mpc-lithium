@@ -38,9 +38,10 @@
     overflow: hidden;
 }
 
-/* Signup / Login
+/* Signup / Login / Reset Password
 ---------------------------------------------------------------------------------------- */
 
+.reset-password,
 .signup .signup-group,
 .login .login-group
 {

@@ -8,6 +8,7 @@ use app\controllers\ContentController;
 
 use app\models\UserNotifications;
 use app\models\Announcements;
+use app\models\Clans;
 use app\models\Posts;
 use app\models\Threads;
 use app\models\Forums;
@@ -45,6 +46,10 @@ class UserNotificationsAPI extends ContentController
                 case 'messages':
                 case 'message':
                     $notifications = self::GetUserMessageNotifications($authorized['id'], $limit);
+                    break;
+                case 'claninvites':
+                case 'claninvite':
+                    $notifications = self::GetUserClanInviteNotifications($authorized['id'], $limit);
                     break;
                 default:
                     $notifications = null;
@@ -196,6 +201,29 @@ class UserNotificationsAPI extends ContentController
             $sender = Users::Get($notification['senderid']);
             $notifications[$key]['sender'] = $sender['alias'];
             $notifications[$key]['content'] = $message['content'];
+        }
+        return $notifications;
+    }
+
+    /**
+     * Retrieves Clan Invite Notification data for the authorized User.
+     *
+     * @param int $userid User identifier.
+     * @param int $limit Limit number of results.
+     * 
+     * @return array List of Notifications.
+     */
+    private static function GetUserClanInviteNotifications ($userid, $limit)
+    {
+        $notifications = UserNotifications::GetUserNotificationsOfType($userid, 'claninvite', $limit);
+        foreach ($notifications as $key => $notification)
+        {
+            $message = Messages::Get($notification['contentid']);
+            $sender = Users::Get($notification['senderid']);
+            $clan = Clans::Get($message['idtag']);
+            $notifications[$key]['sender'] = $sender['alias'];
+            $notifications[$key]['content'] = $message['content'];
+            $notifications[$key]['clan'] = $clan['name'];
         }
         return $notifications;
     }

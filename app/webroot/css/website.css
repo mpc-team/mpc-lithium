@@ -89,6 +89,7 @@ img
     visibility: hidden;
 }
 
+.ui-selected img,
 a.btn:hover iframe,
 a.btn:hover img
 {

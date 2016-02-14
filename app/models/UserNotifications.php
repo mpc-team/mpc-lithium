@@ -15,6 +15,7 @@ class UserNotifications extends \lithium\data\Model
     const FORUM = "forum";
     const ANNOUNCEMENT = "announcement";
     const MESSAGE = "message";
+    const CLAN_INVITE = "claninvite";
 
     /**
      * Returns a User Notification searching by its identifier.

@@ -133,11 +133,10 @@ $forumsByCategory = Forums::GetByCategory();
                     </a>
                     <ul class='dropdown-menu user-notification-list' role='menu'>
                         <div class='row'></div>
+                        <div class='row'></div>
+                        <div class='row'></div>
                         <div class='row'>
-                            <div class='col-xs-9'>
-                                <div class='row'></div>
-                                <div class='row'></div>
-                            </div>
+                            <div class='col-xs-9'><div></div></div>
                             <div class='col-xs-3'></div>
                         </div>
                     </ul>

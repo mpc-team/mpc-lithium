@@ -20,7 +20,6 @@ class ConfirmController extends \lithium\action\Controller
      */
 	public function user () 
     {
-		$authorized = Auth::check('default');
 		if (isset($this->request->query['confirm'])) 
         {
 			$key = $this->request->query['confirm'];

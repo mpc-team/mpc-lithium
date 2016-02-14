@@ -7,12 +7,40 @@
 /* Community Register Modal
 -------------------------------------------------------------------------------- */
 
-#register-clan-users
+#clan-register-users
 {
     min-height: 300px;
     max-height: 300px;
     border: 1px solid #444;
     background-color: #111;
+}
+
+.ui-selected
+{
+    background-color: #1a1a1a;
+}
+
+.ui-selected h1,
+.ui-selected h2,
+.ui-selected h3,
+.ui-selected h4
+{
+    text-shadow: 0px 0px 10px #aaffaa;
+}
+
+.ui-selected h1 > small,
+.ui-selected h2 > small,
+.ui-selected h3 > small,
+.ui-selected h4 > small
+{
+    text-shadow: none;
+}
+
+
+#clan-register-users .user-avatar-container
+{
+    max-height: 70px;
+    max-width: 100px;
 }
 
 /* Member Table

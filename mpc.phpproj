@@ -3050,6 +3050,7 @@
     <Content Include="app\webroot\css\highlight\styles\xcode.css" />
     <Content Include="app\webroot\css\highlight\styles\zenburn.css" />
     <Content Include="app\webroot\css\information.css" />
+    <Content Include="app\webroot\css\jquery-ui.css" />
     <Content Include="app\webroot\css\navbar.css" />
     <Content Include="app\webroot\css\community.css" />
     <Content Include="app\webroot\css\user.css" />
@@ -3142,6 +3143,7 @@
     <Content Include="app\webroot\js\highlight\LICENSE" />
     <Content Include="app\webroot\js\highlight\README.md" />
     <Content Include="app\webroot\js\highlight\README.ru.md" />
+    <Content Include="app\webroot\js\jquery-ui.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.min.js" />
     <Content Include="app\webroot\js\user\user.js" />

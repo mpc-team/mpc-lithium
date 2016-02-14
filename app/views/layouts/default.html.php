@@ -19,6 +19,7 @@ use app\views\layouts\LayoutConstants;
 	<title>MPC | <?php echo $this->title(); ?></title>
 	<?php echo $this->html->style(array(
 		'bootstrap',
+        'jquery-ui',
         'highlight/styles/default',
         'bootstrap-datetimepicker',
 		'font-awesome',
@@ -39,6 +40,7 @@ use app\views\layouts\LayoutConstants;
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
+        'jquery-ui',
         'moment',
         'bootstrap',
         'bootstrap-datetimepicker',

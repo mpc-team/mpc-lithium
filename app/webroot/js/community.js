@@ -70,7 +70,14 @@ community.ui.elements =
 	container: "#community-container",
 	count: '#clans-count',
 	register: {
-		members: "#register-clan-users",
+		button: "#clan-register-button",
+		feedback: "#clan-register-feedback",
+		modal: "#clan-register-modal",
+		modalClose: '#clan-register-modal .modal-header > button.close',
+		name: '#clan-register-name',
+		shortname: '#clan-register-shortname',
+		members: "#clan-register-users",
+		accept: "#clan-register-accept",
 	}
 }
 
@@ -94,11 +101,50 @@ community.ui.renderCommunity = function (clans)
 	$(community.ui.elements.count).html(community.clans.list.length);
 }
 
+/**
+ * Renders the Clan Member selection UI for Clan Registration.
+ * 
+ * @param {array} users: List of User objects to stringify.
+ */
+community.ui.renderClanMembers = function (users)
+{
+	user.auth.check(function (authenticated)
+	{
+		var html = "<div class='nano-content'>";
+		html += "<div class='selectable-container ui-selectable'>";
+		for (index in users)
+		{
+			if (users[index].clan == null && users[index].id != authenticated.id)
+				html += community.ui.register.member.stringify(users[index]);
+		}
+		html += "</div>";
+		html += "</div>";
+		$(community.ui.elements.register.members).html(html);
+		$(community.ui.elements.register.members + ' .selectable-container').selectable();
+		$(community.ui.elements.register.members).addClass('nano');
+		$(community.ui.elements.register.members).nanoScroller();
+	});
+}
+
 community.ui.register = {};
 community.ui.register.member = {};
 community.ui.register.member.stringify = function (user)
 {
-
+	var date = moment(user['tstamp']);
+	var html = "<div class='row ui-widget-content' style='padding: 5px;' data-id='" + user.id + "'>";
+	html += "<div class='row'>";
+	html += "<div class='col-xs-2'>";
+	html += "<div class='user-avatar-container'>";
+	html += "<img src='" + user.avatar + "' />";
+	html += "</div>";
+	html += "</div>";
+	html += "<div class='col-xs-10'>";
+	html += "<h4>" + user.alias + "</h4>";
+	html += "<h4><small>" + date.format("MMM DD YYYY") + "</small></h4>";
+	html += "</div>";
+	html += "</div>";
+	html += "</div>";
+	return html;
 }
 
 /* Members UI Functions
@@ -366,6 +412,91 @@ members.list.filterByGames = function (users, games)
 	return filtered;
 }
 
+/* Clan Registration
+------------------------------------------------------------------------------------------------------------ */
+
+/**
+ * Dictionary of the possible Error messages and a more User-friendly version to
+ * display in a `feedback` widget. Use the dictionary such that you are searching
+ * for keys that are within your Error message in the response object. 
+ * 
+ * For example, if the response contains an Error with the text `Specified name error.`,
+ * we are going to first look for `Message_A` in that response, moving onto `Message_B`
+ * if the former could not be found.
+ */
+var ErrorFeedbackMessages =
+{
+	'Specified name error.':
+	{
+		'Message_A':
+		{
+			'NoError': 'Successful',
+			'NullName': 'You must specify a Clan Name',
+			'NameTaken': 'The specified Clan Name is already taken',
+		},
+		'Message_B':
+		{
+			'NoError': 'Successful',
+			'NullName': 'You must specify a letter abbreviation for the Clan',
+			'TooLong': 'The specified abbreviation is too long',
+			'InvalidCharacters': 'The specified abbreviation contains invalid characters',
+		}
+	},
+	'Member specification error.':
+	{
+		'Message':
+		{
+			'NoError': 'Successful',
+			'NullList': 'Specified list of Members cannot be Null',
+			'NotEnoughUsers': 'Not enough Members were specified',
+			'UserNotFound': 'One of the specified Users does not exist',
+			'UserInClan': 'One of the specified Users is already in a Clan',
+			'SelfInvite': 'You cannot invite yourself to the Clan',
+		}
+	}
+}
+
+community.ui.updateFeedback = function (response)
+{
+	var error = ErrorFeedbackMessages[response.Error];
+	var message = null;
+	for (key in response)
+		if (key in error)
+		{
+			message = error[key][response[key]];
+			break;
+		}
+	$(community.ui.elements.register.feedback).html(
+		"<div class='alert alert-danger'>" + message + "</div>"
+	);
+}
+
+community.registerClan = function ()
+{
+	var selectedUserIds = [];
+	$('.ui-widget-content.ui-selected', '.selectable-container').each(function ()
+	{
+		selectedUserIds.push($(this).data('id'));
+	});
+	var body = {};
+	body.name = $(community.ui.elements.register.name).val(),
+	body.shortname = $(community.ui.elements.register.shortname).val(),
+	body.users = selectedUserIds;
+	$.post('/api/clans/create', body, function (response)
+	{
+		if ('Error' in response)
+			community.ui.updateFeedback(response);
+		else
+		{
+			$(community.ui.elements.register.feedback).html('');
+			$(community.ui.elements.register.name).val('');
+			$(community.ui.elements.register.shortname).val('');
+			$(community.ui.elements.register.modal).modal('hide');
+			$(community.ui.elements.register.button).attr('disabled', 'disabled');
+		}
+	});
+}
+
 /* Members Update
 ------------------------------------------------------------------------------------------------------------ */
 
@@ -404,6 +535,20 @@ members.updateMembers = function ()
 	members.ui.renderMembers(filteredUsers);
 }
 
+/* Shared Functions
+------------------------------------------------------------------------------------------------------------ */
+
+/**
+ * Renders components that require a list of Members.
+ * 
+ * @param {array} users List of Users.
+ */
+function RenderElementsWithMembers (users)
+{
+	members.ui.renderMembers(users);
+	community.ui.renderClanMembers(users);
+}
+
 /* Initialization
 ------------------------------------------------------------------------------------------------------------ */
 
@@ -418,10 +563,12 @@ $(function ()
 	setInterval(function () { members.games.update(members.ui.renderGameInputs); }, 60000);
 
 	// Update Users immediately and periodically.
-	members.users.update(members.ui.renderMembers);
+	members.users.update(RenderElementsWithMembers);
 	setInterval(function () { members.users.update(); }, 10000);
 
 	// Setup Event Callbacks.
+	$(community.ui.elements.register.accept).click(community.registerClan);
+	$(community.ui.elements.register.modalClose).click(function () { $(community.ui.elements.register.modal).modal('hide'); })
 	$(members.ui.elements.inputs.alias).keyup(members.updateMembers);
 	$(members.ui.elements.inputs.email).keyup(members.updateMembers);
 	$(members.ui.elements.inputs.alias).change(members.updateMembers);

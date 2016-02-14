@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Permissions;
+use app\models\UserClans;
 
 $this->title('Community');
 
@@ -9,7 +10,7 @@ $self = $this;
 $adminPermissions = $authorized && Permissions::is_admin($authorized);
 
 $enableMemberButton = array(
-    'clanregister' => (bool) $authorized,
+    'clanregister' => (bool) $authorized && UserClans::GetUserClan($authorized['id']) == null,
     'signup' => (bool) !$authorized,
 );
 
@@ -20,7 +21,7 @@ $enableMemberButton = array(
     <div class="row">
         <div class="col-md-4">
             <h1>Clans 
-                <button class='btn btn-default' <?= (!$enableMemberButton['clanregister']) ? 'disabled' : '' ?> data-toggle="modal" data-target="#modal-register-clan">
+                <button id="clan-register-button" class='btn btn-default' data-toggle="modal" data-target="#clan-register-modal" <?= (!$enableMemberButton['clanregister']) ? 'disabled' : '' ?> >
                     Register Your Clan
                 </button>
             </h1>
@@ -28,30 +29,49 @@ $enableMemberButton = array(
         </div>
         <div class="col-md-8">
         </div>
-        <div class="modal fade" id="modal-register-clan" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1>Register Your Clan</h1>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Clan Name..." style="font-size:20px; height:auto;" required/>
-                        </div>
-                        <h2>Clan Members</h2>
-                        <div id="register-clan-users">
-                            
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-edit">Submit Registration</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row container-padding-default" id="community-container">
         <!-- Create Tiles With JavaScript -->
+    </div>
+</div>
+<div id="clan-register-modal" class="modal fade" tabindex="-1" aria-labelledby="clan-register-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dimiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h2 class="modal-title">
+                    Register Your Clan
+                </h2>
+            </div>
+            <div class="modal-body">
+                <div id="clan-register-feedback" class="row">
+                    <div class='feedback'>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="clan-register-name" type="text" class="form-control" placeholder="Clan Name..." style="font-size:20px; height:auto;" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="clan-register-shortname" type="text" class="form-control" placeholder="Clan Letters..." style="font-size:40px; height:auto;" required/>
+                    </div>
+                </div>
+                <h3>
+                    Clan Members <small>(Hold Ctrl to Select More)
+                </h3>
+                <div id="clan-register-users"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="clan-register-accept" class="btn btn-edit">
+                    Submit Registration
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 

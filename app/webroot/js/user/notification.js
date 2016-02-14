@@ -9,16 +9,38 @@ user.notifications.types =
 	posthit: 'posthit',
 	announcement: 'announcement',
 	message: 'message',
+	claninvite: 'claninvite',
 };
 
 user.notifications.classes =
 {
 	'dismiss-annc': 'btn-annc-dismiss',
 	'dismiss-msg': 'btn-msg-dismiss',
+	'accept-clan-invite': 'accept-clan-invite',
+	'decline-clan-invite': 'decline-clan-invite',
 };
 
 /* Stringify Functions (Convert Objects to HTML Output)
 -------------------------------------------------------------------------------------------------------------------------------- */
+
+user.notifications.claninvites = {};
+user.notifications.claninvites.stringify = function (object)
+{
+	console.log(object);
+	var date = moment(object['tstamp']);
+	var html = "<div class='row'>";
+	html += "<div class='col-xs-10'>";
+	html += markup.process(object['content'], markup.NORMAL | markup.MARKDOWN);
+	html += "</div>";
+	html += "<div class='col-xs-2'>";
+	html += "<button title='Decline Clan Invite' class='btn btn-edit pull-right decline-clan-invite' data-id='"
+				+ object.contentid + "'><span class='glyphicon glyphicon-remove'></span></button>";
+	html += "<button title='Accept Clan Invite' class='btn btn-edit pull-right accept-clan-invite' data-id='"
+				+ object.contentid + "'><span class='glyphicon glyphicon-ok'></span></button>";
+	html += "</div>";
+	html += "</div>";
+	return html;
+}
 
 user.notifications.posts = {};
 user.notifications.posts.stringify = function (object)
@@ -118,12 +140,30 @@ user.notifications.message.stringify = function (object)
 /* Delete Notifications
 -------------------------------------------------------------------------------------------------------------------------------- */
 
+user.notifications.claninvites.accept = function (identifier)
+{
+	$.get('/api/clans/accept/' + identifier, null, function (data)
+	{
+		user.notifications.updateCountElements($('.user-notification-count'));
+		user.notifications.updateClanInviteNotifications($('.user-notification-list > .row:nth-child(1)'));
+	});
+}
+
+user.notifications.claninvites.decline = function (identifier)
+{
+	$.get('/api/clans/decline/' + identifier, null, function (data)
+	{
+		user.notifications.updateCountElements($('.user-notification-count'));
+		user.notifications.updateClanInviteNotifications($('.user-notification-list > .row:nth-child(1)'));
+	});
+}
+
 user.notifications.message.delete = function (identifier)
 {
 	$.get('/api/users/notifications/delete/' + identifier, null, function (data)
 	{
 		user.notifications.updateCountElements($('.user-notification-count'));
-		user.notifications.updateMessageNotifications($('.user-notification-list > .row:nth-child(1)'));
+		user.notifications.updateMessageNotifications($('.user-notification-list > .row:nth-child(2)'));
 	});
 }
 
@@ -132,7 +172,7 @@ user.notifications.announcement.delete = function (identifier)
 	$.get('/api/users/notifications/delete/' + identifier, null, function (data)
 	{
 		user.notifications.updateCountElements($('.user-notification-count'));
-		user.notifications.updateAnnouncementNotifications($('.user-notification-list > .row:nth-child(2) > .col-xs-9 > div:nth-child(2)'));
+		user.notifications.updateAnnouncementNotifications($('.user-notification-list > .row:nth-child(3)'));
 	});
 }
 
@@ -151,10 +191,11 @@ user.notifications.message.onDismiss = function ()
 
 user.notifications.updateListElements = function (htmlListClass)
 {
-	user.notifications.updateForumNotifications($(htmlListClass + ' > .row:nth-child(2) > .col-xs-9 > div:nth-child(1)'));
-	user.notifications.updateAnnouncementNotifications($(htmlListClass + ' > .row:nth-child(2) > .col-xs-9 > div:nth-child(2)'));
-	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row:nth-child(2) > .col-xs-3'));
-	user.notifications.updateMessageNotifications($(htmlListClass + ' > .row:nth-child(1)'));
+	user.notifications.updateClanInviteNotifications($(htmlListClass + ' > .row:nth-child(1)'));
+	user.notifications.updateMessageNotifications($(htmlListClass + ' > .row:nth-child(2)'));
+	user.notifications.updateAnnouncementNotifications($(htmlListClass + ' > .row:nth-child(3)'));
+	user.notifications.updateForumNotifications($(htmlListClass + ' > .row:nth-child(4) > .col-xs-9'));
+	user.notifications.updatePostHitNotifications($(htmlListClass + ' > .row:nth-child(4) > .col-xs-3'));
 }
 
 user.notifications.updateCountElements = function (htmlClass)
@@ -171,12 +212,17 @@ user.notifications.updateForumNotifications = function (jqueryElement)
 	{
 		var html = "<h4>Forum Notifications</h4>";
 		if (Object.keys(data).length == 0)
+		{
+			html += "<div class='notification-forum-post'>";
 			html += "You have no Forum Notifications";
-
+			html += "</div>";
+		}
 		for (key in data)
 		{
 			html += "<li class='divider'></li>";
+			html += "<div class='notification-forum-post'>";
 			html += user.notifications.posts.stringify(data[key]);
+			html += "</div>";
 		}
 		jqueryElement.html(html);
 	});
@@ -186,10 +232,12 @@ user.notifications.updatePostHitNotifications = function (jqueryElement)
 {
 	$.get('/api/users/notifications/all?type=' + user.notifications.types.posthit + '&limit=4', null, function (data)
 	{
-		var html = "<center><h4>Post Hits</h4></center>";
+		var html = "<h4><Center>Post Hits</center></h4>";
 		for (key in data)
 		{
+			html += "<div class='notification-post-hit'>";
 			html += user.notifications.posthits.stringify(data[key]);
+			html += "</div>";
 		}
 		jqueryElement.html(html);
 	});
@@ -200,9 +248,12 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 	$.get('/api/users/notifications/all?type=' + user.notifications.types.announcement + '&limit=4', null, function (data)
 	{
 		var html = "<h4>Announcements</h4>";
-
 		if (Object.keys(data).length == 0)
+		{
+			html += "<div class='notification-announcement'>";
 			html += "No Announcements";
+			html += "</div>";
+		}
 		else
 		{
 			html += "<div class='nano'>";
@@ -210,7 +261,9 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 			for (key in data)
 			{
 				html += "<li class='divider'></li>";
+				html += "<div class='notification-announcement'>";
 				html += user.notifications.announcement.stringify(data[key]);
+				html += "</div>";
 			}
 			html += "</div>";
 			html += "</div>";
@@ -228,16 +281,47 @@ user.notifications.updateMessageNotifications = function (jqueryElement)
 	{
 		var html = "<h4>Messages</h4>";
 		if (Object.keys(data).length == 0)
+		{
+			html += "<div class='notification-message'>";
 			html += "No Messages";
+			html += "</div>";
+		}
 		else
 			for (key in data)
 			{
 				html += "<li class='divider'></li>";
+				html += "<div class='notification-message'>";
 				html += user.notifications.message.stringify(data[key]);
+				html += "</div>";
 			}
 		jqueryElement.html(html);
 
 		$('.' + user.notifications.classes['dismiss-msg']).click(user.notifications.message.onDismiss);
+	});
+}
+
+user.notifications.updateClanInviteNotifications = function (jqueryElement)
+{
+	$.get('/api/users/notifications/all?type=' + user.notifications.types.claninvite + '&limit=4', null, function (data)
+	{
+		var html = "<h4>Clan Invites</h4>";
+		if (Object.keys(data).length == 0)
+		{
+			html += "<div class='notification-clan-invite'>";
+			html += "No Clan Invites";
+			html += "</div>";
+		}
+		else
+			for (key in data)
+			{
+				html += "<li class='divider'></li>";
+				html += "<div class='notification-clan-invite'>";
+				html += user.notifications.claninvites.stringify(data[key]);
+				html += "</div>";
+			}
+		jqueryElement.html(html);
+		$('.accept-clan-invite').click(function () { user.notifications.claninvites.accept($(this).data('id')); });
+		$('.decline-clan-invite').click(function () { user.notifications.claninvites.decline($(this).data('id')); });
 	});
 }
 
@@ -264,5 +348,5 @@ $(document).ready(function ()
 				user.notifications.updateListElements('.user-notification-list');
 			}
 		});
-	}, 10000);
+	}, 5000);
 });

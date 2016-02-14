@@ -4,7 +4,12 @@ namespace app\models;
 
 class UserClans extends \lithium\data\Model  
 {
-    
+    /**
+     * Constants.
+     */
+    const MINIMUM_USERS = 5;
+    const SHORTNAME_MAX = 5;    
+
     /** 
      * Returns the Clan a User is registered with.
      *
@@ -34,28 +39,42 @@ class UserClans extends \lithium\data\Model
     }
 
     /**
-     * Removes all Users from a specified Clan.
+     * Removes all Users from a specified Clan. This is typically called when
+     * we want to clean up leftover Users when we're deleting a Clan. We don't need
+     * to check if we ~should~ delete the Clan here (no Users means no Clan).
      *
      * @param int $clanid Clan identifier.
      *
      * @return bool True on success.
      */
-    public static function ClanRemoveUsers ($clanid)
+    public static function RemoveUsers ($clanid)
     {
-        return self::remove(array('conditions' => array('cid' => $clanid)));
+        return self::remove(array('cid' => $clanid));
     }
 
     /**
-     * Removes a specified User from a Clan.
+     * Removes a specified User from a Clan. Checks to see that the Clan is still
+     * valid (enough Members, etc.) and deletes the Clan if necessary.
      *
      * @param int $clanid Clan identifier.
      * @param int $userid User identifier.
      *
      * @return bool True on successful removal.
      */
-    public static function ClanRemoveUser ($clanid, $userid)
+    public static function RemoveUser ($clanid, $userid)
     {
-        return self::remove(array('conditions' => array('cid' => $clanid, 'uid' => $userid)));
+        $clanEntry = self::find('first', array('conditions' => array('uid' => $userid, 'cid' => $clanid)));
+        if ($clanEntry == null)
+            return false;
+
+        if ($clanEntry->delete())
+        {
+            $userCount = self::GetClanUsers($clanid);
+            if (count($userCount) < self::MINIMUM_USERS + 1)
+                Clans::Deactivate($clanid);
+            return true;
+        }
+        return false;
     }
 
     /** 
@@ -71,20 +90,28 @@ class UserClans extends \lithium\data\Model
     {
         // Does the User exist?
         if (!Users::Get($userid))
-            return null;
+            return false;
 
         // Is the User already registered in a Clan?
         if (self::GetUserClan($userid) != null)
-            return null;
+            return false;
         
         // Does the Clan exist?
         if (!Clans::Get($clanid))
-            return null;
+            return false;
 
         $userClanEntry = self::create(array('cid' => $clanid, 'uid' => $userid));
-        if ($userClanEntry)
-            return $userClanEntry->save();
-        else
-            return false;
+        if ($userClanEntry->save())
+        {
+            $clanInvites = Messages::GetUserClanInvites($userid);
+            foreach ($clanInvites as $invite)
+                UserNotifications::DeleteNotification($userid, $invite['id'], UserNotifications::CLAN_INVITE);
+            Messages::DeleteUserClanInvites($userid);
+            $clanUsers = self::GetClanUsers($clanid);
+            if (count($clanUsers) > self::MINIMUM_USERS)
+                Clans::Activate($clanid);
+            return true;
+        }
+        return false;
     }
 }

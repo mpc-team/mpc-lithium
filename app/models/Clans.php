@@ -13,7 +13,39 @@ class Clans extends \lithium\data\Model
      */
     public static function All ($limit = null)
     {
-        return self::find('all', array('limit' => $limit))->to('array');
+        return self::find('all', array(
+            'conditions' => array('active' => true),
+            'limit' => $limit))->to('array');
+    }
+
+    /**
+     * Activates a specified Clan. Usually done once the Clan exceeds the minimum
+     * number of required members.
+     *
+     * @param int $clanid Clan identifier.
+     *
+     * @return bool True on successful activation.
+     */
+    public static function Activate ($clanid)
+    {
+        $clan = self::find('first', array('conditions' => array('id' => $clanid)));
+        $clan->active = true;
+        return $clan->save();
+    }
+
+    /**
+     * Deactivates a specified Clan. Usually done when the Clan falls below 
+     * the minimum number of required members.
+     *
+     * @param int $clanid Clan identifier.
+     *
+     * @return bool True on successful deactivation.
+     */
+    public static function Deactivate ($clanid)
+    {
+        $clan = self::find('first', array('conditions' => array('id' => $clanid)));
+        $clan->active = false;
+        return $clan->save();
     }
 
     /**
@@ -57,11 +89,12 @@ class Clans extends \lithium\data\Model
      *
      * @return Clans On success, returns the Clan object taht was created as an array.
      */
-    public static function Create ($fullName, $shortName)
+    public static function Start ($fullName, $shortName, $owner)
     {
         $clan = self::create(array(
             'name' => $fullName,
             'shortname' => $shortName,
+            'owner' => $owner,
         ));
         if ($clan->save())
             return $clan->to('array');
@@ -77,11 +110,11 @@ class Clans extends \lithium\data\Model
      *
      * @return bool True on success.
      */
-    public static function Remove ($clanid)
+    public static function Terminate ($clanid)
     {
         $clan = self::find('first', array('conditions' => array('id' => $clanid)));
         if ($clan)
-            return UserClans::ClanRemoveUsers($clanid) && $clan->delete();
+            return UserClans::RemoveUsers($clanid) && $clan->delete();
         else
             return false;
     }
