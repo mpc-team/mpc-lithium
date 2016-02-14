@@ -298,7 +298,9 @@ members.ui.alias.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='row'>";
+	result += "<div class='user-avatar-container'>";
 	result += "<img src='" + object.avatar + "' style='width: 300px'></img>";
+	result += "</div>";
 	result += "</div>";
 
 	result += "</div>";

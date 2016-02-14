@@ -40,18 +40,9 @@ $features = function($tid, $options)
 		</small>
 	</h1>
     <?php if (in_array('create', $data['permissions'])): ?>
-	    <div class="panel panel-default" style="margin-bottom: 10px;">
-		    <div class="panel-control">
-			    <div class="panel-heading">
-				    Board Control Panel
-			    </div>
-			    <div class="row usertool">
-				    <button title="New Thread" class="btn btn-edit" data-toggle="modal" data-target="#modal-newthread">
-					    <span class="glyphicon glyphicon-file"></span> 
-				    </button>
-			    </div>
-		    </div>
-	    </div>
+        <div class="row" style="padding-bottom: 15px">
+            <button title="Create a new Topic" class="btn btn-default" data-toggle="modal" data-target="#modal-newthread">Create Topic</button>
+        </div>
 	    <div class="modal fade" id="modal-newthread" tabindex="-1" aria-labelledby="modal-newthread">
 		    <div class="modal-dialog">
 			    <form action="/thread/create/<?= $data['forum']['id'] ?>" method="post">

@@ -7,20 +7,17 @@ $self = $this;
 $userpanel = function($mid, $options) {
 	$html = "<div class='row usertool'>";
     $html .= "<div class='pull-right'>";
-    //$html .= "<div class='col-xs-9'>";
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit btn-edit-edit btn-icon-only' data-id='{$mid}'>
+<button title="Edit Post" type='button' class='btn btn-edit btn-edit-edit btn-icon-only' data-id='{$mid}'>
 	<i class='fa fa-pencil-square-o'></i>
 </button>
 EOD;
 	}
-    //$html .= "</div>";
-    //$html .= "<div class='col-xs-2'>";
 	if (in_array('delete', $options)) {
 		$html .= <<<EOD
 <form role='form' action='/post/delete/{$mid}' method='post'>
-	<button type='submit' class='btn btn-edit btn-edit-delete btn-icon-only btn-are-you-sure' data-id='{$mid}'>
+	<button title="Delete Post" type='submit' class='btn btn-edit btn-edit-delete btn-icon-only btn-are-you-sure' data-id='{$mid}'>
 		<i class='fa fa-trash-o'></i>
 	</button>
 	<input type='hidden' name='id' value='{$mid}'/>
@@ -31,7 +28,7 @@ EOD;
     //$html .= "<div class='col-xs-8'>";
 	if (in_array('quote', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit btn-edit-quote btn-icon-only' data-id='{$mid}'>
+<button title="Quote Post in Reply" type='button' class='btn btn-edit btn-edit-quote btn-icon-only' data-id='{$mid}'>
 	<i class='fa fa-quote-right'></i>
 </button>
 EOD;
@@ -58,28 +55,35 @@ EOD;
 	return $html;
 };
 ?>
-<div class="row forum-header">
-	<h1 style="margin-bottom: 10px;">
-        <div class='forum-context-title'>
-            <?= $data['category']['name'] ?> 
-            <i class="fa fa-angle-double-right"></i>
-            <?= $data['forum']['name'] ?>
-        </div>
-		<div class='forum-title'><?= $data['thread']['name'] ?></div>
-	</h1>
-	<div class="col-xs-6">
-		Created by
-		<a href="/user/view/<?= $data['thread']['author']['id'] ?>">
-			<span class="glyphicon glyphicon-user"></span>
-			<?= $data['thread']['author']['alias'] ?>
-		</a>
-	</div>
-	<div class="col-xs-6">
-		<div class="pull-right">
-			Created on <span class="glyphicon glyphicon-time"></span>
-			<?= $data['thread']['date'] ?>
-		</div>
-	</div>
+<div class="forum-header">
+    <div class="row">
+	    <h1 style="margin-bottom: 10px;">
+            <div class='forum-context-title'>
+                <?= $data['category']['name'] ?> 
+                <i class="fa fa-angle-double-right"></i>
+                <?= $data['forum']['name'] ?>
+            </div>
+		    <div class='forum-title'><?= $data['thread']['name'] ?></div>
+	    </h1>
+    </div>
+    <div class="row" style="padding-bottom: 15px">
+        <a href='#thread-reply'><button href='#thread-reply' class="btn btn-default">Reply to Topic</button></a>
+    </div>
+    <div class="row">
+	    <div class="col-xs-6">
+		    Created by
+		    <a href="/user/view/<?= $data['thread']['author']['id'] ?>">
+			    <span class="glyphicon glyphicon-user"></span>
+			    <?= $data['thread']['author']['alias'] ?>
+		    </a>
+	    </div>
+	    <div class="col-xs-6">
+		    <div class="pull-right">
+			    Created on <span class="glyphicon glyphicon-time"></span>
+			    <?= $data['thread']['date'] ?>
+		    </div>
+	    </div>
+    </div>
 </div>
 
 <?php if (!$data['posts']): ?>
