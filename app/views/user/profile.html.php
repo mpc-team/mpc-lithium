@@ -172,7 +172,7 @@ if (isset($notification['status']))
         </div>
 	</div>
 	
-	<div class="recent">
+	<div class="recent" style="padding-bottom: 50px">
 		<div class="row">
 			<h3 style="margin-bottom: 10px; margin-top: 10px;">
                 <small>Your</small> Forum Activity

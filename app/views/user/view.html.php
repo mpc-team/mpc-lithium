@@ -61,7 +61,7 @@ $self = $this;
         </div>
 	</div>
 
-	<div class="recent">
+	<div class="recent" style="padding-bottom: 50px">
 		<div class="row">
 			<h3><small><?= $data['member']['alias'] ?>'s</small> Forum Activity</h3>
 		</div>
