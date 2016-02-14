@@ -17,7 +17,7 @@ $self = $this;
                 <br />
                 <a role="button" class="btn btn-edit" data-toggle="collapse" href="#serverstatus-collapse" aria-expanded="false" aria-controls="serverstatus-collapse" id="discord-hidebtn">Hide Server</a>
             </div>
-        </div><!--col-md-5-->
+        </div><!--col-md-4-->
         <div class="col-md-8-offset">
             <div class="btn-group pull-right" role="group" aria-label="discord-btns" id="discord-btns">     
               <a role="button" class="btn btn-edit" data-toggle="collapse" href="#serverstatus-collapse" aria-expanded="false" aria-controls="serverstatus-collapse" id="discord-showbtn">Show Server</a>
@@ -44,51 +44,86 @@ $self = $this;
     </div><!--row-->
 </div><!--discord-->
 <div id="connecttwitch">
+    <script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
     <div class="row">       
         <img src="/img/connect/twitch-banner.png" class="img-rounded img-responsive" id="connect-twitchbanner-png" />
     </div>
     <div class="row">
-
+        <div class="col-md-8-offset">
             <div class="btn-group pull-left" role="group" aria-label="twitch-btns" id="twitch-btns">     
-              <a role="button" class="btn btn-edit" id="twitch-showbtn">Show Twitch</a>
-              <a role="button" class="btn btn-edit" href="http://www.twitch.tv" target="_blank">Website</a>
+                <a role="button" class="btn btn-edit twitch-connect" id="twitch-connectbtn">
+                    Connect
+                </a>
+                <a role="button" class="btn btn-edit" id="twitch-connectbtn">
+                    Profile
+                </a>
+                <a role="button" class="btn btn-edit" href="http://www.twitch.tv" target="_blank">
+                    Website
+                </a>
             </div><!--btngroup-->            
-
-    </div><!--row-->   
-    <div class="row">
-    <ul class="list-group pull-right" id="twitch-directionlist" style="margin: 5px 0px 5px 0px;">                                
+        <ul class="list-group pull-right" id="twitch-directionlist" style="margin: 5px 0px 5px 0px;">    
             <li class="list-group-item">
-            1) Login to Twitch from Here.
-        </li>
-        <li class="list-group-item">
-            2) Stream Games.
-        </li>
-        <li class="list-group-item">
-            3) Viewer interaction.
-        </li>
-        <li class="list-group-item">
-            4) Brand yourself.
-        </li>
-        <li class="list-group-item">
-            5) Generate Followers.
-        </li>
-    </ul>
-</div>
+                1) Login to Twitch from Here.
+            </li>
+            <li class="list-group-item">
+                2) Stream Games.
+            </li>
+            <li class="list-group-item">
+                3) Viewer interaction.
+            </li>
+            <li class="list-group-item">
+                4) Brand yourself.
+            </li>
+            <li class="list-group-item">
+                5) Generate Followers.
+            </li>
+         </ul>
+      </div><!--twitch-colmd8-->
+      <div class="col-md-4">
+            
+      </div><!--twitch-colmd4-->
+    </div><!--row-->
+    <script>
+      
+    </script>
 </div><!--connect-twitch-->
 <script>
-    $(function(){
-        //this changes the text when the server is shown or collapsed by swapping classes for bootstrap.
-        $('#serverstatus-collapse').on('show.bs.collapse', function(){
-            $('#discord-directionlist').removeClass('pull-left');
-            $('#discord-directionlist').addClass('pull-right');
-            $('#discord-showbtn').html("Hide Server");
-            $('#discord-hidebtn').html("Hide Server");                        
-        })
-        $('#serverstatus-collapse').on('hidden.bs.collapse', function(){
-            $('#discord-directionlist').removeClass('pull-right');
-            $('#discord-directionlist').addClass('pull-left');
-            $('#discord-showbtn').html("Show Server");
-            $('#discord-hidebtn').html("Show Server");
-        })
-    });//end ready
+
+//Twitch API
+
+Twitch.init({clientId:'4fzsmbnkisk18wiuvdq3ds3xzhts31w'}, function(error, status) {
+    // error encountered while loading
+    if (error) {        
+        console.log(error);
+    }
+    // the sdk is now loaded
+    if (status.authenticated) {
+        $('#twitch-connectbtn').html('Disconnect');
+    } else if (!status.authenticated){
+        $('#twitch-connectbtn').html('Connect');
+    }
+});
+
+//Twitch Connect Button
+$('.twitch-connect').click(function() {
+    Twitch.login({
+    scope: ['user_read', 'channel_read']
+    });
+})
+
+//Changing Text on Click Events for Discord buttons.
+$(function(){
+    $('#serverstatus-collapse').on('show.bs.collapse', function(){
+        $('#discord-directionlist').removeClass('pull-left');
+        $('#discord-directionlist').addClass('pull-right');
+        $('#discord-showbtn').html("Hide Server");
+        $('#discord-hidebtn').html("Hide Server");                        
+    })
+    $('#serverstatus-collapse').on('hidden.bs.collapse', function(){
+        $('#discord-directionlist').removeClass('pull-right');
+        $('#discord-directionlist').addClass('pull-left');
+        $('#discord-showbtn').html("Show Server");
+        $('#discord-hidebtn').html("Show Server");
+    })
+});//end ready
 </script>

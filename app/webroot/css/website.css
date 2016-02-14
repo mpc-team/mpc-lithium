@@ -795,7 +795,7 @@ a .panel-recentfeed h3
     Current Parent Div: #connecttwitch
 
 */
-#connecttwitch > .row > #twitch-btns > .btn-edit, #connecttwitch > .row > .list-group li {
+#connecttwitch > .row > .col-md-8-offset > #twitch-btns > .btn-edit, #connecttwitch > .row > .col-md-8-offset > .list-group li {
     color: #fff;
     background-color: #6441A5;
     border: 1px solid #fff;
@@ -838,16 +838,6 @@ a .panel-recentfeed h3
 }    
 #starcraft2lotv .panel-group .panel-body p, #starcraft2lotv .panel-group p {
     color: #777777;
-}
-#starcraft2lotv .text-indent {
-    text-indent: 50px;
-}
-#starcraft2lotv #castershowchat-vaevictissc-collapsebtn {
-    background-color: #fff;
-    border: 1px #00fff;
-    color: #000;
-    width: 80%;
-    margin-left: 55px;
 }
 #starcraft2lotv img {
     margin: auto;
