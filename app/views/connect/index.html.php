@@ -6,7 +6,7 @@ $self = $this;
 
 ?>
 
-<div id="connectdiscord">
+<div id="connectdiscord">    
     <div class="row">
         <img src="/img/connect/discord-banner.png" alt="discord-banner.png" class="img-rounded img-responsive" id="connect-discordbanner">
     </div>
@@ -54,62 +54,82 @@ $self = $this;
                 <a role="button" class="btn btn-edit twitch-connect" id="twitch-connectbtn">
                     Connect
                 </a>
-                <a role="button" class="btn btn-edit" id="twitch-connectbtn">
+                <a class="btn btn-edit" type="button" data-toggle="modal" data-target=".twitchprofile">
                     Profile
                 </a>
                 <a role="button" class="btn btn-edit" href="http://www.twitch.tv" target="_blank">
                     Website
                 </a>
-            </div><!--btngroup-->            
-        <ul class="list-group pull-right" id="twitch-directionlist" style="margin: 5px 0px 5px 0px;">    
-            <li class="list-group-item">
-                1) Login to Twitch from Here.
-            </li>
-            <li class="list-group-item">
-                2) Stream Games.
-            </li>
-            <li class="list-group-item">
-                3) Viewer interaction.
-            </li>
-            <li class="list-group-item">
-                4) Brand yourself.
-            </li>
-            <li class="list-group-item">
-                5) Generate Followers.
-            </li>
-         </ul>
+            </div><!--btngroup-->        
+            <ul class="list-group pull-right" id="twitch-directionlist" style="margin: 5px 0px 5px 0px;">    
+                <li class="list-group-item">
+                    1) Login to Twitch from Here.
+                </li>
+                <li class="list-group-item">
+                    2) Stream Games.
+                </li>
+                <li class="list-group-item">
+                    3) Viewer interaction.
+                </li>
+                <li class="list-group-item">
+                    4) Brand yourself.
+                </li>
+                <li class="list-group-item">
+                    5) Generate Followers.
+                </li>
+            </ul>
+         <div class="modal fade twitchprofile" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php if($authorized): ?>
+                        <h4 class="modal-title">
+                            Integrate Twitch for: <?= $authorized['alias'] ?>
+                        </h4>
+                    <?php else:?>
+                        <h4 class="modal-title">
+                            OOPS!!! <br /> Must login to mpcgaming.com
+                        </h4>
+                    <?php endif; ?>
+                </div>
+                    <?php if($authorized): ?>
+                        <div class="modal-content">
+                            <form>
+                                <div class="form-group">
+                                    <label for="">Stream URL or Alias</label>
+                                </div>
+                            </form>
+                        </div>
+                    <?php else: ?>
+                        <div class="modal-content text-center">
+                            <small style="padding: 10%;">In order to update your profile, you must create a login.</small>
+                        </div>
+                    <?php endif; ?>
+            </div>
+        </div>
       </div><!--twitch-colmd8-->
-      <div class="col-md-4">
-            
+      <div class="col-md-4 pull-right">         
       </div><!--twitch-colmd4-->
     </div><!--row-->
-    <script>
-      
-    </script>
 </div><!--connect-twitch-->
 <script>
 
 //Twitch API
+$(function(){
+ // start the twitch sdk
+    Twitch.init({clientId: '4fzsmbnkisk18wiuvdq3ds3xzhts31w'}, function(error, status) {
+        if (error) {
+            // error encountered while loading
+            console.log(error);
+        }
+        if (status.authenticated) {
+           $('#twitch-connectbtn').html('Disconnect');
+        }
+    });
 
-Twitch.init({clientId:'4fzsmbnkisk18wiuvdq3ds3xzhts31w'}, function(error, status) {
-    // error encountered while loading
-    if (error) {        
-        console.log(error);
-    }
-    // the sdk is now loaded
-    if (status.authenticated) {
-        $('#twitch-connectbtn').html('Disconnect');
-    } else if (!status.authenticated){
-        $('#twitch-connectbtn').html('Connect');
-    }
 });
 
-//Twitch Connect Button
-$('.twitch-connect').click(function() {
-    Twitch.login({
-    scope: ['user_read', 'channel_read']
-    });
-})
+
 
 //Changing Text on Click Events for Discord buttons.
 $(function(){
