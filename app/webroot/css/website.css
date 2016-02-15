@@ -811,12 +811,19 @@ a .panel-recentfeed h3
     *Parent Div is currently: #heroes-of-the-storm
 */
 
-#heroes-of-the-storm img {
+#heroes-of-the-storm > img {
     margin: auto;
     width: 100%;
 }
-
-
+#hots-characters > row {
+    margin: 15px 0 15px 0;
+}
+#hots-characters > .panel > .panel-body > .row > .collapse > .row > .class-portrait > a > .panel > .panel-heading > img {
+    width: 200px;
+    height: 100px;
+    border: 1px solid #aaffaa;
+    margin: auto;
+}
 /*
     *views/games/starcraft2
     * Sc2 Styles
