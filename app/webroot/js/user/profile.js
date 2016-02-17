@@ -13,16 +13,40 @@ var profile = {};
 
 profile.Clan = {};
 profile.Clan.PageElementId = "#user-profile-clan";
+profile.Clan.LeaveClanButton = "#clan-leave";
 
-profile.Clan.UpdatePageElement = function (userid)
+/**
+ * Update the User Clan UI Elements.
+ * 
+ * @param {int} userid: User identifier (of authorized User).
+ */
+profile.Clan.UpdatePageElements = function (userid)
 {
 	$.get('/api/users/single/' + userid + "?ext=true", null, function (response)
 	{
 		var text = "None";
 		if (response.clan != null)
+		{
 			text = response.clan.shortname;
-		
+			$(profile.Clan.LeaveClanButton).css('display', 'block');
+		}
+		else
+			$(profile.Clan.LeaveClanButton).css('display', 'none');
 		$(profile.Clan.PageElementId).html(text);
+	});
+}
+
+/**
+ * Removes the authorized User his/her Clan.
+ * 
+ * @param {int} userid: User identifier (of authorized User).
+ */
+profile.Clan.LeaveClan = function (userid)
+{
+	$.get('/api/clans/leave', null, function (response)
+	{
+		if (!('Error' in response))
+			profile.Clan.UpdatePageElements(userid);
 	});
 }
 
@@ -103,8 +127,9 @@ profile.refreshGames = function (played)
 
 profile.init = function (userid, played) 
 {
-	/* Initialize User Information */
-	profile.Clan.UpdatePageElement(userid);
+	/* Initialize User Clan Element */
+	profile.Clan.UpdatePageElements(userid);
+	$(profile.Clan.LeaveClanButton).click(function () { profile.Clan.LeaveClan(userid); });
 
 	profile.refreshGames(played);
 

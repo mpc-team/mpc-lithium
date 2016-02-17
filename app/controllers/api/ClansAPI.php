@@ -81,6 +81,22 @@ class ClansAPI extends ContentController
         return $this->render(array('json' => Messages::DeclineInvite($this->request->id), 'status' => 200));
     }
 
+    /* Leave Clan
+    ---------------------------------------------------------------------------------------------------- */
+
+    public function leave()
+    {
+        $authorized = Auth::check('default');
+        if (!$authorized)
+            return $this->render(array('json' => array('Error' => 'Authentication required.'), 'status' => 200));
+
+        $clan = UserClans::GetUserClan($authorized['id']);
+        if ($clan == null)
+            return $this->render(array('json' => array('Error' => 'Not currently in Clan.'), 'status' => 200));
+
+        return $this->render(array('json' => UserClans::RemoveUser($clan['id'], $authorized['id'])));
+    }
+
     /* Accept Clan Invitation
     ---------------------------------------------------------------------------------------------------- */
     
@@ -165,7 +181,7 @@ class ClansAPI extends ContentController
                 'Error' => 'Invitation transmission error (not enough to start Clan).',
                 'Terminate' => Clans::Terminate($createdClan['id'])), 'status' => 200));     
         }
-        UserClans::AddUser($createdClan['id'], $authorized['id']);
+        UserClans::AddUser($createdClan['id'], $authorized['id'], UserClans::RANK_OWNER);
 
         return $this->render(array('json' => array(
             'Success' => array(
@@ -210,6 +226,9 @@ class ClansAPI extends ContentController
     {
         return Messages::DeletePendingClanInvites($clanid);
     }
+
+    /* Validation
+    ---------------------------------------------------------------------------------------------------- */
 
     /**
      * Initial validation of the specified Users. If Users cannot

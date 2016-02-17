@@ -80,6 +80,14 @@ img
     max-width: 100%;
 }
 
+.input-title
+{
+    font-weight: 900;
+    font-family: "Alegreya Sans";
+    font-size: 26px;
+    height: auto
+}
+
 .offset::before
 {
     display: block;
@@ -349,9 +357,9 @@ button.active:hover img
 .panel a.btn:active
 {
     color: rgba(220,255,220,0.9);
+    box-shadow: 0 2px 0px #444; 
     /* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
     /* border: 1px solid rgba(220,255,220,0.0); */
-    /* box-shadow: 0 0 40px rgba(255,255,255,0.9); */
 }
 
 .panel-group

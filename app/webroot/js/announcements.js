@@ -53,7 +53,7 @@ announcements.ui.stringify = function (object)
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
 	{
-		result += "<input type='text' class='form-control' style='font-size:26px;height:auto' placeholder='Enter title...' data-id='" + object.id + "'/>";
+		result += "<input type='text' class='form-control input-title' placeholder='Enter title...' data-id='" + object.id + "'/>";
 	}
 	else
 	{

@@ -26,7 +26,7 @@ $self = $this
 		    </button>
 		    <div class="collapse" id="announcement-create">
 			    <div class="well well-sm">
-                    <input type="text" id="announcement-title-input" class="form-control" placeholder="Title..." style="font-size:20px;height:auto" />
+                    <input type="text" id="announcement-title-input" class="form-control input-title" placeholder="Title..." />
 					<div class='row'>
 						<?= $this->view()->render(
 							array('element' => 'texttags'),
@@ -69,8 +69,7 @@ $self = $this
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Event title..." 
-                                        style="font-size: 20px; height: auto" id="event-title" required />
+                                <input type="text" class="form-control input-title" placeholder="Event title..." id="event-title" required />
                                 <div class="input-group date" id="event-start-datepicker">
                                     <span class="input-group-addon" style="border: none">
                                         Start Date/Time:

@@ -59,7 +59,7 @@ if (isset($notification['status']))
             <div class="row">
                 <h2><small>CLAN</small></h2>
                 <h1 id='user-profile-clan' style='margin-top: -10px'>None</h1>
-                <button id="clan-leave" class="btn btn-edit btn-are-you-sure" data-message="Are you sure you want to leave your Clan?">Leave Clan</button>
+                <button id="clan-leave" style="display: none" class="btn btn-default btn-are-you-sure" data-message="Are you sure you want to leave your Clan?">Leave Clan</button>
             </div>
         </div>
         <div class="col-md-8">
@@ -94,7 +94,9 @@ if (isset($notification['status']))
                                         <h3>
                                             You are about to change your avatar to
                                         </h3>
-                                        <img class="fs-img-preview" src="" data-id="1" />
+                                        <div class='user-avatar-container'>
+                                            <img class="fs-img-preview" src="" data-id="1" />
+                                        </div>
                                         <div>
                                             <button class="btn btn-edit fs-btn-confirm" data-id="1">
                                                 Confirm Change

@@ -10,6 +10,9 @@ class UserClans extends \lithium\data\Model
     const MINIMUM_USERS = 5;
     const SHORTNAME_MAX = 5;    
 
+    const RANK_OWNER = "owner";
+    const RANK_MEMBER = "member";
+
     /** 
      * Returns the Clan a User is registered with.
      *
@@ -63,7 +66,10 @@ class UserClans extends \lithium\data\Model
      */
     public static function RemoveUser ($clanid, $userid)
     {
-        $clanEntry = self::find('first', array('conditions' => array('uid' => $userid, 'cid' => $clanid)));
+        $clanEntry = self::find('first', array(
+            'conditions' => array(
+                'uid' => $userid,
+                'cid' => $clanid)));
         if ($clanEntry == null)
             return false;
 
@@ -86,7 +92,7 @@ class UserClans extends \lithium\data\Model
      *
      * @return bool True on success.
      */
-    public static function AddUser ($clanid, $userid)
+    public static function AddUser ($clanid, $userid, $rank = self::RANK_MEMBER)
     {
         // Does the User exist?
         if (!Users::Get($userid))
@@ -100,7 +106,7 @@ class UserClans extends \lithium\data\Model
         if (!Clans::Get($clanid))
             return false;
 
-        $userClanEntry = self::create(array('cid' => $clanid, 'uid' => $userid));
+        $userClanEntry = self::create(array('cid' => $clanid, 'uid' => $userid, 'rank' => $rank));
         if ($userClanEntry->save())
         {
             $clanInvites = Messages::GetUserClanInvites($userid);
