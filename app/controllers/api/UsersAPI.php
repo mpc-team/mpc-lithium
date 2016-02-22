@@ -28,7 +28,7 @@ class UsersAPI extends ContentController
      * @param int $this->request->query['limit'] Limit of Users returned.
      * @param bool $this->request->query['ext'] Extended information of Users (games played, etc.).
      *
-     * @return json List of members.
+     * @return User[] List of members.
      */
     public function all()
     {

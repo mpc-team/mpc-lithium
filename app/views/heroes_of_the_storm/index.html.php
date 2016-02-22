@@ -229,39 +229,19 @@ $self = $this;
 
                         'falstad' => array(
                             'name'=>'Falstad',
-                            'header-content'=>'This is a Assassin',
-                            'body-content'=>'body ',
-                            'ability-q'=>'ability-q',
-                            'ability-w'=>'ability-w',
-                            'ability-e'=>'ability-e',
-                            'ability-r'=>'ability-r'),
-
+                        ),
+                        
                         'greymane' => array(
                             'name'=>'Greymane',
-                            'header-content'=>'This is a Assassin',
-                            'body-content'=>'body ',
-                            'ability-q'=>'ability-q',
-                            'ability-w'=>'ability-w',
-                            'ability-e'=>'ability-e',
-                            'ability-r'=>'ability-r'),
+                        ),
 
                         'illidan' => array(
                             'name'=>'Illidan',
-                            'header-content'=>'This is a Assassin',
-                            'body-content'=>'body ',
-                            'ability-q'=>'ability-q',
-                            'ability-w'=>'ability-w',
-                            'ability-e'=>'ability-e',
-                            'ability-r'=>'ability-r'),
+                        ),
 
                         'jaina' => array(
                             'name'=>'Jaina',
-                            'header-content'=>'This is a Assassin',
-                            'body-content'=>'body ',
-                            'ability-q'=>'ability-q',
-                            'ability-w'=>'ability-w',
-                            'ability-e'=>'ability-e',
-                            'ability-r'=>'ability-r'),
+                        ),
 
                         'kael-thas' => array(
                             'name'=>'Kael\'Thas',

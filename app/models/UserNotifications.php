@@ -119,9 +119,9 @@ class UserNotifications extends \lithium\data\Model
     {
         $conditions = array('userid' => $userid);
         if ($limit != null)
-            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit, 'order' => array('tstamp' => 'DESC')));
         else
-            $notifications = self::find('all', array('conditions' => $conditions,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'order' => array('tstamp' => 'DESC')));
 
         if ($notifications)
             return $notifications->to('array');
@@ -153,9 +153,9 @@ class UserNotifications extends \lithium\data\Model
     {
         $conditions = array('userid' => $userid, 'type' => $type);
         if ($limit != null)
-            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit, 'order' => array('tstamp' => 'DESC')));
         else
-            $notifications = self::find('all', array('conditions' => $conditions,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'order' => array('tstamp' => 'DESC')));
 
         if ($notifications)
             return $notifications->to('array');
@@ -175,9 +175,9 @@ class UserNotifications extends \lithium\data\Model
     {
         $conditions = array('contentid' => $contentid, 'type' => $type);
         if ($limit != null)
-            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'limit' => $limit, 'order' => array('tstamp' => 'DESC')));
         else
-            $notifications = self::find('all', array('conditions' => $conditions,));
+            $notifications = self::find('all', array('conditions' => $conditions, 'order' => array('tstamp' => 'DESC')));
 
         if ($notifications)
             return $notifications->to('array');

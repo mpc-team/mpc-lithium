@@ -51,14 +51,14 @@ user.notifications.posts.stringify = function (object)
 	html += "<div class='row'>";
 	html += "<div class='col-xs-3 info'>";
 	html += "<div class='row author'>";
-	html += object['post']['author'];
+	html += "<h4>" + object['post']['author'] + "</h4>";
 	html += "</div>";
 	html += "<div class='row date'>";
 	html += date.format("MMM DD - h:mm A ");
 	html += "</div>";
 	html += "</div>";
 	html += "<div class='col-xs-9 content'>";
-	html += "<h3>" + object['post']['thread'] + "</h3>";
+	html += "<h3 style='display:block'>" + object['post']['thread'] + "</h3>";
 	html += markup.process(object['post']['content'], markup.NORMAL | markup.MARKDOWN);
 	html += "</div>";
 	html += "</div>";
@@ -96,20 +96,22 @@ user.notifications.announcement.stringify = function (object)
 	var html = "<li>";
 	html += "<div class='row'>";
 
-	html += "<div class='col-xs-10'>";
+	html += "<div class='col-xs-10' data-toggle='collapse' data-target='#announcement" + object['id'] + "'>";
 	if (object['title'] != null && object['title'] != "")
 		html += "<h3>" + object['title'] + "</h3>";
 	else
 		html += "<h3>Announcement #" + object['id'] + "</h3>";
-	html += markup.process(object['content'], markup.PREVIEW | markup.MARKDOWN);
 	html += "</div>";
 
 	html += "<div class='col-xs-2'>";
-	html += "<button class='btn btn-edit " + user.notifications.classes['dismiss-annc'] + "' data-id='" + object['id'] + "'>";
+	html += "<button class='btn btn-edit pull-right " + user.notifications.classes['dismiss-annc'] + "' data-id='" + object['id'] + "'>";
 	html += " Dismiss";
 	html += "</button>";
 	html += "</div>";
 
+	html += "</div>";
+	html += "<div id='announcement" + object['id'] + "' class='collapse'>";
+	html += markup.process(object['content'], markup.PREVIEW | markup.MARKDOWN);
 	html += "</div>";
 	html += "</li>";
 	return html;
@@ -127,7 +129,7 @@ user.notifications.message.stringify = function (object)
 	html += "sent on " + date + " at " + time;
 	html += "</div>";
 	html += "<div class='col-xs-2'>";
-	html += "<button class='btn btn-edit " + user.notifications.classes['dismiss-msg'] + "' data-id='" + object['id'] + "'>";
+	html += "<button class='btn btn-edit pull-right " + user.notifications.classes['dismiss-msg'] + "' data-id='" + object['id'] + "'>";
 	html += " Dismiss";
 	html += "</button>";
 	html += "</div>";
@@ -219,7 +221,6 @@ user.notifications.updateForumNotifications = function (jqueryElement)
 		}
 		for (key in data)
 		{
-			html += "<li class='divider'></li>";
 			html += "<div class='notification-forum-post'>";
 			html += user.notifications.posts.stringify(data[key]);
 			html += "</div>";
@@ -260,7 +261,6 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 			html += "<div class='nano-content'>";
 			for (key in data)
 			{
-				html += "<li class='divider'></li>";
 				html += "<div class='notification-announcement'>";
 				html += user.notifications.announcement.stringify(data[key]);
 				html += "</div>";
@@ -269,8 +269,7 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 			html += "</div>";
 		}
 		jqueryElement.html(html);
-		$('.nano').nanoScroller();
-		
+		$('.user-notification-list > .row:nth-child(3) > .nano').nanoScroller();
 		$('.' + user.notifications.classes['dismiss-annc']).click(user.notifications.announcement.onDismiss);
 	});
 }
@@ -287,15 +286,20 @@ user.notifications.updateMessageNotifications = function (jqueryElement)
 			html += "</div>";
 		}
 		else
+		{
+			html += "<div class='nano'>";
+			html += "<div class='nano-content'>";
 			for (key in data)
 			{
-				html += "<li class='divider'></li>";
 				html += "<div class='notification-message'>";
 				html += user.notifications.message.stringify(data[key]);
 				html += "</div>";
 			}
+			html += "</div>";
+			html += "</div>";
+		}
 		jqueryElement.html(html);
-
+		$('.user-notification-list > .row:nth-child(2) > .nano').nanoScroller();
 		$('.' + user.notifications.classes['dismiss-msg']).click(user.notifications.message.onDismiss);
 	});
 }

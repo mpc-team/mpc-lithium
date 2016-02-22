@@ -64,14 +64,9 @@
 /* User Notification List
 ------------------------------------------------------------------------------------ */
 
-.user-notification-list .nano
-{
-    height: 200px;
-}
-
 .user-notification-list
 {
-    padding: 5px;
+    padding: 0px;
     min-width: 600px;
 }
 
@@ -80,7 +75,7 @@
     margin: 0;
 }
 
-.user-notification-list p,
+/*.user-notification-list p,*/
 .user-notification-list h3
 {
     display: inline;
@@ -94,8 +89,8 @@
 
 .user-notification-list > .row > .row
 {
-    max-height: 100px;
-    overflow: hidden;
+    /*max-height: 100px;
+    overflow: hidden;*/
 }
 
 .user-notification-list > .row > h4,
@@ -103,7 +98,8 @@
 {
     margin: 0;
     padding: 10px;
-    background: #111;
+    background: linear-gradient(90deg, #111, #1a1a1a);
+    /*background: #111;*/
 }
 
 .user-notification-list .date
@@ -146,9 +142,76 @@
 .notification-clan-invite,
 .notification-message
 {
-    margin: 0;
-    padding-top: 5px;
-    padding-bottom: 25px;
-    padding-left: 5px;
-    padding-right: 0px;
+    padding: 4px;
 }
+
+/* Message Notifications
+---------------------------------------------------------------------------------------- */
+
+.notification-message { padding: 4px; }
+.notification-message > li
+{
+    border: 1px solid #444;
+    padding: 5px;
+}
+.notification-message { padding-bottom: 0px; }
+.notification-message:last-child { padding-bottom: 4px; }
+
+/* Announcement Notifications
+---------------------------------------------------------------------------------------- */
+
+.notification-announcement { padding: 4px; }
+.notification-announcement > li
+{
+    border: 1px solid #444;
+    padding: 5px;
+}
+.notification-announcement > li > .row > .col-xs-10 > h3
+{
+    display: block;
+    padding-top: 3px;
+}
+
+.user-notification-list > .row:nth-child(2) .nano,
+.user-notification-list > .row:nth-child(3) .nano
+{
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.notification-announcement { padding-bottom: 0px; }
+.notification-announcement:last-child { padding-bottom: 4px; }
+
+/* Forum Notifications
+---------------------------------------------------------------------------------------- */
+
+.notification-forum-post h1 { font-size: 40pt; }
+.notification-forum-post h2 { font-size: 30pt; }
+.notification-forum-post h3 { font-size: 20pt; }
+
+.notification-forum-post > li > a > .row
+{
+    border: 1px solid #444;
+    background: linear-gradient(0deg, #2a2a2a, #262626);
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.notification-forum-post > li > a > .row:hover
+{
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.notification-forum-post .author,
+.notification-forum-post .date,
+.notification-forum-post .content 
+{
+    padding: 5px;
+}
+
+.notification-forum-post { padding-bottom: 0px; }
+.notification-forum-post:last-child { padding-bottom: 4px; }
+
+/* Clan Invite Notifications
+---------------------------------------------------------------------------------------- */
