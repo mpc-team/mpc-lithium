@@ -20,11 +20,10 @@ $enableMemberButton = array(
 <div class="clans" id="clans">
     <div class="row">
         <div class="col-md-4">
-            <h1>Clans 
-                <button id="clan-register-button" class='btn btn-default' data-toggle="modal" data-target="#clan-register-modal" <?= (!$enableMemberButton['clanregister']) ? 'disabled' : '' ?> >
-                    Register Your Clan
-                </button>
-            </h1>
+            <h1>Clans</h1>
+            <button id="clan-register-button" class='btn btn-default' data-toggle="modal" data-target="#clan-register-modal" <?= (!$enableMemberButton['clanregister']) ? 'disabled' : '' ?> >
+                Register Your Clan
+            </button>
             <h3>Currently <span id="clans-count" style='font-size: 150%'>0</span> Clans have been registered.</h3>
         </div>
         <div class="col-md-8">
@@ -58,7 +57,7 @@ $enableMemberButton = array(
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="clan-register-shortname" type="text" class="form-control input-title" placeholder="Clan Letters..." style="font-size:40px; height:auto;" required/>
+                        <input id="clan-register-shortname" type="text" class="form-control input-title" placeholder="Clan Letters..." style="font-size:40px;" required/>
                     </div>
                 </div>
                 <h3>
@@ -78,7 +77,8 @@ $enableMemberButton = array(
 <div class="members" id="members">
     <div class="row">
         <div class="col-md-4">
-            <h1>Members <a href='/signup'><button class='btn btn-default' <?= (!$enableMemberButton['signup']) ? 'disabled' : '' ?>>Signup</button></a></h1> 
+            <h1>Members</h1> 
+            <a href='/signup'><button class='btn btn-default' <?= (!$enableMemberButton['signup']) ? 'disabled' : '' ?>>Signup</button></a>
             <h3>Currently <span id="members-count" style='font-size: 150%'>0</span> Members have been registered.</h3>
         </div>
         <div class="col-md-8">
