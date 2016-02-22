@@ -53,12 +53,12 @@ $enableMemberButton = array(
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="clan-register-name" type="text" class="form-control" placeholder="Clan Name..." style="font-size:20px; height:auto;" required/>
+                        <input id="clan-register-name" type="text" class="form-control input-title" placeholder="Clan Name..." required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="clan-register-shortname" type="text" class="form-control" placeholder="Clan Letters..." style="font-size:40px; height:auto;" required/>
+                        <input id="clan-register-shortname" type="text" class="form-control input-title" placeholder="Clan Letters..." style="font-size:40px; height:auto;" required/>
                     </div>
                 </div>
                 <h3>

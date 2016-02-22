@@ -44,7 +44,7 @@ use app\views\layouts\LayoutConstants;
         'utils/AreYouSure',
         'user/user',
         'user/auth',
-        'user/notification',
+        'user/notifications',
         'background',
 		'navbar',
         'headerbar',

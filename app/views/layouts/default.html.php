@@ -55,7 +55,7 @@ use app\views\layouts\LayoutConstants;
         'utils/tooltip/Tooltip',
         'user/user',
         'user/auth',
-        'user/notification',
+        'user/notifications',
         'user/profile',
         'user/wall',
         'background',

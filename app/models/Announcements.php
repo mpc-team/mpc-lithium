@@ -105,6 +105,7 @@ class Announcements extends \lithium\data\Model
         {
             $announcement->title = $title;
             $announcement->content = $content;
+            $announcement->modified = null;
             return $announcement->save();
         }
         return false;

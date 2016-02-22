@@ -58,7 +58,7 @@ announcements.ui.stringify = function (object)
 	else
 	{
 		object.title = object.title.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;');
-		result += "<input type='text' class='form-control' style='font-size:26px;height:auto' value='" + object.title + "' data-id='" + object.id + "'/>";
+		result += "<input type='text' class='form-control input-title' value='" + object.title + "' data-id='" + object.id + "'/>";
 	}
 	result += "</div>";
 
@@ -373,5 +373,5 @@ announcements.pull = function ()
 $(function ()
 {
 	announcements.pull();
-	setInterval(announcements.pull, 15000);
+	//setInterval(announcements.pull, 15000);
 })

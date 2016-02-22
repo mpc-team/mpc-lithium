@@ -129,13 +129,6 @@
     overflow-y: hidden;
 }
 
-.user-notification-list .user-notification-hit
-{
-    padding: 7px;
-    padding-top: 3px;
-    padding-bottom: 0px;
-}
-
 .notification-forum-post,
 .notification-post-hit,
 .notification-announcement,

@@ -51,7 +51,7 @@ $path = Libraries::get(true, 'path');
         'utils/AreYouSure',
         'user/user',
         'user/auth',
-        'user/notification',
+        'user/notifications',
         'background',
 		'navbar', 
         'headerbar',

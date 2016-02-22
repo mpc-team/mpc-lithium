@@ -342,15 +342,15 @@ $(document).ready(function ()
 			user.notifications.updateListElements('.user-notification-list');
 		}
 	});
-	setInterval(function ()
-	{
-		user.auth.check(function (authenticated)
-		{
-			if (authenticated.constructor !== Array)
-			{
-				user.notifications.updateCountElements('.user-notification-count');
-				user.notifications.updateListElements('.user-notification-list');
-			}
-		});
-	}, 5000);
+	//setInterval(function ()
+	//{
+	//	user.auth.check(function (authenticated)
+	//	{
+	//		if (authenticated.constructor !== Array)
+	//		{
+	//			user.notifications.updateCountElements('.user-notification-count');
+	//			user.notifications.updateListElements('.user-notification-list');
+	//		}
+	//	});
+	//}, 5000);
 });
