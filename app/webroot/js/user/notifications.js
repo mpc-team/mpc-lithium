@@ -269,7 +269,7 @@ user.notifications.updateAnnouncementNotifications = function (jqueryElement)
 			html += "</div>";
 		}
 		jqueryElement.html(html);
-		$('.user-notification-list > .row:nth-child(3) > .nano').nanoScroller();
+		$('.user-notification-list > .row:nth-child(3) > .nano').nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 		$('.' + user.notifications.classes['dismiss-annc']).click(user.notifications.announcement.onDismiss);
 	});
 }
@@ -299,7 +299,7 @@ user.notifications.updateMessageNotifications = function (jqueryElement)
 			html += "</div>";
 		}
 		jqueryElement.html(html);
-		$('.user-notification-list > .row:nth-child(2) > .nano').nanoScroller();
+		$('.user-notification-list > .row:nth-child(2) > .nano').nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 		$('.' + user.notifications.classes['dismiss-msg']).click(user.notifications.message.onDismiss);
 	});
 }

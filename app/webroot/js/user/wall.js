@@ -71,9 +71,10 @@ profile.wall.refreshMessages = function (userid, scrollToRecent)
 
 			setTimeout(function ()
 			{
-				$(".nano").nanoScroller();
 				if (scrollToRecent)
-					$(".nano").nanoScroller({ scroll: 'bottom' });
+					$(".profile-content .wall .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true, scroll: 'bottom' });
+				else
+					$(".profile-content .wall .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 			}, 1000);
 
 		}

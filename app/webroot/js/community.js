@@ -110,7 +110,8 @@ community.ui.renderClanMembers = function (users)
 {
 	user.auth.check(function (authenticated)
 	{
-		var html = "<div class='nano-content'>";
+		var html = "<div class='nano'>";
+		html += "<div class='nano-content'>";
 		html += "<div class='selectable-container ui-selectable'>";
 		for (index in users)
 		{
@@ -119,10 +120,10 @@ community.ui.renderClanMembers = function (users)
 		}
 		html += "</div>";
 		html += "</div>";
+		html += "</div>";
 		$(community.ui.elements.register.members).html(html);
 		$(community.ui.elements.register.members + ' .selectable-container').selectable();
-		$(community.ui.elements.register.members).addClass('nano');
-		$(community.ui.elements.register.members).nanoScroller();
+		$(community.ui.elements.register.members + " .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 	});
 }
 
