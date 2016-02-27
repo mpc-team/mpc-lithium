@@ -63,4 +63,8 @@
     min-height: 50px;
     max-height: 120px;
 }
-#announcements-content > .announcement > .content > .nano > .nano-content { padding-top: 15px; }
+#announcements-content > .announcement > .content > .nano > .nano-content 
+{ 
+    padding-top: 15px; 
+    padding-bottom: 15px;
+}
