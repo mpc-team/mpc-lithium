@@ -25,6 +25,7 @@ EventsUpcoming.UI.Event = function (eventObject)
 {
 	var startDate = moment(new Date(eventObject.start));
 	var endDate = moment(new Date(eventObject.end));
+	var duration = endDate.from(startDate, true);
 	var startFormat = (startDate.format('mm') == '00') ? 'h A' : 'h:mm A';
 	var endFormat = (endDate.format('mm') == '00') ? 'h A' : 'h:mm A';
 	var dateFormat = 'dddd, MMM. Do YYYY';
@@ -37,7 +38,8 @@ EventsUpcoming.UI.Event = function (eventObject)
 				"<h3>" + eventObject.title + "</h3>" +
 				"<p>" + description + "</p>" +
 				"<p style='font-size: 9pt'><strong>Starts:</strong> " + startDate.format(dateFormat) + " at " + startDate.format(startFormat) + "<br />" +
-				"<strong>Ends:</strong> " + endDate.format(dateFormat) + " at " + endDate.format(endFormat) + "</p>" +
+				"<strong>Ends:</strong> " + endDate.format(dateFormat) + " at " + endDate.format(endFormat) + "<br />" +
+				"<strong>Duration:</strong> " + duration + "</p>" +
 			"</div>" +
 		"</div>" +
 	"</div>";

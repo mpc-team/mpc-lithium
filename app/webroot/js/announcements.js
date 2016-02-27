@@ -364,7 +364,6 @@ announcements.pull = function ()
 		 */
 		function (data)
 		{
-			console.log(data);
 			var dataArray = [];
 			for (key in data)
 				dataArray.push(data[key]);

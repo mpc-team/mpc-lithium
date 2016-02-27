@@ -26,7 +26,6 @@ user.notifications.classes =
 user.notifications.claninvites = {};
 user.notifications.claninvites.stringify = function (object)
 {
-	console.log(object);
 	var date = moment(object['tstamp']);
 	var html = "<div class='row'>";
 	html += "<div class='col-xs-10'>";
