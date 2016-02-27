@@ -35,8 +35,8 @@ profile.Clan.UpdatePageElements = function (authid, userid)
 			else
 				$(profile.Clan.LeaveClanButton).css('display', 'none');
 
-			/* Invite User to Your Clan (Only if you have Clan and User doesn't) */
-			if (authUser.id != userObject.id && authUser.clan != null && userObject.clan == null)
+			/* Invite User to Your Clan (Only if you are the Owner of your Clan and User doesn't) */
+			if (authUser.id != userObject.id && authUser.clan != null && userObject.clan == null && authUser.clan.owner == authUser.id)
 				$(profile.Clan.ClanInviteButton).css('display', 'block');
 			else
 				$(profile.Clan.ClanInviteButton).css('display', 'none');
