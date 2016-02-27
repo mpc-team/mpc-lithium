@@ -26,7 +26,8 @@
 #announcements-content .title-edit,
 #announcements-content .content
 {
-    padding-bottom: 5px;
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
 }
 
 #announcements-content .info
@@ -59,6 +60,7 @@
 
 #announcements-content > .announcement > .content > .nano
 {
-    min-height: 120px;
-    max-height: 160px;
+    min-height: 60px;
+    max-height: 100px;
 }
+#announcements-content > .announcement > .content > .nano > .nano-content { padding-top: 15px; }
