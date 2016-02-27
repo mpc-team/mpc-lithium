@@ -110,8 +110,7 @@ community.ui.renderClanMembers = function (users)
 {
 	user.auth.check(function (authenticated)
 	{
-		var html = "<div class='nano'>";
-		html += "<div class='nano-content'>";
+		var html = "<div class='nano-content'>";
 		html += "<div class='selectable-container ui-selectable'>";
 		for (index in users)
 		{
@@ -120,10 +119,10 @@ community.ui.renderClanMembers = function (users)
 		}
 		html += "</div>";
 		html += "</div>";
-		html += "</div>";
 		$(community.ui.elements.register.members).html(html);
 		$(community.ui.elements.register.members + ' .selectable-container').selectable();
-		$(community.ui.elements.register.members + " .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
+		$(community.ui.elements.register.members).addClass('nano');
+		$(community.ui.elements.register.members).nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 	});
 }
 
@@ -231,21 +230,12 @@ members.ui.input.game.stringify = function (game)
 {
 	var html = "<div class='col-md-3'>";
 	html += "<div class='game'>";
-	html += "<div class='row'>";
-
-	html += "<div class='col-xs-2'>";
-	html += "<span class='input-group-addon'>";
+	html += "<label>";
 	html += "<input type='checkbox' id='" + game.realname + "' />";
+	html += "<span style='display: inline-block; font-size:9pt; padding-left:5px; padding-bottom: 35px;'>";
+	html += game.name
 	html += "</span>";
-	html += "</div>";
-
-	html += "<div class='col-xs-10' style='margin-left: -10px'>";
-	html += "<span class='input-group-addon'>";
-	html += game.name;
-	html += "</span>";
-	html += "</div>";
-
-	html += "</div>";
+	html += "</label>";
 	html += "</div>";
 	html += "</div>";
 	return html;

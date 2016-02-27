@@ -3156,7 +3156,7 @@
     <Content Include="app\webroot\js\texttags.js" />
     <Content Include="app\webroot\js\headerbar.js" />
     <Content Include="app\webroot\js\announcements.js" />
-    <Content Include="app\webroot\js\user\notification.js" />
+    <Content Include="app\webroot\js\user\notifications.js" />
     <Content Include="app\webroot\js\utils\fileselect.js" />
     <Content Include="app\webroot\js\utils\tooltip\Tooltip.js" />
   </ItemGroup>

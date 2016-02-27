@@ -30,6 +30,28 @@ class Events extends \lithium\data\Model
     }
 
     /**
+     * Returns upcoming Events.
+     *
+     * @param int $daysToStart Cutoff for days until the Event starts.
+     *
+     * @return array Event objects in an array.
+     */
+    public static function Upcoming ($daysToStart, $limit = null)
+    {
+        $events = self::find('all', array(
+            'conditions' => array(
+                'start' => array(
+                    '>=' => date('Y-m-d H:i:s', time() ))),
+            'order' => array('start' => 'ASC'),
+            'limit' => $limit,
+        ));
+        if ($events)
+            return $events->to('array');
+        else
+            return null;
+    }
+
+    /**
      * Creates a new Events entry with some criteria.
      *
      * @param string $title Title of the Event.
@@ -38,12 +60,13 @@ class Events extends \lithium\data\Model
      *
      * @return array On success, returns the saved Event object (as array).
      */
-    public static function NewEvent ($title, $startDate, $finishDate)
+    public static function NewEvent ($title, $startDate, $finishDate, $link = null)
     {
         $event = self::create(array(
             'title' => $title,
             'start' => $startDate,
             'end' => $finishDate,
+            'linkref' => $link,
         ));
         if ($event->save())
             return $event->to('array');

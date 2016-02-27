@@ -17,44 +17,55 @@ $self = $this
 ?>
 
 <section id="announcements">
-    <h1>Announcements</h1>
-    <?php if ($permissions['announcements']['CREATE']): ?>
-	    <div class="row">
-		    <button class="btn btn-edit" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
-		        <span class="glyphicon glyphicon-plus"></span>
-		        Add an Announcement
-		    </button>
-		    <div class="collapse" id="announcement-create">
-			    <div class="well well-sm">
-                    <input type="text" id="announcement-title-input" class="form-control input-title" placeholder="Title..." />
-					<div class='row'>
-						<?= $this->view()->render(
-							array('element' => 'texttags'),
-							array('id' => '1', 'disabled' => false)
-						)?>
-					</div>
-				    <textarea type="text" class='form-control announcement-input' placeholder="Enter your Announcement and click Submit." id="announcement-input" data-id="1"></textarea>
-				    <div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
-					    <div class="btn-group" role="group">
-						    <button type="button" id="announcement-submit" class="btn btn-edit">
-                                Submit Announcement
-                            </button>
-					    </div>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
-    <?php endif; ?>
-    <div id="announcements-content"></div>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Announcements</h1>
+            <?php if ($permissions['announcements']['CREATE']): ?>
+	            <div class="row">
+		            <button class="btn btn-edit" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
+		                <span class="glyphicon glyphicon-plus"></span>
+		                Add an Announcement
+		            </button>
+		            <div class="collapse" id="announcement-create">
+			            <div class="well well-sm">
+                            <input type="text" id="announcement-title-input" class="form-control input-title" placeholder="Title..." />
+					        <div class='row'>
+						        <?= $this->view()->render(
+							        array('element' => 'texttags'),
+							        array('id' => '1', 'disabled' => false)
+						        )?>
+					        </div>
+				            <textarea type="text" class='form-control announcement-input' placeholder="Enter your Announcement and click Submit." id="announcement-input" data-id="1"></textarea>
+				            <div class="btn-group btn-group-justified" role="group" aria-label="annc-label">
+					            <div class="btn-group" role="group">
+						            <button type="button" id="announcement-submit" class="btn btn-edit">
+                                        Submit Announcement
+                                    </button>
+					            </div>
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+            <?php endif; ?>
+            <div id="announcements-content"></div>
+        </div>
+        <div class="col-md-4" style="padding-left: 15px">
+            <h2 style='margin-bottom: 15px'>Upcoming Events</h2>
+            <div id="events-upcoming">
+                <!-- JavaScript -->
+            </div>
+            <script type="text/javascript">$(function () { EventsUpcoming.Initialize('#events-upcoming'); });</script>
+        </div>
+    </div>
 </section>
 
-<section id="events">
-    <h1>Events</h1>
+<section id="events" style="padding-top: 15px">
+    <h1 style='margin-bottom: 15px'>Events</h1>
     <?php if ($permissions['events']['CREATE']): ?>
         <div class="row">
-            <button class="btn btn-edit" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">
-                <span class="glyphicon glyphicon-plus"></span>
-                Add an Event
+            <button class="btn btn-default" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">
+                <!--<span class="glyphicon glyphicon-plus"></span>-->
+                Add Event
             </button>
             <div class="modal fade" id="modal-newevent" tabindex="-1" aria-labelledby="modal-newevent">
                 <div class="modal-dialog">
@@ -71,22 +82,44 @@ $self = $this
                             <div class="form-group">
                                 <input type="text" class="form-control input-title" placeholder="Event title..." id="event-title" required />
                                 <div class="input-group date" id="event-start-datepicker">
-                                    <span class="input-group-addon" style="border: none">
-                                        Start Date/Time:
-                                    </span>
-                                    <input type="text" placeholder="Select a Date/Time" class="form-control" />
-                                    <span class="input-group-addon input-date">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" style="border: none">
+                                                    Start Date/Time:
+                                                </span>
+                                                <input type="text" placeholder="Select a Date/Time" class="form-control" />
+                                                <span class="input-group-addon input-date">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="input-group date" id="event-end-datepicker">
-                                    <span class="input-group-addon" style="border: none">
-                                        Finish Date/Time:
-                                    </span>
-                                    <input type="text" placeholder="Select a Date/Time" class="form-control" />
-                                    <span class="input-group-addon input-date">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" style="border: none">
+                                                    Finish Date/Time:
+                                                </span>
+                                                <input type="text" placeholder="Select a Date/Time" class="form-control" />
+                                                <span class="input-group-addon input-date">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" style="border:none">
+                                                Internet Link
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="http://" id="event-link" required />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

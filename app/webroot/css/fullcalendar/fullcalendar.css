@@ -38,7 +38,7 @@ body .fc { /* extra precedence to overcome jqui */
 
 .fc-unthemed .fc-divider,
 .fc-unthemed .fc-popover .fc-header {
-	background: #eee;
+	background: #444;
 }
 
 .fc-unthemed .fc-popover .fc-header .fc-close {
@@ -243,7 +243,7 @@ NOTE: use percentage font sizes or else old IE chokes
 
 .fc-state-down,
 .fc-state-active {
-	background-color: #cccccc;
+	background-color: #888;
 	background-image: none;
 	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -538,7 +538,7 @@ temporary rendered events).
 
 .fc-event .fc-bg { /* the generic .fc-bg already does position */
 	z-index: 1;
-	background: #fff;
+	background: #444;
 	opacity: .25;
 	filter: alpha(opacity=25); /* for IE */
 }
@@ -629,6 +629,12 @@ be a descendant of the grid when it is being dragged.
     font-size: 6pt;
 }
 
+@media (max-width: 800px) {
+    .fc-day-grid-event .fc-content {
+        white-space: nowrap;
+    }
+}
+
 @media (min-width: 500px) {
     .fc-day-grid-event .fc-content {
         font-size: 12pt;
@@ -679,6 +685,7 @@ a.fc-more:hover {
 
 .fc-more-popover .fc-event-container {
 	padding: 10px;
+    background: #333;
 }
 
 /* Toolbar

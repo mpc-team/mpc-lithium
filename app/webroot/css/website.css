@@ -84,7 +84,7 @@ img
 {
     font-weight: 900;
     font-family: "Alegreya Sans";
-    font-size: 26px;
+    font-size: 30px;
     height: auto
 }
 
@@ -142,6 +142,12 @@ a h5
     padding-bottom: 10px;
 }
 
+/* Shadow & Glow Effects
+---------------------------------------------------------------------------------------------------- */
+
+.shadow-med-1 { box-shadow: 3px 3px 4px #000; }
+.shadow-med-2 { box-shadow: 4px 4px 5px #000; }
+
 /* Panels & Tiles
 ---------------------------------------------------------------------------------------------------- */
 
@@ -153,10 +159,10 @@ a h5
 .padded-panel-med { padding: 10px !important; }
 .padded-panel-lg { padding: 15px !important; }
 
-.panel-padded
-{
-    padding: 5px !important;
-}
+.panel-padded { padding: 5px !important; }
+.bordered-panel { border: 1px solid #444; }
+
+
 
 .btn.btn-icon-only
 {

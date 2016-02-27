@@ -49,9 +49,16 @@
 
 #announcements-content > .announcement
 {
-    padding: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    /*margin-top: 15px;*/
+    margin-bottom: 10px;
     background: rgba(40, 40, 40, 0.8);
-    border: 1px solid #444;
+}
+
+#announcements-content > .announcement > .title > h2 { margin-bottom: 7px; }
+#announcements-content > .announcement > .title { border-bottom: 1px solid #444; }
+
+#announcements-content > .announcement > .content > .nano
+{
+    min-height: 120px;
+    max-height: 160px;
 }

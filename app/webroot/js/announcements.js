@@ -43,12 +43,12 @@ announcements.ui.stringify = function (object)
 {
 	var date = moment(object.tstamp);
 	var result = '';
-	result += "<div class='announcement' data-id='" + object.id + "'>";
+	result += "<div class='announcement padded-panel-med bordered-panel shadow-med-1' data-id='" + object.id + "'>";
 	result += "<div class='title' data-id='" + object.id + "'>";
 	if (object.title != null && object.title != "")
-		result += "<h3 style='margin-bottom: 15px;'>" + object.title + "</h3>";
+		result += "<h2>" + object.title + "</h2>";
 	else
-		result += "<h3 style='margin-bottom: 15px;'>Announcement #" + object.id + "</h3>";
+		result += "<h2>Announcement #" + object.id + "</h2>";
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
@@ -63,8 +63,13 @@ announcements.ui.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";
+	result += "<div class='nano'>";
+	result += "<div class='nano-content'>";
 	result += markup.process(object.content, markup.NORMAL | markup.MARKDOWN);
 	result += "</div>";
+	result += "</div>";
+	result += "</div>";
+
 	result += "<div class='content-edit' data-id='" + object.id + "'>";
 	result += "<textarea type='text' class='form-control' data-id='" + object.id + "'>";
 	result += object.content;
@@ -239,6 +244,8 @@ announcements.ui.print = function (objects)
 	for (key in objects)
 		outputString += announcements.ui.stringify(objects[key]);
 	output.html(outputString);
+
+	$(announcements.htmlElements.content + " .announcement .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 
 	for (key in objects)
 		announcements.ui.register(objects[key].id);
