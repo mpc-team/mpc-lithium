@@ -112,7 +112,7 @@ class Messages extends \lithium\data\Model
             return false;
 
         if ($message->type == self::CLAN_INVITE)
-            return UserClans::AddUser($message->idtag, $message->uidreceiver) && $message->delete();
+            return UserClans::AddUser($message->idtag, $message->uidreceiver, UserClans::RANK_MEMBER) && $message->delete();
         else
             return false;
     }

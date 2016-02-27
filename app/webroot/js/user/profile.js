@@ -14,25 +14,35 @@ var profile = {};
 profile.Clan = {};
 profile.Clan.PageElementId = "#user-profile-clan";
 profile.Clan.LeaveClanButton = "#clan-leave";
+profile.Clan.ClanInviteButton = "#clan-invite";
 
 /**
  * Update the User Clan UI Elements.
  * 
  * @param {int} userid: User identifier (of authorized User).
  */
-profile.Clan.UpdatePageElements = function (userid)
+profile.Clan.UpdatePageElements = function (authid, userid)
 {
-	$.get('/api/users/single/' + userid + "?ext=true", null, function (response)
+	$.get('/api/users/single/' + authid + "?ext=true", null, function (authUser)
 	{
-		var text = "None";
-		if (response.clan != null)
+		$.get('/api/users/single/' + userid + "?ext=true", null, function (userObject)
 		{
-			text = response.clan.shortname;
-			$(profile.Clan.LeaveClanButton).css('display', 'block');
-		}
-		else
-			$(profile.Clan.LeaveClanButton).css('display', 'none');
-		$(profile.Clan.PageElementId).html(text);
+			var clanText = (userObject.clan != null) ? userObject.clan.shortname : "None";
+
+			/* Leave Your Own Clan (only if you're in a Clan) */
+			if (userObject.clan != null)
+				$(profile.Clan.LeaveClanButton).css('display', 'block');
+			else
+				$(profile.Clan.LeaveClanButton).css('display', 'none');
+
+			/* Invite User to Your Clan (Only if you have Clan and User doesn't) */
+			if (authUser.id != userObject.id && authUser.clan != null && userObject.clan == null)
+				$(profile.Clan.ClanInviteButton).css('display', 'block');
+			else
+				$(profile.Clan.ClanInviteButton).css('display', 'none');
+
+			$(profile.Clan.PageElementId).html(clanText);
+		});
 	});
 }
 
@@ -41,12 +51,22 @@ profile.Clan.UpdatePageElements = function (userid)
  * 
  * @param {int} userid: User identifier (of authorized User).
  */
-profile.Clan.LeaveClan = function (userid)
+profile.Clan.LeaveClan = function (authid, userid)
 {
 	$.get('/api/clans/leave', null, function (response)
 	{
 		if (!('Error' in response))
-			profile.Clan.UpdatePageElements(userid);
+			profile.Clan.UpdatePageElements(authid, userid);
+	});
+}
+
+profile.Clan.SendClanInvite = function (authid, userid)
+{
+	$.get('/api/clans/invite?users=' + userid, null, function (response)
+	{
+		console.log(response);
+		if (!('Error' in response))
+			profile.Clan.UpdatePageElements(authid, userid);
 	});
 }
 
@@ -125,11 +145,13 @@ profile.refreshGames = function (played)
 /* Initialization
 ------------------------------------------------------------------------------------------------ */
 
-profile.init = function (userid, played) 
+profile.init = function (authid, userid, played) 
 {
 	/* Initialize User Clan Element */
-	profile.Clan.UpdatePageElements(userid);
-	$(profile.Clan.LeaveClanButton).click(function () { profile.Clan.LeaveClan(userid); });
+	profile.Clan.UpdatePageElements(authid, userid);
+
+	$(profile.Clan.LeaveClanButton).click(function () { profile.Clan.LeaveClan(authid, userid); });
+	$(profile.Clan.ClanInviteButton).click(function () { profile.Clan.SendClanInvite(authid, userid); });
 
 	profile.refreshGames(played);
 

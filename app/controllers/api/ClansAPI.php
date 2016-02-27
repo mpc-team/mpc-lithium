@@ -16,38 +16,6 @@ use app\models\Messages;
 class ClansAPI extends ContentController
 {
 
-    /* Error Types
-    ---------------------------------------------------------------------------------------------------- */
-
-    private static $ErrorMessage = array
-    (
-        'NameErrors' => array
-        (
-            'ShortName' => array
-            (
-                'NoError',
-                'NullName',
-                'TooLong',
-                'InvalidCharacter',
-            ),
-            'LongName' => array
-            (
-                'NoError',
-                'NullName',
-                'NameTaken',
-            ),
-        ),
-        'MemberErrors' => array
-        (
-            'NoError',
-            'NullList',
-            'NotEnoughUsers',
-            'UserNotFound',
-            'UserInClan',
-            'SelfInvite',
-        ),
-    );
-
     /**
      * Returns list of all Clans.
      *
@@ -79,6 +47,32 @@ class ClansAPI extends ContentController
 
         UserNotifications::DeleteNotifications($this->request->id, UserNotifications::CLAN_INVITE);
         return $this->render(array('json' => Messages::DeclineInvite($this->request->id), 'status' => 200));
+    }
+
+    /* Send Clan Invites to Users
+    ---------------------------------------------------------------------------------------------------- */
+
+    public function invite()
+    {
+        $authorized = Auth::check('default');
+        if (!$authorized)
+            return $this->render(array('json' => array('Error' => 'Authentication required.'), 'status' => 200));
+
+        $userClan = UserClans::GetUserClan($authorized['id']);
+        if ($userClan == null)
+            return $this->render(array('json' => array('Error' => 'Must be in a Clan to invite another.'), 'status' => 200));
+
+        $userClanRank = UserClans::GetUserClanRank($authorized['id']);
+        if ($userClanRank != UserClans::RANK_OWNER)
+            return $this->render(array('json' => array('Error' => 'Only the Clan Owner can invite others.'), 'status' => 200));
+
+        if (!isset($this->request->query['users']))
+            return $this->render(array('json' => array('Error' => 'User identifiers required.'), 'status' => 200));
+
+        $users = $this->request->query['users'];
+        $userids = explode(",", $users);
+
+        return $this->render(array('json' => self::SendClanInvites($authorized['id'], $userids, $userClan), 'status' => 200));
     }
 
     /* Leave Clan
@@ -312,4 +306,37 @@ class ClansAPI extends ContentController
 
         return 0;
     }
+    
+
+    /* Error Types
+    ---------------------------------------------------------------------------------------------------- */
+
+    private static $ErrorMessage = array
+    (
+        'NameErrors' => array
+        (
+            'ShortName' => array
+            (
+                'NoError',
+                'NullName',
+                'TooLong',
+                'InvalidCharacter',
+            ),
+            'LongName' => array
+            (
+                'NoError',
+                'NullName',
+                'NameTaken',
+            ),
+        ),
+        'MemberErrors' => array
+        (
+            'NoError',
+            'NullList',
+            'NotEnoughUsers',
+            'UserNotFound',
+            'UserInClan',
+            'SelfInvite',
+        ),
+    );
 }

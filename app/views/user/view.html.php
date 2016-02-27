@@ -29,6 +29,7 @@ $self = $this;
             <span>
                 <h2><small>CLAN</small></h2>
                 <h1 id='user-profile-clan' style='margin-top: -10px'>None</h1>
+                <button id="clan-invite" style="display: none" class="btn btn-default btn-are-you-sure" data-message="Confirm sending Clan Invitation.">Invite to Clan</button>
             </span>
         </div>
         <div class="col-md-8">
@@ -83,6 +84,6 @@ $self = $this;
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-		profile.init(<?= $data['member']['id'] ?>, <?php echo $data['played'] ?>);
+		profile.init(<?= $authorized['id'] ?>, <?= $data['member']['id'] ?>, <?php echo $data['played'] ?>);
 	});
 </script>

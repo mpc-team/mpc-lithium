@@ -30,6 +30,22 @@ class UserClans extends \lithium\data\Model
     }
 
     /**
+     * Returns a User's rank within his/her Clan.
+     *
+     * @param int $userid User identifier.
+     *
+     * @return string Clan rank such as 'member' or 'owner'.
+     */
+    public static function GetUserClanRank ($userid)
+    {
+        $userClanEntry = self::find('first', array('conditions' => array('uid' => $userid)));
+        if ($userClanEntry)
+            return $userClanEntry->rank;
+        else
+            return null;
+    }
+
+    /**
      * Returns a list of Users in the specified Clan.
      *
      * @param int $clanid Clan identifier.
@@ -120,4 +136,28 @@ class UserClans extends \lithium\data\Model
         }
         return false;
     }
+
+    /**
+     * Modifies a User's rank within his/her Clan.
+     *
+     * @param int $userid User identifier.
+     * @param string $rank Rank to change to.
+     *
+     * @return bool True if successfully modified.
+     */
+    public static function ModifyUserRank ($userid, $rank)
+    {
+        // Does the User exist?
+        if (!Users::Get($userid))
+            return false;   
+
+        $userClanEntry = self::find('first', array('conditions' => array('uid' => $userid)));
+        if ($userClanEntry)
+        {
+            $userClanEntry->rank = $rank;
+            return $userClanEntry->save();
+        }
+        return false;
+    }
 }
+ 

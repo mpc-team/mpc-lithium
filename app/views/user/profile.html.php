@@ -199,6 +199,6 @@ if (isset($notification['status']))
 <script type="text/javascript">
     $(document).ready(function() 
     {
-	    profile.init(<?= $authorized['id'] ?>, <?php echo $data['played'] ?>);
+	    profile.init(<?= $authorized['id'] ?>, <?= $authorized['id'] ?>, <?php echo $data['played'] ?>);
     });
 </script>
