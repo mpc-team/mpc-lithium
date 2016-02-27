@@ -44,7 +44,8 @@ class EventsAPI extends ContentController
         $startDate = $this->request->data['start'];
         $finishDate = $this->request->data['finish'];
         $link = $this->request->data['link'];
+        $description = $this->request->data['description'];
 
-        return $this->render(array('json' => Events::NewEvent($title, $startDate, $finishDate, $link)));
+        return $this->render(array('json' => Events::NewEvent($title, $startDate, $finishDate, $link, $description)));
     }
 }

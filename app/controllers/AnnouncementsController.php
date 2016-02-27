@@ -165,13 +165,15 @@ class AnnouncementsController extends ContentController
         return $this->render(array('json' => true, 'status' => '200'));
     }
 
-    /**
-     * Returns a list of *all* Announcements.
-     */
     public function all()
     {
-        $announcements = Announcements::GetList();
-        return $this->render(array('json' => $announcements, 'status' => '200'));
+        $limit = (isset($this->request->query['limit'])) 
+            ? $this->request->query['limit'] : null;
+
+        return $this->render(array(
+            'json' => Announcements::All($limit), 
+            'status' => '200'
+        ));
     }
 }
 

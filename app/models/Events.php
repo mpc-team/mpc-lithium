@@ -60,13 +60,14 @@ class Events extends \lithium\data\Model
      *
      * @return array On success, returns the saved Event object (as array).
      */
-    public static function NewEvent ($title, $startDate, $finishDate, $link = null)
+    public static function NewEvent ($title, $startDate, $finishDate, $link = null, $description = null)
     {
         $event = self::create(array(
             'title' => $title,
             'start' => $startDate,
             'end' => $finishDate,
             'linkref' => $link,
+            'description' => $description,
         ));
         if ($event->save())
             return $event->to('array');

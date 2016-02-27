@@ -232,7 +232,7 @@ members.ui.input.game.stringify = function (game)
 	html += "<div class='game'>";
 	html += "<label>";
 	html += "<input type='checkbox' id='" + game.realname + "' />";
-	html += "<span style='display: inline-block; font-size:9pt; padding-left:5px; padding-bottom: 35px;'>";
+	html += "<span style='display: inline-block; font-size:9pt; padding-left:5px;'>";
 	html += game.name
 	html += "</span>";
 	html += "</label>";

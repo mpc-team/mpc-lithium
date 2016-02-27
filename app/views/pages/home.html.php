@@ -50,7 +50,7 @@ $self = $this
             <div id="announcements-content"></div>
         </div>
         <div class="col-md-4" style="padding-left: 15px">
-            <h2 style='margin-bottom: 15px'>Upcoming Events</h2>
+            <center><h2 style='padding-bottom: 15px; padding-top: 15px;'>Upcoming Events</h2></center>
             <div id="events-upcoming">
                 <!-- JavaScript -->
             </div>
@@ -80,13 +80,16 @@ $self = $this
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" class="form-control input-title" placeholder="Event title..." id="event-title" required />
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-title" placeholder="Event title..." id="event-title" required />
+                                    <textarea class="form-control" placeholder="Brief description..." id="event-description" style="resize: none"></textarea>
+                                </div>
                                 <div class="input-group date" id="event-start-datepicker">
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon" style="border: none">
-                                                    Start Date/Time:
+                                                    Starts at:
                                                 </span>
                                                 <input type="text" placeholder="Select a Date/Time" class="form-control" />
                                                 <span class="input-group-addon input-date">
@@ -101,7 +104,7 @@ $self = $this
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon" style="border: none">
-                                                    Finish Date/Time:
+                                                    Finishes at:
                                                 </span>
                                                 <input type="text" placeholder="Select a Date/Time" class="form-control" />
                                                 <span class="input-group-addon input-date">
@@ -115,7 +118,7 @@ $self = $this
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon" style="border:none">
-                                                Internet Link
+                                                Internet Link:
                                             </span>
                                             <input type="text" class="form-control" placeholder="http://" id="event-link" required />
                                         </div>

@@ -6,6 +6,7 @@
 
 var announcements = {};
 announcements.ui = {};
+announcements.ui.displayLimit = 10;
 
 /**
  * HTML Elements.
@@ -355,7 +356,7 @@ announcements.edit = function (id, title, content)
  */
 announcements.pull = function ()
 {
-	$.get('/announcements/all', null,
+	$.get('/announcements/all?limit=' + announcements.ui.displayLimit, null,
 		/**
 		 * Response callback for the GET request.
 		 * 
@@ -363,6 +364,7 @@ announcements.pull = function ()
 		 */
 		function (data)
 		{
+			console.log(data);
 			var dataArray = [];
 			for (key in data)
 				dataArray.push(data[key]);

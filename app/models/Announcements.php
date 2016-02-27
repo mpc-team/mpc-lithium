@@ -5,11 +5,6 @@ namespace app\models;
 class Announcements extends \lithium\data\Model
 {
     /**
-     * Maximum number of Announcements to Display when retrieving *all*.
-     */
-    const MAX_ANNOUNCEMENTS_TO_LIST = 35;
-
-    /**
      * Cleans the Announcement title for insertion into the Database.
      * 
      * @param mixed $text 
@@ -116,10 +111,10 @@ class Announcements extends \lithium\data\Model
      *
      * @return mixed - List of Announcements.
      */
-    public static function GetList()
+    public static function All($limit = null)
     {
         $announcements = self::find('all', array(
-            'limit' => self::MAX_ANNOUNCEMENTS_TO_LIST,
+            'limit' => $limit,
             'order' => array('tstamp' => 'DESC'),
         ))->to('array');
         foreach ($announcements as $key => $announcement)

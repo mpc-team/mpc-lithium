@@ -20,6 +20,7 @@ EventsCalendar.UI.Elements.Modal = "#modal-newevent";
 
 EventsCalendar.UI.Elements.Inputs = {};
 EventsCalendar.UI.Elements.Inputs.Title = "#event-title";
+EventsCalendar.UI.Elements.Inputs.Description = "#event-description";
 EventsCalendar.UI.Elements.Inputs.StartDate = "#event-start-datepicker";
 EventsCalendar.UI.Elements.Inputs.FinishDate = "#event-end-datepicker";
 EventsCalendar.UI.Elements.Inputs.Link = '#event-link';
@@ -98,6 +99,7 @@ EventsCalendar.Callbacks.CreateEvent = function ()
 	bodyData.start = startDate;
 	bodyData.finish = endDate;
 	bodyData.link = $(EventsCalendar.UI.Elements.Inputs.Link).val();
+	bodyData.description = $(EventsCalendar.UI.Elements.Inputs.Description).val();
 
 	$(EventsCalendar.UI.Elements.Inputs.Title).val("");
 	$(EventsCalendar.UI.Elements.Inputs.Link).val("");
