@@ -1,4 +1,4 @@
-/**
+	/**
  * markup.js
  *
  * Markup is the processing and preparing of text. This markup library will take a string of text
@@ -293,20 +293,19 @@ markup.swap = function (list, map, mode)
 			{
 				case "[video]":
 					var stuff = this.getContent(list, i, map);
-					
-					switch (mode)
+
+					/* If we're in Preview mode then we only need a thumbnail of a video. */
+					if (mode & markup.PREVIEW)
 					{
-						case markup.PREVIEW:
-							stuff = stuff.replace("watch?v=", "vi/");
-							stuff = stuff.replace("https://www", "http://img");
-							stuff = stuff.trim();
-							stuff = stuff.split("#")[0];
-							stuff += "/0.jpg";
-							break;;
-						default:
-							stuff = stuff.replace("watch?v=", "embed/");
-							break;
+						stuff = stuff.replace("watch?v=", "vi/");
+						stuff = stuff.replace("https://www", "http://img");
+						stuff = stuff.trim();
+						stuff = stuff.split("#")[0];
+						stuff += "/1.jpg";
 					}
+					else
+						stuff = stuff.replace("watch?v=", "embed/");
+
 					this.setContent(list, i, stuff, map);
 					break;
 
