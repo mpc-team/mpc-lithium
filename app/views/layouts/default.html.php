@@ -47,7 +47,6 @@ use app\views\layouts\LayoutConstants;
         'fullcalendar/fullcalendar',
         'highlight/highlight.pack',
         'markdown-js/markdown.min',
-        'utils/goTo',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
         'utils/events/EventsCalendar',

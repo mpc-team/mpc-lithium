@@ -37,7 +37,6 @@ use app\views\layouts\LayoutConstants;
         'bootstrap',
         'highlight/highlight.pack',
         'markdown-js/markdown.min',
-        'utils/goTo',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
         'utils/AreYouSure',
