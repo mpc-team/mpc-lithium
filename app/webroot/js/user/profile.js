@@ -145,22 +145,22 @@ profile.refreshGames = function (played)
 /* Initialization
 ------------------------------------------------------------------------------------------------ */
 
-profile.init = function (authid, userid, played) 
+profile.init = function (userid, played) 
 {
-	/* Initialize User Clan Element */
-	profile.Clan.UpdatePageElements(authid, userid);
+	user.auth.check(function (authorizedUser)
+	{
+		/* Initialize User Clan Element */
+		profile.Clan.UpdatePageElements(authorizedUser.id, userid);
 
-	$(profile.Clan.LeaveClanButton).click(function () { profile.Clan.LeaveClan(authid, userid); });
-	$(profile.Clan.ClanInviteButton).click(function () { profile.Clan.SendClanInvite(authid, userid); });
+		$(profile.Clan.LeaveClanButton).click(function () { profile.Clan.LeaveClan(authorizedUser.id, userid); });
+		$(profile.Clan.ClanInviteButton).click(function () { profile.Clan.SendClanInvite(authorizedUser.id, userid); });
+	});
 
 	profile.refreshGames(played);
 
 	/* Initialize User Messages */
 	profile.wall.refreshMessages(userid, true);
-	setInterval(function () 
-	{
-		profile.wall.refreshMessages(userid, false);
-	}, 10000);
+	setInterval(function () { profile.wall.refreshMessages(userid, false); }, 10000);
 	
 	/* Initialize Game Buttons */
 	$(".profile-content .game button").click(function () 

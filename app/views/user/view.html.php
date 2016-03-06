@@ -83,7 +83,8 @@ $self = $this;
 	</div>
 </div>
 <script type="text/javascript">
-	$(document).ready(function() {
-		profile.init(<?= $authorized['id'] ?>, <?= $data['member']['id'] ?>, <?php echo $data['played'] ?>);
+	$(document).ready(function() 
+    {
+		profile.init(<?= $data['member']['id'] ?>, <?php echo $data['played'] ?>);
 	});
 </script>
