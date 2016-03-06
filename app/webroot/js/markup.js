@@ -301,7 +301,7 @@ markup.swap = function (list, map, mode)
 						stuff = stuff.replace("https://www", "http://img");
 						stuff = stuff.trim();
 						stuff = stuff.split("#")[0];
-						stuff += "/1.jpg";
+						stuff += "/0.jpg";
 					}
 					else
 						stuff = stuff.replace("watch?v=", "embed/");
