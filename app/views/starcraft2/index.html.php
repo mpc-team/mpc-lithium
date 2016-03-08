@@ -53,12 +53,13 @@ $self = $this;
                         <div class="panel-body" style="margin: 15px;">
                             <div class="row">
                                 <div class="col-md-3">
-                                     <img src="/img/sc2/trumpsrevenge-icon.png" alt="trumpsrevenger-banner.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" style="box-shadow: none;" />
-                                     <img src="/img/sc2/trumpsrevenge-ss1.png" alt="trumpsrevenger-ss1.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" style="box-shadow: none; padding: 20px;" />
+                                     <img src="/img/sc2/trumpsrevenge-icon.png" alt="trumpsrevenger-banner.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" style="box-shadow: none; width: 150px;" />
+                                     <img src="/img/sc2/trumpsrevenge-ss1.png" alt="trumpsrevenger-ss1.png" class="img-rounded img-responsive" id="trumpsrevenger-bannerimg" style="box-shadow: none; padding: 20px; width: 170px;" />
                                 </div>
                                 <div class="col-md-9">
+                                    <h3 class="panel-title">Trump's Revenge</h3>
                                     <small>Genre: Survival</small>
-                                <p class="text-indent: 5px; padding: 5px;">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten. Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
+                                    <p class="text-indent: 5px; padding: 5px; padding: 25px;">The Year is 2026, 10 years after Trump's defeat at the 2016 elections. For the last ten years, the name trump has fallen into a pit of obscurity as he fell away from the public eye, consumed by grief. In 2022 he disappears completely. No one can find him, or his family, the trumpz tower is deserted and the brand forgotten. Little happens in those years following Trump's disappearance. In 2021, Isis was defeated, and the USA felt its problems were over. But following Trump's disappearance, factories received millions of dollars from unknown sources in exchange for their resources. Little was said about this disturbance, money to the factories was money no matter who spent it. No one suspected trump, he was long forgotten, no one could even recall him, no one that is, but trump! Trump never forgot, he lived in his cave plotting, and his army grew with each import of resources, his forces grew and evolved as his scientists experimented on them in exchange for tens of millions in cash. Through biological engineering and mass production, his army began to assemble. He was ready to begin the true age of trump. The year is now 2026, trump rose from his underground dwelling in a wave of splendor, his armies decimating all that stood in his way. The USA army is ruins, their allies doing little to prevent trump from conquering everything he had longed for, all that stands between him and the white house is you, the elite bodyguard of the president. The universe hangs in the balance, do not let trump reach the Whitehouse</p>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +99,20 @@ $self = $this;
         <small>
             SC2 Community
         </small>
-    </h3>   
+    </h3>
+    <div class="row">
+        <div class="col-md-12">
+            <a>
+                <div class="panel-group">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <p style="text-indent: 20px;">In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
     <div class="row">                
         <div class="col-md-6">
             <a href="/board/view/11">
@@ -106,7 +120,7 @@ $self = $this;
                      <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                              MPC Sign Ups
+                              Clan War Sign Ups [Members Only]
                             </h3>
                         </div>
                         <div class="panel-body">
@@ -124,14 +138,13 @@ $self = $this;
                      <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                              Information
+                              Contact Information
                             </h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <p>Frequently asked questions, and basic understanding on the process of the clan wars.</p>
-                                <br />
-                            </div>
+                                
+                            </div>    
                         </div>                
                     </div>                
                 </div>
@@ -147,6 +160,7 @@ $self = $this;
         $sc2Casters = array('vaevictissc' => 'VaeVictisSC', 'seadogsc2' => 'sEadogSC2', 'chefsstream' => 'Chef'); 
         
     ?>
+    <div class="panel-group">
         <div class="panel">
             <div class="panel-heading">
                 <ul class="nav nav-tabs" role="tablist">
@@ -183,75 +197,24 @@ $self = $this;
                     <?php endforeach; ?>
                 </div><!--tab content-->
             </div><!--panel body-->
-        </div>
+            </div><!--panel-->
+        </div><!--panel-group-->
     <h3>
         Official Website
         <small>Blizzard Entertainment</small>
     </h3>
     <div class="row">
         <a href="http://us.battle.net/sc2/en/legacy-of-the-void/" target="_blank">
-            <div class="panel">
-                <div class="panel-heading">
-                    <img src="/img/sc2/officialwebsite.png" alt="officialwebsite.png" class="img-rounded img-responsive" id="sc2-officialwebsite-png" style="width: 100%;"/>
-                </div>
-                <div class="panel-body">
-                    <h3 class="panel-title">See the Starcraft 2 Official Website</h3>
-                    <p>http://us.battle.net/sc2/en/legacy-of-the-void/</p>
+            <div class="panel-group">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <img src="/img/sc2/officialwebsite.png" alt="officialwebsite.png" class="img-rounded img-responsive" id="sc2-officialwebsite-png" style="width: 100%; max-width: 600px;"/>
+                    </div>
+                    <div class="panel-body text-center">
+                        <p>http://us.battle.net/sc2/en/legacy-of-the-void/</p>
+                    </div>
                 </div>
             </div>
         </a>
-    </div>
-    <!--hidden objects-->
-        <div class="modal fade" id="clanwarsmodal" tabindex="-1" role="dialog" aria-labelledby="clanwarsmodal-label">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="clanwarsmodal-label">Clan Wars</h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
-                            </a>
-                        </div>
-                        <div class="media-body">
-                        <h4 class="media-heading">Description</h4>
-                            <small>Clan Wars is a competition of 1 vs 1, but as a clan vs clan tournament. The victor will have the most points when all of the members from the opposing clan has been defeated. Normally, the clans will have will have a best out of a odd number for the clan vs clan, but also per player vs player match ups.</small>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
-                            </a>
-                            </div>
-                            <div class="media-body">
-                            <h4 class="media-heading">Map Choice and Decision</h4>
-                                <small>Maps are based on the current season's 1 vs 1 league maps. Each clan will veto a map until a single map stands remaining. After the two players from both clans have finished their first game, the losing player will decide the next map. Once a map has been played, that map cannot be chosen until all the rest have been placed atleast once, then a new cycle begins.</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object sc2modalbullet" src="/img/sc2/modalbullet.png" alt="modalbullet.png" />
-                            </a>
-                            </div>
-                            <div class="media-body">
-                            <h4 class="media-heading">Casting Rules</h4>
-                                <small>Caster's stream broadcast will have a requirement of 3 minute real time delay. Only Casters will be allowed in the game, unless accompanied by another player, but sometimes if agreement is made between both clans, then additional players may observe.</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a type="button" class="btn btn-edit" href="http://www.mpcgaming.com/board/view/11">Register</a>
-                    <a type="button" class="btn btn-edit" data-dismiss="modal">Close</a>                    
-                </div>
-            </div>
-        </div>
-    </div>      
+    </div>       
 </div>

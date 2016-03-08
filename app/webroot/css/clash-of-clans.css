@@ -1,4 +1,8 @@
-﻿#clash-of-clans h3 {
+﻿#clash-of-clans .row .panel-group {
+    margin: auto;
+    max-width: 1200px;
+}
+#clash-of-clans h3 {
     margin: 15px 0 15px 0;
     color: #FAF1BF;
     text-shadow: 1px 1px 15px #000;
@@ -18,6 +22,7 @@
     margin: auto;
     box-shadow: 1px 1px 10px #FAF1BF;
     width: 100%;
+    max-width: 600px;
 }
 #clash-of-clans img:hover{
     box-shadow: 1px 1px 20px #FAF1BF;

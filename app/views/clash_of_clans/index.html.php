@@ -9,18 +9,6 @@ $self = $this;
 ?>
 
 <div id="clash-of-clans">
-
-    <!--<div class="well">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="/img/clash_of_clans/coc-head-banner.png" alt="coc-head-banner.png" class="img-rounded img-responsive coc-headbanner" />
-            </div>
-            <div class="col-md-6">
-                <img src="/img/mpc/mpcgaming-logo.png" alt="mpcgaming-logo.png" class="img-rounded img-responsive coc-headbanner" style="width: 55%;" />
-            </div>
-        </div>
-    </div>-->
-    <!-- header row-->
     <h3>
         Clash of Clans - "The Revolution Begins"
         <small>Games</small>
@@ -37,78 +25,126 @@ $self = $this;
                     <div class="row text-center">
                         <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
                         <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>
+                        <p>MPC has training clans that review over war recaps for members willing to learn, and understand Clash of Clans. MPCs secondary clans are designed to train green collar members into brilliant strategists. Speak to one of the MPC Officers on discord to learn more about the process, and upbringing of a fully fledged, organized clan.</p>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <p style="color: #FAF1BF;">MPC HQ is held on Discord Server. You may connect with MPC by going <a href="/connect">Here</a>.</p>
                 </div>
             </div>
         </div>
     </div>
     <h3>
-        Twitch
-        <small>Clash of Clans</small>
+        MPC's Clans in Clash of Clans
+        <small>Clan Information</small>
     </h3>
-    <?php 
-        
-        $cocCasters = array('lovetorub16' => 'LoveToRub', 'marshallmpc' => 'Marshall'); 
-        
-    ?>
-        <div class="panel">
-            <div class="panel-heading">
-                <ul class="nav nav-tabs" role="tablist">
-                    <?php foreach($cocCasters as $id => $displayName): ?>
-                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div><!--panelheading-->
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="tabpanel" class="tab-pane fade in"> 
-                        <h3>Select a Caster Above...</h3>
+    <div class="row">
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation">
+                            <a href="#assassins" class="btn btn-edit active" aria-controls="assassins" role="tab" data-toggle="tab">
+                                Assassins
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#warriors" class="btn btn-edit" aria-controls="warriors" role="tab" data-toggle="tab">
+                                Warriors
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#goblins" class="btn btn-edit" aria-controls="goblins" role="tab" data-toggle="tab">
+                                Goblins
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in" id="assassins">
+                            Assassins
+                        </div>
+                        <div class="tab-pane fade" id="warriors">
+                            Warriors
+                        </div>
+                        <div class="tab-pane fade" id="goblins">
+                            Goblins
+                        </div>
                     </div>
-                    <?php foreach($cocCasters as $id => $displayName): ?>
-                    <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
-                        <div id="caster-<?= $id ?>-twitchdiv">
-                            <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
-                            <div class="row" style="padding-top: 5%;">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
-                                </div><!--embed video-->              
-                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
-                            </div><!--row-->
-
-                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%;">
-                                <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/<?= $id ?>/chat?popout=">
-                                    </iframe>
-                                </div><!--embed chat-->
-                                <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/<?= $id ?>" target="_blank">Page</a>.</p>
-                            </div><!--Collapse Div-->
-                        </div> <!-- Caster ID -->
-                    </div><!--tab panel-->
-                    <?php endforeach; ?>
-                </div><!--tab content-->
-            </div><!--panel body-->
+                </div>
+            </div>
         </div>
+    </div>
+    <h3>
+        YouTube
+        <small>Tutorials and Content</small>
+    </h3>
+    <div class="row">
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">                                           <script>
+                        
+                    </script>
+                </div><!--panel-heading-->          
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in" id="tutorials">
+                            tutorials
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="war-recap">
+                            war-recap
+                        </div>
+                    </div>
+                </div><!--panel-body-->
+            </div><!--panel-->
+        </div><!--panel-group-->
+    </div><!--row-->    
     <h3>
         Discord
         <small>Clash of Clans</small>
     </h3>
     <div class="row">
-        <a>
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <img src="/img/clash_of_clans/communication-banner.png" alt="communication-banner.png" class="img-rounded img-responsive" />
-                        <a class="btn btn-lg" href="/connect" id="coc-communication" style="color: #000; background-color: #FAF1BF; margin: 5% 0 0 0;">Connect Discord</a>
-                    </div>
-                </div><!--panel-->
-                <div class="panel-footer">
-                    
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                    <img src="/img/clash_of_clans/communication-banner.png" alt="communication-banner.png" class="img-rounded img-responsive" />
                 </div>
-            </div><!--panel group-->
-        </a>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0;">
+                                <p style="color: #000; font-weight: 600;">Discord offers features that allow MPC to function, and organize a clan's gaming success both on a competitive, or community base level. With Discord you'll be able to conquer your foes. Discord can provide:</p>
+                            </div>                            
+                            <ul class="list-group">
+                                <?php
+                                    $bsArray = array(
+                                        'Performs well on Computers.',
+                                        'Optimized App. for Mobile Devices',
+                                        'Voice Chat.',
+                                        'Coordinate Attacks to Win Wars.',
+                                        'Meet Clan Mates, and Make Friends.',
+                                        'Quick Setup, and optional installation for desktop.',
+                                    );
+                                ?>
+                                <?php foreach($bsArray as $msg): ?> 
+                                    <li class="list-group-item" style="font-weight: 600;">
+                                        <?= $msg ?>
+                                    </li>
+                                <?php endforeach; ?>                             
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="btn-group btn-lg" role="group">
+                                <a class="btn" href="/connect" style="color: #000; background-color: #FAF1BF; margin: 2px 0 2px 0; width: 200px; font-weight: 600">Set Up Discord?</a>
+                            </div><!--btn group-->
+                            <div class="well" style="border: 2px solid #faf1bf; margin-left: 10px;">
+                            <center>
+                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px;" class="small"></iframe>
+                            </center>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div><!--panel-->
+        </div><!--panel group-->
     </div>
     <h3>
         Forums
