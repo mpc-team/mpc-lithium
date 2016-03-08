@@ -30,73 +30,7 @@ $self = $this;
                 </div>
             </div>
         </div>
-    </div>
-    <h3>
-        MPC's Clans in Clash of Clans
-        <small>Clan Information</small>
-    </h3>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation">
-                            <a href="#assassins" class="btn btn-edit active" aria-controls="assassins" role="tab" data-toggle="tab">
-                                Assassins
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#warriors" class="btn btn-edit" aria-controls="warriors" role="tab" data-toggle="tab">
-                                Warriors
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#goblins" class="btn btn-edit" aria-controls="goblins" role="tab" data-toggle="tab">
-                                Goblins
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div class="tab-pane fade in" id="assassins">
-                            Assassins
-                        </div>
-                        <div class="tab-pane fade" id="warriors">
-                            Warriors
-                        </div>
-                        <div class="tab-pane fade" id="goblins">
-                            Goblins
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h3>
-        YouTube
-        <small>Tutorials and Content</small>
-    </h3>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel">
-                <div class="panel-heading">                                           <script>
-                        
-                    </script>
-                </div><!--panel-heading-->          
-                <div class="panel-body">
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in" id="tutorials">
-                            tutorials
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="war-recap">
-                            war-recap
-                        </div>
-                    </div>
-                </div><!--panel-body-->
-            </div><!--panel-->
-        </div><!--panel-group-->
-    </div><!--row-->    
+    </div>   
     <h3>
         Discord
         <small>Clash of Clans</small>
@@ -110,8 +44,8 @@ $self = $this;
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0;">
-                                <p style="color: #000; font-weight: 600;">Discord offers features that allow MPC to function, and organize a clan's gaming success both on a competitive, or community base level. With Discord you'll be able to conquer your foes. Discord can provide:</p>
+                            <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0; border: 3px solid #000;">
+                                <p style="color: #000; font-weight: 600;">Discord offers features that allow MPC to function, and organize the clan's gaming success both on a competitive, or community base level. With Discord you'll be able to conquer your foes. Discord can provide:</p>
                             </div>                            
                             <ul class="list-group">
                                 <?php
@@ -125,15 +59,19 @@ $self = $this;
                                     );
                                 ?>
                                 <?php foreach($bsArray as $msg): ?> 
-                                    <li class="list-group-item" style="font-weight: 600;">
+                                    <li class="list-group-item" style="font-weight: 600; border-color: #faf1bf;">
                                         <?= $msg ?>
                                     </li>
                                 <?php endforeach; ?>                             
                             </ul>
+                            <div class="alert alert-success" role="alert">
+                                <small>Becareful speaking in the voice chat rooms as some players are currently playing and coordinating together. The rooms are marked with [In Game] will help justify which game they are playing, and ask politely if they are in game to avoid disruption.</small>
+                            </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 text-center">
+                            <small>Need Help with Discord?</small>
                             <div class="btn-group btn-lg" role="group">
-                                <a class="btn" href="/connect" style="color: #000; background-color: #FAF1BF; margin: 2px 0 2px 0; width: 200px; font-weight: 600">Set Up Discord?</a>
+                                <a class="btn" href="/connect" style="color: #000; background-color: #FAF1BF; margin: 2px 0 2px 0; width: 200px; font-weight: 600; border: 3px solid #000;">Set Up Page</a>
                             </div><!--btn group-->
                             <div class="well" style="border: 2px solid #faf1bf; margin-left: 10px;">
                             <center>
@@ -147,41 +85,18 @@ $self = $this;
         </div><!--panel group-->
     </div>
     <h3>
-        Forums
-        <small>Clash of Clans</small>
-    </h3>
-    <div class="row">
-        <a href="/board/view/5">
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                         <img src="/img/clash_of_clans/forum-banner.png" class="img-responsive img-rounded" alt="forum-banner.png" />
-                    </div>
-                    <div class="panel-body">
-                         <div class="row text-center">
-                            <p style="color: FAF1BF;">See what's happening, and leave a post on the board. Learn, discuss, compare strategies, offer suggestions, and create insightful topics for others to see when they arrive here. Don't be shy because you might have something.</p>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-        
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-    <h3>
         Rules from MPC
         <small>Clash of Clans</small>
     </h3>
     <div class="row">
-        <a>
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded" style="margin-bottom: 5%;" />
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                    <img src="/img/clash_of_clans/rules-banner.png" alt="rules-banner.png" class="img-responsive img-rounded" style="margin-bottom: 5%;" />
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6" style="padding: 0 5px 0 5px;">
                             <ul class="list-group">
                                 <li role="presentation" class="list-group-item">
                                     If you plan on participating you
@@ -207,16 +122,36 @@ $self = $this;
                                     Most Importantly Have fun.
                                 </li>
                             </ul>
-                        </div>
-
-                    </div>
-                    <div class="panel-footer">
-                        <p>Updated: 01/30/2016</p>
-                    </div>
+                        </div><!--col-->
+                        <div class="col-md-6" style="padding: 0 5px 0 5px;">
+                            <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0; border: 3px solid #000;">
+                                <p style="color: #000; font-weight: 600;">Every member will be given the opportunity of a verbal warning, and if you feel then need the problem will consist please contact the clan officers. Please feel reach to reach the following contacts below on Discord for attack advise, or regarding any issue.</p>
+                            </div>
+                            <ul class="list-group">
+                                <?php 
+                                    $bscontact = array(
+                                        'AcidSnake',
+                                        'Matt-MeoffJack',
+                                        'Marshall',
+                                        'SeAdog',
+                                        'Krlklkr',
+                                    );
+                                ?>
+                                <?php foreach($bscontact as $id): ?>
+                                <li class="list-group-item">
+                                    <?= $id ?>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div><!--col-->
+                    </div><!--row-->
+                </div><!--panel-body-->
+                <div class="panel-footer">
+                    <p>Updated: 03/07/2016</p>
                 </div>
-            </div>
-        </a>
-    </div>
+            </div><!--panel-->
+        </div><!--panel group-->
+    </div><!--row-->
     <h3>
         Official Website
         <small>Clash of Clans</small>
