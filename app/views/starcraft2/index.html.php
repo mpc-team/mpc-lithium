@@ -5,8 +5,13 @@ $this->title('StarCraft II');
 $self = $this;
 
 ?>
+<style>
+   #starcraft2lotv h3{color: rgba(123,171,232,.9)}
+   #starcraft2lotv small{color: aaffaa;}
+   #starcraft2lotv .panel-group .panel .panel-body .row p{color: #fff;}
+   #sc2officerlist > .list-group-item{color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; width: 300px; margin: auto;}
+</style>
 <div id="starcraft2lotv">
-
     <!--header row-->
     <div class="row page-header">
         <h1>
@@ -70,30 +75,6 @@ $self = $this;
     </div>
 
     <!--row-->
-    <div class="row">
-        <h3>
-            Forums
-            <small>
-                Starcraft 2
-            </small>
-        </h3>
-        <a href="/board/view/2">
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                           Forums
-                        </h3>
-                    </div>
-                    <div class="panel-body" style="color: #777;">
-                        <p>See what's happening, and leave a post on the board. Learn, discuss, compare strategies, offer suggestions, and create insightful topics for others to see when they arrive here. Don't be shy because you might have something.</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-    </div>
-    <!--row-->
     <h3>
         Clan Wars
         <small>
@@ -106,7 +87,10 @@ $self = $this;
                 <div class="panel-group">
                     <div class="panel">
                         <div class="panel-body">
-                            <p style="text-indent: 20px;">In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played.</p>
+                            <div class="row">
+                                <small style="color: rgba(123,171,232,.9); font-weight: 700;">How it Works.</small>
+                                <p style="text-indent: 20px;">In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,7 +127,14 @@ $self = $this;
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                
+                                <ul class="list-group" id="sc2officerlist">
+                                    <?php $bscontact = array('AcidSnake', 'Cheemo','ObamaAteMaKFC','MoonSwan','TryTins','ReportedDeez'); ?>
+                                    <?php foreach($bscontact as $id): ?>
+                                        <li class="list-group-item">
+                                            <?= $id ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
                             </div>    
                         </div>                
                     </div>                
@@ -151,54 +142,6 @@ $self = $this;
             </a>
         </div><!--col-6-->
     </div><!--row-->
-      <h3>
-        MPC on Twitch T.V.
-        <small><?= $this->title ?></small>
-    </h3>
-    <?php 
-        
-        $sc2Casters = array('vaevictissc' => 'VaeVictisSC', 'seadogsc2' => 'sEadogSC2', 'chefsstream' => 'Chef'); 
-        
-    ?>
-    <div class="panel-group">
-        <div class="panel">
-            <div class="panel-heading">
-                <ul class="nav nav-tabs" role="tablist">
-                    <?php foreach($sc2Casters as $id => $displayName): ?>
-                        <li role="presentation"><a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab"><?= $displayName ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div><!--panelheading-->
-            <div class="panel-body">
-                <div class="tab-content">
-                    <div class="tabpanel" class="tab-pane fade in"> 
-                        <h3>Select a Caster Above...</h3>
-                    </div>
-                    <?php foreach($sc2Casters as $id => $displayName): ?>
-                    <div role="tabpanel" class="tab-pane fade" id="<?= $id ?>">
-                        <div id="caster-<?= $id ?>-twitchdiv">
-                            <img src="/img/caster/<?= $id ?>/description.png" class="img-rounded img-responsive" id="coc-caster-<?= $id ?>-topimg" />
-                            <div class="row" style="padding-top: 5%;">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<?= $id ?>"></iframe>
-                                </div><!--embed video-->              
-                                <a role="button" class="btn btn-lg" href="#casterchat-<?= $id ?>-collapse" data-toggle="collapse" aria-expnded="false" aria-controls="casterchat-<?= $id ?>-collapse" style="background-color: #fff; border: 1px #00fff; color: #000;">Show Chat</a>
-                            </div><!--row-->
-
-                            <div class="collapse text-center" id="casterchat-<?= $id ?>-collapse" style="padding-top: 5%;">
-                                <div class="embed-responsive embed-responsive-4by3">
-                                    <iframe frameborder="0" scrolling="yes" src="http://twitch.tv/<?= $id ?>/chat?popout=">
-                                    </iframe>
-                                </div><!--embed chat-->
-                                <p>Not Showing up properly? View His <a class="btn" href="http://www.twitch.tv/<?= $id ?>" target="_blank">Page</a>.</p>
-                            </div><!--Collapse Div-->
-                        </div> <!-- Caster ID -->
-                    </div><!--tab panel-->
-                    <?php endforeach; ?>
-                </div><!--tab content-->
-            </div><!--panel body-->
-            </div><!--panel-->
-        </div><!--panel-group-->
     <h3>
         Official Website
         <small>Blizzard Entertainment</small>
@@ -208,7 +151,7 @@ $self = $this;
             <div class="panel-group">
                 <div class="panel">
                     <div class="panel-heading">
-                        <img src="/img/sc2/officialwebsite.png" alt="officialwebsite.png" class="img-rounded img-responsive" id="sc2-officialwebsite-png" style="width: 100%; max-width: 600px;"/>
+                        <img src="/img/sc2/officialwebsite.png" alt="officialwebsite.png" class="img-rounded img-responsive" id="sc2-officialwebsite-png" style="width: 100%; max-width: 600px; box-shadow: 1px 1px 10px rgba(123,171,232,.9);"/>
                     </div>
                     <div class="panel-body text-center">
                         <p>http://us.battle.net/sc2/en/legacy-of-the-void/</p>
