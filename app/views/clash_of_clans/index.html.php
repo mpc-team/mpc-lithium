@@ -99,9 +99,7 @@ $self = $this;
                         <div class="col-md-6" style="padding: 0 5px 0 5px;">
                             <ul class="list-group">
                                 <li role="presentation" class="list-group-item">
-                                    If you plan on participating you
-                                    <b>MUST</b>
-                                    Use Discord APP.
+                                    If you plan on participating we need you to Use the Discord APP.
                                 </li>
                                 <li role="presentation" class="list-group-item">
                                     Have a proper target selected; that you can realistically clear a three star base.
@@ -125,7 +123,7 @@ $self = $this;
                         </div><!--col-->
                         <div class="col-md-6" style="padding: 0 5px 0 5px;">
                             <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0; border: 3px solid #000;">
-                                <p style="color: #000; font-weight: 600;">Every member will be given the opportunity of a verbal warning, and if you feel then need the problem will consist please contact the clan officers. Please feel reach to reach the following contacts below on Discord for attack advise, or regarding any issue.</p>
+                                <p style="color: #000; font-weight: 600;">Every member will be given the opportunity of a verbal warning, and if you feel the need talk about a problem then please contact any clan officers. Please feel reach the following officers down below by logging onto Discord for attack advise, or regarding an problem.</p>
                             </div>
                             <ul class="list-group">
                                 <?php 

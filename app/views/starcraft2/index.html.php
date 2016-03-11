@@ -9,7 +9,10 @@ $self = $this;
    #starcraft2lotv h3{color: rgba(123,171,232,.9)}
    #starcraft2lotv small{color: aaffaa;}
    #starcraft2lotv .panel-group .panel .panel-body .row p{color: #fff;}
-   #sc2officerlist > .list-group-item{color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; width: 300px; margin: auto;}
+   .sc2officerlist > .list-group-item {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
+   .sc2officerlist > .list-group-item:hover {color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+   #discordsetupbtn:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+   #discordsetupbtn{color: #fff; background-color: rgba(123,171,232,.9); margin: 2px 0 2px 0; width: 200px; font-weight: 600; border: 3px solid rgba(123,171,232,.9);}
 </style>
 <div id="starcraft2lotv">
     <!--header row-->
@@ -26,19 +29,19 @@ $self = $this;
         </h1>        
     </div>
     <h3>
-        MPC - The "Miacro Power Clan"
-        <small>a Sc2 clan</small>
+        MPC - "Miacro Power Clan"
+        <small>Sc2 clan</small>
     </h3>
     <div class="row">
         <a>
             <div class="panel-group">
-                <div class="panel" style="max-width: 600px; margin: auto;">
+                <div class="panel" style="max-width: 800px; margin: auto;">
                     <div class="panel-body">
                         <div class="row">
                             <h3 class="panel-title">
-                                Welcome to Starcraft MPC
+                                The First Migration.
                             </h3>
-                            <p class="text-indent">Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans from around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments.</p>
+                            <p class="text-indent">Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans from around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments. Miacro Power Clan was formally known as Micro Power Clan.</p>
                         </div>
                     </div>
                 </div>
@@ -47,8 +50,8 @@ $self = $this;
     </div>
     <!--row-->
     <h3>
-        sEadogsc2's Games
-        <small>a SC2 Arcade Game</small>
+        sEadogsc2's
+        <small>Arcade Games</small>
     </h3>
     <div class="row">
         <div class="col-md-12">
@@ -81,24 +84,33 @@ $self = $this;
             SC2 Community
         </small>
     </h3>
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row">                
+        <div class="col-md-6">            
             <a>
-                <div class="panel-group">
+            <div class="panel-group">
                     <div class="panel">
                         <div class="panel-body">
                             <div class="row">
-                                <small style="color: rgba(123,171,232,.9); font-weight: 700;">How it Works.</small>
-                                <p style="text-indent: 20px;">In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played.</p>
+                                <h3 class="panel-title" style="color: rgba(123,171,232,.9); font-weight: 700;">How it Works</h3>
+                                <p style="text-indent: 20px;">In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played. Skill levels are determined by highest rank achieved.</p>
+                                <p>MPC members use the button below to sign up, others may use discord, or in game links to locate an officer.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-        </div>
-    </div>
-    <div class="row">                
-        <div class="col-md-6">
+            <a>
+            <div class="panel-group">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <h3 class="panel-title" style="color: rgba(123,171,232,.9); font-weight: 700;">Schedule with MPC</h3>
+                                <p style="text-indent: 20px;">MPC roughly schedules on certain days of the week(Mon,Tues, or Thurs). Our rank range is based on highest level achieved, and looking to schedule ranks gold - masters level. Use the buttons on the right to find an MPC member, and request a date time to host a Clan War Event.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
             <a href="/board/view/11">
                 <div class="panel-group">
                      <div class="panel">
@@ -112,34 +124,67 @@ $self = $this;
                                 <p>To register for the upcoming clan wars as seen on the clan events tab in the game Starcraft 2 Lotv. Sign ups must also have completed the connect portion.</p>
                             </div>
                         </div>                
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <a href="#clanwarsmodal" data-toggle="modal" data-target="#clanwarsmodal">
-                <div class="panel-group">
-                     <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                              Contact Information
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <ul class="list-group" id="sc2officerlist">
-                                    <?php $bscontact = array('AcidSnake', 'Cheemo','ObamaAteMaKFC','MoonSwan','TryTins','ReportedDeez'); ?>
-                                    <?php foreach($bscontact as $id): ?>
-                                        <li class="list-group-item">
-                                            <?= $id ?>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>    
-                        </div>                
                     </div>                
                 </div>
             </a>
+        </div><!--col-->
+        <div class="col-md-6">
+            <div class="panel-group">
+                    <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Contact Information                            
+                        </h3>
+                        <small style="font-size: small; line-height: .1; text-align: center;">Click on an Officer to retrieve instructions, and the link to find them in Starcraft 2 for any necessary reasons.</small>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">                            
+                                <div class="list-group sc2officerlist">
+                                    <?php $bscontact = array(
+                                        'AcidSnake' => 'battlenet:://starcraft/profile/1/12293619718954156032',
+                                        'Cheemo' => 'battlenet://starcraft/profile/1/1360022220574818304',
+                                        'ObamaAteMaKFC' => 'battlenet:://starcraft/profile/1/11656451648326205440'
+                                        );
+                                    ?>
+                                    <?php foreach($bscontact as $id => $data): ?>
+                                        <a class="list-group-item" onclick="prompt('Copy this link, paste in Starcraft2\'s chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend to save it.','<?= $data ?>')">
+                                            <?= $id ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div><!--list-group-->
+                            </div><!--col-->
+                            <div class="col-md-6">
+                                <div class="list-group sc2officerlist">
+                                    <?php $bscontact = array(                                        
+                                        'MoonSwan' => 'battlenet:://starcraft/profile/1/15213899516877996032',
+                                        'TryTins' => 'battlenet:://starcraft/profile/1/1968926262479028224',
+                                        'ReportedDeez' => 'battlenet://starcraft/profile/1/13590669605776392192');
+                                    ?>
+                                    <?php foreach($bscontact as $id => $data): ?>
+                                        <a class="list-group-item" onclick="prompt('Copy this link, paste in Starcraft2\'s chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend to save it.','<?= $data ?>')">
+                                            <?= $id ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div><!--list-group-->
+                            </div><!--col-->
+                        </div><!--row-->
+                        <div class="row text-center">
+                            <small>Need Help with Discord?</small>
+                                <div class="btn-group btn-lg" role="group">
+                                    <a id="discordsetupbtn" class="btn" href="/connect">
+                                        Set Up Page
+                                    </a>
+                                </div><!--btn group-->
+                                <div class="well" style="border: 2px solid rgba(123,171,232,.9); margin-left: 10px;">
+                                <center>
+                                    <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px;" class="small"></iframe>
+                                </center>
+                            </div>
+                        </div>
+                    </div><!--panel body-->                
+                </div>                
+            </div>
         </div><!--col-6-->
     </div><!--row-->
     <h3>
