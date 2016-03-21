@@ -3,9 +3,8 @@
 namespace app\controllers\api;
 
 use lithium\security\Auth;
-
+use app\utilities\TextEntry;
 use app\controllers\ContentController;
-
 use app\models\Events;
 use app\models\Permissions;
 
@@ -26,6 +25,21 @@ class EventsAPI extends ContentController
         return $this->render(array('json' => Events::Upcoming($days, $limit), 'status' => 200));
     }
 
+    /* Create Event (/events/create)
+    -------------------------------------------------------------------------------------------- */
+
+    /**
+     * Create a new Event. Requires the fields `title`, `start` (date), `end` (date), 
+     * `link` (optional), and `description` (optional).
+     *
+     * @param String $this->request->data['title'] Title of the Event.
+     * @param Date $this->request->data['start'] Start date/time of the Event.
+     * @param Date $this->request->data['end'] End date/time of the Event.
+     * @param String $this->request->data['link'] Optional URL link when the Event is clicked.
+     * @param String $this->request->data['description'] Description of the Event.
+     *
+     * @return Event On success, return the serialized Event object that was created.
+     */
     public function create()
     {
         $authorized = Auth::check('default');
@@ -40,11 +54,11 @@ class EventsAPI extends ContentController
             if (!isset($this->request->data[$req]))
                 return $this->render(array('json' => null, 'status' => 500));
 
-        $title = $this->request->data['title'];
+        $title = TextEntry.Clean($this->request->data['title']);
         $startDate = $this->request->data['start'];
         $finishDate = $this->request->data['finish'];
         $link = $this->request->data['link'];
-        $description = $this->request->data['description'];
+        $description = TextEntry.Clean($this->request->data['description']);
 
         return $this->render(array('json' => Events::NewEvent($title, $startDate, $finishDate, $link, $description)));
     }

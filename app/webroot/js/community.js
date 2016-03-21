@@ -209,9 +209,15 @@ members.ui.renderMembers = function (users)
 members.ui.renderGameInputs = function (games)
 {
 	var html = "";
+	var counter = 0;
 	for (index in games)
 	{
+		if (counter % 4 == 0)
+			html += "<div class='row'>";
 		html += members.ui.input.game.stringify(games[index]);
+		if (counter % 4 == 3)
+			html += "</div>";
+		counter++;
 	}
 	$(members.ui.elements.inputs.games).html(html);
 	$(members.ui.elements.inputs.game).change(members.updateMembers);
@@ -232,7 +238,7 @@ members.ui.input.game.stringify = function (game)
 	html += "<div class='game'>";
 	html += "<label>";
 	html += "<input type='checkbox' id='" + game.realname + "' />";
-	html += "<span style='display: inline-block; font-size:9pt; padding-left:5px;'>";
+	html += "<span style='font-size:9pt; padding-left:5px;'>";
 	html += game.name
 	html += "</span>";
 	html += "</label>";
@@ -262,9 +268,9 @@ members.ui.alias.stringify = function (object)
 	result += "<div id='member-" + object.id + "' class='name' onmouseover='Tooltip.OnMouseOver(this.id)'>";
 	result += "<span class='glyphicon glyphicon-user'></span> ";
 	result += object.alias;
-	if (object.clan != null)
-		result += ' <small style="color: #888">' + object.clan.shortname + '</small>';
 
+	if (object.clan != null)
+		result += ' <small class="pull-right" style="color: #888">' + object.clan.shortname + '</small>';
 	if (object.newuser)
 		result += "<span class='badge'>New Member</span>";
 

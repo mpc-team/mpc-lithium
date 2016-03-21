@@ -17,6 +17,7 @@ class Announcements extends \lithium\data\Model
 		$text = str_replace('\r\n', '', $text);
 		$text = str_replace('\n', '', $text);
 		$text = str_replace('\r', '', $text);
+        $text = str_replace("\\", "", $text);
 		return $text;
 	}
 
@@ -35,20 +36,18 @@ class Announcements extends \lithium\data\Model
 		$length = strlen($text);
 		for ($i = 0; $i < $length; $i++) 
         {
-			if (ord($text[$i]) == 10) 
+			if (ord($text[$i]) == 10 && $linefeeds < 2) 
             {
-				if ($linefeeds < 2) 
-                {
-					$cleaned .= $text[$i];
-					$linefeeds++;
-				}
-			} 
+				$cleaned .= $text[$i];
+				$linefeeds++;
+			}
             elseif (ord($text[$i]) != 13) 
             {
 				$cleaned .= $text[$i];
 				$linefeeds = 0;
 			}
 		}
+        $cleaned = str_replace("\\", "", $cleaned);
 		return strip_tags($cleaned);
 	}
 

@@ -162,6 +162,7 @@ class AnnouncementsController extends ContentController
         }
 
         Announcements::DeleteAnnouncement($id);
+        UserNotifications::DeleteNotifications($id, UserNotifications::ANNOUNCEMENT);
         return $this->render(array('json' => true, 'status' => '200'));
     }
 

@@ -2781,6 +2781,7 @@
     <Folder Include="app\webroot\js\markdown-js\" />
     <Folder Include="app\webroot\js\user\" />
     <Folder Include="app\webroot\js\utils\" />
+    <Folder Include="app\webroot\js\utils\events\" />
     <Folder Include="app\webroot\js\utils\tooltip\" />
     <Folder Include="app\webroot\starcraft2\builds" />
     <Folder Include="app\webroot\starcraft2" />
@@ -3150,7 +3151,8 @@
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />
     <Content Include="app\webroot\js\utils\AreYouSure.js" />
-    <Content Include="app\webroot\js\utils\EventsCalendar.js" />
+    <Content Include="app\webroot\js\utils\events\EventsCalendar.js" />
+    <Content Include="app\webroot\js\utils\events\EventsUpcoming.js" />
     <Content Include="app\webroot\js\utils\goTo.js" />
     <Content Include="app\webroot\js\utils\jquery.nanoscroller.js" />
     <Content Include="app\webroot\js\texttags.js" />

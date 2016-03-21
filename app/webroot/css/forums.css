@@ -115,6 +115,12 @@ a.btn-forum:hover
     }
 }
 
+.panel-forum h5
+{
+    font-weight: 600;
+    font-size: 14pt;
+}
+
 .forum .login-notice > .panel
 {
     /*background: linear-gradient(160deg, #2f3a2f, #222222);*/
@@ -130,12 +136,6 @@ a.btn-forum:hover
 .forum .login-notice .conten
 {
     vertical-align: middle;
-}
-
-.panel-forum h5
-{
-    font-weight: 600;
-    font-size: 14pt;
 }
 
 .forum .row > h1 > small > .subtitle
@@ -319,7 +319,6 @@ a.btn-forum:hover
 
 .forum-post .info .avatar
 {
-    margin-bottom: -10px;
     padding-top: 1%;
 }
 

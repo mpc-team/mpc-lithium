@@ -1,0 +1,26 @@
+What is the site, MPC?
+
+~Home~
+	Events:
+		>	Corresponds to entries in a Calendar. Events can be anything. Typically information
+			about an Event is presented through the Forum (this way, Users may also comment on
+			the Event).
+	Announcements:
+		>	Corresponds to general information to be conveyed to all Users. Typically used for
+			exclamatory messages about "Clan War" victories, but may also be used for mentions
+			of additions to the Clan or website.
+Forums
+	>	The backbone for leaving general comments about almost anything. Forum posts can easily
+		be parsed and presented to serve any purpose. The Forums system provides a lot of utility
+		to other areas of the site.
+Community
+	>	A basic navigation tool for Clans and Members that have registered with MPC. Users that
+		have privileges (such as inviting another User to a Clan) should be able to use this as a 
+		tool for maintaining their connections in the Community, as well as making new ones.
+Profile
+	>	Control panel for managing a User's account. Allows Users to select Games they play or make
+		personal messages on their Wall for visitors to see. 
+Games
+	>	<PLACEHOLDER>
+Connect
+	> 	<PLACEHOLDER>

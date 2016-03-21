@@ -130,7 +130,7 @@ class UserClans extends \lithium\data\Model
                 UserNotifications::DeleteNotification($userid, $invite['id'], UserNotifications::CLAN_INVITE);
             Messages::DeleteUserClanInvites($userid);
             $clanUsers = self::GetClanUsers($clanid);
-            if (count($clanUsers) > self::MINIMUM_USERS)
+            if (count($clanUsers) >= self::MINIMUM_USERS)
                 Clans::Activate($clanid);
             return true;
         }

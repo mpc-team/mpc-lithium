@@ -265,6 +265,7 @@ announcements.ui.append = function (object)
 	outputString = announcements.ui.stringify(object) + outputString;
 	output.html(outputString);
 
+	$(announcements.htmlElements.content + " .announcement .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
 	$('.announcement').each(function () { announcements.ui.register($(this).data('id')); });
 }
 

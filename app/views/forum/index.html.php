@@ -30,9 +30,9 @@ $self = $this;
             <?php if (array_key_exists('forums', $category)): ?>
 		        <div class="row">
 			        <div class="name">
-				        <h3 style="margin-bottom: 10px; margin-top: 10px;">
+				        <h4 style="margin-bottom: 10px; margin-top: 10px;">
 					        <?= $category['name'] ?> <small>Forums</small>
-				        </h3>
+				        </h4>
 			        </div>
 			        <?php foreach ($category['forums'] as $forum): ?>		
 				        <div class="col-md-4">
@@ -46,11 +46,7 @@ $self = $this;
 											        <h5>
 												        <?= $forum['name'] ?><br>
 											        </h5>
-											        <h4>
-												        <small>
-													        <?= $forum['descr'] ?>
-												        </small>
-											        </h4>
+													<p><?= $forum['descr'] ?></p>
 										        </div>
 									        </div>
 									        <div class="row">
