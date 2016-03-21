@@ -149,14 +149,13 @@ $features = function($tid, $options)
 						    </div>
 						    <a class="btn recent" href="/thread/view/<?= $thread['recent']['tid'] ?>#<?= $thread['recent']['id'] ?>">
 							    <h4>
-								    <div class="name">
-									    Recent Post
-								    </div>
 								    <div class="author">
-									    <small>
-										    <span class="glyphicon glyphicon-user"></span>
-										    <?= $thread['recent']['author'] ?>
-									    </small>
+										<?= $thread['recent']['author'] ?>
+								    </div>
+								    <div class="name">
+                                        <small>
+									        Recent Post
+                                        </small>
 								    </div>
 								    <div class="time">
 									    <small>
