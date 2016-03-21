@@ -1,70 +1,77 @@
 
 
-#announcement-btn 
-{
-	margin-bottom: 5px;
+#announcement-btn {
+    margin-bottom: 5px;
     font-size: 100%;
 }
 
 #announcements-content .title h1,
 #announcements-content .title h2,
-#announcements-content .title h3
-{
+#announcements-content .title h3 {
     margin-top: 0px;
 }
 
-#announcements-content table
-{
+#announcements-content table {
     width: 100%;
 }
 
-#announcements-content tr > td
-{
+#announcements-content tr > td {
     width: 50%;
 }
 
 #announcements-content .title-edit,
-#announcements-content .content
-{
+#announcements-content .content {
     /*padding-top: 5px;*/
     /*padding-bottom: 5px;*/
 }
 
-#announcements-content .info
-{
+#announcements-content .info {
     font-size: 80%;
     padding-top: 5px;
 }
 
-#announcements-content .info .author > a
-{
+#announcements-content .info .author > a {
     font-size: 150%;
 }
 
-#announcements-content > div > hr
-{
+#announcements-content > div > hr {
     margin: 0px;
     border-top: 1px solid #444;
     box-shadow: none;
 }
 
-#announcements-content > .announcement
-{
+#announcements-content > .announcement {
     /*margin-top: 15px;*/
     margin-bottom: 10px;
     background: rgba(40, 40, 40, 0.8);
 }
 
-#announcements-content > .announcement > .title > h2 { margin-bottom: 7px; }
-#announcements-content > .announcement > .title { border-bottom: 1px solid #444; }
+#announcements-content > .announcement > .title > h2 {
+    margin-bottom: 7px;
+}
 
-#announcements-content > .announcement > .content > .nano
-{
+#announcements-content > .announcement > .title {
+    border-bottom: 1px solid #444;
+}
+
+#announcements-content > .announcement > .content > .nano {
     min-height: 50px;
     max-height: 120px;
 }
-#announcements-content > .announcement > .content > .nano > .nano-content 
-{ 
-    padding-top: 15px; 
+
+#announcements-content > .announcement > .content > .nano > .nano-content {
+    padding-top: 15px;
     padding-bottom: 15px;
+}
+
+#announcements-content > .announcement > .content > .nano > .nano-pane {
+    bottom: 10px;
+    top: 10px;
+    width: 10px;
+    border: 1px solid #111;
+    /*box-shadow: 0 0 3px #000;*/
+}
+
+#announcements-content > .announcement > .content > .nano > .nano-pane > .nano-slider {
+    background: #0A0A0A;
 }
