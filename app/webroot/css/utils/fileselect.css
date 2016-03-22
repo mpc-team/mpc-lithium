@@ -1,36 +1,43 @@
-﻿
-.fs-container
-{
+﻿.fs-container {
     padding-bottom: 10px;
 }
 
-.fs-conf-modal
-{
+.fs-container > .fs-btn-modify {
+    width: 100%;
+}
+
+.fs-conf-modal {
     background: rgba(0, 0, 0, 0.75);
 }
 
-.fs-btn-modify
-{
+.fs-btn-modify {
     transition-duration: 0.2s;
 }
-.fs-btn-modify:hover
-{
+
+.fs-btn-modify:hover {
     background: rgba(0, 0, 0, 0.9);
     /*border: 1px solid #555;*/
     /*transform: scale(1.025);*/
 }
 
-.fs-conf-modal > .modal-dialog
-{
+.fs-conf-modal > .modal-dialog {
     /*padding-top: 10%;*/
 }
 
-.fs-btn-modify > .info
-{
-    padding-top: 5px;
+.fs-conf-modal .fs-btn-confirm,
+.fs-conf-modal .fs-btn-modify,
+.fs-conf-modal .fs-btn-cancel {
+    font-size: 18pt;
+    padding: 10px;
 }
 
-.fs-container
-{
-    /*text-align: center;*/
+.fs-conf-modal .fs-btn-confirm { padding-top: 25px; }
+
+/*.fs-conf-modal .user-avatar-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}*/
+
+.fs-btn-modify > .info {
+    padding-top: 5px;
 }

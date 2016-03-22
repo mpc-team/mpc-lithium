@@ -1,15 +1,10 @@
 
 /* User Avatar
 ---------------------------------------------------------------------------------------- */
-
-.user-avatar-select
+.user-avatar-container:before
 {
-
-}
-
-.user-avatar-select .fs-btn-modify
-{
-    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .user-avatar-select > .well

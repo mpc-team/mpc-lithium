@@ -78,65 +78,57 @@ if (isset($notification['status']))
                         <div class="modal-dialog dialog-transparent">
                             <div class="modal-content">
                                 <div class="pending" data-id="1">
-                                    <div>
+                                    <center>
+                                        <h1>
+                                            Select Avatar Image
+                                        </h1>
                                         <h3>
-                                            Select a new avatar image from your computer
+                                            Click to Cancel
                                         </h3>
-                                    </div>
-                                    <div>
-                                        <h3>
-                                            <small>Click to Cancel</small>
-                                        </h3>
-                                    </div>
+                                    </center>
                                 </div>
                                 <div class="selected" data-id="1">
                                     <center>
-                                        <h3>
-                                            You are about to change your avatar to
-                                        </h3>
+                                        <h1 style='padding-bottom: 20px'>
+                                            Avatar Selected
+                                        </h1>
                                         <div class='user-avatar-container'>
                                             <img class="fs-img-preview" src="" data-id="1" />
                                         </div>
                                         <div>
                                             <button class="btn btn-edit fs-btn-confirm" data-id="1">
-                                                Confirm Change
+                                                <b>Confirm Change</b>
                                             </button>
                                         </div>
                                         <div>
                                             <button class="btn btn-edit fs-btn-modify" data-id="1">
-                                                Select Different Image
+                                                <b>Select Different Image</b>
                                             </button>
                                         </div>
                                         <div>
                                             <button class="btn btn-edit fs-btn-cancel" data-id="1">
-                                                Cancel
+                                                <b>Cancel</b>
                                             </button>
                                         </div>
                                     </center>
                                 </div>
                                 <div class="error" data-id="1">
-                                    <h3>
-                                        Your avatar must be a supported image type
-                                    </h3>
-                                    <div>
-                                        <ul>
-                                            <h3>
-                                                <small>*.PNG</small><br />
-                                                <small>*.JPG</small><br />
-                                                <small>*.GIF</small><br />
-                                            </h3>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-edit fs-btn-modify" data-id="1">
-                                            Select Different Image
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-edit fs-btn-cancel" data-id="1">
-                                            Cancel
-                                        </button>
-                                    </div>
+                                    <center>
+                                        <h1>
+                                            Unsupported Image Format
+                                        </h1>
+                                        <h3 style='padding-bottom: 20px'>Supported Image Formats include <i>.PNG</i>, <i>.JPG</i>, and <i>.GIF</i></h3>
+                                        <div>
+                                            <button class="btn btn-edit fs-btn-modify" data-id="1">
+                                                <b>Select Different Image</b>
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-edit fs-btn-cancel" data-id="1">
+                                                <b>Cancel</b>
+                                            </button>
+                                        </div>
+                                    </center>
                                 </div>
                             </div>
                         </div>
