@@ -87,6 +87,16 @@
     background: rgba(0, 0, 0, 0.6);
 }
 
+.profile-content .wall .nano > .nano-sclider { background: #3A3A3A; }
+.profile-content .wall .nano > .nano-pane
+{
+    border: 1px solid #444;
+    background: #1B1B1B;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+}
+
 /*.profile-content > div
 {
     padding-top: 30px;
