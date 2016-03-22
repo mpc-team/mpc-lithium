@@ -55,7 +55,7 @@
 }
 
 #announcements-content > .announcement > .content > .nano {
-    min-height: 50px;
+    min-height: 120px;
     max-height: 120px;
 }
 
