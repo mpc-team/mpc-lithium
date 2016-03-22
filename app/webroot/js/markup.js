@@ -309,10 +309,16 @@ markup.swap = function (list, map, mode)
 					this.setContent(list, i, stuff, map);
 					break;
 
+				case "[quote]":
+					var quoteMessage = this.getContent(list, i, map);
+					quoteMessage = "<div class='quote-content'>" + quoteMessage + "</div>";
+					this.setContent(list, i,quoteMessage, map);
+					break;
+
 				case "[quote=":
 					var stuff = this.getContent(list, i, map);
-					stuff = "Originally posted by <h3>" + stuff;
-					stuff = stuff.replace("]", "</h3> <div class='quote-content'>");
+					stuff = "Originally posted by <h4 style='display:inline'>" + stuff;
+					stuff = stuff.replace("]", "</h4> <div class='quote-content'>");
 					this.setContent(list, i, stuff + "</div>", map);
 					break;
 
