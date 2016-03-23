@@ -858,24 +858,9 @@ a .panel-recentfeed h3
 #starcraft2lotv .panel-group {
     margin: 5px;
 }
-#starcraft2lotv .panel:hover {
-    background-color: rgba(0,0,0,3);
-}    
 #starcraft2lotv .panel-group .panel-body p, #starcraft2lotv .panel-group p {
     color: #777777;
 }
-#starcraft2lotv img {
-    margin: auto;
-    box-shadow: 1px 1px 10px #aaffaa;
-}
-#starcraft2lotv .sc2modalbullet {
-    width: 80%;
-}
-/*
-    *views/games
-    Games Page Styles
-    Current Parent Div: #games
-*/
 #games img {
     width: 100%;
 }
