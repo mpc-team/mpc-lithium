@@ -138,7 +138,7 @@ a h5 {
 
 .content > .jumbotron {
     border-radius: 0px;
-    background: linear-gradient(90deg, rgba(44, 56, 44, 0.67), rgba(44, 46, 44, 0.37), rgba(44, 46, 44, 0.05), rgba(44, 44, 44, 0));
+    background: linear-gradient(90deg, rgba(44, 56, 44, 0.67), rgba(44, 56, 44, 0.67), rgba(44, 46, 44, 0.05), rgba(44, 44, 44, 0));
     border-radius: 5px;
     border-left: 5px solid #aaffaa;
     margin-bottom: 15px;
