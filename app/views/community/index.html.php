@@ -15,7 +15,9 @@ $enableMemberButton = array(
 );
 
 ?>
-<h1>Community</h1>
+<div class="jumbotron">
+    <h1>COMMUNITY</h1>
+</div>
 
 <div class="clans" id="clans">
     <div class="row">
@@ -82,33 +84,37 @@ $enableMemberButton = array(
             <h3>Currently <span id="members-count" style='font-size: 150%'>0</span> Members have been registered.</h3>
         </div>
         <div class="col-md-8">
-	        <div class="panel-heading">
-		        Search <small><button id="members-clear-filter" class='btn btn-edit'>Clear Filter</button></small>
-	        </div>
-	        <div class="form-group">
-		        <div class="input-group">
-			        <span class="input-group-addon">Alias</span>
-			        <input type="text" class="form-control" name="alias" id="alias" 
-				        placeholder="Search by player alias..."/>				
-		        </div>
-	        </div>
-	        <?php if ($adminPermissions): ?>
-                <!-- Email Input Only Available for Administrators/Moderators -->
-		        <div class="form-group">
-			        <div class="input-group">
-				        <span class="input-group-addon">Email</span>
-				        <input type="text" class="form-control" name="email" id="email" 
-					        placeholder="Search by player email..."/>				
-			        </div>
-		        </div>
-	        <?php endif; ?>
+            <div class="panel panel-default">
+	            <div class="panel-heading" style="background-color: #090909">
+		            Search <button id="members-clear-filter" class='btn btn-default pull-right'>Clear Filter</button>
+	            </div>
+	            <!--<div class="form-group">-->
+		            <div class="input-group">
+			            <span class="input-group-addon">Alias</span>
+			            <input type="text" class="form-control" name="alias" id="alias" 
+				            placeholder="Search by player alias..."/>				
+		            </div>
+	            <!--</div>-->
+	            <?php if ($adminPermissions): ?>
+                    <!-- Email Input Only Available for Administrators/Moderators -->
+		            <!--<div class="form-group">-->
+			            <div class="input-group">
+				            <span class="input-group-addon">Email</span>
+				            <input type="text" class="form-control" name="email" id="email" 
+					            placeholder="Search by player email..."/>				
+			            </div>
+		            <!--</div>-->
+	            <?php endif; ?>
 
-	        <div class="form-group">
-		        <div class="input-group">
-			        <span class="input-group-addon">Games</span>
-			        <div class="row" id="members-games"></div>
-		        </div>
-	        </div>
+                <div class="panel-footer">
+	            <!--<div class="form-group">-->
+		            <div class="input-group">
+			            <span class="input-group-addon">Games</span>
+			            <div class="row" id="members-games"></div>
+		            </div>
+	            <!--</div>-->
+                </div>
+            </div>
         </div>
     </div>
     <div class="row container-padding-default">

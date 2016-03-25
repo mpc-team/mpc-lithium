@@ -238,8 +238,8 @@ members.ui.input.game.stringify = function (game)
 	html += "<div class='game'>";
 	html += "<label>";
 	html += "<input type='checkbox' id='" + game.realname + "' />";
-	html += "<span style='font-size:9pt; padding-left:5px;'>";
-	html += game.name
+	html += "<span style='font-size: 9pt; font-weight: normal; padding-left:5px;'>";
+	html += game.name;
 	html += "</span>";
 	html += "</label>";
 	html += "</div>";
@@ -270,7 +270,7 @@ members.ui.alias.stringify = function (object)
 	result += object.alias;
 
 	if (object.clan != null)
-		result += ' <small class="pull-right" style="color: #888">' + object.clan.shortname + '</small>';
+		result += ' <small class="pull-right" style="padding-top: 3px;">' + object.clan.shortname + '</small>';
 	if (object.newuser)
 		result += "<span class='badge'>New Member</span>";
 

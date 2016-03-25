@@ -8,7 +8,9 @@ $self = $this;
 
 ?>
 
-<h1>Forums</h1>
+<div class="jumbotron">
+    <h1>FORUMS</h1>
+</div>
 
 <div class="row">
 	<h3 style="margin-top:0; margin-bottom:10px">Recent Activity</h3>

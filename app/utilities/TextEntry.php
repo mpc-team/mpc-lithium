@@ -1,6 +1,6 @@
 <?php
 
-namespace app\utilities\TextEntry;
+namespace app\utilities;
 
 /**
  * Clas

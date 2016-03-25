@@ -54,11 +54,11 @@ class EventsAPI extends ContentController
             if (!isset($this->request->data[$req]))
                 return $this->render(array('json' => null, 'status' => 500));
 
-        $title = TextEntry.Clean($this->request->data['title']);
+        $title = TextEntry::Clean($this->request->data['title']);
         $startDate = $this->request->data['start'];
         $finishDate = $this->request->data['finish'];
         $link = $this->request->data['link'];
-        $description = TextEntry.Clean($this->request->data['description']);
+        $description = TextEntry::Clean($this->request->data['description']);
 
         return $this->render(array('json' => Events::NewEvent($title, $startDate, $finishDate, $link, $description)));
     }

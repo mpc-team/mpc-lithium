@@ -5,6 +5,9 @@
     font-size: 100%;
 }
 
+/*#events-upcoming,*/
+/*#announcements-content { margin-top: 30px; }*/
+
 #announcements-content .title h1,
 #announcements-content .title h2,
 #announcements-content .title h3 {
@@ -19,19 +22,23 @@
     width: 50%;
 }
 
-#announcements-content .title-edit,
+/*#announcements-content .title-edit,*/
 #announcements-content .content {
-    /*padding-top: 5px;*/
-    /*padding-bottom: 5px;*/
+    padding-left: 5px;
+    padding-right: 3px;
 }
 
 #announcements-content .info {
     font-size: 80%;
-    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 5px;
 }
 
+#announcements-content .info .author {
+    font-size: 95%;
+}
 #announcements-content .info .author > a {
-    font-size: 150%;
+    font-size: 115%;
 }
 
 #announcements-content > div > hr {
@@ -44,14 +51,6 @@
     /*margin-top: 15px;*/
     margin-bottom: 10px;
     background: rgba(40, 40, 40, 0.8);
-}
-
-#announcements-content > .announcement > .title > h2 {
-    margin-bottom: 7px;
-}
-
-#announcements-content > .announcement > .title {
-    border-bottom: 1px solid #444;
 }
 
 #announcements-content > .announcement > .content > .nano {
@@ -74,4 +73,23 @@
 
 #announcements-content > .announcement > .content > .nano > .nano-pane > .nano-slider {
     background: #0A0A0A;
+}
+
+.announcement .control .btn.btn-edit {
+    padding: 10px;
+    min-width: 50px;
+}
+
+.announcement > table {
+    border-top: 1px solid #444;
+}
+
+.announcement > .content h1 { font-size: 28pt; }
+.announcement > .content h2 { font-size: 24pt; }
+.announcement > .content h3 { font-size: 20pt; }
+.announcement > .content p { font-size: 9pt; }
+
+#announcements > .row > .col-md-4 > center > h2,
+#announcements > .row > .col-md-4 > h2 {
+    margin-bottom: 10px;
 }

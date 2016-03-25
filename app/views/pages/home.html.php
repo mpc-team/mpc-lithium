@@ -18,8 +18,8 @@ $self = $this
 
 <section id="announcements">
     <div class="row">
-        <div class="col-md-8">
-            <h1>Announcements</h1>
+        <div class="col-md-4">
+            <h2>Announcements</h2>
             <?php if ($permissions['announcements']['CREATE']): ?>
 	            <div class="row">
 		            <button class="btn btn-edit" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
@@ -47,14 +47,19 @@ $self = $this
 		            </div>
 	            </div>
             <?php endif; ?>
-            <div id="announcements-content"></div>
+            <div id="announcements-content">
+
+            </div>
         </div>
         <div class="col-md-4" style="padding-left: 15px">
-            <center><h2 style='padding-bottom: 15px; padding-top: 15px;'>Upcoming Events</h2></center>
+            <center><h2>Upcoming Events</h2></center>
             <div id="events-upcoming">
                 <!-- JavaScript -->
             </div>
             <script type="text/javascript">$(function () { EventsUpcoming.Initialize('#events-upcoming'); });</script>
+        </div>
+        <div class="col-md-4">
+            <h2 class="pull-right">Member Achievements</h2>
         </div>
     </div>
 </section>

@@ -26,20 +26,34 @@ EventsUpcoming.UI.Event = function (eventObject)
 	var startDate = moment(new Date(eventObject.start));
 	var endDate = moment(new Date(eventObject.end));
 	var duration = endDate.from(startDate, true);
-	var startFormat = (startDate.format('mm') == '00') ? 'h A' : 'h:mm A';
-	var endFormat = (endDate.format('mm') == '00') ? 'h A' : 'h:mm A';
+	var startFormat = (startDate.format('mm') == '00') ? 'hA' : 'h:mmA';
+	var endFormat = (endDate.format('mm') == '00') ? 'hA' : 'h:mmA';
 	var dateFormat = 'dddd, MMM. Do YYYY';
 	var description = (eventObject.description != null) ? eventObject.description : "";
 	this.eventObject = eventObject;
+
+
+
 	this.html =
 	"<div class='row'>" +
 		"<div class='panel-group' style='margin-bottom: 7px'>" +
-			"<div class='panel panel-default padded-panel-med bordered-panel shadow-med-1'>" +
-				"<h3>" + eventObject.title + "</h3>" +
-				"<p>" + description + "</p>" +
-				"<p style='font-size: 9pt'><strong>Starts:</strong> " + startDate.format(dateFormat) + " at " + startDate.format(startFormat) + "<br />" +
-				"<strong>Ends:</strong> " + endDate.format(dateFormat) + " at " + endDate.format(endFormat) + "<br />" +
-				"<strong>Duration:</strong> " + duration + "</p>" +
+			"<div class='panel panel-default bordered-panel shadow-med-1'>" +
+				"<div class='panel-heading'>" +
+					"<h3>" + eventObject.title + "</h3>" +
+				"</div>" +
+				"<p style='padding:10px; font-size: 9pt; margin:0;'>" + description + "</p>" +
+				"<div class='panel-footer'>" +
+					"<center>" +
+						"<p style='font-size: 10pt; margin-bottom:0; padding: 3px 5px;'>" +
+							startDate.format(dateFormat) + " at " + startDate.format(startFormat) + "<br />" +
+							"to" + "<br />" +
+							endDate.format(dateFormat) + " at " + endDate.format(endFormat) + "<br />" +
+						"</p>" +
+						"<p style='font-size: 9pt; margin-bottom: 0;'>" +
+							"(" + duration + ")" +
+						"</p>" +
+					"</center>" +
+				"</div>" +
 			"</div>" +
 		"</div>" +
 	"</div>";

@@ -56,9 +56,7 @@ $features = function($tid, $options)
 						    </h2>
 					    </div>
 					    <div class="modal-body">
-						    <div class="form-group">
-							    <input type="text" name="title" class="form-control input-title" placeholder="Title..." required/>
-						    </div>
+							<input type="text" name="title" class="form-control input-title" placeholder="Title..." required/>
 						    <div class="form-group">						
 							    <div class='row'>
 								    <?= $this->view()->render(

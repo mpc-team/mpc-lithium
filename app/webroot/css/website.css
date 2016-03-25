@@ -6,94 +6,83 @@
 @import url(https://fonts.googleapis.com/css?family=Aldrich);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,500,700);
 
-html
-{
+html {
     /*background-image: url("/img/darksky_background.jpg");*/
     background-attachment: fixed !IMPORTANT;
     background-repeat: no-repeat;
     background-size: cover;
-    /*background: linear-gradient(160deg, #151715, #1f211f);*/ 
+    /*background: linear-gradient(160deg, #151715, #1f211f);*/
     /* height: 100%; min-height: 100%; */
 }
 
-body
-{
+body {
     padding-top: 50px;
     height: inherit;
+    font-size: 16px;
     background: transparent;
     font-family: "Titillium Web";
     font-weight: 300;
     /*font-family: "Montserrat";*/
-    /*font-family: "Alegreya Sans";*/ 
+    /*font-family: "Alegreya Sans";*/
     /*font-size: 16pt;*/
     /*font-weight: 600;*/
     color: rgba(255, 255, 255, 0.6);
 }
 
-code
-{
+code {
     background-color: #444;
     font-size: 100%;
     color: #fff;
     padding: 2px 6px;
 }
 
-h1, 
-h2, 
-h3,
-h4,
-h5
-{
-    font-family: "Alegreya Sans"; 
-    font-weight: 700; 
+h1, h2, h3, h4, h5 {
+    font-family: "Alegreya Sans";
+    font-weight: 700;
     color: #aaffaa;
     margin: 0;
 }
 
+@media screen and (max-width: 833px) {
+    h1 { font-size: 32pt; }
+    h2 { font-size: 23pt; }
+}
+
 h1 > small,
 h2 > small,
-h3 > small
-{
-    font-family: "Alegreya Sans"; 
+h3 > small {
+    font-family: "Alegreya Sans";
     font-weight: 500;
     font-variant: normal;
     text-shadow: none;
 }
 
-h5
-{
+h5 {
     display: inline;
     /*font-size: 12pt;*/
     /* font-family: "Oswald"; */
 }
 
-/*b
-{
-    font-weight: 900;
-}*/
-
-img
-{
+img {
     width: auto;
 }
 
 iframe,
-img
-{
+img {
     max-width: 100%;
 }
 
-.input-title
-{
+.input-title {
     font-weight: 900;
     font-family: "Alegreya Sans";
     font-size: 30px;
-    height: auto
+    height: auto;
 }
 
-.offset::before
-{
+.offset::before {
     display: block;
     content: " ";
     height: 50px;
@@ -103,14 +92,12 @@ img
 
 .ui-selected img,
 a.btn:hover iframe,
-a.btn:hover img
-{
+a.btn:hover img {
     filter: brightness(2);
     -webkit-filter: brightness(2);
 }
 
-a.btn
-{
+a.btn {
     padding: 4px;
     border-radius: 1px;
 }
@@ -119,135 +106,174 @@ a h1,
 a h2,
 a h3,
 a h4,
-a h5
-{
+a h5 {
     margin: 0px;
 }
 
-.content > h1
-{
+.content > h1 {
     font-size: 70pt;
 }
 
-.content hr
-{
+.content hr {
     /*box-shadow: none;*/
     /*border-top: 1px solid #888;*/
 }
 
-.container
-{
+.container {
     padding-bottom: 500px;
 }
 
-.container-padding-default
-{
+.container-padding-default {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.pull-right {
+    white-space: normal;
+    text-align: right;
+}
+
+/* Page Banner (Jumbotron)
+---------------------------------------------------------------------------------------------------- */
+
+.content > .jumbotron {
+    border-radius: 0px;
+    background: linear-gradient(90deg, rgba(44, 56, 44, 0.67), rgba(44, 46, 44, 0.37), rgba(44, 46, 44, 0.05), rgba(44, 44, 44, 0));
+    border-radius: 5px;
+    border-left: 5px solid #aaffaa;
+    margin-bottom: 15px;
+}
+
+.content >.jumbotron > h1 {
+    font-family: "Ubuntu";
+    font-variant: small-caps;
+    text-shadow: 0 0 1px #000;
 }
 
 /* Shadow & Glow Effects
 ---------------------------------------------------------------------------------------------------- */
 
-.shadow-med-1 { box-shadow: 3px 3px 4px #000; }
-.shadow-med-2 { box-shadow: 4px 4px 5px #000; }
+.shadow-med-1 {
+    box-shadow: 3px 3px 4px #000;
+}
+
+.shadow-med-2 {
+    box-shadow: 4px 4px 5px #000;
+}
 
 /* Panels & Tiles
 ---------------------------------------------------------------------------------------------------- */
 
-.padded-tile-sm { padding: 5px; }
-.padded-tile-med { padding: 10px; }
-.padded-tile-lg { padding: 15px; }
+.panel-footer {
+    border-top: 1px solid #333 !important;
+    padding: 0px;
+    background: rgba(30, 30, 30, 0.38);
+}
 
-.padded-panel-sm { padding: 5px !important; }
-.padded-panel-med { padding: 10px !important; }
-.padded-panel-lg { padding: 15px !important; }
+.panel-heading {
+    background: rgba(30, 30, 30, 0.38);
+    border-bottom: 1px solid #333 !important;
+}
 
-.panel-padded { padding: 5px !important; }
-.bordered-panel { border: 1px solid #444; }
+.padded-tile-sm {
+    padding: 5px;
+}
+
+.padded-tile-med {
+    padding: 10px;
+}
+
+.padded-tile-lg {
+    padding: 15px;
+}
+
+.padded-panel-sm {
+    padding: 5px !important;
+}
+
+.padded-panel-med {
+    padding: 10px !important;
+}
+
+.padded-panel-lg {
+    padding: 15px !important;
+}
+
+.panel-padded {
+    padding: 5px !important;
+}
+
+.bordered-panel {
+    border: 1px solid #444;
+}
 
 
 
-.btn.btn-icon-only
-{
+.btn.btn-icon-only {
     padding: 1px 10px;
 }
 
-.page-banner
-{
+.page-banner {
     background: url('/img/mpc-banner-background.png');
     min-height: 70px;
 }
 
-.page-banner #banner-image
-{
+.page-banner #banner-image {
     display: block;
     position: relative;
     min-height: 70px;
 }
 
-.page-header-text
-{
+.page-header-text {
     font-size: 42pt;
     font-weight: 700;
     font-family: "Aldrich";
     text-shadow: 0px 10px 15px #888;
 }
 
-@media (min-width: 630px)
-{
-    .page-header-text
-    {
+@media (min-width: 630px) {
+    .page-header-text {
         font-size: 72pt;
     }
 }
 
-.feedback
-{
+.feedback {
     /*padding: 10px;*/
 }
 
-.navbar-inverse
-{
+.navbar-inverse {
     /*font-family: "Passion One";*/
     font-size: 14pt;
     font-weight: 500;
     background: #111;
 }
 
-.navbar .glyphicon-user
-{
+.navbar .glyphicon-user {
     font-size: 80%;
 }
 
-ul.nav li.dropdown:hover > ul.dropdown-menu
-{
+ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;
 }
 
-textarea.form-control
-{
+textarea.form-control {
     resize: vertical;
     height: 10em;
 }
 
-#announcements
-{
+#announcements {
     word-wrap: break-word;
 }
 
-#calendar
-{
+#calendar {
     margin-top: 15px;
 }
 
-span.glyphicon-send
-{
+span.glyphicon-send {
     font-size: 22pt;
 }
 
-.page-footer
-{
+.page-footer {
     border-top: 1px solid #aaaaaa;
     border-top: 2px solid #BEFDBE;
     box-shadow: 0px 0px 8px #BEFDBE;
@@ -256,95 +282,80 @@ span.glyphicon-send
     left: 0;
 }
 
-.sidebar-content
-{
+.sidebar-content {
     padding-left: 1em;
 }
 
-.sidebar li > a
-{
+.sidebar li > a {
     font-family: "Oswald";
     font-size: 14pt;
     font-weight: 500;
     text-align: left;
 }
 
-.breadcrumb-text
-{
+.breadcrumb-text {
     display: inline;
     font-size: 12pt;
     /*font-family: "Titillium Web";*/
 }
 
-span.input-group-addon
-{
+span.input-group-addon {
     height: 34px;
     width: 100px;
 }
 
-span.input-group-addon
-{
+span.input-group-addon {
     border-radius: 0px;
 }
 
-.modal-dialog
-{
+.modal-dialog {
     margin-top: 5%;
     background: rgba(40, 40, 40, 0.8);
     border: 1px solid #444;
 }
 
-.dialog-transparent
-{
+.dialog-transparent {
     background: none;
     border: none;
 }
 
-#modal-newevent .modal-dialog .modal-body .input-group
-{
+#modal-newevent .modal-dialog .modal-body .input-group {
     padding: 0px;
     background: transparent;
-    padding-top: 5px;
+    padding-top: 3px;
 }
 
-#modal-newevent .modal-dialog .modal-body .input-group-addon
-{
+#modal-newevent .modal-dialog .modal-body .input-group-addon {
     cursor: default;
 }
 
-#modal-newevent .modal-dialog .modal-body .input-date:hover 
-{
+#modal-newevent .modal-dialog .modal-body .input-date:hover {
     cursor: pointer;
     background: rgba(0, 0, 0, 0.6);
 }
 
-#modal-newevent .modal-dialog .modal-body .input-group-addon
-{
+#modal-newevent .modal-dialog .modal-body .input-group-addon {
     border: 1px solid #333;
     border-left: none;
 }
 
-#modal-newevent .modal-header .close
-{
-    font-size: 24px;
+#modal-newevent .modal-header .close {
+    font-size: 32px;
     margin-top: 0;
 }
 
-button.active:hover img
-{
+button.active:hover img {
     /*-webkit-filter: brightness(1.6) hue-rotate(25deg);*/
 }
 
 /** Bootstrap Modifiers **/
 
-.panel
-{
+.panel {
     padding: 0px;
     width: 100%;
 }
 
-.panel a.btn
-{
+.panel a.btn {
     width: 100%;
 }
 
@@ -358,47 +369,39 @@ button.active:hover img
 .panel a.btn.info:hover,
 .panel a.btn.info:active,
 .panel a.btn.recent:hover,
-.panel a.btn.recent:active
-{
+.panel a.btn.recent:active {
     background: rgba(0, 0, 0, 0.7);
 }
 
 .panel a.btn:hover,
-.panel a.btn:active
-{
+.panel a.btn:active {
     color: rgba(220,255,220,0.9);
-    box-shadow: 0 2px 0px #aaffaa; 
+    box-shadow: 0 2px 0px #aaffaa;
     /* background: linear-gradient(110deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); */
     /* border: 1px solid rgba(220,255,220,0.0); */
 }
 
-.panel-group
-{
+.panel-group {
     margin-bottom: 2px;
 }
 
-.panel-group.panel-header
-{
+.panel-group.panel-header {
     margin-bottom: 25px;
 }
 
-.pull-left
-{
+.pull-left {
     text-align: left;
 }
 
-.page-header h1
-{
+.page-header h1 {
     margin-bottom: 5px;
 }
 
-.form-group:last-child
-{
+.form-group:last-child {
     margin-bottom: 0px;
 }
 
-.input-group button
-{
+.input-group button {
     padding: 15px;
     width: 30%;
     height: auto;
@@ -412,45 +415,37 @@ button.active:hover img
  *
  ******************************************************************/
 
-a .panel-recentfeed h1
-{
+a .panel-recentfeed h1 {
     font-size: 26px;
 }
 
-a .panel-recentfeed h2
-{
+a .panel-recentfeed h2 {
     font-size: 22px;
 }
 
-a .panel-recentfeed h3
-{
+a .panel-recentfeed h3 {
     font-size: 18px;
 }
 
 .recentfeed-content iframe,
-.recentfeed-content img
-{
+.recentfeed-content img {
     max-width: 80%;
 }
 
-.recentfeed .carousel-inner
-{
+.recentfeed .carousel-inner {
     border: 1px solid #444;
 }
 
-.recentfeed > div
-{
+.recentfeed > div {
     font-size: 150%;
     font-weight: 700;
 }
 
-.recentfeed .forum-post .content
-{
+.recentfeed .forum-post .content {
     background: inherit;
 }
 
-.recentfeed .panel-group
-{
+.recentfeed .panel-group {
     margin: 2px;
 }
 
@@ -460,39 +455,33 @@ a .panel-recentfeed h3
     background: linear-gradient(170deg, #2a2c2a,#1f1f1f);
 }*/
 
-.panel-recentfeed
-{
+.panel-recentfeed {
     min-height: 120px;
     max-height: 120px;
     overflow: hidden;
     word-wrap: break-word;
 }
 
-.panel-recentfeed > .row
-{
+.panel-recentfeed > .row {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-@media (min-width: 630px)
-{
-    .panel-recentfeed
-    {
+@media (min-width: 630px) {
+    .panel-recentfeed {
         min-height: 140px;
         max-height: 140px;
     }
 }
 
-.panel-recentfeed .recentfeed-content
-{
+.panel-recentfeed .recentfeed-content {
     font-size: 80%;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
     padding: 5px 5px 115px 5px;
 }
 
-.panel-recentfeed .name
-{
-     /*font-family: "Oswald";*/
+.panel-recentfeed .name {
+    /*font-family: "Oswald";*/
     /*font-variant: small-caps;*/
     /*font-size: 90%;*/
     font-weight: 700;
@@ -500,35 +489,30 @@ a .panel-recentfeed h3
     overflow: hidden;
 }
 
-.panel-recentfeed .forum
-{
+.panel-recentfeed .forum {
     padding: 0 5px 5px 0;
     /*font-size: 110%;*/
     text-align: right;
 }
 
 .panel-recentfeed-footer .author,
-.panel-recentfeed-footer .time
-{
+.panel-recentfeed-footer .time {
     width: 50%;
 }
 
-.panel-recentfeed-footer .author
-{
+.panel-recentfeed-footer .author {
     white-space: nowrap;
     overflow: hidden;
     float: left;
     text-align: left;
 }
 
-.panel-recentfeed-footer .time
-{
+.panel-recentfeed-footer .time {
     float: right;
     text-align: right;
 }
 
-.panel-recentfeed-footer
-{
+.panel-recentfeed-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     padding: 0px;
     padding-top: 5px;
@@ -539,28 +523,24 @@ a .panel-recentfeed h3
 
 .col-md-4 .panel > a.btn,
 .col-xs-4 .panel > a.btn,
-.col-xs-6 .panel > a.btn
-{
+.col-xs-6 .panel > a.btn {
     text-align: left;
 }
 
 .col-xs-1,
-.col-xs-2
-{
+.col-xs-2 {
     text-align: center;
 }
 
 .reset-password .panel,
 .signup .panel,
-.login .panel
-{
+.login .panel {
     padding: 15px 15px 15px 15px;
 }
 
 .edit-tag-header1 > h1,
 .edit-tag-header2 > h2,
-.edit-tag-header3 > h3
-{
+.edit-tag-header3 > h3 {
     text-align: left;
     padding: 5px;
     margin: 0px;
@@ -568,14 +548,12 @@ a .panel-recentfeed h3
 
 .edit-tag-header1,
 .edit-tag-header2,
-.edit-tag-header3
-{
+.edit-tag-header3 {
     padding: 0px;
 }
 
 .btn-delete,
-.btn-edit
-{
+.btn-edit {
     font-size: 9pt;
     background-color: transparent;
 }
@@ -583,15 +561,13 @@ a .panel-recentfeed h3
 .btn-delete:hover,
 .btn-delete:active,
 .btn-edit:hover,
-.btn-edit:active
-{
+.btn-edit:active {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-signup,
-.btn-login
-{
+.btn-login {
     background-color: #447744;
     border: 1px solid #99ee99;
 }
@@ -599,69 +575,56 @@ a .panel-recentfeed h3
 .btn-signup:hover,
 .btn-signup:active,
 .btn-login:hover,
-.btn-login:active
-{
+.btn-login:active {
     box-shadow: 0 0 10px rgba(200, 255, 200, 0.9);
 }
 
 .btn-signup,
-.btn-login
-{
+.btn-login {
     color: #aaffaa;
 }
 
-.btn-reply-row
-{
+.btn-reply-row {
     padding-bottom: 5px;
 }
 
 .btn-signup,
 .btn-login,
-.btn-reply
-{
+.btn-reply {
     min-width: 100px;
 }
 
-.btn-reply
-{
+.btn-reply {
     background-color: transparent;
     margin-left: auto;
     margin-right: auto;
     color: #88bb88;
 }
 
-.btn-reply:hover
-{
+.btn-reply:hover {
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.thread-reply
-{
-
+.thread-reply {
     padding-top: 20px;
-
 }
 
-.panel-reply
-{
+.panel-reply {
     text-align: center;
     margin-right: auto;
     margin-left: auto;
 }
 
-.panel-reply .header
-{
+.panel-reply .header {
     margin: 10px;
 }
 
-.panel-reply .header
-{
+.panel-reply .header {
     background-color: transparent;
 }
 
-.panel-reply .form-group
-{
+.panel-reply .form-group {
     padding-top: 15px;
     border: 1px solid #444;
     background-color: rgba(40, 40, 40, 0.8);
@@ -670,8 +633,7 @@ a .panel-recentfeed h3
     margin-right: auto;
 }
 
-.panel-reply .input-group
-{
+.panel-reply .input-group {
     text-align: center;
     /*background: rgba(40, 40, 40, 0.8);*/
     padding: 0 10px 0 10px;
@@ -681,79 +643,68 @@ a .panel-recentfeed h3
 /* Community Styles ( Clans & Members)
 -------------------------------------------------------------------------------------------------------- */
 
-#community-container .clan
-{
+#community-container .clan {
     min-height: 100px;
     max-height: 100px;
 }
 
-.members .panel
-{
+.members .panel {
     padding: 5px;
 }
 
-.members table
-{
+.members table {
     table-layout: fixed;
 }
 
 .members .email,
 .members .icon,
-.members .name
-{
+.members .name {
     white-space: nowrap;
     overflow: hidden;
     padding-top: 10px;
 }
 
-.members .name
-{
-    font-family: "Alegreya Sans"; 
+.members .name {
+    font-family: "Alegreya Sans";
     font-weight: 700;
     font-size: 14pt;
     padding-top: 5px;
 }
-.members table > tbody > tr > td
-{
+
+.members table > tbody > tr > td {
     padding: 0px;
 }
 
-.members tr > td div
-{
+.members tr > td div {
     padding: 5px;
-	height: 35px;
+    height: 35px;
 }
 
-.members tr > td > a div:hover
-{
-    background: rgba(255, 255, 255, 0.4);
+.members tr > td > a div:hover {
+    color: #111;
+    background: #aaffaa;
 }
 
-#navbar-games .icon
-{
+#navbar-games .icon {
     padding-right: 5px;
 }
 
-.members .icon
-{
+.members .icon {
     padding-right: 5px;
 }
 
 #headerbar-games .icon img,
 #navbar-games .icon img,
-.members .icon img
-{
+.members .icon img {
     height: 26px;
     width: 26px;
 }
 
-.members .game
-{
+.members .game {
     font-size: 80%;
 }
 
-.members .game .input-group-addon
-{
+.members .game .input-group-addon {
     white-space: nowrap;
     overflow: hidden;
     text-align: left;
@@ -762,38 +713,32 @@ a .panel-recentfeed h3
     margin-top: -5px;
 }
 
-.members .game .row > .col-xs-2 span
-{
+.members .game .row > .col-xs-2 span {
     text-align: right;
 }
 
 /* Connect Styles
--------------------------------------------------------------------------------------------------------- */ 
+-------------------------------------------------------------------------------------------------------- */
 
-#connectdiscord > #discordbanner 
-{
-   margin: auto;
+#connectdiscord > #discordbanner {
+    margin: auto;
 }
 
-#connectdiscord iframe 
-{
-   height: 1000px;
-   width: 100%;
+#connectdiscord iframe {
+    height: 1000px;
+    width: 100%;
 }
 
-#serverstatus-collapse 
-{
+#serverstatus-collapse {
     margin-top: 52px;
 }
 
-#discord-btns 
-{    
+#discord-btns {
     margin-top: 5px;
     margin-right: 20px;
 }
 
-#connectdiscord > .row > .col-md-8-offset > #discord-btns > .btn-edit, #connectdiscord > .row > .col-md-8-offset > .list-group li 
-{
+#connectdiscord > .row > .col-md-8-offset > #discord-btns > .btn-edit, #connectdiscord > .row > .col-md-8-offset > .list-group li {
     color: #fff;
     background-color: #738BD7;
     border: 1px solid #fff;
@@ -801,8 +746,7 @@ a .panel-recentfeed h3
     margin: 2px 2px 2px 2px;
 }
 
-#closeserver-btn 
-{
+#closeserver-btn {
     margin: auto;
     background-color: #738BD7;
     color: #fff;
@@ -820,6 +764,7 @@ a .panel-recentfeed h3
     padding: 10px;
     margin: 2px 2px 2px 2px;
 }
+
 #twitch-btns {
     margin-top: 5px;
 }
@@ -833,9 +778,11 @@ a .panel-recentfeed h3
     margin: auto;
     width: 100%;
 }
+
 #hots-characters > row {
     margin: 15px 0 15px 0;
 }
+
 #hots-characters > .panel > .panel-body > .row > .collapse > .row > .class-portrait > a > .panel > .panel-heading > img {
     width: 200px;
     height: 100px;
@@ -851,23 +798,29 @@ a .panel-recentfeed h3
 #starcraft2lotv {
     margin-top: 15px;
 }
+
 #starcraft2lotv h3 {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     margin-top: 10px;
 }
+
 #starcraft2lotv .panel-group {
     margin: 5px;
 }
+
 #starcraft2lotv .panel:hover {
     background-color: rgba(0,0,0,3);
-}    
+}
+
 #starcraft2lotv .panel-group .panel-body p, #starcraft2lotv .panel-group p {
     color: #777777;
 }
+
 #starcraft2lotv img {
     margin: auto;
     box-shadow: 1px 1px 10px #aaffaa;
 }
+
 #starcraft2lotv .sc2modalbullet {
     width: 80%;
 }

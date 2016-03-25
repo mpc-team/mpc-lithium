@@ -9,7 +9,8 @@
 // Namespace.
 var EventsCalendar = {};
 
-//----------------------------------------------------------------------------------------------------------
+/* Constants
+------------------------------------------------------------------------------------------------------------ */
 
 EventsCalendar.UI = {};
 EventsCalendar.UI.Elements = {};
@@ -108,6 +109,11 @@ EventsCalendar.Callbacks.CreateEvent = function ()
 	{
 		$(EventsCalendar.UI.Elements.Inputs.Title).val("");
 		$(EventsCalendar.UI.Elements.Modal).modal('hide');
+
+		// Kind of a hacky solution, we want the `EventsUpcoming` UI to be updated when we add an Event
+		// to the Calendar (if applicable). Ideally we would want to raise an event that `EventsUpcoming`
+		// listens for and updates its UI accordingly.
+		EventsUpcoming.Initialize("#events-upcoming");
 
 		if (EventsCalendar.Calendar != null)
 		{

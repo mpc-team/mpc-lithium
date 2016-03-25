@@ -6,7 +6,7 @@
 
 var announcements = {};
 announcements.ui = {};
-announcements.ui.displayLimit = 10;
+announcements.ui.displayLimit = 4;
 
 /**
  * HTML Elements.
@@ -44,12 +44,14 @@ announcements.ui.stringify = function (object)
 {
 	var date = moment(object.tstamp);
 	var result = '';
-	result += "<div class='announcement padded-panel-med bordered-panel shadow-med-1' data-id='" + object.id + "'>";
+	result += "<div class='announcement bordered-panel shadow-med-1' data-id='" + object.id + "'>";
+	result += "<div class='panel-heading'>";
 	result += "<div class='title' data-id='" + object.id + "'>";
 	if (object.title != null && object.title != "")
-		result += "<h2>" + object.title + "</h2>";
+		result += "<h3>" + object.title + "</h3>";
 	else
 		result += "<h2>Announcement #" + object.id + "</h2>";
+	result += "</div>";
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
@@ -78,8 +80,8 @@ announcements.ui.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='feedback' data-id='" + object.id + "'></div>";
-	result += "<hr />";
 
+	result += "<div class='panel-footer'>";
 	result += "<table>";
 	result += "<tbody>";
 	result += "<tr>";
@@ -87,8 +89,8 @@ announcements.ui.stringify = function (object)
 
 	result += "<div class='info'>";
 	result += "<div class='author'>Created by ";
-	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a>";
-	result += " on " + date.format("dddd - MMMM Do YYYY");
+	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a> <br />";
+	result += date.format("MMMM Do YYYY");
 	result += "</div>";
 	result += "</div>";
 	result += "</div>";
@@ -116,6 +118,7 @@ announcements.ui.stringify = function (object)
 	result += "</tbody>";
 	result += "</table>";
 
+	result += "</div>";
 	result += "</div>";
 	return result;
 }
@@ -246,7 +249,7 @@ announcements.ui.print = function (objects)
 		outputString += announcements.ui.stringify(objects[key]);
 	output.html(outputString);
 
-	$(announcements.htmlElements.content + " .announcement .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: true });
+	$(announcements.htmlElements.content + " .announcement .nano").nanoScroller({ preventPageScrolling: true, alwaysVisible: false });
 
 	for (key in objects)
 		announcements.ui.register(objects[key].id);

@@ -5,9 +5,12 @@ $this->title('Games');
 $self = $this;
 
 ?>
+
+<div class="jumbotron">
+	<h1>GAMES</h1>
+</div>
+
 <section id="games">
-	<h1>Games</h1>
-	
     <div class="row">
 		<?php foreach ($games as $game): ?>
             <div class="col-md-4">
