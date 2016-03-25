@@ -147,7 +147,7 @@ a h5 {
 .content >.jumbotron > h1 {
     font-family: "Ubuntu";
     font-variant: small-caps;
-    text-shadow: 0 0 1px #000;
+    text-shadow: 0 0 10px #aaffaa;
 }
 
 /* Shadow & Glow Effects
