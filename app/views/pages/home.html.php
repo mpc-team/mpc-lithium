@@ -22,7 +22,7 @@ $self = $this
             <h2>Announcements</h2>
             <?php if ($permissions['announcements']['CREATE']): ?>
 	            <div class="row">
-		            <button class="btn btn-edit" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
+		            <button class="btn btn-default" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
 		                <span class="glyphicon glyphicon-plus"></span>
 		                Add an Announcement
 		            </button>
@@ -47,19 +47,28 @@ $self = $this
 		            </div>
 	            </div>
             <?php endif; ?>
+        </div>
+        <div class="col-md-4">
+            <center><h2>Upcoming Events</h2></center>
+        </div>
+        <div class="col-md-4">
+            <h2 class="pull-right">Member Achievements</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <div id="announcements-content">
 
             </div>
         </div>
         <div class="col-md-4" style="padding-left: 15px">
-            <center><h2>Upcoming Events</h2></center>
             <div id="events-upcoming">
                 <!-- JavaScript -->
             </div>
             <script type="text/javascript">$(function () { EventsUpcoming.Initialize('#events-upcoming'); });</script>
         </div>
         <div class="col-md-4">
-            <h2 class="pull-right">Member Achievements</h2>
+
         </div>
     </div>
 </section>
