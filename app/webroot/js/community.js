@@ -284,7 +284,7 @@ members.ui.alias.stringify = function (object)
 	result += "<a href='/user/view/" + object.id + "'>";
 	result += "<h2>" + object.alias;
 	if (object.clan != null)
-		result += " <small>" + object.clan.shortname + "</small>";
+		result += " <div class='badge'>" + object.clan.shortname + "</div>";
 	result += "</h2></a>";
 	if ('email' in object)
 		result += "<h2><small>" + object.email + "</small></h2>";

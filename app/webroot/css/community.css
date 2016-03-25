@@ -109,6 +109,16 @@
     height: auto;
 }
 
+.members .user-tooltip .badge
+{
+    float: right;
+    color: #aaffaa;
+    font-size: 22pt;
+    background-color: #1E1E1E;
+    border: 1px solid #444;
+    border-radius: 0px;
+}
+
 .members .user-tooltip > div
 {
     background-color: rgba(40, 40, 40, 0.95);
