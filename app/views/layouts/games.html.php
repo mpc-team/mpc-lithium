@@ -44,6 +44,7 @@ use app\views\layouts\LayoutConstants;
         'user/user',
         'user/auth',
         'user/notifications',
+        'expanding/expanding',
         'background',
 		'navbar',
         'texttags',

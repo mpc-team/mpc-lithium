@@ -173,16 +173,5 @@ profile.init = function (userid, played)
 	});
 
 	/* Initialize Wall */
-	$(".profile-content .wall .footer input[type='text']").keyup(function (event) 
-	{
-		if (event.keyCode == 13) 
-		{ /* detect 'Enter' key press */
-			var message = $(".profile-content .wall .footer input").val();
-			if (message != null && message.length > 0) 
-			{
-				profile.wall.sendMessage(userid, message);
-				$(".profile-content .wall .footer input").val("");
-			}
-		}
-	});
+	profile.wall.init(userid);
 }

@@ -58,6 +58,7 @@ use app\views\layouts\LayoutConstants;
         'user/notifications',
         'user/profile',
         'user/wall',
+        'expanding/expanding',
         'background',
 		'navbar', 
         'headerbar',

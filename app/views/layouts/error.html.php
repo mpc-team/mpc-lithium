@@ -51,6 +51,7 @@ $path = Libraries::get(true, 'path');
         'user/user',
         'user/auth',
         'user/notifications',
+        'expanding/expanding',
         'background',
 		'navbar', 
         'headerbar',

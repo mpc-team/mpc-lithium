@@ -117,10 +117,7 @@
     bottom: 5px;
 }
 
-/*.profile-content > div
-{
-    padding-top: 30px;
-}*/
+
 
 .profile-header,
 .profile-content .games .panel button,
@@ -182,6 +179,12 @@
 .profile-content .wall .footer > .input-group {
     border-top: 1px solid rgba(200, 200, 200, 0.1);
     padding: 10px;
+}
+
+.profile-content .wall .footer > .input-group textarea {
+    height: 2.3em;   
+    max-height: 250px;
+    overflow: hidden;
 }
 
 .profile-content .games {
