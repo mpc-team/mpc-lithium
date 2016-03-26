@@ -1697,6 +1697,7 @@
     <Compile Include="app\tests\functional\empty" />
     <Compile Include="app\tests\integration\empty" />
     <Compile Include="app\tests\mocks\empty" />
+    <Compile Include="app\utilities\TextEntry.php" />
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
