@@ -507,19 +507,11 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
 
 </style>
 <div id="heroes-of-the-storm">
-    <!--header row-->
-    <div class="row page-header">
-        <h1>
-            <div class="title">
-                <?=$this->title;?>
-            </div>
-            <small>
-            <div class="subtitle">
-                Games[M.O.B.A.]
-            </div>
-        </small>   
-        </h1>        
-    </div><!--page-header-->
+   <div class="jumbotron">
+        <h1 style="white-space: nowrap;">
+            Heroes of the Storm
+        </h1>
+    </div>
     <h3>
         Into the Nexus
         <small>Community Development</small>
@@ -527,13 +519,15 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
     <div class="row">
         <div class="panel-group">
             <div class="panel">
-                <div class="panel-body">
+                <div class="panel-heading">
                     <h3 class="panel-title">
                         What we are trying to accomplish here in this game and community:
                     </h3>
+                </div>
+                <div class="panel-body">
                     <p>There is no clan based yet as of today, but MPC still likes to focus on a collection of quality members, and officers to run Hero League, and Team League. We feel the game will eventually add a scenario for clans and teams.</p>
                     <p>Our clan welcomes Heroes enthuists to play with a winning solution for ever problem that can occur on the battlefield. Players in MPC are familliar with the mechanics of this game, and if looking for a group to play with daily, feel free to connect with discord.</p>
-                    <p>You will find helpful information on this page regarding characters that we feel we've masted in. Myths will be replaced on this website, along with facts, philosphy, map decision, positioning decisions, selecting your first character to play as, how to train before embarrassing yourself, understanding what priorities should be met on each map, and as time goes on there will be more advance level of understanding the game.</p>
+                    <p>You will find helpful information on this page regarding characters that we feel we've masted in. Myths will be replaced on this website, along with facts, philosophy, map decision, positioning decisions, selecting your first character to play as, how to train before embarrassing yourself, understanding what priorities should be met on each map, and as time goes on there will be more advance level of understanding the game.</p>
                     <p>Over time this section will be populated with useful, and educational process, and yet discoveries for this game; with updates, nerfs, and patches happening will cause this section to be very dynamic and simplified every day.</p>
                 </div><!--panel-body-->
             </div><!--panel-->

@@ -27,6 +27,7 @@ use app\views\layouts\LayoutConstants;
         'markup',
         'headerbar',
         'navbar',
+        'user',
         'utils/nanoscroller',
         'external/effects/hover',
         'external/effects/component',

@@ -16,18 +16,10 @@ $self = $this;
    #starcraft2lotv .btn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
 </style>
 <div id="starcraft2lotv">
-    <!--header row-->
-    <div class="row page-header">
-        <h1>
-            <div class="title">
-                <?=$this->title;?>
-            </div>
-            <small>
-            <div class="subtitle">
-                Games
-            </div>
-        </small>   
-        </h1>        
+   <div class="jumbotron">
+        <h1 style="white-space: nowrap;">
+            Starcraft 2: Legacy of the Void
+        </h1>
     </div>
     <h3>
         MPC - "Miacro Power Clan"
@@ -36,11 +28,13 @@ $self = $this;
     <div class="row">
         <div class="panel-group">
             <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        The First Game Migration.
+                    </h3>
+                </div>
                 <div class="panel-body">
                     <div class="row">
-                        <h3 class="panel-title">
-                            The First Game Migration.
-                        </h3>
                         <p>Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans from around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments. Miacro Power Clan was formally known as Micro Power Clan.</p>
                     </div>
                 </div>
@@ -58,11 +52,13 @@ $self = $this;
         <div class="col-md-6">            
             <div class="panel-group">
                 <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            How it Works
+                        </h3>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
-                            <h3 class="panel-title">
-                                How it Works
-                            </h3>
                             <p>In a Starcraft 2 Clan War, a player from each clan must select a race and will play a pre-defined game (or games) until one of them is defeated. The choice of which map to play is decided by veto; that is, each clan will remove a map from the current 1 vs 1 ladder pool until there is only one map remaining. The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played. Skill levels are determined by highest rank achieved.</p>
                             <p>The loser of the 1 vs 1 will decide which map will be used in next round and a player cannot select any previously chosen map until all maps in the ladder pool have been played. Skill levels are determined by highest rank achieved.</p>
                             <p>Only people in the actual clan match game:</p>
@@ -104,11 +100,13 @@ $self = $this;
             </div><!--panel-group-->
             <div class="panel-group" id="mpcsc2-signupinfo">
                 <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            MPC's Clan War Sign up Process [Members Only]
+                        </h3>
+                    </div>
                     <div class="panel-body">
                         <div class="row">
-                            <h3 class="panel-title">
-                                MPC's Clan War Sign up Process [Members Only]
-                            </h3>
                             <p>There's <b>two</b> ways to sign up for the clan war when playing for clan MPC.</p>
                             <ol>
                                 <li>Login to your Account, and either search the forums, or on the Starcraft 2 page, you'll need to post in the thread with a reply stating you are in. This is the safest way, and you will not have to show up an hour prior to the event to register, instead you may show up when you are needed. First come first serve based on the post time made by the players.</li>
@@ -143,7 +141,7 @@ $self = $this;
             </div><!--panel-group-->
             <div class="panel-group">
                 <div class="panel">
-                     <div class="panel-heading"><a name="discord"></a>
+                     <div class="panel-heading">
                         <h3 class="panel-title">MPC's Discord Server</h3>
                     </div>
                     <div class="panel-body text-center">                           
@@ -164,12 +162,14 @@ $self = $this;
         </div><!--col-->
         <div class="col-md-6">
             <div class="panel-group">
-            <div class="panel">
+              <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Schedule with MPC
+                    </h3>
+                </div>
                 <div class="panel-body">
                     <div class="row">
-                        <h3 class="panel-title">
-                            Schedule with MPC
-                        </h3>
                         <p>MPC has their clan wars based on certain days of the week, and they: Monday, Tuesday, and Thursdays). Our rank range is gold - master level players. Use the <b>Contact Officers Options</b> to find an MPC member, and request a date time to host a Clan War Event. IF you're interested in becoming an MPC Member, and play in these clan wars, then you may also contact an officer for additional support to get signed up, and registered with MPC. We expect to obtain your point of contact peron's in game link, and referred to an hour prior to the match. If you play on using casters, please revert to the <b>caster's rules and guide.</b>Please provide atleast a week in advance notice for the requested clan war.</p>
                             <div class="row">
                                 <ul>
@@ -204,7 +204,7 @@ $self = $this;
                             <li>Say GL HF!</li>
                         </ul>
                     </div><!--panel-body-->
-                </div><!--panel--><a name="contact"></a>
+                </div><!--panel-->
             </div><!--panel-group-->
             <div class="panel-group">
                 <div class="panel" id="contact-instructions">
@@ -294,53 +294,6 @@ $self = $this;
 
 
                     <!--<a href='starcraft2?replay=true'>a button</a>-->
-
-
-
-                    <!--
-                    < php
-                        
-                        $clansPlayed = array(
-                            
-                            array('id'=>'taw','tags'=>'TAW', 'fullname'=>'The Art of WarFare','file1'=>'taw1', 'file2'=>'taw2','file3'=>'taw3'),
-                            array('id'=>'drk','tags'=>'DRK', 'fullname'=>'Dark Society Community Gaming','file1'=>'drk1', 'file2'=>'drk2','file3'=>'drk3'),
-                            array('id'=>'lit','tags'=>'|LiT|', 'fullname'=>'Lost in Translation','file1'=>'lit1', 'file2'=>'lit2','file3'=>'lit3'),
-                            array('id'=>'rumb','tags'=>'RUMB', 'fullname'=>'R U Mad Bro','file1'=>'rumb1', 'file2'=>'rumb2', 'file3'=>'rumb3','file4'=>'rumb3'),
-
-                        );
-
-                     >
-                    <ul class="nav nav-tabs" role="tablist">
-                    < php foreach($clansPlayed as $clan => $property):  >
-                        <li role="presentation">
-                            <a href="#< = $property['id']  >" aria-controls="<  $property['id']  >" role="tab" data-toggle="tab">
-                                < = $property['tags']  > 
-                            </a>
-                        </li>
-                    <  endforeach;  >
-                    </ul>
-                    <div class="tab-content">
-                        < php foreach($clansPlayed as $clan => $property): >
-                        <div role="tabpanel" class="tab-pane fade" id="< = $property['id']  >">
-                            <h3 class="panel-title">< = $property['fullname']  ></h3>
-                            <small>< = '['. $property['tags'] . ']'  ></small>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="panel-group">
-                                        <div class="panel">
-                                            <div class="panel-heading">
-
-                                            </div><!--panel-heading 
-                                            <div class="panel-body">
-                                                        
-                                            </div><!--panel-body 
-                                        </div><!--panel 
-                                    </div><!--panel-group 
-                                </div><!--col-md-4          
-                            </div><!--row 
-                        </div><!--tabpanel 
-                        < php endforeach;  >
-                    </div><!--tab-content -->
                 </div><!--panel-body-->
             </div><!--panel--> 
         </div><!--panel-group--> 
