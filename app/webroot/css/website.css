@@ -686,7 +686,7 @@ a .panel-recentfeed h3 {
 }
 
 #navbar-games .icon {
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .members .icon {
@@ -696,8 +696,9 @@ a .panel-recentfeed h3 {
 #headerbar-games .icon img,
 #navbar-games .icon img,
 .members .icon img {
-    height: 26px;
-    width: 26px;
+    height: 30px;
+    width: 30px;
+    margin: -7px;
 }
 
 .members .game {

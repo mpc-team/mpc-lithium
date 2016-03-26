@@ -15,6 +15,7 @@
     padding: 0px;
 }
 
+#navbar-games .dropdown-menu li a,
 .multi-column-dropdown li a
 {
     display: block;
