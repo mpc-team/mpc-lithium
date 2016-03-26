@@ -178,7 +178,7 @@ class UsersAPI extends ContentController
 
         // Find User's avatar image.
         $userData = Users::Get($user['id'], Users::$FIELDS_PRIVATE);
-        $user['avatar'] = Users::FindAvatarFile($userData['email']);
+        $user['avatar'] = Users::FindAvatarFile($user['id']);
 
         // Calculate if the User is new based on the number of days since creation.
         $daysSinceJoined = $today - strtotime($user['tstamp']);

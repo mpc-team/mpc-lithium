@@ -102,7 +102,7 @@ class UserController extends \lithium\action\Controller
 		$options = array();
 		$options['template'] = '../user/profile';
 		
-		$avatarPath = Users::FindAvatarFile($authorized['email']);
+		$avatarPath = Users::FindAvatarFile($authorized['id']);
 		$this->set(array('avatar' => $avatarPath));
 		
 		// Return and render the View specified above.
@@ -133,9 +133,9 @@ class UserController extends \lithium\action\Controller
 				if ($check && in_array($check[2], $image_types))
 				{
 					$fileext = pathinfo($data['avatarfile']['name'], PATHINFO_EXTENSION);
-					$cleaned = Users::CleanAvatarFiles($authorized['email']);
+					$cleaned = Users::CleanAvatarFiles($authorized['id']);
 					
-					$saveToPath = getcwd().'/users/avatars/'.$authorized['email'].'.'.$fileext;
+					$saveToPath = getcwd().'/users/avatars/'.$authorized['id'].'.'.$fileext;
 					copy($data['avatarfile']['tmp_name'], $saveToPath);
 					
 					return $this->redirect('/user/profile?status=success&op=avch');
@@ -350,7 +350,7 @@ class UserController extends \lithium\action\Controller
 				}
 				
                 $privateInformation = Users::Get($member['id'], Users::$FIELDS_PRIVATE);
-				$avatar = Users::FindAvatarFile($privateInformation['email']);
+				$avatar = Users::FindAvatarFile($privateInformation['id']);
 				return compact('authorized', 'data', 'breadcrumbs', 'avatar');
 			}
 		}

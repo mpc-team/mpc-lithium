@@ -16,16 +16,18 @@ if (isset($notification['status']))
 ?>
 <div class="profile-header">
 	<div class="page-header">
-		<h1>
-			<div class="title">
-				<?= $authorized['alias']; ?>
-			</div>
-			<small>
-				<div class="subtitle">
-					<?= $authorized['email']; ?>
-				</div>
-			</small>
-		</h1>
+        <div class="jumbotron">
+		    <h1>
+			    <div class="title">
+				    <?= $authorized['alias']; ?>
+			    </div>
+			    <small>
+				    <div class="subtitle">
+					    <?= $authorized['email']; ?>
+				    </div>
+			    </small>
+		    </h1>
+        </div>
 	</div>
 	<div class="since">
 		Member since <b><?= $authorized['date'] ?></b>

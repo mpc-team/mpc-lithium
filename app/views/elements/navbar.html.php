@@ -110,7 +110,7 @@ $forumsByCategory = Forums::GetByCategory();
 
 					<a href='/user/profile' class='dropdown-toggle' role='button'>
                         <div class="user-avatar-container">
-                            <img src="<?= Users::FindAvatarFile($authorized['email']); ?>"></img>
+                            <img src="<?= Users::FindAvatarFile($authorized['id']); ?>"></img>
                         </div>
                         <div class="pull-right" style="padding-left: 10px">
 						    <?= $authorized['alias'] ?> 

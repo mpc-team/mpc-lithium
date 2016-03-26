@@ -64,10 +64,10 @@ class Users extends \lithium\data\Model
 	 * @returns
 	 *	List of filepaths as an array.
 	 */
-	public static function FindAvatarFiles ($email) 
+	public static function FindAvatarFiles ($id) 
     {
 		$exts = array('jpg', 'png', 'JPG', 'PNG');
-		$path = '/users/avatars/' . $email . '.';
+		$path = '/users/avatars/' . $id . '.';
 		$files = array();
 		
 		foreach ($exts as $ext)
@@ -87,9 +87,9 @@ class Users extends \lithium\data\Model
 	 *	An image filepath corresponding to the specified User, or a generic 
 	 *	`noprofile` image filepath if none exist for the User.
 	 */
-	public static function FindAvatarFile($email) {
+	public static function FindAvatarFile($id) {
     	
-		$files = self::FindAvatarFiles($email);
+		$files = self::FindAvatarFiles($id);
 		
 		if (count($files) > 0)
 			return $files[0];
@@ -104,9 +104,9 @@ class Users extends \lithium\data\Model
 	 * @returns
 	 *	Nothing.
 	 */
-	public static function CleanAvatarFiles ($email) 
+	public static function CleanAvatarFiles ($id) 
     {
-		$files = self::FindAvatarFiles($email);
+		$files = self::FindAvatarFiles($id);
 		$result = array();
 		
 		foreach ($files as $file) 

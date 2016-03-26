@@ -9,11 +9,13 @@ $self = $this;
 ?>
 <div class="profile-header">
 	<div class="page-header">
-		<h1>
-			<div class="title">
-				<?= $data['member']['alias']; ?>
-			</div>
-		</h1>
+        <div class="jumbotron">
+		    <h1>
+			    <div class="title">
+				    <?= $data['member']['alias']; ?>
+			    </div>
+		    </h1>
+        </div>
 	</div>
 	<div class="since">
 	    Member since <b><?= $data['member']['date'] ?></b>

@@ -77,7 +77,7 @@ class ThreadController extends ContentController
 			$data['posts'][$key]['content'] = stripslashes($data['posts'][$key]['content']);
 			$data['posts'][$key]['author'] = $author;
 			$data['posts'][$key]['author']['since'] = Timestamp::toDisplayFormat($author['tstamp']);
-			$data['posts'][$key]['author']['avatar'] = Users::FindAvatarFile($privateInformation['email']);
+			$data['posts'][$key]['author']['avatar'] = Users::FindAvatarFile($privateInformation['id']);
 			$data['posts'][$key]['date'] = Timestamp::toDisplayFormat($post['tstamp'], array());
 			$data['posts'][$key]['features'] = array();
 			$data['posts'][$key]['hit'] = $authorized && PostHits::IsHitByUser($data['posts'][$key]['id'], $authorized['id']);
