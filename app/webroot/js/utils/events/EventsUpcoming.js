@@ -45,14 +45,12 @@ EventsUpcoming.UI.Event = function (eventObject) {
 						"<h3>" + eventObject.title + "</h3>" +
 					"</center>" +
 				"</div>" +
-				"<center>" +
-					"<p style='padding:10px; font-size: 9pt; margin:0;'>" +
-						description +
-						(renderLink ? "<br />" : "") +
-						(renderLink ? "<br />" : "") +
-						(renderLink ? "<a href='" + eventObject['linkref'] + "'>(View Details)</a>" : "") +
-					"</p>" +
-				"</center>" +
+				"<p style='padding:10px; font-size: 9pt; margin:0;'>" +
+					description +
+					(renderLink ? "<br />" : "") +
+					(renderLink ? "<br />" : "") +
+					(renderLink ? "<a href='" + eventObject['linkref'] + "'>View Details</a>" : "") +
+				"</p>" +
 				"<div class='panel-footer'>" +
 					"<center>" +
 						"<br />" +
