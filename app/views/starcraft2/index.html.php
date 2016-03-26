@@ -35,11 +35,11 @@ $self = $this;
     </h3>
     <div class="row">
         <div class="panel-group">
-            <div class="panel" style="max-width: 800px; margin: auto;">
+            <div class="panel">
                 <div class="panel-body">
                     <div class="row">
                         <h3 class="panel-title">
-                            The First Migration.
+                            The First Game Migration.
                         </h3>
                         <p>Miacro Power Clan was originally formed from another game, and some migrated into Starcraft 2. During it's period of Wings of Liberty, M.P.C. grew widely, and competed against clans from around the world. We help our members improve everyday, and always looking for coaches, or players that like to get involved with clan war tournaments. Miacro Power Clan was formally known as Micro Power Clan.</p>
                     </div>
@@ -218,7 +218,8 @@ $self = $this;
                             <h3 class="panel-title">
                                 In Game Links for Starcraft 2 Officers
                             </h3>
-                            <small>Copy on of these links, then paste in Starcraft2's chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend's list to save it.</small>                           
+                            <small>Copy on of these links, then paste in Starcraft2's chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend's list to save it.</small>
+<br />                           
                                 <?php $sc2ContactA = array(
                                     'AcidSnake' => 'battlenet:://starcraft/profile/1/12293619718954156032',
                                     'Cheemo' => 'battlenet://starcraft/profile/1/1360022220574818304',
@@ -244,17 +245,58 @@ $self = $this;
             </div>
         </div><!--col-6-->
     </div><!--row-->
-    <!--<div class="row">
+    <div class="row">
         <div class="panel-group" id="sc2member-cwreplay">
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         Clan War Replays
                     </h3>
-                </div><!--panel-heading
+                </div><!--panel-heading-->
                 <div class="panel-body">
                     <p>To download previous clan war replays based on the clan, and along by selecting the date of the event, you would need to use the tabs below; clicking on the tile will download the entire zip file. You will need to catch that zip file in your downloads folder. Use this guide to learn shortcuts to getting to the download folder. Once you're able to locate the downloads folder, unzip the file, and copy the files over to your starcraft 2 folder. If you're not sure where the starcraft 2 folder is, you can view this guide. Once the files are in the replay folder for starcarft 2, click on the file, and the computer should request to launch the starcraft 2 application to review the replay. If not, you can load the starcraft 2 game, and then double click on the file, or open it in starcraft 2 from the replay section.</p>
+<?php 
+
+
+//path to sc2 replays.
+//path to another set of replays.    
+    
+     $dir = 'starcraft2/clanwar/replays';    
+     
+
+   
+
+
+    function downloadFile($file) { 
+        
+        if(file_exists($file)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename='.basename($file));
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            ob_clean();
+            flush();
+            readfile($file);
+            exit;
+        }
+     }//function
                 
+      //trigger on a button
+        if (isset($_GET['replay'])) {
+            downloadFile($file);
+        }
+?>
+
+
+
+                    <!--<a href='starcraft2?replay=true'>a button</a>-->
+
+
+
                     <!--
                     < php
                         
@@ -298,10 +340,10 @@ $self = $this;
                             </div><!--row 
                         </div><!--tabpanel 
                         < php endforeach;  >
-                    </div><!--tab-content 
-                </div><!--panel-body
-            </div><!--panel 
-        </div><!--panel-group 
+                    </div><!--tab-content -->
+                </div><!--panel-body-->
+            </div><!--panel--> 
+        </div><!--panel-group--> 
     </div><!--row-->
     <h3>
         sEadogsc2's
