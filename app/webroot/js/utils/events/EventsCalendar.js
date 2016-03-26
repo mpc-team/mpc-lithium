@@ -51,13 +51,29 @@ EventsCalendar.SaveEvent = function (eventData, callback)
  */
 EventsCalendar.Insert = function (calendar, title, start, end, link)
 {
-	var event = {
-		title: title,
-		start: start,
-		end: end,
-		url: link,
-	};
-	calendar['events'].push(event);
+	var mstart = moment(start).format("ddMMYYYY");
+	var mend = moment(end).format("ddMMYYYY");
+	if (mstart == mend)
+		calendar['events'].push({
+			title: title,
+			start: start,
+			end: end,
+			url: link
+		});
+	else {
+		calendar['events'].push({
+			title: title + " (starts)",
+			start: start,
+			end: start,
+			url: link
+		});
+		calendar['events'].push({
+			title: title + " (ends)",
+			start: end,
+			end: end,
+			url: link
+		});
+	}
 }
 
 /**

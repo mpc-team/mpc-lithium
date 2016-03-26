@@ -18,8 +18,7 @@ $self = $this
 
 <div class="jumbotron">
     <h1 style="white-space: nowrap;">
-        LOBBY
-        news & events
+        NEWS
     </h1>
 </div>
 
@@ -78,8 +77,15 @@ $self = $this
     </div>
 </section>
 
-<section id="events" style="padding-top: 15px">
-    <h1 style='margin-bottom: 15px'>Events</h1>
+
+<div class="jumbotron" style="margin-top: 10px">
+    <h1 style="white-space: nowrap;">
+        EVENTS
+    </h1>
+</div>
+
+
+<section id="events">
     <?php if ($permissions['events']['CREATE']): ?>
         <div class="row">
             <button class="btn btn-default" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">

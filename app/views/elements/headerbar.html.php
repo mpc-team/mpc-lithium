@@ -18,7 +18,7 @@ $button_hover_class = 'cl-effect-3';
         <ul class="nav navbar-nav">
             <li id='headerbar-home'>
                 <a href='/'>
-                    MPC
+                    mpc
                 </a>
             </li>
         </ul>
@@ -26,25 +26,25 @@ $button_hover_class = 'cl-effect-3';
 
             <li id='headerbar-community'>
                 <a href='/community'>
-                    Community
+                    community
                 </a>
             </li>
 
             <li id="headerbar-connect">
                 <a href='/connect'>
-                    Connect
+                    connect
                 </a>
             </li>
 
             <li id='headerbar-forum'>
                 <a href='/forum'>
-                    Forum
+                    forum
                 </a>
             </li>
 
             <li id='headerbar-games' class='dropdown'>
                 <a href='/games'>
-                    Games
+                    games
                 </a>
             </li>
 
@@ -53,8 +53,8 @@ $button_hover_class = 'cl-effect-3';
             <?php if ($authorized): ?>
             <li id='headerbar-user' class='dropdown'>
                 <a href='/user/profile'>
-                    <span class='glyphicon glyphicon-user'></span>
-                    <?= $authorized['alias'] ?>
+                    profile
+                    
                 </a>
                 <ul class='dropdown-menu' role='menu'>
                     <li>

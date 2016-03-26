@@ -637,7 +637,7 @@ be a descendant of the grid when it is being dragged.
 
 @media (min-width: 500px) {
     .fc-day-grid-event .fc-content {
-        font-size: 12pt;
+        font-size: 10pt;
     }
 }
 
@@ -783,7 +783,7 @@ a.fc-more:hover {
 }
 
 .fc-basic-view .fc-body .fc-row {
-    max-height: 200px;
+    max-height: 110px;
 	min-height: 60px; /* ensure that all rows are at least this tall */
 }
 

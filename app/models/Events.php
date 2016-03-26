@@ -40,7 +40,7 @@ class Events extends \lithium\data\Model
     {
         $events = self::find('all', array(
             'conditions' => array(
-                'start' => array(
+                'end' => array(
                     '>=' => date('Y-m-d H:i:s', time() ))),
             'order' => array('start' => 'ASC'),
             'limit' => $limit,
