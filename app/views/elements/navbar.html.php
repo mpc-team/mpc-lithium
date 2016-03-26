@@ -10,6 +10,7 @@
 use app\models\Games;
 use app\models\Forums;
 use app\models\Categories;
+use app\models\Users;
 
 $games = Games::All();
 $forumsByCategory = Forums::GetByCategory();
@@ -108,9 +109,13 @@ $forumsByCategory = Forums::GetByCategory();
 				<li id='navbar-user' class='dropdown'>
 
 					<a href='/user/profile' class='dropdown-toggle' role='button'>
-						<span class='glyphicon glyphicon-user'></span>
-						<?= $authorized['alias'] ?> 
-                        <span class='caret'></span>
+                        <div class="user-avatar-container">
+                            <img src="<?= Users::FindAvatarFile($authorized['email']); ?>"></img>
+                        </div>
+                        <div class="pull-right" style="padding-left: 10px">
+						    <?= $authorized['alias'] ?> 
+                            <span class='caret'></span>
+                        </div>
 					</a>
 
 					<ul class='dropdown-menu' role='menu'>

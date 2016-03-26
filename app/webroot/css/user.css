@@ -1,21 +1,18 @@
 
 /* User Avatar
 ---------------------------------------------------------------------------------------- */
-.user-avatar-container:before
-{
+.user-avatar-container:before {
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.user-avatar-select > .well
-{
+.user-avatar-select > .well {
     margin-left: auto;
     margin-right: auto;
     max-width: 450px;
 }
 
-.user-avatar-container > img
-{
+.user-avatar-container > img {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: -50px;
@@ -26,8 +23,7 @@
     min-height: 200px;
 }
 
-.user-avatar-container
-{
+.user-avatar-container {
     border: 5px solid #111;
     border-radius: 100px;
     width: 100%;
@@ -41,13 +37,43 @@
     margin-right: auto;
 }
 
+@media (max-width: 612px) {
+    .user-avatar-select.pull-left {
+        float: none !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .forum-post .info .avatar .user-avatar-container {
+        border: none;
+        border-radius: 100px;
+        width: 100%;
+        max-height: 100px;
+        max-width: 100px;
+        min-height: 100px;
+        min-width: 100px;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .forum-post .info .avatar .user-avatar-container > img {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: -50px;
+        margin-right: -50px;
+        max-width: 200px;
+        max-height: 150px;
+        min-width: 200px;
+        min-height: 100px;
+    }
+}
+
 /* Signup / Login / Reset Password
 ---------------------------------------------------------------------------------------- */
 
 .reset-password,
 .signup .signup-group,
-.login .login-group
-{
+.login .login-group {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -55,22 +81,19 @@
 }
 
 .signup-group .form-group,
-.login-group .form-group
-{
+.login-group .form-group {
     margin-bottom: 10px;
 }
 
 .signup-group .form-group:last-child,
-.login-group .form-group:last-child
-{
+.login-group .form-group:last-child {
     margin-top: 25px;
 }
 
 /* Profile
 ---------------------------------------------------------------------------------------- */
 
-.profile-game-icon
-{
+.profile-game-icon {
     max-height: 80%;
     max-width: 80%;
     min-height: 30%;
@@ -78,14 +101,15 @@
 }
 
 .profile-content .wall .nano-content,
-.profile-content .invites .content
-{
+.profile-content .invites .content {
     background: rgba(0, 0, 0, 0.6);
 }
 
-.profile-content .wall .nano > .nano-sclider { background: #3A3A3A; }
-.profile-content .wall .nano > .nano-pane
-{
+.profile-content .wall .nano > .nano-sclider {
+    background: #3A3A3A;
+}
+
+.profile-content .wall .nano > .nano-pane {
     border: 1px solid #444;
     background: #1B1B1B;
     right: 5px;
@@ -100,29 +124,24 @@
 
 .profile-header,
 .profile-content .games .panel button,
-.profile-content .games .name
-{
+.profile-content .games .name {
     white-space: nowrap;
 }
 
-.profile-content .games button.btn-edit.active:hover
-{
+.profile-content .games button.btn-edit.active:hover {
     background-color: rgba(117, 176, 118, 0.7);
 }
 
-.profile-header .page-header
-{
+.profile-header .page-header {
     margin-bottom: 0;
 }
 
 .profile-header .invites,
-.profile-content .wall .header
-{
+.profile-content .wall .header {
     padding: 5px 0 5px 0;
 }
 
-.profile-content .wall
-{
+.profile-content .wall {
     border: 1px solid #444;
     /*padding-left: 20px;*/
     /*width: 90%;*/
@@ -130,21 +149,18 @@
     /*margin-left: auto;*/
 }
 
-.profile-content .wall .nano
-{
+.profile-content .wall .nano {
     height: 400px;
 }
 
 .profile-content .wall .nano-content,
-.profile-content .invites .content
-{
+.profile-content .invites .content {
     /*max-height: 400px;*/
     /*min-height: 400px;*/
     /*overflow-y: auto;*/
 }
 
-.profile-content .wall .nano-content .message
-{
+.profile-content .wall .nano-content .message {
     word-wrap: break-word;
     padding: 10px 10px 10px 10px;
     border-top: 1px solid rgba(200, 200, 200, 0.1);
@@ -153,82 +169,68 @@
     margin-left: auto;
 }
 
-.profile-content .wall .nano-content .message .name
-{
+.profile-content .wall .nano-content .message .name {
     /* font-family: "Oswald"; */
     font-size: 105%;
 }
 
-.profile-content .wall .nano-content .message .text
-{
+.profile-content .wall .nano-content .message .text {
     padding-top: 35px;
     padding-bottom: 35px;
 }
 
-.profile-content .wall .footer > .input-group
-{
+.profile-content .wall .footer > .input-group {
     border-top: 1px solid rgba(200, 200, 200, 0.1);
     padding: 10px;
 }
 
-.profile-content .games
-{
+.profile-content .games {
     padding: 0 5px 10px 5px;
 }
 
-.profile-content .games .game
-{
+.profile-content .games .game {
     padding: 0 2px 5px 2px;
 }
 
 .profile-content .games .panel .icon,
-.profile-content .games .panel button
-{
+.profile-content .games .panel button {
     padding: 1px;
     text-align: left;
     width: 100%;
 }
 
-.profile-content .games .panel.active
-{
+.profile-content .games .panel.active {
     border: 1px solid rgba(180, 255, 180, 0.9);
     box-shadow: 0 0 5px rgba(210, 255, 210, 0.9);
     background: #334433;
 }
 
-.profile-content .games .panel.active .name
-{
+.profile-content .games .panel.active .name {
     color: #aaffaa;
 }
 
-.profile-content .games .name
-{
+.profile-content .games .name {
     display: inline;
     padding-left: 3px;
     white-space: nowrap;
     font-size: 9pt;
 }
 
-.profile-content .games .status
-{
+.profile-content .games .status {
     font-size: 300%;
     color: #aaffaa;
     text-align: center;
     padding-right: 10px;
 }
 
-@media (max-width: 870px)
-{
-    .profile-content .games .name
-    {
+@media (max-width: 870px) {
+    .profile-content .games .name {
         display: none;
     }
 }
 
-@media (max-width: 630px)
-{
-    .profile-content .games .name
-    {
+@media (max-width: 630px) {
+    .profile-content .games .name {
         display: none;
     }
 }

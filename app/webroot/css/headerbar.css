@@ -2,37 +2,38 @@
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,600,700,900);
 @import url(http://fonts.googleapis.com/css?family=Passion+One:400,700,900);
 
-.page-header-nav
-{
+.page-header-nav {
     font-family: "Oswald";
     font-size: 175%;
     font-weight: 900;
 }
 
-.page-header-nav .nav
-{
+.page-header-nav .nav {
     padding-left: 20px;
 }
 
-.page-header-nav .navbar-default .navbar-nav > .active > a
-{
+.page-header-nav .navbar-default .navbar-nav > .active > a {
     border-bottom: 5px solid #b9ffb6;
 }
 
-.page-header-nav .nav > li > a
-{
+.page-header-nav .nav > li > a {
     padding-left: 0;
     padding-right: 0;
     padding-top: 15px;
-    height: 60px;
+    height: 70px;
 }
 
-.page-header > hr.top-divider
-{
+@media (max-width: 770px) {
+    .page-header-nav .nav > li > a {
+        font-size: 12pt;
+        height: 50px;
+    }
+}
+
+.page-header > hr.top-divider {
     margin-bottom: 0px;
 }
 
-.page-header > hr.bottom-divider
-{
+.page-header > hr.bottom-divider {
     margin-top: 0px;
 }

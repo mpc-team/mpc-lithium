@@ -334,6 +334,7 @@ a.btn-forum:hover
 {
     .forum-post .info .avatar .user-avatar-container
     {    
+        border: none;
         border-radius: 100px;
         width: 100%;
         max-height: 100px;

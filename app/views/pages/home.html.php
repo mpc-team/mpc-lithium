@@ -16,6 +16,13 @@ $self = $this
 
 ?>
 
+<div class="jumbotron">
+    <h1 style="white-space: nowrap;">
+        LOBBY
+        news & events
+    </h1>
+</div>
+
 <section id="announcements">
     <div class="row">
         <div class="col-md-4">
@@ -23,7 +30,6 @@ $self = $this
             <?php if ($permissions['announcements']['CREATE']): ?>
 	            <div class="row">
 		            <button class="btn btn-default" id="announcement-btn" type="button" data-toggle="collapse" data-target="#announcement-create" aria-expanded="false" style="margin-bottom:5px;font-size:100%">
-		                <span class="glyphicon glyphicon-plus"></span>
 		                Add an Announcement
 		            </button>
 		            <div class="collapse" id="announcement-create">
@@ -47,28 +53,31 @@ $self = $this
 		            </div>
 	            </div>
             <?php endif; ?>
-        </div>
-        <div class="col-md-4">
-            <center><h2>Upcoming Events</h2></center>
-        </div>
-        <div class="col-md-4">
-            <h2 class="pull-right">Member Achievements</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
             <div id="announcements-content">
 
             </div>
         </div>
-        <div class="col-md-4" style="padding-left: 15px">
+        <div class="col-md-4" style="padding-left:10px">
+            <center><h2>Upcoming Events</h2></center>
+            <button class="btn btn-default" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">
+                <!--<span class="glyphicon glyphicon-plus"></span>-->
+                Add an Event
+            </button>
             <div id="events-upcoming">
                 <!-- JavaScript -->
             </div>
             <script type="text/javascript">$(function () { EventsUpcoming.Initialize('#events-upcoming'); });</script>
         </div>
-        <div class="col-md-4">
-
+        <div class="col-md-4" style="padding-left:10px">
+            <div class="row">
+                <h2 class="pull-right">Member Achievements</h2>
+            </div>
+            <div class="row">
+                <center>
+                    <br />
+                    <p style="font-size:20pt">More to come . . .</p>
+                </center>
+            </div>
         </div>
     </div>
 </section>
