@@ -78,7 +78,7 @@ $self = $this
 </section>
 
 
-<div class="jumbotron" style="margin-top: 10px">
+<div class="jumbotron" style="margin-top: 30px">
     <h1 style="white-space: nowrap;">
         EVENTS
     </h1>
