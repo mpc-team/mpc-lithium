@@ -17,7 +17,7 @@ $self = $this;
 		    </h1>
         </div>
         <div class="page-icon pull-right">
-            <i style="transform:rotate(13deg);" class="fa fa-street-view"></i>
+            <i style="transform:rotate(13deg);" class="fa fa-user-secret"></i>
         </div>
 	</div>
 	<div class="since">
