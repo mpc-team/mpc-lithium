@@ -102,8 +102,8 @@ EOD;
 					    <div>
 						    <div class="info">
 							    <div class="avatar">
-                                    <div class='user-avatar-container'>
-								        <img src="<?= $post['author']['avatar']; ?>"/>
+                                    <div class="user-avatar-container" 
+                                        style="background-image: url('<?= $post['author']['avatar']; ?>');">
                                     </div>
 							    </div>
 							    <div class="author" data-id="<?= $post['id'] ?>">

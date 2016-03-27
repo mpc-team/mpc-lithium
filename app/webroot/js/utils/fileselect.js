@@ -108,7 +108,7 @@ $(document).ready(function ()
 				fileselect.filterDataId(fileselect.MODAL + ' .error', dataid).hide();
 				fileselect.filterDataId(fileselect.MODAL + ' .pending', dataid).hide();
 				fileselect.filterDataId(fileselect.MODAL + ' .selected', dataid).show();
-				fileselect.filterDataId(fileselect.IMG_PREVIEW, dataid).attr('src', e.target.result);
+				fileselect.filterDataId(fileselect.IMG_PREVIEW, dataid).css('background-image', "url('" + e.target.result + "')");
 			}
 			reader.readAsDataURL(files[0]);
 		}

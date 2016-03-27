@@ -68,8 +68,8 @@ if (isset($notification['status']))
 		    <div class="user-avatar-select pull-left">
                 <div class="fs-container" data-id="1">
                     <button class="btn btn-edit fs-btn-modify" data-id="1">
-                        <div class="user-avatar-container">
-                            <img src="<?= $avatar; ?>" />
+                        <div class="user-avatar-container" 
+                            style="background-image: url('<?= $avatar ?>');">
                         </div>
                         <div class="info">
                             Click to Change Avatar Image
@@ -94,8 +94,8 @@ if (isset($notification['status']))
                                         <h1 style='padding-bottom: 20px'>
                                             Avatar Selected
                                         </h1>
-                                        <div class='user-avatar-container'>
-                                            <img class="fs-img-preview" src="" data-id="1" />
+                                        <div class="user-avatar-container fs-img-preview" data-id="1">
+                                            <!--<img class="fs-img-preview" src="" data-id="1" />-->
                                         </div>
                                         <div>
                                             <button class="btn btn-edit fs-btn-confirm" data-id="1">

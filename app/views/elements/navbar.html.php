@@ -109,8 +109,8 @@ $forumsByCategory = Forums::GetByCategory();
 				<li id='navbar-user' class='dropdown'>
 
 					<a href='/user/profile' class='dropdown-toggle' role='button'>
-                        <div class="user-avatar-container">
-                            <img src="<?= Users::FindAvatarFile($authorized['id']); ?>"></img>
+                        <div class="user-avatar-container" 
+                            style="background-image: url('<?= Users::FindAvatarFile($authorized['id']); ?>');">
                         </div>
                         <div class="pull-right" style="padding-left: 10px">
 						    <?= $authorized['alias'] ?> 

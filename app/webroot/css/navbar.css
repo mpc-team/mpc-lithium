@@ -77,8 +77,9 @@
 }
 
 #navbar-user .user-avatar-container > img {
-    max-height: 43px;
-    min-height: 43px;
+    /*margin-left: 1vw;*/
+    max-height: 48px;
+    min-height: 48px;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover img {

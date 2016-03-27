@@ -36,8 +36,8 @@ $self = $this;
         </div>
         <div class="col-md-8">
 		    <div class="user-avatar-select pull-left">
-                <div class="user-avatar-container">
-		            <img src="<?= $avatar; ?>" />
+                <div class="user-avatar-container" 
+                    style="background-image: url('<?= $avatar ?>');">
                 </div>
 		    </div>
         </div>

@@ -134,8 +134,8 @@ community.ui.register.member.stringify = function (user)
 	var html = "<div class='row ui-widget-content' style='padding: 5px;' data-id='" + user.id + "'>";
 	html += "<div class='row'>";
 	html += "<div class='col-xs-2'>";
-	html += "<div class='user-avatar-container'>";
-	html += "<img src='" + user.avatar + "' />";
+	html += "<div class='user-avatar-container' " +
+		"style='background-image: url(\"" + user.avatar + "\");'>";
 	html += "</div>";
 	html += "</div>";
 	html += "<div class='col-xs-10'>";
@@ -295,8 +295,8 @@ members.ui.alias.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='row'>";
-	result += "<div class='user-avatar-container' style='padding:0'>";
-	result += "<img src='" + object.avatar + "'></img>";
+	result += "<div class='user-avatar-container' " +
+		"style='background-image: url(\"" + object.avatar + "\"); padding:0'>";
 	result += "</div>";
 	result += "</div>";
 
