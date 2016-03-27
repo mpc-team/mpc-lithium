@@ -34,8 +34,8 @@ $features = function($tid, $options)
 
 <div class="jumbotron">
 	<h1>
-        <div class='forum-context-title'><?= strtolower($data['category']['name']); ?></div>
 		<div class='forum-title'><?= strtoupper($data['forum']['name']); ?></div>
+        <div class='forum-context-title'><?= strtolower($data['category']['name']); ?></div>
 	</h1>
 </div>
 
