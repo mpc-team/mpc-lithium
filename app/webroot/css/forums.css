@@ -1,310 +1,273 @@
-﻿#modal-newthread .modal-header .close
-{
+﻿#modal-newthread .modal-header .close {
     font-size: 24px;
     margin-top: 0;
 }
 
 .forum h1,
 .forum h2,
-.forum h3
-{
+.forum h3 {
     /*font-family: "Montserrat";
     font-weight: 700;*/
 }
 
-.forum h1
-{
+.forum h1 {
     /*font-variant: small-caps;*/
     /*font-size: 350%;*/
 }
 
 .forum-thread h4 .name,
-.forum-thread h5 .name
-{
+.forum-thread h5 .name {
     /*text-transform: lowercase;
     font-variant: small-caps;*/
 }
 
-.forum-context-title
-{
+.forum-context-title {
     color: #444;
     font-size: 30pt;
     margin-bottom: -15px;
 }
 
 .forum-context-title,
-.forum-title
-{
+.forum-title {
     /*font-size: 72pt;*/
     text-shadow: 0 0 10px #000;
 }
 
-.quote-content
-{
+.quote-content {
     padding: 10px;
 }
 
-.texttags button
-{
+.texttags button {
     font-size: 110%;
     padding: 5px;
 }
 
-.texttags .dropdown-menu > li > button
-{
+.texttags .dropdown-menu > li > button {
     width: 300px;
 }
 
-.usertool
-{
+.usertool {
     background: rgba(25, 25, 25, 0.5);
 }
 
-.usertool form
-{
+.usertool form {
     display: inline;
 }
 
-.usertool .btn-edit
-{
+.usertool .btn-edit {
     text-align: left;
-    line-height: 1.2; 
+    line-height: 1.2;
 }
 
-.usertool .btn-edit .fa
-{
+.usertool .btn-edit .fa {
     /*font-size: 10pt;*/
 }
 
-.usertool .btn-edit .glyphicon-file
-{
+.usertool .btn-edit .glyphicon-file {
     font-size: 22pt;
 }
 
 .usertool .btn-edit .fa.fa-pencil-square-o,
 .usertool .btn-edit .fa.fa-quote-right,
-.usertool .btn-edit .fa.fa-trash-o
-{
+.usertool .btn-edit .fa.fa-trash-o {
     font-size: 18pt;
 }
 
-a.btn-forum:hover
-{
+a.btn-forum:hover {
     background: linear-gradient(170deg, #aaacaa, #7f7f7f);
 }
 
-.panel-control .panel-heading
-{
+.panel-control .panel-heading {
     font-size: inherit;
     padding: 5px 5px 5px 10px;
 }
 
-.panel-forum .forum
-{
+.panel-forum .forum {
     min-height: 70px;
     max-height: 70px;
     overflow: hidden;
 }
 
-@media (min-width: 630px)
-{
-    .panel-forum .forum
-    {
+@media (min-width: 630px) {
+    .panel-forum .forum {
         min-height: 90px;
         max-height: 90px;
     }
 }
 
-.panel-forum h5
-{
+.panel-forum h5 {
     font-weight: 600;
     font-size: 14pt;
 }
 
-.forum .login-notice > .panel
-{
+.forum .login-notice > .panel {
     /*background: linear-gradient(160deg, #2f3a2f, #222222);*/
     padding: 5px 0 10px 0;
 }
 
-.forum .login-notice .icon
-{
+.forum .login-notice .icon {
     font-size: 300%;
     margin-bottom: -7px;
 }
 
-.forum .login-notice .conten
-{
+.forum .login-notice .conten {
     vertical-align: middle;
 }
 
-.forum .row > h1 > small > .subtitle
-{
+.forum .row > h1 > small > .subtitle {
     margin-top: -20px;
     font-weight: 700;
 }
 
-.forum .categories
-{
-    padding-top: 20px;
+.forum .categories {
+    padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.forum .categories h3
-{
-    font-size: 30pt;
-    text-shadow: 0 0 10px #000;
+.forum .categories section {
+    margin-bottom: 5px;
 }
 
-.forum .categories .count
-{
+.forum .categories .name {
+    background: rgba(10, 10, 10, 0.5);
+    padding: 10px;
+}
+
+.forum .categories section > .content {
+    padding-top: 5px;
+}
+
+.forum .categories .name > a > h3,
+.forum .categories .name > h3 {
+    font-size: 15pt;
+    text-shadow: 0 0 10px #000;
+    font-family: "Ubuntu";
+    font-weight: 500;
+}
+
+.forum .categories .count {
     bottom: 0px;
 }
 
-.forum .categories .panel-group
-{
+.forum .categories .panel-group {
     margin-bottom: 1px;
     margin-left: 1px;
 }
 
-.forum-header
-{
+.forum-header {
     padding-bottom: 2px;
     font-size: 120%;
 }
 
-.forum-content
-{
+.forum-content {
     padding-bottom: 50px;
 }
 
-.forum-thread
-{
+.forum-thread {
     display: table;
     table-layout: fixed;
     width: 100%;
 }
 
-.forum-header .forum-thread
-{
+.forum-header .forum-thread {
     background: transparent;
     font-weight: 700;
 }
 
-.forum-thread > div
-{
+.forum-thread > div {
     display: table-row;
 }
 
-.forum-thread > div > div
-{
+.forum-thread > div > div {
     display: table-cell;
 }
 
-.forum-thread > div > a
-{
+.forum-thread > div > a {
     display: table-cell;
     max-height: 70px;
     vertical-align: top;
 }
 
 .forum-thread a.info,
-.forum-thread a.recent
-{
+.forum-thread a.recent {
     white-space: nowrap;
     overflow: hidden;
 }
 
 .forum-thread a.recent .time,
-.forum-thread a.info .name
-{
+.forum-thread a.info .name {
     padding-bottom: 1px;
     white-space: nowrap;
     overflow: hidden;
 }
 
 .forum-thread .info,
-.forum-thread a.info
-{
+.forum-thread a.info {
     width: 55%;
 }
 
-.form-thread .count
-{
+.form-thread .count {
     width: 13%;
     font-size: 9pt;
 }
 
-.forum-thread .count h4
-{
+.forum-thread .count h4 {
     font-size: 18pt;
 }
 
-.forum-thread .count h4 small
-{
+.forum-thread .count h4 small {
     font-size: 9pt;
 }
 
 .forum-thread .recent,
-.forum-thread a.recent
-{
+.forum-thread a.recent {
     width: 32%;
 }
 
-.forum-thread .info div
-{
+.forum-thread .info div {
     text-align: left;
 }
 
-.forum-thread .recent div
-{
+.forum-thread .recent div {
     text-align: right;
 }
 
-.forum-post
-{
+.forum-post {
     display: table;
     table-layout: fixed;
     width: 100%;
     height: 150px;
 }
 
-.forum-post > div > div
-{
+.forum-post > div > div {
     display: table-cell;
 }
 
-.forum-post > div
-{
+.forum-post > div {
     width: 25%;
     display: table-row;
 }
 
 
-.forum-post .info
-{
+.forum-post .info {
     background-color: #1a1a1a;
     vertical-align: top;
 }
 
 .forum-post .info .since,
-.forum-post .info .author
-{
+.forum-post .info .author {
     padding: 5px;
 }
 
-.forum-post .info .since
-{
+.forum-post .info .since {
     padding-top: 0px;
 }
 
-.forum-post .info .author
-{
+.forum-post .info .author {
     padding-bottom: 0px;
 }
 
-.forum-post .info .author
-{
+.forum-post .info .author {
     font-size: 12pt;
     font-weight: 600;
     white-space: nowrap;
@@ -312,28 +275,22 @@ a.btn-forum:hover
     overflow-y: hidden;
 }
 
-.forum-post .info .time
-{
+.forum-post .info .time {
     font-size: 85%;
 }
 
-.forum-post .info .avatar
-{
+.forum-post .info .avatar {
     padding-top: 1%;
 }
 
-@media (max-width: 400px)
-{
-    .forum-post .info .avatar
-    {
+@media (max-width: 400px) {
+    .forum-post .info .avatar {
         margin-left: -10px;
     }
 }
 
-@media (max-width: 849px)
-{
-    .forum-post .info .avatar .user-avatar-container
-    {    
+@media (max-width: 849px) {
+    .forum-post .info .avatar .user-avatar-container {
         border: none;
         border-radius: 100px;
         margin-top: -8px;
@@ -345,7 +302,7 @@ a.btn-forum:hover
         margin-left: 0;
     }
 
-        /*display: inline-block;
+    /*display: inline-block;
         margin-top: -8px;
         max-height: 44px;
         min-height: 44px;
@@ -359,8 +316,7 @@ a.btn-forum:hover
     }
 }
 
-.forum-post .content
-{
+.forum-post .content {
     white-space: normal;
     word-wrap: break-word;
     margin-bottom: 0px;
@@ -369,60 +325,50 @@ a.btn-forum:hover
     padding: 10px 20px 20px 20px;
 }
 
-.forum-post .content hr
-{
+.forum-post .content hr {
     box-shadow: none;
     border-top: 1px solid #888;
 }
 
 .forum-post .content h2,
-.forum-post .content h3
-{
+.forum-post .content h3 {
     display: inline;
 }
 
 .forum-post .content .edit-content-toggle,
-.forum-post .content .edit-content
-{
+.forum-post .content .edit-content {
     padding-top: 5px;
 }
 
-.forum-post .time
-{
+.forum-post .time {
     white-space: nowrap;
     overflow: hidden;
 }
 
-.forum-post .content .header
-{
+.forum-post .content .header {
     font-size: 85%;
     padding-bottom: 5px;
     border-bottom: 1px solid #444;
 }
 
-.forum-post .content .time
-{
+.forum-post .content .time {
     float: right;
 }
 
-.forum-post .content .hit
-{
+.forum-post .content .hit {
     float: left;
 }
 
-.forum-post .content .hit .text
-{
+.forum-post .content .hit .text {
     padding-left: 10px;
 }
 
-.forum-post .content .hit button
-{
+.forum-post .content .hit button {
     padding: 0px;
     border: none;
 }
 
-.forum-post .content .hit button.post-hit-hit
-{
+.forum-post .content .hit button.post-hit-hit {
     background: #009702;
     border: 1px solid #76FF76;
     box-shadow: 0 0 5px rgba(200,255,205,1);

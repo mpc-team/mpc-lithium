@@ -27,16 +27,21 @@ $self = $this;
 </div>
 
 <div class="categories">
-	<?php foreach ($data['categories'] as $category): ?>
-        <section id="<?= $category['name'] ?>" class="offset">
-            <?php if (array_key_exists('forums', $category)): ?>
-		        <div class="row">
-			        <div class="name">
-				        <h4 style="margin-bottom: 10px; margin-top: 10px;">
-					        <?= $category['name'] ?> <small>Forums</small>
-				        </h4>
-			        </div>
-			        <?php foreach ($category['forums'] as $forum): ?>		
+    <div id="category-accordion">
+	    <?php foreach ($data['categories'] as $category): ?>
+        <section class="offset" id="<?= $category['name'] ?>">
+            <a data-toggle="collapse" data-parent="#category-accordion" href="#<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
+                <div class="name" style="width: 100%;">
+				    <h3 style="margin-bottom: 10px; margin-top: 10px;">
+					    <span class="glyphicon glyphicon-plus"></span> <?= strtoupper($category['name']); ?> <small>FORUMS</small>
+				    </h3>
+                </div>
+            </a>
+            <div class="content">
+                <div class="panel-collapse collapse" id="<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
+                    <div class="row">
+                        <?php if (array_key_exists('forums', $category)): ?>
+			            <?php foreach ($category['forums'] as $forum): ?>		
 				        <div class="col-md-4">
 					        <div class="panel-group">
 						        <div class="panel panel-default">
@@ -48,7 +53,7 @@ $self = $this;
 											        <h5>
 												        <?= $forum['name'] ?><br>
 											        </h5>
-													<p><?= $forum['descr'] ?></p>
+											        <p><?= $forum['descr'] ?></p>
 										        </div>
 									        </div>
 									        <div class="row">
@@ -65,9 +70,14 @@ $self = $this;
 						        </div>
 					        </div>
 				        </div>
-			        <?php endforeach; ?>
-		        </div>
-            <?php endif; ?>
+			            <?php endforeach; ?>
+                        <?php else: ?>
+                        <div class="well well-lg">There are no Forums for this section.</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </section>
-	<?php endforeach; ?>
-</div>
+	    <?php endforeach; ?>
+    </div> <!-- End Accordion -->
+</div> <!-- End Categories -->

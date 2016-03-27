@@ -84,9 +84,10 @@ img {
 
 .offset::before {
     display: block;
+    position: absolute;
     content: " ";
     height: 50px;
-    margin-top: -50px;
+    /*margin-top: -50px;*/
     visibility: hidden;
 }
 
