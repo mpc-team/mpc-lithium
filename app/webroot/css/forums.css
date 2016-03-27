@@ -98,6 +98,8 @@ a.btn-forum:hover {
 .panel-forum h5 {
     font-weight: 600;
     font-size: 14pt;
+    font-variant: small-caps;
+    font-family: "Ubuntu";
 }
 
 .forum .login-notice > .panel {
@@ -108,10 +110,6 @@ a.btn-forum:hover {
 .forum .login-notice .icon {
     font-size: 300%;
     margin-bottom: -7px;
-}
-
-.forum .login-notice .conten {
-    vertical-align: middle;
 }
 
 .forum .row > h1 > small > .subtitle {
@@ -125,7 +123,7 @@ a.btn-forum:hover {
 }
 
 .forum .categories section {
-    margin-bottom: 5px;
+    margin: 0px 5px 5px 5px;
 }
 
 .forum .categories .name {
@@ -133,8 +131,9 @@ a.btn-forum:hover {
     padding: 10px;
 }
 
-.forum .categories section > .content {
-    padding-top: 5px;
+.forum .categories section .content {
+    background: #111;
+    padding: 3px;
 }
 
 .forum .categories .name > a > h3,

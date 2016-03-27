@@ -524,6 +524,7 @@ a .panel-recentfeed h3 {
     overflow: hidden;
 }
 
+.col-md-6 .panel > a.btn,
 .col-md-4 .panel > a.btn,
 .col-xs-4 .panel > a.btn,
 .col-xs-6 .panel > a.btn {
