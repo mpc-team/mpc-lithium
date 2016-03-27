@@ -124,17 +124,18 @@ a.btn-forum:hover {
 }
 
 .forum .categories section {
-    margin: 0px 5px 5px 5px;
+    margin: 0px 3px 3px 3px;
 }
 
 .forum .categories .name {
     background: rgba(10, 10, 10, 0.5);
     padding: 10px;
+    border-top: 5px solid #0A0A0A;
 }
 
 .forum .categories section .content {
-    background: #111;
-    padding: 2px;
+    background: linear-gradient(0deg, rgba(0,0,0,0), rgba(10,10,10,0.5), rgba(10,10,10,0.5));
+    padding: 10px;
 }
 
 .forum .categories .name > a > h3,

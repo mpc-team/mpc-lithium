@@ -132,7 +132,7 @@ $forumsByCategory = Forums::GetByCategory();
 					</ul>
 				</li>
                 <li id='navbar-notifications' class='dropdown'>
-                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button'>
+                    <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' style="padding-left:8px;padding-right:8px;">
                         <span class='badge user-notification-count'></span>
                         <span class='caret'></span>
                     </a>
