@@ -31,14 +31,18 @@ $features = function($tid, $options)
 };
 
 ?>
-<div class="row forum-header">
-	<h1 style='margin-bottom: 15px;'>
-        <div class='forum-context-title'><?= $data['category']['name'] ?></div>
-		<div class='forum-title'><?= $data['forum']['name'] ?></div>
-		<small>
-			<div>Topics</div>
-		</small>
+
+<div class="jumbotron">
+	<h1>
+        <div class='forum-context-title'><?= strtolower($data['category']['name']); ?></div>
+		<div class='forum-title'><?= strtoupper($data['forum']['name']); ?></div>
 	</h1>
+</div>
+
+<div class="row forum-header">
+    
+    <p style="font-size:30pt; font-family:'Ubuntu'; font-variant: small-caps;">topics</p>
+
     <?php if (in_array('create', $data['permissions'])): ?>
         <div class="row" style="padding-bottom: 15px">
             <button title="Create a new Topic" class="btn btn-default" data-toggle="modal" data-target="#modal-newthread">Create Topic</button>
