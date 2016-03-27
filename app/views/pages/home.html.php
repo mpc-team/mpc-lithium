@@ -88,6 +88,9 @@ $self = $this
     </h1>
 </div>
 
+<div class="page-icon pull-right">
+    <i style="transform: rotate(13deg);" class="fa fa-calendar"></i>
+</div>
 
 <section id="events">
     <?php if ($permissions['events']['CREATE']): ?>
