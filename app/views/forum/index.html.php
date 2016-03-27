@@ -34,6 +34,7 @@ $ctgry_col_count = 0;
             <?php if ($ctgry_col_count % 2 == 0): ?>
             <div class="row">
             <?php endif; ?>
+                <?php if (array_key_exists('forums', $category)): ?>
                 <div class="col-md-6">
                     <section class="offset" id="<?= $category['name'] ?>">
                         <div class="panel">
@@ -47,7 +48,6 @@ $ctgry_col_count = 0;
                             <div class="content">
                                 <div class="panel-collapse collapse" id="<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
                                     <div class="row">
-                                        <?php if (array_key_exists('forums', $category)): ?>
 			                            <?php foreach ($category['forums'] as $forum): ?>		
 				                        <div class="col-md-6">
 					                        <div class="panel-group">
@@ -76,21 +76,17 @@ $ctgry_col_count = 0;
 					                        </div>
 				                        </div>
 			                            <?php endforeach; ?>
-                                        <?php else: ?>
-                                        <div class="well well-lg bordered-panel">
-                                            There are no Forums for this section.
-                                        </div>
-                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
-            <?php if ($ctgry_col_count % 2 == 1): ?>
+                <?php $ctgry_col_count++; ?>
+                <?php endif; ?>
+            <?php if ($ctgry_col_count % 2 == 0): ?>
             </div>
             <?php endif; ?>
-            <?php $ctgry_col_count++; ?>
 	        <?php endforeach; ?>
     </div> <!-- End Accordion -->
 </div> <!-- End Categories -->
