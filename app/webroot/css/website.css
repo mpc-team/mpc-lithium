@@ -137,7 +137,8 @@ a h5 {
 .page-icon {
     position: absolute;
     margin-top: -350px;
-    right: 0;
+    padding-right: 35px;
+    right: 50px;
     width: 100%;
     font-size: 330pt;
     color: rgba(0, 0, 0, 0.35);
@@ -152,6 +153,8 @@ a h5 {
     .page-icon {
         font-size: 150pt;
         margin-top: -250px;
+        right: 0;
+        padding-right: 0;
     }
     .page-icon.lower {
         font-size: 180pt;
