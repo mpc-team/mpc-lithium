@@ -10,6 +10,10 @@ $self = $this;
 	<h1>GAMES</h1>
 </div>
 
+<div class="page-icon lower pull-right">
+    <i style="transform: rotate(13deg);" class="fa fa-gamepad"></i>
+</div>
+
 <section id="games">
     <div class="row">
 		<?php foreach ($games as $game): ?>

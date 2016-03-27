@@ -134,6 +134,31 @@ a h5 {
     text-align: right;
 }
 
+.page-icon {
+    position: absolute;
+    margin-top: -350px;
+    right: 0;
+    width: 100%;
+    font-size: 330pt;
+    color: rgba(0, 0, 0, 0.35);
+    z-index: -999;
+}
+
+.page-icon.lower {
+    margin-top: -450px;
+}
+
+@media (max-width: 850px) {
+    .page-icon {
+        font-size: 150pt;
+        margin-top: -250px;
+    }
+    .page-icon.lower {
+        font-size: 180pt;
+        margin-top: -300px;
+    }
+}
+
 /* Page Banner (Jumbotron)
 ---------------------------------------------------------------------------------------------------- */
 

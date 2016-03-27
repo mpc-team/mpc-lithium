@@ -28,6 +28,9 @@ if (isset($notification['status']))
 			    </small>
 		    </h1>
         </div>
+        <div class="page-icon pull-right">
+            <i style="transform:rotate(13deg);" class="fa fa-cogs"></i>
+        </div>
 	</div>
 	<div class="since">
 		Member since <b><?= $authorized['date'] ?></b>

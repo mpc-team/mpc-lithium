@@ -14,6 +14,10 @@ $ctgry_col_count = 0;
     <h1>FORUMS</h1>
 </div>
 
+<div class="page-icon pull-right">
+    <i style="transform: rotate(13deg);" class="fa fa-list-alt"></i>
+</div>
+
 <div class="row">
 	<h3 style="margin-top:0; margin-bottom:10px">Recent Activity</h3>
 </div>

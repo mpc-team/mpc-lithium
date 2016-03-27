@@ -16,6 +16,9 @@ $self = $this;
 			    </div>
 		    </h1>
         </div>
+        <div class="page-icon pull-right">
+            <i style="transform:rotate(13deg);" class="fa fa-street-view"></i>
+        </div>
 	</div>
 	<div class="since">
 	    Member since <b><?= $data['member']['date'] ?></b>

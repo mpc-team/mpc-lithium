@@ -22,6 +22,10 @@ $self = $this
     </h1>
 </div>
 
+<div class="page-icon pull-right">
+    <i style="transform: rotate(13deg);" class="fa fa-newspaper-o"></i>
+</div>
+
 <section id="announcements">
     <div class="row">
         <div class="col-md-4">

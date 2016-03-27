@@ -19,6 +19,10 @@ $enableMemberButton = array(
     <h1>COMMUNITY</h1>
 </div>
 
+<div class="page-icon pull-right">
+    <i style="transform: rotate(5deg);" class="fa fa-users"></i>
+</div>
+
 <div class="clans" id="clans">
     <div class="row">
         <div class="col-md-4">
