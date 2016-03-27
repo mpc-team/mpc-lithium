@@ -55,17 +55,20 @@ EOD;
 	return $html;
 };
 ?>
+
+<div class="jumbotron">
+	<h1>
+		<div class='forum-title'><?= strtoupper($data['thread']['name']); ?></div>
+        <div class='forum-context-title'>
+            <?= strtolower($data['forum']['name']); ?>
+        </div>
+        <div class='forum-context-title' style="color: #444">
+            <?= strtolower($data['category']['name']); ?> 
+        </div>
+	</h1>
+</div>
+
 <div class="forum-header">
-    <div class="row">
-	    <h1 style="margin-bottom: 10px;">
-            <div class='forum-context-title'>
-                <?= $data['category']['name'] ?> 
-                <i class="fa fa-angle-double-right"></i>
-                <?= $data['forum']['name'] ?>
-            </div>
-		    <div class='forum-title'><?= $data['thread']['name'] ?></div>
-	    </h1>
-    </div>
     <div class="row" style="padding-bottom: 15px">
         <a href='#thread-reply'><button href='#thread-reply' class="btn btn-default">Reply to Topic</button></a>
     </div>
