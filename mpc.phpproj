@@ -1627,6 +1627,7 @@
     <Compile Include="app\models\Announcements.php" />
     <Compile Include="app\models\Clans.php" />
     <Compile Include="app\models\Events.php" />
+    <Compile Include="app\models\games\StarCraft2.php" />
     <Compile Include="app\models\UserClans.php" />
     <Compile Include="app\models\UserNotifications.php" />
     <Compile Include="app\models\ThreadSubscriptions.php" />
@@ -2696,6 +2697,7 @@
     <Folder Include="app\extensions" />
     <Folder Include="app\libraries\_source" />
     <Folder Include="app\libraries" />
+    <Folder Include="app\models\games\" />
     <Folder Include="app\models\utils" />
     <Folder Include="app\models" />
     <Folder Include="app\resources\g11n" />

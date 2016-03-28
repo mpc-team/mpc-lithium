@@ -14,6 +14,14 @@ $self = $this;
    #starcraft2lotv p {text-indent: 20px; color: #aaffaa !important; text-shadow: 1px 1px 15px #000;}
    #starcraft2lotv .btn-edit {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
    #starcraft2lotv .btn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+   #starcraft2lotv .downloadbtn-edit {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
+   #starcraft2lotv .downloadbtn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+   #mpcsc2-players-list > .list-group-item, #oppsc2-players-list > .list-group-item{color: #fff;background-color: rgba(123,171,232,.9);border: 1px solid #000;margin: auto;padding: 0;}
+   #mpcsc2-players-list > .list-group-item > .badge, #oppsc2-players-list > .list-group-item > .badge{
+
+        margin: 1% 1% 1% 1%;
+    
+    }
 </style>
 <div id="starcraft2lotv">
    <div class="jumbotron">
@@ -152,7 +160,7 @@ $self = $this;
                         </div><!--well-->
                             <small>Need Help with Discord?</small>
                         <div class="btn-group btn-lg" role="group">
-                            <a id="discordsetupbtn" class="btn" href="/connect">
+                            <a class="btn btn-edit" href="/connect">
                                 Set Up Page
                             </a>
                         </div><!--btn group-->
@@ -250,50 +258,171 @@ $self = $this;
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        Clan War Replays
+                        Clan War Analysis
                     </h3>
                 </div><!--panel-heading-->
                 <div class="panel-body">
                     <p>To download previous clan war replays based on the clan, and along by selecting the date of the event, you would need to use the tabs below; clicking on the tile will download the entire zip file. You will need to catch that zip file in your downloads folder. Use this guide to learn shortcuts to getting to the download folder. Once you're able to locate the downloads folder, unzip the file, and copy the files over to your starcraft 2 folder. If you're not sure where the starcraft 2 folder is, you can view this guide. Once the files are in the replay folder for starcarft 2, click on the file, and the computer should request to launch the starcraft 2 application to review the replay. If not, you can load the starcraft 2 game, and then double click on the file, or open it in starcraft 2 from the replay section.</p>
-<?php 
 
-
-//path to sc2 replays.
-//path to another set of replays.    
-    
-     $dir = 'starcraft2/clanwar/replays';    
+                    <?php
+                        
+                        $file = 'starcraft2/clanwar/folder.zip';
+                          //This pushes the file to the user. Requires a trigger.
+                    function downloadFile($file) 
+                { 
+        
+                    if (file_exists($file)) {
+                        header('Content-Description: File Transfer');
+                        header('Content-Type: application/octet-stream');
+                        header('Content-Disposition: attachment; filename='.basename($file));
+                        header('Content-Transfer-Encoding: binary');
+                        header('Expires: 0');
+                        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                        header('Pragma: public');
+                        header('Content-Length: ' . filesize($file));
+                        ob_clean();
+                        flush();
+                        readfile($file);
+                        exit;
+                    }
      
 
-   
+                 }//function
+                             //trigger from a button on the webpage.
+                    if (isset($_GET['replay'])) {
+                        downloadFile($file);
+                    }
 
 
-    function downloadFile($file) { 
+
+                    $sc2replays = array(
+    
+                        'taw'=>array(
+                            'id'=>'taw',
+                            'tags'=>'TAW',
+                            'name'=>'The Art Of War',
+                            'game-day'=>array(
+                                  'day1','day2','day3', 
+                            ),
+                        ),
+
+                        'drk'=>array(
+                            'id'=>'drk',
+                            'tags'=>'DRK',
+                            'name'=>'Dark Society Gaming Community',
+                            'game-day'=> array(
+
+                                'day1' => array(
+                                    'mpc-players' => array(
+                                        'jackdrk'=>1,'joedrk' =>1,'chrisdrk'=>3,'megdrk'=>0,'pamdrk'=>0
+                                    ),
+                                    'opp-players' => array(
+                                        'jasondrk' => 0,'johndrk' => 0,'debdrk' => 0,'bidrk' => 0,'ginadrk' => 0
+                                    ),
+                                    'mpc-score' => 5,
+                                    'opp-score'=> 0,
+                                ),//day1
+
+                                'day2',//day2
+
+                                'day3',//day3
+
+                            ),//game-day
+                        ),//drk
+
+                        'lit'=>array(
+                            'id'=>'lit',
+                            'tags'=>'|LiT|',
+                            'name'=>'Lost In Translation',
+                            'game-day'=>array(
+                                  'day1','day2','day3', 
+                            ),
+                        ),
         
-        if(file_exists($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename='.basename($file));
-            header('Content-Transfer-Encoding: binary');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            ob_clean();
-            flush();
-            readfile($file);
-            exit;
-        }
-     }//function
-                
-      //trigger on a button
-        if (isset($_GET['replay'])) {
-            downloadFile($file);
-        }
-?>
+                    );
+                    ?>
 
-
-
-                    <!--<a href='starcraft2?replay=true'>a button</a>-->
+                   <a href='starcraft2?replay=true' class="btn btn-edit">Download a Replay</a>
+                   <div class="row">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <?php foreach($sc2replays as $clan => $property):?>
+                            <li role="presentation">
+                                <a href="#<?= $property['id']?>" aria-controls="<?= $property['id']?>" role="tab" data-toggle="tab">
+                                    <?= $property['tags'] ?>
+                                </a>
+                            </li>
+                            <?php endforeach;?>
+                        </ul>
+                        <div class="tab-content">
+                            <?php foreach($sc2replays as $clan => $property): ?>
+                                <div role="tabpanel" class="tab-pane" id="<?= $property['id'] ?>">
+                                    <div class="row">
+                                        <h3 class="panel-title"><?= $property['name'] ?></h3>
+                                        <small>Clan Tags: <?= $property['tags'] ?></small>
+                                        <small>Game: <?= $property['game-day'] ?></small>
+                                    </div>
+                                    <div class="row">
+                                        <?php if(is_array($property)): ?>
+                                            <?php foreach($property['game-day'] as $value): ?>
+                                            <div class="col-md-4" id="<?= $value ?>">
+                                                <div class="panel-group">
+                                                    <div class="panel">
+                                                        <div class="panel-heading">                                      
+                                                        </div><!--panel heading-->
+                                                        <div class="panel-body">
+                                                            <div class="row well well-sm">
+                                                                <small>Players and Points:</small><br />
+                                                                <div class="col-md-6 text-center">
+                                                                    <small>MPC Team:<?= $value['mpc-score'] ?></small><br />
+                                                                <?php if(is_array($value)): ?>
+                                                                    <ul class="list-group" id="mpcsc2-players-list">
+                                                                        <?php foreach($value['mpc-players'] as $item => $points):?>
+                                                                            <li class="list-group-item">
+                                                                                <div class="row">
+                                                                                    <?= $item ?>
+                                                                                    <span class="badge"><?= $points ?></span>
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php endforeach;?>
+                                                                    </ul>
+                                                                <?php endif;?>
+                                                                </div>
+                                                                <div class="col-md-6 text-center">
+                                                                    <small><?= $property['tags']?> Team:<?= $value['opp-score'] ?></small><br />
+                                                                <?php if(is_array($value)): ?>
+                                                                    <ul class="list-group" id="oppsc2-players-list">
+                                                                        <?php foreach($value['opp-players'] as $item => $points):?>
+                                                                            <li class="list-group-item">
+                                                                                <div class="row">
+                                                                                    <?= $item ?>
+                                                                                    <span class="badge"><?= $points ?></span>
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php endforeach;?>
+                                                                    </ul>
+                                                                <?php endif;?>
+                                                                </div>
+                                                            </div><!--well row-->
+                                                        </div><!--panel-body-->
+                                                        <div class="panel-footer">
+                                                            <div class="btn-group-justified btn-group-sm" role="group">
+                                                                <center>
+                                                                    <button type="button" class="btn downloadbtn-edit">
+                                                                        Download This Clan War Replays
+                                                                    </button>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!--panel-group-->
+                                            </div><!--col-->
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </div><!--row-->
+                                </div><!--tabpanel-->
+                            <?php endforeach;?>
+                        </div><!--tab-content-->
+                   </div><!--row-->
                 </div><!--panel-body-->
             </div><!--panel--> 
         </div><!--panel-group--> 
@@ -391,6 +520,7 @@ $self = $this;
         $('#sc2member-cwreplay').show();
         $('#mpcsc2-signupinfo').show();
         $('#sc2officer-cwguide').show();
+        $('#mpcsc2-signupinfo').show();
         }
         else
         {
@@ -398,6 +528,7 @@ $self = $this;
         $('#sc2-signup-panel').hide();
         $('#sc2member-cwreplay').hide();
         $('#sc2officer-cwguide').hide();
+        $('#mpcsc2-signupinfo').hide();
         }
     });
 </script>
