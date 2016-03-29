@@ -10,7 +10,7 @@
 use app\views\layouts\LayoutConstants;
 
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -69,8 +69,7 @@ use app\views\layouts\LayoutConstants;
 		'markup',
         'announcements',
         'texttags',
-        'twitch.min',
-        'https://apis.google.com/js/platform.js',
+        'twitch.min'
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

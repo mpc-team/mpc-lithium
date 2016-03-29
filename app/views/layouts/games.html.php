@@ -9,7 +9,7 @@
 use app\views\layouts\LayoutConstants;
 
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 

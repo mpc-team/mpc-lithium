@@ -60,6 +60,8 @@ if (isset($notification['status']))
     <?php endif; ?>
 
 	<div class="row">
+
+        <!-- User Clan -->
         <div class="col-md-4">
             <div class="row">
                 <h2><small>CLAN</small></h2>
@@ -67,6 +69,8 @@ if (isset($notification['status']))
                 <button id="clan-leave" style="display: none" class="btn btn-default btn-are-you-sure" data-message="Are you sure you want to leave your Clan?">Leave Clan</button>
             </div>
         </div>
+
+        <!-- User Avatar -->
         <div class="col-md-8">
 		    <div class="user-avatar-select pull-left">
                 <div class="fs-container" data-id="1">

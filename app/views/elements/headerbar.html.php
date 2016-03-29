@@ -74,12 +74,12 @@ $button_hover_class = 'cl-effect-3';
             <?php else: ?>
             <li id='headerbar-signup'>
                 <a href='/signup'>
-                    Signup
+                    signup
                 </a>
             </li>
             <li id='headerbar-login'>
                 <a href='/login'>
-                    Login
+                    login
                 </a>
             </li>
             <?php endif; ?>

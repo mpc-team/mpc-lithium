@@ -33,40 +33,36 @@ fileselect.extensions.AVATARS = ['png', 'jpg', 'gif', 'jpeg'];
  * @param {string} dataid - the data-id attribute to filter.
  * @returns {JQueryObject} 
  */
-fileselect.filterDataId = function (htmlclass, dataid)
-{
+fileselect.filterDataId = function (htmlclass, dataid) {
 	return $(htmlclass).filter('[data-id="' + dataid + '"]');
-}
-fileselect.htmlForm = function (dataid)
-{
+};
+
+fileselect.htmlForm = function (dataid) {
 	var style = "style='position: fixed; left: 0; top: 0; height: 0; width: 0;'";
-	return	"<form action='/user/profile/edit' method='POST' data-id='" + dataid +
-				"' enctype='multipart/form-data' class='" + fileselect.FORM + "' " + style + ">"
-				+ "<input type='file' name='avatarfile' data-id='" + dataid + "' " + style + "/>"
-				+ "<input type='submit' data-id='" + dataid + "' " + style + ">"
-			+ "</form>";``
-}
+	return "<form action='/user/profile/edit' method='post' data-id='" + dataid +
+				"' enctype='multipart/form-data' class='" + fileselect.FORM + "' " + style + ">" +
+				"<input type='file' name='avatarfile' data-id='" + dataid + "' " + style + "/>" +
+				"<input type='submit' data-id='" + dataid + "' " + style + " />" +
+			"</form>";
+};
 
 /**
  *
  * 
  */
-$(document).ready(function ()
-{
+$(document).ready(function () {
 	if (!window.File || !window.FileReader || !window.FileList || !window.Blob)
 		throw "Dependency issue.";
 
 	/* Add an HTML file input form to all the `fileselect` Containers. These
 	 * are used to service requests made to select a File or submit a selected File. */
-	$(fileselect.CONTAINER).each(function ()
-	{
+	$(fileselect.CONTAINER).each(function () {
 		$(this).html($(this).html() + fileselect.htmlForm($(this).attr('data-id')));
 	});
 
 	/* When the `Change Avatar` button is clicked we force a click on the 
 	 * auto-generated file-input button to bring up the File browser dialog. */
-	$(fileselect.BTN_MODIFY).click(function ()
-	{
+	$(fileselect.BTN_MODIFY).click(function () {
 		var dataid = $(this).attr('data-id');
 		fileselect.filterDataId(fileselect.FORM_INPUT_FILE, dataid).val('');
 		fileselect.filterDataId(fileselect.MODAL, dataid).modal('show');
@@ -79,13 +75,11 @@ $(document).ready(function ()
 	/* When a File has been selected we display the Image that was selected
 	 * in a preview and allow the User to either Confirm or Cancel the process. 
 	 * If there was no File selected then just Cancel the process. */
-	$(fileselect.FORM_INPUT_FILE).change(function ()
-	{
+	$(fileselect.FORM_INPUT_FILE).change(function () {
 		var dataid = $(this).attr('data-id');
 
 		var files = $(this).prop('files');
-		if (files == null || files[0] == null)
-		{
+		if (files == null || files[0] == null) {
 			fileselect.filterDataId(fileselect.MODAL, dataid).modal('hide');
 			return;
 		}
@@ -93,18 +87,15 @@ $(document).ready(function ()
 		var pieces = files[0].name.split('.');
 		var ext = pieces[pieces.length - 1].toLowerCase();
 
-		if (fileselect.extensions.AVATARS.indexOf(ext) == -1)
-		{
+		if (fileselect.extensions.AVATARS.indexOf(ext) == -1) {
 			fileselect.filterDataId(fileselect.MODAL + ' .pending', dataid).hide();
 			fileselect.filterDataId(fileselect.MODAL + ' .selected', dataid).hide();
 			fileselect.filterDataId(fileselect.MODAL + ' .error', dataid).show();
 		}
 
-		if (fileselect.extensions.AVATARS.indexOf(ext) != -1)
-		{
+		if (fileselect.extensions.AVATARS.indexOf(ext) != -1) {
 			var reader = new FileReader();
-			reader.onload = function (e)
-			{
+			reader.onload = function (e) {
 				fileselect.filterDataId(fileselect.MODAL + ' .error', dataid).hide();
 				fileselect.filterDataId(fileselect.MODAL + ' .pending', dataid).hide();
 				fileselect.filterDataId(fileselect.MODAL + ' .selected', dataid).show();
@@ -117,17 +108,15 @@ $(document).ready(function ()
 	/* After the Preview process a User can Confirm the changes which will
 	 * prompt a submission of the selected file by forcing a click on the 
 	 * auto-generated input form submission. */
-	$(fileselect.BTN_CONFIRM).click(function ()
-	{
+	$(fileselect.BTN_CONFIRM).click(function () {
 		var dataid = $(this).attr('data-id');
 		fileselect.filterDataId(fileselect.MODAL, dataid).modal('hide');
-		fileselect.filterDataId(fileselect.FORM_INPUT_SUBMIT, dataid).click();
+		fileselect.filterDataId("." + fileselect.FORM, dataid).submit();
 	});
 
 	/* Alternatively, the User may Cancel the chanegs which should do nothing
 	 * and simply return the User to his/her Profile (hide the UI stuff). */
-	$(fileselect.BTN_CANCEL).click(function ()
-	{
+	$(fileselect.BTN_CANCEL).click(function () {
 		var dataid = $(this).attr('data-id');
 		fileselect.filterDataId(fileselect.MODAL, dataid).modal('hide');
 	});
