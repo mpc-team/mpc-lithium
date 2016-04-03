@@ -10,9 +10,6 @@ use app\models\Permissions;
 
 class CommunityController extends \lithium\action\Controller 
 {
-    /**
-     * Main Community Page
-     */
 	public function index() 
     {		
 		$authorized = Auth::check('default');
@@ -21,6 +18,10 @@ class CommunityController extends \lithium\action\Controller
 			'link' => array('/', '/community')
 		);
 		$data = array('count' => Users::count());
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
+
         return compact('authorized', 'data', 'breadcrumbs');
     }
 }

@@ -35,6 +35,9 @@ if (isset($notification['status']))
 	<div class="since">
 		Member since <b><?= $authorized['date'] ?></b>
 	</div>
+    <div class="lastlogged">
+        Last signed on <b><?= $authorized['last_logged'] ?></b>
+    </div>
 </div>
 
 <div class="profile-content">

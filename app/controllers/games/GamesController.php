@@ -17,6 +17,9 @@ class GamesController extends ContentController
 			'link' => array('/','/games')
 		);
 		$games = Games::All();
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
 		
 		$this->set(array(
 			'authorized' => $authorized,

@@ -21,10 +21,10 @@ use app\models\UserResetPasswords;
 
 class UserController extends \lithium\action\Controller 
 {
-	// The amount of Recent Threads to display.
+	/* The amount of Recent Threads to display. */
 	const RECENT_LIMIT = 9;
 	
-	// Accepted Image Types for Profile Avatars.
+	/* Accepted Image Types for Profile Avatars. */
 	static $s_imageTypes = array('IMG_JPG','IMG_JPEG','IMG_PNG','IMG_GIF');
 	
 	public static function getUserGameIds ($uid) 
@@ -37,17 +37,10 @@ class UserController extends \lithium\action\Controller
 		return $result;
 	}
 	
-	/**
-	 * <Needs To Be Filled In>
-	 *	@params
-	 *		$authorized:
-	 *		$query:
-	 *	@returns
-	 *
-	 */
 	private function ViewProfile ($authorized, $query) 
 	{
 		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
+        $authorized['last_logged'] = Timestamp::toDisplayFormat($authorized['last_logged']);
 		$data = array(
 			'games' => Games::All(),
 			'played' => json_encode(self::getUserGameIds($authorized['id'])),
@@ -110,16 +103,7 @@ class UserController extends \lithium\action\Controller
 		
 	}
 
-	
-	/**
-	 * <Needs To Be Filled In>
-	 *	@params
-	 *		$authorized:
-	 *		$query:
-	 *	@returns
-	 *
-	 */
-	private function EditProfile($authorized, $data)
+	private function EditProfile ($authorized, $data)
 	{
 		// First perform the Edit and then load the standard Profile page.
 		if (isset($data['avatarfile']) && $data['avatarfile']) 
@@ -145,19 +129,14 @@ class UserController extends \lithium\action\Controller
 	    return $this->redirect('/user/profile?status=nofile&op=avch');
 	}
 	
-	
-	/**
-	 * Routes traffic to /user/profile to more specific functions such as 
-	 * /edit. By default routes to the primary Profile page.
-	 *	@returns
-	 *		Returns a redirect to the appropriate URI.	
-	 */
 	public function profile( ) 
 	{
 		$authorized = Auth::check('default');
 		if (!$authorized) 
 			return $this->redirect('/login');
-	
+
+        Users::UpdateLastLogged($authorized['id']);
+
 		$redirect = false;
 		$opedit = false;
 		$argc = count($this->request->args);
@@ -182,13 +161,6 @@ class UserController extends \lithium\action\Controller
 			return self::ViewProfile($authorized, $this->request->query);
 	}
 	
-	
-	/**
-	 * Change a User's password.
-	 *	@returns
-	 * 		Returns a redirect to the /login page to allow the User to 
-	 *		authenticate themselves with the new credentials.
-	 */
 	public function changepassword ( ) 
 	{
 		$authorized = Auth::check('default');
@@ -204,7 +176,7 @@ class UserController extends \lithium\action\Controller
 			 * authentication is based on the Reset Password key included in the email. */
 			 
 			$key = $this->request->query['confirm'];
-			$reset = UserResetPasswords::getByKey( $key );
+			$reset = UserResetPasswords::GetByKey( $key );
 			
 			if( isset( $this->request->data['password'] ) && $reset ) 
 			{
@@ -213,28 +185,23 @@ class UserController extends \lithium\action\Controller
 				/* We have authenticated now we can change the password
 				 * and end the `password reset` process. */
 				
-				Users::setPassword( $reset['email'], $password );
-				UserResetPasswords::deleteByEmail( $reset['email'] );
+				Users::SetPassword( $reset['email'], $password );
+				UserResetPasswords::DeleteByEmail( $reset['email'] );
 			}
 		}
 		return $this->redirect( '/login?status=success&op=pwc' );
 	}
 	
-	
-	
-	static $s_resetPswrdStatus = array(
+    /* Statuses for the Password Reset Process */
+	static $s_resetPswrdStatus = array
+    (
 		'none' => 'NONE', 
         'confirmed' => 'CONFIRMED', 
         'pending' => 'PENDING',
 		'no_user' => 'NO_USER', 
         'key_error' => 'KEY_ERROR' 
     );
-	
-	/**
-	 * <Needs To Be Filled In>
-	 *	@returns
-	 *
-	 */
+
 	public function resetpassword ( ) 
 	{
 		$authorized = Auth::check('default');
@@ -256,7 +223,7 @@ class UserController extends \lithium\action\Controller
 		if (isset($this->request->query['confirm'])) 
 		{
 			$key = $this->request->query['confirm'];			
-			if ($reset = UserResetPasswords::getByKey($key)) 
+			if ($reset = UserResetPasswords::GetByKey($key)) 
 			{
 				$status = self::$s_resetPswrdStatus['confirmed'];
 			} 
@@ -273,14 +240,14 @@ class UserController extends \lithium\action\Controller
 		elseif ($this->request->data && isset($this->request->data['email'])) 
 		{
 			$email = $this->request->data[ 'email' ];
-			if( ($user = Users::getByEmail( $email )) != null ) 
+			if( ($user = Users::GetByEmail( $email )) != null ) 
 			{
-				$exists = UserResetPasswords::getByEmail( $email );
+				$exists = UserResetPasswords::GetByEmail( $email );
 				if( $exists ) 
 				{
 					// Delete the reset request if there is already one there so that the
 					// most recent password reset request takes precedence.
-					UserResetPasswords::deleteByEmail( $email );
+					UserResetPasswords::DeleteByEmail( $email );
 				}
 				$reset = UserResetPasswords::create( array(
 					'email' => $user['email'],
@@ -307,6 +274,7 @@ class UserController extends \lithium\action\Controller
 			if ($member = Users::Get($this->request->id)) 
 			{
 				$member['date'] = Timestamp::toDisplayFormat($member['tstamp']);
+                $member['last_logged'] = Timestamp::toDisplayFormat($member['last_logged']);
 				$data = array(
 					'member' => $member,
 					'games' => Games::All(), 

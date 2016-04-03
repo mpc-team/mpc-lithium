@@ -10,7 +10,7 @@ class Users extends \lithium\data\Model
     public static $FIELDS_PRIVATE = array('alias', 'email', 'id', 'permission', 'subsc_thread_on_post', 'tstamp');
     public static $FIELDS_PUBLIC  = array('alias', 'tstamp', 'id');
 
-	public static function Get ($id, $fields = array('alias', 'tstamp', 'id')) 
+	public static function Get ($id, $fields = array('alias', 'tstamp', 'last_logged', 'id')) 
 	{   
 		$user = self::find('first', array('conditions' => array('id' => $id), 'fields' => $fields));
 		if($user)
@@ -20,11 +20,13 @@ class Users extends \lithium\data\Model
 	} 
 
     /**
-     * Returns all Users, can optionally limit the number.
-     *
-     * @param int $limit Limit of results.
-     *
-     * @return array All Users.
+     * Retrieves all Users. Can be filtered to only return a specific amount of results
+     * or only specific "fields" from the Users object (such as alias or email).
+     * @params
+     *  $limit: Limit number of results. Defaults to no limit.
+     *  $fields: Fields to retrieve for the Users. Defaults to "alias", "tstamp", and "id".
+     * @returns
+     *  Returns an array of Users in associative array format.
      */
     public static function All ($limit = null, $fields = array('alias', 'tstamp', 'id'))
     {
@@ -35,7 +37,14 @@ class Users extends \lithium\data\Model
             return null;
     }
 	
-	public static function getByEmail ($email) 
+    /**
+     * Retrieves a specific User by Email.
+     * @params
+     *  $email: User's email address.
+     * @returns
+     *  Returns the User object in associative array format.
+     */
+	public static function GetByEmail ($email) 
     {
 		$user = self::find('first', array('conditions' => array('email' => $email)));
 		if( $user )
@@ -44,7 +53,17 @@ class Users extends \lithium\data\Model
 			return null; 
 	}
 	
-	public static function setPassword ($email, $password) 
+    /**
+     * Changes a User's password. The password is hashed before being stored.
+     * @params
+     *  $email: User's email address.
+     *  $password: New password in plaintext.
+     * @returns
+     *  Returns <TRUE> on success and <FALSE> otherwise.
+     * @exceptions
+     *  Throws exception if the User doesn't exist.
+     */
+	public static function SetPassword ($email, $password) 
     {
 		$user = self::find('first', array('conditions' => array('email' => $email)));
 		if ($user) 
@@ -118,4 +137,22 @@ class Users extends \lithium\data\Model
 		}
 		return $result;
 	}
+
+    /**
+     * Updates the Last Logged timestamp with the current datetime.
+     * @params
+     *  $uid: User identifier.
+     * @returns
+     *  True on success.
+     */
+    public static function UpdateLastLogged ($uid)
+    {
+        $user = self::find('first', array('conditions' => array('id' => $uid)));
+        if ($user != null)
+        {
+            $user->last_logged = date('Y-m-d H:i:s');
+            return $user->save();
+        }
+        return false;
+    }
 }

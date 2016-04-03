@@ -17,6 +17,10 @@ class BoardController extends ContentController {
 	{	
 		$authorized = Auth::check('default');
 		$data = array();
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
+
 		if (isset($this->request->id)) 
 		{
 			$this->_render['layout'] = 'forum';

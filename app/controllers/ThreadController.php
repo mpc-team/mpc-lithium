@@ -27,6 +27,9 @@ class ThreadController extends ContentController
 		$thread = self::verify_access($authorized, '\app\models\Threads', $this->request->id);
 		if (!$thread)
 			return $this->redirect('/forum');
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
 			
 		$forum = Forums::Get($thread['fid']);
         $category = Categories::Get($forum['cid']);

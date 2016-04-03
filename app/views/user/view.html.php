@@ -23,6 +23,9 @@ $self = $this;
 	<div class="since">
 	    Member since <b><?= $data['member']['date'] ?></b>
     </div>
+    <div class="lastlogged">
+        Last signed on <b><?= $data['member']['last_logged'] ?></b>
+    </div>
 </div>
 
 <div class="profile-content">

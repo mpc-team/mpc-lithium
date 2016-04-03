@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use lithium\security\Auth;
 use app\models\Permissions;
+use app\models\Users;
 
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
@@ -28,7 +29,6 @@ use app\models\Permissions;
  */
 class PagesController extends \lithium\action\Controller 
 {
-
 	public function view() 
 	{
 		$authorized = Auth::check('default');
@@ -38,6 +38,9 @@ class PagesController extends \lithium\action\Controller
 		);
 		$options = array();
 		$path = func_get_args();
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
 		
 		if (!$path || $path === array('home')) 
 		{

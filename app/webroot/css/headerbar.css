@@ -18,6 +18,12 @@
     padding-right: 0;
     padding-top: 15px;
     height: 70px;
+    transition: border 0.2s;
+}
+
+.page-header-nav .nav > li > a:hover {
+    border-bottom: 7px solid #aaffaa;
+    text-shadow: 0 0 35px #aaffaa;
 }
 
 @media (max-width: 770px) {

@@ -262,6 +262,7 @@ members.ui.alias = {};
 members.ui.alias.stringify = function (object)
 {
 	var memberSince = moment(object.tstamp).format('MMMM Do YYYY');
+	var lastLogged = moment(object.last_logged).format('MMMM Do YYYY');
 	var result = "<td>";
 	//result += "<a id='member-" + object.id + "' href='/user/view/" + object.id + "' onmouseover='tooltip.pop(this, \"#tooltip" + object.id + "\")'>";
 	result += "<a href='/user/view/" + object.id + "'>";
@@ -291,7 +292,8 @@ members.ui.alias.stringify = function (object)
 	result += "</div>";
 
 	result += "<div class='row'>";
-	result += "Member since <b>" + memberSince + "</b>";
+	result += "Member since <b>" + memberSince + "</b> <br />";
+	result += "Last signed in <b>" + lastLogged + "</b>";
 	result += "</div>";
 
 	result += "<div class='row'>";

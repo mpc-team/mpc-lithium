@@ -38,6 +38,10 @@ class ForumController extends \lithium\action\Controller {
 				   'order' => array('tstamp' => 'DESC')))->to('array'),
 			'categories' => Categories::find('all')->to('array'),
 		);
+
+        if ($authorized)
+            Users::UpdateLastLogged($authorized['id']);
+
 		$recentCount = 0;
 		foreach ($data['recentfeed'] as $key => $recent) 
 		{

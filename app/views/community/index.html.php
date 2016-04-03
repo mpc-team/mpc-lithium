@@ -90,7 +90,7 @@ $enableMemberButton = array(
         <div class="col-md-8">
             <div class="panel panel-default">
 	            <div class="panel-heading" style="background-color: #090909">
-		            Search <button id="members-clear-filter" class='btn btn-default pull-right'>Clear Filter</button>
+		            Search <button id="members-clear-filter" class='btn btn-default pull-right'><center>Clear Filter</center></button>
 	            </div>
 	            <!--<div class="form-group">-->
 		            <div class="input-group">
