@@ -50,18 +50,6 @@
     margin-right: auto;
 }
 
-#clan-register-users .user-avatar-container > img
-{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: -50px;
-    margin-right: -50px;
-    max-width: 150px;
-    max-height: 150px;
-    min-width: 150px;
-    min-height: 100px;
-}
-
 /* Member Table
 -------------------------------------------------------------------------------- */
 

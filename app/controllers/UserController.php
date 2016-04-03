@@ -174,13 +174,12 @@ class UserController extends \lithium\action\Controller
 		if ($redirect)
 			return $this->redirect('/user/profile');
 
-		if ($opedit):
+		if ($opedit) 
 			// Redirect to the /user/profile/edit action.
 			return self::EditProfile($authorized, $this->request->data);
-		else:
+        else
 			// Redirect to the standard action /user/profile.
 			return self::ViewProfile($authorized, $this->request->query);
-        endif;
 	}
 	
 	
