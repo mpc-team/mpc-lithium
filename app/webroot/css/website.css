@@ -96,6 +96,7 @@ a.btn:hover iframe,
 a.btn:hover img {
     filter: brightness(2);
     -webkit-filter: brightness(2);
+    transition: 1s;
 }
 
 a.btn {
@@ -393,6 +394,7 @@ button.active:hover img {
 
 .panel a.btn {
     width: 100%;
+    transition: all 0.1s;
 }
 
 .sidebar li > a:hover,

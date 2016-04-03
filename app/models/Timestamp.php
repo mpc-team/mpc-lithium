@@ -16,16 +16,39 @@ class Timestamp extends \lithium\data\Model
      *  Returns a PHP Date/Time object.
      */
 	public static function toDisplayFormat($timestamp, $options = array()) 
-{
-		$time = strtotime($timestamp);
-		
+    {
+        // Working-set of the format-string.
 		$datestring  = "F jS Y";
-		if (in_array('time', $options)) {
-			$datestring .= " - g:i A";
-		}
-		if (in_array('day', $options)) {
+
+        // `time-if-today` option specifies the `time` option if the day is today.
+        if (in_array('time-if-today', $options))
+            if (self::IsDateToday($timestamp))
+                array_push($options, 'time'); 
+
+        // `time` option prints the specified time as well.
+		if (in_array('time', $options))
+			$datestring .= ", g:i A";
+
+        // `day` option appends the full day before everything.
+		if (in_array('day', $options))
 			$datestring = "D, " . $datestring;
-		}
-		return date($datestring, $time);
+
+        // Return PHP format date.
+		return date($datestring, strtotime($timestamp));
 	}
+
+    /**
+     * Determines if a specified Date/Time is today.
+     * @params
+     *  $timestamp: Date/Time referenece.
+     * @returns
+     *  True if Date/Time is today, otherwise False.
+     */
+    private static function IsDateToday ($timestamp)
+    {
+        $today = date('dmY');
+        $date = date('dmY', strtotime($timestamp));
+
+        return $today == $date;
+    }
 }

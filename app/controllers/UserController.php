@@ -40,7 +40,7 @@ class UserController extends \lithium\action\Controller
 	private function ViewProfile ($authorized, $query) 
 	{
 		$authorized['date'] = Timestamp::toDisplayFormat($authorized['tstamp']);
-        $authorized['last_logged'] = Timestamp::toDisplayFormat($authorized['last_logged']);
+        $authorized['last_logged'] = Timestamp::toDisplayFormat($authorized['last_logged'], array('time-if-today'));
 		$data = array(
 			'games' => Games::All(),
 			'played' => json_encode(self::getUserGameIds($authorized['id'])),
@@ -274,7 +274,7 @@ class UserController extends \lithium\action\Controller
 			if ($member = Users::Get($this->request->id)) 
 			{
 				$member['date'] = Timestamp::toDisplayFormat($member['tstamp']);
-                $member['last_logged'] = Timestamp::toDisplayFormat($member['last_logged']);
+                $member['last_logged'] = Timestamp::toDisplayFormat($member['last_logged'], array('time-if-today'));
 				$data = array(
 					'member' => $member,
 					'games' => Games::All(), 
