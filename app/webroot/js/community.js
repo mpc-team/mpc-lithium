@@ -15,10 +15,8 @@ var members = {};
 community.clans = {};
 community.clans.list = [];
 community.clans.updated = false;
-community.clans.update = function (additionalCallback)
-{
-	$.get('/api/clans/all', null, function (clans)
-	{
+community.clans.update = function (additionalCallback) {
+	$.get('/api/clans/all', null, function (clans) {
 		community.clans.list = [];
 		for (index in clans)
 			community.clans.list.push(clans[index]);
@@ -31,10 +29,8 @@ community.clans.update = function (additionalCallback)
 members.games = {};
 members.games.list = [];
 members.games.updated = false;
-members.games.update = function (additionalCallback)
-{
-	$.get('/api/games/all', null, function (games)
-	{
+members.games.update = function (additionalCallback) {
+	$.get('/api/games/all', null, function (games) {
 		members.games.list = [];
 		for (index in games)
 			members.games.list.push(games[index]);
@@ -47,10 +43,8 @@ members.games.update = function (additionalCallback)
 members.users = {};
 members.users.list = [];
 members.users.updated = false;
-members.users.update = function (additionalCallback)
-{
-	$.get('/api/users/all?ext=true', null, function (users)
-	{
+members.users.update = function (additionalCallback) {
+	$.get('/api/users/all?ext=true', null, function (users) {
 		members.users.list = [];
 		for (index in users)
 			members.users.list.push(users[index]);
@@ -65,8 +59,7 @@ members.users.update = function (additionalCallback)
 
 community.ui = {};
 
-community.ui.elements =
-{
+community.ui.elements = {
 	container: "#community-container",
 	count: '#clans-count',
 	register: {
@@ -81,11 +74,9 @@ community.ui.elements =
 	}
 }
 
-community.ui.renderCommunity = function (clans)
-{
+community.ui.renderCommunity = function (clans) {
 	var html = ""
-	for (index in clans)
-	{
+	for (index in clans) {
 		html += "<div class='col-md-4'>";
 		html += "<div class='padded-tile-sm'>"
 		html += "<div class='panel panel-default padded-panel-med'>";
@@ -106,14 +97,11 @@ community.ui.renderCommunity = function (clans)
  * 
  * @param {array} users: List of User objects to stringify.
  */
-community.ui.renderClanMembers = function (users)
-{
-	user.auth.check(function (authenticated)
-	{
+community.ui.renderClanMembers = function (users) {
+	user.auth.check(function (authenticated) {
 		var html = "<div class='nano-content'>";
 		html += "<div class='selectable-container ui-selectable'>";
-		for (index in users)
-		{
+		for (index in users) {
 			if (users[index].clan == null && users[index].id != authenticated.id)
 				html += community.ui.register.member.stringify(users[index]);
 		}
@@ -128,8 +116,7 @@ community.ui.renderClanMembers = function (users)
 
 community.ui.register = {};
 community.ui.register.member = {};
-community.ui.register.member.stringify = function (user)
-{
+community.ui.register.member.stringify = function (user) {
 	var date = moment(user['tstamp']);
 	var html = "<div class='row ui-widget-content' style='padding: 5px;' data-id='" + user.id + "'>";
 	html += "<div class='row'>";
@@ -155,8 +142,7 @@ members.ui = {};
 /**
  * Input/Output HTML Elements.
  */
-members.ui.elements =
-{
+members.ui.elements = {
 	result: "#members-results",
 	count: '#members-count',
 	clear: "#members-clear-filter",
@@ -169,28 +155,47 @@ members.ui.elements =
 };
 
 /**
+ * Sort criteria for Members (initially).
+ * @param {User} a: First User.
+ * @param {User} b: Second User.
+ * @returns {Integer}: 1, 0, or -1 depending on sort order.
+ */
+members.ui.renderMembersSort = function (a, b) {
+	// Comparison attributes.
+	var attrs = {
+		'dates': {
+			'a': new Date(a['last_logged']),
+			'b': new Date(b['last_logged'])
+		},
+		'alias': {
+			'a': b['alias'].toLowerCase(),	// These are swapped to reverse the sort-order, since the
+			'b': a['alias'].toLowerCase()	// same operation is applied to all comparison attributes.
+		}
+	};
+	// Apply comparisons attributes.
+	for (var attr in attrs) {
+		if (attrs[attr].a > attrs[attr].b)
+			return -1;
+		else if (attrs[attr].a < attrs[attr].b)
+			return 1;
+	}
+	return 1; // Default.
+};
+
+/**
  * Renders a specified list of Users into the result table.
  * 
  * @param {array} users: List of Users/Members.
  */
-members.ui.renderMembers = function (users)
-{
+members.ui.renderMembers = function (users) {
 	var html = "";
 	var alternate = true;
-	
+
 	// Map the `users` object to an array so we can sort it.
 	users = $.map(users, function (property) { return property; });
+	users.sort(members.ui.renderMembersSort);
 
-	users.sort(function (a, b)
-	{
-		var dates = { 'a': new Date(a.tstamp), 'b': new Date(b.tstamp) };
-
-		// Sort so that the newest members appear at the front of the list.
-		return (dates.a > dates.b) ? -1 : 1;
-	});
-
-	for (index in users)
-	{
+	for (index in users) {
 		html += "<tr class='row";
 		if (alternate) html += " alt";
 		if (users[index].newuser) html += " new";
@@ -206,12 +211,10 @@ members.ui.renderMembers = function (users)
 	$(members.ui.elements.count).html(members.users.list.length);
 }
 
-members.ui.renderGameInputs = function (games)
-{
+members.ui.renderGameInputs = function (games) {
 	var html = "";
 	var counter = 0;
-	for (index in games)
-	{
+	for (index in games) {
 		if (counter % 4 == 0)
 			html += "<div class='row'>";
 		html += members.ui.input.game.stringify(games[index]);
@@ -224,16 +227,14 @@ members.ui.renderGameInputs = function (games)
 }
 
 members.ui.input = {};
-members.ui.input.clear = function ()
-{
+members.ui.input.clear = function () {
 	$(members.ui.elements.inputs.email).val('');
 	$(members.ui.elements.inputs.alias).val('');
 	$(members.ui.elements.inputs.game).each(function () { $(this).attr('checked', false) });
 }
 
 members.ui.input.game = {};
-members.ui.input.game.stringify = function (game)
-{
+members.ui.input.game.stringify = function (game) {
 	var html = "<div class='col-md-3'>";
 	html += "<div class='game'>";
 	html += "<label>";
@@ -248,8 +249,7 @@ members.ui.input.game.stringify = function (game)
 }
 
 members.ui.email = {};
-members.ui.email.stringify = function (object)
-{
+members.ui.email.stringify = function (object) {
 	var result = "<td>";
 	result += "<div class='email'>";
 	result += object.email;
@@ -259,14 +259,13 @@ members.ui.email.stringify = function (object)
 }
 
 members.ui.alias = {};
-members.ui.alias.stringify = function (object)
-{
+members.ui.alias.stringify = function (object) {
 	var memberSince = moment(object.tstamp).format('MMMM Do YYYY');
 	var lastLogged = moment(object.last_logged).format('MMMM Do YYYY')
 	var lastLoggedToday = moment().format("DDMMYYYY") == moment(object.last_logged).format("DDMMYYYY");;
 
 	if (lastLoggedToday)
-		lastLogged += ", " + moment(object.last_logged).format("h:m A");
+		lastLogged += ", " + moment(object.last_logged).format("h:mm A");
 
 	var result = "<td>";
 	//result += "<a id='member-" + object.id + "' href='/user/view/" + object.id + "' onmouseover='tooltip.pop(this, \"#tooltip" + object.id + "\")'>";
@@ -315,14 +314,11 @@ members.ui.alias.stringify = function (object)
 }
 
 members.ui.games = {};
-members.ui.games.stringify = function (object) 
-{
+members.ui.games.stringify = function (object) {
 	var result = "<td>";
 	result += "<div class='games'>";
-	for (var index in object.games) 
-	{
-		if ('icon' in object.games[index] && object.games[index].icon)
-		{
+	for (var index in object.games) {
+		if ('icon' in object.games[index] && object.games[index].icon) {
 			result += "<span class='icon'>";
 			result += "<img src='" + object.games[index].icon + "'></img>";
 			result += "</span>";
@@ -349,10 +345,8 @@ members.list.filtertypes.EMAIL = 1;
  * 
  * @return {bool}: True if the User "has" the Game.
  */
-members.list.isGamePlayed = function (user, game)
-{
-	for (index in user.games)
-	{
+members.list.isGamePlayed = function (user, game) {
+	for (index in user.games) {
 		if (user.games[index].realname == game)
 			return true;
 	}
@@ -368,28 +362,24 @@ members.list.isGamePlayed = function (user, game)
  * 
  * @returns {array}: Filtered list of Users.
  */
-members.list.filter = function (users, criteria, filterBy) 
-{
+members.list.filter = function (users, criteria, filterBy) {
 	var regex = new RegExp(criteria.toLowerCase().replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&"));
 	var filtered = [];
 	var len = users.length;
-	for (var i = 0; i < len; i++) 
-	{
+	for (var i = 0; i < len; i++) {
 		var matched = null;
-		switch (filterBy) 
-		{
+		switch (filterBy) {
 			// Filter by specified Alias.	
 			case members.list.filtertypes.ALIAS:
 				matched = users[i].alias.toLowerCase().match(regex);
 				break;
 
-			// Filter by specified Email.
+				// Filter by specified Email.
 			case members.list.filtertypes.EMAIL:
 				matched = users[i].email.toLowerCase().match(regex);
 				break;
 		}
-		if (matched) 
-		{
+		if (matched) {
 			filtered.push(users[i]);
 		}
 	}
@@ -404,16 +394,13 @@ members.list.filter = function (users, criteria, filterBy)
  * 
  * @returns {array}: Filtered list of Users.
  */
-members.list.filterByGames = function (users, games) 
-{
+members.list.filterByGames = function (users, games) {
 	var filtered = [];
 	var passed;
 
-	for (u in users)
-	{
+	for (u in users) {
 		passed = true;
-		for (g in games)
-		{
+		for (g in games) {
 			if (!members.list.isGamePlayed(users[u], games[g]))
 				passed = false;
 		}
@@ -467,13 +454,11 @@ var ErrorFeedbackMessages =
 	}
 }
 
-community.ui.updateFeedback = function (response)
-{
+community.ui.updateFeedback = function (response) {
 	var error = ErrorFeedbackMessages[response.Error];
 	var message = null;
 	for (key in response)
-		if (key in error)
-		{
+		if (key in error) {
 			message = error[key][response[key]];
 			break;
 		}
@@ -482,23 +467,19 @@ community.ui.updateFeedback = function (response)
 	);
 }
 
-community.registerClan = function ()
-{
+community.registerClan = function () {
 	var selectedUserIds = [];
-	$('.ui-widget-content.ui-selected', '.selectable-container').each(function ()
-	{
+	$('.ui-widget-content.ui-selected', '.selectable-container').each(function () {
 		selectedUserIds.push($(this).data('id'));
 	});
 	var body = {};
 	body.name = $(community.ui.elements.register.name).val(),
 	body.shortname = $(community.ui.elements.register.shortname).val(),
 	body.users = selectedUserIds;
-	$.post('/api/clans/create', body, function (response)
-	{
+	$.post('/api/clans/create', body, function (response) {
 		if ('Error' in response)
 			community.ui.updateFeedback(response);
-		else
-		{
+		else {
 			$(community.ui.elements.register.feedback).html('');
 			$(community.ui.elements.register.name).val('');
 			$(community.ui.elements.register.shortname).val('');
@@ -516,8 +497,7 @@ community.registerClan = function ()
  * request all of the Users and additional information each time the search filter is changed. 
  * Instead, we populate/update these lists periodically and use them whenever a UI control is applied.
  */
-members.updateMembers = function ()
-{
+members.updateMembers = function () {
 	if (!members.users.updated || !members.games.updated)
 		// We need the above components in order to actually process anything.
 		return;
@@ -529,15 +509,13 @@ members.updateMembers = function ()
 	var filterAlias = $(members.ui.elements.inputs.alias).val();
 	var filteredUsers = members.list.filter(members.users.list, filterAlias, members.list.filtertypes.ALIAS);
 
-	if ('email' in members.users.list[0])
-	{
+	if ('email' in members.users.list[0]) {
 		var filterEmail = $(members.ui.elements.inputs.email).val();
 		filteredUsers = members.list.filter(filteredUsers, filterEmail, members.list.filtertypes.EMAIL);
 	}
 
 	var filterGames = [];
-	$(members.ui.elements.inputs.game).each(function ()
-	{
+	$(members.ui.elements.inputs.game).each(function () {
 		if ($(this).context.checked)
 			filterGames.push($(this).attr('id'));
 	});
@@ -554,8 +532,7 @@ members.updateMembers = function ()
  * 
  * @param {array} users List of Users.
  */
-function RenderElementsWithMembers (users)
-{
+function RenderElementsWithMembers(users) {
 	members.ui.renderMembers(users);
 	community.ui.renderClanMembers(users);
 }
@@ -564,8 +541,7 @@ function RenderElementsWithMembers (users)
 ------------------------------------------------------------------------------------------------------------ */
 
 //Initialization.
-$(function ()
-{
+$(function () {
 	// Update Community section immediately (not periodically for now).
 	community.clans.update(community.ui.renderCommunity);
 
@@ -584,8 +560,7 @@ $(function ()
 	$(members.ui.elements.inputs.email).keyup(members.updateMembers);
 	$(members.ui.elements.inputs.alias).change(members.updateMembers);
 	$(members.ui.elements.inputs.email).change(members.updateMembers);
-	$(members.ui.elements.clear).click(function ()
-	{
+	$(members.ui.elements.clear).click(function () {
 		members.ui.input.clear();
 		members.updateMembers();
 	});

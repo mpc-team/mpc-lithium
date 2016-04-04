@@ -23,8 +23,7 @@ announcements.htmlElements =
  * 
  * @returns {bool} - True if the content is valid.
  */
-announcements.validate = function (content)
-{
+announcements.validate = function (content) {
 	if (content == null)
 		return "nulldata";
 	else if (content.length == 0)
@@ -35,13 +34,10 @@ announcements.validate = function (content)
 
 /**
  * Returns HTML representing an Announcement.
- * 
  * @param {object} object - The Announcement.
- * 
  * @returns {string} - HTML representing the UI of the Announcement.
  */
-announcements.ui.stringify = function (object)
-{
+announcements.ui.stringify = function (object) {
 	var date = moment(object.tstamp);
 	var result = '';
 	result += "<div class='announcement bordered-panel shadow-med-1' data-id='" + object.id + "'>";
@@ -55,14 +51,10 @@ announcements.ui.stringify = function (object)
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
 	if (object.title == null || object.title == "")
-	{
 		result += "<input type='text' class='form-control input-title' placeholder='Enter title...' data-id='" + object.id + "'/>";
-	}
-	else
-	{
+	else {
 		object.title = object.title.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;');
-		result += "<input type='text' class='form-control input-title' value='" + object.title + "' data-id='" + object.id + "'/>";
-	}
+		result += "<input type='text' class='form-control input-title' value='" + object.title + "' data-id='" + object.id + "'/>";	}
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";
@@ -86,33 +78,37 @@ announcements.ui.stringify = function (object)
 	result += "<tbody>";
 	result += "<tr>";
 	result += "<td>";
-
-	result += "<div class='info'>";
-	result += "<div class='author'>Created by ";
-	result += "<a href='/user/view/" + object.authorid + "'>" + object.author + "</a> <br />";
-	result += date.format("MMMM Do YYYY");
-	result += "</div>";
-	result += "</div>";
-	result += "</div>";
-
+	result += "<div class='info'>" +
+			  	"<div class='author'>" +	
+			  		"<div class='well well-sm'>" +
+			  			"Created by <a href='/user/view/" + object.authorid + "'>" + object.author + "</a> <br />" +
+			  			date.format("MMMM Do YYYY") +
+			  		"</div>" +
+			  	"</div>" +
+			  "</div>";
 	result += "</td>";
 	result += "<td align='right'>";
-
 	result += "<div class='control'>";
-	result += "<button class='btn btn-edit ctrl-confirm' data-id='" + object.id + "'>";
-	result += " Confirm";
-	result += "</button>";
-	result += "<button class='btn btn-edit ctrl-cancel' data-id='" + object.id + "'>";
-	result += " Cancel";
-	result += "</button>";
-	result += "<button class='btn btn-edit ctrl-edit' data-id='" + object.id + "'>";
-	result += " Edit";
-	result += "</button>";
-	result += "<button class='btn btn-edit ctrl-delete' data-id='" + object.id + "'>";
-	result += " Delete";
-	result += "</button>";
-	result += "</div>";
 
+	// Control - Edit 
+	if (object.permissions.edit)
+		result += "<button class='btn btn-edit ctrl-confirm' title='Submit' data-id='" + object.id + "'>" +
+					"<i class='fa fa-check'></i>" +
+				  "</button>" +
+				  "<button class='btn btn-edit ctrl-cancel' title='Cancel' data-id='" + object.id + "'>" +
+					"<i class='fa fa-close'></i>" +
+				  "</button>" +
+				  "<button class='btn btn-edit ctrl-edit' title='Edit' data-id='" + object.id + "'>" +
+					"<i class='fa fa-pencil-square-o'></i>" +
+				  "</button>";
+
+	// Control - Delete 
+	if (object.permissions.delete)
+		result += "<button class='btn btn-edit ctrl-delete' title='Delete' data-id='" + object.id + "'>" +
+					"<i class='fa fa-trash'></i>" +
+				  "</button>";
+
+	result += "</div>";
 	result += "</td>";
 	result += "</tr>";
 	result += "</tbody>";
@@ -141,26 +137,22 @@ announcements.ui.container = function (dataid) { return $('.announcement').filte
 /**
  * Edit Button Clicked callback.
  */
-announcements.ui.onEditClicked = function ()
-{
+announcements.ui.onEditClicked = function () {
 	announcements.ui.setEditMode($(this).data('id'), true);
 }
 
 /**
  * Cancel Button Clicked callback.
  */
-announcements.ui.onCancelClicked = function ()
-{
+announcements.ui.onCancelClicked = function () {
 	announcements.ui.setEditMode($(this).data('id'), false);
 }
 
 /**
  * Delete Button Clicked callback.
  */
-announcements.ui.onDeleteClicked = function ()
-{
-	if (window.confirm("Are you sure you want to delete this Announcement?"))
-	{
+announcements.ui.onDeleteClicked = function () {
+	if (window.confirm("Are you sure you want to delete this Announcement?")) {
 		announcements.delete($(this).data('id'));
 		announcements.ui.setEditMode($(this).data('id'), false);
 	}
@@ -169,8 +161,7 @@ announcements.ui.onDeleteClicked = function ()
 /**
  * Confirm Button Clicked callback.
  */
-announcements.ui.onConfirmClicked = function ()
-{
+announcements.ui.onConfirmClicked = function () {
 	var id = $(this).data('id');
 	var title = announcements.ui.editTitleInput(id).val();
 	var content = announcements.ui.editContentInput(id).val();
@@ -181,7 +172,7 @@ announcements.ui.onConfirmClicked = function ()
 		$('.announcement .feedback').filter('[data-id="' + id + '"]').html("Error: " + editStatus);
 	else if (editStatus == true)
 		$('.announcement .feedback').filter('[data-id="' + id + '"]').html("Success: Created!");
-		
+
 	announcements.ui.setEditMode(id, false);
 }
 
@@ -191,10 +182,8 @@ announcements.ui.onConfirmClicked = function ()
  * @param {String} id - unique identifier of Announcement.
  * @param {Boolean} flag - specify True to enable Editing.
  */
-announcements.ui.setEditMode = function (id, flag)
-{
-	if (flag)
-	{
+announcements.ui.setEditMode = function (id, flag) {
+	if (flag) {
 		announcements.ui.title(id).hide();
 		announcements.ui.content(id).hide();
 
@@ -204,8 +193,7 @@ announcements.ui.setEditMode = function (id, flag)
 		announcements.ui.confirmButton(id).show();
 		announcements.ui.editButton(id).prop('disabled', true);
 	}
-	else
-	{
+	else {
 		announcements.ui.title(id).show();
 		announcements.ui.content(id).show();
 
@@ -222,8 +210,7 @@ announcements.ui.setEditMode = function (id, flag)
  * 
  * @param {string} id - The data-id (unique identifier) of the Announcement.
  */
-announcements.ui.register = function (id)
-{
+announcements.ui.register = function (id) {
 	announcements.ui.editTitle(id).hide();
 	announcements.ui.editContent(id).hide();
 	announcements.ui.cancelButton(id).hide();
@@ -240,8 +227,7 @@ announcements.ui.register = function (id)
  * 
  * @param {Object} objects - List of Announcement objects to print.
  */
-announcements.ui.print = function (objects)
-{
+announcements.ui.print = function (objects) {
 	var output = $(announcements.htmlElements.content);
 	var outputString = '';
 
@@ -260,8 +246,7 @@ announcements.ui.print = function (objects)
  * 
  * @param {Object} object - Announcement object to print.
  */
-announcements.ui.append = function (object)
-{
+announcements.ui.append = function (object) {
 	var output = $(announcements.htmlElements.content);
 	var outputString = output.html();
 
@@ -277,8 +262,7 @@ announcements.ui.append = function (object)
  * 
  * @param {string} id - Announcement identifier.
  */
-announcements.ui.remove = function (id)
-{
+announcements.ui.remove = function (id) {
 	announcements.ui.container(id).remove();
 }
 
@@ -287,8 +271,7 @@ announcements.ui.remove = function (id)
  * @param {String} id - Announcement identifier.
  * @param {Object} object - The Announcement JSON object.
  */
-announcements.ui.update = function (id, object)
-{
+announcements.ui.update = function (id, object) {
 	announcements.ui.container(id).replaceWith(announcements.ui.stringify(object));
 
 	announcements.ui.register(id);
@@ -302,19 +285,16 @@ announcements.ui.update = function (id, object)
  * 
  * @returns {bool} - False if validation failed, otherwise true.
  */
-announcements.create = function (title, message)
-{
+announcements.create = function (title, message) {
 	var validStatus = announcements.validate(message);
-	if (validStatus != "valid")
-	{
+	if (validStatus != "valid") {
 		return validStatus;
 	}
 	var body = {
 		'title': title,
 		'content': message,
 	};
-	$.post('/announcements/create', body, function (data)
-	{
+	$.post('/announcements/create', body, function (data) {
 		announcements.ui.append(data['announcement']);
 	});
 	return true;
@@ -325,30 +305,24 @@ announcements.create = function (title, message)
  * 
  * @param {String} id - The unique identifier of the Announcement.
  */
-announcements.delete = function (id)
-{
-	$.get('/announcements/delete/' + id, null, function (data)
-	{
+announcements.delete = function (id) {
+	$.get('/announcements/delete/' + id, null, function (data) {
 		if (data && !('error' in data))
 			announcements.ui.remove(id);
 	});
 }
 
-announcements.edit = function (id, title, content)
-{
+announcements.edit = function (id, title, content) {
 	var validStatus = announcements.validate(content);
-	if (validStatus != "valid")
-	{
+	if (validStatus != "valid") {
 		return validStatus;
 	}
 	var body = {
 		'title': title,
 		'content': content,
 	};
-	$.post('/announcements/edit/' + id, body, function (data)
-	{
-		if (data && !('error' in data))
-		{
+	$.post('/announcements/edit/' + id, body, function (data) {
+		if (data && !('error' in data)) {
 			announcements.ui.update(id, data['announcement']);
 		}
 	});
@@ -356,24 +330,20 @@ announcements.edit = function (id, title, content)
 }
 
 /**
- * Sends a GET request to `/announcements/all`.
+ * Pulls Announcements from the associated REST API endpoint.
+ * Limit the number of Announcements that can be pulled.
+ * 
+ * TODO: Add a page to view Announcements (by the N).
  */
-announcements.pull = function ()
-{
+announcements.pull = function () {
 	$.get('/announcements/all?limit=' + announcements.ui.displayLimit, null,
-		/**
-		 * Response callback for the GET request.
-		 * 
-		 * @param {object} data - The requested announcements.
-		 */
-		function (data)
-		{
+		function (data) {
+			console.log(data);
 			var dataArray = [];
 			for (key in data)
 				dataArray.push(data[key]);
 
-			dataArray.sort(function (a, b)
-			{
+			dataArray.sort(function (a, b) {
 				var time = [new Date(a.tstamp), new Date(b.tstamp), ];
 				return time[1].getTime() - time[0].getTime();
 			});
@@ -382,8 +352,4 @@ announcements.pull = function ()
 	);
 }
 
-$(function ()
-{
-	announcements.pull();
-	//setInterval(announcements.pull, 15000);
-})
+$(function () { announcements.pull(); });

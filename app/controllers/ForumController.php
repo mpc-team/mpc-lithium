@@ -48,7 +48,7 @@ class ForumController extends \lithium\action\Controller {
 			$author = Users::Get($recent['uid']);
 			$thread = Threads::Get($recent['tid']);
 			
-			if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
+			if ($recentCount < self::RECENT_LIMIT && Permissions::IsPublic($thread)) 
 			{
 				$forum = Forums::Get($thread['fid']);
 				$data['recentfeed'][$key]['content'] = stripslashes($data['recentfeed'][$key]['content']);

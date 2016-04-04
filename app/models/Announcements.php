@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+/* Authentication Module */
+use lithium\security\Auth;
+
 class Announcements extends \lithium\data\Model
 {
     /**
@@ -107,21 +110,41 @@ class Announcements extends \lithium\data\Model
 
     /**
      * Return a list of *all* Announcements.
-     *
-     * @return mixed - List of Announcements.
+     * @params
+     *  $limit: Limit the number of results. Defaults to no limit.
+     * @returns
+     *  List of Announcements in associative array format.
      */
     public static function All($limit = null)
     {
-        $announcements = self::find('all', array(
+        // Database Query. Must sort results.
+        $anncs = self::find('all', array(
             'limit' => $limit,
             'order' => array('tstamp' => 'DESC'),
         ))->to('array');
-        foreach ($announcements as $key => $announcement)
+
+        // Authorization information.
+        $auth = Auth::check('default');
+
+        // Extra Information.
+        foreach ($anncs as $key => $announcement)
         {
             $author = Users::Get($announcement['authorid']);
-            $announcements[$key]['author'] = $author['alias'];
-            $announcements[$key]['content'] = stripslashes($announcement['content']);
+            $anncs[$key]['author'] = $author['alias'];
+            $anncs[$key]['content'] = stripslashes($announcement['content']);
+            if ($auth)
+                $anncs[$key]['permissions'] = array(
+                    'edit' => ($auth['id'] == $author['id']) || Permissions::IsAdmin($auth),
+                    'delete' => ($auth['id'] == $author['id']) || Permissions::IsAdmin($auth)
+                );
+            else
+                $anncs[$key]['permissions'] = array(
+                    'edit' => false,
+                    'delete' => false
+                );
         }
-        return $announcements;
+
+        // End.
+        return $anncs;
     }
 }

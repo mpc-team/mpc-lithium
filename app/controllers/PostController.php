@@ -63,7 +63,7 @@ class PostController extends ContentController
 			$authorized = Auth::check('default');
 			if ($post = self::verify_access($authorized, '\app\models\Posts', $this->request->id)) 
             {			
-				if (($authorized['id'] == $post['uid']) || Permissions::is_admin($authorized)) 
+				if (($authorized['id'] == $post['uid']) || Permissions::IsAdmin($authorized)) 
                 {
 					if (Posts::DeletePost($post['id'])) 
                     {
@@ -88,7 +88,7 @@ class PostController extends ContentController
 				$thread = Threads::Get($post->tid);
 				if (self::verify_access($authorized, '\app\models\Posts', $this->request->id)) 
                 {
-					if ($authorized['id'] == $post->uid || Permissions::is_admin($authorized)) 
+					if ($authorized['id'] == $post->uid || Permissions::IsAdmin($authorized)) 
                     {
                         Posts::UpdatePostContent($post->id, $this->request->data['content']);
 						if ($this->request->data['rename']) 

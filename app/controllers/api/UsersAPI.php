@@ -33,7 +33,7 @@ class UsersAPI extends ContentController
     public function all()
     {
         $authorized = Auth::check('default');
-        $fields = ($authorized && Permissions::is_admin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
+        $fields = ($authorized && Permissions::IsAdmin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
 
         if (isset($this->request->query['limit']))
             $members = Users::All($this->request->query['limit'], $fields);
@@ -62,7 +62,7 @@ class UsersAPI extends ContentController
 
         // Decide fields to retrieve based on Authenticatino status.
         $authorized = Auth::check('default');
-        $fields = ($authorized && Permissions::is_admin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
+        $fields = ($authorized && Permissions::IsAdmin($authorized)) ? Users::$FIELDS_PRIVATE : Users::$FIELDS_PUBLIC;
         $fields = ($authorized && $authorized['id'] == $this->request->id) ? Users::$FIELDS_PRIVATE : $fields;
 
         $user = Users::Get($this->request->id, $fields);

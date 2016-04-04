@@ -25,18 +25,21 @@ class SignupController extends \lithium\action\Controller
 	
 	public function complete () 
 	{
-		if( !($authorized = Auth::check('default')) ) {
+		if( !($authorized = Auth::check('default')) ) 
+        {
 			$data = array('member' => null);
 			$breadcrumbs = array(
 				'path' => array('MPC', 'Signup'),
 				'link' => array('/', '/signup')
 			);
-			if( $this->request->data ) {
+			if( $this->request->data ) 
+            {
 				$user = Users::create( $this->request->data );
 				$exists = Users::find( 'first', array( 'conditions' => array( 'email' => $user->email ) ) );
 				$pending = Confirms::find( 'first', array( 'conditions' => array( 'email' => $user->email ) ) );
 				
-				if (!$exists && !$pending) {
+				if (!$exists && !$pending) 
+                {
 					$confirm = Confirms::create( array(
 						'email' => $user->email,
 						'key' => md5( $user->email . date( 'dmY' ) ),
@@ -46,7 +49,9 @@ class SignupController extends \lithium\action\Controller
 					$confirm->save();
 					$data['member'] = $user->to('array');
 					Confirms::SendMemberConfirmationEmail($data['member']['email'], $confirm->key);
-				} else {
+				} 
+                else 
+                {
 					return $this->redirect('/signup');
 				}
 			}

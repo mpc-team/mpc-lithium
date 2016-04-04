@@ -34,7 +34,7 @@ class AnnouncementsController extends ContentController
     public function create()
     {
         $authorized = Auth::check('default');
-        if (!Permissions::is_admin($authorized))
+        if (!Permissions::IsAdmin($authorized))
         {
             $result = array('error' => 'Insufficient Permissions',);
             return $this->render(array('json' => $result, 'status' => '500'));
@@ -60,11 +60,17 @@ class AnnouncementsController extends ContentController
 
         if ($announcement->save())
         {
-            // Go through all Users (except for the one making the Announcement) and create a Notification for them.
+            // Go through all Users and create a Notification.
             $allUsers = Users::All();
             foreach ($allUsers as $user)
+                // Exclude User that is creating the Announcement.
                 if ($user['id'] != $authorized['id'])
-                    UserNotifications::NewNotification($user['id'], $announcement->id, UserNotifications::ANNOUNCEMENT, $authorized['id']);            
+                    UserNotifications::NewNotification(
+                        $user['id'], 
+                        $announcement->id, 
+                        UserNotifications::ANNOUNCEMENT, 
+                        $authorized['id']
+                    );
 
             $created = Announcements::Get($announcement->id);
             $created['author'] = Users::Get($created['authorid']);
@@ -100,7 +106,7 @@ class AnnouncementsController extends ContentController
         $id = $this->request->id;
 
         $authorized = Auth::check('default');
-        if (!Permissions::is_admin($authorized))
+        if (!Permissions::IsAdmin($authorized))
         {
             $result = array('error' => 'Insufficient Permissions');
             return $this->render(array('json' => $result, 'status' => '500'));
@@ -133,42 +139,61 @@ class AnnouncementsController extends ContentController
 
     /**
      * Deletes an Announcement by a specified identifier.
-     *
-     * @param $this->request->id - The identifier of the Announcement.
-     *
-     * @return {JSON}: Value `true`, or an Object with an "error" field.
+     * @params 
+     *  $this->request->id - The identifier of the Announcement.
+     * @returns 
+     *  JSON encoded value `true`, or an Object with an "error" field.
      */
     public function delete()
     {
         if (!isset($this->request->id))
         {
             $result = array('error' => 'Insufficient Arguments.');
-            return $this->render(array('json' => $result, 'status' => '500'));
+            return $this->render(array(
+                'json' => $result, 
+                'status' => '500'   
+            ));
         }
         $id = $this->request->id;
-
         $authorized = Auth::check('default');
-        if (!Permissions::is_admin($authorized))
+        if (!Permissions::IsAdmin($authorized))
         {
             $result = array('error' => 'Insufficient Permissions');
-            return $this->render(array('json' => $result, 'status' => '500'));
+            return $this->render(array(
+                'json' => $result, 
+                'status' => '500'
+            ));
         }
-
         $announcement = Announcements::Get($id);
         if ($announcement == null)
         {
             $result = array('error' => 'Does not exist.');
-            return $this->render(array('json' => $result, 'status' => '404'));
+            return $this->render(array(
+                'json' => $result, 
+                'status' => '404'
+            ));
         }
-
         Announcements::DeleteAnnouncement($id);
-        return $this->render(array('json' => true, 'status' => '200'));
+        return $this->render(array(
+            'json' => true,     
+            'status' => '200'
+        ));
     }
 
+    /**
+     * Returns all Announcements. Takes options.
+     * @params
+     *  $this->request->query['limit']: Limit to number of results.
+     * @returns
+     *  JSON object containing requested Announcements.
+     */ 
     public function all()
     {
-        $limit = (isset($this->request->query['limit'])) 
-            ? $this->request->query['limit'] : null;
+        // Detect result/output Limit.
+        $limit = null;
+        if (isset($this->request->query['limit']))
+            $limit = $this->request->query['limit'];
+
 
         return $this->render(array(
             'json' => Announcements::All($limit), 

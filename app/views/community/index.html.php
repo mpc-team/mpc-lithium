@@ -7,7 +7,7 @@ $this->title('Community');
 
 $self = $this;
 
-$adminPermissions = $authorized && Permissions::is_admin($authorized);
+$adminPermissions = $authorized && Permissions::IsAdmin($authorized);
 
 $enableMemberButton = array(
     'clanregister' => (bool) $authorized && UserClans::GetUserClan($authorized['id']) == null,

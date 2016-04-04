@@ -41,13 +41,17 @@ $ctgry_col_count = 0;
                 <?php if (array_key_exists('forums', $category)): ?>
                 <div class="col-md-6">
                     <section class="offset" id="<?= $category['name'] ?>">
-                        <a data-toggle="collapse" data-parent="#category-accordion" href="#<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
+
+                        <!-- Forum Category Header -->
+                        <a class="btn btn-edit" data-toggle="collapse" data-parent="#category-accordion" href="#<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
                             <div class="name" style="width: 100%;">
 				                <h3 style="margin-bottom: 10px; margin-top: 10px;">
-					                <span class="glyphicon glyphicon-plus"></span> <?= strtoupper($category['name']); ?> <small>FORUMS</small>
+					                <?= strtoupper($category['name']); ?> <small>FORUMS</small>
 				                </h3>
                             </div>
                         </a>
+
+                        <!-- Forum Category Sections -->
                         <div class="content">
                             <div class="panel-collapse collapse" id="<?= str_replace(" ", "", $category['name']) . $category['id']; ?>">
                                 <div class="row">

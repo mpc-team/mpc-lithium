@@ -29,8 +29,9 @@ class ConfirmController extends \lithium\action\Controller
 				$user = Users::create(array(
 					'email' => $confirm->email,
 					'password' => $confirm->password,
-					'alias' => $confirm->alias
-				));
+					'alias' => $confirm->alias,
+                    'last_logged' => date('Y-m-d H:i:s') // Old version of MySQL need this because
+				));                                      // "DEFAULT CURRENT_TIMESTAMP" is limited.
 				$user->save();
 				$confirm->delete();
 				return $this->redirect('/user/profile');

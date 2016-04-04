@@ -87,8 +87,8 @@ class ThreadController extends ContentController
 			$data['posts'][$key]['hitEnabled'] = $authorized && PostHits::IsHitEnabledForUser($data['posts'][$key]['id'], $authorized['id']);
 			$conditions = array(
 				'quote' => (bool) $authorized,
-				'edit' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized)),
-				'delete' => ($authorized['id'] == $author['id'] || Permissions::is_admin($authorized))
+				'edit' => ($authorized['id'] == $author['id'] || Permissions::IsAdmin($authorized)),
+				'delete' => ($authorized['id'] == $author['id'] || Permissions::IsAdmin($authorized))
 			);
 			foreach ($conditions as $feature => $condition)
 				if ($condition)
@@ -117,7 +117,7 @@ class ThreadController extends ContentController
 		if (!$thread || !$authorized)
 			return $this->redirect('/forum');
 
-		if ($authorized['id'] != $thread['uid'] && !Permissions::is_admin($authorized))
+		if ($authorized['id'] != $thread['uid'] && !Permissions::IsAdmin($authorized))
 			return $this->redirect('/forum');
 				
 		Threads::DeleteThread($this->request->id); // Should delete all associated stuff.

@@ -9,18 +9,13 @@ class Permissions extends \lithium\data\Model
 	const _MOD = 2;
 	const _ADMIN = 3;
 
-	public static function is_admin ($content) 
+	public static function IsAdmin ($content) 
 	{
 		return $content['permission'] >= self::_MOD;
 	} 
 	
-	public static function is_public ($content) 
+	public static function IsPublic ($content) 
 	{
 		return $content['permission'] == self::_PUBLIC;
-	}
-	
-	public static function is_members_only ($content) 
-	{
-		return $content['permission'] >= self::_MEMBER;
 	}
 }

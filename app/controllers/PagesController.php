@@ -50,13 +50,13 @@ class PagesController extends \lithium\action\Controller
 
         $permissions = array(
             'announcements' => array(
-                'EDIT' => $authorized && Permissions::is_admin($authorized),
-                'CREATE' => $authorized && Permissions::is_admin($authorized),
-                'DELETE' => $authorized && Permissions::is_admin($authorized),
+                'EDIT' => $authorized && Permissions::IsAdmin($authorized),
+                'CREATE' => $authorized && Permissions::IsAdmin($authorized),
+                'DELETE' => $authorized && Permissions::IsAdmin($authorized),
             ),
             'events' => array(
                 'EDIT' => false,
-                'CREATE' => $authorized && Permissions::is_admin($authorized),
+                'CREATE' => $authorized && Permissions::IsAdmin($authorized),
                 'DELETE' => false,
             ),
         );

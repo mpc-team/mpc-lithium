@@ -62,6 +62,12 @@ $self = $this
         </div>
         <div class="col-md-4" style="padding-left:10px">
             <center><h2>Upcoming Events</h2></center>
+            <?php if ($permissions['events']['CREATE']): ?>
+                <button class="btn btn-default" data-toggle="modal" data-target="#modal-newevent" style="margin-bottom:5px;font-size:100%">
+                    <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    Add Event
+                </button>
+            <?php endif; ?>
             <div id="events-upcoming">
                 <!-- JavaScript -->
             </div>

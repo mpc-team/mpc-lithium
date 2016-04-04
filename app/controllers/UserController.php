@@ -295,7 +295,7 @@ class UserController extends \lithium\action\Controller
 					foreach ($data['recentfeed'] as $key => $recent) 
 					{
 						$thread = Threads::Get($recent['tid']);
-						if ($recentCount < self::RECENT_LIMIT && Permissions::is_public($thread)) 
+						if ($recentCount < self::RECENT_LIMIT && Permissions::IsPublic($thread)) 
 						{
 							$forum = Forums::Get($thread['fid']);
 							$data['recentfeed'][$key]['content'] = stripslashes($recent['content']);

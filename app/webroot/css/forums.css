@@ -123,6 +123,19 @@ a.btn-forum:hover {
     padding-bottom: 50px;
 }
 
+.forum .categories a.btn.btn-edit {
+    width: 100%;
+    padding: 0;
+    border: none;
+}
+.forum .categories a.btn.btn-edit:hover {
+    background: linear-gradient(180deg, rgba(50,70,50,0.6), rgba(0,0,0,0));
+}
+.forum .categories a.btn.btn-edit:hover > .name > h3 {
+    text-shadow: 0 0 40px #aaffaa;
+    transition: all 0.2s;
+}
+
 .forum .categories section {
     margin: 0px 3px 3px 3px;
 }

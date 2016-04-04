@@ -48,7 +48,7 @@ class BoardController extends ContentController {
 					$data['threads'][$key]['count'] = count($posts);
 					$data['threads'][$key]['recent'] = reset($posts);
 					$data['threads'][$key]['features'] = ($author['id'] == $authorized['id'] || 
-						Permissions::is_admin($authorized)) ? array('delete') : array();
+						Permissions::IsAdmin($authorized)) ? array('delete') : array();
 						
 					if ($data['threads'][$key]['recent']) 
 					{

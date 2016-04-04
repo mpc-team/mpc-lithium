@@ -7,7 +7,7 @@ use Exception;
 
 class Users extends \lithium\data\Model  
 { 
-    public static $FIELDS_PRIVATE = array('alias', 'email', 'id', 'permission', 'subsc_thread_on_post', 'tstamp');
+    public static $FIELDS_PRIVATE = array('alias', 'email', 'id', 'permission', 'subsc_thread_on_post', 'tstamp', 'last_logged');
     public static $FIELDS_PUBLIC  = array('alias', 'tstamp', 'id');
 
 	public static function Get ($id, $fields = array('alias', 'tstamp', 'last_logged', 'id')) 

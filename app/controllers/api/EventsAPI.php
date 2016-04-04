@@ -46,7 +46,7 @@ class EventsAPI extends ContentController
         if (!$authorized)
             return $this->render(array('json' => null, 'status' => 500));
 
-        if (!Permissions::is_admin($authorized))
+        if (!Permissions::IsAdmin($authorized))
             return $this->render(array('json' => null, 'status' => 500));
 
         $requiredData = array('title', 'start', 'finish', 'link', 'description');

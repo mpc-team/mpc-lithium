@@ -21,6 +21,9 @@
 #announcements-content tr > td {
     width: 50%;
 }
+#announcements-content tr > td:first-child {
+    vertical-align: bottom;
+}
 
 /*#announcements-content .title-edit,*/
 #announcements-content .content {
@@ -30,12 +33,13 @@
 
 #announcements-content .info {
     font-size: 80%;
-    padding-bottom: 3px;
-    padding-left: 5px;
 }
-
 #announcements-content .info .author {
     font-size: 95%;
+    padding: 2px;
+}
+#announcements-content .info .author > .well {
+    margin: 0;
 }
 #announcements-content .info .author > a {
     font-size: 115%;
@@ -76,8 +80,14 @@
 }
 
 .announcement .control .btn.btn-edit {
-    padding: 10px;
-    min-width: 50px;
+    padding: 13px 2px;
+    font-size: 15pt;
+}
+.announcement .control .btn.btn-edit.ctrl-confirm {
+    color: #aaffaa;
+}
+.announcement .control .btn.btn-edit.ctrl-cancel {
+    color: #ffaaaa;
 }
 
 .announcement > table {
