@@ -34,7 +34,7 @@ $self = $this;
 
     /*Hover Effects*/
 
-    #connectdiscord > .row > .col-md-5 > .btn-group > h4 > .label-edit > a:hover{text-shadow: 1px 1px 15px #fff;}
+    #connectdiscord > .row > .col-md-5 > .row > a:hover{text-shadow: 1px 1px 15px #fff;}
     #connectdiscord > .row > .col-md-7 > .btn-group > .btn-default:hover{box-shadow: 0px 0px 20px #aaffaa;}
 
 </style>
@@ -63,9 +63,7 @@ $self = $this;
                     YouTube Tutorials
                 </a>
             </div>
-            <div class="row">
-                <p style="margin: auto; text-indent: 15px; padding: 10px;max-width: 570px; color: #fff;background-color: rgba(21, 21, 21, 0.81); border: 1px solid #fff; text-shadow: 0px 0px 15px rgba(115,139,215, .9); font-weight: 600;">MPC follows one basic rule, and that's being respectful to all members on the server. Please note, that any channels that have the "[In-Game]" title are members that are focusing on the game to try to win. As a tip, just ask politely if they are currently in game, and they will respond nicely back, but try not to disturb or interupt other players. Spamming/Communication Clutter will get you banned -- this is your warning.</p>
-            </div>
+            <p style="text-indent: 15px;max-width: 570px; color: #fff;background-color: rgba(21, 21, 21, 0.81); border: 1px solid #fff; text-shadow: 0px 0px 15px rgba(115,139,215, .9); font-weight: 600;">MPC follows one basic rule, and that's being respectful to all members on the server. Please note, that any channels that have the "[In-Game]" title are members that are focusing on the game to try to win. As a tip, just ask politely if they are currently in game, and they will respond nicely back, but try not to disturb or interupt other players. Spamming/Communication Clutter will get you banned -- this is your warning.</p>
         </div><!--col-->
         <div class="col-md-5">
                 <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 300px; margin-left: 5px; border: none;"></iframe>
@@ -73,10 +71,11 @@ $self = $this;
             <p style="text-indent: 15px; padding: 10px;max-width: 570px; margin-top: 2.5px; color: #fff;background-color: rgba(21, 21, 21, 0.81); margin-left: 5px; margin-right: -5px; border: 1px solid #fff;">
                 To get to MPC HQ, all you have to do is click the <b>"Connect"</b> button, type in a login, and you're in.
             </p>
-            <div class="btn-group btn-lg text-center">
+            <div class="row text-center">
                 <h4>
-                    MPC's Discord URL: <span class="label label-edit"><a href="https://discord.gg/0iDKElOIs9mib3Oc" target="_blank" style="color: #fff;">https://discord.gg/0iDKElOIs9mib3Oc</a></span>
+                    MPC's Discord URL:
                 </h4>
+                <a href="https://discord.gg/0iDKElOIs9mib3Oc" target="_blank" style="color: #fff;">https://discord.gg/0iDKElOIs9mib3Oc</a>
             </div>
             <div class="row text-center">
                 <h4>
