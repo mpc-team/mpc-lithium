@@ -4,8 +4,7 @@ $this->title('StarCraft II');
 
 $self = $this;
 
-?>
-<script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
+?>  
 <style>
    #starcraft2lotv h3{color: rgba(123,171,232,.9); font-weight: 700;}
    #starcraft2lotv small{color: #aaffaa; font-weight: 500;}   
@@ -38,7 +37,7 @@ $self = $this;
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        The First Game Migration.
+                        The First Game Migration
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -102,25 +101,7 @@ $self = $this;
                     </div><!--panel-heading-->
                     <div class="panel-body">
                         <p>MPC is always looking to recruit quality members that like to perform effectivly, and actively in clan war tournaments. People revert to contacting an officer for MPC's Starcraft 2 Team. Methods to reaching and officer is through this website, in game, or on discord. All you have to do is just say hello, describe what goals you're looking to achieve with Starcraft 2, and you're set.</p>
-                        <p>MPC is divided a mixture of perfectionists, coaching, and loyalist. We wish to put you in touch with proper MPC members that might aid the goals you're working for in Starcraft 2. Use the <a href="#contact">Officer Contact Information</a> to help you locate the proper personnel.</p>
-                    </div><!--panel-body-->
-                </div><!--panel-->
-            </div><!--panel-group-->
-            <div class="panel-group" id="mpcsc2-signupinfo">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            MPC's Clan War Sign up Process [Members Only]
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <p>There's <b>two</b> ways to sign up for the clan war when playing for clan MPC.</p>
-                            <ol>
-                                <li>Login to your Account, and either search the forums, or on the Starcraft 2 page, you'll need to post in the thread with a reply stating you are in. This is the safest way, and you will not have to show up an hour prior to the event to register, instead you may show up when you are needed. First come first serve based on the post time made by the players.</li>
-                                <li>Show up an hour prior to the match, and contact the clan officer regarding to attend the event, but beaware it's first come first serve. No guranetee that there will be a spot reserved for you. Either in game, or on <a href="/connect">Discord</a></li>
-                            </ol>
-                        </div><!--row in panel-body-->
+                        <p>MPC is divided a mixture of perfectionists, coaches, and loyalist for gaming. We wish to put you in touch with proper MPC members that might aid the goals you're working for in Starcraft 2. Use the Discord, or the In Game Clan Link to find an Officer to help you. If not sure who to speak to, then ask a member to help you.</p>
                     </div><!--panel-body-->
                 </div><!--panel-->
             </div><!--panel-group-->
@@ -134,6 +115,8 @@ $self = $this;
                     <div class="panel-body">
                         <div class="row">
                             <p>To register for the upcoming clan wars as seen on the SC2 Clan MPC's events tab in the game Starcraft 2 Lotv. Sign ups must also have completed the sign up process. To reserve your seat in the clan wars, you have to post in one of these threads. Be sure to read the details carefully, and submit:</p>
+                            <p>Login to your Account, and either search the forums, or on the Starcraft 2 page, you'll need to post in the thread with a reply stating you are in. This is the safest way, and you will not have to show up an hour prior to the event to register, instead you may show up when you are needed. First come first serve based on the post time made by the players.</p>
+                            <p>Show up an hour prior to the match, and contact the clan officer regarding to attend the event, but beaware it's first come first serve. No guranetee that there will be a spot reserved for you. Either in game, or on <a href="/connect">Discord</a>, but the sign up sheet in the forums is probably the best route.</p>
                             <ol>
                                 <li>In Game Alias</li>
                                 <li>Rank</li>
@@ -146,26 +129,6 @@ $self = $this;
                         </div>
                     </div>                
                 </div>                
-            </div><!--panel-group-->
-            <div class="panel-group">
-                <div class="panel">
-                     <div class="panel-heading">
-                        <h3 class="panel-title">MPC's Discord Server</h3>
-                    </div>
-                    <div class="panel-body text-center">                           
-                        <div class="well" style="border: 2px solid rgba(123,171,232,.9); margin-left: 10px;">
-                            <center>
-                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px;" class="small"></iframe>
-                            </center>
-                        </div><!--well-->
-                            <small>Need Help with Discord?</small>
-                        <div class="btn-group btn-lg" role="group">
-                            <a class="btn btn-edit" href="/connect">
-                                Set Up Page
-                            </a>
-                        </div><!--btn group-->
-                    </div><!--row-->
-                </div><!--panel-->
             </div><!--panel-group-->
         </div><!--col-->
         <div class="col-md-6">
@@ -199,18 +162,45 @@ $self = $this;
                         </h3>
                     </div><!--panel-heading-->
                     <div class="panel-body">
-                        <p>Use this as a check off list for running the clan war against other clans for MPC.</p>
-                        <ul>
-                            <li>Is it map agreed prompt?</li>
-                            <li>Is the highest rank achieved correct?</li>
-                            <li>Are the casters set 2 minute delays?</li>
-                            <li>Is is single elmination, or best of 3?</li>
-                            <li>Are only the players, leaders, casters, and co-casters in the game to reduce lag?</li>
-                            <li>Loser's pick the next map.</li>
-                            <li>Normally, 1 of each map can be chosen until all maps have been played atleast once to reset open selection.</li>
-                            <li>When in the game, ask opposing players to race check, and say ready?</li>
-                            <li>Say GL HF!</li>
-                        </ul>
+                        <div class="row">
+                            <p>Officers in MPC have less-than-easy tasks to perform while they are playing the game. The tasks for StarCraft 2 require:</p>
+                            <ol>
+                                <li>Schedule Clan Wars.</li>
+                                <li>Recruit Quality Active Members.</li>
+                                <li>Getting new recruits setup on discord and the website.</li>
+                                <li>Ask if the new recruit has any questions about MPC, or Clan Wars. Get help if needed.</li>
+                            </ol>
+                        </div>
+                        <div class="row">
+                            <p>Use this as a list to of factors that should be in place.</p>
+                            <ul>
+                                <li>Is the map agreed between both clans for the event.</li>
+                                <li>Is the highest rank achieved reveal on every player.</li>
+                                <li>Are the caster's set to display over 2 minute delays.</li>
+                                <li>Is is single elmination, or best of 3 per player.</li>
+                                <li>Are only the players, leaders, casters, and co-casters in the game only.</li>
+                                <li>Loser's pick the next map that hasn't been picked before, or agreed otherwise by the 2 players.</li>
+                                <li>When in the game, ask opposing players to race check, and say ready?</li>
+                                <li>Say GL HF!</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <p>Some useful facts that an officer should be aware of.</p>
+                            <ul>
+                                <li>Some clans prefer a veto map: this means that leaders of both clans will remove 1 map from the ladder pool, and until 1 map remains on the list, then that will be the first map the players will play on. Otherwise, it's apon agreement.</li>
+                                <li>Record all the details on the website for the clan war, and on the clan events tab.</li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <p>Details that should be record on the website and the clan events tab:</p>
+                            <ol>
+                                <li>Game Type.</li>
+                                <li>Opposing Clan In Game Link.</li>
+                                <li>Date and Time.</li>
+                                <li>Link to the sign up sheet on the website.</li>
+
+                            </ol>
+                        </div>
                     </div><!--panel-body-->
                 </div><!--panel-->
             </div><!--panel-group-->
@@ -229,14 +219,6 @@ $self = $this;
                             <small>Copy on of these links, then paste in Starcraft2's chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend's list to save it.</small>
 <br />                           
                                 <?php $sc2ContactA = array(
-                                    'AcidSnake' => 'battlenet:://starcraft/profile/1/12293619718954156032',
-                                    'Cheemo' => 'battlenet://starcraft/profile/1/1360022220574818304',
-                                    'ObamaAteMaKFC' => 'battlenet:://starcraft/profile/1/11656451648326205440',
-                                    'KillerJoe'=>'battlenet://starcraft/profile/1/1942371952861642752', 
-                                    'MoonSwan' => 'battlenet:://starcraft/profile/1/15213899516877996032',
-                                    'TryTins' => 'battlenet:://starcraft/profile/1/1968926262479028224',
-                                    'ReportedDeez' => 'battlenet://starcraft/profile/1/13590669605776392192',
-                                    'Light'=>'battlenet://starcraft/profile/1/1740622594345795584',
                                     'Clan MPC'=>'battlenet:://starcraft/clan/1/9466',
 
                                     );
@@ -244,13 +226,33 @@ $self = $this;
                                 <?php foreach($sc2ContactA as $id => $data): ?>
                                     <div class="well well-sm">
                                         <h3><?= $id ?></h3>
-                                        <?= $data ?>
+                                        <small><?= $data ?></small>
                                     </div>
                                 <?php endforeach; ?>
                         </div><!--row-->
                     </div><!--panel body-->                
-                </div>                
-            </div>
+                </div><!--panel-->                
+            </div><!--panel-group-->
+            <div class="panel-group">
+                <div class="panel">
+                     <div class="panel-heading">
+                        <h3 class="panel-title">MPC's Discord Server</h3>
+                    </div>
+                    <div class="panel-body text-center">                           
+                        <div class="well" style="border: 2px solid rgba(123,171,232,.9); margin-left: 10px;">
+                            <center>
+                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px;" class="small"></iframe>
+                            </center>
+                        </div><!--well-->
+                            <small>Need Help with Discord?</small>
+                        <div class="btn-group btn-lg" role="group">
+                            <a class="btn btn-edit" href="/connect">
+                                Set Up Page
+                            </a>
+                        </div><!--btn group-->
+                    </div><!--row-->
+                </div><!--panel-->
+            </div><!--panel-group-->
         </div><!--col-6-->
     </div><!--row-->
     <div class="row">
@@ -258,7 +260,7 @@ $self = $this;
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        Clan War Analysis
+                        Clan War Replays - File Packs
                     </h3>
                 </div><!--panel-heading-->
                 <div class="panel-body">
@@ -266,33 +268,8 @@ $self = $this;
 
                     <?php
                         
-                        $file = 'starcraft2/clanwar/folder.zip';
-                          //This pushes the file to the user. Requires a trigger.
-                    function downloadFile($file) 
-                { 
-        
-                    if (file_exists($file)) {
-                        header('Content-Description: File Transfer');
-                        header('Content-Type: application/octet-stream');
-                        header('Content-Disposition: attachment; filename='.basename($file));
-                        header('Content-Transfer-Encoding: binary');
-                        header('Expires: 0');
-                        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-                        header('Pragma: public');
-                        header('Content-Length: ' . filesize($file));
-                        ob_clean();
-                        flush();
-                        readfile($file);
-                        exit;
-                    }
-     
-
-                 }//function
-                             //trigger from a button on the webpage.
-                    if (isset($_GET['replay'])) {
-                        downloadFile($file);
-                    }
-
+                      
+                      
 
 
                     $sc2replays = array(
@@ -310,24 +287,9 @@ $self = $this;
                             'id'=>'drk',
                             'tags'=>'DRK',
                             'name'=>'Dark Society Gaming Community',
-                            'game-day'=> array(
-
-                                'day1' => array(
-                                    'mpc-players' => array(
-                                        'jackdrk'=>1,'joedrk' =>1,'chrisdrk'=>3,'megdrk'=>0,'pamdrk'=>0
-                                    ),
-                                    'opp-players' => array(
-                                        'jasondrk' => 0,'johndrk' => 0,'debdrk' => 0,'bidrk' => 0,'ginadrk' => 0
-                                    ),
-                                    'mpc-score' => 5,
-                                    'opp-score'=> 0,
-                                ),//day1
-
-                                'day2',//day2
-
-                                'day3',//day3
-
-                            ),//game-day
+                            'game-day'=>array(
+                                  'day1','day2','day3', 
+                            ),
                         ),//drk
 
                         'lit'=>array(
@@ -341,8 +303,6 @@ $self = $this;
         
                     );
                     ?>
-
-                   <a href='starcraft2?replay=true' class="btn btn-edit">Download a Replay</a>
                    <div class="row">
                         <ul class="nav nav-tabs" role="tablist">
                             <?php foreach($sc2replays as $clan => $property):?>
@@ -355,11 +315,9 @@ $self = $this;
                         </ul>
                         <div class="tab-content">
                             <?php foreach($sc2replays as $clan => $property): ?>
-                                <div role="tabpanel" class="tab-pane" id="<?= $property['id'] ?>">
+                                <div role="tabpanel" class="tab-pane fade" id="<?= $property['id'] ?>">
                                     <div class="row">
                                         <h3 class="panel-title"><?= $property['name'] ?></h3>
-                                        <small>Clan Tags: <?= $property['tags'] ?></small>
-                                        <small>Game: <?= $property['game-day'] ?></small>
                                     </div>
                                     <div class="row">
                                         <?php if(is_array($property)): ?>
@@ -367,52 +325,18 @@ $self = $this;
                                             <div class="col-md-4" id="<?= $value ?>">
                                                 <div class="panel-group">
                                                     <div class="panel">
-                                                        <div class="panel-heading">                                      
+                                                        <div class="panel-heading text-center">    
+                                                            <h3 class="panel-title"><?= $value ?> Clan War</h3>
                                                         </div><!--panel heading-->
                                                         <div class="panel-body">
-                                                            <div class="row well well-sm">
-                                                                <small>Players and Points:</small><br />
-                                                                <div class="col-md-6 text-center">
-                                                                    <small>MPC Team:<?= $value['mpc-score'] ?></small><br />
-                                                                <?php if(is_array($value)): ?>
-                                                                    <ul class="list-group" id="mpcsc2-players-list">
-                                                                        <?php foreach($value['mpc-players'] as $item => $points):?>
-                                                                            <li class="list-group-item">
-                                                                                <div class="row">
-                                                                                    <?= $item ?>
-                                                                                    <span class="badge"><?= $points ?></span>
-                                                                                </div>
-                                                                            </li>
-                                                                        <?php endforeach;?>
-                                                                    </ul>
-                                                                <?php endif;?>
-                                                                </div>
-                                                                <div class="col-md-6 text-center">
-                                                                    <small><?= $property['tags']?> Team:<?= $value['opp-score'] ?></small><br />
-                                                                <?php if(is_array($value)): ?>
-                                                                    <ul class="list-group" id="oppsc2-players-list">
-                                                                        <?php foreach($value['opp-players'] as $item => $points):?>
-                                                                            <li class="list-group-item">
-                                                                                <div class="row">
-                                                                                    <?= $item ?>
-                                                                                    <span class="badge"><?= $points ?></span>
-                                                                                </div>
-                                                                            </li>
-                                                                        <?php endforeach;?>
-                                                                    </ul>
-                                                                <?php endif;?>
-                                                                </div>
-                                                            </div><!--well row-->
-                                                        </div><!--panel-body-->
-                                                        <div class="panel-footer">
                                                             <div class="btn-group-justified btn-group-sm" role="group">
                                                                 <center>
-                                                                    <button type="button" class="btn downloadbtn-edit">
-                                                                        Download This Clan War Replays
-                                                                    </button>
+                                                                    <a href='starcraft2?replay=true' class="btn downloadbtn-edit">
+                                                                        Download Replays
+                                                                    </a>
                                                                 </center>
                                                             </div>
-                                                        </div>
+                                                        </div><!--panel-body-->
                                                     </div>
                                                 </div><!--panel-group-->
                                             </div><!--col-->
@@ -452,29 +376,47 @@ $self = $this;
             </div>
         </div>
     </div>   
-    <!--row
-    <h3>
-        Starcraft 2 Lotv Counter List
-        <small>Updated Daily</small>
-    </h3>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel">
-                <div class="panel-heading">
-
-                    Static Races
-
-                </div><!--panel-heading
-                <div class="panel-body">
-                    Static Divs
-
-                    Get Content Content per race
-
-                </div><!--panel-body
-            </div><!--panel
-        </div><!--panel-group
-    </div><!--row-->
-    <h3></h3>
+    <div id="sc2dojo" style="margin-bottom: 20px">
+        <?php 
+            $sc2Race = array(
+                'terran'=>'Terran',
+                'zerg'=>'Zerg',
+                'protoss'=>'Protoss',
+            );
+            $sc2DojoElements = array(
+            
+                'opening-build'=>'Opening Build',
+                'meta-gaming'=>'Meta Gaming',
+                'counter-ability'=>'Counter Ability',
+            
+            );
+        ?>
+        <h3>
+            Clan Dojo
+            <small>For LOTV!</small>
+        </h3>
+        <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+            <?php foreach($sc2Race as $id => $name): ?>
+            <li role="presentation">
+                <a href="#<?= $id ?>" aria-controls="<?= $id ?>" role="tab" data-toggle="tab">
+                    <?= $name ?>
+                </a>
+            </li>
+            <?php endforeach; ?>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+            <?php foreach($sc2Race as $id => $name): ?>
+                <div role="tabpanel" class="tab-pane" id="<?= $id ?>">
+                     <!-- routing folder / file name -->
+                    
+                </div>
+            <?php endforeach; ?>
+            </div><!--tab content-->
+        </div><!--row-->
+    </div><!--clandojo-->
     <h3>
         Official Website & Forums
         <small>Blizzard Entertainment</small>
@@ -520,7 +462,7 @@ $self = $this;
         $('#sc2member-cwreplay').show();
         $('#mpcsc2-signupinfo').show();
         $('#sc2officer-cwguide').show();
-        $('#mpcsc2-signupinfo').show();
+        $('#sc2dojo').show();
         }
         else
         {
@@ -528,7 +470,7 @@ $self = $this;
         $('#sc2-signup-panel').hide();
         $('#sc2member-cwreplay').hide();
         $('#sc2officer-cwguide').hide();
-        $('#mpcsc2-signupinfo').hide();
+        $('#sc2dojo').hide();
         }
     });
 </script>
