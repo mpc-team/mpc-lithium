@@ -6,6 +6,7 @@ $self = $this;
 
 ?>  
 <style>
+
    #starcraft2lotv h3{color: rgba(123,171,232,.9); font-weight: 700;}
    #starcraft2lotv small{color: #aaffaa; font-weight: 500;}   
    #discordsetupbtn:hover {color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa; border: 3px solid black;}
@@ -16,17 +17,16 @@ $self = $this;
    #starcraft2lotv .downloadbtn-edit {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
    #starcraft2lotv .downloadbtn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
    #mpcsc2-players-list > .list-group-item, #oppsc2-players-list > .list-group-item{color: #fff;background-color: rgba(123,171,232,.9);border: 1px solid #000;margin: auto;padding: 0;}
-   #mpcsc2-players-list > .list-group-item > .badge, #oppsc2-players-list > .list-group-item > .badge{
-
-        margin: 1% 1% 1% 1%;
-    
-    }
+   #mpcsc2-players-list > .list-group-item > .badge, #oppsc2-players-list > .list-group-item > .badge{margin: 1% 1% 1% 1%;}
 </style>
 <div id="starcraft2lotv">
-   <div class="jumbotron">
-        <h1 style="white-space: nowrap;">
+    <div class="jumbotron">
+        <h1 style="white-space: normal;">
             Starcraft 2: Legacy of the Void
         </h1>
+    </div>
+    <div class="page-icon lower smaller pull-right">
+        <i style="transform: rotate(13deg);" class="fa fa-gamepad"></i>
     </div>
     <h3>
         MPC - "Miacro Power Clan"
@@ -241,7 +241,7 @@ $self = $this;
                     <div class="panel-body text-center">                           
                         <div class="well" style="border: 2px solid rgba(123,171,232,.9); margin-left: 10px;">
                             <center>
-                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px;" class="small"></iframe>
+                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px; border: none;" class="small"></iframe>
                             </center>
                         </div><!--well-->
                             <small>Need Help with Discord?</small>
@@ -254,7 +254,7 @@ $self = $this;
                 </div><!--panel-->
             </div><!--panel-group-->
         </div><!--col-6-->
-    </div><!--row-->
+    </div><!--row
     <div class="row">
         <div class="panel-group" id="sc2member-cwreplay">
             <div class="panel">
@@ -262,7 +262,7 @@ $self = $this;
                     <h3 class="panel-title">
                         Clan War Replays - File Packs
                     </h3>
-                </div><!--panel-heading-->
+                </div><!--panel-heading
                 <div class="panel-body">
                     <p>To download previous clan war replays based on the clan, and along by selecting the date of the event, you would need to use the tabs below; clicking on the tile will download the entire zip file. You will need to catch that zip file in your downloads folder. Use this guide to learn shortcuts to getting to the download folder. Once you're able to locate the downloads folder, unzip the file, and copy the files over to your starcraft 2 folder. If you're not sure where the starcraft 2 folder is, you can view this guide. Once the files are in the replay folder for starcarft 2, click on the file, and the computer should request to launch the starcraft 2 application to review the replay. If not, you can load the starcraft 2 game, and then double click on the file, or open it in starcraft 2 from the replay section.</p>
 
@@ -272,62 +272,64 @@ $self = $this;
                       
 
 
-                    $sc2replays = array(
+                        $sc2replays = array(
     
-                        'taw'=>array(
-                            'id'=>'taw',
-                            'tags'=>'TAW',
-                            'name'=>'The Art Of War',
-                            'game-day'=>array(
-                                  'day1','day2','day3', 
+                            'taw'=>array(
+                                'id'=>'taw',
+                                'tags'=>'TAW',
+                                'name'=>'The Art Of War',
+                                'game-day'=>array(
+                                      'day1','day2','day3', 
+                                ),
                             ),
-                        ),
 
-                        'drk'=>array(
-                            'id'=>'drk',
-                            'tags'=>'DRK',
-                            'name'=>'Dark Society Gaming Community',
-                            'game-day'=>array(
-                                  'day1','day2','day3', 
-                            ),
-                        ),//drk
+                            'drk'=>array(
+                                'id'=>'drk',
+                                'tags'=>'DRK',
+                                'name'=>'Dark Society Gaming Community',
+                                'game-day'=>array(
+                                      'day1','day2','day3', 
+                                ),
+                            ),//drk
 
-                        'lit'=>array(
-                            'id'=>'lit',
-                            'tags'=>'|LiT|',
-                            'name'=>'Lost In Translation',
-                            'game-day'=>array(
-                                  'day1','day2','day3', 
+                            'lit'=>array(
+                                'id'=>'lit',
+                                'tags'=>'|LiT|',
+                                'name'=>'Lost In Translation',
+                                'game-day'=>array(
+                                      'day1','day2','day3', 
+                                ),
                             ),
-                        ),
         
-                    );
+                        );
+
                     ?>
+                    <!--
                    <div class="row">
                         <ul class="nav nav-tabs" role="tablist">
-                            <?php foreach($sc2replays as $clan => $property):?>
+                            ?php foreach($sc2replays as $clan => $property):?>
                             <li role="presentation">
-                                <a href="#<?= $property['id']?>" aria-controls="<?= $property['id']?>" role="tab" data-toggle="tab">
-                                    <?= $property['tags'] ?>
+                                <a href="#<= $property['id']?>" aria-controls="<= $property['id']?>" role="tab" data-toggle="tab">
+                                    <= $property['tags'] ?>
                                 </a>
                             </li>
-                            <?php endforeach;?>
+                            <php endforeach;?>
                         </ul>
                         <div class="tab-content">
-                            <?php foreach($sc2replays as $clan => $property): ?>
-                                <div role="tabpanel" class="tab-pane fade" id="<?= $property['id'] ?>">
+                            <php foreach($sc2replays as $clan => $property): ?>
+                                <div role="tabpanel" class="tab-pane fade" id="<= $property['id'] ?>">
                                     <div class="row">
-                                        <h3 class="panel-title"><?= $property['name'] ?></h3>
+                                        <h3 class="panel-title"><= $property['name'] ?></h3>
                                     </div>
                                     <div class="row">
-                                        <?php if(is_array($property)): ?>
-                                            <?php foreach($property['game-day'] as $value): ?>
-                                            <div class="col-md-4" id="<?= $value ?>">
+                                        <php if(is_array($property)): ?>
+                                            <php foreach($property['game-day'] as $value): ?>
+                                            <div class="col-md-4" id="<= $value ?>">
                                                 <div class="panel-group">
                                                     <div class="panel">
                                                         <div class="panel-heading text-center">    
-                                                            <h3 class="panel-title"><?= $value ?> Clan War</h3>
-                                                        </div><!--panel heading-->
+                                                            <h3 class="panel-title"><= $value ?> Clan War</h3>
+                                                        </div><!--panel heading
                                                         <div class="panel-body">
                                                             <div class="btn-group-justified btn-group-sm" role="group">
                                                                 <center>
@@ -336,20 +338,20 @@ $self = $this;
                                                                     </a>
                                                                 </center>
                                                             </div>
-                                                        </div><!--panel-body-->
+                                                        </div><!--panel-body
                                                     </div>
-                                                </div><!--panel-group-->
-                                            </div><!--col-->
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </div><!--row-->
-                                </div><!--tabpanel-->
-                            <?php endforeach;?>
-                        </div><!--tab-content-->
-                   </div><!--row-->
-                </div><!--panel-body-->
-            </div><!--panel--> 
-        </div><!--panel-group--> 
+                                                </div><!--panel-group
+                                            </div><!--col
+                                            <php endforeach; ?>
+                                        <php endif; ?>
+                                    </div><!--row
+                                </div><!--tabpanel
+                            <php endforeach;?>
+                        </div><!--tab-content
+                   </div><!--row
+                </div><!--panel-body
+            </div><!--panel
+        </div><!--panel-group
     </div><!--row-->
     <h3>
         sEadogsc2's

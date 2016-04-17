@@ -1702,14 +1702,8 @@
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
-    <Compile Include="app\views\elements\clanwars\discord.html.php" />
     <Compile Include="app\views\elements\caster\marshall.html.php" />
     <Compile Include="app\views\elements\caster\lovetorub16.html.php" />
-    <Compile Include="app\views\elements\discordapp\discordapp.html.php" />
-    <Compile Include="app\views\elements\discordapp\downloadlist.html.php" />
-    <Compile Include="app\views\elements\discordapp\downmenu\part1.html.php" />
-    <Compile Include="app\views\elements\discordapp\downmenu\part2.html.php" />
-    <Compile Include="app\views\elements\discordapp\tutorial.html.php" />
     <Compile Include="app\views\elements\headerbar.html.php" />
     <Compile Include="app\views\elements\banner.html.php" />
     <Compile Include="app\views\elements\information\aboutus.html.php" />
@@ -1721,7 +1715,6 @@
     <Compile Include="app\views\elements\information\miacro.html.php" />
     <Compile Include="app\views\elements\information\micro.html.php" />
     <Compile Include="app\views\elements\information\organization.html.php" />
-    <Compile Include="app\views\elements\twitch\connect.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
     <Compile Include="app\views\elements\user\wall.html.php" />
     <Compile Include="app\views\elements\breadcrumbs.html.php" />
@@ -2725,12 +2718,8 @@
     <Folder Include="app\views\board" />
     <Folder Include="app\views\clash_of_clans" />
     <Folder Include="app\views\connect\" />
-    <Folder Include="app\views\elements\clanwars\" />
     <Folder Include="app\views\elements\caster\" />
-    <Folder Include="app\views\elements\discordapp\" />
-    <Folder Include="app\views\elements\discordapp\downmenu\" />
     <Folder Include="app\views\elements\information\" />
-    <Folder Include="app\views\elements\twitch\" />
     <Folder Include="app\views\elements\user" />
     <Folder Include="app\views\elements" />
     <Folder Include="app\views\errors" />
@@ -2980,7 +2969,6 @@
     <Folder Include="libraries" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\views\elements\twitch\twitch.js" />
     <Content Include="app\webroot\css\bootstrap-datetimepicker.css" />
     <Content Include="app\webroot\css\forums.css" />
     <Content Include="app\webroot\css\fullcalendar\fullcalendar.css" />
