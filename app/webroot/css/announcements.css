@@ -80,11 +80,17 @@
 }
 
 .announcement .control .btn.btn-edit {
-    padding: 13px 6px;
+    padding: 13px 8px;
     font-size: 15pt;
 } 
 .announcement .control .btn.btn-edit:hover {
     background: transparent;
+}
+
+@media (max-width: 1000px) {
+    .announcement .control .btn.btn-edit {
+        padding: 13px 2px;
+    }
 }
 
 .announcement > table {
