@@ -35,14 +35,12 @@ EOD;
 	}
 	if (in_array('edit', $options)) {
 		$html .= <<<EOD
-<button type='button' class='btn btn-edit btn-edit-cancel' data-id='{$mid}'>
+<button title="Stop Editing" type='button' class='btn btn-edit btn-icon-only btn-edit-cancel' data-id='{$mid}'>
 	<i class='fa fa-times'></i>
-	Cancel
 </button>
 <form class='edit-content-form' data-id='{$mid}' role='form' action='/post/edit/{$mid}' method='post'>
-	<button type='button' class='btn btn-edit btn-edit-update' data-id='{$mid}'>
-		<i class='fa fa-check-square-o'></i>
-		Confirm
+	<button title="Confirm Changes" type='button' class='btn btn-edit btn-edit-update btn-icon-only' data-id='{$mid}'>
+		<i class='fa fa-check-square-o' style="margin-top:2px"></i>
 	</button>
 	<input type='hidden' name='rename' class='edit-content-rename-hidden' data-id='{$mid}' value=''/>
 	<input type='hidden' name='content' class='edit-content-hidden' data-id='{$mid}'/>

@@ -68,6 +68,8 @@
     font-size: 22pt;
 }
 
+.usertool .btn-edit .fa.fa-times,
+.usertool .btn-edit .fa.fa-check-square-o,
 .usertool .btn-edit .fa.fa-pencil-square-o,
 .usertool .btn-edit .fa.fa-quote-right,
 .usertool .btn-edit .fa.fa-trash-o {

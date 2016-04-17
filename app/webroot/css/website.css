@@ -617,7 +617,7 @@ a .panel-recentfeed h3 {
 .btn-edit:hover,
 .btn-edit:active {
     color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.7);
+    /*background-color: rgba(0, 0, 0, 0.7);*/
 }
 
 .btn-signup,
