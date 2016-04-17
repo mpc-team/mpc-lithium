@@ -20,13 +20,7 @@ EventsUpcoming.UI.EventHasLink = function (eventObject) {
 	return ('linkref' in eventObject && eventObject['linkref'] != null && eventObject['linkref'] != "");
 }
 
-/**
- * Initializes the HTML associated with an Event.
- * 
- * @param {Object} eventObject: The Event object to generate UI data for.
- */
 EventsUpcoming.UI.Event = function (eventObject) {
-	console.log(eventObject);
 	var startDate = moment(new Date(eventObject.start));
 	var endDate = moment(new Date(eventObject.end));
 	var duration = endDate.from(startDate, true);
@@ -35,10 +29,11 @@ EventsUpcoming.UI.Event = function (eventObject) {
 	var dateFormat = 'dddd, MMM. Do YYYY';
 	var description = (eventObject.description != null) ? eventObject.description : "";
 	var renderLink = EventsUpcoming.UI.EventHasLink(eventObject);
+	var controls = eventObject.controls.join(" ");
 	this.eventObject = eventObject;
 	this.html =
 	"<div class='row'>" +
-		"<div class='panel-group' style='margin-bottom: 7px'>" +
+		"<div class='panel-group control-container " + controls + "' style='margin-bottom: 7px' data-id='" + eventObject.id + "'>" +
 			"<div class='panel panel-default bordered-panel shadow-med-1'>" +
 				"<div class='panel-heading'>" +
 					"<center>" +
@@ -72,14 +67,26 @@ EventsUpcoming.UI.Event = function (eventObject) {
 
 /* Initialization
 ------------------------------------------------------------------------------------------------ */
-
 EventsUpcoming.Initialize = function (id) {
 	EventsUpcoming.RequestEvents(function (response) {
+
+		// Render Event objects after Request.
 		var htmlToRender = "";
 		for (key in response) {
 			eventUI = new EventsUpcoming.UI.Event(response[key]);
 			htmlToRender += eventUI.html;
 		}
 		$(id).html(htmlToRender);
+
+		// Trigger `UpcomingEventsRendered` Event.
+		$.event.trigger({ type: "UpcomingEventsRendered" });
+
+		// Hook ControlOverlay Callbacks.
+		$(document).on("ControlOverlayEditClicked", function (event) {
+			console.log("Edit: " + event.eventid);
+		});
+		$(document).on("ControlOverlayDeleteClicked", function (event) {
+			console.log("Delete: " + event.eventid);
+		});
 	});
 }

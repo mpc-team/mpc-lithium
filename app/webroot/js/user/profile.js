@@ -64,7 +64,6 @@ profile.Clan.SendClanInvite = function (authid, userid)
 {
 	$.get('/api/clans/invite?users=' + userid, null, function (response)
 	{
-		console.log(response);
 		if (!('Error' in response))
 			profile.Clan.UpdatePageElements(authid, userid);
 	});

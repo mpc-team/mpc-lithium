@@ -10,6 +10,9 @@ $username = isset($member) ? $member['alias'] . "'s" : "My";
  
 ?>
 <div class="wall">
+    
+    <h3><small><?= $who ?></small> Wall</h3>
+
     <div class="nano">
 	    <div class="nano-content">
 			<!-- Filled By JavaScript -->

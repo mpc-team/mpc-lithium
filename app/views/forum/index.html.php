@@ -33,6 +33,11 @@ $ctgry_col_count = 0;
 </div>
 
 <div class="categories">
+
+    <div class="row">
+        <h3>Forum Directory</h3>
+    </div>
+
     <div id="category-accordion">
 	        <?php foreach ($data['categories'] as $category): ?>
             <?php if ($ctgry_col_count % 2 == 0): ?>

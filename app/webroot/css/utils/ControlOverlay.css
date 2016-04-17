@@ -1,0 +1,32 @@
+﻿.control-overlay {
+    position: relative;
+}
+
+.control-overlay-panel {
+    position: absolute;
+    padding: 3px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Control Buttons
+---------------------------------------------------------------------------------------- */
+.btn-control-edit,
+.btn-control-del {
+    border-radius: 100%;
+}
+
+.btn-control-edit {
+    color: #AAAA66;
+    background: #222211;
+    border: 1px solid #AAAA66;
+    margin-right: 3px;
+}
+.btn-control-del {
+    color: #AA6666;
+    background: #221111;
+    border: 1px solid #AA6666;
+}

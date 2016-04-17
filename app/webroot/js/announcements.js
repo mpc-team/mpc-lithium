@@ -46,7 +46,7 @@ announcements.ui.stringify = function (object) {
 	if (object.title != null && object.title != "")
 		result += "<h3>" + object.title + "</h3>";
 	else
-		result += "<h2>Announcement #" + object.id + "</h2>";
+		result += "<h3>Announcement #" + object.id + "</h3>";
 	result += "</div>";
 	result += "</div>";
 	result += "<div class='title-edit' data-id='" + object.id + "'>";
@@ -54,7 +54,8 @@ announcements.ui.stringify = function (object) {
 		result += "<input type='text' class='form-control input-title' placeholder='Enter title...' data-id='" + object.id + "'/>";
 	else {
 		object.title = object.title.replace(/\'/g, '&#39;').replace(/\"/g, '&quot;');
-		result += "<input type='text' class='form-control input-title' value='" + object.title + "' data-id='" + object.id + "'/>";	}
+		result += "<input type='text' class='form-control input-title' value='" + object.title + "' data-id='" + object.id + "'/>";
+	}
 	result += "</div>";
 
 	result += "<div class='content' data-id='" + object.id + "'>";
@@ -79,7 +80,7 @@ announcements.ui.stringify = function (object) {
 	result += "<tr>";
 	result += "<td>";
 	result += "<div class='info'>" +
-			  	"<div class='author'>" +	
+			  	"<div class='author'>" +
 			  		"<div class='well well-sm'>" +
 			  			"Created by <a href='/user/view/" + object.authorid + "'>" + object.author + "</a> <br />" +
 			  			date.format("MMMM Do YYYY") +
@@ -338,7 +339,6 @@ announcements.edit = function (id, title, content) {
 announcements.pull = function () {
 	$.get('/announcements/all?limit=' + announcements.ui.displayLimit, null,
 		function (data) {
-			console.log(data);
 			var dataArray = [];
 			for (key in data)
 				dataArray.push(data[key]);

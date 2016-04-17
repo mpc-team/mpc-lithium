@@ -3064,6 +3064,7 @@
     <Content Include="app\webroot\css\headerbar.css" />
     <Content Include="app\webroot\css\announcements.css" />
     <Content Include="app\webroot\css\markup.css" />
+    <Content Include="app\webroot\css\utils\ControlOverlay.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
     <Content Include="app\webroot\img\caster\lovetorub16\description.png" />
@@ -3154,6 +3155,7 @@
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />
     <Content Include="app\webroot\js\utils\AreYouSure.js" />
+    <Content Include="app\webroot\js\utils\ControlOverlay.js" />
     <Content Include="app\webroot\js\utils\events\EventsCalendar.js" />
     <Content Include="app\webroot\js\utils\events\EventsUpcoming.js" />
     <Content Include="app\webroot\js\utils\goTo.js" />

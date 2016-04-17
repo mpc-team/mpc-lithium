@@ -45,7 +45,19 @@ $features = function($tid, $options)
 
     <?php if (in_array('create', $data['permissions'])): ?>
         <div class="row" style="padding-bottom: 15px">
-            <button title="Create a new Topic" class="btn btn-default" data-toggle="modal" data-target="#modal-newthread">Create Topic</button>
+            <div class="pull-left">
+                    <button style="padding:6px" title="Create a new Topic" class="btn btn-default" data-toggle="modal" data-target="#modal-newthread">
+                        Create Topic
+                    </button>
+            </div>
+            <div class="pull-right">
+                <div class="input-group" style="border:1px solid #444;">
+                    <span class="input-group-addon font-smallcaps">toggle controls</span>
+                    <button style="padding: 2px;" id="btn-toggle-userctrl" title="Show controls" class="btn btn-default btn-icon-only">
+                        <i class="fa fa-eye fa-2x"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 	    <div class="modal fade" id="modal-newthread" tabindex="-1" aria-labelledby="modal-newthread">
 		    <div class="modal-dialog">
@@ -81,6 +93,7 @@ $features = function($tid, $options)
 		    </div>
 	    </div>
     <?php endif; ?>
+
 	<div class="forum-thread">
 		<?php if ($data['threads']): ?>
 			<div>

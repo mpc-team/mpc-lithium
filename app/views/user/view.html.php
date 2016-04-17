@@ -42,8 +42,10 @@ $self = $this;
         </div>
         <div class="col-md-8">
 		    <div class="user-avatar-select pull-left">
-                <div class="user-avatar-container" 
-                    style="background-image: url('<?= $avatar ?>');">
+                <div>
+                <div style="width: 100%">
+                    <div class="user-avatar-container" style="background-image: url('<?= $avatar ?>');"></div>
+                </div>
                 </div>
 		    </div>
         </div>
@@ -53,19 +55,15 @@ $self = $this;
 
 	<div class="row">
         <div class="col-md-4" style='padding-right: 10px'>
-            <h3><small><?= $data['member']['alias'] ?>'s</small> Games</h3>
-
 		    <?= $this->view()->render(
 			    array('element' => 'user/games'),
-			    array('games' => $data['games'], 'gamesClickable' => false)
+			    array('games' => $data['games'], 'gamesClickable' => false, 'who' => $data['member']['alias'] . "'s")
 		    )?>
         </div>
         <div class="col-md-8">
-            <h3><small><?= $data['member']['alias'] ?>'s</small> Wall</h3>
-
 		    <?= $this->view()->render(
 			    array('element' => 'user/wall'),
-			    array('member' => $data['member'], 'options' => $data['options'])
+			    array('who' => $data['member']['alias'] . "'s", 'options' => $data['options'])
 		    )?>
         </div>
 	</div>

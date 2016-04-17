@@ -12,10 +12,13 @@
 
 .fs-btn-modify {
     transition-duration: 0.2s;
+    background-color: transparent;
 }
 
-.fs-btn-modify:hover {
-    background: rgba(0, 0, 0, 0.9);
+.fs-btn-modify:hover > div:first-child {
+    background-color: rgba(0, 0, 0, 0.9);
+    filter: brightness(0.2);
+    -webkit-filter: brightness(0.2);
     /*border: 1px solid #555;*/
     /*transform: scale(1.025);*/
 }

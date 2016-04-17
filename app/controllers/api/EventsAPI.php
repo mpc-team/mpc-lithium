@@ -10,6 +10,9 @@ use app\models\Permissions;
 
 class EventsAPI extends ContentController
 {
+    /* Service Endpoints
+    -------------------------------------------------------------------------------------------- */
+
 	public function index()
     {
         $limit = 25;
@@ -22,7 +25,16 @@ class EventsAPI extends ContentController
     {
         $limit = isset($this->request->query['limit']) ? $this->request->query['limit'] : null;
         $days = isset($this->request->query['days']) ? $this->request->query['days'] : null;
-        return $this->render(array('json' => Events::Upcoming($days, $limit), 'status' => 200));
+        
+        $events = Events::Upcoming($days, $limit);
+        $auth = Auth::check('default');
+        foreach ($events as $key => $event)
+            if ($auth && Permissions::IsAdmin($auth))
+                $events[$key]['controls'] = array('edit', 'delete');
+            else
+                $events[$key]['controls'] = array();
+
+        return $this->render(array('json' => $events, 'status' => 200));
     }
 
     /* Create Event (/events/create)
@@ -31,14 +43,14 @@ class EventsAPI extends ContentController
     /**
      * Create a new Event. Requires the fields `title`, `start` (date), `end` (date), 
      * `link` (optional), and `description` (optional).
-     *
-     * @param String $this->request->data['title'] Title of the Event.
-     * @param Date $this->request->data['start'] Start date/time of the Event.
-     * @param Date $this->request->data['end'] End date/time of the Event.
-     * @param String $this->request->data['link'] Optional URL link when the Event is clicked.
-     * @param String $this->request->data['description'] Description of the Event.
-     *
-     * @return Event On success, return the serialized Event object that was created.
+     * @params
+     *  $this->request->data['title']: Title of the Event.
+     *  $this->request->data['start']: Start date/time of the Event.
+     *  $this->request->data['end']: End date/time of the Event.
+     *  $this->request->data['link']: Optional URL link when the Event is clicked.
+     *  $this->request->data['description']: Description of the Event.
+     * @returns 
+     *  On success, return the serialized Event object that was created.
      */
     public function create()
     {
@@ -46,6 +58,7 @@ class EventsAPI extends ContentController
         if (!$authorized)
             return $this->render(array('json' => null, 'status' => 500));
 
+        // Only Administrators can make Events?
         if (!Permissions::IsAdmin($authorized))
             return $this->render(array('json' => null, 'status' => 500));
 

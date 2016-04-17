@@ -40,10 +40,10 @@ code {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: "Alegreya Sans";
+    font-family: "Open Sans";
     font-weight: 700;
     color: #aaffaa;
-    margin: 0;
+    margin: 5px 0px;
 }
 
 @media screen and (max-width: 833px) {
@@ -130,6 +130,11 @@ a h5 {
     padding-bottom: 10px;
 }
 
+.well a, p > a {
+    border-bottom: 1px dotted;
+    text-decoration: none;
+}
+
 .pull-right {
     white-space: normal;
     text-align: right;
@@ -166,6 +171,17 @@ a h5 {
         font-size: 260pt;
         margin-top: -350px;
     }
+}
+
+.font-smallcaps {
+    font-variant: small-caps;
+}
+
+/* Modals (Dialogs)
+---------------------------------------------------------------------------------------------------- */
+
+.modal-header {
+    padding: 10px;
 }
 
 /* Page Banner (Jumbotron)
@@ -244,8 +260,6 @@ a h5 {
     border: 1px solid #444;
 }
 
-
-
 .btn.btn-icon-only {
     padding: 1px 10px;
 }
@@ -275,7 +289,7 @@ a h5 {
 }
 
 .feedback {
-    /*padding: 10px;*/
+    
 }
 
 .navbar-inverse {
@@ -349,6 +363,7 @@ span.input-group-addon {
     margin-top: 5%;
     background: rgba(40, 40, 40, 0.8);
     border: 1px solid #444;
+    max-width: 700px;
 }
 
 .dialog-transparent {
@@ -501,7 +516,7 @@ a .panel-recentfeed h3 {
 }
 
 .panel-recentfeed > .row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.4);
 }
 
 @media (min-width: 630px) {

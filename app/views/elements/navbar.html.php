@@ -148,10 +148,14 @@ $forumsByCategory = Forums::GetByCategory();
                 </li>
 			<?php else: ?>
 				<li id='navbar-signup'>
-					<a href='/signup'>Signup</a>
+					<a href='/signup' style="font-variant:small-caps">
+                        signup
+                    </a>
 				</li>
-				<li id='navbar-login'>
-					<a href='/login'>Login</a>
+				<li id='navbar-login' style="font-variant:small-caps">
+					<a href='/login'>
+                        login
+                    </a>
 				</li>
 			<?php endif; ?>
 		</ul>

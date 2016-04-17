@@ -84,7 +84,11 @@ $enableMemberButton = array(
     <div class="row">
         <div class="col-md-4">
             <h1>Members</h1> 
-            <a href='/signup'><button class='btn btn-default' <?= (!$enableMemberButton['signup']) ? 'disabled' : '' ?>>Signup</button></a>
+            <button class='btn btn-default' <?= (!$enableMemberButton['signup']) ? 'disabled' : '' ?>>
+                <a href='/signup'>
+                    Signup
+                </a>
+            </button>
             <h3>Currently <span id="members-count" style='font-size: 150%'>0</span> Members have been registered.</h3>
         </div>
         <div class="col-md-8">

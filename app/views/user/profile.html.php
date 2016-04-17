@@ -77,10 +77,8 @@ if (isset($notification['status']))
         <div class="col-md-8">
 		    <div class="user-avatar-select pull-left">
                 <div class="fs-container" data-id="1">
-                    <button class="btn btn-edit fs-btn-modify" data-id="1">
-                        <div class="user-avatar-container" 
-                            style="background-image: url('<?= $avatar ?>');">
-                        </div>
+                    <button class="btn fs-btn-modify" data-id="1">
+                        <div class="user-avatar-container" style="background-image: url('<?= $avatar ?>');"></div>
                         <div class="info">
                             Click to Change Avatar Image
                         </div>
@@ -160,20 +158,16 @@ if (isset($notification['status']))
 
 	<div class="row">
         <div class="col-md-4" style='padding-right: 10px'>
-            <h3><small>Your</small> Games</h3>
-
 		    <?= $this->view()->render(
 			    array('element' => 'user/games'),
-			    array('games' => $data['games'], 'gamesClickable' => true)
+			    array('games' => $data['games'], 'gamesClickable' => true, 'who' => 'Your')
 		    )?>
         </div>
 
         <div class="col-md-8">
-            <h3><small>Your</small> Wall</h3>
-
 		    <?= $this->view()->render(
 			    array('element' => 'user/wall'),
-			    array('options' => $data['options'])
+			    array('who' => 'Your', 'options' => $data['options'])
 		    )?>
         </div>
 	</div>

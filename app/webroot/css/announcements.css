@@ -80,26 +80,26 @@
 }
 
 .announcement .control .btn.btn-edit {
-    padding: 13px 2px;
+    padding: 13px 6px;
     font-size: 15pt;
-}
-.announcement .control .btn.btn-edit.ctrl-confirm {
-    color: #aaffaa;
-}
-.announcement .control .btn.btn-edit.ctrl-cancel {
-    color: #ffaaaa;
+} 
+.announcement .control .btn.btn-edit:hover {
+    background: transparent;
 }
 
 .announcement > table {
     border-top: 1px solid #444;
 }
 
-.announcement > .content h1 { font-size: 28pt; }
+.announcement > .content {
+    font-size: 90%;
+}
+/*.announcement > .content h1 { font-size: 28pt; }
 .announcement > .content h2 { font-size: 24pt; }
-.announcement > .content h3 { font-size: 20pt; }
-.announcement > .content p { font-size: 9pt; }
+.announcement > .content h3 { font-size: 20pt; }*/
 
 #announcements > .row > .col-md-4 > center > h2,
 #announcements > .row > .col-md-4 > h2 {
+    text-shadow: 0 0 5px #000;
     margin-bottom: 10px;
 }

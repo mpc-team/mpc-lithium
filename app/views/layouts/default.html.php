@@ -35,6 +35,7 @@ use app\views\layouts\LayoutConstants;
         'utils/nanoscroller',
         'utils/fileselect',
         'utils/tooltip',
+        'utils/ControlOverlay',
         'announcements',
         'information',
 	));?>
@@ -49,6 +50,7 @@ use app\views\layouts\LayoutConstants;
         'markdown-js/markdown.min',
         'utils/fileselect',
         'utils/jquery.nanoscroller',
+        'utils/ControlOverlay',
         'utils/events/EventsUpcoming',
         'utils/events/EventsCalendar',
         'utils/AreYouSure',

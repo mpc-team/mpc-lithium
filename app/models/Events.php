@@ -4,6 +4,13 @@ namespace app\models;
 
 class Events extends \lithium\data\Model  
 {
+    /**
+     * Gets the specified Event by its ID.
+     * @params
+     *  $eventid: Event identifier.
+     * @returns
+     *  Event object as an associative array.
+     */
 	public static function Get ($eventid)
     {
         $event = self::find('first', array('conditions' => array('id' => $eventid)));
@@ -15,10 +22,10 @@ class Events extends \lithium\data\Model
 
     /**
      * Returns all Events.
-     *
-     * @param int $limit Limit number of results.
-     *
-     * @return array Event objects in an array.
+     * @params
+     *  $limit: Limit number of results.
+     * @returns 
+     *  List of Event objects as an associative array.
      */
     public static function All ($limit)
     {
@@ -31,10 +38,10 @@ class Events extends \lithium\data\Model
 
     /**
      * Returns upcoming Events.
-     *
-     * @param int $daysToStart Cutoff for days until the Event starts.
-     *
-     * @return array Event objects in an array.
+     * @params
+     *  $daysToStart: Cutoff for days until the Event starts.
+     * @returns
+     *  List of Event objects as associative arrays.
      */
     public static function Upcoming ($daysToStart, $limit = null)
     {

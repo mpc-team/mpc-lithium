@@ -264,7 +264,7 @@ a.btn-forum:hover {
 
 
 .forum-post .info {
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.8);
     vertical-align: top;
 }
 
@@ -274,19 +274,23 @@ a.btn-forum:hover {
 }
 
 .forum-post .info .since {
+    color: #666;
     padding-top: 0px;
 }
 
 .forum-post .info .author {
     padding-bottom: 0px;
-}
-
-.forum-post .info .author {
-    font-size: 12pt;
+    font-size: 18pt;
     font-weight: 600;
     white-space: nowrap;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+@media (max-width: 800px) {
+    .forum-post .info .author {
+        font-size: 12pt;
+    }
 }
 
 .forum-post .info .time {

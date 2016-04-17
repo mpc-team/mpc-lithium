@@ -100,6 +100,7 @@
 
 .members .user-tooltip .badge
 {
+    margin-left: 20px;
     float: right;
     color: #aaffaa;
     font-size: 22pt;
