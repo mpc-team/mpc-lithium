@@ -87,7 +87,7 @@ class Clans extends \lithium\data\Model
      * @param string $fullName Full name of the Clan.
      * @param string $shortName Shortened Clan name, usually a 3-letter acronym (MPC).
      *
-     * @return Clans On success, returns the Clan object taht was created as an array.
+     * @return Clans On success, returns the Clan object that was created as an array.
      */
     public static function Start ($fullName, $shortName, $owner)
     {

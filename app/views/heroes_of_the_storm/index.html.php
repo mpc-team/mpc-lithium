@@ -611,37 +611,9 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
         <!--Usage of Abilities -->
         <!--Heroes and Teamm Alliance Agreement-->
     </div><!--row-->
-    <h3>
-        Official Website & Support
-    </h3>
-    <small>Blizzard Entertainment</small>
-    <?php
-        $hotsOfficialContent = array(
-    
-            'website' => 'http://us.battle.net/heroes/en/',
-            'forums' => 'http://us.battle.net/heroes/en/forum/',
-            'heroes' => 'http://us.battle.net/heroes/en/heroes/#/',
-            'overview'=>'http://us.battle.net/heroes/en/game/',
-    
-        );
-    ?>
+    <h3>Hero League Guide</h3>
+    <small>Learning how to support the team in 30 seconds.</small>
     <div class="row">
-        <?php foreach($hotsOfficialContent as $id => $source): ?>
-        <div class="col-md-6">
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-body">
-                        <div class="row text-center">
-                            <img src="/img/hots/official-content/<?= $id ?>.png" alt="<?= $id ?>.png"  style="height: 300px;"/>
-
-                            <small><?= $source ?></small>
-                        
-                        </div><!--panel-inner-row-->
-                    </div><!--panel-body-->
-                </div><!--panel-->
-            </div><!--panel-group-->
-        </div><!--col-->
-        <?php endforeach; ?>
-    </div><!--row-->
-
+        <p>Understanding which Heroes are appropriate, for which map is selected, what the opposing has/banned, what the ally team has/banned, and expect reasoning to why the hero is selected.</p>
+    </div>
 </div><!--container-->

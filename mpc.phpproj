@@ -1628,6 +1628,7 @@
     <Compile Include="app\models\Clans.php" />
     <Compile Include="app\models\Events.php" />
     <Compile Include="app\models\games\StarCraft2.php" />
+    <Compile Include="app\models\UserTwitch.php" />
     <Compile Include="app\models\UserClans.php" />
     <Compile Include="app\models\UserNotifications.php" />
     <Compile Include="app\models\ThreadSubscriptions.php" />
@@ -1701,6 +1702,7 @@
     <Compile Include="app\utilities\TextEntry.php" />
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
+    <Compile Include="app\views\connect\appendtwitch.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
     <Compile Include="app\views\elements\caster\marshall.html.php" />
     <Compile Include="app\views\elements\caster\lovetorub16.html.php" />

@@ -282,8 +282,8 @@ class UserController extends \lithium\action\Controller
 					'options' => (($authorized) ? array('post') : array())
 				);
 				$breadcrumbs = array(
-					'path' => array('MPC', 'Members', $member['alias']),
-					'link' => array('/', '/members', '/user/view/' + $member['id'])
+					'path' => array('MPC', 'Community', $member['alias']),
+					'link' => array('/', '/community', '/user/view/' + $member['id'])
 				);
 				if ($data['recentfeed'] = Posts::find('all', array(
 						'conditions' => array('uid' => $member['id']),

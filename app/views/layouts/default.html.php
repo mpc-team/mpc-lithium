@@ -71,7 +71,8 @@ use app\views\layouts\LayoutConstants;
 		'markup',
         'announcements',
         'texttags',
-        'twitch.min'
+        'https://ttv-api.s3.amazonaws.com/twitch.min.js',
+        'twitch-api',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
