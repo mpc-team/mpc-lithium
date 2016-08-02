@@ -19,11 +19,14 @@ navbar.items =
 {
 	home: "#navbar-home",
 	community: "#navbar-community",
-	forum: "#navbar-forum",
+    connect: "#navbar-connect",
+    forum: "#navbar-forum",
+    twitch: "#navbar-twitch",
 	user: "#navbar-user",
 	signup: "#navbar-signup",
 	login: "#navbar-login",
 	games: '#navbar-games',
+
 };
 
 /**

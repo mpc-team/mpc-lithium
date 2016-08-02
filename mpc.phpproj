@@ -1595,6 +1595,7 @@
     <Compile Include="app\controllers\AnnouncementsController.php" />
     <Compile Include="app\controllers\api\EventsAPI.php" />
     <Compile Include="app\controllers\api\ClansAPI.php" />
+    <Compile Include="app\controllers\api\TwitchUsersAPI.php" />
     <Compile Include="app\controllers\api\UsersAPI.php" />
     <Compile Include="app\controllers\api\PostsAPI.php" />
     <Compile Include="app\controllers\api\UserNotificationsAPI.php" />

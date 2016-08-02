@@ -7,30 +7,30 @@ $this->title('Clash of Clans');
 $self = $this;
 
 ?>
-
 <div id="clash-of-clans">
-    <h3>
-        Clash of Clans - "The Revolution Begins"
-        <small>Games</small>
-    </h3>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <img src="/img/clash_of_clans/overview-banner.png" class="img-responsive img-rounded" />
-                    </h3>
-                </div>
-                <div class="panel-body" >
-                    <div class="row text-center">
-                        <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
-                        <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>
-                        <p>MPC has training clans that review over war recaps for members willing to learn, and understand Clash of Clans. MPCs secondary clans are designed to train green collar members into brilliant strategists. Speak to one of the MPC Officers on discord to learn more about the process, and upbringing of a fully fledged, organized clan.</p>
-                    </div>
+<div class="jumbotron">
+    <h1 style="white-space: nowrap;">
+        Clash of Clans
+    </h1>
+</div>
+<div class="row">
+    <div class="panel-group">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <img src="/img/clash_of_clans/overview-banner.png" class="img-responsive img-rounded" />
+                </h3>
+            </div>
+            <div class="panel-body" >
+                <div class="row text-center">
+                    <p>MPC Assassins is a professional Clash of Clans group, part of MPC organization - a developing gaming clan.</p>
+                    <p>We are a dedicated and passionate clan; everything we do is to win our wars.</p>
+                    <p>MPC has training clans that review over war recaps for members willing to learn, and understand Clash of Clans. MPCs secondary clans are designed to train green collar members into brilliant strategists. Speak to one of the MPC Officers on discord to learn more about the process, and upbringing of a fully fledged, organized clan.</p>
                 </div>
             </div>
         </div>
-    </div>   
+    </div>
+</div>   
     <h3>
         Discord
         <small>Clash of Clans</small>
@@ -131,8 +131,8 @@ $self = $this;
                                         'AcidSnake',
                                         'Matt-MeoffJack',
                                         'Marshall',
-                                        'SeAdog',
-                                        'Krlklkr',
+                                        'LovetoRub16',
+                                        'lvBearTooth',
                                     );
                                 ?>
                                 <?php foreach($bscontact as $id): ?>

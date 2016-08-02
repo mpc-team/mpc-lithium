@@ -2,6 +2,7 @@
 
 use app\models\Permissions;
 use app\models\UserClans;
+use app\models\TwitchUsers;
 
 $this->title('Community');
 
@@ -15,6 +16,14 @@ $enableMemberButton = array(
 );
 
 ?>
+<style>
+    html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(odd) {
+        background-color: #2a2a2a;
+    }
+    html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+</style>
 <div class="jumbotron">
     <h1>COMMUNITY</h1>
 </div>
@@ -26,7 +35,9 @@ $enableMemberButton = array(
 <div class="clans" id="clans">
     <div class="row">
         <div class="col-md-4">
-            <h1>Clans</h1>
+            <h1>
+            <span class="fa fa-group"></span>
+            Clans</h1>
             <button id="clan-register-button" class='btn btn-default' data-toggle="modal" data-target="#clan-register-modal" <?= (!$enableMemberButton['clanregister']) ? 'disabled' : '' ?> >
                 Register Your Clan
             </button>
@@ -67,7 +78,7 @@ $enableMemberButton = array(
                     </div>
                 </div>
                 <h3>
-                    Clan Members <small>(Hold Ctrl to Select More)
+                    Clan Members <small>(Hold Ctrl to Select More)</small>
                 </h3>
                 <div id="clan-register-users"></div>
             </div>
@@ -83,7 +94,9 @@ $enableMemberButton = array(
 <div class="members" id="members">
     <div class="row">
         <div class="col-md-4">
-            <h1>Members</h1> 
+            <h1>
+            <span class="glyphicon glyphicon-user"></span>
+            Members</h1> 
             <button class='btn btn-default' <?= (!$enableMemberButton['signup']) ? 'disabled' : '' ?>>
                 <a href='/signup'>
                     Signup
@@ -163,3 +176,35 @@ $enableMemberButton = array(
         </table>
     </div>
 </div>
+<div class="row" >
+    <div class="panel-group">
+        <div class="panel" style="background-color: transparent;">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                      <h1>
+                        <span class="fa fa-2x fa-twitch"></span>
+                            Twitch Casters
+                      </h1>
+                      <small>Registered on MPCgaming: <span id="twitch-caster-count"></span></small>  
+                    </div><!--col-->
+                    <div class="col-md-6">
+                        <div class="btn-group pull-right">
+                            <a href="/connect#twitch">
+                                <button type="button" class="btn btn-default">Connect Twitch</button>
+                            </a>
+                        </div><!--btn-group-->
+                    </div><!--col-->
+                </div><!--row-->                                
+            </div><!--panel-heading-->
+            <div class="panel-body">
+                <table class="table">
+                    <tbody id="twitch-casters-table">                    
+                    </tbody>
+                </table>
+            </div><!--parent panel-body-->
+        </div><!--panel panel-->
+    </div><!--parent panel-group-->
+</div><!--Twitch-->        
+<div id="twitch-casters-modal">
+</div><!--caster-modal-->

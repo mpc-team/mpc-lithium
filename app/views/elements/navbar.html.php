@@ -16,6 +16,7 @@ $games = Games::All();
 $forumsByCategory = Forums::GetByCategory();
 
 ?>
+
 <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-header">
 		<button type="button" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle">
@@ -106,6 +107,9 @@ $forumsByCategory = Forums::GetByCategory();
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<?php if ($authorized): ?>
+                <li id="navbar-twitch">
+                    <i class="fa fa-twitch"></i>
+                </li>
 				<li id='navbar-user' class='dropdown'>
 
 					<a href='/user/profile' class='dropdown-toggle' role='button'>
@@ -161,3 +165,12 @@ $forumsByCategory = Forums::GetByCategory();
 		</ul>
 	</div>
 </nav>
+<script>
+$('#navbar-twitch').hide();
+Twitch.getStatus(function (err, status) {   
+    if (status.authenticated) {
+        $('#navbar-twitch').show();
+        //console.log('User Authenticated');        
+    }
+});
+</script>

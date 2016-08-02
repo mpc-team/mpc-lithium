@@ -9,7 +9,7 @@ use app\models\TwitchUsers;
 
 class ConnectController extends \lithium\action\Controller 
 {
-
+//Index Function
 	public function index( ) 
 	{
         //Check Authorization
@@ -21,24 +21,24 @@ class ConnectController extends \lithium\action\Controller
 		);
         //Grab the casters from the database.
         $casters = TwitchUsers::All();
-        $totalCastersData = array('count' => TwitchUsers::count());
         //Set an Array to pass associated variables to the Connect View Page from what's in this function.         
         $this->set(array(
 			'authorized' => $authorized,
 			'breadcrumbs' => $breadcrumbs,
 			'casters' => $casters,
-            'totalCasters' => $totalCastersData,
+            'totalcasters' => TwitchUsers::count(),
 		));	
 	}
+//Twitch Function
     /*
-    * This function takes the POST type form values and save it to the Twitch_Users Table. It initiates the process of saving the User's id, twitch id, and twitch username for easily to read from the database. 
+    * This function takes the POST type form values and save it to the Twitch_Users Table. It initiates the process of saving the User's id, twitch id, and twitch username for easily to read from the database. Uses Hidden Elements as Values from the Twitch Object that is sent through the Twitch API (js/twitchapi.js).
     * 
     *
     *
     */
     public function appendtwitch( )
     {
-        //If Data is Set in the Input Element's Value.
+        //If Data is Called / Presented
         if($this->request->data)
         {            
             //Lithium's Method to Extract Values from Input Elements by name attritbute.
@@ -64,4 +64,6 @@ class ConnectController extends \lithium\action\Controller
         }            
         return $this->redirect('/connect?TwitchAccount=Request+Data+Failure');
     }    
+//Youtube Function
+    
 }

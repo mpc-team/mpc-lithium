@@ -69,6 +69,8 @@ Router::connect('/api/events/{:action}', array('controller' => 'app\controllers\
 Router::connect('/api/clans/{:action}', array('controller' => 'app\controllers\api\ClansAPI'));
 Router::connect('/api/clans/{:action}/{:id}', array('controller' => 'app\controllers\api\ClansAPI'));
 
+Router::connect('/api/twitchusers/{:action}', array('controller' => 'app\controllers\api\TwitchUsersAPI'));
+Router::connect('/api/twitchusers/{:action}/{:id}', array('controller' => 'app\controllers\api\TwitchUsersAPI'));
 /**
  * Add the testing routes. These routes are only connected in non-production environments, and allow
  * browser-based access to the test suite for running unit and integration tests for the Lithium

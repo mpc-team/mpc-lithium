@@ -7,6 +7,7 @@ use app\models\Users;
 use app\models\Games;
 use app\models\UserGames;
 use app\models\Permissions;
+use app\models\TwitchUsers;
 
 class CommunityController extends \lithium\action\Controller 
 {
@@ -17,8 +18,9 @@ class CommunityController extends \lithium\action\Controller
 			'path' => array('MPC', 'Community'),
 			'link' => array('/', '/community')
 		);
-		$data = array('count' => Users::count());
-
+		$data = array(
+        'count' => Users::count(),        
+        );
         if ($authorized)
             Users::UpdateLastLogged($authorized['id']);
 

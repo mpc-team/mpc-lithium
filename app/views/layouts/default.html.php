@@ -73,6 +73,7 @@ use app\views\layouts\LayoutConstants;
         'texttags',
         'https://ttv-api.s3.amazonaws.com/twitch.min.js',
         'twitch-api',
+        'youtube-api',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
@@ -93,9 +94,11 @@ use app\views\layouts\LayoutConstants;
 	</div>
 	<div class="container">
 		<div class="page-header">
+            <img src="/img/mpctext-aaffaa.png" class="img-responsive" alt="mpctext-aaffaa.png" />
+            <!--
             <span class="page-header-text">
                 MPCgaming
-            </span>
+            </span> -->
 		    <?=
                 $this->view()->render(
                     array('element' => 'headerbar'),

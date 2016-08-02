@@ -75,9 +75,11 @@ use app\views\layouts\LayoutConstants;
 		<div class="forum">
 			<div class="content">
 				<div class="page-header">
+                    <!--
                     <span class="page-header-text">
                         MPCgaming
-                    </span>
+                    </span> -->
+                    <img src="/img/mpctext-aaffaa.png" class="img-responsive" alt="mpctext-aaffaa.png" />
 		            <?=
                         $this->view()->render(
                             array('element' => 'headerbar'),
