@@ -772,84 +772,6 @@ a .panel-recentfeed h3 {
     text-align: right;
 }
 
-/* Connect Styles
--------------------------------------------------------------------------------------------------------- */
-
-#connectdiscord > #discordbanner {
-    margin: auto;
-}
-
-#connectdiscord iframe {
-    height: 1000px;
-    width: 100%;
-}
-
-#serverstatus-collapse {
-    margin-top: 52px;
-}
-
-#discord-btns {
-    margin-top: 5px;
-    margin-right: 20px;
-}
-
-#connectdiscord > .row > .col-md-8-offset > #discord-btns > .btn-edit, #connectdiscord > .row > .col-md-8-offset > .list-group li {
-    color: #fff;
-    background-color: #738BD7;
-    border: 1px solid #fff;
-    padding: 10px;
-    margin: 2px 2px 2px 2px;
-}
-
-#closeserver-btn {
-    margin: auto;
-    background-color: #738BD7;
-    color: #fff;
-}
-/*
-    *views/connect
-    Twitch Connect Div
-    Current Parent Div: #connecttwitch
-
-*/
-#connecttwitch > .row > .col-md-8-offset > #twitch-btns > .btn-edit, #connecttwitch > .row > .col-md-8-offset > .list-group li {
-    color: #fff;
-    background-color: #6441A5;
-    border: 1px solid #fff;
-    padding: 10px;
-    margin: 2px 2px 2px 2px;
-}
-
-#twitch-btns {
-    margin-top: 5px;
-}
-/*
-    *views/games/heroes_of_the_storm
-    *HOTS Styles
-    *Parent Div is currently: #heroes-of-the-storm
-*/
-
-#heroes-of-the-storm > img {
-    margin: auto;
-    width: 100%;
-}
-
-#hots-characters > row {
-    margin: 15px 0 15px 0;
-}
-
-#hots-characters > .panel > .panel-body > .row > .collapse > .row > .class-portrait > a > .panel > .panel-heading > img {
-    width: 200px;
-    height: 100px;
-    border: 1px solid #aaffaa;
-    margin: auto;
-}
-/*
-    *views/games/starcraft2
-    * Sc2 Styles
-    * Parent Div is currently: #starcraft2lotv
-
-*/
 #starcraft2lotv {
     margin-top: 15px;
 }
@@ -867,4 +789,24 @@ a .panel-recentfeed h3 {
 }
 #games img {
     width: 100%;
+}
+/*
+    Connect.html.php Banner's CSS
+
+*/
+/*Panels*/
+html > body > div.container > div.content > div > div.panel-group > div.panel {
+    background-color: transparent;
+}/*Panel-bodies*/
+html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-body {
+    box-shadow: 0px 0px 20px #88bb88 inset; 
+    border: solid 1px #88bb88;
+}/*Panel Images*/
+html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-heading > img.connect-banner {
+    box-shadow: 0px 0px 20px #88ff88;
+    width: 100%;
+    margin: auto;
+}/*Panel Buttons*/
+html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-body > div.row > center > div.btn-group {
+    padding: 0px;
 }

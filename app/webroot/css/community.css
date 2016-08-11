@@ -114,3 +114,17 @@
     background-color: rgba(40, 40, 40, 0.95);
     border-color: #444;
 }
+/* Twitch-Casters Table
+-------------------------------------------------------------------------------- */
+html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(odd) {/*<tr>Alternative Bg*/
+    background-color: #2a2a2a;
+}
+html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(even) {/*<tr>Alternative Bg*/
+    background-color: rgba(0, 0, 0, 0.9);
+}
+html > body > div.container > div.content > div.#twitch-casters > div.panel {
+    background-color: transparent;
+}
+html > body > div.container > div.content > div.#twitch-casters > div.panel > div.panel-body {
+    box-shadow: 0px 0px 20px #88bb88 inset; border: solid 1px #88bb88;
+}

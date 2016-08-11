@@ -1,1 +1,0 @@
-<small>Community</small>

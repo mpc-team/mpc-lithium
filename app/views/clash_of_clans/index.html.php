@@ -51,7 +51,7 @@ $self = $this;
                                 <?php
                                     $bsArray = array(
                                         'Performs well on Computers.',
-                                        'Optimized App. for Mobile Devices',
+                                        'Optimized App. for Mobile Devices.',
                                         'Voice Chat.',
                                         'Coordinate Attacks to Win Wars.',
                                         'Meet Clan Mates, and Make Friends.',
@@ -123,30 +123,11 @@ $self = $this;
                         </div><!--col-->
                         <div class="col-md-6" style="padding: 0 5px 0 5px;">
                             <div class="well" style="background-color: #faf1bf; margin: 1px 0 10px 0; border: 3px solid #000;">
-                                <p style="color: #000; font-weight: 600;">Every member will be given the opportunity of a verbal warning, and if you feel the need talk about a problem then please contact any clan officers. Please feel reach the following officers down below by logging onto Discord for attack advise, or regarding an problem.</p>
+                                <p style="color: #000; font-weight: 600;">Every member will be given the opportunity of a verbal warning, and if you feel the need talk about a problem then please contact any clan officers. Please feel reach the following officers down by logging onto Discord, or K.I.K. for attack advise, or regarding an problem.</p>
                             </div>
-                            <ul class="list-group">
-                                <?php 
-                                    $bscontact = array(
-                                        'AcidSnake',
-                                        'Matt-MeoffJack',
-                                        'Marshall',
-                                        'LovetoRub16',
-                                        'lvBearTooth',
-                                    );
-                                ?>
-                                <?php foreach($bscontact as $id): ?>
-                                <li class="list-group-item">
-                                    <?= $id ?>
-                                </li>
-                                <?php endforeach; ?>
-                            </ul>
                         </div><!--col-->
                     </div><!--row-->
                 </div><!--panel-body-->
-                <div class="panel-footer">
-                    <p>Updated: 03/07/2016</p>
-                </div>
             </div><!--panel-->
         </div><!--panel group-->
     </div><!--row-->
@@ -160,15 +141,60 @@ $self = $this;
                 <div class="panel">
                     <div class="panel-heading">
                         <img src="/img/clash_of_clans/official-website-banner.png" alt="official-website-banner.png" class="img-responsive img-rounded coc-img-center" />
-                    </div>
-                    <div class="panel-body">
-                        
-                    </div>
-                    <div class="panel-footer">
+                    </div><!--panel-heading-->
+                    <div class="panel-body text-center">
                         <small><a href="http://www.clashofclans.com" target="_blank">www.clashofclans.com</a></small>
-                    </div>
-                </div>
-            </div>
-        </a>        
-    </div>
+                    </div><!--panel-body-->
+                </div><!--panel-->
+            </div><!--panel-group-->
+        </a>
+    </div><!--row-->
 </div>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <?php 
+                $clantags = array(
+                    0 => array(
+                        'id' => 'LP8GL0RR',
+                        'name' => 'Assassins',
+                    ),
+                    1 => array(
+                        'id' => '9RR8CPGY',
+                        'name' => 'Warriors',
+                    ),
+                    2 => array(
+                        'id' => 'PGLY2QUP',
+                        'name' => 'Dragons',
+                    ),
+                );
+
+
+            ?>
+            <ul class="nav nav-tabs" role="tablist">
+                <?php foreach($clantags as $index => $tag): ?>
+                <li role="presentation"><a href="#<?= $tag['id'] ?>" aria-controls="<?= $tag ?>" role="tab" data-toggle="tab"><?= $tag['name'] ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div><!--panel-heading-->
+        <div class="panel-body">
+            <div class="tab-content">
+                <?php foreach($clantags as $index => $tag): ?>
+                <div role="tabpanel" class="tab-pane fade" id="<?= $tag['id'] ?>">
+                    <?= $tag['name'] ?>
+                </div><!--tab-panel-->
+                <?php endforeach; ?>
+            </div><!--tab-content-->
+            <div class="row">
+                <?= $data ?>  
+
+            </div>
+        </div><!--panel-body-->
+        <div class="panel-footer">            
+            <script>
+    <?php echo "var res = $res;"; ?>
+                console.log(res);
+            </script>
+        </div><!--panel-footer-->
+    </div><!--panel-->
+</div><!--panel-group-->

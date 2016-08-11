@@ -55,6 +55,7 @@ Router::connect('/games/heroes_of_the_storm', array('controller' => 'app\control
 Router::connect('/games/starcraft2', array('controller' => 'app\controllers\games\Starcraft2Controller'));
 Router::connect('/games/world_of_warcraft', array('controller' => 'app\controllers\games\WorldOfWarcraftController'));
 Router::connect('/games/clash_of_clans', array('controller' => 'app\controllers\games\ClashOfClansController'));
+Router::connect('/games/clash_royale', array('controller' => 'app\controllers\games\ClashRoyaleController'));
 
 Router::connect('/api/games/{:action}', array('controller' => 'app\controllers\api\GamesAPI'));
 Router::connect('/api/posts/{:id}', array('controller' => 'app\controllers\api\PostsAPI', 'action' => 'GetInfo'));

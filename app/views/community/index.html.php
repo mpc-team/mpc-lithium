@@ -16,22 +16,12 @@ $enableMemberButton = array(
 );
 
 ?>
-<style>
-    html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(odd) {
-        background-color: #2a2a2a;
-    }
-    html > body > div.container > div.content > div.row > div.panel-group > div.panel > div.panel-body > table.table > tbody#twitch-casters-table > tr:nth-child(even) {
-        background-color: rgba(0, 0, 0, 0.9);
-    }
-</style>
 <div class="jumbotron">
     <h1>COMMUNITY</h1>
 </div>
-
 <div class="page-icon pull-right">
     <i style="transform: rotate(5deg);" class="fa fa-users"></i>
 </div>
-
 <div class="clans" id="clans">
     <div class="row">
         <div class="col-md-4">
@@ -176,9 +166,9 @@ $enableMemberButton = array(
         </table>
     </div>
 </div>
-<div class="row" >
+<div class="row" id="twitch-casters">
     <div class="panel-group">
-        <div class="panel" style="background-color: transparent;">
+        <div class="panel">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-md-6">

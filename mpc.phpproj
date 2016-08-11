@@ -1609,7 +1609,6 @@
     <Compile Include="app\controllers\ConfirmController.php" />
     <Compile Include="app\controllers\ContentController.php" />
     <Compile Include="app\controllers\ForumController.php" />
-    <Compile Include="app\controllers\InformationController.php" />
     <Compile Include="app\controllers\LoginController.php" />
     <Compile Include="app\controllers\LogoutController.php" />
     <Compile Include="app\controllers\CommunityController.php" />
@@ -1617,7 +1616,6 @@
     <Compile Include="app\controllers\PagesController.php" />
     <Compile Include="app\controllers\PostController.php" />
     <Compile Include="app\controllers\SignupController.php" />
-    <Compile Include="app\controllers\StreamController.php" />
     <Compile Include="app\controllers\ThreadController.php" />
     <Compile Include="app\controllers\UserController.php" />
     <Compile Include="app\extensions\adapter\empty" />
@@ -1703,21 +1701,9 @@
     <Compile Include="app\utilities\TextEntry.php" />
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
-    <Compile Include="app\views\connect\appendtwitch.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
-    <Compile Include="app\views\elements\caster\marshall.html.php" />
-    <Compile Include="app\views\elements\caster\lovetorub16.html.php" />
     <Compile Include="app\views\elements\headerbar.html.php" />
     <Compile Include="app\views\elements\banner.html.php" />
-    <Compile Include="app\views\elements\information\aboutus.html.php" />
-    <Compile Include="app\views\elements\information\communication.html.php" />
-    <Compile Include="app\views\elements\information\community.html.php" />
-    <Compile Include="app\views\elements\information\extra.html.php" />
-    <Compile Include="app\views\elements\information\macro.html.php" />
-    <Compile Include="app\views\elements\information\members.html.php" />
-    <Compile Include="app\views\elements\information\miacro.html.php" />
-    <Compile Include="app\views\elements\information\micro.html.php" />
-    <Compile Include="app\views\elements\information\organization.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
     <Compile Include="app\views\elements\user\wall.html.php" />
     <Compile Include="app\views\elements\breadcrumbs.html.php" />
@@ -2721,8 +2707,6 @@
     <Folder Include="app\views\board" />
     <Folder Include="app\views\clash_of_clans" />
     <Folder Include="app\views\connect\" />
-    <Folder Include="app\views\elements\caster\" />
-    <Folder Include="app\views\elements\information\" />
     <Folder Include="app\views\elements\user" />
     <Folder Include="app\views\elements" />
     <Folder Include="app\views\errors" />

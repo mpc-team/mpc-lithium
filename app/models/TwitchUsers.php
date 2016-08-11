@@ -23,17 +23,58 @@ class TwitchUsers extends \lithium\data\Model
             return null;
     }
     /**
-    * Checks for an Exisiting UID in the Database
+    * DELETES an Exisiting $autherizedID/MPC ID in the Twitch Users Table
     *
     * Return Boolean.
+    */
+    public static function DeleteCaster($uid)
+    {
+		if ($caster = self::find('first', array('conditions' => array('uid' => $uid)))) 
+        {
+            if ($caster->delete())
+            {
+                return true;
+            }
+        }
+		return false;
+	}
+    /**
+    * CHECKS for an Exisiting $autherizedID/MPC ID in the Twitch Users Table
+    *
+    * @returns Boolean.
     */
     public static function ExistingUId ($uid) 
     {
 		$caster = self::find('first', array('conditions' => array('uid' => $uid)));
 		if( $caster )
-			return true;
+			return 1;
 		else
-			return false; 
+			return 0; 
 	}
-    
+    /**
+    * Checks for an Exisiting Twitch ID in the Database
+    *
+    * @Returns Boolean.
+    */
+    public static function ExistingTId ($tid) 
+    {
+		$caster = self::find('first', array('conditions' => array('tid' => $tid)));
+		if( $caster )
+			return 1;
+		else
+			return 0; 
+	}
+    /**
+    * Checks for an Exisiting Twitch Names in the Database
+    *
+    * Return Boolean.
+    */
+    public static function ExistingTName ($tname) 
+    {
+		$caster = self::find('first', array('conditions' => array('tname' => $tname)));
+		if( $caster )
+			return 1;
+		else
+			return 0; 
+	}
 }

@@ -6,7 +6,8 @@ background.map = {
 	'games': {
 	    'clash_of_clans': '/img/clash_of_clans/background.png',
 	    'starcraft2': '/img/sc2/background.png',
-        'heroes_of_the_storm':'/img/hots/background.jpg',
+	    'heroes_of_the_storm': '/img/hots/background.jpg',
+        'clash_royale': '/img/clash_royale/background.png',
 	},
 };
 

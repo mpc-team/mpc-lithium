@@ -9,61 +9,62 @@ use app\models\TwitchUsers;
 
 class ConnectController extends \lithium\action\Controller 
 {
-//Index Function
 	public function index( ) 
 	{
-        //Check Authorization
+        //Check Authorization of the User.
 		$authorized = Auth::check('default');	
         //Declare Breadcrumbs and Link
 		$breadcrumbs = array(
 			'path' => array('MPC','Connect'),
 			'link' => array('/','/connect')
 		);
-        //Grab the casters from the database.
+        //Information from Twitch Users.
         $casters = TwitchUsers::All();
-        //Set an Array to pass associated variables to the Connect View Page from what's in this function.         
+        $count = TwitchUsers::count();
+        //OutPut to the View Folder -> to the Connect's Index File.
         $this->set(array(
 			'authorized' => $authorized,
 			'breadcrumbs' => $breadcrumbs,
 			'casters' => $casters,
-            'totalcasters' => TwitchUsers::count(),
+            'totalcasters' => $count,
 		));	
+
 	}
-//Twitch Function
-    /*
-    * This function takes the POST type form values and save it to the Twitch_Users Table. It initiates the process of saving the User's id, twitch id, and twitch username for easily to read from the database. Uses Hidden Elements as Values from the Twitch Object that is sent through the Twitch API (js/twitchapi.js).
-    * 
-    *
-    *
-    */
     public function appendtwitch( )
-    {
-        //If Data is Called / Presented
+    {//Submit To Twitch Users
+        $authorized = Auth::check('default');	
         if($this->request->data)
         {            
-            //Lithium's Method to Extract Values from Input Elements by name attritbute.
-            $uid = $this->request->data['mpc-userid'];        
-            $tid = $this->request->data['twitch-userid'];
-            $tname = $this->request->data['twitch-username'];
-            //Check if the Uid has already been added to the database. If False, a UID does NOT exist; continue with the Processing of the Twitch User.
-            if( (TwitchUsers::ExistingUId($uid)) == false )
-            {
-                //Submit Rule: Credentials must be met by non-empty values before the Add Account
-                if ($uid != null & $tid != null & $tname != null)
-                {
-                    $caster = TwitchUsers::AddAccount($tid, $tname, $uid);
-                    return $this->redirect('/connect?TwitchAccount=Success');
-                } // Empty Values are in the Hidden Input Elements
-                elseif ($uid == null & $tid & null & $tname == null)
-                {
-                    return false;
-                    return $this->redirect('/connect?TwitchAccount=Requirements+Failure');
-                }                                     
-            }//Existing UID Exists
-            return $this->redirect('/connect?TwitchAccount=Exists');
-        }            
+            //Phase 1: Get the Data.
+            $uid = $authorized['id'];//mpc ID
+            $tid = $this->request->data['twitch-userid'];// Twitch ID
+            $tname = $this->request->data['twitch-username'];//Twitch Name
+            //Phase 2: Check for Existance on Twitch Users Table so no Duplicate IDs are Stored.
+            $uidCheck = TwitchUsers::ExistingUId($uid);//Boolean: False -> Proceed
+            $tidCheck = TwitchUsers::ExistingTId($tid);//Boolean: False -> Proceed
+            $tnameCheck = TwitchUsers::ExistingTName($tname);//Boolean: False -> Proceed 
+            if ($uidCheck == 0 && $tidCheck == 0 && $tnameCheck == 0)
+            {//Phase 3: Save the $uid $tid $tname to Twitch Users Table and Redirect.
+                $caster = TwitchUsers::AddAccount($tid, $tname, $uid);
+                return $this->redirect('/connect?TwitchAccount=Success');
+            }//If Failed, Redirect.
+            return $this->redirect('/connect?TwitchAccount=Failed');
+        }//On Fail for retrieving Data, Redirect.            
         return $this->redirect('/connect?TwitchAccount=Request+Data+Failure');
     }    
+    public function removetwitchuser( )
+    {
+        //Check Authorization of the User.
+		$authorized = Auth::check('default');
+        //Information from the Table.	
+        $casters = TwitchUsers::All();
+        if ($authorized['id'])
+        {
+            TwitchUsers::DeleteCaster($authorized['id']);
+            return $this->redirect('/connect?TwitchAccountDeletion=Success');//Success
+        }
+        return $this->redirect('/connect?TwitchAccountDeletion=Failed');
+    }
 //Youtube Function
     
 }

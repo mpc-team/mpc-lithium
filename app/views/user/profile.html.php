@@ -162,15 +162,44 @@ if (isset($notification['status']))
 			    array('element' => 'user/games'),
 			    array('games' => $data['games'], 'gamesClickable' => true, 'who' => 'Your')
 		    )?>
-        </div>
-
+            <div id="connect">
+                <h3>
+                <small>Your</small>
+                    Connects
+                </h3>
+                <div class="row">
+                    <div class="well well-sm" style="padding: 9px; border-radius: 1px; border: 1px solid #444;">
+                        <center>
+                            <i class="fa fa-info-circle"></i>
+                            <small>Use the <a href="/connect" style="text-decoration: none; border-bottom: none;">Connect</a> Page to Integrate 3rd Party Apps</small>
+                        </center>                        
+                        <div class="col-xs-2" id="profile-twitch">
+                            <div class="panel panel-default" style="margin-top: 15px; margin-left: -10px; padding: 0 2px 5px 2px; width: 100%;">
+                                <div class="icon">
+                                    <i class="fa fa-twitch fa-2x" style="margin-top: 5px;"></i>
+                                </div><!--icon-->
+                            </div><!--panel-->
+                        </div><!--col-->                    
+                    </div><!--well-->                
+                </div><!--row-->
+            </div><!--connect-->
+            <script>
+                $('#profile-twitch').hide();
+                Twitch.getStatus(function (err, status) {   
+                    if (status.authenticated) {
+                        $('#profile-twitch').show();
+                        //console.log('User Authenticated in Profile Twitch');        
+                    }
+                });
+            </script>
+        </div><!--col-->
         <div class="col-md-8">
 		    <?= $this->view()->render(
 			    array('element' => 'user/wall'),
 			    array('who' => 'Your', 'options' => $data['options'])
 		    )?>
-        </div>
-	</div>
+        </div><!--col-->
+	</div><!--row-->
 	
 	<div class="recent" style="padding-bottom: 50px">
 		<div class="row">
