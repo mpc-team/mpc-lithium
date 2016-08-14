@@ -1717,7 +1717,6 @@
     <Compile Include="app\views\forum\index.html.php" />
     <Compile Include="app\views\games\index.html.php" />
     <Compile Include="app\views\heroes_of_the_storm\index.html.php" />
-    <Compile Include="app\views\information\index.html.php" />
     <Compile Include="app\views\layouts\default.html.php" />
     <Compile Include="app\views\layouts\default.xml.php" />
     <Compile Include="app\views\layouts\error.html.php" />
@@ -2713,11 +2712,9 @@
     <Folder Include="app\views\forum" />
     <Folder Include="app\views\games" />
     <Folder Include="app\views\heroes_of_the_storm" />
-    <Folder Include="app\views\information" />
     <Folder Include="app\views\layouts" />
     <Folder Include="app\views\login" />
     <Folder Include="app\views\community\" />
-    <Folder Include="app\views\caster\" />
     <Folder Include="app\views\pages" />
     <Folder Include="app\views\signup" />
     <Folder Include="app\views\starcraft2" />
@@ -3126,6 +3123,7 @@
     <Content Include="app\webroot\js\jquery-ui.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.min.js" />
+    <Content Include="app\webroot\js\twitch-api.js" />
     <Content Include="app\webroot\js\user\user.js" />
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />

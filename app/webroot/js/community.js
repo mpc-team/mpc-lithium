@@ -480,12 +480,12 @@ streamers.ui.twitch.modals.stringify = function (object) {
     result += "<p class='" + object + "-maturerating' style='display: inline;'></p>";
     result += "</div><!--modal-header-->";
     result += "<div class='modal-body'>";
-    result += "<div class='embed-responsive embed-responsive-16by9'>";
-    result += "<iframe src='http://player.twitch.tv/?channel=" + object + "' scrolling='no' allowfullscreen='true' class='embed-responsive-item' id='"+ object +"-video'></iframe>";
-    result += "</div><!--div responsive 16by9-->";
-    result += "<div class='embed-responsive embed-responsive-16by9'>";
-    result += "<iframe src='http://twitch.tv/" + object + "/chat' scrolling='no' allowfullscreen='true' class='embed-responsive-item'></iframe>";
-    result += "</div><!--div responsive 16by9-->";
+    //result += "<div class='embed-responsive embed-responsive-16by9'>";
+    //result += "<iframe src='http://player.twitch.tv/?channel=" + object + "' scrolling='no' allowfullscreen='true' class='embed-responsive-item' id='"+ object +"-video'></iframe>";
+    //result += "</div><!--div responsive 16by9-->";
+    //result += "<div class='embed-responsive embed-responsive-16by9'>";
+    //result += "<iframe src='http://twitch.tv/" + object + "/chat' scrolling='no' allowfullscreen='true' class='embed-responsive-item'></iframe>";
+    //result += "</div><!--div responsive 16by9-->";
     result += "</div><!--modal-body-->";
     result += "<div class='modal-footer "+ object +"-banner'>";
     result += "<img class='" + object + "-logo user-avatar-container' />";

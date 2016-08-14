@@ -47,9 +47,9 @@ class TwitchUsers extends \lithium\data\Model
     {
 		$caster = self::find('first', array('conditions' => array('uid' => $uid)));
 		if( $caster )
-			return 1;
+			return true;
 		else
-			return 0; 
+			return false; 
 	}
     /**
     * Checks for an Exisiting Twitch ID in the Database
@@ -60,9 +60,9 @@ class TwitchUsers extends \lithium\data\Model
     {
 		$caster = self::find('first', array('conditions' => array('tid' => $tid)));
 		if( $caster )
-			return 1;
+			return true;
 		else
-			return 0; 
+			return false; 
 	}
     /**
     * Checks for an Exisiting Twitch Names in the Database
@@ -73,8 +73,8 @@ class TwitchUsers extends \lithium\data\Model
     {
 		$caster = self::find('first', array('conditions' => array('tname' => $tname)));
 		if( $caster )
-			return 1;
+			return true;
 		else
-			return 0; 
+			return false; 
 	}
 }

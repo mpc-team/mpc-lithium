@@ -187,7 +187,6 @@ $self = $this;
             </div><!--tab-content-->
             <div class="row">
                 <?= $data ?>  
-
             </div>
         </div><!--panel-body-->
         <div class="panel-footer">            

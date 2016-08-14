@@ -3,472 +3,6 @@ $this->title('Heroes of the Storm');
 $self = $this;
 
 ?>
-
-<?php
-
-$this->title('Heroes of the Storm');
-
-$self = $this;
-
-$classes = array(
-        'warriors'=>
-        'Warriors',
-        'assassins'=>
-        'Assassins',
-        'supports'=>
-        'Supports',
-        'specialists'=>
-        'Specialists',
-    );
-
-$allHeroes = array('$warriors','$assassins','$supports', '$specialists');
-
-    $warriors = array(
-
-        'anub-arak' => array(
-            'name'=>'Anub\'arak',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'artanis' => array(
-            'name'=>'Artanis',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-        'arthas' => array(
-            'name'=>'Arthas',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'chen' => array(
-            'name'=>'Chen',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'cho-gall' => array(
-            'name'=>'Cho Gall',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'diablo' => array(
-            'name'=>'Diablo',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'etc' => array(
-            'name'=>'E.T.C',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'johanna' => array(
-            'name'=>'Johanna',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'leoric' => array(
-            'name'=>'Leoric',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'muradin' => array(
-            'name'=>'Muradin',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'rexxar' => array(
-            'name'=>'Rexxar',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'sonya' => array(
-            'name'=>'Sonya',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'stitches' => array(
-            'name'=>'Stitches',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-
-        'tyrael' => array(
-            'name'=>'Tyrael',
-            'header-content'=>'This is a Warrior',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'
-        ),
-               
-    );
-
-    $assassins = array(
-
-        'falstad' => array(
-            'name'=>'Falstad',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'greymane' => array(
-            'name'=>'Greymane',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'illidan' => array(
-            'name'=>'Illidan',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'jaina' => array(
-            'name'=>'Jaina',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'kael-thas' => array(
-            'name'=>'Kael\'Thas',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'kerrigan' => array(
-            'name'=>'Kerrigan',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'lunara' => array(
-            'name'=>'Lunara',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'nova' => array(
-            'name'=>'Nova',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'raynor'=> array(
-            'name'=>'Raynor',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'the-butcher'=> array(
-            'name'=>'The Butcher',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'thrall'=> array(
-            'name'=>'Thrall',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'tychus'=> array(
-            'name'=>'Tychus',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'valla' => array(
-            'name'=>'Valla',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'zeratul' => array(
-            'name'=>'Zeratul',
-            'header-content'=>'This is a Assassin',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-                
-
-    ); 
-
-    $supports = array(
-                        
-        'brightwing' => array(
-            'name'=>'Brightwing',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'kharazim'=> array(
-            'name'=>'Kharazim',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'li-li'=> array(
-            'name'=>'Li Li',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'lt-morales'=> array(
-            'name'=>'Lt. Morales',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'malfurion'=> array(
-            'name'=>'Malfurion',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'rehgar'=> array(
-            'name'=>'Rehgar',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'tassadar'=> array(
-            'name'=>'Tassadar',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'tyrande'=> array(
-            'name'=>'Tyrande',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'uther'=> array(
-            'name'=>'Uther',
-            'header-content'=>'This is a Support',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-    );
-
-    $specialists = array(
-
-        'abathur' => array(
-            'name'=>'Abathur',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'azmodan'=> array(
-            'name'=>'Azmodan',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'gazlowe'=> array(
-            'name'=>'Gazlowe',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'murky'=> array(
-            'name'=>'Murky',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'nazeebo'=> array(
-            'name'=>'Nazeebo',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'sgt-hammer'=> array(
-            'name'=>'Sgt. Hammer',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'sylvanas'=> array(
-            'name'=>'Sylvanas',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'the-lost-vikings'=> array(
-            'name'=>'The Lost Vikings',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-        'zagara'=> array(
-            'name'=>'Zagara',
-            'header-content'=>'This is a Specialist',
-            'body-content'=>'body ',
-            'ability-q'=>'ability-q',
-            'ability-w'=>'ability-w',
-            'ability-e'=>'ability-e',
-            'ability-r'=>'ability-r'),
-
-                        
-    );
-
-?>
 <style>
 /*typography styling*/
 #heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > p, #heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .row > p {
@@ -504,9 +38,6 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
 #heroes-of-the-storm > .row > .panel-group > .panel > .panel-body {
     padding: 15px;
 }
-
-
-
 </style>
 <div id="heroes-of-the-storm">
    <div class="jumbotron">
@@ -579,13 +110,13 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
     </h3>
     <div class="row">
         <div class="panel-group">
-            <div class="panel">
+            <div class="panel" style="background-color: transparent;">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         Helpful Topics
                     </h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="box-shadow: 0px 0px 20px #88bb88 inset;">
                     <!--COLLAPSE Rows-->
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -600,13 +131,13 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
                             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
                                     <h4>Kills and Deaths</h4>
-                                    <p>For every time a player dies, the team suffers the lost of the following: soaking XP from lanes, chancing imbalance in mini-fight scenarios because shortage in death(s), or even objective losts. Placing a team member atleast in each lane to absorb XP optimally; this means that kills are less important compared to lane XP priority. Do not chase in the beginning of the game for kills, and reduce deaths to a minimum because there's no reason why a team player should die in the first 10 minutes of the game.</p>
+                                    <p>For every time a player dies, the team suffers the lost of the following: soaking XP from lanes, chancing imbalance in mini-fight scenarios because shortage in death(s), or even objective losts. Placing a team member atleast in each lane to absorb XP optimally; this means that kills are less important compared to lane XP priority. Do not chase in the beginning of the game for kills, and reduce deaths to a minimum because there's no reason why a team player should die in the first 10 minutes of the game. A good player has more kills, than a 1/3 of their deaths, and a Great player is someone who gets 0 Deaths in a game.</p>
                                     <hr>
                                     <h4>XP</h4>
-                                    <p>XP comes in time waves from the minoins. Picture in your mind the three lanes of minions, and those minions are all moving at the same pace to the middle of each lane, since XP is what gives the team Talents to power up their abilities and gain advantages over the enemy team, the minions must soak from the first encounted wave til atleast 10. Ignoring enemy teams that are aggressively trying to kill strandid solo lane individuals that are actually trying to soak XP from each lane optimally, is the BEST thing a person can do for the team. Yes, the enemy team will be heavily engaging a person in a lane, but it will be up to the support to assist, and once the next lane team mate has <b>cleaned</b> their lane, will also too be able to assist the support and defender. Soaking is the highest priority that lasts all game, objectives are normally 2nd to that.</p>
+                                    <p>XP comes in time waves from the minoins. Picture in your mind the three lanes of minions, and those minions are all moving at the same pace to the middle of each lane, since XP is what gives the team Talents to power up their abilities and gain advantages over the enemy team, the minions must soak from the first encounted wave til atleast 10. Ignoring enemy teams that are aggressively trying to kill strandid solo lane individuals that are actually trying to soak XP from each lane optimally, is the BEST thing a person can do for the team. Yes, the enemy team will be heavily engaging a person in a lane, but it will be up to the support to assist, and once the next lane team mate has <b>cleaned</b> their lane, will also too be able to assist the support and defender. Soaking is the highest priority that lasts all game, objectives are normally 2nd to that. Learn More About Objectives.</p>
                                     <hr>
                                     <h4>Beginning Meta</h4>
-                                    <p></p>
+                                    <p><b>Soaking</b> XP until atleast level 10. Then based on the Enemy Team's action will have variation into Mid-Game. Talent Selection should be based on the Map, Enemy Team's combination of Heroes and considering which Ultimate Abilities and Talents are currently selected. Once a team reaches level Ten, the opposing team should "<b>bait</b>" the Enemy Team into using their Ultimate Abilities without Casualities from the Allied Team. The ideal reverse effect is to use Allied Ults when the Enemy Team's Ults are on Cool Down. If the Allied Team is ahead in Team Levels, then the Allied Ults need to be percise and used in the correct sequence. Learn more about Ultimate Sequences.</p>
                                  </div>
                              </div>
                          </div>
@@ -622,8 +153,11 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
-                                    <h4>The Team</h4>
-                                    <p>The team has 30 seconds in the draft room to decide who is going to pick which heroes based on the map, what heroes fit the mandatory objectives, what each person prefers to play excellently, and counter pick the heroes the enemy team picks.</p>
+                                    <h4>The Team's Responsibility</h4>
+                                    <p>During the game, the Team has goals to be met. The Highest goal is keeping minion XP <b>soak</b> optimal as possible. In beginning of the game, the object is to absorb all XP from each wave that is given by the enemy bases. Players don't have to engage and die to soak for XP, but instead keep in XP range only for the deaths of Enemy Minions. Soak Passively, and Defensively when the enemy team has greater quantity in heroes, than of a player's own team. Avoid verbaly harrassment, conflict, or disturbing the "vibe" between each other as that will let opportunities pass or reconciliting the situation in it's most positive outcome. Pick the drafts intelligent with counter-picking the Enemy Team's Selection Choices, and Context Clues on their Ban Selection. Let More about Ban and Heroe Selection.</p>
+                                    <hr>
+                                    <h4>The Player's Responsibility</h4>
+                                    <p>A Player's main focus is to have mini-map awareness -- observing when danage is rotation to a nearby lane, or unseen enemy players. Avoiding death as that leads to <b>Decrease Soak Income</b> for the allied team. Participating in Team Fights, Engagements, and Ping only when Neccessary. Unless Practicing in Unranked/Quick Match -- only select one of the top three most played heroes on your profile; stick to what you know for ranked games as MMR is dreadful adjusting and for the courtesy of your MPC mates. Players should consider the Map Selection as judgement towards their decision of Heroe Selection, or Talent Selection. Discuss with your team as quickly as possible to assemble the most competent Allied team. A player also must consider their current positioning every time they make a move, and if a player gets OOP -- the Enemy Team is should be on the Offense in most cases. Learn More About Positioning.</p>
                                 </div>
                             </div>
                         </div>
@@ -633,7 +167,7 @@ $allHeroes = array('$warriors','$assassins','$supports', '$specialists');
                                 <h4 class="panel-title">
                                     <span class='glyphicon glyphicon-collapse-down'></span>
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Knowing Distance and Environmental Awareness
+                                        Distance and Environmental Observing
                                         </a>
                                 </h4>
                             </div>

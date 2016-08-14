@@ -124,13 +124,13 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                         <div class="btn-group btn-lg" id="twitch-login-btn">
                             <button role="button" href="#" class="btn btn-default twitch-connect disabled">
                                 <span class="glyphicon glyphicon-log-in"></span>
-                                Sign Into Your Twitch
+                                Connect Twitch
                             </button>
                         </div>
                         <div class="btn-group btn-lg" id="twitch-logout-btn">
                             <button role="button" href="#" class="btn btn-default twitch-disconnect disabled">
                                 <span class="glyphicon glyphicon-log-out"></span>
-                                Sign Out of Your Twitch
+                                Disconnect Twitch
                             </button>
                         </div>                        
                     </center>
@@ -138,10 +138,11 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                 <div class="well">
                     <p>Setup Instructions:</p>
                     <ol>
-                        <li>First Login to MPCgaming</li>
-                        <li>A "Sign into Twitch" button will appear available Above.</li>
-                        <li>After Authenticating on Twitch, you'll return here to continue the next step.</li>
-                        <li>Read Notice, and Press the "Connect" button.</li>
+                        <li>First Login to MPCgaming or <a href="/signup" style="text-decoration: none;">Sign Up</a></li>
+                        <li>A "Connect Twitch" button will appear available Above.</li>
+                        <li>After Authenticating on Twitch, you'll return here and notice a Twitch Icon near your Avatar.</li>
+                        <li>Read Notice, and Press the "Add Cast" button.</li>
+                        <li>To Remove Your Twitch Account, then Press the "Remove Cast" button.</li>
                     </ol>
                     <div class="panel-heading" style="background-color: #6441A5;">
                         <div class="row">
@@ -160,6 +161,9 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                         </div><!--row-->
                     </div><!--panel-heading-->
                     <div class="panel-body">
+                        <div class="row">
+                            <table></table>
+                        </div>
                         <?php if($adminPermissions): ?>
                         <div class="row" style="margin-bottom: 10px;">                            
                                 <h3>
@@ -200,7 +204,7 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                             <p style="border: 1px solid #fff;">Twitch allows MPC to retrieve your account information, and allow twitch users to perform actions. Submit for your Broadcast to Show up on MPCgaming.com. <b>Note:</b> You <u>MUST NEVER</u> share your password for your MPC, or Twitch account, with anyone -- including Admins, and Officers of MPC, or any other person. <br /> Please Obey Twitch's Policies for Broadcasting. Your Twitch Account will appear on the Community Section. All reports of abuse will be resolved by Twitch, and be aware to adjust your <b>mature</b> settings on twitch.tv, for young viewers, that will help avoid confrontation complaints; to and from Twitch -- viewer descreation is advised for Mature Audiences.</p>                
                             <form action="/connect/appendtwitch" name="appendtwitch" method="post" >
                                 <div class="btn-group btn-small pull-right">
-                                    <button type="submit" role="button" class="btn btn-default disabled" name="twitch-subscribe" id="twitch-subscribe">Connect</button>
+                                    <button type="submit" role="button" class="btn btn-default disabled" name="twitch-subscribe" id="twitch-subscribe">Add Cast</button>
                                 </div><!--subscribe-->                               
                                 <?php if($authorized['id']): ?>
                                 <input type="hidden" class="form-control" aria-describedby="mpcuser-id-label" name="mpc-userid" value="<?= $authorized['id'] ?>" readonly/>
@@ -212,6 +216,11 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                                 <div class="btn-group btn-small pull-right">
                                     <button type="submit" role="button" class="btn btn-default disabled" name="twitch-unsubscribe" id="twitch-unsubscribe">Remove Cast</button>
                                 </div><!--unsubscribe-->
+                                <?php if($authorized['id']): ?>
+                                <input type="hidden" class="form-control" aria-describedby="mpcuser-id-label" name="deletempc-userid" value="<?= $authorized['id'] ?>" readonly/>
+                                <input type="hidden" class="form-control" aria-describedby="twitch-name-label" id="deletetwitch-username" name="deletetwitch-username" readonly/>
+                                <input type="hidden" class="form-control" aria-describedby="twitchid-label" id="deletetwitch-userid" name="deletetwitch-userid" readonly/>
+                                <?php endif; ?>
                             </form>
                             <div class="btn-group btn-small pull-right">
                                 <a href="/community">
@@ -333,21 +342,21 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
 </div><!--connecttwitter
 -->
 <script>
-//Logged In / Logged Out of MPCgaming.com that transistions certain Buttons with the Active / Disabled Element Class.
 $.get('/api/users/auth', null, function (authorized)
 {
     if (Object.keys(authorized).length > 0)
     {
         // User is authenticated, which is what `authorized` is.
-        $('.twitch-connect').removeClass('disabled');        
+        //test
+        $('.twitch-connect').removeClass('disabled');
     }
     else
     {
-        // User is not authenticated with MPCgaming.com, and `authorized` is garbage (probably an empty array or Object).
-        $('.twitch-connect').addClass('disabled');    
-        $('.twitch-disconnect').addClass('disabled');
+        // User is not authenticated with MPCgaming.com, and `authorized` is no good.
         $('#twitch-subscribe').addClass('disabled');
         $('#twitch-unsubscribe').addClass('disabled');
+        $('.twitch-connect').addClass('disabled');
+        $('.twitch-disconnect').addClass('disabled');
     }
 });
 $('.twitch-connect').click(function () {
@@ -359,5 +368,21 @@ $('.twitch-disconnect').click(function () {
     Twitch.logout(function (error) {
         return window.location = "/connect";
     });
+});
+var url = window.location;
+if (url == "http://www.mpcgaming.com/connect?error=redirect_mismatch&error_description=Parameter+redirect_uri+does+not+match+registered+URI"){
+    alert('Failed Twitch Connection -- Please Try Again.');
+    window.location.replace("/connect");  
+}
+$.get('/api/twitchusers/all', null, function (twitchUsers) {
+    for (index in twitchUsers){
+        if(<?=  $authorized['id'] ?> == twitchUsers[index].uid){
+            $('#twitch-subscribe').addClass('disabled');
+            $('#twitch-unsubscribe').removeClass('disabled');
+        } else {
+            $('#twitch-subscribe').removeClass('disabled');
+            $('#twitch-unsubscribe').addClass('disabled');
+        }
+    }
 });
 </script>

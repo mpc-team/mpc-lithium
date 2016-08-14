@@ -1,5 +1,7 @@
 
 
+
+
 /*
 
 Twitch API
@@ -13,13 +15,13 @@ Twitch.init({clientId:'4fzsmbnkisk18wiuvdq3ds3xzhts31w', redirect_uri: 'http://w
 Twitch.api({ method: 'user' }, function (error, user) {
     $('#twitch-userid').val(user._id);
     $('#twitch-username').val(user.name);
-    //Check if the user is logged into the current web browser.
+    $('#deletetwitch-userid').val(user._id);
+    $('#deletetwitch-username').val(user.name);
+    //Check if the user is logged in from the current web browser.
     if (user._id != null) {
         //add disable class the login/logout buttons on the connect page.
         $('.twitch-connect').addClass('disabled');
         $('.twitch-disconnect').removeClass('disabled');
-        $('#twitch-subscribe').removeClass('disabled');
-        $('#twitch-unsubscribe').removeClass('disabled');
     }
 });
 
