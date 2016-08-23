@@ -185,12 +185,6 @@ if (isset($notification['status']))
             </div><!--connect-->
             <script>
                 $('#profile-twitch').hide();
-                Twitch.getStatus(function (err, status) {   
-                    if (status.authenticated) {
-                        $('#profile-twitch').show();
-                        //console.log('User Authenticated in Profile Twitch');        
-                    }
-                });
             </script>
         </div><!--col-->
         <div class="col-md-8">

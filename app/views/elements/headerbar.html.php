@@ -48,6 +48,12 @@ $button_hover_class = 'cl-effect-3';
                 </a>
             </li>
 
+            <li id="headerbar-streams">
+                <a href='/streams'>
+                    streams
+                </a>
+            </li>
+
         </ul>
         <ul class="nav navbar-nav pull-right">
             <?php if ($authorized): ?>

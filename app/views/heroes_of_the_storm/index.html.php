@@ -93,10 +93,11 @@ $self = $this;
                         <h3 class="panel-title">Getting Started</h3>
                         <p>To help make the process quicker to join Team MPC, you can save some time by preparing these few helpful tips:</p>
                         <ul>
-                            <li>Register for an account on <a href="/signup">MPCGaming</a></li>
-                            <li>Register for an account on <a href="http://www.chairleague.com" target="_blank">ChairLeague</a></li>
-                            <li>Register for an account on <a href="http://www.topdrafter.com" target="_blank">TopDrafter</a></li>
-                            <li>Submit an Application to MPC <a href="https://www.chairleague.com/teams/778" target="_blank">Team</a></li>
+                            <li>Register for an account on <a href="/signup">MPCGaming</a>.</li>
+                            <li>Register for an account on <a href="http://www.chairleague.com" target="_blank">ChairLeague</a>.</li>
+                            <li>Rules for ChairLeague <a href="http://www.chairleague.com/rules" target="_blank">Here</a>.</li>
+                            <li>Register for an account on <a href="http://www.topdrafter.com" target="_blank">TopDrafter</a>.</li>
+                            <li>Submit an Application to MPC <a href="https://www.chairleague.com/teams/778" target="_blank">Team</a>.</li>
                             <li>MPC Officers will decide if they shall approve, and notify back otherwise.</li>
                         </ul>
                     </div>

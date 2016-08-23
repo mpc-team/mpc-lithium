@@ -37,7 +37,7 @@ use app\views\layouts\LayoutConstants;
         'utils/tooltip',
         'utils/ControlOverlay',
         'announcements',
-        'information',
+        'connect',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
@@ -73,6 +73,7 @@ use app\views\layouts\LayoutConstants;
         'texttags',
         'https://ttv-api.s3.amazonaws.com/twitch.min.js',
         'connect',
+        'streams',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

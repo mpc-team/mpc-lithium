@@ -5,8 +5,10 @@ var headerbar = {};
 headerbar.items = {
 	home: "#headerbar-home",
 	community: "#headerbar-community",
+    connect: "#headerbar-connect",
 	forum: "#headerbar-forum",
 	games: "#headerbar-games",
+	streams: "#headerbar-streams",
 	user: "#headerbar-user",
 	signup: "#headerbar-signup",
 	login: "#headerbar-login"

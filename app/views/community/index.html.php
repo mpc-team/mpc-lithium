@@ -166,35 +166,4 @@ $enableMemberButton = array(
         </table>
     </div>
 </div>
-<div class="row" id="twitch-casters">
-    <div class="panel-group">
-        <div class="panel">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-md-6">
-                      <h1>
-                        <span class="fa fa-2x fa-twitch"></span>
-                            Twitch Casters
-                      </h1>
-                      <small>Registered on MPCgaming: <span id="twitch-caster-count"></span></small>  
-                    </div><!--col-->
-                    <div class="col-md-6">
-                        <div class="btn-group pull-right">
-                            <a href="/connect#twitch">
-                                <button type="button" class="btn btn-default">Connect Twitch</button>
-                            </a>
-                        </div><!--btn-group-->
-                    </div><!--col-->
-                </div><!--row-->                                
-            </div><!--panel-heading-->
-            <div class="panel-body">
-                <table class="table">
-                    <tbody id="twitch-casters-table">                    
-                    </tbody>
-                </table>
-            </div><!--parent panel-body-->
-        </div><!--panel panel-->
-    </div><!--parent panel-group-->
-</div><!--Twitch-->        
-<div id="twitch-casters-modal">
-</div><!--caster-modal-->
+

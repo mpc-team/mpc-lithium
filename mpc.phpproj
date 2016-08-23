@@ -1616,6 +1616,7 @@
     <Compile Include="app\controllers\PagesController.php" />
     <Compile Include="app\controllers\PostController.php" />
     <Compile Include="app\controllers\SignupController.php" />
+    <Compile Include="app\controllers\StreamsController.php" />
     <Compile Include="app\controllers\ThreadController.php" />
     <Compile Include="app\controllers\UserController.php" />
     <Compile Include="app\extensions\adapter\empty" />
@@ -1717,6 +1718,7 @@
     <Compile Include="app\views\forum\index.html.php" />
     <Compile Include="app\views\games\index.html.php" />
     <Compile Include="app\views\heroes_of_the_storm\index.html.php" />
+    <Compile Include="app\views\index.html.php" />
     <Compile Include="app\views\layouts\default.html.php" />
     <Compile Include="app\views\layouts\default.xml.php" />
     <Compile Include="app\views\layouts\error.html.php" />
@@ -3123,7 +3125,7 @@
     <Content Include="app\webroot\js\jquery-ui.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.js" />
     <Content Include="app\webroot\js\markdown-js\markdown.min.js" />
-    <Content Include="app\webroot\js\twitch-api.js" />
+    <Content Include="app\webroot\js\streams.js" />
     <Content Include="app\webroot\js\user\user.js" />
     <Content Include="app\webroot\js\user\auth.js" />
     <Content Include="app\webroot\js\user\wall.js" />

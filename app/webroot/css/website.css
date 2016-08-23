@@ -131,7 +131,7 @@ a h5 {
 }
 
 .well a, p > a {
-    border-bottom: 1px dotted;
+    /*border-bottom: 1px dotted;*/
     text-decoration: none;
 }
 

@@ -26,6 +26,7 @@ navbar.items =
 	signup: "#navbar-signup",
 	login: "#navbar-login",
 	games: '#navbar-games',
+	streams: '#navbar-streams',
 
 };
 

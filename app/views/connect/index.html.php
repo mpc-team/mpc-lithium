@@ -22,84 +22,92 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
         <div class="panel">
             <div class="panel-heading">
                 <img src="/img/connect/discord-banner.png" alt="discord-banner.png" class="img-rounded img-responsive connect-banner"/>
-            </div>
+            </div><!--panel-heading-->
             <div class="panel-body">
                 <div class="row">
                     <center>                       
                         <div class="btn-group btn-lg" role="group">
-                            <button role="button" class="btn btn-default" href="https://discordapp.com/apps" target="_blank">
-                                <span class="glyphicon glyphicon-download-alt"></span>
-                                Download Discord
-                            </button>
-                        </div>
+                            <a href="https://discordapp.com/apps" target="_blank">
+                                <button role="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-download-alt"></span>
+                                    Download Discord
+                                </button>
+                            </a>
+                        </div><!--btn-->
                         <div class="btn-group btn-lg" role="group">
-                            <button role="button" class="btn btn-default" href="https://discordapp.com" target="_blank">
-                                <span class="glyphicon glyphicon-home"></span>
-                                Official Website
-                            </button>
-                        </div>
+                            <a href="https://discordapp.com" target="_blank">
+                                <button role="button" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-home"></span>
+                                    Official Website
+                                </button>
+                            </a>
+                        </div><!--btn-->
                         <div class="btn-group btn-lg" role="group">
-                            <button role="button" class="btn btn-default" href="https://www.youtube.com/channel/UCZ5XnGb-3t7jCkXdawN2tkA/videos" target="_blank">
-                                <span class="fa fa-youtube"></span>
-                                Tutorials
-                            </button>
-                        </div>
+                            <a href="https://www.youtube.com/channel/UCZ5XnGb-3t7jCkXdawN2tkA/videos" target="_blank">
+                                <button role="button" class="btn btn-default">
+                                    <span class="fa fa-youtube"></span>
+                                    Tutorials
+                                </button>
+                            </a>
+                        </div><!--btn-->
                         <div class="btn-group btn-lg" role="group">
                             <button role="button" class="btn btn-default" data-toggle="modal" data-target="#notice">
                                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                                 Notices
                             </button>
-                        </div>
+                        </div><!--btn-->
                     </center>
-                </div>
+                </div><!--row-->
                 <div class="modal fade" id="notice" tabindex="-1" role="dialog" aria-labelledby="discordNoticeLBL">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Known Update Bug</h4>
-                      </div>
+                      </div><!--modal-header-->
                       <div class="modal-body">
                          <p>Stuck in a never ending update loop?  There's a couple of steps that we can take to help get you back up and running. Better than ever before! Locate Discord in the local appdata folder. The easies...</p>
                          <a href="https://support.discordapp.com/hc/en-us/articles/217801498--Windows-Stuck-in-an-update-fail-loop-" target="_blank">https://support.discordapp.com/hc/en-us/articles/217801498--Windows-Stuck-in-an-update-fail-loop-</a>
-                      </div>
+                      </div><!--modal-body-->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      </div><!--modal-footer-->
+                    </div><!--modal-content-->
+                  </div><!--modal-dialog-->
+                </div><!--modal-->
                 <div class="well">
-                    <p>Setup Instructions:</p>
-                     <ol>
-                        <li>Download and Install Discord with the button above.</li>
-                        <li>Register with email, or create a login. (Note: without an email registration, discord server will not remember your name and password or save the location of the server.)</li>
-                        <li>Click the Connect button in the Discord Web Application Below.</li>
-                        <li>Ask for help in Discord if needed by text/voice.</li>
-                    </ol>
-                    <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 392px; margin-left: 5px; border: none; width: 100%;"></iframe>
-                    <div class="row text-center" style="background-color: rgba(21, 21, 21, 0.81); border: 1px solid #fff; margin-left: 9px;">
-                        <p style="text-indent: 15px; padding: 10px; margin-top: 2.5px; color: #fff;">
-                            To get to MPC HQ, all you have to do is click the <b>"Connect"</b> button, type in a login, and you're in. Download Discord's software get optimal performance.
-                        </p>
+                    <div class="row">
+                        <p>Setup Instructions:</p>
+                         <ol>
+                            <li>Download and Install Discord with the button above.</li>
+                            <li>Register with email, or create a login. (Note: without an email registration, discord server will not remember your name and password or save the location of the server.)</li>
+                            <li>Click the Connect button in the Discord Web Application Below.</li>
+                            <li>Ask for help in Discord if needed by text/voice.</li>
+                        </ol>
+                        <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 392px; margin-left: 5px; border: none; width: 100%;"></iframe>
+                        <div class="row text-center" style="background-color: rgba(21, 21, 21, 0.81); border: 1px solid #fff; margin-left: 9px;">
+                            <p style="text-indent: 15px; padding: 10px; margin-top: 2.5px; color: #fff;">
+                                To get to MPC HQ, all you have to do is click the <b>"Connect"</b> button, type in a login, and you're in. Download Discord's software get optimal performance.
+                            </p>
+                        </div><!--row-->
                         <div class="row text-center">
                             <h4>
                                 MPC's Discord URL:
                             </h4>
                             <a href="https://discord.gg/0iDKElOIs9mib3Oc" target="_blank" style="color: #fff; font-weight: 600;">https://discord.gg/0iDKElOIs9mib3Oc</a>
-                        </div>
+                        </div><!--row-->
                         <div class="row text-center">
                             <h4>
                                 MPC's Discord Logo:
                             </h4>
                             <img src="/img/logo2016.jpg" alt="logo2016.jpg" style="border: 2px solid #111; width: 64px; margin: auto;" class="img-responsive img-rounded" />
-                        </div>
+                        </div><!--row-->
                     </div><!--parent row-->
-                </div>
-            </div>
-        </div>
-    </div><a name="twitch"></a>
-</div><!--discord-->
+                </div><!--well-->
+            </div><!--panel-body-->
+        </div><!--panel-->
+    </div><a name="twitch"></a><!--panel-group-->
+</div><!--connect-discord-->
 <div id="connecttwitch">
     <div class="panel-group">
         <div class="panel">
@@ -110,16 +118,20 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                 <div class="row">
                     <center>
                         <div class="btn-group btn-lg">
-                            <button role="button" href="http://www.twitch.tv" target="_blank" class="btn btn-default">
-                            <span class="fa fa-twitch"></span>
-                                Official Website
-                            </button>
+                            <a href="http://www.twitch.tv" target="_blank">
+                                <button role="button" class="btn btn-default">
+                                <span class="fa fa-twitch"></span>
+                                    Official Website
+                                </button>
+                            </a>
                         </div>
                         <div class="btn-group btn-lg">
-                            <button role="button" href="https://www.google.com/search?q=twitch+setup+tutorials&espv=2&biw=947&bih=690&tbm=vid&source=lnms&sa=X&ved=0ahUKEwipzbKW2_7MAhXoz4MKHWXFA8gQ_AUIBygB&dpr=1.35" class="btn btn-default" target="_blank">
-                                <span class="fa fa-twitch"></span>
-                                 Tutorials
-                            </button>
+                            <a href="https://www.google.com/search?q=twitch+setup+tutorials&espv=2&biw=947&bih=690&tbm=vid&source=lnms&sa=X&ved=0ahUKEwipzbKW2_7MAhXoz4MKHWXFA8gQ_AUIBygB&dpr=1.35" target="_blank">
+                                <button role="button" class="btn btn-default">
+                                    <span class="fa fa-twitch"></span>
+                                    Tutorials
+                                </button>
+                            </a>
                         </div>
                         <div class="btn-group btn-lg" id="twitch-login-btn">
                             <button role="button" href="#" class="btn btn-default twitch-connect disabled">
@@ -135,34 +147,55 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                         </div>                        
                     </center>
                 </div><!--row-->
-                <div class="well">
-                    <p>Setup Instructions:</p>
-                    <ol>
-                        <li>First Login to MPCgaming or <a href="/signup" style="text-decoration: none;">Sign Up</a></li>
-                        <li>A "Connect Twitch" button will appear available Above.</li>
-                        <li>After Authenticating on Twitch, you'll return here and notice a Twitch Icon near your Avatar.</li>
-                        <li>Read Notice, and Press the "Add Cast" button.</li>
-                        <li>To Remove Your Twitch Account, then Press the "Remove Cast" button.</li>
-                    </ol>
-                    <div class="panel-heading" style="background-color: #6441A5;">
+                <div class="well" id="twitchinfo">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>Setup Instructions:</p>
+                            <ol class="list-group">
+                                <li class="list-group-item">First <a href="/login">Login</a>, or if needed, you must <a href="/signup">Sign Up.</a></li>
+                                <li class="list-group-item">A "Connect Twitch" button will appear available Above.</li>
+                                <li class="list-group-item">After Authenticating on Twitch, you'll return here.</li>
+                                <li class="list-group-item">Read Notice, and Press the "Add Cast" button.</li>
+                                <li class="list-group-item">To Remove Your Registered Twitch Stream, then Press the "Remove Cast" button.</li>
+                            </ol>
+                        </div><!--col-->
+                        <div class="col-md-4">
+                            <p>Connected Benefits:</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">Viewed Here on this Site.</li>
+                                <li class="list-group-item">Helpful to Draw More Reputation.</li>
+                                <li class="list-group-item">Recognized by the Community.</li>
+                                <li class="list-group-item">Express Enthusiasm for Gaming.</li>
+                                <li class="list-group-item">Use your Twitch to Stream, Chat, or Follow.</li>
+                            </ul>
+                        </div><!--col-->
+                    </div><!--row-->
+                    <div class="panel-heading" id="twitchapp"> 
                         <div class="row">
-                            <div class="col-md-6">
-                                <h3 style="color: #fff; text-shadow: #fff;">
+                            <div class="col-md-8">
+                                <h3>
                                     <span class="fa fa-2x fa-twitch"></span>
-                                    <span class="font-weight: 900; margin-bottom: 5px;">
                                         Twitch
-                                    </span>                                    
                                 </h3>
                             </div><!--col-->
-                            <div class="col-md-6">
-                                <p class="pull-right" style="font-size: small; color: #fff; text-shadow: #fff;">                                           
+                            <div class="col-md-4">
+                                <p class="pull-right">
+                                    <b><?= $totalCasters ?></b> Members Registered
                                 </p>
                             </div><!--col-->
                         </div><!--row-->
                     </div><!--panel-heading-->
                     <div class="panel-body">
                         <div class="row">
-                            <table></table>
+                            <?php if($adminPermissions): ?>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr><td>Caster Name</td></tr>
+                                </thead>
+                                <tbody id="twitchapp-castlist">
+                                </tbody>
+                            </table>
+                            <?php endif; ?>
                         </div>
                         <?php if($adminPermissions): ?>
                         <div class="row" style="margin-bottom: 10px;">                            
@@ -174,16 +207,17 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                                     <small>Select Someone To Remove their Casts</small>
                                     <div class="row">
                                         <div class="btn-group btn-small pull-left">
-                                            <button type="submit" role="button" class="btn btn-default" name="delete" id="twitch-delete">Delete</button>
+                                            <button role="button" class="btn btn-default">Delete</button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <!--modals of are you sure before form submit -->
-                                        <?php //var_dump($casters) ?>
-                                        <?php //var_dump($authorized['id']) ?>
                                     </div>
                                     <div class="row">
                                         <!--preview of the person-->
+                                    </div>
+                                    <div class="row">
+                                        <p id="demo"></p>
                                     </div>
                                 </div><!--col-->
                                 <div class="col-md-6">                                
@@ -201,7 +235,8 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                         </div><!--row-->
                         <?php endif; ?>
                         <div class="row text-center">
-                            <p style="border: 1px solid #fff;">Twitch allows MPC to retrieve your account information, and allow twitch users to perform actions. Submit for your Broadcast to Show up on MPCgaming.com. <b>Note:</b> You <u>MUST NEVER</u> share your password for your MPC, or Twitch account, with anyone -- including Admins, and Officers of MPC, or any other person. <br /> Please Obey Twitch's Policies for Broadcasting. Your Twitch Account will appear on the Community Section. All reports of abuse will be resolved by Twitch, and be aware to adjust your <b>mature</b> settings on twitch.tv, for young viewers, that will help avoid confrontation complaints; to and from Twitch -- viewer descreation is advised for Mature Audiences.</p>                
+                            <h3>Notice</h3>
+                            <p style="border: 1px solid #fff;">Twitch allows MPC to retrieve your account information, and allow MPC Users to perform actions like view, chat, follow, but requires you to log in with permission from Twitch before you can do that here. Submit for your Broadcast to Show up on MPCgaming.com. <b>Note:</b> You <u>MUST NEVER</u> share your password for your MPC, or Twitch account, with anyone -- including Admins, and Officers of MPC, or any other person. <br /> Please Obey Twitch's Policies for Broadcasting. Your Twitch Account will appear on the Streams Section. All reports of abuse will be resolved by Twitch, and be aware to adjust your <b>mature</b> settings on twitch.tv, for young viewers, that will help avoid confrontation complaints; to and from Twitch -- viewer descreation is advised for Mature Audiences.</p>                
                             <form action="/connect/appendtwitch" name="appendtwitch" method="post" >
                                 <div class="btn-group btn-small pull-right">
                                     <button type="submit" role="button" class="btn btn-default disabled" name="twitch-subscribe" id="twitch-subscribe">Add Cast</button>
@@ -223,8 +258,8 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                                 <?php endif; ?>
                             </form>
                             <div class="btn-group btn-small pull-right">
-                                <a href="/community">
-                                    <button role="button" class="btn btn-default">View Community</button>
+                                <a href="/streams">
+                                    <button role="button" class="btn btn-default">View Casters</button>
                                 </a>
                             </div><!--view-community-->
                         </div><!--parent row-->
@@ -342,47 +377,16 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
 </div><!--connecttwitter
 -->
 <script>
-$.get('/api/users/auth', null, function (authorized)
-{
-    if (Object.keys(authorized).length > 0)
-    {
-        // User is authenticated, which is what `authorized` is.
-        //test
-        $('.twitch-connect').removeClass('disabled');
-    }
-    else
-    {
-        // User is not authenticated with MPCgaming.com, and `authorized` is no good.
-        $('#twitch-subscribe').addClass('disabled');
-        $('#twitch-unsubscribe').addClass('disabled');
-        $('.twitch-connect').addClass('disabled');
-        $('.twitch-disconnect').addClass('disabled');
-    }
-});
-$('.twitch-connect').click(function () {
-    Twitch.login({
-        scope: ['user_read', 'channel_read', 'user_follows_edit']
-    });
-});
-$('.twitch-disconnect').click(function () {
-    Twitch.logout(function (error) {
-        return window.location = "/connect";
-    });
-});
 var url = window.location;
-if (url == "http://www.mpcgaming.com/connect?error=redirect_mismatch&error_description=Parameter+redirect_uri+does+not+match+registered+URI"){
+var redirect = "/connect";
+var error = "http://www.mpcgaming.com/connect?error=redirect_mismatch&error_description=Parameter+redirect_uri+does+not+match+registered+URI";
+var error1 = "http://www.mpcgaming.com/connect?TwitchAccountDeletion=Failed+Not+Connected+To+Twitch";
+if (url == error){
     alert('Failed Twitch Connection -- Please Try Again.');
-    window.location.replace("/connect");  
+    window.location.replace(redirect);  
 }
-$.get('/api/twitchusers/all', null, function (twitchUsers) {
-    for (index in twitchUsers){
-        if(<?=  $authorized['id'] ?> == twitchUsers[index].uid){
-            $('#twitch-subscribe').addClass('disabled');
-            $('#twitch-unsubscribe').removeClass('disabled');
-        } else {
-            $('#twitch-subscribe').removeClass('disabled');
-            $('#twitch-unsubscribe').addClass('disabled');
-        }
-    }
-});
+if (url == error1){
+    alert('Failed To Remove Twitch -- Must Sign Connect To Twitch First.');
+    window.location.replace(redirect);
+}
 </script>

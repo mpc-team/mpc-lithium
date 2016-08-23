@@ -153,46 +153,40 @@ $self = $this;
 <div class="panel-group">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <?php 
-                $clantags = array(
-                    0 => array(
-                        'id' => 'LP8GL0RR',
-                        'name' => 'Assassins',
-                    ),
-                    1 => array(
-                        'id' => '9RR8CPGY',
-                        'name' => 'Warriors',
-                    ),
-                    2 => array(
-                        'id' => 'PGLY2QUP',
-                        'name' => 'Dragons',
-                    ),
-                );
-
-
-            ?>
+                <?php 
+                $clantags = array();
+                foreach($phpData as $index => $data)    
+                {
+                    //Get Clan Tag
+                    $pos = strpos($data, 'tag');
+                    $clanTag = substr($data, 9, 8);                    
+                    array_push($clantags, $clanTag);
+                }
+                ?>
             <ul class="nav nav-tabs" role="tablist">
-                <?php foreach($clantags as $index => $tag): ?>
-                <li role="presentation"><a href="#<?= $tag['id'] ?>" aria-controls="<?= $tag ?>" role="tab" data-toggle="tab"><?= $tag['name'] ?></a></li>
+                <?php foreach($clantags as $tag): ?>
+                <li role="presentation"><a href="#<?= $tag ?>" aria-controls="<?= $tag ?>" role="tab" data-toggle="tab"><?= $tag ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div><!--panel-heading-->
         <div class="panel-body">
             <div class="tab-content">
-                <?php foreach($clantags as $index => $tag): ?>
-                <div role="tabpanel" class="tab-pane fade" id="<?= $tag['id'] ?>">
-                    <?= $tag['name'] ?>
+                <?php foreach($clantags as $tag): ?>
+                <div role="tabpanel" class="tab-pane fade" id="<?= $tag ?>">
+                    <?= $tag ?>
                 </div><!--tab-panel-->
                 <?php endforeach; ?>
             </div><!--tab-content-->
             <div class="row">
-                <?= $data ?>  
+                <?php foreach($phpData as $index => $data): ?>
+                    <?= $data ?>
+                <?php endforeach; ?>
             </div>
         </div><!--panel-body-->
         <div class="panel-footer">            
             <script>
-    <?php echo "var res = $res;"; ?>
-                console.log(res);
+        <?php echo "var jsonData = $jsonData;"; ?>
+                console.log(jsonData);
             </script>
         </div><!--panel-footer-->
     </div><!--panel-->

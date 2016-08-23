@@ -37,16 +37,23 @@ $forumsByCategory = Forums::GetByCategory();
 				<a title="Community" href='/community'>
                     <i class="fa fa-users"></i>
                 </a>
-			</li>
+			</li><!--community-dropdown-->
 			
-            <li id='navbar-connect'>
-                <a title="Connect" href='/connect'>
-                    <i class="fa fa-rss"></i>
+            <li id='navbar-connect' class="dropdown">
+                <a title="Connect" href='/connect' role="dropdown-toggle" role="button" style="padding-top 12px;">
+                    <i class="fa fa-rss"></i> <span class='caret'></span>
                 </a>
-            </li>
+                <ul class='dropdown-menu' role='menu'>
+                    <li><a href="/connect">Connections</a></li>
+                    <li class='divider'></li>
+                    <li id="navbar-twitch">
+                        <i class="fa fa-twitch"></i>
+                    </li>
+                </ul>
+            </li><!--connect-dropdown-->
 
 			<li id='navbar-forum' class='dropdown'>
-                <a href='/forum' class='dropdown-toggle' role='button' style="padding-top: 12px">
+                <a href='/forum' class='dropdown-toggle' role='button' style="padding-top: 12px;">
                     <span class="glyphicon glyphicon-th-list"></span> <span class='caret'></span>
                 </a>
                 <ul class='dropdown-menu columns-3'>
@@ -104,12 +111,14 @@ $forumsByCategory = Forums::GetByCategory();
 				</ul>
 			</li>
 			
+            <li id='navbar-streams'>
+                <a title="Streams" href='/streams'>
+                    <i class="fa fa-video-camera"></i>
+                </a>
+            </li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<?php if ($authorized): ?>
-                <li id="navbar-twitch">
-                    <i class="fa fa-twitch"></i>
-                </li>
+			<?php if ($authorized): ?>                
 				<li id='navbar-user' class='dropdown'>
 
 					<a href='/user/profile' class='dropdown-toggle' role='button'>
@@ -166,11 +175,6 @@ $forumsByCategory = Forums::GetByCategory();
 	</div>
 </nav>
 <script>
+//By Default
 $('#navbar-twitch').hide();
-Twitch.getStatus(function (err, status) {   
-    if (status.authenticated) {
-        $('#navbar-twitch').show();
-        //console.log('User Authenticated');        
-    }
-});
 </script>
