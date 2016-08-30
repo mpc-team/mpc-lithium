@@ -53,6 +53,7 @@ use app\views\layouts\LayoutConstants;
 		'field-selection',	
 		'validate',
 		'markup',
+        'games/clashofclans',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>

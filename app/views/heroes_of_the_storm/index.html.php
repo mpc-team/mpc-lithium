@@ -97,6 +97,7 @@ $self = $this;
                             <li>Register for an account on <a href="http://www.chairleague.com" target="_blank">ChairLeague</a>.</li>
                             <li>Rules for ChairLeague <a href="http://www.chairleague.com/rules" target="_blank">Here</a>.</li>
                             <li>Register for an account on <a href="http://www.topdrafter.com" target="_blank">TopDrafter</a>.</li>
+                            <li>Setup Discord (Voice Comms.) <a href="/connect#discord">Here</a>.</li>
                             <li>Submit an Application to MPC <a href="https://www.chairleague.com/teams/778" target="_blank">Team</a>.</li>
                             <li>MPC Officers will decide if they shall approve, and notify back otherwise.</li>
                         </ul>

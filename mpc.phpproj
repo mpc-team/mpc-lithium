@@ -1718,7 +1718,6 @@
     <Compile Include="app\views\forum\index.html.php" />
     <Compile Include="app\views\games\index.html.php" />
     <Compile Include="app\views\heroes_of_the_storm\index.html.php" />
-    <Compile Include="app\views\index.html.php" />
     <Compile Include="app\views\layouts\default.html.php" />
     <Compile Include="app\views\layouts\default.xml.php" />
     <Compile Include="app\views\layouts\error.html.php" />
@@ -2761,6 +2760,7 @@
     <Folder Include="app\webroot\js\utils\" />
     <Folder Include="app\webroot\js\utils\events\" />
     <Folder Include="app\webroot\js\utils\tooltip\" />
+    <Folder Include="app\webroot\js\games\" />
     <Folder Include="app\webroot\starcraft2\builds" />
     <Folder Include="app\webroot\starcraft2" />
     <Folder Include="app\webroot\users\avatars" />
@@ -3041,6 +3041,7 @@
     <Content Include="app\webroot\css\utils\ControlOverlay.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
+    <Content Include="app\webroot\js\games\clashofclans.js" />
     <Content Include="app\webroot\img\caster\lovetorub16\description.png" />
     <Content Include="app\webroot\img\caster\lovetorub16\playimage.png" />
     <Content Include="app\webroot\img\caster\marshallmpc\description.png" />

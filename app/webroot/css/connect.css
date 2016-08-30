@@ -1,0 +1,59 @@
+﻿/*
+    *Typography Fonts
+    *
+*/
+@font-face 
+{
+    font-family: TwitchFont;
+    src: url(/app/webroot/fonts/twitch.ttf);
+}
+#connecttwitch > .well > a, #connecttwitch p > a {
+    border-bottom: none;
+    text-decoration: none;
+}
+/*
+    *Twitch Information
+    *
+*/
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div#twitchinfo > div.row > div.col-md-4 > ul.list-group, html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div#twitchinfo > div.row > div.col-md-8 > ol.list-group
+{
+    padding: 1px;
+}
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div#twitchinfo > div.row > div.col-md-4 > ul.list-group > li.list-group-item, html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div#twitchinfo > div.row > div.col-md-8 > ol.list-group > li.list-group-item
+{
+    background-color: #000;
+    border-color: #888;
+    color: #aaffaa;
+}
+/*Twitch Icon*/
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div.well > div#twitchapp.panel-heading > div.row > div.col-md-8 > h3 > span
+{
+    position: relative;
+    top: 12px;
+    color: #fff;
+    padding-bottom: 5px;
+}
+/*
+    *Panel Heading
+    *
+*/
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div.well > div#twitchapp.panel-heading
+{
+    background-color: #6441A5;    
+}
+/*Col-8 Left Side*/
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div.well > div#twitchapp.panel-heading > div.row > div.col-md-8 > h3 
+{
+    font-family: TwitchFont;
+    color: #fff;
+    text-shadow: #fff;
+    font-size: 14pt;
+}
+/*Col-4 Right Side*/
+html > body > div.container > div.content > div#connecttwitch > div.panel-group > div.panel > div.panel-body > div.well > div#twitchapp.panel-heading > div.row > div.col-md-4 > p 
+{
+    font-size: small;
+    color: #fff;
+    text-shadow: #fff;
+    padding-top: 20px;
+}

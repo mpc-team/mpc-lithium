@@ -6,6 +6,8 @@ $this->title('Clash of Clans');
 
 $self = $this;
 
+
+
 ?>
 <div id="clash-of-clans">
 <div class="jumbotron">
@@ -153,41 +155,57 @@ $self = $this;
 <div class="panel-group">
     <div class="panel panel-default">
         <div class="panel-heading">
-                <?php 
-                $clantags = array();
-                foreach($phpData as $index => $data)    
-                {
-                    //Get Clan Tag
-                    $pos = strpos($data, 'tag');
-                    $clanTag = substr($data, 9, 8);                    
-                    array_push($clantags, $clanTag);
-                }
+                <?php
+                    //Store the Json into this Variable.
+                    $clans = array();
+                    $rest = array();
+                    //Function to Assemble the Decodes Responses from The Controller.
+                    for($i = 0; $i <= sizeOf($jsonData); $i++)
+                    {
+                        $clans[$i] = json_decode($jsonData[$i]); 
+                        $rest[$i] = substr($clans[$i]->tag, 1, 8);
+                    }
                 ?>
             <ul class="nav nav-tabs" role="tablist">
-                <?php foreach($clantags as $tag): ?>
-                <li role="presentation"><a href="#<?= $tag ?>" aria-controls="<?= $tag ?>" role="tab" data-toggle="tab"><?= $tag ?></a></li>
-                <?php endforeach; ?>
+                <?php for($i = 0; $i <= (sizeOf($jsonData) -1); $i++): ?>
+                    <li role="presentation"><a href="#<?= $rest[$i] ?>" aria-controls="<?= $rest[$i] ?>" role="tab" data-toggle="tab"><?= $clans[$i]->name ?></a></li>
+                <?php endfor; ?>
             </ul>
         </div><!--panel-heading-->
         <div class="panel-body">
             <div class="tab-content">
-                <?php foreach($clantags as $tag): ?>
-                <div role="tabpanel" class="tab-pane fade" id="<?= $tag ?>">
-                    <?= $tag ?>
+                <?php for($i = 0; $i <= (sizeOf($jsonData) -1); $i++): ?>
+                <div role="tabpanel" class="tab-pane fade" id="<?= $rest[$i] ?>">
+                    <h3 class="panel-title">Clan Information</h3>
+                    <table class="table">
+                        <tr class="row"><td>Name</td><td><?= $clans[$i]->name ?></td></tr>
+                        <tr class="row"><td>Invite</td><td><?= $clans[$i]->type ?></td></tr>
+                        <tr class="row"><td>Description</td><td><?= $clans[$i]->description ?></td></tr>
+                        <tr class="row"><td>Level</td><td><?= $clans[$i]->clanLevel ?></td></tr>
+                        <tr class="row"><td>Points</td><td><?= $clans[$i]->clanPoints ?></td></tr>
+                        <tr class="row"><td>Members</td><td><?= $clans[$i]->members ?></td></tr>
+                        <tr class="row"><td>War Frequency</td><td><?= $clans[$i]->warFrequency ?></td></tr>
+                        <tr class="row"><td>Win Streak</td><td><?= $clans[$i]->warWinStreak ?></td></tr>
+                        <tr class="row"><td>Won</td><td><?= $clans[$i]->warWins ?></td></tr>
+                        <tr class="row"><td>Lost</td><td><?= $clans[$i]->warLosses ?></td></tr>
+                        <tr class="row"><td>Tie</td><td><?= $clans[$i]->warTies ?></td></tr>
+                    </table>
+                    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse<?= $rest[$i] ?>" aria-expanded="false" aria-controls="collapse<?= $rest[$i] ?>">
+                      Member List and Rank
+                    </a>
+                    <div class="collapse" id="collapse<?= $rest[$i] ?>">
+                      <div class="well">
+                        <table class="table">
+                            <tr class="row"><td>Name</td><td>Trophies</td><td>Clan Rank</td></tr>
+                            <?php foreach($clans[$i]->memberList as $member):?>
+                                <tr class="row"><td><?= $member->name ?></td><td><?= $member->trophies ?></td><td><?= $member->clanRank ?></td></tr>
+                            <?php endforeach; ?>
+                        </table>
+                      </div>
+                    </div>
                 </div><!--tab-panel-->
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </div><!--tab-content-->
-            <div class="row">
-                <?php foreach($phpData as $index => $data): ?>
-                    <?= $data ?>
-                <?php endforeach; ?>
-            </div>
         </div><!--panel-body-->
-        <div class="panel-footer">            
-            <script>
-        <?php echo "var jsonData = $jsonData;"; ?>
-                console.log(jsonData);
-            </script>
-        </div><!--panel-footer-->
     </div><!--panel-->
 </div><!--panel-group-->
