@@ -1,0 +1,48 @@
+﻿
+/*
+
+    *Index.html.php
+
+*/
+#sc2-mpc-logo {
+
+    min-width: 10%;
+    max-width: 80%;
+    border: solid 5px #ffff00;
+    box-shadow: 1px 1px 15px #0000ff;
+    height: auto;
+
+}
+/*Center and Expand the Images*/
+html > body > div.container > div.content > div#starcraft2lotv > div.row > div.panel-group > div.panel > div.panel-heading > img, html > body > div.container > div.content > div#starcraft2lotv > div.row > div.col-md-12 > a > div.well > img {
+
+    margin: auto;
+    width: 100%;
+
+
+}
+html > body > div.container > div.content > div#starcraft2lotv > div.row > div.panel-group > div.panel {
+
+    background-color: transparent;
+
+}
+html > body > div.container > div.content > div#starcraft2lotv > div.row > div.panel-group > div.panel > div.panel-body > div.tab-content > div > div.panel-group > div.panel > div.panel-body {
+
+    box-shadow: 0px 0px 20px #6e97cb inset;
+
+}
+#starcraft2lotv h3{
+        
+    color: rgba(123,171,232,.9); font-weight: 700;        
+
+}
+#starcraft2lotv small{color: #aaffaa; font-weight: 500;}   
+#discordsetupbtn:hover {color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa; border: 3px solid black;}
+#discordsetupbtn {color: #fff; background-color: rgba(123,171,232,.9); margin: 2px 0 2px 0; width: 200px; font-weight: 600; border: 3px solid rgba(123,171,232,.9);}
+#starcraft2lotv p {text-indent: 20px; color: #aaffaa !important; text-shadow: 1px 1px 15px #000;}
+#starcraft2lotv .btn-edit {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
+#starcraft2lotv .btn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+#starcraft2lotv .downloadbtn-edit {color: #fff; background-color: rgba(123,171,232,.9); border: 3px solid #000; margin: auto; cursor:pointer;}
+#starcraft2lotv .downloadbtn-edit:hover{color: #000; background-color: #aaffaa; box-shadow: 1px 1px 10px #aaffaa;}
+#mpcsc2-players-list > .list-group-item, #oppsc2-players-list > .list-group-item{color: #fff;background-color: rgba(123,171,232,.9);border: 1px solid #000;margin: auto;padding: 0;}
+#mpcsc2-players-list > .list-group-item > .badge, #oppsc2-players-list > .list-group-item > .badge{margin: 1% 1% 1% 1%;}

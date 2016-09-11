@@ -1,0 +1,12 @@
+﻿html > body > div.container > div.content > div#counter-strike > h3 {
+    color: #e7e8ed;
+    text-shadow: 0px 0px 20px #e7e8ed;
+    font-weight: initial;
+}
+html > body > div.container > div.content > div#counter-strike > h3 > small {
+    color: #88bb88;
+}
+html > body > div.container > div.content > div#counter-strike > div.panel-group > div.panel > div.panel-body > div.well > img {
+    width: 100%;
+    margin: auto;
+}

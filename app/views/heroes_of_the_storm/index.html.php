@@ -3,42 +3,6 @@ $this->title('Heroes of the Storm');
 $self = $this;
 
 ?>
-<style>
-/*typography styling*/
-#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > p, #heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .row > p {
-    color: rgba(110,138,225,.9);
-    text-indent: 20px;
-    text-shadow: 1px 1px 15px #000;
-}
-#heroes-of-the-storm > h3 small {color: #aaffaa;}
-#heroes-of-the-storm > h3 {
-    color: rgb(108, 62, 204);
-    font-weight: 700;
-    text-shadow: 1px 1px 20px #000000;    
-}
-
-/*outer panels layout*/
-#heroes-of-the-storm > h3 > small {
-    color: #aaffaa;
-}
-
-/*inner panels layout*/
-#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .panel-title {
-    color: rgba(202,255,255,.9);
-    font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .row > .col-md-6 > .list-group > .list-group-item {
-    background-color: #eeeeee;
-    color: rgb(108, 62, 204);
-    font-weight: 700;
-    text-shadow: 1px 1px 20px #000000;  
-}
-#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body {
-    padding: 15px;
-}
-</style>
 <div id="heroes-of-the-storm">
    <div class="jumbotron">
         <h1 style="white-space: nowrap;">
@@ -53,59 +17,25 @@ $self = $this;
         <div class="panel-group">
             <div class="panel">
                 <div class="panel-heading">
-                    <h3 class="panel-title">
-                        What we are trying to accomplish in the H.O.T.S. Community:
-                    </h3>
+                    <img src="/img/hots/main.png" alt="main.png" class="img-rounded img-responsive" />
+                    <hr>
                 </div>
                 <div class="panel-body">
+                    <h3 class="panel-title">
+                        Our Mission:
+                    </h3>
                     <p>As of today, there is no clan based in Heroes of the Storm -- system built in the game, but we as MPC still likes to focus on a collection of quality members, and officers to run Hero League, and Team League Squads. We feel the game will eventually add a scenario for clans and teams, so we like to prepare and participate on helping other players perform, and meet goals to becoming a strong high performance player.</p>
                     <p>Our clan welcomes the Heroes of the Storm community, enthusiasts, and prideful players to learn how to play with a winning solution for ever problem that can occur on the battlefield. Certain Players in MPC are familliar with the mechanics of the game, and broken the game into it's most simplest form. If interested in playing with some serious core developing teammates, management, strategies, then feel free to reach us on Discord to inquire all the information you need.</p>
                     <p>You will find helpful information on this page regarding characters that we feel we've mastered in. Along with facts and details, philosophy and meta, map decision and control, positioning as the heroe and team, selecting heroes for map or composition aggragation, how to train and perform, understanding which priorities should be met and when.</p>
                     <p>Over time this section will be populated with useful, and educational process, and yet discoveries for this game; with updates, nerfs, and patches happening will cause this section to be very dynamic and simplified every day.</p>
                 </div><!--panel-body-->
+                <div class="panel-footer">
+                    <hr>
+                </div><!--footer-->
             </div><!--panel-->
-        </div><!--panel-grou-->
+        </div><!--panel-group-->
     </div><!--row-->
-    <h3>
-        Chair League
-        <small>Where MPC Competes</small>
-    </h3>
-    <div class="row">
-        <div class="panel-group">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Clan Information
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <p>MPC will be competing in Season 3 for placement matches. To try out for the upcoming season, contact either AcidSnake, or Steve for the screening process. Tryouts can be done at any time, and unlimited multiple attempts. Speak to us on discord, or forums to begin the try out initiation. Good Luck Have Fun.</p>
-                        <p>Ways to increase chances to be approved to the team?</p>
-                        <ol>
-                            <li>Basic knowledge on the game.</li>
-                            <li>Cooperative and Suggestive Character and Attitude.</li>
-                            <li>Show up to practices.</li>
-                            <li>Request a Tryout for a spot on the Team.</li>
-                        </ol>
-                    </div>
-                    <div class="row">
-                        <h3 class="panel-title">Getting Started</h3>
-                        <p>To help make the process quicker to join Team MPC, you can save some time by preparing these few helpful tips:</p>
-                        <ul>
-                            <li>Register for an account on <a href="/signup">MPCGaming</a>.</li>
-                            <li>Register for an account on <a href="http://www.chairleague.com" target="_blank">ChairLeague</a>.</li>
-                            <li>Rules for ChairLeague <a href="http://www.chairleague.com/rules" target="_blank">Here</a>.</li>
-                            <li>Register for an account on <a href="http://www.topdrafter.com" target="_blank">TopDrafter</a>.</li>
-                            <li>Setup Discord (Voice Comms.) <a href="/connect#discord">Here</a>.</li>
-                            <li>Submit an Application to MPC <a href="https://www.chairleague.com/teams/778" target="_blank">Team</a>.</li>
-                            <li>MPC Officers will decide if they shall approve, and notify back otherwise.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div><!--row-->
+    <!--
     <h3>
         Developing Skills
         <small>Mastering the Game</small>
@@ -119,7 +49,7 @@ $self = $this;
                     </h3>
                 </div>
                 <div class="panel-body" style="box-shadow: 0px 0px 20px #88bb88 inset;">
-                    <!--COLLAPSE Rows-->
+                    <!--COLLAPSE Rows
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
@@ -268,46 +198,259 @@ $self = $this;
                                 </div>
                             </div>
                         </div>
-                    </div><!--collpase accordion-->
+                    </div><!--collpase accordion
+                </div><!--panel-body
+            </div><!--panel
+        </div><!--panel-group
+    </div><!--row-->    
+    <h3>
+        Join Team MPC
+        <small>Recruiting in Progress</small>
+    </h3>
+     <div class="row">
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                     <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#how" aria-controls="how" role="tab" data-toggle="tab">How it Works</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#join" aria-controls="join" role="tab" data-toggle="tab">Join Our Team</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign Up</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">Team Skirmish</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#discord" aria-controls="discord" role="tab" data-toggle="tab">Discord</a>
+                        </li>
+                      </ul>
+                    <hr>
+                </div><!--panel-heading-->
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="how">
+                            <div class="panel-group">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            How HOTS Team Works
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <ul>
+                                                <li>Show up 3 times a week to practice.</li>
+                                                <li>Use only Top 3 most played heroes in HL and TL.</li>
+                                                <li>Use QM and Unranked to Practice or level up new ones.</li>
+                                                <li>TL and HL are practice for Chairleague.</li>
+                                                <li>Follow MPC's General Rules and ChairLeague's Policies.</li>
+                                                <li>Register to become a Member.</li>
+                                            </ul>
+                                            <a href="#sign" aria-controls="sign" role="tab" data-toggle="tab">Sign Up</a>
+                                        </div><!--row-->
+                                    </div><!--panel-body-->
+                                </div><!--panel-->
+                            </div><!--panel-group-->
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade in" id="join">
+                            <div class="panel-group">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            How To Join Our Team
+                                        </h3>
+                                    </div><!--panel-heading-->
+                                    <div class="panel-body">
+                                        <p>Speak to us in Person through Discord, Leave a Message on the Forum, or Find us in game with the Officer Links Below.</p>
+                                            <ul>
+                                                <li>AcidSnake#1941</li>
+                                            </ul>
+                                        <a href="#discord" aria-controls="discord" role="tab" data-toggle="tab">Speak/Text to an Officer</a>
+                                    </div><!--panel-body-->
+                                </div><!--panel-->
+                            </div><!--panel-group-->
+                        </div><!--tab-panel(join)-->
+                        <div role="tabpanel" class="tab-pane fade in" id="sign">
+                             <div class="panel-group" id="sc2-signup-panel">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Sign Ups
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <h3 class="panel-title">
+                                                MPC Setup Information
+                                            </h3>
+                                            <p>Ways to increase chances to be approved to the team?</p>
+                                            <ol>
+                                                <li>Basic knowledge on the game.</li>
+                                                <li>Cooperative and Suggestive Character and Attitude.</li>
+                                                <li>Show up to practices.</li>
+                                                <li>Request a Tryout for a spot on the Team. Expect Replay Review, Critism and Discussions.</li>
+                                            </ol>
+                                        </div>
+                                        <div class="row">
+                                            <h3 class="panel-title">Getting Started</h3>
+                                            <p>To help make the process quicker to join Team MPC, you can save some time by preparing these few helpful tips:</p>
+                                            <ul>
+                                                <li>Register for an account on <a href="/signup">MPCGaming</a>.</li>
+                                                <li>Register for an account on <a href="http://www.chairleague.com" target="_blank">ChairLeague</a>.</li>
+                                                <li>Rules for ChairLeague <a href="http://www.chairleague.com/rules" target="_blank">Here</a>.</li>
+                                                <li>Register for an account on <a href="http://www.topdrafter.com" target="_blank">TopDrafter</a>.</li>
+                                                <li>Setup Discord (Voice Comms.) <a href="/connect#discord">Here</a>.</li>
+                                                <li>Submit an Application to MPC <a href="https://www.chairleague.com/teams/778" target="_blank">Team</a>.</li>
+                                                <li>MPC Officers will decide if they shall approve, and notify back otherwise.</li>
+                                            </ul>
+                                        </div><!--row-->
+                                    </div><!--panel-body-->  
+                                </div><!--panel-->
+                            </div><!--panel-group-->
+                        </div><!--tabpanel(sign)-->
+                        <div role="tabpanel" class="tab-pane fade in" id="schedule">
+                            <div class="panel-group">
+                                <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Schedule a Skrimish
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <p>Request to speak to an Officer, or Admin for Future HOTS Skirmishes for Practice</p>
+                                            <div class="row">
+                                                <ul>
+                                                    <li>Use In-Game Chat.</li>
+                                                    <li>Find us On Discord.</li>
+                                                    <li>Leave Message on the Forums.</li>
+                                                </ul>
+                                                <a href="#discord" aria-controls="discord" role="tab" data-toggle="tab">Speak/Text to an Officer</a>
+                                                <a href="/forum" target="_blank">Forums</a>
+                                            </div><!--child row-->
+                                        </div><!--parent row-->
+                                    </div><!--panel-body-->
+                                </div><!--panel-->
+                            </div><!--panel-group-->
+                        </div><!--tabpanel(schedule)-->
+                        <div role="tabpanel" class="tab-pane fade in" id="contact">
+                            <div class="panel-group">
+                                <div class="panel" id="contact-instructions">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            Contact MPC    
+                                        </h3>
+                                    </div><!--panel heading-->
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <h3 class="panel-title">
+                                                In Game Links for Starcraft 2 Officers
+                                            </h3>
+                                            <small>Copy on of these links, then paste in Starcraft2's chat -- push enter, then click on the link in game, and click on the portrait to find the link to chat, or add friend's list to save it.</small>
+                <br />                           
+                                                <?php $sc2ContactA = array(
+
+                                                    'Clan MPC'=>'battlenet:://starcraft/clan/1/9466',
+
+                                                    );
+                                                ?>
+                                                <?php foreach($sc2ContactA as $id => $data): ?>
+                                                    <div class="well well-sm">
+                                                        <h3><?= $id ?></h3>
+                                                        <small><?= $data ?></small>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                        </div><!--row-->
+                                    </div><!--panel body-->                
+                                </div><!--panel-->                
+                            </div><!--panel-group-->
+                        </div><!--tabpanel(contact)-->
+                        <div role="tabpanel" class="tab-pane fade in" id="discord">
+                                <div class="panel-group">
+                                <div class="panel">
+                                        <div class="panel-heading">
+                                        <h3 class="panel-title">MPC's Discord Server</h3>
+                                    </div>
+                                    <div class="panel-body text-center">                           
+                                        <div class="well" style="border: 2px solid rgba(123,171,232,.9); margin-left: 10px;">
+                                            <center>
+                                                <iframe src="https://discordapp.com/widget?id=127671174648823808&theme=dark" allowtransparency="true" style="height: 317px; border: none; width: 100%;" class="small"></iframe>
+                                            </center>
+                                        </div><!--well-->
+                                            <small>Need Help?</small>
+                                        <div class="btn-group btn-lg" role="group">
+                                            <a class="btn btn-edit" href="/connect">
+                                                Set Up Page for Discord
+                                            </a>
+                                        </div><!--btn group-->
+                                    </div><!--row-->
+                                </div><!--panel-->
+                            </div><!--panel-group-->
+                        </div><!--tabpanel(contact)-->
+                    </div><!--tab-content-->
                 </div><!--panel-body-->
+                <div class="panel-footer">
+                    <hr>
+                </div><!--panel-footer-->
             </div><!--panel-->
-        </div><!--panel-group-->
+        </div><!--panel-group-->         
     </div><!--row-->
     <h3>
         Resources
         <small>Outsourcing Knowledge</small>
     </h3>    
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Recommended Sites
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="http://www.hotslogs.com/Default" target="_blank">
-                            <div class="well">
-                                <img src="http://d1i1jxrdh2kvwy.cloudfront.net/Images/logo.png" class="img-rounded img-responsive" style="margin: auto; max-width: 200px; min-width: 1%; width: 100%;" />
-                                <div class="text-center">                                        
-                                    <p>www.hotslogs.com</p>
+    <div class="row">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="http://www.hotslogs.com/Default" target="_blank">
+                                <div class="well">
+                                    <img src="http://d1i1jxrdh2kvwy.cloudfront.net/Images/logo.png" class="img-rounded img-responsive" style="margin: auto; max-width: 200px; min-width: 1%; width: 100%;" />
+                                    <div class="text-center">                                        
+                                        <p>www.hotslogs.com</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div><!--col-->
-                    <div class="col-md-12">
-                        <a href="http://www.heroesfire.com/" target="_blank">
-                            <div class="well">
-                                <img src="http://www.heroesfire.com/images/bg-logo.png" class="img-rounded img-responsive" style="margin: auto; max-width: 200px; min-width: 1%; width: 100%;" />
-                                <div class="text-center">
-                                    <p>www.heroesfire.com</p>
+                            </a>
+                        </div><!--col-->
+                        <div class="col-md-12">
+                            <a href="http://www.heroesfire.com/" target="_blank">
+                                <div class="well">
+                                    <img src="http://www.heroesfire.com/images/bg-logo.png" class="img-rounded img-responsive" style="margin: auto; max-width: 200px; min-width: 1%; width: 100%;" />
+                                    <div class="text-center">
+                                        <p>www.heroesfire.com</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div><!--col-->
-                </div><!--row-->
-            </div>
-        </div>
-    </div>
+                            </a>
+                        </div><!--col-->
+                        <div class="col-md-12">
+                            <a href="http://www.chairleague.com/" target="_blank">
+                                <div class="well">
+                                    <center>
+                                        <img src="https://www.chairleague.com/assets/chairleague/logo-171d365abec26ac4942976c7aebb065533f055c819bc0c8237bb5786adaffe58.svg" alt="main.png" class="img-rounded img-responsive" />        
+                                    </center>
+                                    <div class="text-center">
+                                        <p>www.chairleague.com</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div><!--col-->                        
+                    </div><!--row-->
+                </div><!--panel-body-->
+                <div class="panel-footer">
+                    <hr>
+                </div><!--footer-->
+            </div><!--panel-->
+        </div><!--panel-group-->
+    </div><!--row-->
 </div><!--container-->
 <script>
     $(function(){

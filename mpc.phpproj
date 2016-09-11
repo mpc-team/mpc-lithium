@@ -1601,6 +1601,7 @@
     <Compile Include="app\controllers\api\UserNotificationsAPI.php" />
     <Compile Include="app\controllers\ConnectController.php" />
     <Compile Include="app\controllers\games\ClashOfClansController.php" />
+    <Compile Include="app\controllers\games\CounterStrikeController.php" />
     <Compile Include="app\controllers\games\GamesController.php" />
     <Compile Include="app\controllers\games\HeroesOfTheStormController.php" />
     <Compile Include="app\controllers\games\Starcraft2Controller.php" />
@@ -1703,6 +1704,7 @@
     <Compile Include="app\views\board\view.html.php" />
     <Compile Include="app\views\clash_of_clans\index.html.php" />
     <Compile Include="app\views\connect\index.html.php" />
+    <Compile Include="app\views\counter_strike\index.html.php" />
     <Compile Include="app\views\elements\headerbar.html.php" />
     <Compile Include="app\views\elements\banner.html.php" />
     <Compile Include="app\views\elements\user\games.html.php" />
@@ -1729,7 +1731,6 @@
     <Compile Include="app\views\pages\home.html.php" />
     <Compile Include="app\views\signup\complete.html.php" />
     <Compile Include="app\views\signup\index.html.php" />
-    <Compile Include="app\views\starcraft2\index.html.php" />
     <Compile Include="app\views\thread\view.html.php" />
     <Compile Include="app\views\user\changepassword.html.php" />
     <Compile Include="app\views\user\profile.html.php" />
@@ -2716,9 +2717,9 @@
     <Folder Include="app\views\layouts" />
     <Folder Include="app\views\login" />
     <Folder Include="app\views\community\" />
+    <Folder Include="app\views\counter_strike\" />
     <Folder Include="app\views\pages" />
     <Folder Include="app\views\signup" />
-    <Folder Include="app\views\starcraft2" />
     <Folder Include="app\views\thread" />
     <Folder Include="app\views\user" />
     <Folder Include="app\views\world_of_warcraft" />
@@ -2956,8 +2957,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\webroot\css\bootstrap-datetimepicker.css" />
+    <Content Include="app\webroot\css\counter-strike.css" />
     <Content Include="app\webroot\css\forums.css" />
     <Content Include="app\webroot\css\fullcalendar\fullcalendar.css" />
+    <Content Include="app\webroot\css\heroes-of-the-storm.css" />
     <Content Include="app\webroot\css\highlight\styles\agate.css" />
     <Content Include="app\webroot\css\highlight\styles\androidstudio.css" />
     <Content Include="app\webroot\css\highlight\styles\arduino-light.css" />
@@ -3031,6 +3034,7 @@
     <Content Include="app\webroot\css\jquery-ui.css" />
     <Content Include="app\webroot\css\navbar.css" />
     <Content Include="app\webroot\css\community.css" />
+    <Content Include="app\webroot\css\streams.css" />
     <Content Include="app\webroot\css\user.css" />
     <Content Include="app\webroot\css\clash-of-clans.css" />
     <Content Include="app\webroot\css\external\effects\component.css" />
@@ -3041,6 +3045,7 @@
     <Content Include="app\webroot\css\utils\ControlOverlay.css" />
     <Content Include="app\webroot\css\utils\fileselect.css" />
     <Content Include="app\webroot\css\utils\nanoscroller.css" />
+    <Content Include="app\webroot\js\facebook-api.js" />
     <Content Include="app\webroot\js\games\clashofclans.js" />
     <Content Include="app\webroot\img\caster\lovetorub16\description.png" />
     <Content Include="app\webroot\img\caster\lovetorub16\playimage.png" />
@@ -3118,6 +3123,9 @@
     <Content Include="app\webroot\js\background.js" />
     <Content Include="app\webroot\js\bootstrap-datetimepicker.js" />
     <Content Include="app\webroot\js\fullcalendar\fullcalendar.js" />
+    <Content Include="app\webroot\js\games\counter-strike.js" />
+    <Content Include="app\webroot\js\games\heroes-of-the-storm.js" />
+    <Content Include="app\webroot\js\games\star-craft2.js" />
     <Content Include="app\webroot\js\highlight\CHANGES.md" />
     <Content Include="app\webroot\js\highlight\highlight.pack.js" />
     <Content Include="app\webroot\js\highlight\LICENSE" />

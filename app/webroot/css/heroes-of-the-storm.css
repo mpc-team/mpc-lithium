@@ -1,0 +1,43 @@
+﻿html > body > div.container > div.content > div#heroes-of-the-storm > div.row > div.panel-group > div.panel > div.panel-heading > img {
+    margin: auto;
+    width: 100%;
+}
+
+html > body > div.container > div.content > div#heroes-of-the-storm > div.row > div.panel-group > div.panel > div.panel-body {
+    box-shadow: 0px 0px 20px #6c3ecc inset;
+}
+
+/*typography styling*/
+#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > p, #heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .row > p {
+    color: rgba(110,138,225,.9);
+    text-indent: 20px;
+    text-shadow: 1px 1px 15px #000;
+}
+#heroes-of-the-storm > h3 small {color: #aaffaa;}
+#heroes-of-the-storm > h3 {
+    color: rgb(108, 62, 204);
+    font-weight: 700;
+    text-shadow: 1px 1px 20px #000000;    
+}
+
+/*outer panels layout*/
+#heroes-of-the-storm > h3 > small {
+    color: #aaffaa;
+}
+
+/*inner panels layout*/
+#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .panel-title {
+    color: rgba(202,255,255,.9);
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body > .row > .col-md-6 > .list-group > .list-group-item {
+    background-color: #eeeeee;
+    color: rgb(108, 62, 204);
+    font-weight: 700;
+    text-shadow: 1px 1px 20px #000000;  
+}
+#heroes-of-the-storm > .row > .panel-group > .panel > .panel-body {
+    padding: 15px;
+}

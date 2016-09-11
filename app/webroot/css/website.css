@@ -790,23 +790,3 @@ a .panel-recentfeed h3 {
 #games img {
     width: 100%;
 }
-/*
-    Connect.html.php Banner's CSS
-
-*/
-/*Panels*/
-html > body > div.container > div.content > div > div.panel-group > div.panel {
-    background-color: transparent;
-}/*Panel-bodies*/
-html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-body {
-    box-shadow: 0px 0px 20px #88bb88 inset; 
-    border: solid 1px #88bb88;
-}/*Panel Images*/
-html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-heading > img.connect-banner {
-    box-shadow: 0px 0px 20px #88ff88;
-    width: 100%;
-    margin: auto;
-}/*Panel Buttons*/
-html > body > div.container > div.content > div > div.panel-group > div.panel > div.panel-body > div.row > center > div.btn-group {
-    padding: 0px;
-}

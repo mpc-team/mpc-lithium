@@ -19,7 +19,7 @@ class StarCraft2Controller extends ContentController {
 			'authorized' => Auth::check('default'),
 			'breadcrumbs' => array(
 				'path' => array('MPC','Games','Starcraft II'),
-				'link' => array('/','/games','/games/starcraft2'),
+				'link' => array('/','/games','/games/star_craft2'),
 			),
 		));
 

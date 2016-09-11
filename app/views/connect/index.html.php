@@ -17,6 +17,9 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
 <div class="page-icon lower smaller pull-right">    
     <i style="transform: rotate(13deg);" class="fa fa-rss"></i>
 </div>
+<div class="well text-center" style="color: #fff;">
+    <p>Members can link up their party applications to this website for Various Actions that can be performed from MPCgaming.com.</p>
+</div>
 <div id="connectdiscord"><a name="discord"></a>
     <div class="panel-group">
         <div class="panel">
@@ -290,8 +293,6 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
         </div><!--panel
     </div><!--panel-group    
 </div><!--connectfacebook
--->
-<!--
 <div id="connectfacebook">
     <div class="panel-group">
         <div class="panel">
@@ -301,16 +302,10 @@ $adminPermissions = $authorized && Permissions::IsAdmin($authorized);
                 </center>
             </div>
             <div class="panel-body">
-                <h4 class="panel-title">Coming Soon.</h4><!--
-                 <div class="btn-group" role="group" aria-label="">
-                    <button role="button" class="btn btn-default twitch-follow" >
-                        <span class="fa fa-facebook-square"></span>
-                            Follow Group
-                    </button>
-                </div><!--button-group
+                <h4 class="panel-title">Coming Soon.</h4>
             </div><!--panel-body
         </div><!--panel
-    </div><!--panel-group    
+    </div><!--panel-group
 </div><!--connectfacebook
 
 <div id="connectyoutube">

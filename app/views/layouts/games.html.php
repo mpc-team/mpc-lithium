@@ -32,6 +32,9 @@ use app\views\layouts\LayoutConstants;
         'external/effects/hover',
         'external/effects/component',
         'clash-of-clans',
+        'counter-strike',
+        'heroes-of-the-storm',
+        'star-craft2',
 	));?>
 	<?php echo $this->html->script(array(
 		LayoutConstants::JQUERY_PATH,
@@ -54,6 +57,10 @@ use app\views\layouts\LayoutConstants;
 		'validate',
 		'markup',
         'games/clashofclans',
+        'games/counter-strike',
+        'games/heroes-of-the-storm',
+        'games/star-craft2',
+        'facebook-api',
 	));?>
 	<?php echo $this->scripts(); ?>
 	<?php echo $this->styles(); ?>
